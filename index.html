@@ -7,18 +7,74 @@
 </head>
 <body>
 
-<h1>HandyNotdienst</h1>
-<p>Ремонт смартфонів у Німеччині. Швидко, чесно, без зайвих витрат.</p>
+<header class="page-header">
+  <div class="language-switcher" role="group" aria-label="Перемикач мови">
+    <button class="lang-button is-active" type="button" data-lang="ua">UA</button>
+    <button class="lang-button" type="button" data-lang="de">DE</button>
+  </div>
+  <a class="cta-button" href="#order">Замовити ремонт</a>
+</header>
 
-<h2>Послуги</h2>
-<ul>
-  <li>Заміна акумулятора</li>
-  <li>Ремонт дисплея</li>
-  <li>Ремонт розʼєму зарядки</li>
-  <li>Програмні проблеми</li>
-</ul>
+<main>
+  <section class="language-block is-visible" data-lang="ua">
+    <h1>HandyNotdienst</h1>
+    <p>Ремонт смартфонів у Німеччині. Швидко, чесно, без зайвих витрат.</p>
 
-<p>Напиши мені для консультації.</p>
+    <h2>Послуги</h2>
+    <ul>
+      <li>Заміна акумулятора</li>
+      <li>Ремонт дисплея</li>
+      <li>Ремонт розʼєму зарядки</li>
+      <li>Програмні проблеми</li>
+    </ul>
+
+    <p>Напиши мені для консультації.</p>
+  </section>
+
+  <section class="language-block" data-lang="de">
+    <h1>HandyNotdienst</h1>
+    <p>Smartphone-Reparatur in Deutschland. Schnell, fair und ohne versteckte Kosten.</p>
+
+    <h2>Leistungen</h2>
+    <ul>
+      <li>Akkutausch</li>
+      <li>Display-Reparatur</li>
+      <li>Reparatur der Ladebuchse</li>
+      <li>Software-Probleme</li>
+    </ul>
+
+    <p>Schreiben Sie mir für eine Beratung.</p>
+  </section>
+
+  <section id="order" class="order-section">
+    <h2>Замовити ремонт</h2>
+    <p>Опишіть проблему та модель телефону, і я швидко відповім.</p>
+    <div class="order-actions">
+      <a class="primary-link" href="https://wa.me/491234567890" target="_blank" rel="noopener">Написати у WhatsApp</a>
+      <span class="order-note">DE/UA підтримка</span>
+    </div>
+  </section>
+</main>
+
+<a class="whatsapp-float" href="https://wa.me/491234567890" target="_blank" rel="noopener" aria-label="Написати у WhatsApp">
+  <span>WhatsApp</span>
+</a>
+
+<script>
+  const langButtons = document.querySelectorAll('.lang-button');
+  const languageBlocks = document.querySelectorAll('.language-block');
+
+  langButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const selectedLang = button.dataset.lang;
+
+      langButtons.forEach((btn) => btn.classList.toggle('is-active', btn === button));
+      languageBlocks.forEach((block) => {
+        block.classList.toggle('is-visible', block.dataset.lang === selectedLang);
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
