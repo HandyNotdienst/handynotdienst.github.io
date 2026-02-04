@@ -129,14 +129,31 @@
           <h2 data-i18n="ba_title">VORHER / NACHHER</h2>
         </div>
 
-        <div class="ba-grid">
-          <figure class="ba-item">
-            <img class="ba-image" src="assets/before-phone.png" alt="Defektes Smartphone vor der Reparatur" />
-          </figure>
-          <figure class="ba-item">
-            <img class="ba-image" src="assets/after-phone.png" alt="Repariertes Smartphone nach der Reparatur" />
-          </figure>
-        </div>
+        <figure class="ba-slider" data-ba-slider>
+          <div class="ba-slider__images">
+            <img
+              class="ba-slider__image ba-slider__image--before"
+              src="assets/before-phone.png"
+              alt="Defektes Smartphone vor der Reparatur"
+            />
+            <div class="ba-slider__after" aria-hidden="true">
+              <img
+                class="ba-slider__image ba-slider__image--after"
+                src="assets/after-phone.png"
+                alt="Repariertes Smartphone nach der Reparatur"
+              />
+            </div>
+          </div>
+          <div class="ba-slider__handle" aria-hidden="true"></div>
+          <input
+            class="ba-slider__range"
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            aria-label="Vorher-Nachher Vergleich"
+          />
+        </figure>
         <p class="ba-compare" data-i18n="ba_compare">🔋 Akku leer nach 2 Std ❌ → 🔋 Ganzer Tag Nutzung ✅</p>
       </div>
     </section>
