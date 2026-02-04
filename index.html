@@ -1,280 +1,191 @@
-<!doctype html>
-<html lang="uk">
+<!DOCTYPE html>
+<html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Handy Notdienst — Ремонт телефонів</title>
-  <meta name="description" content="Handy Notdienst — швидкий ремонт смартфонів: дисплей, акумулятор, зарядка, камера, динамік. WhatsApp / Telegram." />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Handy Notdienst – Mobiler Reparaturservice in Singen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privater mobiler Reparaturservice in Singen. Akku, Display, Ladebuchse, Software. Faire Preise.">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- Top bar -->
-  <header class="topbar">
-    <div class="container topbar__inner">
-      <a class="brand" href="#top">
-        <span class="brand__logo">HN</span>
-        <span class="brand__text">
-          <strong>Handy Notdienst</strong>
-          <small>Ремонт смартфонів • Швидко • Якісно</small>
-        </span>
-      </a>
 
-      <nav class="nav">
-        <a href="#services">Послуги</a>
-        <a href="#prices">Ціни</a>
-        <a href="#steps">Як працюємо</a>
-        <a href="#contact" class="btn btn--small">Замовити ремонт</a>
-      </nav>
+<header class="header">
+  <div class="container header-inner">
+    <div class="brand">
+      <img src="logo.png" alt="Handy Notdienst Logo">
+      <span>Handy Notdienst</span>
     </div>
-  </header>
 
-  <!-- Hero -->
-  <main id="top">
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__content">
-          <h1>Ремонт телефонів у той самий день</h1>
-          <p class="lead">
-            Дисплей, акумулятор, зарядка, камера, динамік — швидка діагностика та чесна ціна.
-            Пишіть у WhatsApp або Telegram.
-          </p>
-
-          <div class="hero__cta">
-            <a class="btn" href="#contact">Замовити ремонт</a>
-            <a class="btn btn--ghost" href="#services">Подивитись послуги</a>
-          </div>
-
-          <div class="badges">
-            <span class="badge">✅ Безкоштовна консультація</span>
-            <span class="badge">⚡ Швидкий ремонт</span>
-            <span class="badge">🧾 Прозора ціна</span>
-          </div>
-        </div>
-
-        <div class="hero__card">
-          <div class="card">
-            <h3>Швидкий запит</h3>
-            <p class="muted">Опишіть проблему — відповімо швидко.</p>
-
-            <form class="mini-form" onsubmit="return false;">
-              <label>
-                Модель телефону
-                <input type="text" placeholder="Напр. iPhone 13 / Samsung S21" />
-              </label>
-              <label>
-                Що зламалось?
-                <input type="text" placeholder="Дисплей / батарея / зарядка..." />
-              </label>
-
-              <div class="mini-form__actions">
-                <a class="btn btn--whatsapp" href="https://wa.me/0000000000" target="_blank" rel="noopener">
-                  WhatsApp
-                </a>
-                <a class="btn btn--telegram" href="https://t.me/your_username" target="_blank" rel="noopener">
-                  Telegram
-                </a>
-              </div>
-
-              <p class="hint">* Заміни номер/юзернейм у посиланнях.</p>
-            </form>
-          </div>
-        </div>
+    <div class="header-right">
+      <div class="lang-switch">
+        <button onclick="setLang('de')" id="btn-de" class="active">DE</button>
+        <button onclick="setLang('ua')" id="btn-ua">UA</button>
       </div>
-    </section>
 
-    <!-- Services -->
-    <section id="services" class="section">
-      <div class="container">
-        <div class="section__head">
-          <h2>Послуги</h2>
-          <p class="muted">Найпопулярніші ремонти смартфонів та гаджетів.</p>
-        </div>
-
-        <div class="grid">
-          <article class="service card">
-            <div class="icon">📱</div>
-            <h3>Заміна дисплею</h3>
-            <p>Тріщини, плями, не працює сенсор — заміна екрана швидко.</p>
-          </article>
-
-          <article class="service card">
-            <div class="icon">🔋</div>
-            <h3>Заміна акумулятора</h3>
-            <p>Швидко сідає або надувся — ставимо якісний акумулятор.</p>
-          </article>
-
-          <article class="service card">
-            <div class="icon">🔌</div>
-            <h3>Ремонт зарядки</h3>
-            <p>Не заряджається, люфтить кабель — чистка або заміна порту.</p>
-          </article>
-
-          <article class="service card">
-            <div class="icon">📷</div>
-            <h3>Камера</h3>
-            <p>Не фокусується, чорний екран, тріснуле скло — виправимо.</p>
-          </article>
-
-          <article class="service card">
-            <div class="icon">🎧</div>
-            <h3>Динамік / мікрофон</h3>
-            <p>Погано чути або вас не чують — діагностика і ремонт.</p>
-          </article>
-
-          <article class="service card">
-            <div class="icon">💧</div>
-            <h3>Після води</h3>
-            <p>Чистка, відновлення, спроба зберегти дані та телефон.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Prices -->
-    <section id="prices" class="section section--alt">
-      <div class="container">
-        <div class="section__head">
-          <h2>Орієнтовні ціни</h2>
-          <p class="muted">Точну вартість скажемо після діагностики (часто — за 5–10 хв).</p>
-        </div>
-
-        <div class="price-grid">
-          <div class="card price">
-            <h3>Діагностика</h3>
-            <p class="price__value">€0–20</p>
-            <ul>
-              <li>Швидка перевірка</li>
-              <li>Пояснимо причину</li>
-              <li>Без “сюрпризів”</li>
-            </ul>
-          </div>
-
-          <div class="card price">
-            <h3>Акумулятор</h3>
-            <p class="price__value">від €49</p>
-            <ul>
-              <li>Перевірка стану батареї</li>
-              <li>Якісні запчастини</li>
-              <li>Тест після заміни</li>
-            </ul>
-          </div>
-
-          <div class="card price">
-            <h3>Дисплей</h3>
-            <p class="price__value">від €89</p>
-            <ul>
-              <li>Заміна екрану</li>
-              <li>Перевірка сенсора</li>
-              <li>Тест Face/Touch (де можливо)</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="note card">
-          <strong>Важливо:</strong> ціна залежить від моделі та якості запчастини (Original / Premium / Standard).
-        </div>
-      </div>
-    </section>
-
-    <!-- Steps -->
-    <section id="steps" class="section">
-      <div class="container">
-        <div class="section__head">
-          <h2>Як працюємо</h2>
-          <p class="muted">Просто і без зайвих слів.</p>
-        </div>
-
-        <div class="steps">
-          <div class="step card">
-            <div class="step__num">1</div>
-            <h3>Пишете нам</h3>
-            <p>WhatsApp / Telegram — модель + проблема.</p>
-          </div>
-          <div class="step card">
-            <div class="step__num">2</div>
-            <h3>Діагностика</h3>
-            <p>Перевіряємо, узгоджуємо ціну і термін.</p>
-          </div>
-          <div class="step card">
-            <div class="step__num">3</div>
-            <h3>Ремонт</h3>
-            <p>Робимо ремонт і тестуємо пристрій.</p>
-          </div>
-          <div class="step card">
-            <div class="step__num">4</div>
-            <h3>Видача</h3>
-            <p>Забираєте готовий телефон — все працює.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section section--alt">
-      <div class="container contact">
-        <div class="contact__info">
-          <h2>Контакти</h2>
-          <p class="muted">Напишіть — відповімо швидко.</p>
-
-          <div class="contact__cards">
-            <a class="card contact-card" href="https://wa.me/0000000000" target="_blank" rel="noopener">
-              <div class="contact-card__icon">💬</div>
-              <div>
-                <strong>WhatsApp</strong>
-                <div class="muted">Найшвидше</div>
-              </div>
-            </a>
-
-            <a class="card contact-card" href="https://t.me/your_username" target="_blank" rel="noopener">
-              <div class="contact-card__icon">✈️</div>
-              <div>
-                <strong>Telegram</strong>
-                <div class="muted">@your_username</div>
-              </div>
-            </a>
-
-            <a class="card contact-card" href="mailto:you@email.com">
-              <div class="contact-card__icon">📧</div>
-              <div>
-                <strong>Email</strong>
-                <div class="muted">you@email.com</div>
-              </div>
-            </a>
-          </div>
-
-          <div class="smallprint">
-            <p><strong>Адреса:</strong> (додай адресу / місто)</p>
-            <p><strong>Графік:</strong> Пн–Сб 10:00–19:00 (приклад)</p>
-          </div>
-        </div>
-
-        <div class="contact__map card">
-          <h3>Локація</h3>
-          <p class="muted">Можна вставити Google Maps iframe.</p>
-          <div class="map-placeholder">
-            <span>🗺️ Тут буде карта</span>
-          </div>
-          <p class="hint">* Якщо хочеш — я вставлю готовий iframe під твою адресу.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Floating WhatsApp -->
-  <a class="float-whatsapp" href="https://wa.me/0000000000" target="_blank" rel="noopener" aria-label="WhatsApp">
-    💬
-  </a>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <p>© <span id="year"></span> Handy Notdienst</p>
-      <p class="muted">Ремонт смартфонів • Швидко • Надійно</p>
+      <a href="tel:+4915222416438" class="phone">📞 01522 2416438</a>
+      <a href="https://wa.me/4915222416438" target="_blank" class="btn-wa">WhatsApp</a>
     </div>
-  </footer>
+  </div>
+</header>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<section class="hero">
+  <div class="container">
+    <h1 data-i18n="hero_title">Handy kaputt?<br>Ich helfe dir schnell weiter.</h1>
+    <p data-i18n="hero_text">
+      Privater mobiler Reparaturservice in Singen.<br>
+      Ich komme zu dir – nach Absprache.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-main" data-i18n="btn_contact">Jetzt Kontakt aufnehmen</a>
+      <a href="https://wa.me/4915222416438" target="_blank" class="btn-outline" data-i18n="btn_wa">WhatsApp schreiben</a>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="container services-grid">
+    <div class="service">🔋 <span data-i18n="s1">Akkutausch</span></div>
+    <div class="service">📱 <span data-i18n="s2">Displaywechsel</span></div>
+    <div class="service">⚡ <span data-i18n="s3">Ladebuchsenreparatur</span></div>
+    <div class="service">🛡️ <span data-i18n="s4">Gehäuse- / Deckelwechsel</span></div>
+    <div class="service">💻 <span data-i18n="s5">Software-Probleme</span></div>
+    <div class="service">🛠️ <span data-i18n="s6">Weitere Reparaturen auf Anfrage</span></div>
+  </div>
+</section>
+
+<!-- PRICES -->
+<section class="prices">
+  <div class="container">
+    <h2 data-i18n="prices_title">Preise (Orientierung)</h2>
+
+    <table>
+      <tr>
+        <th data-i18n="model">Modell</th>
+        <th data-i18n="display">Display</th>
+        <th data-i18n="battery">Akku</th>
+        <th data-i18n="other">Weitere</th>
+      </tr>
+      <tr>
+        <td>iPhone 15</td>
+        <td>~184 €</td>
+        <td>~64 €</td>
+        <td>Rückseite ~84 €</td>
+      </tr>
+      <tr>
+        <td>iPhone 14</td>
+        <td>~124 €</td>
+        <td>~60 €</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>iPhone 13</td>
+        <td>~124 €</td>
+        <td>~54 €</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Samsung S25</td>
+        <td>~174 €</td>
+        <td>~74 €</td>
+        <td>Ladebuchse ~74 €</td>
+      </tr>
+      <tr>
+        <td>Samsung S24</td>
+        <td>~244 €</td>
+        <td>~74 €</td>
+        <td>Ladebuchse ~64 €</td>
+      </tr>
+    </table>
+
+    <p class="price-note" data-i18n="price_note">
+      Alle Preise sind Richtwerte und können je nach Modell und Aufwand variieren.
+    </p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <h2 data-i18n="contact_title">Kontakt</h2>
+    <p>📍 Singen (Baden-Württemberg)</p>
+    <p>📞 <a href="tel:+4915222416438">01522 2416438</a></p>
+    <p>💬 <a href="https://wa.me/4915222416438" target="_blank">WhatsApp</a></p>
+    <p>📧 <a href="mailto:handy.notdienst.reparatur@gmail.com">handy.notdienst.reparatur@gmail.com</a></p>
+    <p data-i18n="time">🕒 Termine nach Absprache</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p data-i18n="footer_note">
+      Hinweis: Dies ist ein privater Reparaturservice.
+      Alle Leistungen erfolgen nach individueller Absprache.
+    </p>
+    <p>© <span id="year"></span> Handy Notdienst</p>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/4915222416438" target="_blank">💬</a>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const texts = {
+  de: {
+    hero_title: "Handy kaputt?<br>Ich helfe dir schnell weiter.",
+    hero_text: "Privater mobiler Reparaturservice in Singen.<br>Ich komme zu dir – nach Absprache.",
+    btn_contact: "Jetzt Kontakt aufnehmen",
+    btn_wa: "WhatsApp schreiben",
+    s1: "Akkutausch",
+    s2: "Displaywechsel",
+    s3: "Ladebuchsenreparatur",
+    s4: "Gehäuse- / Deckelwechsel",
+    s5: "Software-Probleme",
+    s6: "Weitere Reparaturen auf Anfrage",
+    prices_title: "Preise (Orientierung)",
+    model: "Modell",
+    display: "Display",
+    battery: "Akku",
+    other: "Weitere",
+    price_note: "Alle Preise sind Richtwerte und können je nach Modell und Aufwand variieren.",
+    contact_title: "Kontakt",
+    time: "🕒 Termine nach Absprache",
+    footer_note: "Hinweis: Dies ist ein privater Reparaturservice. Alle Leistungen erfolgen nach individueller Absprache."
+  },
+  ua: {
+    hero_title: "Телефон зламався?<br>Допоможу швидко.",
+    hero_text: "Приватний мобільний сервіс ремонту в Singen.<br>Можу приїхати до тебе — за домовленістю.",
+    btn_contact: "Звʼязатися",
+    btn_wa: "Написати в WhatsApp",
+    s1: "Заміна акумулятора",
+    s2: "Заміна дисплея",
+    s3: "Ремонт розʼєму зарядки",
+    s4: "Заміна корпусу / кришки",
+    s5: "Проблеми з ПЗ",
+    s6: "Інші ремонти — за запитом",
+    prices_title: "Ціни (орієнтовно)",
+    model: "Модель",
+    display: "Дисплей",
+    battery: "Акумулятор",
+    other: "Інше",
+    price_note: "Ціни орієнтовні та можуть змінюватися залежно від моделі та складності.",
+    contact_title: "Контакти",
+    time: "🕒 Час — за домовленістю",
+    footer_note: "Примітка: Це приватний сервіс ремонту. Усі роботи виконуються за домовленістю."
+  }
+};
+
+function setLang(lang){
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    el.innerHTML = texts[lang][el.dataset.i18n];
+  });
+  document.getElementById("btn-de").classList.toggle("active", lang==="de");
+  document.getElementById("btn-ua").classList.toggle("active", lang==="ua");
+}
+
+setLang("de");
+</script>
+
 </body>
 </html>
