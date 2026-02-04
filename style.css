@@ -662,3 +662,147 @@ a{color:inherit;text-decoration:none}
 
   .up-grid{ grid-template-columns: 1fr; }
 }
+/* ===== NAV / BADGE / PAGE ===== */
+.topnav{display:flex; gap:12px; align-items:center}
+.topnav a{color: var(--muted); font-weight: 900; padding: 10px 10px; border-radius: 12px;}
+.topnav a:hover{color: var(--text); background: rgba(255,255,255,.03);}
+
+.page-title{margin:0 0 8px; font-size: clamp(28px, 3.2vw, 40px);}
+
+.badge{
+  display:inline-flex;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 13px;
+}
+.badge--appt{
+  border-color: rgba(110,231,183,.25);
+  background: rgba(110,231,183,.10);
+  color: var(--text);
+}
+
+/* QUIZ subtle button */
+.quiz-mini{
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  color: rgba(238,243,247,.75);
+  border-radius: 12px;
+  padding: 10px 10px;
+  cursor:pointer;
+  opacity: .65;
+}
+.quiz-mini:hover{opacity:1; color: var(--text);}
+
+/* ===== HOW STEPS ===== */
+.steps{display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px;}
+.step__n{
+  width: 38px; height: 38px;
+  border-radius: 14px;
+  display:grid; place-items:center;
+  background: rgba(63,169,245,.16);
+  border: 1px solid rgba(63,169,245,.25);
+  font-weight: 950;
+  margin-bottom: 10px;
+}
+.step h3{margin:0 0 6px}
+
+/* ===== PICKUP ===== */
+.pickup{display:grid; grid-template-columns: 1fr; gap: 14px;}
+.pickup__actions{display:flex; gap: 10px; flex-wrap:wrap; margin-top: 10px;}
+
+/* ===== WARRANTY ===== */
+.warranty{display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px;}
+.warranty__item{display:flex; gap: 12px; align-items:flex-start}
+.warranty__icon{
+  width:42px; height:42px;
+  border-radius: 16px;
+  display:grid; place-items:center;
+  background: rgba(110,231,183,.12);
+  border: 1px solid rgba(110,231,183,.22);
+  font-size: 20px;
+}
+.warranty__item h3{margin:0 0 6px}
+
+/* ===== PRICES BRAND IMAGES ===== */
+.price-brand{display:flex; align-items:center; gap: 10px;}
+.price-brand__img{
+  width: 34px; height: 34px;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.03);
+}
+
+/* ===== BUNDLES ===== */
+.bundle h2{margin:0 0 6px}
+.bundle__grid{display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px;}
+.bundle__item{
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(63,169,245,.12);
+  color: var(--text);
+  font-weight: 900;
+  cursor:pointer;
+  text-align:left;
+}
+.bundle__item:hover{background: rgba(63,169,245,.20);}
+
+/* ===== FAQ ===== */
+.faq details{
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 12px;
+  background: rgba(255,255,255,.03);
+}
+.faq details + details{margin-top: 10px;}
+.faq summary{cursor:pointer; font-weight: 950; color: var(--text);}
+.faq p{margin: 10px 0 0;}
+.faq-cta{display:flex; gap: 10px; flex-wrap:wrap; margin-top: 12px;}
+
+/* ===== LEGAL PAGES ===== */
+.legalpage h1{margin:0 0 8px}
+.sep{border:0; border-top: 1px solid var(--line); margin: 16px 0;}
+
+/* ===== MOBILE STICKY BAR ===== */
+.mobilebar{
+  display:none;
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 70;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.mobilebar__btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 8px;
+  padding: 12px 10px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(18,42,58,.92);
+  backdrop-filter: blur(10px);
+  color: var(--text);
+  font-weight: 950;
+}
+.mobilebar__btn span{font-size: 12px; color: var(--muted); font-weight: 900;}
+.mobilebar__btn--wa{background: linear-gradient(135deg, #25D366, #9be15d); color:#06101f;}
+.mobilebar__btn--wa span{color:#06101f; opacity:.85;}
+
+@media (max-width: 980px){
+  .steps{grid-template-columns: 1fr;}
+  .warranty{grid-template-columns: 1fr;}
+  .bundle__grid{grid-template-columns: 1fr;}
+}
+@media (max-width: 560px){
+  .topnav{display:none;}
+  .mobilebar{display:grid;}
+  body{padding-bottom: 90px;} /* щоб контент не ховався під mobilebar */
+}
