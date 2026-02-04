@@ -312,12 +312,20 @@
   function initBeforeAfterSlider() {
     document.querySelectorAll("[data-ba-slider]").forEach((slider) => {
       const range = slider.querySelector(".ba-slider__range");
+ codex/modify-header-layout-for-mobile-pkf7a2
+      const handle = slider.querySelector(".ba-slider__handle");
+
+ main
       if (!range) return;
 
       const setPosition = (value) => {
         const clamped = Math.min(100, Math.max(0, Number(value)));
         slider.style.setProperty("--ba-position", `${clamped}%`);
         range.value = clamped;
+ codex/modify-header-layout-for-mobile-pkf7a2
+        if (handle) handle.setAttribute("aria-valuenow", String(Math.round(clamped)));
+
+ main
       };
 
       const updateFromPointer = (event) => {
