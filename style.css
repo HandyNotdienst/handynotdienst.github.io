@@ -708,18 +708,22 @@ a{color:inherit;text-decoration:none}
   border-bottom: 1px solid var(--line);
   background: rgba(14,31,44,.72);
   overflow: hidden;
+  width: 100%;
 }
 .ticker__track{
   display:flex;
-  gap: 40px;
-  padding: 6px 0;
+  gap: 120px;
+  padding: 8px 0;
   white-space: nowrap;
-  animation: tickerScroll 18s linear infinite;
+  width: max-content;
+  animation: tickerScroll 22s linear infinite;
+  will-change: transform;
 }
 .ticker__item{
   display:inline-flex;
   align-items:center;
   gap: 8px;
+  flex: 0 0 auto;
   font-size: 12px;
   font-weight: 900;
   color: var(--text);
@@ -728,7 +732,7 @@ a{color:inherit;text-decoration:none}
 }
 @keyframes tickerScroll{
   0%{ transform: translateX(0); }
-  100%{ transform: translateX(-33.333%); }
+  100%{ transform: translateX(-50%); }
 }
 
 /* QUIZ subtle button */
@@ -861,15 +865,15 @@ a{color:inherit;text-decoration:none}
   body{padding-bottom: 90px;} /* щоб контент не ховався під mobilebar */
 }
 /* ===== Compact header on mobile ===== */
-@media (max-width: 560px){
+@media (max-width: 768px){
   .header__inner{
-    padding: 8px 0;         /* було 10px */
-    gap: 8px;               /* менше відстані */
+    padding: 8px 0;
+    gap: 8px;
   }
 
   .brand__logo{
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     border-radius: 14px;
   }
 
@@ -891,5 +895,16 @@ a{color:inherit;text-decoration:none}
   /* прибираємо WhatsApp в header */
   .header .btn.btn--wa{
     display:none;
+  }
+}
+
+@media (max-width: 560px){
+  .header__inner{
+    padding: 6px 0;
+  }
+
+  .brand__logo{
+    width: 42px;
+    height: 42px;
   }
 }
