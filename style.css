@@ -273,62 +273,77 @@ a{color:inherit;text-decoration:none}
   .grid{grid-template-columns: 1fr}
   .pill{display:none}
 }
-/* ===== PRICES ===== */
+/* ===== PRO PRICE TABLE ===== */
+
 .price-block {
-  margin-bottom: 36px;
+  margin-bottom: 48px;
 }
 
 .price-block h3 {
-  margin: 0 0 12px;
+  margin-bottom: 14px;
+  font-size: 22px;
 }
 
 .table-wrap {
   overflow-x: auto;
-  border-radius: 16px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
   border: 1px solid var(--line);
+  box-shadow: var(--shadow);
 }
 
 .price-table {
   width: 100%;
-  border-collapse: collapse;
-  min-width: 720px;
-  background: rgba(255,255,255,.02);
+  min-width: 820px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
 }
 
-.price-table th,
-.price-table td {
-  padding: 12px 14px;
+.price-table thead th {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  color: #06101f;
+  padding: 14px;
+  font-weight: 900;
+  text-align: center;
+  border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+.price-table tbody td {
+  padding: 13px 14px;
   text-align: center;
   border-bottom: 1px solid var(--line);
-}
-
-.price-table th {
-  background: rgba(77,163,255,.12);
-  color: var(--text);
-  font-weight: 800;
-  font-size: 14px;
-}
-
-.price-table td {
   color: var(--muted);
   font-weight: 600;
-  font-size: 14px;
+  background: transparent;
 }
 
-.price-table tr:hover td {
-  background: rgba(255,255,255,.03);
+.price-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.price-table tbody tr:hover td {
+  background: rgba(77,163,255,.10);
   color: var(--text);
 }
 
-.price-table td:first-child,
-.price-table th:first-child {
+.price-table td:first-child {
   text-align: left;
   font-weight: 800;
   color: var(--text);
 }
 
-.price-note {
-  margin-top: 12px;
-  color: var(--muted);
-  font-size: 13px;
+.price-table td:not(:first-child)::after {
+  content: " €";
+  font-size: 12px;
+  opacity: .6;
 }
+
+.price-note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
