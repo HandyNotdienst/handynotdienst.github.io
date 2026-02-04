@@ -806,3 +806,37 @@ a{color:inherit;text-decoration:none}
   .mobilebar{display:grid;}
   body{padding-bottom: 90px;} /* щоб контент не ховався під mobilebar */
 }
+/* ===== Compact header on mobile ===== */
+@media (max-width: 560px){
+  .header__inner{
+    padding: 10px 0;         /* було 14px */
+    gap: 8px;                /* менше відстані */
+  }
+
+  .brand__logo{
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+  }
+
+  .brand__text strong{
+    font-size: 15px;
+    line-height: 1.1;
+  }
+
+  .brand__text small{
+    font-size: 11px;
+    margin-top: 1px;
+  }
+
+  /* прибираємо “важкі” елементи з header на моб */
+  .pill{ display:none; }        /* телефон-бейдж */
+  .lang{ transform: scale(.92); transform-origin: right center; }
+
+  /* кнопка WhatsApp в header робимо компактнішою */
+  .header .btn.btn--wa{
+    padding: 10px 12px;
+    border-radius: 12px;
+    box-shadow: none;
+  }
+}
