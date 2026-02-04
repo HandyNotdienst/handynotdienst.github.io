@@ -7,7 +7,6 @@
   <meta name="description" content="Handy Notdienst in Singen: Display, Akku, Ladebuchse, Kamera, Wasserschaden. Schnell & zuverlässig. WhatsApp, Telegram, Email." />
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Favicon + PWA -->
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#1b374c">
@@ -15,10 +14,9 @@
 </head>
 
 <body>
-  <!-- Header -->
   <header class="header">
     <div class="container header__inner">
-      <a class="brand" href="#top" aria-label="Handy Notdienst">
+      <a class="brand" href="index.html" aria-label="Handy Notdienst">
         <img class="brand__logo" src="assets/logo.png" alt="Handy Notdienst Logo" />
         <span class="brand__text">
           <strong>Handy Notdienst</strong>
@@ -27,6 +25,16 @@
       </a>
 
       <div class="header__right">
+        <span class="badge badge--appt" data-i18n="no_appt">Ohne Termin</span>
+
+        <nav class="topnav" aria-label="Navigation">
+          <a href="prices.html" data-i18n="nav_prices">Preise</a>
+          <a href="faqs.html">FAQ</a>
+          <a href="#contact" data-i18n="nav_contact">Kontakt</a>
+          <!-- QUIZ subtle -->
+          <button class="quiz-mini" id="quizStartBtn" type="button" aria-label="Quiz">🧠</button>
+        </nav>
+
         <div class="lang" aria-label="Language switch">
           <button class="lang__btn is-active" type="button" data-lang="de">DE</button>
           <button class="lang__btn" type="button" data-lang="ua">UA</button>
@@ -37,15 +45,12 @@
           📞 <span data-i18n="call">Anrufen</span>: <strong>01522 2416438</strong>
         </a>
 
-        <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">
-          WhatsApp
-        </a>
+        <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
   </header>
 
   <main id="top">
-    <!-- Hero -->
     <section class="hero">
       <div class="container hero__grid">
         <div class="hero__content">
@@ -59,8 +64,8 @@
 
           <div class="hero__actions">
             <a class="btn" href="#contact" data-i18n="cta_main">Jetzt anfragen</a>
-            <a class="btn btn--ghost" href="#prices" data-i18n="cta_prices">Preise ansehen</a>
-            <button class="btn btn--ghost" id="quizStartBtn" type="button">🧠 Quiz</button>
+            <a class="btn btn--ghost" href="prices.html" data-i18n="cta_prices">Preise ansehen</a>
+            <a class="btn btn--ghost" href="#pickup" data-i18n="cta_pickup">Abholung/Lieferung</a>
           </div>
 
           <div class="trust">
@@ -92,286 +97,89 @@
             </a>
 
             <div class="mini__grid">
-              <a class="btn btn--tg btn--full" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener">
-                ✈️ Telegram
-              </a>
-              <a class="btn btn--mail btn--full" href="mailto:handy.notdienst.reparatur@gmail.com">
-                📧 Email
-              </a>
+              <a class="btn btn--tg btn--full" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener">✈️ Telegram</a>
+              <a class="btn btn--mail btn--full" href="mailto:handy.notdienst.reparatur@gmail.com">📧 Email</a>
             </div>
 
-            <p class="hint" data-i18n="hint">
-              Tipp: Je genauer du beschreibst, desto schneller bekommst du einen Preis.
-            </p>
+            <p class="hint" data-i18n="hint">Tipp: Je genauer du beschreibst, desto schneller bekommst du einen Preis.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Services -->
-    <section class="section" id="services">
+    <!-- 4) Wie läuft es ab? (3 steps) -->
+    <section class="section section--alt" id="how">
       <div class="container">
         <div class="section__head">
-          <h2 data-i18n="services_title">Services</h2>
-          <p class="muted" data-i18n="services_text">Die häufigsten Reparaturen – schnell & sauber.</p>
+          <h2 data-i18n="how_title">So läuft es ab</h2>
+          <p class="muted" data-i18n="how_text">3 Schritte – einfach & transparent.</p>
         </div>
 
-        <div class="grid">
-          <article class="card service">
-            <div class="service__icon">📱</div>
-            <h3 data-i18n="s1_title">Display Reparatur</h3>
-            <p data-i18n="s1_text">Glas gebrochen, Touch spinnt, Flecken – Austausch nach Diagnose.</p>
-          </article>
-
-          <article class="card service">
-            <div class="service__icon">🔋</div>
-            <h3 data-i18n="s2_title">Akku Austausch</h3>
-            <p data-i18n="s2_text">Akku schnell leer oder aufgebläht – wir ersetzen sicher.</p>
-          </article>
-
-          <article class="card service">
-            <div class="service__icon">🔌</div>
-            <h3 data-i18n="s3_title">Ladebuchse</h3>
-            <p data-i18n="s3_text">Wackelkontakt / lädt nicht – Reinigung oder Austausch.</p>
-          </article>
-
-          <article class="card service">
-            <div class="service__icon">📷</div>
-            <h3 data-i18n="s4_title">Kamera</h3>
-            <p data-i18n="s4_text">Unscharf, schwarzes Bild, Glas kaputt – wir fixen das.</p>
-          </article>
-
-          <article class="card service">
-            <div class="service__icon">🎧</div>
-            <h3 data-i18n="s5_title">Lautsprecher / Mikro</h3>
-            <p data-i18n="s5_text">Leise, kratzt, du wirst nicht gehört – Diagnose & Reparatur.</p>
-          </article>
-
-          <article class="card service">
-            <div class="service__icon">💧</div>
-            <h3 data-i18n="s6_title">Wasserschaden</h3>
-            <p data-i18n="s6_text">Schnelle Rettung erhöht die Chance – bring das Gerät ASAP.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Before / After -->
-    <section class="section" id="beforeafter">
-      <div class="container">
-        <div class="section__head">
-          <h2 data-i18n="ba_title">Vorher / Nachher</h2>
-          <p class="muted" data-i18n="ba_text">Typische Fälle – so sieht das Ergebnis aus.</p>
-        </div>
-
-        <div class="ba-grid">
-          <div class="card ba">
-            <div class="ba__top">📱 <strong data-i18n="ba1_before">Display zerbrochen</strong> ❌</div>
-            <div class="ba__arrow">↓</div>
-            <div class="ba__bottom">✨ <strong data-i18n="ba1_after">Display wie neu</strong> ✅</div>
+        <div class="steps">
+          <div class="card step">
+            <div class="step__n">1</div>
+            <h3 data-i18n="how_1_t">Diagnose</h3>
+            <p class="muted" data-i18n="how_1_p">Kurz prüfen, was genau kaputt ist.</p>
           </div>
-
-          <div class="card ba">
-            <div class="ba__top">🔋 <strong data-i18n="ba2_before">Akku leer nach 2 Std</strong> ❌</div>
-            <div class="ba__arrow">↓</div>
-            <div class="ba__bottom">🔋 <strong data-i18n="ba2_after">Ganzer Tag Nutzung</strong> ✅</div>
+          <div class="card step">
+            <div class="step__n">2</div>
+            <h3 data-i18n="how_2_t">Preis bestätigen</h3>
+            <p class="muted" data-i18n="how_2_p">Du bekommst den Preis – du entscheidest.</p>
           </div>
-
-          <div class="card ba">
-            <div class="ba__top">🔌 <strong data-i18n="ba3_before">Lädt nur manchmal</strong> ❌</div>
-            <div class="ba__arrow">↓</div>
-            <div class="ba__bottom">⚡ <strong data-i18n="ba3_after">Zuverlässig laden</strong> ✅</div>
+          <div class="card step">
+            <div class="step__n">3</div>
+            <h3 data-i18n="how_3_t">Reparatur + Test</h3>
+            <p class="muted" data-i18n="how_3_p">Reparieren, testen, fertig.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PRICES -->
-    <section class="section section--alt" id="prices">
-      <div class="container">
-        <div class="section__head">
-          <h2 data-i18n="prices_title">Preisliste</h2>
-          <p class="muted" data-i18n="prices_text">Klick auf einen Preis → WhatsApp öffnet sich mit Modell + Reparatur + Preis.</p>
-        </div>
-
-        <!-- Samsung -->
-        <div class="price-block">
-          <div class="price-head">
-            <h3 data-i18n="samsung_title">Samsung Reparaturen</h3>
-            <input
-              type="text"
-              class="price-search"
-              data-filter-target="samsungTable"
-              placeholder="Modell suchen (z.B. S23, Ultra...)"
-            />
+    <!-- 3) Abholung/Lieferung -->
+    <section class="section" id="pickup">
+      <div class="container pickup">
+        <div class="card pickup__card">
+          <h2 data-i18n="pick_title">Abholung / Lieferung (Singen)</h2>
+          <p class="muted" data-i18n="pick_text">
+            Wenn du keine Zeit hast: Wir können das Gerät nach Absprache abholen oder zurückbringen.
+          </p>
+          <div class="pickup__actions">
+            <button class="btn btn--ghost" id="btnPickup" type="button" data-i18n="pick_btn">Abholung anfragen</button>
+            <a class="btn" href="prices.html" data-i18n="pick_prices">Preise ansehen</a>
           </div>
-
-          <div class="table-wrap">
-            <table class="price-table js-price-table" id="samsungTable" data-brand="Samsung">
-              <thead>
-                <tr>
-                  <th>Modell</th>
-                  <th>Display</th>
-                  <th>Akku</th>
-                  <th>Ladebuchse</th>
-                  <th>Rückseite</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>S25 Ultra</td><td>274€</td><td>84€</td><td>84€</td><td>105€</td></tr>
-                <tr><td>S25 Plus</td><td>234€</td><td>74€</td><td>74€</td><td>94€</td></tr>
-                <tr><td>S25</td><td>174€</td><td>74€</td><td>74€</td><td>84€</td></tr>
-                <tr><td>S24 Ultra</td><td>324€</td><td>84€</td><td>74€</td><td>105€</td></tr>
-                <tr><td>S24 / S24+</td><td>244€ / 274€</td><td>74€</td><td>64€</td><td>94€</td></tr>
-                <tr><td>S23 Ultra</td><td>334€</td><td>84€</td><td>74€</td><td>94€</td></tr>
-                <tr><td>S23 / S23+</td><td>224€ / 254€</td><td>74€</td><td>64€</td><td>84€</td></tr>
-                <tr><td>S22 Ultra</td><td>324€</td><td>74€</td><td>64€</td><td>84€</td></tr>
-                <tr><td>S22 / S22+</td><td>224€ / 254€</td><td>74€</td><td>54€</td><td>74€</td></tr>
-                <tr><td>S21 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
-                <tr><td>S21 / S21+ / FE</td><td>164€ / 184€ / 205€</td><td>64€</td><td>54€</td><td>74€</td></tr>
-                <tr><td>S20 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
-                <tr><td>S20 / S20+ / FE</td><td>205€ / 244€ / 214€</td><td>54€</td><td>44€</td><td>64€</td></tr>
-                <tr><td>S10+ / S10 / S10e</td><td>214€ / 204€ / 184€</td><td>54€</td><td>44€</td><td>64€</td></tr>
-                <tr><td>S9+ / S9</td><td>174€ / 164€</td><td>44€</td><td>34€</td><td>54€</td></tr>
-                <tr><td>S8+ / S8</td><td>164€ / 154€</td><td>44€</td><td>34€</td><td>54€</td></tr>
-                <tr><td>S7 Edge / S7</td><td>134€ / 124€</td><td>34€</td><td>24€</td><td>44€</td></tr>
-                <tr><td>S6 Edge / S6</td><td>114€ / 104€</td><td>34€</td><td>24€</td><td>44€</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- auto mobile cards here -->
-          <div class="price-cards js-price-cards"></div>
-        </div>
-
-        <!-- iPhone -->
-        <div class="price-block">
-          <div class="price-head">
-            <h3 data-i18n="iphone_title">iPhone Reparaturen</h3>
-            <input
-              type="text"
-              class="price-search"
-              data-filter-target="iphoneTable"
-              placeholder="Modell suchen (z.B. iPhone 13, Pro...)"
-            />
-          </div>
-
-          <div class="table-wrap">
-            <table class="price-table js-price-table" id="iphoneTable" data-brand="iPhone">
-              <thead>
-                <tr>
-                  <th>Modell</th>
-                  <th>Display (Original)</th>
-                  <th>Akku</th>
-                  <th>Rückseite</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>iPhone 16 Pro Max</td><td>374€</td><td>124€</td><td>174€</td></tr>
-                <tr><td>iPhone 16 Pro</td><td>335€</td><td>105€</td><td>164€</td></tr>
-                <tr><td>iPhone 16 Plus</td><td>234€</td><td>84€</td><td>154€</td></tr>
-                <tr><td>iPhone 16</td><td>224€</td><td>74€</td><td>134€</td></tr>
-                <tr><td>iPhone 15 Pro Max</td><td>264€</td><td>84€</td><td>134€</td></tr>
-                <tr><td>iPhone 15 Pro</td><td>234€</td><td>74€</td><td>124€</td></tr>
-                <tr><td>iPhone 15 Plus</td><td>214€</td><td>64€</td><td>104€</td></tr>
-                <tr><td>iPhone 15</td><td>184€</td><td>64€</td><td>84€</td></tr>
-                <tr><td>iPhone 14 Pro Max</td><td>174€</td><td>74€</td><td>115€</td></tr>
-                <tr><td>iPhone 14 Pro</td><td>164€</td><td>64€</td><td>105€</td></tr>
-                <tr><td>iPhone 14 Plus</td><td>144€</td><td>60€</td><td>74€</td></tr>
-                <tr><td>iPhone 14</td><td>124€</td><td>60€</td><td>64€</td></tr>
-                <tr><td>iPhone 13 Pro Max</td><td>164€ / 134€</td><td>54€</td><td>84€</td></tr>
-                <tr><td>iPhone 13 Pro</td><td>154€</td><td>54€</td><td>74€</td></tr>
-                <tr><td>iPhone 13</td><td>124€</td><td>54€</td><td>74€</td></tr>
-                <tr><td>iPhone 13 mini</td><td>114€</td><td>54€</td><td>64€</td></tr>
-                <tr><td>iPhone 12 Pro Max</td><td>124€</td><td>54€</td><td>74€</td></tr>
-                <tr><td>iPhone 12 Pro</td><td>114€</td><td>54€</td><td>64€</td></tr>
-                <tr><td>iPhone 12</td><td>114€</td><td>54€</td><td>64€</td></tr>
-                <tr><td>iPhone 12 mini</td><td>84€</td><td>54€</td><td>54€</td></tr>
-                <tr><td>iPhone 11 Pro Max</td><td>84€</td><td>54€</td><td>54€</td></tr>
-                <tr><td>iPhone 11 Pro</td><td>74€</td><td>54€</td><td>54€</td></tr>
-                <tr><td>iPhone 11</td><td>64€</td><td>54€</td><td>54€</td></tr>
-                <tr><td>iPhone XS Max</td><td>74€</td><td>54€</td><td>54€</td></tr>
-                <tr><td>iPhone X / XS / XR</td><td>54€</td><td>44€</td><td>44€</td></tr>
-                <tr><td>iPhone SE (2022)</td><td>54€</td><td>44€</td><td>34€</td></tr>
-                <tr><td>iPhone SE (2020)</td><td>44€</td><td>34€</td><td>34€</td></tr>
-                <tr><td>iPhone 8 Plus</td><td>44€</td><td>34€</td><td>24€</td></tr>
-                <tr><td>iPhone 8</td><td>34€</td><td>34€</td><td>24€</td></tr>
-                <tr><td>iPhone 7 / 7 Plus</td><td>30€</td><td>24€</td><td>-</td></tr>
-                <tr><td>iPhone 6s / 6s Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
-                <tr><td>iPhone 6 / 6 Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- auto mobile cards here -->
-          <div class="price-cards js-price-cards"></div>
-        </div>
-
-        <p class="price-note" data-i18n="prices_note">* Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.</p>
-        <p class="price-note" data-i18n="prices_time">⏱️ Die meisten Reparaturen dauern 30–90 Minuten (je nach Modell).</p>
-      </div>
-    </section>
-
-    <!-- Upsell -->
-    <section class="section" id="upsell">
-      <div class="container">
-        <div class="section__head">
-          <h2 data-i18n="up_title">Wir reparieren auch</h2>
-          <p class="muted" data-i18n="up_text">Nicht gefunden? Frag uns trotzdem.</p>
-        </div>
-
-        <div class="up-grid">
-          <div class="card up">⌚ <strong>Apple Watch</strong><div class="muted" data-i18n="up_watch">Akku, Display, Glas</div></div>
-          <div class="card up">🎧 <strong>AirPods</strong><div class="muted" data-i18n="up_airpods">Akku, Reinigung, Fehler</div></div>
-          <div class="card up">📟 <strong>Tablets</strong><div class="muted" data-i18n="up_tablets">iPad & Android</div></div>
-          <div class="card up">🎮 <strong>Konsolen</strong><div class="muted" data-i18n="up_console">HDMI, Reinigung</div></div>
-        </div>
-
-        <div class="up-cta">
-          <a class="btn" href="#contact" data-i18n="up_cta">Jetzt kurz anfragen</a>
-          <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <p class="hint" data-i18n="pick_hint">Hinweis: Abholung/Lieferung nur nach Absprache.</p>
         </div>
       </div>
     </section>
 
-    <!-- Why -->
-    <section class="section section--alt" id="why">
+    <!-- 6) Garantie -->
+    <section class="section section--alt" id="warranty">
       <div class="container">
         <div class="section__head">
-          <h2 data-i18n="why_title">Warum Handy Notdienst?</h2>
-          <p class="muted" data-i18n="why_text">Kurz, ehrlich, ohne Überraschungen.</p>
+          <h2 data-i18n="war_title">Garantie</h2>
+          <p class="muted" data-i18n="war_text">Klar & verständlich.</p>
         </div>
 
-        <div class="why">
-          <div class="card why__item">
-            <div class="why__icon">⚡</div>
+        <div class="warranty">
+          <div class="card warranty__item">
+            <div class="warranty__icon">✅</div>
             <div>
-              <h3 data-i18n="w1_title">Schnell</h3>
-              <p data-i18n="w1_text">Oft am selben Tag – je nach Ersatzteil.</p>
+              <h3 data-i18n="war_1_t">Garantie auf Arbeit</h3>
+              <p class="muted" data-i18n="war_1_p">Je nach Reparatur – Details beim Auftrag.</p>
             </div>
           </div>
-
-          <div class="card why__item">
-            <div class="why__icon">💶</div>
+          <div class="card warranty__item">
+            <div class="warranty__icon">🧩</div>
             <div>
-              <h3 data-i18n="w2_title">Fair</h3>
-              <p data-i18n="w2_text">Vorher Preisinfo – du entscheidest.</p>
+              <h3 data-i18n="war_2_t">Teilequalität</h3>
+              <p class="muted" data-i18n="war_2_p">Original/Premium je nach Verfügbarkeit.</p>
             </div>
           </div>
-
-          <div class="card why__item">
-            <div class="why__icon">🛠️</div>
+          <div class="card warranty__item">
+            <div class="warranty__icon">🔒</div>
             <div>
-              <h3 data-i18n="w3_title">Sauberer Service</h3>
-              <p data-i18n="w3_text">Diagnose, Reparatur, Test – danach Übergabe.</p>
-            </div>
-          </div>
-
-          <div class="card why__item">
-            <div class="why__icon">✅</div>
-            <div>
-              <h3 data-i18n="w4_title">Garantie</h3>
-              <p data-i18n="w4_text">Je nach Reparatur/Teil – Details beim Auftrag.</p>
+              <h3 data-i18n="war_3_t">Daten bleiben sicher</h3>
+              <p class="muted" data-i18n="war_3_p">Bei Standard-Reparaturen normalerweise ohne Datenverlust.</p>
             </div>
           </div>
         </div>
@@ -386,30 +194,12 @@
           <p class="muted" data-i18n="contact_text">Schreib oder ruf an – wir antworten schnell.</p>
 
           <div class="contact__list">
-            <a class="contact__row" href="tel:+4915222416438">
-              <span>📞</span>
-              <span><strong data-i18n="contact_call">Anrufen</strong> — 01522 2416438</span>
-            </a>
-            <a class="contact__row" href="https://wa.me/4915222416438" target="_blank" rel="noopener">
-              <span>💬</span>
-              <span><strong>WhatsApp</strong> — <span data-i18n="contact_wa">schreiben</span></span>
-            </a>
-            <a class="contact__row" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener">
-              <span>✈️</span>
-              <span><strong>Telegram</strong> — @HandyNotdienst</span>
-            </a>
-            <a class="contact__row" href="mailto:handy.notdienst.reparatur@gmail.com">
-              <span>📧</span>
-              <span><strong>Email</strong> — handy.notdienst.reparatur@gmail.com</span>
-            </a>
-            <div class="contact__row">
-              <span>📍</span>
-              <span><strong>Singen (Baden-Württemberg)</strong><br/><span class="muted" data-i18n="address_hint">Adresse hier eintragen</span></span>
-            </div>
-            <div class="contact__row">
-              <span>🕒</span>
-              <span><strong data-i18n="hours">Öffnungszeiten</strong>: <span class="muted" data-i18n="hours_hint">z.B. Mo–Sa 10:00–19:00</span></span>
-            </div>
+            <a class="contact__row" href="tel:+4915222416438"><span>📞</span><span><strong data-i18n="contact_call">Anrufen</strong> — 01522 2416438</span></a>
+            <a class="contact__row" href="https://wa.me/4915222416438" target="_blank" rel="noopener"><span>💬</span><span><strong>WhatsApp</strong> — <span data-i18n="contact_wa">schreiben</span></span></a>
+            <a class="contact__row" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener"><span>✈️</span><span><strong>Telegram</strong> — @HandyNotdienst</span></a>
+            <a class="contact__row" href="mailto:handy.notdienst.reparatur@gmail.com"><span>📧</span><span><strong>Email</strong> — handy.notdienst.reparatur@gmail.com</span></a>
+            <div class="contact__row"><span>📍</span><span><strong>Singen (Baden-Württemberg)</strong><br/><span class="muted" data-i18n="address_hint">Adresse hier eintragen</span></span></div>
+            <div class="contact__row"><span>🕒</span><span><strong data-i18n="hours">Öffnungszeiten</strong>: <span class="muted" data-i18n="hours_hint">z.B. Mo–Sa 10:00–19:00</span></span></div>
           </div>
 
           <div class="contact__actions">
@@ -422,82 +212,43 @@
         <div class="card contact__right">
           <h3 data-i18n="map_title">Standort</h3>
           <p class="muted" data-i18n="map_text">Hier kannst du Google Maps einfügen.</p>
-
-          <div class="map">
-            <span>🗺️ <span data-i18n="map_placeholder">Google Maps Platzhalter</span></span>
-          </div>
-
-          <p class="hint" data-i18n="map_hint">
-            Wenn du mir deine genaue Adresse gibst, setze ich den fertigen Maps-Embed rein.
-          </p>
+          <div class="map"><span>🗺️ <span data-i18n="map_placeholder">Google Maps Platzhalter</span></span></div>
+          <p class="hint" data-i18n="map_hint">Wenn du mir deine genaue Adresse gibst, setze ich den fertigen Maps-Embed rein.</p>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="container footer__inner">
-        <div>
-          <strong>Handy Notdienst</strong>
-          <div class="muted">Singen • <span id="year"></span></div>
-        </div>
+        <div><strong>Handy Notdienst</strong><div class="muted">Singen • <span id="year"></span></div></div>
         <div class="footer__links">
-          <a href="#impressum" data-i18n="impressum">Impressum</a>
-          <a href="#datenschutz" data-i18n="privacy">Datenschutz</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
         </div>
       </div>
     </footer>
-
-    <section class="legal" id="impressum">
-      <div class="container card">
-        <h2 data-i18n="impressum">Impressum</h2>
-        <p class="muted" data-i18n="legal_hint">
-          Platzhalter – hier kommen Firmenname, Adresse, Kontakt, USt-ID (falls vorhanden) rein.
-        </p>
-      </div>
-    </section>
-
-    <section class="legal" id="datenschutz">
-      <div class="container card">
-        <h2 data-i18n="privacy">Datenschutz</h2>
-        <p class="muted" data-i18n="privacy_hint">
-          Platzhalter – Datenschutzhinweise (Cookies, Kontakt, Hosting, Analytics falls genutzt).
-        </p>
-      </div>
-    </section>
   </main>
+
+  <!-- Mobile sticky contact bar (9) -->
+  <nav class="mobilebar" aria-label="Mobile quick actions">
+    <a class="mobilebar__btn" href="tel:+4915222416438">📞<span data-i18n="mb_call">Call</span></a>
+    <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">💬<span>WhatsApp</span></a>
+    <a class="mobilebar__btn" href="prices.html">💶<span data-i18n="mb_prices">Preise</span></a>
+  </nav>
 
   <!-- Floating WhatsApp -->
   <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
-  <!-- Smart Popup -->
-  <div class="smart-popup" id="smartPopup" hidden>
-    <div class="smart-popup__inner">
-      <div class="smart-popup__text">
-        <strong data-i18n="pop_title">Brauchst du Hilfe?</strong>
-        <div class="muted" data-i18n="pop_text">Schreib uns kurz bei WhatsApp – wir antworten schnell.</div>
-      </div>
-      <div class="smart-popup__actions">
-        <a class="btn btn--wa" id="popupWA" target="_blank" rel="noopener">💬 WhatsApp</a>
-        <button class="btn btn--ghost" id="popupClose" type="button" aria-label="Close">✕</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- QUIZ MODAL -->
+  <!-- QUIZ MODAL (same as earlier) -->
   <div class="quiz-modal" id="quizModal" hidden>
     <div class="quiz-modal__overlay" id="quizOverlay"></div>
-
     <div class="quiz-modal__box">
       <div class="quiz-modal__progress">
-        <div class="quiz-progress-bar">
-          <span class="quiz-progress-fill" id="quizProgressFill"></span>
-        </div>
+        <div class="quiz-progress-bar"><span class="quiz-progress-fill" id="quizProgressFill"></span></div>
         <div class="quiz-progress-text" id="quizProgressText">33%</div>
       </div>
 
       <div class="quiz-modal__content">
-        <!-- STEP 1 -->
         <div class="quiz-screen is-active" data-step="1">
           <h3 data-i18n="quiz_q1">Lädt das Handy?</h3>
           <div class="quiz-actions">
@@ -505,8 +256,6 @@
             <button class="btn btn--ghost" data-answer="no" data-i18n="quiz_no">❌ Nein</button>
           </div>
         </div>
-
-        <!-- STEP 2 -->
         <div class="quiz-screen" data-step="2">
           <h3 data-i18n="quiz_q2">Akku schnell leer?</h3>
           <div class="quiz-actions">
@@ -514,8 +263,6 @@
             <button class="btn btn--ghost" data-answer="no" data-i18n="quiz_no_b">➡️ Nein</button>
           </div>
         </div>
-
-        <!-- STEP 3 -->
         <div class="quiz-screen" data-step="3">
           <h3 data-i18n="quiz_q3">Bildschirm schwarz oder flackert?</h3>
           <div class="quiz-actions">
@@ -524,18 +271,13 @@
           </div>
         </div>
 
-        <!-- RESULT (SUCCESS) -->
         <div class="quiz-screen" data-step="result">
           <div class="quiz-success">
             <div class="quiz-success__icon">
-              <span class="check">✓</span>
-              <span class="ring"></span>
-              <span class="ring ring--2"></span>
+              <span class="check">✓</span><span class="ring"></span><span class="ring ring--2"></span>
             </div>
-
             <div class="quiz-success__badge" id="quizResultBadge">…</div>
             <p class="muted" id="quizResultText">…</p>
-
             <div class="quiz-success__actions">
               <a class="btn btn--wa" id="quizResultWA" target="_blank" rel="noopener">💬 WhatsApp</a>
               <button class="btn btn--ghost" id="quizClose" type="button" data-i18n="quiz_close">✕ Schließen</button>
@@ -549,290 +291,232 @@
   </div>
 
   <script>
-    // ===== SETTINGS =====
     const WHATSAPP_NUMBER = "4915222416438";
     const CITY = "Singen";
-
-    // ===== YEAR =====
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ===== i18n =====
     const dict = {
-      de: {
-        tagline: "Singen • Schnell & zuverlässig",
-        call: "Anrufen",
-        kicker: "Handyreparatur in Singen",
-        h1: "Schneller Smartphone-Service<br/>mit fairen Preisen",
-        lead: "Display, Akku, Ladebuchse, Kamera, Wasserschaden – wir helfen schnell. Schreib uns per WhatsApp oder ruf an.",
-        cta_main: "Jetzt anfragen",
-        cta_prices: "Preise ansehen",
-        safe_badge: "Ohne Datenverlust",
-        trust1: "Schnelle Diagnose",
-        trust2: "Oft am selben Tag",
-        trust3: "Transparente Preise",
-        quick_title: "Schneller Check",
-        quick_text: "Schreib Modell + Problem – wir antworten schnell.",
-        field_model: "Modell",
-        field_issue: "Problem",
-        send_wa: "An WhatsApp senden",
-        hint: "Tipp: Je genauer du beschreibst, desto schneller bekommst du einen Preis.",
-        services_title: "Services",
-        services_text: "Die häufigsten Reparaturen – schnell & sauber.",
-        s1_title: "Display Reparatur",
-        s1_text: "Glas gebrochen, Touch spinnt, Flecken – Austausch nach Diagnose.",
-        s2_title: "Akku Austausch",
-        s2_text: "Akku schnell leer oder aufgebläht – wir ersetzen sicher.",
-        s3_title: "Ladebuchse",
-        s3_text: "Wackelkontakt / lädt nicht – Reinigung oder Austausch.",
-        s4_title: "Kamera",
-        s4_text: "Unscharf, schwarzes Bild, Glas kaputt – wir fixen das.",
-        s5_title: "Lautsprecher / Mikro",
-        s5_text: "Leise, kratzt, du wirst nicht gehört – Diagnose & Reparatur.",
-        s6_title: "Wasserschaden",
-        s6_text: "Schnelle Rettung erhöht die Chance – bring das Gerät ASAP.",
-        ba_title: "Vorher / Nachher",
-        ba_text: "Typische Fälle – so sieht das Ergebnis aus.",
-        ba1_before: "Display zerbrochen",
-        ba1_after: "Display wie neu",
-        ba2_before: "Akku leer nach 2 Std",
-        ba2_after: "Ganzer Tag Nutzung",
-        ba3_before: "Lädt nur manchmal",
-        ba3_after: "Zuverlässig laden",
-        prices_title: "Preisliste",
-        prices_text: "Klick auf einen Preis → WhatsApp öffnet sich mit Modell + Reparatur + Preis.",
-        prices_note: "* Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.",
-        prices_time: "⏱️ Die meisten Reparaturen dauern 30–90 Minuten (je nach Modell).",
-        samsung_title: "Samsung Reparaturen",
-        iphone_title: "iPhone Reparaturen",
-        up_title: "Wir reparieren auch",
-        up_text: "Nicht gefunden? Frag uns trotzdem.",
-        up_watch: "Akku, Display, Glas",
-        up_airpods: "Akku, Reinigung, Fehler",
-        up_tablets: "iPad & Android",
-        up_console: "HDMI, Reinigung",
-        up_cta: "Jetzt kurz anfragen",
-        why_title: "Warum Handy Notdienst?",
-        why_text: "Kurz, ehrlich, ohne Überraschungen.",
-        w1_title: "Schnell",
-        w1_text: "Oft am selben Tag – je nach Ersatzteil.",
-        w2_title: "Fair",
-        w2_text: "Vorher Preisinfo – du entscheidest.",
-        w3_title: "Sauberer Service",
-        w3_text: "Diagnose, Reparatur, Test – danach Übergabe.",
-        w4_title: "Garantie",
-        w4_text: "Je nach Reparatur/Teil – Details beim Auftrag.",
-        contact_title: "Kontakt",
-        contact_text: "Schreib oder ruf an – wir antworten schnell.",
-        contact_call: "Anrufen",
-        contact_wa: "schreiben",
-        address_hint: "Adresse hier eintragen",
-        hours: "Öffnungszeiten",
-        hours_hint: "z.B. Mo–Sa 10:00–19:00",
-        map_title: "Standort",
-        map_text: "Hier kannst du Google Maps einfügen.",
-        map_placeholder: "Google Maps Platzhalter",
-        map_hint: "Wenn du mir deine genaue Adresse gibst, setze ich den fertigen Maps-Embed rein.",
-        impressum: "Impressum",
-        privacy: "Datenschutz",
-        legal_hint: "Platzhalter – hier kommen Firmenname, Adresse, Kontakt, USt-ID (falls vorhanden) rein.",
-        privacy_hint: "Platzhalter – Datenschutzhinweise (Cookies, Kontakt, Hosting, Analytics falls genutzt).",
-        pop_title: "Brauchst du Hilfe?",
-        pop_text: "Schreib uns kurz bei WhatsApp – wir antworten schnell.",
-        quiz_q1: "Lädt das Handy?",
-        quiz_q2: "Akku schnell leer?",
-        quiz_q3: "Bildschirm schwarz oder flackert?",
-        quiz_yes: "✅ Ja",
-        quiz_no: "❌ Nein",
-        quiz_yes_b: "🔋 Ja",
-        quiz_no_b: "➡️ Nein",
-        quiz_yes_s: "📱 Ja",
-        quiz_no_s: "➡️ Nein",
-        quiz_close: "✕ Schließen",
-        quiz_back: "⏪ Zurück"
+      de:{
+        tagline:"Singen • Schnell & zuverlässig",
+        call:"Anrufen",
+        kicker:"Handyreparatur in Singen",
+        h1:"Schneller Smartphone-Service<br/>mit fairen Preisen",
+        lead:"Display, Akku, Ladebuchse, Kamera, Wasserschaden – wir helfen schnell. Schreib uns per WhatsApp oder ruf an.",
+        cta_main:"Jetzt anfragen",
+        cta_prices:"Preise ansehen",
+        cta_pickup:"Abholung/Lieferung",
+        safe_badge:"Ohne Datenverlust",
+        trust1:"Schnelle Diagnose",
+        trust2:"Oft am selben Tag",
+        trust3:"Transparente Preise",
+        quick_title:"Schneller Check",
+        quick_text:"Schreib Modell + Problem – wir antworten schnell.",
+        field_model:"Modell",
+        field_issue:"Problem",
+        send_wa:"An WhatsApp senden",
+        hint:"Tipp: Je genauer du beschreibst, desto schneller bekommst du einen Preis.",
+        nav_prices:"Preise",
+        nav_contact:"Kontakt",
+        no_appt:"Ohne Termin",
+
+        how_title:"So läuft es ab",
+        how_text:"3 Schritte – einfach & transparent.",
+        how_1_t:"Diagnose",
+        how_1_p:"Kurz prüfen, was genau kaputt ist.",
+        how_2_t:"Preis bestätigen",
+        how_2_p:"Du bekommst den Preis – du entscheidest.",
+        how_3_t:"Reparatur + Test",
+        how_3_p:"Reparieren, testen, fertig.",
+
+        pick_title:"Abholung / Lieferung (Singen)",
+        pick_text:"Wenn du keine Zeit hast: Wir können das Gerät nach Absprache abholen oder zurückbringen.",
+        pick_btn:"Abholung anfragen",
+        pick_prices:"Preise ansehen",
+        pick_hint:"Hinweis: Abholung/Lieferung nur nach Absprache.",
+
+        war_title:"Garantie",
+        war_text:"Klar & verständlich.",
+        war_1_t:"Garantie auf Arbeit",
+        war_1_p:"Je nach Reparatur – Details beim Auftrag.",
+        war_2_t:"Teilequalität",
+        war_2_p:"Original/Premium je nach Verfügbarkeit.",
+        war_3_t:"Daten bleiben sicher",
+        war_3_p:"Bei Standard-Reparaturen normalerweise ohne Datenverlust.",
+
+        contact_title:"Kontakt",
+        contact_text:"Schreib oder ruf an – wir antworten schnell.",
+        contact_call:"Anrufen",
+        contact_wa:"schreiben",
+        address_hint:"Adresse hier eintragen",
+        hours:"Öffnungszeiten",
+        hours_hint:"z.B. Mo–Sa 10:00–19:00",
+        map_title:"Standort",
+        map_text:"Hier kannst du Google Maps einfügen.",
+        map_placeholder:"Google Maps Platzhalter",
+        map_hint:"Wenn du mir deine genaue Adresse gibst, setze ich den fertigen Maps-Embed rein.",
+
+        mb_call:"Call",
+        mb_prices:"Preise",
+
+        quiz_q1:"Lädt das Handy?",
+        quiz_q2:"Akku schnell leer?",
+        quiz_q3:"Bildschirm schwarz oder flackert?",
+        quiz_yes:"✅ Ja",
+        quiz_no:"❌ Nein",
+        quiz_yes_b:"🔋 Ja",
+        quiz_no_b:"➡️ Nein",
+        quiz_yes_s:"📱 Ja",
+        quiz_no_s:"➡️ Nein",
+        quiz_close:"✕ Schließen",
+        quiz_back:"⏪ Zurück"
       },
-      ua: {
-        tagline: "Singen • Швидко та надійно",
-        call: "Подзвонити",
-        kicker: "Ремонт телефонів у Singen",
-        h1: "Швидкий сервіс смартфонів<br/>з чесними цінами",
-        lead: "Дисплей, акумулятор, розʼєм зарядки, камера, після води — допоможемо швидко. Пиши у WhatsApp або дзвони.",
-        cta_main: "Залишити заявку",
-        cta_prices: "Переглянути ціни",
-        safe_badge: "Без втрати даних",
-        trust1: "Швидка діагностика",
-        trust2: "Часто в той самий день",
-        trust3: "Прозорі ціни",
-        quick_title: "Швидкий запит",
-        quick_text: "Напиши модель + проблему — відповімо швидко.",
-        field_model: "Модель",
-        field_issue: "Проблема",
-        send_wa: "Надіслати в WhatsApp",
-        hint: "Порада: чим точніше опис, тим швидше дамо ціну.",
-        services_title: "Послуги",
-        services_text: "Найпопулярніші ремонти — швидко та акуратно.",
-        s1_title: "Заміна дисплею",
-        s1_text: "Тріщини, не працює сенсор, плями — заміна після діагностики.",
-        s2_title: "Заміна акумулятора",
-        s2_text: "Швидко сідає або надувся — замінимо безпечно.",
-        s3_title: "Розʼєм зарядки",
-        s3_text: "Люфт/не заряджається — чистка або заміна.",
-        s4_title: "Камера",
-        s4_text: "Не фокусується, чорний екран, скло — виправимо.",
-        s5_title: "Динамік / мікрофон",
-        s5_text: "Тихо, хрипить, вас не чують — діагностика і ремонт.",
-        s6_title: "Після води",
-        s6_text: "Чим швидше — тим більше шансів. Принось якнайшвидше.",
-        ba_title: "До / Після",
-        ba_text: "Типові випадки — як виглядає результат.",
-        ba1_before: "Екран розбитий",
-        ba1_after: "Екран як новий",
-        ba2_before: "Батарея сідає за 2 год",
-        ba2_after: "Цілий день користування",
-        ba3_before: "Заряджає через раз",
-        ba3_after: "Стабільно заряджає",
-        prices_title: "Ціни",
-        prices_text: "Клікни на ціну → відкриється WhatsApp з моделлю + ремонтом + ціною.",
-        prices_note: "* Ціни включають роботу. Можливі зміни залежно від запчастини.",
-        prices_time: "⏱️ Більшість ремонтів займає 30–90 хв (залежить від моделі).",
-        samsung_title: "Ремонт Samsung",
-        iphone_title: "Ремонт iPhone",
-        up_title: "Також ремонтуємо",
-        up_text: "Не знайшов? Все одно напиши.",
-        up_watch: "Батарея, дисплей, скло",
-        up_airpods: "Батарея, чистка, помилки",
-        up_tablets: "iPad та Android",
-        up_console: "HDMI, чистка",
-        up_cta: "Коротко написати",
-        why_title: "Чому Handy Notdienst?",
-        why_text: "Коротко, чесно, без сюрпризів.",
-        w1_title: "Швидко",
-        w1_text: "Часто в той самий день — залежить від запчастин.",
-        w2_title: "Чесно",
-        w2_text: "Спершу ціна — рішення за тобою.",
-        w3_title: "Акуратно",
-        w3_text: "Діагностика, ремонт, тест — потім видача.",
-        w4_title: "Гарантія",
-        w4_text: "Залежить від ремонту/деталі — скажемо при прийомі.",
-        contact_title: "Контакти",
-        contact_text: "Пиши або дзвони — відповімо швидко.",
-        contact_call: "Подзвонити",
-        contact_wa: "написати",
-        address_hint: "Вкажи адресу тут",
-        hours: "Графік",
-        hours_hint: "напр. Пн–Сб 10:00–19:00",
-        map_title: "Локація",
-        map_text: "Тут можна вставити Google Maps.",
-        map_placeholder: "Місце для Google Maps",
-        map_hint: "Як даси точну адресу — вставлю готовий Maps-iframe.",
-        impressum: "Impressum",
-        privacy: "Datenschutz",
-        legal_hint: "Заглушка — сюди додаємо назву, адресу, контакти, USt-ID (якщо є).",
-        privacy_hint: "Заглушка — політика конфіденційності (cookies, контакти, хостинг, аналітика якщо буде).",
-        pop_title: "Потрібна допомога?",
-        pop_text: "Напиши в WhatsApp — відповімо швидко.",
-        quiz_q1: "Телефон заряджається?",
-        quiz_q2: "Акумулятор швидко сідає?",
-        quiz_q3: "Екран чорний або блимає?",
-        quiz_yes: "✅ Так",
-        quiz_no: "❌ Ні",
-        quiz_yes_b: "🔋 Так",
-        quiz_no_b: "➡️ Ні",
-        quiz_yes_s: "📱 Так",
-        quiz_no_s: "➡️ Ні",
-        quiz_close: "✕ Закрити",
-        quiz_back: "⏪ Назад"
+      ua:{
+        tagline:"Singen • Швидко та надійно",
+        call:"Подзвонити",
+        kicker:"Ремонт телефонів у Singen",
+        h1:"Швидкий сервіс смартфонів<br/>з чесними цінами",
+        lead:"Дисплей, акумулятор, розʼєм зарядки, камера, після води — допоможемо швидко. Пиши у WhatsApp або дзвони.",
+        cta_main:"Залишити заявку",
+        cta_prices:"Переглянути ціни",
+        cta_pickup:"Забір/доставка",
+        safe_badge:"Без втрати даних",
+        trust1:"Швидка діагностика",
+        trust2:"Часто в той самий день",
+        trust3:"Прозорі ціни",
+        quick_title:"Швидкий запит",
+        quick_text:"Напиши модель + проблему — відповімо швидко.",
+        field_model:"Модель",
+        field_issue:"Проблема",
+        send_wa:"Надіслати в WhatsApp",
+        hint:"Порада: чим точніше опис, тим швидше дамо ціну.",
+        nav_prices:"Ціни",
+        nav_contact:"Контакти",
+        no_appt:"Без запису",
+
+        how_title:"Як це працює",
+        how_text:"3 кроки — просто та прозоро.",
+        how_1_t:"Діагностика",
+        how_1_p:"Швидко визначаємо проблему.",
+        how_2_t:"Погодження ціни",
+        how_2_p:"Ти бачиш ціну — вирішуєш.",
+        how_3_t:"Ремонт + тест",
+        how_3_p:"Ремонтуємо, тестуємо, готово.",
+
+        pick_title:"Забір / доставка (Singen)",
+        pick_text:"Нема часу? Можемо домовитись про забір або повернення пристрою.",
+        pick_btn:"Запитати про забір",
+        pick_prices:"Переглянути ціни",
+        pick_hint:"Забір/доставка — лише за домовленістю.",
+
+        war_title:"Гарантія",
+        war_text:"Коротко і зрозуміло.",
+        war_1_t:"Гарантія на роботу",
+        war_1_p:"Залежить від ремонту — скажемо при прийомі.",
+        war_2_t:"Якість запчастин",
+        war_2_p:"Original/Premium — залежно від наявності.",
+        war_3_t:"Дані в безпеці",
+        war_3_p:"Зазвичай без втрати даних при стандартних ремонтах.",
+
+        contact_title:"Контакти",
+        contact_text:"Пиши або дзвони — відповімо швидко.",
+        contact_call:"Подзвонити",
+        contact_wa:"написати",
+        address_hint:"Вкажи адресу тут",
+        hours:"Графік",
+        hours_hint:"напр. Пн–Сб 10:00–19:00",
+        map_title:"Локація",
+        map_text:"Тут можна вставити Google Maps.",
+        map_placeholder:"Місце для Google Maps",
+        map_hint:"Даси точну адресу — вставлю готовий Maps-iframe.",
+
+        mb_call:"Дзвінок",
+        mb_prices:"Ціни",
+
+        quiz_q1:"Телефон заряджається?",
+        quiz_q2:"Акумулятор швидко сідає?",
+        quiz_q3:"Екран чорний або блимає?",
+        quiz_yes:"✅ Так",
+        quiz_no:"❌ Ні",
+        quiz_yes_b:"🔋 Так",
+        quiz_no_b:"➡️ Ні",
+        quiz_yes_s:"📱 Так",
+        quiz_no_s:"➡️ Ні",
+        quiz_close:"✕ Закрити",
+        quiz_back:"⏪ Назад"
       },
-      en: {
-        tagline: "Singen • Fast & reliable",
-        call: "Call",
-        kicker: "Phone repair in Singen",
-        h1: "Fast smartphone service<br/>with fair prices",
-        lead: "Screen, battery, charging port, camera, water damage — we help fast. Message us on WhatsApp or call.",
-        cta_main: "Request now",
-        cta_prices: "View prices",
-        safe_badge: "No data loss",
-        trust1: "Quick diagnosis",
-        trust2: "Often same day",
-        trust3: "Transparent prices",
-        quick_title: "Quick request",
-        quick_text: "Type model + issue — we reply fast.",
-        field_model: "Model",
-        field_issue: "Issue",
-        send_wa: "Send to WhatsApp",
-        hint: "Tip: the more details, the faster we can quote a price.",
-        services_title: "Services",
-        services_text: "Most common repairs — fast & clean.",
-        s1_title: "Screen repair",
-        s1_text: "Cracked glass, touch issues, spots — replacement after diagnosis.",
-        s2_title: "Battery replacement",
-        s2_text: "Battery drains fast or swollen — safe replacement.",
-        s3_title: "Charging port",
-        s3_text: "Loose / not charging — cleaning or replacement.",
-        s4_title: "Camera",
-        s4_text: "Blurry, black screen, broken glass — we fix it.",
-        s5_title: "Speaker / mic",
-        s5_text: "Low sound or you can't be heard — diagnosis & repair.",
-        s6_title: "Water damage",
-        s6_text: "The faster you act, the better — bring it ASAP.",
-        ba_title: "Before / After",
-        ba_text: "Typical cases — this is the result.",
-        ba1_before: "Cracked screen",
-        ba1_after: "Screen like new",
-        ba2_before: "Battery dies fast",
-        ba2_after: "All-day usage",
-        ba3_before: "Charges sometimes",
-        ba3_after: "Reliable charging",
-        prices_title: "Price list",
-        prices_text: "Click a price → WhatsApp opens with model + repair + price.",
-        prices_note: "* Prices include labor. May vary depending on parts.",
-        prices_time: "⏱️ Most repairs take 30–90 minutes (depending on model).",
-        samsung_title: "Samsung repairs",
-        iphone_title: "iPhone repairs",
-        up_title: "We also repair",
-        up_text: "Not listed? Ask us anyway.",
-        up_watch: "Battery, screen, glass",
-        up_airpods: "Battery, cleaning, issues",
-        up_tablets: "iPad & Android",
-        up_console: "HDMI, cleaning",
-        up_cta: "Quick request",
-        why_title: "Why Handy Notdienst?",
-        why_text: "Simple, honest, no surprises.",
-        w1_title: "Fast",
-        w1_text: "Often same day — depending on parts.",
-        w2_title: "Fair",
-        w2_text: "Price first — you decide.",
-        w3_title: "Clean service",
-        w3_text: "Diagnosis, repair, test — then pickup.",
-        w4_title: "Warranty",
-        w4_text: "Depends on repair/part — details on request.",
-        contact_title: "Contact",
-        contact_text: "Message or call — we reply fast.",
-        contact_call: "Call",
-        contact_wa: "message",
-        address_hint: "Add address here",
-        hours: "Hours",
-        hours_hint: "e.g. Mon–Sat 10:00–19:00",
-        map_title: "Location",
-        map_text: "You can embed Google Maps here.",
-        map_placeholder: "Google Maps placeholder",
-        map_hint: "Send me your exact address and I’ll insert the proper Maps iframe.",
-        impressum: "Imprint",
-        privacy: "Privacy",
-        legal_hint: "Placeholder — company name, address, contact, VAT ID (if any).",
-        privacy_hint: "Placeholder — privacy policy (cookies, contact, hosting, analytics if used).",
-        pop_title: "Need help?",
-        pop_text: "Message us on WhatsApp — fast reply.",
-        quiz_q1: "Does the phone charge?",
-        quiz_q2: "Battery drains fast?",
-        quiz_q3: "Screen black or flickering?",
-        quiz_yes: "✅ Yes",
-        quiz_no: "❌ No",
-        quiz_yes_b: "🔋 Yes",
-        quiz_no_b: "➡️ No",
-        quiz_yes_s: "📱 Yes",
-        quiz_no_s: "➡️ No",
-        quiz_close: "✕ Close",
-        quiz_back: "⏪ Back"
+      en:{
+        tagline:"Singen • Fast & reliable",
+        call:"Call",
+        kicker:"Phone repair in Singen",
+        h1:"Fast smartphone service<br/>with fair prices",
+        lead:"Screen, battery, charging port, camera, water damage — we help fast. Message us on WhatsApp or call.",
+        cta_main:"Request now",
+        cta_prices:"View prices",
+        cta_pickup:"Pickup/Delivery",
+        safe_badge:"No data loss",
+        trust1:"Quick diagnosis",
+        trust2:"Often same day",
+        trust3:"Transparent prices",
+        quick_title:"Quick request",
+        quick_text:"Type model + issue — we reply fast.",
+        field_model:"Model",
+        field_issue:"Issue",
+        send_wa:"Send to WhatsApp",
+        hint:"Tip: the more details, the faster we can quote a price.",
+        nav_prices:"Prices",
+        nav_contact:"Contact",
+        no_appt:"No appointment",
+
+        how_title:"How it works",
+        how_text:"3 steps — simple & transparent.",
+        how_1_t:"Diagnosis",
+        how_1_p:"Quickly identify the issue.",
+        how_2_t:"Confirm price",
+        how_2_p:"You get the price — you decide.",
+        how_3_t:"Repair + test",
+        how_3_p:"Repair, test, done.",
+
+        pick_title:"Pickup / Delivery (Singen)",
+        pick_text:"No time? We can arrange pickup or return after agreement.",
+        pick_btn:"Request pickup",
+        pick_prices:"View prices",
+        pick_hint:"Pickup/delivery only by arrangement.",
+
+        war_title:"Warranty",
+        war_text:"Clear & simple.",
+        war_1_t:"Warranty on work",
+        war_1_p:"Depends on repair — details on request.",
+        war_2_t:"Part quality",
+        war_2_p:"Original/Premium depending on availability.",
+        war_3_t:"Data stays safe",
+        war_3_p:"Standard repairs usually without data loss.",
+
+        contact_title:"Contact",
+        contact_text:"Message or call — fast reply.",
+        contact_call:"Call",
+        contact_wa:"message",
+        address_hint:"Add address here",
+        hours:"Hours",
+        hours_hint:"e.g. Mon–Sat 10:00–19:00",
+        map_title:"Location",
+        map_text:"You can embed Google Maps here.",
+        map_placeholder:"Google Maps placeholder",
+        map_hint:"Send your exact address and I’ll insert the Maps iframe.",
+
+        mb_call:"Call",
+        mb_prices:"Prices",
+
+        quiz_q1:"Does the phone charge?",
+        quiz_q2:"Battery drains fast?",
+        quiz_q3:"Screen black or flickering?",
+        quiz_yes:"✅ Yes",
+        quiz_no:"❌ No",
+        quiz_yes_b:"🔋 Yes",
+        quiz_no_b:"➡️ No",
+        quiz_yes_s:"📱 Yes",
+        quiz_no_s:"➡️ No",
+        quiz_close:"✕ Close",
+        quiz_back:"⏪ Back"
       }
     };
 
@@ -843,10 +527,9 @@
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
         const val = dict[lang]?.[key];
-        if (val) el.textContent = val; // use textContent for safety
+        if (val) el.textContent = val;
       });
 
-      // Keep some fields using innerHTML (hero h1)
       const h1 = document.querySelector('[data-i18n="h1"]');
       if (h1) h1.innerHTML = dict[lang].h1;
 
@@ -855,45 +538,17 @@
 
       updateQuickWA(lang);
       updateLiveBadge();
-      updateSearchPlaceholders(lang);
-      updatePopupTexts(lang);
     }
 
-    function updateSearchPlaceholders(lang){
-      const map = {
-        de:{ s:"Modell suchen (z.B. S23, Ultra...)", i:"Modell suchen (z.B. iPhone 13, Pro...)" },
-        ua:{ s:"Пошук моделі (напр. S23, Ultra...)", i:"Пошук моделі (напр. iPhone 13, Pro...)" },
-        en:{ s:"Search model (e.g. S23, Ultra...)", i:"Search model (e.g. iPhone 13, Pro...)" }
-      };
-      const inputs = document.querySelectorAll(".price-search");
-      inputs.forEach(inp => {
-        const target = inp.getAttribute("data-filter-target");
-        if (target === "samsungTable") inp.placeholder = map[lang].s;
-        if (target === "iphoneTable") inp.placeholder = map[lang].i;
-      });
-    }
-
-    // ===== Header shadow on scroll =====
-    const header = document.querySelector(".header");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 20) header.classList.add("is-scrolled");
-      else header.classList.remove("is-scrolled");
-    });
-
-    // ===== Quick WhatsApp link =====
     function updateQuickWA(lang){
       const model = (document.getElementById("model")?.value || "").trim() || "-";
       const issue = (document.getElementById("issue")?.value || "").trim() || "-";
       const base = `https://wa.me/${WHATSAPP_NUMBER}?text=`;
 
       let msg;
-      if (lang === "ua") {
-        msg = `Привіт! Потрібна допомога.%0A%0AМодель: ${encodeURIComponent(model)}%0AПроблема: ${encodeURIComponent(issue)}%0A%0AМісто: ${CITY}`;
-      } else if (lang === "en") {
-        msg = `Hi! I need help.%0A%0AModel: ${encodeURIComponent(model)}%0AIssue: ${encodeURIComponent(issue)}%0A%0ACity: ${CITY}`;
-      } else {
-        msg = `Hallo! Ich brauche Hilfe.%0A%0AModell: ${encodeURIComponent(model)}%0AProblem: ${encodeURIComponent(issue)}%0A%0AOrt: ${CITY}`;
-      }
+      if (lang === "ua") msg = `Привіт!%0AМодель: ${encodeURIComponent(model)}%0AПроблема: ${encodeURIComponent(issue)}%0AМісто: ${CITY}`;
+      else if (lang === "en") msg = `Hi!%0AModel: ${encodeURIComponent(model)}%0AIssue: ${encodeURIComponent(issue)}%0ACity: ${CITY}`;
+      else msg = `Hallo!%0AModell: ${encodeURIComponent(model)}%0AProblem: ${encodeURIComponent(issue)}%0AOrt: ${CITY}`;
 
       const link = document.getElementById("waQuick");
       if (link) link.href = base + msg;
@@ -904,18 +559,17 @@
       if (el) el.addEventListener("input", () => updateQuickWA(getLang()));
     });
 
-    // ===== Live badge (hours) =====
     function updateLiveBadge(){
       const lang = getLang();
       const el = document.getElementById("liveBadge");
       if (!el) return;
 
       const now = new Date();
-      const day = now.getDay(); // 0 Sun ... 6 Sat
+      const day = now.getDay();
       const hour = now.getHours();
 
-      const isWorkDay = day >= 1 && day <= 6;      // Mon-Sat
-      const isWorkTime = hour >= 10 && hour < 19;  // 10-19
+      const isWorkDay = day >= 1 && day <= 6;
+      const isWorkTime = hour >= 10 && hour < 19;
       const ok = isWorkDay && isWorkTime;
 
       const text = {
@@ -930,175 +584,29 @@
     updateLiveBadge();
     setInterval(updateLiveBadge, 60000);
 
-    // ===== Tracking =====
-    function track(evt, data = {}){
-      try{
-        const key = "hn_events";
-        const arr = JSON.parse(localStorage.getItem(key) || "[]");
-        arr.push({ t: Date.now(), evt, ...data });
-        localStorage.setItem(key, JSON.stringify(arr));
-      } catch(e){}
-    }
+    // Header shadow
+    const header = document.querySelector(".header");
+    window.addEventListener("scroll", () => header.classList.toggle("is-scrolled", window.scrollY > 20));
 
-    // ===== Price click -> WhatsApp =====
-    function openWAForPrice(brand, model, repair, price){
+    // Language buttons
+    document.querySelectorAll(".lang__btn").forEach(btn => btn.addEventListener("click", () => setLang(btn.dataset.lang)));
+
+    // Pickup button -> WhatsApp
+    document.getElementById("btnPickup")?.addEventListener("click", () => {
       const lang = getLang();
-      const device = `${brand} ${model}`.trim();
-
-      let text;
-      if (lang === "ua") {
-        text = `Привіт!%0AХочу ремонт:%0A%0A📱 ${encodeURIComponent(device)}%0A🛠️ ${encodeURIComponent(repair)}%0A💶 ${encodeURIComponent(price)}%0A%0AМісто: ${CITY}`;
-      } else if (lang === "en") {
-        text = `Hi!%0AI'd like a repair:%0A%0A📱 ${encodeURIComponent(device)}%0A🛠️ ${encodeURIComponent(repair)}%0A💶 ${encodeURIComponent(price)}%0A%0ACity: ${CITY}`;
-      } else {
-        text = `Hallo!%0AIch möchte eine Reparatur anfragen:%0A%0A📱 ${encodeURIComponent(device)}%0A🛠️ ${encodeURIComponent(repair)}%0A💶 ${encodeURIComponent(price)}%0A%0AOrt: ${CITY}`;
-      }
-
-      track("price_click", { brand, model, repair, price });
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
-    }
-
-    function bindTablePriceClicks(){
-      document.querySelectorAll(".js-price-table").forEach(table => {
-        const brand = table.dataset.brand || "";
-        const headers = Array.from(table.tHead.rows[0].cells).map(th => th.innerText.trim());
-
-        table.querySelectorAll("tbody tr").forEach(row => {
-          const model = row.cells[0].innerText.trim();
-
-          Array.from(row.cells).forEach((cell, idx) => {
-            if (idx === 0) return;
-            const price = cell.innerText.trim();
-            if (!price || price === "-") return;
-
-            cell.classList.add("price-cell");
-            cell.addEventListener("click", () => {
-              const repair = headers[idx] || "Repair";
-              openWAForPrice(brand, model, repair, price);
-            });
-          });
-        });
-      });
-    }
-
-    // ===== Auto-generate mobile cards from tables =====
-    function generateMobileCards(){
-      document.querySelectorAll(".js-price-table").forEach(table => {
-        const brand = table.dataset.brand || "";
-        const container = table.closest(".price-block").querySelector(".js-price-cards");
-        if (!container) return;
-        container.innerHTML = "";
-
-        const headers = Array.from(table.tHead.rows[0].cells).slice(1).map(th => th.innerText.trim());
-
-        table.querySelectorAll("tbody tr").forEach(row => {
-          const model = row.cells[0].innerText.trim();
-
-          const card = document.createElement("div");
-          card.className = "price-card";
-          const h = document.createElement("h4");
-          h.textContent = `${brand} ${model}`;
-          card.appendChild(h);
-
-          headers.forEach((repair, idx) => {
-            const cell = row.cells[idx + 1];
-            if (!cell) return;
-            const price = cell.innerText.trim();
-            if (!price || price === "-") return;
-
-            const btn = document.createElement("button");
-            btn.type = "button";
-            btn.innerHTML = `${repair} — <strong>${price}</strong>`;
-            btn.addEventListener("click", () => openWAForPrice(brand, model, repair, price));
-            card.appendChild(btn);
-          });
-
-          container.appendChild(card);
-        });
-      });
-    }
-
-    // ===== Search (filters both table + cards) =====
-    function filterPriceBlock(input){
-      const targetId = input.getAttribute("data-filter-target");
-      const table = document.getElementById(targetId);
-      if (!table) return;
-      const q = input.value.toLowerCase();
-
-      // table
-      table.querySelectorAll("tbody tr").forEach(tr => {
-        tr.style.display = tr.innerText.toLowerCase().includes(q) ? "" : "none";
-      });
-
-      // cards (same block)
-      const cards = table.closest(".price-block").querySelectorAll(".price-card");
-      cards.forEach(c => {
-        c.style.display = c.innerText.toLowerCase().includes(q) ? "" : "none";
-      });
-    }
-
-    document.querySelectorAll(".price-search").forEach(input => {
-      input.addEventListener("input", () => filterPriceBlock(input));
+      const msg =
+        lang==="ua" ? `Привіт! Хочу домовитись про забір/доставку. Місто: ${CITY}`
+        : lang==="en" ? `Hi! I'd like to arrange pickup/delivery. City: ${CITY}`
+        : `Hallo! Ich möchte Abholung/Lieferung anfragen. Ort: ${CITY}`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
     });
 
-    // ===== Smart popup =====
-    let waClicked = false;
-
-    function updatePopupTexts(lang){
-      // just updates link text target; content comes from i18n
-      const wa = document.getElementById("popupWA");
-      if (!wa) return;
-
-      const msg = (lang==="ua")
-        ? `Привіт! Потрібна консультація. Місто: ${CITY}`
-        : (lang==="en")
-          ? `Hi! I need a quick quote. City: ${CITY}`
-          : `Hallo! Ich brauche kurz Hilfe. Ort: ${CITY}`;
-
-      wa.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+    // PWA
+    if ("serviceWorker" in navigator){
+      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(()=>{}));
     }
 
-    document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
-      a.addEventListener("click", () => { waClicked = true; track("whatsapp_click", { href: a.href }); });
-    });
-
-    function markSeenPrices(){
-      const sec = document.getElementById("prices");
-      if (!sec) return;
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(en => {
-          if (en.isIntersecting){
-            localStorage.setItem("hn_seen_prices", "1");
-            track("seen_prices", {});
-            io.disconnect();
-          }
-        });
-      }, { threshold: 0.2 });
-      io.observe(sec);
-    }
-    markSeenPrices();
-
-    function maybeShowPopup(){
-      const seen = localStorage.getItem("hn_seen_prices") === "1";
-      const dismissed = localStorage.getItem("hn_popup_dismissed") === "1";
-      if (!seen || dismissed || waClicked) return;
-
-      const pop = document.getElementById("smartPopup");
-      const close = document.getElementById("popupClose");
-      if (!pop || !close) return;
-
-      pop.hidden = false;
-      track("popup_shown", {});
-
-      close.onclick = () => {
-        pop.hidden = true;
-        localStorage.setItem("hn_popup_dismissed", "1");
-        track("popup_closed", {});
-      };
-    }
-    setTimeout(maybeShowPopup, 40000);
-
-    // ===== Quiz modal (3 steps, back, progress %, animated success) =====
+    // ===== QUIZ (same logic as before) =====
     const quizModal = document.getElementById("quizModal");
     const quizOverlay = document.getElementById("quizOverlay");
     const quizStartBtn = document.getElementById("quizStartBtn");
@@ -1108,33 +616,25 @@
     const quizProgressText = document.getElementById("quizProgressText");
 
     let quizStep = 1;
-    let quizAnswers = []; // ["yes"/"no", ...]
+    let quizAnswers = [];
 
     function openQuiz(){
       quizModal.hidden = false;
       quizStep = 1;
       quizAnswers = [];
       updateQuizUI();
-      track("quiz_open", {});
     }
-
-    function closeQuiz(){
-      quizModal.hidden = true;
-      track("quiz_close", {});
-    }
+    function closeQuiz(){ quizModal.hidden = true; }
 
     function updateProgress(){
       const percent = Math.min(quizStep * 33, 100);
       quizProgressFill.style.width = percent + "%";
       quizProgressText.textContent = percent + "%";
     }
-
     function showQuizScreen(step){
       document.querySelectorAll(".quiz-screen").forEach(s => s.classList.remove("is-active"));
-      const el = document.querySelector(`.quiz-screen[data-step="${step}"]`);
-      if (el) el.classList.add("is-active");
+      document.querySelector(`.quiz-screen[data-step="${step}"]`)?.classList.add("is-active");
     }
-
     function updateQuizUI(){
       quizBackBtn.hidden = quizStep <= 1;
       updateProgress();
@@ -1143,78 +643,41 @@
 
     function showQuizResult(){
       const lang = getLang();
-
-      // score-based logic
       const score = { battery: 0, port: 0, display: 0 };
-
-      // Q1 charge? (no -> port)
       if (quizAnswers[0] === "no") score.port += 2;
-      // Q2 battery drains? (yes -> battery)
       if (quizAnswers[1] === "yes") score.battery += 3;
-      // Q3 screen black/flicker? (yes -> display)
       if (quizAnswers[2] === "yes") score.display += 3;
-
       const resultKey = Object.keys(score).reduce((a,b) => score[a] > score[b] ? a : b);
 
       const T = {
-        de:{
-          battery:"🔋 Sehr wahrscheinlich: Akku",
-          port:"🔌 Sehr wahrscheinlich: Ladebuchse",
-          display:"📱 Sehr wahrscheinlich: Display / Elektronik",
-          hint:"Schreib uns kurz – wir prüfen das schnell."
-        },
-        ua:{
-          battery:"🔋 Дуже ймовірно: акумулятор",
-          port:"🔌 Дуже ймовірно: розʼєм зарядки",
-          display:"📱 Дуже ймовірно: дисплей або плата",
-          hint:"Напиши нам — швидко перевіримо."
-        },
-        en:{
-          battery:"🔋 Very likely: battery",
-          port:"🔌 Very likely: charging port",
-          display:"📱 Very likely: screen or electronics",
-          hint:"Message us — we’ll check fast."
-        }
+        de:{ battery:"🔋 Sehr wahrscheinlich: Akku", port:"🔌 Sehr wahrscheinlich: Ladebuchse", display:"📱 Sehr wahrscheinlich: Display / Elektronik", hint:"Schreib uns kurz – wir prüfen das schnell." },
+        ua:{ battery:"🔋 Дуже ймовірно: акумулятор", port:"🔌 Дуже ймовірно: розʼєм зарядки", display:"📱 Дуже ймовірно: дисплей або плата", hint:"Напиши нам — швидко перевіримо." },
+        en:{ battery:"🔋 Very likely: battery", port:"🔌 Very likely: charging port", display:"📱 Very likely: screen or electronics", hint:"Message us — we’ll check fast." }
       }[lang];
 
       document.getElementById("quizResultBadge").textContent = T[resultKey];
       document.getElementById("quizResultText").textContent = T.hint;
 
       const msg =
-        lang==="ua"
-          ? `Привіт! Тест показав: ${T[resultKey]}`
-          : (lang==="en")
-            ? `Hi! Quiz result: ${T[resultKey]}`
-            : `Hallo! Quiz-Ergebnis: ${T[resultKey]}`;
+        lang==="ua" ? `Привіт! Тест показав: ${T[resultKey]} | Місто: ${CITY}`
+        : lang==="en" ? `Hi! Quiz result: ${T[resultKey]} | City: ${CITY}`
+        : `Hallo! Quiz-Ergebnis: ${T[resultKey]} | Ort: ${CITY}`;
 
-      document.getElementById("quizResultWA").href =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg + " | Ort: " + CITY)}`;
+      document.getElementById("quizResultWA").href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 
-      track("quiz_completed", { result: resultKey, answers: quizAnswers.join(",") });
-
-      // show success screen
       document.querySelectorAll(".quiz-screen").forEach(s => s.classList.remove("is-active"));
-      document.querySelector(`.quiz-screen[data-step="result"]`).classList.add("is-active");
-
-      // 100%
+      document.querySelector(`.quiz-screen[data-step="result"]`)?.classList.add("is-active");
       quizProgressFill.style.width = "100%";
       quizProgressText.textContent = "100%";
-
-      // hide back on result
       quizBackBtn.hidden = true;
     }
 
-    // answer buttons
     document.querySelectorAll(".quiz-actions button").forEach(btn => {
       btn.addEventListener("click", () => {
         quizAnswers.push(btn.dataset.answer);
         quizStep++;
-
-        if (quizStep <= 3){
-          updateQuizUI();
-        } else {
-          showQuizResult();
-        }
+        if (quizStep <= 3) updateQuizUI();
+        else showQuizResult();
       });
     });
 
@@ -1230,27 +693,9 @@
     quizCloseBtn?.addEventListener("click", closeQuiz);
     quizOverlay?.addEventListener("click", closeQuiz);
 
-    // ===== Language buttons =====
-    document.querySelectorAll(".lang__btn").forEach(btn => {
-      btn.addEventListener("click", () => setLang(btn.dataset.lang));
-    });
-
-    // ===== Init =====
-    function init(){
-      setLang(getLang());
-      updateQuickWA(getLang());
-      updatePopupTexts(getLang());
-      bindTablePriceClicks();
-      generateMobileCards();
-
-      // service worker (PWA)
-      if ("serviceWorker" in navigator){
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("./sw.js").catch(()=>{});
-        });
-      }
-    }
-    init();
+    // init
+    setLang(getLang());
+    updateQuickWA(getLang());
   </script>
 </body>
 </html>
