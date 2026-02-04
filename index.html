@@ -120,27 +120,27 @@
       <div class="container">
         <div class="section__head">
           <h2 data-i18n="ba_title">VORHER / NACHHER</h2>
-          <p class="muted" data-i18n="ba_subtitle">Platzhalter für Fotos: vorher (kaputt) und nachher (repariert).</p>
+          <p class="muted" data-i18n="ba_subtitle">🔋 Akku leer nach 2 Std ❌ → 🔋 Ganzer Tag Nutzung ✅</p>
         </div>
 
-        <div class="ba-grid">
-          <div class="card ba-card">
-            <div class="ba__media">
-              <span class="ba__media-text" data-i18n="ba_photo_before">Foto: Display zerbrochen</span>
-            </div>
-            <div class="ba__top" data-i18n="ba1_before">📱 Display zerbrochen ❌</div>
-            <div class="ba__arrow">↓</div>
-            <div class="ba__bottom" data-i18n="ba1_after">✨ Display wie neu ✅</div>
-          </div>
+        <div class="ba-compare">
+          <figure class="ba-compare__item">
+            <img
+              class="ba-compare__image"
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='420' viewBox='0 0 640 420'><defs><linearGradient id='g' x1='0' x2='1' y1='0' y2='1'><stop offset='0' stop-color='%231b374c'/><stop offset='1' stop-color='%230f2030'/></linearGradient></defs><rect width='640' height='420' rx='28' fill='url(%23g)'/><rect x='210' y='80' width='220' height='260' rx='24' fill='%230a1723' stroke='%236a7a8b' stroke-width='6'/><line x1='230' y1='120' x2='410' y2='300' stroke='%23ff6b6b' stroke-width='12'/><line x1='410' y1='120' x2='230' y2='300' stroke='%23ff6b6b' stroke-width='12'/><text x='320' y='360' font-size='22' text-anchor='middle' fill='%23e9f0f6' font-family='Arial'>Broken display</text></svg>"
+              alt="Zerbrochenes Smartphone-Display"
+            />
+            <figcaption class="ba-compare__caption" data-i18n="ba_caption_before">Vorher: zerbrochenes Display</figcaption>
+          </figure>
 
-          <div class="card ba-card">
-            <div class="ba__media">
-              <span class="ba__media-text" data-i18n="ba_photo_after">Foto: Display wie neu</span>
-            </div>
-            <div class="ba__top" data-i18n="ba2_before">🔋 Akku leer nach 2 Std ❌</div>
-            <div class="ba__arrow">↓</div>
-            <div class="ba__bottom" data-i18n="ba2_after">🔋 Ganzer Tag Nutzung ✅</div>
-          </div>
+          <figure class="ba-compare__item">
+            <img
+              class="ba-compare__image"
+              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='420' viewBox='0 0 640 420'><defs><linearGradient id='g2' x1='0' x2='1' y1='0' y2='1'><stop offset='0' stop-color='%230f5132'/><stop offset='1' stop-color='%231b374c'/></linearGradient></defs><rect width='640' height='420' rx='28' fill='url(%23g2)'/><rect x='210' y='80' width='220' height='260' rx='24' fill='%23131c25' stroke='%23b7c6d4' stroke-width='6'/><circle cx='320' cy='210' r='70' fill='%2335c46a' opacity='0.25'/><path d='M300 210l18 18 36-40' stroke='%2335c46a' stroke-width='12' fill='none' stroke-linecap='round' stroke-linejoin='round'/><text x='320' y='360' font-size='22' text-anchor='middle' fill='%23e9f0f6' font-family='Arial'>Repaired</text></svg>"
+              alt="Repariertes Smartphone-Display"
+            />
+            <figcaption class="ba-compare__caption" data-i18n="ba_caption_after">Nachher: Display wie neu</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -357,13 +357,9 @@
         nav_contact:"Kontakt",
         no_appt:"Ohne Termin",
         ba_title:"VORHER / NACHHER",
-        ba_subtitle:"Platzhalter für Fotos: vorher (kaputt) und nachher (repariert).",
-        ba_photo_before:"Foto: Display zerbrochen",
-        ba_photo_after:"Foto: Display wie neu",
-        ba1_before:"📱 Display zerbrochen ❌",
-        ba1_after:"✨ Display wie neu ✅",
-        ba2_before:"🔋 Akku leer nach 2 Std ❌",
-        ba2_after:"🔋 Ganzer Tag Nutzung ✅",
+        ba_subtitle:"🔋 Akku leer nach 2 Std ❌ → 🔋 Ganzer Tag Nutzung ✅",
+        ba_caption_before:"Vorher: zerbrochenes Display",
+        ba_caption_after:"Nachher: Display wie neu",
 
         how_title:"So läuft es ab",
         how_text:"3 Schritte – einfach & transparent.",
@@ -440,13 +436,9 @@
         nav_contact:"Контакти",
         no_appt:"Без запису",
         ba_title:"ДО / ПІСЛЯ",
-        ba_subtitle:"Місце для фото: до (поламано) та після (відремонтовано).",
-        ba_photo_before:"Фото: розбитий дисплей",
-        ba_photo_after:"Фото: дисплей як новий",
-        ba1_before:"📱 Дисплей розбитий ❌",
-        ba1_after:"✨ Дисплей як новий ✅",
-        ba2_before:"🔋 Акумулятор сідає за 2 год ❌",
-        ba2_after:"🔋 Цілий день роботи ✅",
+        ba_subtitle:"🔋 Акумулятор сідає за 2 год ❌ → 🔋 Цілий день роботи ✅",
+        ba_caption_before:"До: розбитий дисплей",
+        ba_caption_after:"Після: дисплей як новий",
 
         how_title:"Як це працює",
         how_text:"3 кроки — просто та прозоро.",
@@ -523,13 +515,9 @@
         nav_contact:"Contact",
         no_appt:"No appointment",
         ba_title:"BEFORE / AFTER",
-        ba_subtitle:"Placeholders for photos: before (broken) and after (fixed).",
-        ba_photo_before:"Photo: broken display",
-        ba_photo_after:"Photo: display like new",
-        ba1_before:"📱 Display broken ❌",
-        ba1_after:"✨ Display like new ✅",
-        ba2_before:"🔋 Battery empty after 2 hours ❌",
-        ba2_after:"🔋 All-day usage ✅",
+        ba_subtitle:"🔋 Battery empty after 2 hours ❌ → 🔋 All-day usage ✅",
+        ba_caption_before:"Before: broken display",
+        ba_caption_after:"After: display like new",
 
         how_title:"How it works",
         how_text:"3 steps — simple & transparent.",
