@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Handy Notdienst Singen – Handyreparatur (DE/UA)</title>
-  <meta name="description" content="Handy Notdienst in Singen: Display, Akku, Ladebuchse, Kamera, Wasserschaden. Schnell & zuverlässig. WhatsApp & Telefon." />
+  <title>Handy Notdienst Singen – Handyreparatur (DE/UA/EN)</title>
+  <meta name="description" content="Handy Notdienst in Singen: Display, Akku, Ladebuchse, Kamera, Wasserschaden. Schnell & zuverlässig. WhatsApp, Telegram, Email." />
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -12,8 +12,8 @@
   <!-- Header -->
   <header class="header">
     <div class="container header__inner">
-      <a class="brand" href="#top">
-        <span class="brand__mark">HN</span>
+      <a class="brand" href="#top" aria-label="Handy Notdienst">
+        <img class="brand__logo" src="assets/logo.png" alt="Handy Notdienst Logo" />
         <span class="brand__text">
           <strong>Handy Notdienst</strong>
           <small data-i18n="tagline">Singen • Schnell & zuverlässig</small>
@@ -21,9 +21,10 @@
       </a>
 
       <div class="header__right">
-        <div class="lang">
+        <div class="lang" aria-label="Language switch">
           <button class="lang__btn is-active" type="button" data-lang="de">DE</button>
           <button class="lang__btn" type="button" data-lang="ua">UA</button>
+          <button class="lang__btn" type="button" data-lang="en">EN</button>
         </div>
 
         <a class="pill" href="tel:+4915222416438" aria-label="Telefon anrufen">
@@ -52,9 +53,7 @@
 
           <div class="hero__actions">
             <a class="btn" href="#contact" data-i18n="cta_main">Jetzt anfragen</a>
-            <a class="btn btn--ghost" href="https://wa.me/4915222416438" target="_blank" rel="noopener" data-i18n="cta_wa">
-              WhatsApp schreiben
-            </a>
+            <a class="btn btn--ghost" href="#prices" data-i18n="cta_prices">Preise ansehen</a>
           </div>
 
           <div class="trust">
@@ -79,9 +78,18 @@
               <input id="issue" type="text" placeholder="Display, Akku, lädt nicht..." />
             </label>
 
-            <a id="waLink" class="btn btn--wa btn--full" href="https://wa.me/4915222416438" target="_blank" rel="noopener">
+            <a id="waQuick" class="btn btn--wa btn--full" href="https://wa.me/4915222416438" target="_blank" rel="noopener">
               <span data-i18n="send_wa">An WhatsApp senden</span>
             </a>
+
+            <div class="mini__grid">
+              <a class="btn btn--tg btn--full" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener">
+                ✈️ Telegram
+              </a>
+              <a class="btn btn--mail btn--full" href="mailto:handy.notdienst.reparatur@gmail.com">
+                📧 Email
+              </a>
+            </div>
 
             <p class="hint" data-i18n="hint">
               Tipp: Je genauer du beschreibst, desto schneller bekommst du einen Preis.
@@ -139,8 +147,129 @@
       </div>
     </section>
 
+    <!-- PRICES -->
+    <section class="section section--alt" id="prices">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="prices_title">Preisliste</h2>
+          <p class="muted" data-i18n="prices_text">Klick auf einen Preis → WhatsApp öffnet sich mit Modell + Reparatur + Preis.</p>
+        </div>
+
+        <!-- Samsung -->
+        <div class="price-block">
+          <div class="price-head">
+            <h3 data-i18n="samsung_title">Samsung Reparaturen</h3>
+            <input
+              type="text"
+              class="price-search"
+              data-table-search="samsungTable"
+              placeholder="Modell suchen (z.B. S23, Ultra...)"
+            />
+          </div>
+
+          <div class="table-wrap">
+            <table class="price-table js-price-table" id="samsungTable" data-brand="Samsung">
+              <thead>
+                <tr>
+                  <th>Modell</th>
+                  <th>Display</th>
+                  <th>Akku</th>
+                  <th>Ladebuchse</th>
+                  <th>Rückseite</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>S25 Ultra</td><td>274€</td><td>84€</td><td>84€</td><td>105€</td></tr>
+                <tr><td>S25 Plus</td><td>234€</td><td>74€</td><td>74€</td><td>94€</td></tr>
+                <tr><td>S25</td><td>174€</td><td>74€</td><td>74€</td><td>84€</td></tr>
+                <tr><td>S24 Ultra</td><td>324€</td><td>84€</td><td>74€</td><td>105€</td></tr>
+                <tr><td>S24 / S24+</td><td>244€ / 274€</td><td>74€</td><td>64€</td><td>94€</td></tr>
+                <tr><td>S23 Ultra</td><td>334€</td><td>84€</td><td>74€</td><td>94€</td></tr>
+                <tr><td>S23 / S23+</td><td>224€ / 254€</td><td>74€</td><td>64€</td><td>84€</td></tr>
+                <tr><td>S22 Ultra</td><td>324€</td><td>74€</td><td>64€</td><td>84€</td></tr>
+                <tr><td>S22 / S22+</td><td>224€ / 254€</td><td>74€</td><td>54€</td><td>74€</td></tr>
+                <tr><td>S21 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
+                <tr><td>S21 / S21+ / FE</td><td>164€ / 184€ / 205€</td><td>64€</td><td>54€</td><td>74€</td></tr>
+                <tr><td>S20 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
+                <tr><td>S20 / S20+ / FE</td><td>205€ / 244€ / 214€</td><td>54€</td><td>44€</td><td>64€</td></tr>
+                <tr><td>S10+ / S10 / S10e</td><td>214€ / 204€ / 184€</td><td>54€</td><td>44€</td><td>64€</td></tr>
+                <tr><td>S9+ / S9</td><td>174€ / 164€</td><td>44€</td><td>34€</td><td>54€</td></tr>
+                <tr><td>S8+ / S8</td><td>164€ / 154€</td><td>44€</td><td>34€</td><td>54€</td></tr>
+                <tr><td>S7 Edge / S7</td><td>134€ / 124€</td><td>34€</td><td>24€</td><td>44€</td></tr>
+                <tr><td>S6 Edge / S6</td><td>114€ / 104€</td><td>34€</td><td>24€</td><td>44€</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- iPhone -->
+        <div class="price-block">
+          <div class="price-head">
+            <h3 data-i18n="iphone_title">iPhone Reparaturen</h3>
+            <input
+              type="text"
+              class="price-search"
+              data-table-search="iphoneTable"
+              placeholder="Modell suchen (z.B. iPhone 13, Pro...)"
+            />
+          </div>
+
+          <div class="table-wrap">
+            <table class="price-table js-price-table" id="iphoneTable" data-brand="iPhone">
+              <thead>
+                <tr>
+                  <th>Modell</th>
+                  <th>Display (Original)</th>
+                  <th>Akku</th>
+                  <th>Rückseite</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>iPhone 16 Pro Max</td><td>374€</td><td>124€</td><td>174€</td></tr>
+                <tr><td>iPhone 16 Pro</td><td>335€</td><td>105€</td><td>164€</td></tr>
+                <tr><td>iPhone 16 Plus</td><td>234€</td><td>84€</td><td>154€</td></tr>
+                <tr><td>iPhone 16</td><td>224€</td><td>74€</td><td>134€</td></tr>
+                <tr><td>iPhone 15 Pro Max</td><td>264€</td><td>84€</td><td>134€</td></tr>
+                <tr><td>iPhone 15 Pro</td><td>234€</td><td>74€</td><td>124€</td></tr>
+                <tr><td>iPhone 15 Plus</td><td>214€</td><td>64€</td><td>104€</td></tr>
+                <tr><td>iPhone 15</td><td>184€</td><td>64€</td><td>84€</td></tr>
+                <tr><td>iPhone 14 Pro Max</td><td>174€</td><td>74€</td><td>115€</td></tr>
+                <tr><td>iPhone 14 Pro</td><td>164€</td><td>64€</td><td>105€</td></tr>
+                <tr><td>iPhone 14 Plus</td><td>144€</td><td>60€</td><td>74€</td></tr>
+                <tr><td>iPhone 14</td><td>124€</td><td>60€</td><td>64€</td></tr>
+                <tr><td>iPhone 13 Pro Max</td><td>164€ / 134€</td><td>54€</td><td>84€</td></tr>
+                <tr><td>iPhone 13 Pro</td><td>154€</td><td>54€</td><td>74€</td></tr>
+                <tr><td>iPhone 13</td><td>124€</td><td>54€</td><td>74€</td></tr>
+                <tr><td>iPhone 13 mini</td><td>114€</td><td>54€</td><td>64€</td></tr>
+                <tr><td>iPhone 12 Pro Max</td><td>124€</td><td>54€</td><td>74€</td></tr>
+                <tr><td>iPhone 12 Pro</td><td>114€</td><td>54€</td><td>64€</td></tr>
+                <tr><td>iPhone 12</td><td>114€</td><td>54€</td><td>64€</td></tr>
+                <tr><td>iPhone 12 mini</td><td>84€</td><td>54€</td><td>54€</td></tr>
+                <tr><td>iPhone 11 Pro Max</td><td>84€</td><td>54€</td><td>54€</td></tr>
+                <tr><td>iPhone 11 Pro</td><td>74€</td><td>54€</td><td>54€</td></tr>
+                <tr><td>iPhone 11</td><td>64€</td><td>54€</td><td>54€</td></tr>
+                <tr><td>iPhone XS Max</td><td>74€</td><td>54€</td><td>54€</td></tr>
+                <tr><td>iPhone X / XS / XR</td><td>54€</td><td>44€</td><td>44€</td></tr>
+                <tr><td>iPhone SE (2022)</td><td>54€</td><td>44€</td><td>34€</td></tr>
+                <tr><td>iPhone SE (2020)</td><td>44€</td><td>34€</td><td>34€</td></tr>
+                <tr><td>iPhone 8 Plus</td><td>44€</td><td>34€</td><td>24€</td></tr>
+                <tr><td>iPhone 8</td><td>34€</td><td>34€</td><td>24€</td></tr>
+                <tr><td>iPhone 7 / 7 Plus</td><td>30€</td><td>24€</td><td>-</td></tr>
+                <tr><td>iPhone 6s / 6s Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
+                <tr><td>iPhone 6 / 6 Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="price-note" data-i18n="prices_note">
+          * Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.
+        </p>
+      </div>
+    </section>
+
     <!-- Why -->
-    <section class="section section--alt" id="why">
+    <section class="section" id="why">
       <div class="container">
         <div class="section__head">
           <h2 data-i18n="why_title">Warum Handy Notdienst?</h2>
@@ -182,138 +311,9 @@
         </div>
       </div>
     </section>
-<!-- PRICES -->
-<section class="section section--alt" id="prices">
-  <div class="container">
-    <div class="section__head">
-      <h2>Preisliste</h2>
-      <p class="muted">Samsung & iPhone Reparaturen – transparente Preise</p>
-    </div>
-
-    <!-- SAMSUNG -->
-    <input
-  type="text"
-  class="price-search"
-  placeholder="Modell suchen (z.B. S20...)"
-  onkeyup="filterTable(this)"
->
-
-    <div class="price-block">
-      <h3>Samsung Reparaturen</h3>
-      <div class="table-wrap">
-        <table class="price-table">
-          <thead>
-            <tr>
-              <th>Modell</th>
-              <th>Display</th>
-              <th>Akku</th>
-              <th>Ladebuchse</th>
-              <th>Rückseite</th>
-            </tr>
-          </thead>
-          <script>
-function filterTable(input) {
-  const filter = input.value.toLowerCase();
-  const table = input.nextElementSibling.querySelector("table");
-  const rows = table.querySelectorAll("tbody tr");
-
-  rows.forEach(row => {
-    const text = row.innerText.toLowerCase();
-    row.style.display = text.includes(filter) ? "" : "none";
-  });
-}
-</script>
-
-          <tbody>
-            <tr><td>S25 Ultra</td><td>274€</td><td>84€</td><td>84€</td><td>105€</td></tr>
-            <tr><td>S25 Plus</td><td>234€</td><td>74€</td><td>74€</td><td>94€</td></tr>
-            <tr><td>S25</td><td>174€</td><td>74€</td><td>74€</td><td>84€</td></tr>
-            <tr><td>S24 Ultra</td><td>324€</td><td>84€</td><td>74€</td><td>105€</td></tr>
-            <tr><td>S24 / S24+</td><td>244€ / 274€</td><td>74€</td><td>64€</td><td>94€</td></tr>
-            <tr><td>S23 Ultra</td><td>334€</td><td>84€</td><td>74€</td><td>94€</td></tr>
-            <tr><td>S23 / S23+</td><td>224€ / 254€</td><td>74€</td><td>64€</td><td>84€</td></tr>
-            <tr><td>S22 Ultra</td><td>324€</td><td>74€</td><td>64€</td><td>84€</td></tr>
-            <tr><td>S22 / S22+</td><td>224€ / 254€</td><td>74€</td><td>54€</td><td>74€</td></tr>
-            <tr><td>S21 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
-            <tr><td>S21 / S21+ / FE</td><td>164€ / 184€ / 205€</td><td>64€</td><td>54€</td><td>74€</td></tr>
-            <tr><td>S20 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
-            <tr><td>S20 / S20+ / FE</td><td>205€ / 244€ / 214€</td><td>54€</td><td>44€</td><td>64€</td></tr>
-            <tr><td>S10+ / S10 / S10e</td><td>214€ / 204€ / 184€</td><td>54€</td><td>44€</td><td>64€</td></tr>
-            <tr><td>S9+ / S9</td><td>174€ / 164€</td><td>44€</td><td>34€</td><td>54€</td></tr>
-            <tr><td>S8+ / S8</td><td>164€ / 154€</td><td>44€</td><td>34€</td><td>54€</td></tr>
-            <tr><td>S7 Edge / S7</td><td>134€ / 124€</td><td>34€</td><td>24€</td><td>44€</td></tr>
-            <tr><td>S6 Edge / S6</td><td>114€ / 104€</td><td>34€</td><td>24€</td><td>44€</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- IPHONE -->
-    <input
-  type="text"
-  class="price-search"
-  placeholder="Modell suchen (z.B. iPhone 13...)"
-  onkeyup="filterTable(this)"
->
-
-    <div class="price-block">
-      <h3>iPhone Reparaturen</h3>
-      <div class="table-wrap">
-        <table class="price-table">
-          <thead>
-            <tr>
-              <th>Modell</th>
-              <th>Display (Original)</th>
-              <th>Akku</th>
-              <th>Rückseite</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>iPhone 16 Pro Max</td><td>374€</td><td>124€</td><td>174€</td></tr>
-            <tr><td>iPhone 16 Pro</td><td>335€</td><td>105€</td><td>164€</td></tr>
-            <tr><td>iPhone 16 Plus</td><td>234€</td><td>84€</td><td>154€</td></tr>
-            <tr><td>iPhone 16</td><td>224€</td><td>74€</td><td>134€</td></tr>
-            <tr><td>iPhone 15 Pro Max</td><td>264€</td><td>84€</td><td>134€</td></tr>
-            <tr><td>iPhone 15 Pro</td><td>234€</td><td>74€</td><td>124€</td></tr>
-            <tr><td>iPhone 15 Plus</td><td>214€</td><td>64€</td><td>104€</td></tr>
-            <tr><td>iPhone 15</td><td>184€</td><td>64€</td><td>84€</td></tr>
-            <tr><td>iPhone 14 Pro Max</td><td>174€</td><td>74€</td><td>115€</td></tr>
-            <tr><td>iPhone 14 Pro</td><td>164€</td><td>64€</td><td>105€</td></tr>
-            <tr><td>iPhone 14 Plus</td><td>144€</td><td>60€</td><td>74€</td></tr>
-            <tr><td>iPhone 14</td><td>124€</td><td>60€</td><td>64€</td></tr>
-            <tr><td>iPhone 13 Pro Max</td><td>164€ / 134€</td><td>54€</td><td>84€</td></tr>
-            <tr><td>iPhone 13 Pro</td><td>154€</td><td>54€</td><td>74€</td></tr>
-            <tr><td>iPhone 13</td><td>124€</td><td>54€</td><td>74€</td></tr>
-            <tr><td>iPhone 13 mini</td><td>114€</td><td>54€</td><td>64€</td></tr>
-            <tr><td>iPhone 12 Pro Max</td><td>124€</td><td>54€</td><td>74€</td></tr>
-            <tr><td>iPhone 12 Pro</td><td>114€</td><td>54€</td><td>64€</td></tr>
-            <tr><td>iPhone 12</td><td>114€</td><td>54€</td><td>64€</td></tr>
-            <tr><td>iPhone 12 mini</td><td>84€</td><td>54€</td><td>54€</td></tr>
-            <tr><td>iPhone 11 Pro Max</td><td>84€</td><td>54€</td><td>54€</td></tr>
-            <tr><td>iPhone 11 Pro</td><td>74€</td><td>54€</td><td>54€</td></tr>
-            <tr><td>iPhone 11</td><td>64€</td><td>54€</td><td>54€</td></tr>
-            <tr><td>iPhone XS Max</td><td>74€</td><td>54€</td><td>54€</td></tr>
-            <tr><td>iPhone X / XS / XR</td><td>54€</td><td>44€</td><td>44€</td></tr>
-            <tr><td>iPhone SE (2022)</td><td>54€</td><td>44€</td><td>34€</td></tr>
-            <tr><td>iPhone SE (2020)</td><td>44€</td><td>34€</td><td>34€</td></tr>
-            <tr><td>iPhone 8 Plus</td><td>44€</td><td>34€</td><td>24€</td></tr>
-            <tr><td>iPhone 8</td><td>34€</td><td>34€</td><td>24€</td></tr>
-            <tr><td>iPhone 7 / 7 Plus</td><td>30€</td><td>24€</td><td>-</td></tr>
-            <tr><td>iPhone 6s / 6s Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
-            <tr><td>iPhone 6 / 6 Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <p class="price-note">
-      * Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.
-    </p>
-  </div>
-</section>
 
     <!-- Contact -->
-    <section class="section" id="contact">
+    <section class="section section--alt" id="contact">
       <div class="container contact">
         <div class="card contact__left">
           <h2 data-i18n="contact_title">Kontakt</h2>
@@ -328,6 +328,14 @@ function filterTable(input) {
               <span>💬</span>
               <span><strong>WhatsApp</strong> — <span data-i18n="contact_wa">schreiben</span></span>
             </a>
+            <a class="contact__row" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener">
+              <span>✈️</span>
+              <span><strong>Telegram</strong> — @HandyNotdienst</span>
+            </a>
+            <a class="contact__row" href="mailto:handy.notdienst.reparatur@gmail.com">
+              <span>📧</span>
+              <span><strong>Email</strong> — handy.notdienst.reparatur@gmail.com</span>
+            </a>
             <div class="contact__row">
               <span>📍</span>
               <span><strong>Singen (Baden-Württemberg)</strong><br/><span class="muted" data-i18n="address_hint">Adresse hier eintragen</span></span>
@@ -339,19 +347,15 @@ function filterTable(input) {
           </div>
 
           <div class="contact__actions">
-  <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank">
-    💬 WhatsApp
-  </a>
+            <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <a class="btn btn--tg" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener">✈️ Telegram</a>
+            <a class="btn btn--mail" href="mailto:handy.notdienst.reparatur@gmail.com">📧 Email</a>
+          </div>
+        </div>
 
-  <a class="btn btn--tg" href="https://t.me/HandyNotdienst" target="_blank">
-    ✈️ Telegram
-  </a>
-
-  <a class="btn btn--mail" href="mailto:handy.notdienst.reparatur@gmail.com">
-    📧 Email
-  </a>
-</div>
-
+        <div class="card contact__right">
+          <h3 data-i18n="map_title">Standort</h3>
+          <p class="muted" data-i18n="map_text">Hier kannst du Google Maps einfügen.</p>
 
           <!-- Replace this placeholder with Google Maps iframe later -->
           <div class="map">
@@ -405,10 +409,14 @@ function filterTable(input) {
   </a>
 
   <script>
+    // ===== SETTINGS =====
+    const WHATSAPP_NUMBER = "4915222416438"; // without +
+    const CITY = "Singen";
+
     // year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // i18n dictionary
+    // ===== i18n =====
     const dict = {
       de: {
         tagline: "Singen • Schnell & zuverlässig",
@@ -417,7 +425,7 @@ function filterTable(input) {
         h1: "Schneller Smartphone-Service<br/>mit fairen Preisen",
         lead: "Display, Akku, Ladebuchse, Kamera, Wasserschaden – wir helfen schnell. Schreib uns per WhatsApp oder ruf an.",
         cta_main: "Jetzt anfragen",
-        cta_wa: "WhatsApp schreiben",
+        cta_prices: "Preise ansehen",
         trust1: "Schnelle Diagnose",
         trust2: "Oft am selben Tag",
         trust3: "Transparente Preise",
@@ -441,6 +449,11 @@ function filterTable(input) {
         s5_text: "Leise, kratzt, du wirst nicht gehört – Diagnose & Reparatur.",
         s6_title: "Wasserschaden",
         s6_text: "Schnelle Rettung erhöht die Chance – bring das Gerät ASAP.",
+        prices_title: "Preisliste",
+        prices_text: "Klick auf einen Preis → WhatsApp öffnet sich mit Modell + Reparatur + Preis.",
+        prices_note: "* Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.",
+        samsung_title: "Samsung Reparaturen",
+        iphone_title: "iPhone Reparaturen",
         why_title: "Warum Handy Notdienst?",
         why_text: "Kurz, ehrlich, ohne Überraschungen.",
         w1_title: "Schnell",
@@ -458,7 +471,6 @@ function filterTable(input) {
         address_hint: "Adresse hier eintragen",
         hours: "Öffnungszeiten",
         hours_hint: "z.B. Mo–Sa 10:00–19:00",
-        cta_services: "Services ansehen",
         map_title: "Standort",
         map_text: "Hier kannst du Google Maps einfügen.",
         map_placeholder: "Google Maps Platzhalter",
@@ -475,7 +487,7 @@ function filterTable(input) {
         h1: "Швидкий сервіс смартфонів<br/>з чесними цінами",
         lead: "Дисплей, акумулятор, розʼєм зарядки, камера, після води — допоможемо швидко. Пиши у WhatsApp або дзвони.",
         cta_main: "Залишити заявку",
-        cta_wa: "Написати в WhatsApp",
+        cta_prices: "Переглянути ціни",
         trust1: "Швидка діагностика",
         trust2: "Часто в той самий день",
         trust3: "Прозорі ціни",
@@ -499,6 +511,11 @@ function filterTable(input) {
         s5_text: "Тихо, хрипить, вас не чують — діагностика і ремонт.",
         s6_title: "Після води",
         s6_text: "Чим швидше — тим більше шансів. Принось якнайшвидше.",
+        prices_title: "Ціни",
+        prices_text: "Клікни на ціну → відкриється WhatsApp з моделлю + ремонтом + ціною.",
+        prices_note: "* Ціни включають роботу. Можливі зміни залежно від запчастини.",
+        samsung_title: "Ремонт Samsung",
+        iphone_title: "Ремонт iPhone",
         why_title: "Чому Handy Notdienst?",
         why_text: "Коротко, чесно, без сюрпризів.",
         w1_title: "Швидко",
@@ -516,7 +533,6 @@ function filterTable(input) {
         address_hint: "Вкажи адресу тут",
         hours: "Графік",
         hours_hint: "напр. Пн–Сб 10:00–19:00",
-        cta_services: "Подивитись послуги",
         map_title: "Локація",
         map_text: "Тут можна вставити Google Maps.",
         map_placeholder: "Місце для Google Maps",
@@ -525,55 +541,213 @@ function filterTable(input) {
         privacy: "Datenschutz",
         legal_hint: "Заглушка — сюди додаємо назву, адресу, контакти, USt-ID (якщо є).",
         privacy_hint: "Заглушка — політика конфіденційності (cookies, контакти, хостинг, аналітика якщо буде)."
+      },
+      en: {
+        tagline: "Singen • Fast & reliable",
+        call: "Call",
+        kicker: "Phone repair in Singen",
+        h1: "Fast smartphone service<br/>with fair prices",
+        lead: "Screen, battery, charging port, camera, water damage — we help fast. Message us on WhatsApp or call.",
+        cta_main: "Request now",
+        cta_prices: "View prices",
+        trust1: "Quick diagnosis",
+        trust2: "Often same day",
+        trust3: "Transparent prices",
+        quick_title: "Quick request",
+        quick_text: "Type model + issue — we reply fast.",
+        field_model: "Model",
+        field_issue: "Issue",
+        send_wa: "Send to WhatsApp",
+        hint: "Tip: the more details, the faster we can quote a price.",
+        services_title: "Services",
+        services_text: "Most common repairs — fast & clean.",
+        s1_title: "Screen repair",
+        s1_text: "Cracked glass, touch issues, spots — replacement after diagnosis.",
+        s2_title: "Battery replacement",
+        s2_text: "Battery drains fast or swollen — safe replacement.",
+        s3_title: "Charging port",
+        s3_text: "Loose / not charging — cleaning or replacement.",
+        s4_title: "Camera",
+        s4_text: "Blurry, black screen, broken glass — we fix it.",
+        s5_title: "Speaker / mic",
+        s5_text: "Low sound or you can't be heard — diagnosis & repair.",
+        s6_title: "Water damage",
+        s6_text: "The faster you act, the better — bring it ASAP.",
+        prices_title: "Price list",
+        prices_text: "Click a price → WhatsApp opens with model + repair + price.",
+        prices_note: "* Prices include labor. May vary depending on parts.",
+        samsung_title: "Samsung repairs",
+        iphone_title: "iPhone repairs",
+        why_title: "Why Handy Notdienst?",
+        why_text: "Simple, honest, no surprises.",
+        w1_title: "Fast",
+        w1_text: "Often same day — depending on parts.",
+        w2_title: "Fair",
+        w2_text: "Price first — you decide.",
+        w3_title: "Clean service",
+        w3_text: "Diagnosis, repair, test — then pickup.",
+        w4_title: "Warranty",
+        w4_text: "Depends on repair/part — details on request.",
+        contact_title: "Contact",
+        contact_text: "Message or call — we reply fast.",
+        contact_call: "Call",
+        contact_wa: "message",
+        address_hint: "Add address here",
+        hours: "Hours",
+        hours_hint: "e.g. Mon–Sat 10:00–19:00",
+        map_title: "Location",
+        map_text: "You can embed Google Maps here.",
+        map_placeholder: "Google Maps placeholder",
+        map_hint: "Send me your exact address and I’ll insert the proper Maps iframe.",
+        impressum: "Imprint",
+        privacy: "Privacy",
+        legal_hint: "Placeholder — company name, address, contact, VAT ID (if any).",
+        privacy_hint: "Placeholder — privacy policy (cookies, contact, hosting, analytics if used)."
       }
     };
 
     function setLang(lang){
-      // switch active button
       document.querySelectorAll(".lang__btn").forEach(b => {
         b.classList.toggle("is-active", b.dataset.lang === lang);
       });
-
-      // apply translations
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
-        const val = dict[lang][key];
-        if (!val) return;
-        el.innerHTML = val;
+        const val = dict[lang]?.[key];
+        if (val) el.innerHTML = val;
       });
 
-      // update WhatsApp quick message link
-      updateWhatsAppLink(lang);
       localStorage.setItem("hn_lang", lang);
-      document.documentElement.lang = lang === "ua" ? "uk" : "de";
+      document.documentElement.lang = (lang === "ua") ? "uk" : lang;
+
+      // update quick WA link and search placeholders
+      updateQuickWA(lang);
+      updateSearchPlaceholders(lang);
     }
 
-    function updateWhatsAppLink(lang){
-      const model = document.getElementById("model").value.trim();
-      const issue = document.getElementById("issue").value.trim();
-
-      const base = "https://wa.me/4915222416438?text=";
-      const msgDE = `Hallo! Ich brauche Hilfe.%0A%0AModell: ${model || "-"}%0AProblem: ${issue || "-"}%0A%0AOrt: Singen`;
-      const msgUA = `Привіт! Потрібна допомога.%0A%0AМодель: ${model || "-"}%0AПроблема: ${issue || "-"}%0A%0AМісто: Singen`;
-
-      const text = lang === "ua" ? msgUA : msgDE;
-      document.getElementById("waLink").href = base + text;
+    function updateSearchPlaceholders(lang){
+      const map = {
+        de: {
+          samsung: "Modell suchen (z.B. S23, Ultra...)",
+          iphone: "Modell suchen (z.B. iPhone 13, Pro...)"
+        },
+        ua: {
+          samsung: "Пошук моделі (напр. S23, Ultra...)",
+          iphone: "Пошук моделі (напр. iPhone 13, Pro...)"
+        },
+        en: {
+          samsung: "Search model (e.g. S23, Ultra...)",
+          iphone: "Search model (e.g. iPhone 13, Pro...)"
+        }
+      };
+      const samsung = document.querySelector('[data-table-search="samsungTable"]');
+      const iphone = document.querySelector('[data-table-search="iphoneTable"]');
+      if (samsung) samsung.placeholder = map[lang].samsung;
+      if (iphone) iphone.placeholder = map[lang].iphone;
     }
 
-    // events
+    // ===== Quick WhatsApp (model + issue) =====
+    function updateQuickWA(lang){
+      const model = (document.getElementById("model")?.value || "").trim();
+      const issue = (document.getElementById("issue")?.value || "").trim();
+      const base = `https://wa.me/${WHATSAPP_NUMBER}?text=`;
+
+      let msg;
+      if (lang === "ua") {
+        msg = `Привіт! Потрібна допомога.%0A%0AМодель: ${encodeURIComponent(model || "-")}%0AПроблема: ${encodeURIComponent(issue || "-")}%0A%0AМісто: ${CITY}`;
+      } else if (lang === "en") {
+        msg = `Hi! I need help.%0A%0AModel: ${encodeURIComponent(model || "-")}%0AIssue: ${encodeURIComponent(issue || "-")}%0A%0ACity: ${CITY}`;
+      } else {
+        msg = `Hallo! Ich brauche Hilfe.%0A%0AModell: ${encodeURIComponent(model || "-")}%0AProblem: ${encodeURIComponent(issue || "-")}%0A%0AOrt: ${CITY}`;
+      }
+
+      const link = document.getElementById("waQuick");
+      if (link) link.href = base + msg;
+    }
+
+    ["model","issue"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener("input", () => updateQuickWA(getLang()));
+    });
+
+    function getLang(){
+      return localStorage.getItem("hn_lang") || "de";
+    }
+
+    // ===== Table search (works for both tables) =====
+    document.querySelectorAll(".price-search").forEach(input => {
+      input.addEventListener("input", () => {
+        const tableId = input.getAttribute("data-table-search");
+        const table = document.getElementById(tableId);
+        if (!table) return;
+
+        const q = input.value.toLowerCase();
+        table.querySelectorAll("tbody tr").forEach(tr => {
+          tr.style.display = tr.innerText.toLowerCase().includes(q) ? "" : "none";
+        });
+      });
+    });
+
+    // ===== Auto sendWA for ALL price cells (no manual onclick) =====
+    function sendWAFromCell(table, row, colIndex, priceText){
+      const lang = getLang();
+      const brand = table.dataset.brand || "";
+      const model = row.cells[0]?.innerText.trim() || "";
+      const repair = table.tHead?.rows[0]?.cells[colIndex]?.innerText.trim() || "";
+
+      // ignore empty / dash
+      const clean = (priceText || "").trim();
+      if (!clean || clean === "-" ) return;
+
+      // build message
+      let text;
+      if (lang === "ua") {
+        text =
+          `Привіт!%0A` +
+          `Хочу замовити ремонт:%0A%0A` +
+          `📱 Пристрій: ${encodeURIComponent(brand + " " + model)}%0A` +
+          `🛠️ Ремонт: ${encodeURIComponent(repair)}%0A` +
+          `💶 Ціна: ${encodeURIComponent(clean)}%0A%0A` +
+          `Місто: ${CITY}`;
+      } else if (lang === "en") {
+        text =
+          `Hi!%0A` +
+          `I'd like to request a repair:%0A%0A` +
+          `📱 Device: ${encodeURIComponent(brand + " " + model)}%0A` +
+          `🛠️ Repair: ${encodeURIComponent(repair)}%0A` +
+          `💶 Price: ${encodeURIComponent(clean)}%0A%0A` +
+          `City: ${CITY}`;
+      } else {
+        text =
+          `Hallo!%0A` +
+          `Ich möchte eine Reparatur anfragen:%0A%0A` +
+          `📱 Gerät: ${encodeURIComponent(brand + " " + model)}%0A` +
+          `🛠️ Reparatur: ${encodeURIComponent(repair)}%0A` +
+          `💶 Preis: ${encodeURIComponent(clean)}%0A%0A` +
+          `Ort: ${CITY}`;
+      }
+
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
+    }
+
+    // attach events to all price tables
+    document.querySelectorAll(".js-price-table").forEach(table => {
+      table.querySelectorAll("tbody tr").forEach(row => {
+        Array.from(row.cells).forEach((cell, idx) => {
+          if (idx === 0) return; // model column
+          cell.classList.add("price-cell");
+          cell.addEventListener("click", () => sendWAFromCell(table, row, idx, cell.innerText));
+        });
+      });
+    });
+
+    // Language buttons
     document.querySelectorAll(".lang__btn").forEach(btn => {
       btn.addEventListener("click", () => setLang(btn.dataset.lang));
     });
 
-    ["model","issue"].forEach(id => {
-      document.getElementById(id).addEventListener("input", () => {
-        const lang = localStorage.getItem("hn_lang") || "de";
-        updateWhatsAppLink(lang);
-      });
-    });
-
     // init
-    setLang(localStorage.getItem("hn_lang") || "de");
+    setLang(getLang());
+    updateQuickWA(getLang());
   </script>
 </body>
 </html>
