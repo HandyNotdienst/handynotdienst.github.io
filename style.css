@@ -273,3 +273,62 @@ a{color:inherit;text-decoration:none}
   .grid{grid-template-columns: 1fr}
   .pill{display:none}
 }
+/* ===== PRICES ===== */
+.price-block {
+  margin-bottom: 36px;
+}
+
+.price-block h3 {
+  margin: 0 0 12px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+  background: rgba(255,255,255,.02);
+}
+
+.price-table th,
+.price-table td {
+  padding: 12px 14px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.price-table th {
+  background: rgba(77,163,255,.12);
+  color: var(--text);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.price-table td {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.price-table tr:hover td {
+  background: rgba(255,255,255,.03);
+  color: var(--text);
+}
+
+.price-table td:first-child,
+.price-table th:first-child {
+  text-align: left;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.price-note {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
