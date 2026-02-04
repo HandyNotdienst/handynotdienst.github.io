@@ -1,1 +1,515 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Preise • Handy Notdienst (Singen)</title>
+  <meta name="description" content="Preise für iPhone & Samsung Reparaturen in Singen: Display, Akku, Ladebuchse, Rückseite. Klick auf Preis → WhatsApp." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <meta name="theme-color" content="#1b374c">
+</head>
+
+<body>
+<header class="header">
+  <div class="container header__inner">
+    <a class="brand" href="index.html">
+      <img class="brand__logo" src="assets/logo.png" alt="Handy Notdienst Logo" />
+      <span class="brand__text">
+        <strong>Handy Notdienst</strong>
+        <small>Singen</small>
+      </span>
+    </a>
+
+    <div class="nav">
+      <a href="preise.html" data-i18n="nav_prices">Preise</a>
+      <a href="vorher-nachher.html" data-i18n="nav_beforeafter">Vorher/Nachher</a>
+      <a href="ablauf.html" data-i18n="nav_ablauf">Ablauf</a>
+      <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+      <a href="angebote.html" data-i18n="nav_deals">Angebote</a>
+      <a class="nav__quiz" href="#quiz" data-i18n="nav_quiz">Quiz</a>
+    </div>
+
+    <div class="header__right">
+      <div class="lang">
+        <button class="lang__btn is-active" type="button" data-lang="de">DE</button>
+        <button class="lang__btn" type="button" data-lang="ua">UA</button>
+        <button class="lang__btn" type="button" data-lang="en">EN</button>
+      </div>
+      <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- QUIZ TEASER (visible) -->
+  <section class="section section--alt" id="quiz">
+    <div class="container" id="pricesPage">
+      <div class="section__head">
+        <h1>Preise</h1>
+        <p class="muted">Klick auf einen Preis → WhatsApp öffnet sich mit Modell + Reparatur + Preis.</p>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+          <div>
+            <strong style="font-size:18px;">🧠 Quiz (1 Minute)</strong>
+            <div class="muted">3 Fragen → wir sagen was wahrscheinlich ist.</div>
+          </div>
+          <button class="btn" type="button" id="quizStartBtn">🧠 Quiz starten</button>
+        </div>
+      </div>
+
+      <!-- Global Search -->
+      <div class="card" style="margin-top:14px;">
+        <strong>🔍 Suche</strong>
+        <div class="muted">Filtert Tabellen & Mobile-Cards gleichzeitig.</div>
+        <div style="margin-top:10px;">
+          <input id="globalSearch" class="price-search" type="text" placeholder="z.B. iPhone 13, S23, Ultra, Akku..." />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICES -->
+  <section class="section" id="prices">
+    <div class="container">
+
+      <!-- Samsung -->
+      <div class="price-block">
+        <div class="price-head">
+          <h3 data-i18n="samsung_title">Samsung Reparaturen</h3>
+          <input
+            type="text"
+            class="price-search"
+            data-filter-target="samsungTable"
+            placeholder="Modell suchen (z.B. S23, Ultra...)"
+          />
+        </div>
+
+        <div class="table-wrap">
+          <table class="price-table js-price-table" id="samsungTable" data-brand="Samsung">
+            <thead>
+              <tr>
+                <th>Modell</th><th>Display</th><th>Akku</th><th>Ladebuchse</th><th>Rückseite</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>S25 Ultra</td><td>274€</td><td>84€</td><td>84€</td><td>105€</td></tr>
+              <tr><td>S25 Plus</td><td>234€</td><td>74€</td><td>74€</td><td>94€</td></tr>
+              <tr><td>S25</td><td>174€</td><td>74€</td><td>74€</td><td>84€</td></tr>
+              <tr><td>S24 Ultra</td><td>324€</td><td>84€</td><td>74€</td><td>105€</td></tr>
+              <tr><td>S24 / S24+</td><td>244€ / 274€</td><td>74€</td><td>64€</td><td>94€</td></tr>
+              <tr><td>S23 Ultra</td><td>334€</td><td>84€</td><td>74€</td><td>94€</td></tr>
+              <tr><td>S23 / S23+</td><td>224€ / 254€</td><td>74€</td><td>64€</td><td>84€</td></tr>
+              <tr><td>S22 Ultra</td><td>324€</td><td>74€</td><td>64€</td><td>84€</td></tr>
+              <tr><td>S22 / S22+</td><td>224€ / 254€</td><td>74€</td><td>54€</td><td>74€</td></tr>
+              <tr><td>S21 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
+              <tr><td>S21 / S21+ / FE</td><td>164€ / 184€ / 205€</td><td>64€</td><td>54€</td><td>74€</td></tr>
+              <tr><td>S20 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
+              <tr><td>S20 / S20+ / FE</td><td>205€ / 244€ / 214€</td><td>54€</td><td>44€</td><td>64€</td></tr>
+              <tr><td>S10+ / S10 / S10e</td><td>214€ / 204€ / 184€</td><td>54€</td><td>44€</td><td>64€</td></tr>
+              <tr><td>S9+ / S9</td><td>174€ / 164€</td><td>44€</td><td>34€</td><td>54€</td></tr>
+              <tr><td>S8+ / S8</td><td>164€ / 154€</td><td>44€</td><td>34€</td><td>54€</td></tr>
+              <tr><td>S7 Edge / S7</td><td>134€ / 124€</td><td>34€</td><td>24€</td><td>44€</td></tr>
+              <tr><td>S6 Edge / S6</td><td>114€ / 104€</td><td>34€</td><td>24€</td><td>44€</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- auto mobile cards here -->
+        <div class="price-cards js-price-cards"></div>
+      </div>
+
+      <!-- iPhone -->
+      <div class="price-block">
+        <div class="price-head">
+          <h3 data-i18n="iphone_title">iPhone Reparaturen</h3>
+          <input
+            type="text"
+            class="price-search"
+            data-filter-target="iphoneTable"
+            placeholder="Modell suchen (z.B. iPhone 13, Pro...)"
+          />
+        </div>
+
+        <div class="table-wrap">
+          <table class="price-table js-price-table" id="iphoneTable" data-brand="iPhone">
+            <thead>
+              <tr>
+                <th>Modell</th><th>Display (Original)</th><th>Akku</th><th>Rückseite</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>iPhone 16 Pro Max</td><td>374€</td><td>124€</td><td>174€</td></tr>
+              <tr><td>iPhone 16 Pro</td><td>335€</td><td>105€</td><td>164€</td></tr>
+              <tr><td>iPhone 16 Plus</td><td>234€</td><td>84€</td><td>154€</td></tr>
+              <tr><td>iPhone 16</td><td>224€</td><td>74€</td><td>134€</td></tr>
+              <tr><td>iPhone 15 Pro Max</td><td>264€</td><td>84€</td><td>134€</td></tr>
+              <tr><td>iPhone 15 Pro</td><td>234€</td><td>74€</td><td>124€</td></tr>
+              <tr><td>iPhone 15 Plus</td><td>214€</td><td>64€</td><td>104€</td></tr>
+              <tr><td>iPhone 15</td><td>184€</td><td>64€</td><td>84€</td></tr>
+              <tr><td>iPhone 14 Pro Max</td><td>174€</td><td>74€</td><td>115€</td></tr>
+              <tr><td>iPhone 14 Pro</td><td>164€</td><td>64€</td><td>105€</td></tr>
+              <tr><td>iPhone 14 Plus</td><td>144€</td><td>60€</td><td>74€</td></tr>
+              <tr><td>iPhone 14</td><td>124€</td><td>60€</td><td>64€</td></tr>
+              <tr><td>iPhone 13 Pro Max</td><td>164€ / 134€</td><td>54€</td><td>84€</td></tr>
+              <tr><td>iPhone 13 Pro</td><td>154€</td><td>54€</td><td>74€</td></tr>
+              <tr><td>iPhone 13</td><td>124€</td><td>54€</td><td>74€</td></tr>
+              <tr><td>iPhone 13 mini</td><td>114€</td><td>54€</td><td>64€</td></tr>
+              <tr><td>iPhone 12 Pro Max</td><td>124€</td><td>54€</td><td>74€</td></tr>
+              <tr><td>iPhone 12 Pro</td><td>114€</td><td>54€</td><td>64€</td></tr>
+              <tr><td>iPhone 12</td><td>114€</td><td>54€</td><td>64€</td></tr>
+              <tr><td>iPhone 12 mini</td><td>84€</td><td>54€</td><td>54€</td></tr>
+              <tr><td>iPhone 11 Pro Max</td><td>84€</td><td>54€</td><td>54€</td></tr>
+              <tr><td>iPhone 11 Pro</td><td>74€</td><td>54€</td><td>54€</td></tr>
+              <tr><td>iPhone 11</td><td>64€</td><td>54€</td><td>54€</td></tr>
+              <tr><td>iPhone XS Max</td><td>74€</td><td>54€</td><td>54€</td></tr>
+              <tr><td>iPhone X / XS / XR</td><td>54€</td><td>44€</td><td>44€</td></tr>
+              <tr><td>iPhone SE (2022)</td><td>54€</td><td>44€</td><td>34€</td></tr>
+              <tr><td>iPhone SE (2020)</td><td>44€</td><td>34€</td><td>34€</td></tr>
+              <tr><td>iPhone 8 Plus</td><td>44€</td><td>34€</td><td>24€</td></tr>
+              <tr><td>iPhone 8</td><td>34€</td><td>34€</td><td>24€</td></tr>
+              <tr><td>iPhone 7 / 7 Plus</td><td>30€</td><td>24€</td><td>-</td></tr>
+              <tr><td>iPhone 6s / 6s Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
+              <tr><td>iPhone 6 / 6 Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- auto mobile cards here -->
+        <div class="price-cards js-price-cards"></div>
+      </div>
+
+      <p class="price-note">* Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.</p>
+      <p class="price-note">⏱️ Die meisten Reparaturen dauern 30–90 Minuten (je nach Modell).</p>
+    </div>
+  </section>
+</main>
+
+<!-- Sticky bottom bar -->
+<div class="sticky-bar" id="stickyBar">
+  <a class="sticky-btn" href="#prices"><span>💶</span> <b id="sbPrices">Preise</b></a>
+  <a class="sticky-btn" href="tel:+4915222416438"><span>📞</span> <b id="sbCall">Anrufen</b></a>
+  <a class="sticky-btn sticky-btn--wa" id="sbWALink" href="https://wa.me/4915222416438" target="_blank" rel="noopener">
+    <span>💬</span> <b id="sbWA">WhatsApp</b>
+  </a>
+</div>
+
+<!-- QUIZ MODAL (same as before) -->
+<div class="quiz-modal" id="quizModal" hidden>
+  <div class="quiz-modal__overlay" id="quizOverlay"></div>
+
+  <div class="quiz-modal__box">
+    <div class="quiz-modal__progress">
+      <div class="quiz-progress-bar">
+        <span class="quiz-progress-fill" id="quizProgressFill"></span>
+      </div>
+      <div class="quiz-progress-text" id="quizProgressText">33%</div>
+    </div>
+
+    <div class="quiz-modal__content">
+      <div class="quiz-screen is-active" data-step="1">
+        <h3 data-i18n="quiz_q1">Lädt das Handy?</h3>
+        <div class="quiz-actions">
+          <button class="btn" data-answer="yes" data-i18n="quiz_yes">✅ Ja</button>
+          <button class="btn btn--ghost" data-answer="no" data-i18n="quiz_no">❌ Nein</button>
+        </div>
+      </div>
+
+      <div class="quiz-screen" data-step="2">
+        <h3 data-i18n="quiz_q2">Akku schnell leer?</h3>
+        <div class="quiz-actions">
+          <button class="btn" data-answer="yes" data-i18n="quiz_yes_b">🔋 Ja</button>
+          <button class="btn btn--ghost" data-answer="no" data-i18n="quiz_no_b">➡️ Nein</button>
+        </div>
+      </div>
+
+      <div class="quiz-screen" data-step="3">
+        <h3 data-i18n="quiz_q3">Bildschirm schwarz oder flackert?</h3>
+        <div class="quiz-actions">
+          <button class="btn" data-answer="yes" data-i18n="quiz_yes_s">📱 Ja</button>
+          <button class="btn btn--ghost" data-answer="no" data-i18n="quiz_no_s">➡️ Nein</button>
+        </div>
+      </div>
+
+      <div class="quiz-screen" data-step="result">
+        <div class="quiz-success">
+          <div class="quiz-success__icon">
+            <span class="check">✓</span>
+            <span class="ring"></span>
+            <span class="ring ring--2"></span>
+          </div>
+
+          <div class="quiz-success__badge" id="quizResultBadge">…</div>
+          <p class="muted" id="quizResultText">…</p>
+
+          <div class="quiz-success__actions">
+            <a class="btn btn--wa" id="quizResultWA" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <button class="btn btn--ghost" id="quizClose" type="button" data-i18n="quiz_close">✕ Schließen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="quiz-back-btn" id="quizBackBtn" hidden data-i18n="quiz_back">⏪ Zurück</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+
+<script>
+  // ===== This page JS: prices + cards + click->WA + global search + quiz =====
+  const WHATSAPP_NUMBER = "4915222416438";
+  const CITY = "Singen";
+
+  function getLang(){ return localStorage.getItem("hn_lang") || "de"; }
+  function track(evt, data = {}){
+    try{
+      const key = "hn_events";
+      const arr = JSON.parse(localStorage.getItem(key) || "[]");
+      arr.push({ t: Date.now(), evt, ...data });
+      localStorage.setItem(key, JSON.stringify(arr));
+    } catch(e){}
+  }
+
+  function openWAForPrice(brand, model, repair, price){
+    const lang = getLang();
+    const device = `${brand} ${model}`.trim();
+
+    let text;
+    if (lang === "ua") {
+      text = `Привіт!%0AХочу ремонт:%0A%0A📱 ${encodeURIComponent(device)}%0A🛠️ ${encodeURIComponent(repair)}%0A💶 ${encodeURIComponent(price)}%0A%0AМісто: ${CITY}`;
+    } else if (lang === "en") {
+      text = `Hi!%0AI'd like a repair:%0A%0A📱 ${encodeURIComponent(device)}%0A🛠️ ${encodeURIComponent(repair)}%0A💶 ${encodeURIComponent(price)}%0A%0ACity: ${CITY}`;
+    } else {
+      text = `Hallo!%0AIch möchte eine Reparatur anfragen:%0A%0A📱 ${encodeURIComponent(device)}%0A🛠️ ${encodeURIComponent(repair)}%0A💶 ${encodeURIComponent(price)}%0A%0AOrt: ${CITY}`;
+    }
+
+    track("price_click", { brand, model, repair, price });
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
+  }
+
+  function bindTablePriceClicks(){
+    document.querySelectorAll(".js-price-table").forEach(table => {
+      const brand = table.dataset.brand || "";
+      const headers = Array.from(table.tHead.rows[0].cells).map(th => th.innerText.trim());
+
+      table.querySelectorAll("tbody tr").forEach(row => {
+        const model = row.cells[0].innerText.trim();
+
+        Array.from(row.cells).forEach((cell, idx) => {
+          if (idx === 0) return;
+          const price = cell.innerText.trim();
+          if (!price || price === "-") return;
+
+          cell.classList.add("price-cell");
+          cell.addEventListener("click", () => {
+            const repair = headers[idx] || "Repair";
+            openWAForPrice(brand, model, repair, price);
+          });
+        });
+      });
+    });
+  }
+
+  function generateMobileCards(){
+    document.querySelectorAll(".js-price-table").forEach(table => {
+      const brand = table.dataset.brand || "";
+      const container = table.closest(".price-block").querySelector(".js-price-cards");
+      if (!container) return;
+      container.innerHTML = "";
+
+      const headers = Array.from(table.tHead.rows[0].cells).slice(1).map(th => th.innerText.trim());
+
+      table.querySelectorAll("tbody tr").forEach(row => {
+        const model = row.cells[0].innerText.trim();
+
+        const card = document.createElement("div");
+        card.className = "price-card";
+
+        const h = document.createElement("h4");
+        h.textContent = `${brand} ${model}`;
+        card.appendChild(h);
+
+        headers.forEach((repair, idx) => {
+          const cell = row.cells[idx + 1];
+          if (!cell) return;
+          const price = cell.innerText.trim();
+          if (!price || price === "-") return;
+
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.innerHTML = `${repair} — <strong>${price}</strong>`;
+          btn.addEventListener("click", () => openWAForPrice(brand, model, repair, price));
+          card.appendChild(btn);
+        });
+
+        container.appendChild(card);
+      });
+    });
+  }
+
+  function filterBlockByQuery(block, q){
+    const ql = q.toLowerCase();
+
+    // table rows
+    block.querySelectorAll("tbody tr").forEach(tr => {
+      tr.style.display = tr.innerText.toLowerCase().includes(ql) ? "" : "none";
+    });
+
+    // cards
+    block.querySelectorAll(".price-card").forEach(card => {
+      card.style.display = card.innerText.toLowerCase().includes(ql) ? "" : "none";
+    });
+  }
+
+  function initGlobalSearch(){
+    const input = document.getElementById("globalSearch");
+    if (!input) return;
+
+    input.addEventListener("input", () => {
+      const q = input.value.trim();
+      document.querySelectorAll(".price-block").forEach(block => filterBlockByQuery(block, q));
+    });
+  }
+
+  function initPerTableSearch(){
+    document.querySelectorAll(".price-search[data-filter-target]").forEach(input => {
+      input.addEventListener("input", () => {
+        const targetId = input.getAttribute("data-filter-target");
+        const table = document.getElementById(targetId);
+        if (!table) return;
+        const block = table.closest(".price-block");
+        filterBlockByQuery(block, input.value.trim());
+      });
+    });
+  }
+
+  // ===== QUIZ (modal) =====
+  const quizModal = document.getElementById("quizModal");
+  const quizOverlay = document.getElementById("quizOverlay");
+  const quizStartBtn = document.getElementById("quizStartBtn");
+  const quizCloseBtn = document.getElementById("quizClose");
+  const quizBackBtn = document.getElementById("quizBackBtn");
+  const quizProgressFill = document.getElementById("quizProgressFill");
+  const quizProgressText = document.getElementById("quizProgressText");
+
+  let quizStep = 1;
+  let quizAnswers = [];
+
+  function openQuiz(){
+    quizModal.hidden = false;
+    quizStep = 1;
+    quizAnswers = [];
+    updateQuizUI();
+    track("quiz_open", {});
+  }
+  function closeQuiz(){
+    quizModal.hidden = true;
+    track("quiz_close", {});
+  }
+  function updateProgress(){
+    const percent = Math.min(quizStep * 33, 100);
+    quizProgressFill.style.width = percent + "%";
+    quizProgressText.textContent = percent + "%";
+  }
+  function showQuizScreen(step){
+    document.querySelectorAll(".quiz-screen").forEach(s => s.classList.remove("is-active"));
+    document.querySelector(`.quiz-screen[data-step="${step}"]`)?.classList.add("is-active");
+  }
+  function updateQuizUI(){
+    quizBackBtn.hidden = quizStep <= 1;
+    updateProgress();
+    showQuizScreen(String(quizStep));
+  }
+
+  function showQuizResult(){
+    const lang = getLang();
+    const score = { battery:0, port:0, display:0 };
+
+    if (quizAnswers[0] === "no") score.port += 2;
+    if (quizAnswers[1] === "yes") score.battery += 3;
+    if (quizAnswers[2] === "yes") score.display += 3;
+
+    const resultKey = Object.keys(score).reduce((a,b) => score[a] > score[b] ? a : b);
+
+    const T = {
+      de:{
+        battery:"🔋 Sehr wahrscheinlich: Akku",
+        port:"🔌 Sehr wahrscheinlich: Ladebuchse",
+        display:"📱 Sehr wahrscheinlich: Display / Elektronik",
+        hint:"Schreib uns kurz – wir prüfen das schnell."
+      },
+      ua:{
+        battery:"🔋 Дуже ймовірно: акумулятор",
+        port:"🔌 Дуже ймовірно: розʼєм зарядки",
+        display:"📱 Дуже ймовірно: дисплей або плата",
+        hint:"Напиши нам — швидко перевіримо."
+      },
+      en:{
+        battery:"🔋 Very likely: battery",
+        port:"🔌 Very likely: charging port",
+        display:"📱 Very likely: screen or electronics",
+        hint:"Message us — we’ll check fast."
+      }
+    }[lang];
+
+    document.getElementById("quizResultBadge").textContent = T[resultKey];
+    document.getElementById("quizResultText").textContent = T.hint;
+
+    const msg =
+      lang==="ua" ? `Привіт! Тест показав: ${T[resultKey]}`
+      : lang==="en" ? `Hi! Quiz result: ${T[resultKey]}`
+      : `Hallo! Quiz-Ergebnis: ${T[resultKey]}`;
+
+    document.getElementById("quizResultWA").href =
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg + " | Ort: " + CITY)}`;
+
+    track("quiz_completed", { result: resultKey, answers: quizAnswers.join(",") });
+
+    document.querySelectorAll(".quiz-screen").forEach(s => s.classList.remove("is-active"));
+    document.querySelector(`.quiz-screen[data-step="result"]`).classList.add("is-active");
+
+    quizProgressFill.style.width = "100%";
+    quizProgressText.textContent = "100%";
+    quizBackBtn.hidden = true;
+  }
+
+  document.querySelectorAll(".quiz-actions button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      quizAnswers.push(btn.dataset.answer);
+      quizStep++;
+      if (quizStep <= 3) updateQuizUI();
+      else showQuizResult();
+    });
+  });
+
+  quizBackBtn.addEventListener("click", () => {
+    if (quizStep > 1){
+      quizStep--;
+      quizAnswers.pop();
+      updateQuizUI();
+    }
+  });
+
+  quizStartBtn?.addEventListener("click", openQuiz);
+  quizCloseBtn?.addEventListener("click", closeQuiz);
+  quizOverlay?.addEventListener("click", closeQuiz);
+
+  // Auto-open quiz if URL has #quiz
+  if (location.hash === "#quiz"){
+    setTimeout(openQuiz, 250);
+  }
+
+  // ===== Init =====
+  bindTablePriceClicks();
+  generateMobileCards();
+  initGlobalSearch();
+  initPerTableSearch();
+</script>
+
+</body>
+</html>
 
