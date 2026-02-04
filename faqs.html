@@ -104,7 +104,13 @@
   </nav>
 
   <script>
-    const dict = {
+    window.HN_CONFIG = {
+      whatsappNumber: "4915222416438",
+      city: "Singen",
+      defaultLang: "de",
+      serviceWorkerPath: "./sw.js"
+    };
+    window.HN_I18N = {
       de:{ tagline:"Singen • Schnell & zuverlässig", no_appt:"Ohne Termin", nav_home:"Start", nav_prices:"Preise", mb_call:"Call",
         faq_sub:"Kurze Antworten auf die häufigsten Fragen.",
         faq1_q:"Wie lange dauert eine Reparatur?", faq1_a:"Viele Reparaturen dauern 30–90 Minuten (je nach Modell und Teil).",
@@ -132,22 +138,8 @@
         faq5_q:"Original or premium parts?", faq5_a:"Depending on the device we offer Original or Premium options.",
         faq6_q:"My model is not listed", faq6_a:"Ask anyway — we can often order parts or offer an alternative."
       }
-    };
-
-    function getLang(){ return localStorage.getItem("hn_lang") || "de"; }
-    function setLang(lang){
-      document.querySelectorAll(".lang__btn").forEach(b => b.classList.toggle("is-active", b.dataset.lang === lang));
-      document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        const val = dict[lang]?.[key];
-        if (val) el.textContent = val;
-      });
-      localStorage.setItem("hn_lang", lang);
-      document.documentElement.lang = (lang === "ua") ? "uk" : lang;
-    }
-    document.querySelectorAll(".lang__btn").forEach(btn => btn.addEventListener("click", () => setLang(btn.dataset.lang)));
-    setLang(getLang());
   </script>
+  <script src="app.js"></script>
 
   <!-- FAQ schema.org -->
   <script type="application/ld+json">
