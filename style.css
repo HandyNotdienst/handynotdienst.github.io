@@ -229,30 +229,78 @@ a{color:inherit;text-decoration:none}
 .service p{margin:0; color: var(--muted)}
 
 /* Before/After */
-.ba-grid{
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  margin-bottom: 16px;
+.ba-slider{
+  position: relative;
+  margin: 0 0 16px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
+  box-shadow: 0 18px 40px rgba(0,0,0,.25);
+  --ba-position: 50%;
 }
-.ba-item{margin: 0}
-.ba-image{
+.ba-slider__images{
+  position: relative;
+}
+.ba-slider__image{
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 18px;
-  box-shadow: 0 12px 30px rgba(0,0,0,.18);
-  border: 1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.02);
+}
+.ba-slider__after{
+  position: absolute;
+  inset: 0;
+  width: var(--ba-position);
+  overflow: hidden;
+  transition: width .2s ease;
+}
+.ba-slider__handle{
+  position: absolute;
+  top: 0;
+  left: calc(var(--ba-position) - 18px);
+  height: 100%;
+  width: 36px;
+  pointer-events: none;
+}
+.ba-slider__handle::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(255,255,255,.65);
+  transform: translateX(-50%);
+}
+.ba-slider__handle::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(14,31,44,.92);
+  border: 2px solid rgba(255,255,255,.75);
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);
+}
+.ba-slider__range{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  touch-action: none;
+}
+.ba-slider:focus-within .ba-slider__handle::after{
+  border-color: rgba(110,231,183,.9);
 }
 .ba-compare{
   margin: 0;
   text-align: center;
   font-weight: 800;
-}
-
-@media (max-width: 900px){
-  .ba-grid{grid-template-columns: 1fr}
 }
 
 /* Prices */
@@ -666,7 +714,6 @@ a{color:inherit;text-decoration:none}
   .grid{grid-template-columns: repeat(2, 1fr)}
   .why{grid-template-columns: 1fr}
   .contact{grid-template-columns: 1fr}
-  .ba-grid{ grid-template-columns: 1fr; }
   .up-grid{ grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 560px){
@@ -708,18 +755,22 @@ a{color:inherit;text-decoration:none}
   border-bottom: 1px solid var(--line);
   background: rgba(14,31,44,.72);
   overflow: hidden;
+  width: 100%;
 }
 .ticker__track{
   display:flex;
-  gap: 40px;
-  padding: 6px 0;
+  gap: 120px;
+  padding: 8px 0;
   white-space: nowrap;
-  animation: tickerScroll 18s linear infinite;
+  width: max-content;
+  animation: tickerScroll 22s linear infinite;
+  will-change: transform;
 }
 .ticker__item{
   display:inline-flex;
   align-items:center;
   gap: 8px;
+  flex: 0 0 auto;
   font-size: 12px;
   font-weight: 900;
   color: var(--text);
@@ -728,7 +779,7 @@ a{color:inherit;text-decoration:none}
 }
 @keyframes tickerScroll{
   0%{ transform: translateX(0); }
-  100%{ transform: translateX(-33.333%); }
+  100%{ transform: translateX(-50%); }
 }
 
 /* QUIZ subtle button */
@@ -861,15 +912,15 @@ a{color:inherit;text-decoration:none}
   body{padding-bottom: 90px;} /* щоб контент не ховався під mobilebar */
 }
 /* ===== Compact header on mobile ===== */
-@media (max-width: 560px){
+@media (max-width: 768px){
   .header__inner{
-    padding: 8px 0;         /* було 10px */
-    gap: 8px;               /* менше відстані */
+    padding: 8px 0;
+    gap: 8px;
   }
 
   .brand__logo{
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     border-radius: 14px;
   }
 
@@ -891,5 +942,16 @@ a{color:inherit;text-decoration:none}
   /* прибираємо WhatsApp в header */
   .header .btn.btn--wa{
     display:none;
+  }
+}
+
+@media (max-width: 560px){
+  .header__inner{
+    padding: 6px 0;
+  }
+
+  .brand__logo{
+    width: 42px;
+    height: 42px;
   }
 }
