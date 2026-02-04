@@ -25,14 +25,14 @@
       </a>
 
       <div class="header__right">
-        <span class="badge badge--appt" data-i18n="no_appt">Ohne Termin</span>
-
         <nav class="topnav" aria-label="Navigation">
           <a href="prices.html" data-i18n="nav_prices">Preise</a>
           <a href="faqs.html">FAQ</a>
           <a href="#contact" data-i18n="nav_contact">Kontakt</a>
           <!-- QUIZ subtle -->
-          <button class="quiz-mini" id="quizStartBtn" type="button" aria-label="Quiz">🧠</button>
+          <button class="quiz-mini" id="quizStartBtn" type="button" aria-label="Quiz">
+            🧠 <span data-i18n="quiz_label">Quiz: Schnell-Check</span>
+          </button>
         </nav>
 
         <div class="lang" aria-label="Language switch">
@@ -49,6 +49,15 @@
       </div>
     </div>
   </header>
+  <div class="ticker" aria-live="polite">
+    <div class="container">
+      <div class="ticker__track">
+        <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+        <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+        <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+      </div>
+    </div>
+  </div>
 
   <main id="top">
     <section class="hero">
@@ -361,6 +370,7 @@
         quiz_q1:"Lädt das Handy?",
         quiz_q2:"Akku schnell leer?",
         quiz_q3:"Bildschirm schwarz oder flackert?",
+        quiz_label:"Quiz: Schnell-Check (3 Fragen)",
         quiz_yes:"✅ Ja",
         quiz_no:"❌ Nein",
         quiz_yes_b:"🔋 Ja",
@@ -435,6 +445,7 @@
         quiz_q1:"Телефон заряджається?",
         quiz_q2:"Акумулятор швидко сідає?",
         quiz_q3:"Екран чорний або блимає?",
+        quiz_label:"Квіз: швидка діагностика (3 питання)",
         quiz_yes:"✅ Так",
         quiz_no:"❌ Ні",
         quiz_yes_b:"🔋 Так",
@@ -509,6 +520,7 @@
         quiz_q1:"Does the phone charge?",
         quiz_q2:"Battery drains fast?",
         quiz_q3:"Screen black or flickering?",
+        quiz_label:"Quiz: quick diagnosis (3 questions)",
         quiz_yes:"✅ Yes",
         quiz_no:"❌ No",
         quiz_yes_b:"🔋 Yes",
