@@ -25,14 +25,14 @@
       </a>
 
       <div class="header__right">
-        <span class="badge badge--appt" data-i18n="no_appt">Ohne Termin</span>
-
         <nav class="topnav" aria-label="Navigation">
           <a href="prices.html" data-i18n="nav_prices">Preise</a>
           <a href="faqs.html">FAQ</a>
           <a href="#contact" data-i18n="nav_contact">Kontakt</a>
           <!-- QUIZ subtle -->
-          <button class="quiz-mini" id="quizStartBtn" type="button" aria-label="Quiz">🧠</button>
+          <button class="quiz-mini" id="quizStartBtn" type="button" aria-label="Quiz">
+            🧠 <span data-i18n="quiz_label">Quiz: Schnell-Check</span>
+          </button>
         </nav>
 
         <div class="lang" aria-label="Language switch">
@@ -49,6 +49,15 @@
       </div>
     </div>
   </header>
+  <div class="ticker" aria-live="polite">
+    <div class="container">
+      <div class="ticker__track">
+        <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+        <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+        <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+      </div>
+    </div>
+  </div>
 
   <main id="top">
     <section class="hero">
@@ -102,6 +111,35 @@
             </div>
 
             <p class="hint" data-i18n="hint">Tipp: Je genauer du beschreibst, desto schneller bekommst du einen Preis.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="before-after">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="ba_title">VORHER / NACHHER</h2>
+          <p class="muted" data-i18n="ba_subtitle">Platzhalter für Fotos: vorher (kaputt) und nachher (repariert).</p>
+        </div>
+
+        <div class="ba-grid">
+          <div class="card ba-card">
+            <div class="ba__media">
+              <span class="ba__media-text" data-i18n="ba_photo_before">Foto: Display zerbrochen</span>
+            </div>
+            <div class="ba__top" data-i18n="ba1_before">📱 Display zerbrochen ❌</div>
+            <div class="ba__arrow">↓</div>
+            <div class="ba__bottom" data-i18n="ba1_after">✨ Display wie neu ✅</div>
+          </div>
+
+          <div class="card ba-card">
+            <div class="ba__media">
+              <span class="ba__media-text" data-i18n="ba_photo_after">Foto: Display wie neu</span>
+            </div>
+            <div class="ba__top" data-i18n="ba2_before">🔋 Akku leer nach 2 Std ❌</div>
+            <div class="ba__arrow">↓</div>
+            <div class="ba__bottom" data-i18n="ba2_after">🔋 Ganzer Tag Nutzung ✅</div>
           </div>
         </div>
       </div>
@@ -318,6 +356,14 @@
         nav_prices:"Preise",
         nav_contact:"Kontakt",
         no_appt:"Ohne Termin",
+        ba_title:"VORHER / NACHHER",
+        ba_subtitle:"Platzhalter für Fotos: vorher (kaputt) und nachher (repariert).",
+        ba_photo_before:"Foto: Display zerbrochen",
+        ba_photo_after:"Foto: Display wie neu",
+        ba1_before:"📱 Display zerbrochen ❌",
+        ba1_after:"✨ Display wie neu ✅",
+        ba2_before:"🔋 Akku leer nach 2 Std ❌",
+        ba2_after:"🔋 Ganzer Tag Nutzung ✅",
 
         how_title:"So läuft es ab",
         how_text:"3 Schritte – einfach & transparent.",
@@ -361,6 +407,7 @@
         quiz_q1:"Lädt das Handy?",
         quiz_q2:"Akku schnell leer?",
         quiz_q3:"Bildschirm schwarz oder flackert?",
+        quiz_label:"Quiz: Schnell-Check (3 Fragen)",
         quiz_yes:"✅ Ja",
         quiz_no:"❌ Nein",
         quiz_yes_b:"🔋 Ja",
@@ -392,6 +439,14 @@
         nav_prices:"Ціни",
         nav_contact:"Контакти",
         no_appt:"Без запису",
+        ba_title:"ДО / ПІСЛЯ",
+        ba_subtitle:"Місце для фото: до (поламано) та після (відремонтовано).",
+        ba_photo_before:"Фото: розбитий дисплей",
+        ba_photo_after:"Фото: дисплей як новий",
+        ba1_before:"📱 Дисплей розбитий ❌",
+        ba1_after:"✨ Дисплей як новий ✅",
+        ba2_before:"🔋 Акумулятор сідає за 2 год ❌",
+        ba2_after:"🔋 Цілий день роботи ✅",
 
         how_title:"Як це працює",
         how_text:"3 кроки — просто та прозоро.",
@@ -435,6 +490,7 @@
         quiz_q1:"Телефон заряджається?",
         quiz_q2:"Акумулятор швидко сідає?",
         quiz_q3:"Екран чорний або блимає?",
+        quiz_label:"Квіз: швидка діагностика (3 питання)",
         quiz_yes:"✅ Так",
         quiz_no:"❌ Ні",
         quiz_yes_b:"🔋 Так",
@@ -466,6 +522,14 @@
         nav_prices:"Prices",
         nav_contact:"Contact",
         no_appt:"No appointment",
+        ba_title:"BEFORE / AFTER",
+        ba_subtitle:"Placeholders for photos: before (broken) and after (fixed).",
+        ba_photo_before:"Photo: broken display",
+        ba_photo_after:"Photo: display like new",
+        ba1_before:"📱 Display broken ❌",
+        ba1_after:"✨ Display like new ✅",
+        ba2_before:"🔋 Battery empty after 2 hours ❌",
+        ba2_after:"🔋 All-day usage ✅",
 
         how_title:"How it works",
         how_text:"3 steps — simple & transparent.",
@@ -509,6 +573,7 @@
         quiz_q1:"Does the phone charge?",
         quiz_q2:"Battery drains fast?",
         quiz_q3:"Screen black or flickering?",
+        quiz_label:"Quiz: quick diagnosis (3 questions)",
         quiz_yes:"✅ Yes",
         quiz_no:"❌ No",
         quiz_yes_b:"🔋 Yes",
