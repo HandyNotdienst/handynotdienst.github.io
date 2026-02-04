@@ -6,6 +6,12 @@
   <title>Handy Notdienst Singen – Handyreparatur (DE/UA/EN)</title>
   <meta name="description" content="Handy Notdienst in Singen: Display, Akku, Ladebuchse, Kamera, Wasserschaden. Schnell & zuverlässig. WhatsApp, Telegram, Email." />
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicon + PWA -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1b374c">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
 </head>
 
 <body>
@@ -38,8 +44,8 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <main id="top">
+    <!-- Hero -->
     <section class="hero">
       <div class="container hero__grid">
         <div class="hero__content">
@@ -54,9 +60,12 @@
           <div class="hero__actions">
             <a class="btn" href="#contact" data-i18n="cta_main">Jetzt anfragen</a>
             <a class="btn btn--ghost" href="#prices" data-i18n="cta_prices">Preise ansehen</a>
+            <button class="btn btn--ghost" id="quizStartBtn" type="button">🧠 Quiz</button>
           </div>
 
           <div class="trust">
+            <span class="chip chip--live" id="liveBadge">⏱️ …</span>
+            <span class="chip">🔒 <span data-i18n="safe_badge">Ohne Datenverlust</span></span>
             <span class="chip">✅ <span data-i18n="trust1">Schnelle Diagnose</span></span>
             <span class="chip">⚡ <span data-i18n="trust2">Oft am selben Tag</span></span>
             <span class="chip">🧾 <span data-i18n="trust3">Transparente Preise</span></span>
@@ -147,6 +156,36 @@
       </div>
     </section>
 
+    <!-- Before / After -->
+    <section class="section" id="beforeafter">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="ba_title">Vorher / Nachher</h2>
+          <p class="muted" data-i18n="ba_text">Typische Fälle – so sieht das Ergebnis aus.</p>
+        </div>
+
+        <div class="ba-grid">
+          <div class="card ba">
+            <div class="ba__top">📱 <strong data-i18n="ba1_before">Display zerbrochen</strong> ❌</div>
+            <div class="ba__arrow">↓</div>
+            <div class="ba__bottom">✨ <strong data-i18n="ba1_after">Display wie neu</strong> ✅</div>
+          </div>
+
+          <div class="card ba">
+            <div class="ba__top">🔋 <strong data-i18n="ba2_before">Akku leer nach 2 Std</strong> ❌</div>
+            <div class="ba__arrow">↓</div>
+            <div class="ba__bottom">🔋 <strong data-i18n="ba2_after">Ganzer Tag Nutzung</strong> ✅</div>
+          </div>
+
+          <div class="card ba">
+            <div class="ba__top">🔌 <strong data-i18n="ba3_before">Lädt nur manchmal</strong> ❌</div>
+            <div class="ba__arrow">↓</div>
+            <div class="ba__bottom">⚡ <strong data-i18n="ba3_after">Zuverlässig laden</strong> ✅</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- PRICES -->
     <section class="section section--alt" id="prices">
       <div class="container">
@@ -162,7 +201,7 @@
             <input
               type="text"
               class="price-search"
-              data-table-search="samsungTable"
+              data-filter-target="samsungTable"
               placeholder="Modell suchen (z.B. S23, Ultra...)"
             />
           </div>
@@ -200,6 +239,9 @@
               </tbody>
             </table>
           </div>
+
+          <!-- auto mobile cards here -->
+          <div class="price-cards js-price-cards"></div>
         </div>
 
         <!-- iPhone -->
@@ -209,7 +251,7 @@
             <input
               type="text"
               class="price-search"
-              data-table-search="iphoneTable"
+              data-filter-target="iphoneTable"
               placeholder="Modell suchen (z.B. iPhone 13, Pro...)"
             />
           </div>
@@ -260,16 +302,40 @@
               </tbody>
             </table>
           </div>
+
+          <!-- auto mobile cards here -->
+          <div class="price-cards js-price-cards"></div>
         </div>
 
-        <p class="price-note" data-i18n="prices_note">
-          * Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.
-        </p>
+        <p class="price-note" data-i18n="prices_note">* Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.</p>
+        <p class="price-note" data-i18n="prices_time">⏱️ Die meisten Reparaturen dauern 30–90 Minuten (je nach Modell).</p>
+      </div>
+    </section>
+
+    <!-- Upsell -->
+    <section class="section" id="upsell">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="up_title">Wir reparieren auch</h2>
+          <p class="muted" data-i18n="up_text">Nicht gefunden? Frag uns trotzdem.</p>
+        </div>
+
+        <div class="up-grid">
+          <div class="card up">⌚ <strong>Apple Watch</strong><div class="muted" data-i18n="up_watch">Akku, Display, Glas</div></div>
+          <div class="card up">🎧 <strong>AirPods</strong><div class="muted" data-i18n="up_airpods">Akku, Reinigung, Fehler</div></div>
+          <div class="card up">📟 <strong>Tablets</strong><div class="muted" data-i18n="up_tablets">iPad & Android</div></div>
+          <div class="card up">🎮 <strong>Konsolen</strong><div class="muted" data-i18n="up_console">HDMI, Reinigung</div></div>
+        </div>
+
+        <div class="up-cta">
+          <a class="btn" href="#contact" data-i18n="up_cta">Jetzt kurz anfragen</a>
+          <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
       </div>
     </section>
 
     <!-- Why -->
-    <section class="section" id="why">
+    <section class="section section--alt" id="why">
       <div class="container">
         <div class="section__head">
           <h2 data-i18n="why_title">Warum Handy Notdienst?</h2>
@@ -313,7 +379,7 @@
     </section>
 
     <!-- Contact -->
-    <section class="section section--alt" id="contact">
+    <section class="section" id="contact">
       <div class="container contact">
         <div class="card contact__left">
           <h2 data-i18n="contact_title">Kontakt</h2>
@@ -357,7 +423,6 @@
           <h3 data-i18n="map_title">Standort</h3>
           <p class="muted" data-i18n="map_text">Hier kannst du Google Maps einfügen.</p>
 
-          <!-- Replace this placeholder with Google Maps iframe later -->
           <div class="map">
             <span>🗺️ <span data-i18n="map_placeholder">Google Maps Platzhalter</span></span>
           </div>
@@ -383,7 +448,6 @@
       </div>
     </footer>
 
-    <!-- Legal sections (placeholders) -->
     <section class="legal" id="impressum">
       <div class="container card">
         <h2 data-i18n="impressum">Impressum</h2>
@@ -404,16 +468,92 @@
   </main>
 
   <!-- Floating WhatsApp -->
-  <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener" aria-label="WhatsApp">
-    💬
-  </a>
+  <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+  <!-- Smart Popup -->
+  <div class="smart-popup" id="smartPopup" hidden>
+    <div class="smart-popup__inner">
+      <div class="smart-popup__text">
+        <strong data-i18n="pop_title">Brauchst du Hilfe?</strong>
+        <div class="muted" data-i18n="pop_text">Schreib uns kurz bei WhatsApp – wir antworten schnell.</div>
+      </div>
+      <div class="smart-popup__actions">
+        <a class="btn btn--wa" id="popupWA" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <button class="btn btn--ghost" id="popupClose" type="button" aria-label="Close">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ MODAL -->
+  <div class="quiz-modal" id="quizModal" hidden>
+    <div class="quiz-modal__overlay" id="quizOverlay"></div>
+
+    <div class="quiz-modal__box">
+      <div class="quiz-modal__progress">
+        <div class="quiz-progress-bar">
+          <span class="quiz-progress-fill" id="quizProgressFill"></span>
+        </div>
+        <div class="quiz-progress-text" id="quizProgressText">33%</div>
+      </div>
+
+      <div class="quiz-modal__content">
+        <!-- STEP 1 -->
+        <div class="quiz-screen is-active" data-step="1">
+          <h3 data-i18n="quiz_q1">Lädt das Handy?</h3>
+          <div class="quiz-actions">
+            <button class="btn" data-answer="yes" data-i18n="quiz_yes">✅ Ja</button>
+            <button class="btn btn--ghost" data-answer="no" data-i18n="quiz_no">❌ Nein</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="quiz-screen" data-step="2">
+          <h3 data-i18n="quiz_q2">Akku schnell leer?</h3>
+          <div class="quiz-actions">
+            <button class="btn" data-answer="yes" data-i18n="quiz_yes_b">🔋 Ja</button>
+            <button class="btn btn--ghost" data-answer="no" data-i18n="quiz_no_b">➡️ Nein</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="quiz-screen" data-step="3">
+          <h3 data-i18n="quiz_q3">Bildschirm schwarz oder flackert?</h3>
+          <div class="quiz-actions">
+            <button class="btn" data-answer="yes" data-i18n="quiz_yes_s">📱 Ja</button>
+            <button class="btn btn--ghost" data-answer="no" data-i18n="quiz_no_s">➡️ Nein</button>
+          </div>
+        </div>
+
+        <!-- RESULT (SUCCESS) -->
+        <div class="quiz-screen" data-step="result">
+          <div class="quiz-success">
+            <div class="quiz-success__icon">
+              <span class="check">✓</span>
+              <span class="ring"></span>
+              <span class="ring ring--2"></span>
+            </div>
+
+            <div class="quiz-success__badge" id="quizResultBadge">…</div>
+            <p class="muted" id="quizResultText">…</p>
+
+            <div class="quiz-success__actions">
+              <a class="btn btn--wa" id="quizResultWA" target="_blank" rel="noopener">💬 WhatsApp</a>
+              <button class="btn btn--ghost" id="quizClose" type="button" data-i18n="quiz_close">✕ Schließen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="quiz-back-btn" id="quizBackBtn" hidden data-i18n="quiz_back">⏪ Zurück</button>
+    </div>
+  </div>
 
   <script>
     // ===== SETTINGS =====
-    const WHATSAPP_NUMBER = "4915222416438"; // without +
+    const WHATSAPP_NUMBER = "4915222416438";
     const CITY = "Singen";
 
-    // year
+    // ===== YEAR =====
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // ===== i18n =====
@@ -426,6 +566,7 @@
         lead: "Display, Akku, Ladebuchse, Kamera, Wasserschaden – wir helfen schnell. Schreib uns per WhatsApp oder ruf an.",
         cta_main: "Jetzt anfragen",
         cta_prices: "Preise ansehen",
+        safe_badge: "Ohne Datenverlust",
         trust1: "Schnelle Diagnose",
         trust2: "Oft am selben Tag",
         trust3: "Transparente Preise",
@@ -449,11 +590,27 @@
         s5_text: "Leise, kratzt, du wirst nicht gehört – Diagnose & Reparatur.",
         s6_title: "Wasserschaden",
         s6_text: "Schnelle Rettung erhöht die Chance – bring das Gerät ASAP.",
+        ba_title: "Vorher / Nachher",
+        ba_text: "Typische Fälle – so sieht das Ergebnis aus.",
+        ba1_before: "Display zerbrochen",
+        ba1_after: "Display wie neu",
+        ba2_before: "Akku leer nach 2 Std",
+        ba2_after: "Ganzer Tag Nutzung",
+        ba3_before: "Lädt nur manchmal",
+        ba3_after: "Zuverlässig laden",
         prices_title: "Preisliste",
         prices_text: "Klick auf einen Preis → WhatsApp öffnet sich mit Modell + Reparatur + Preis.",
         prices_note: "* Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.",
+        prices_time: "⏱️ Die meisten Reparaturen dauern 30–90 Minuten (je nach Modell).",
         samsung_title: "Samsung Reparaturen",
         iphone_title: "iPhone Reparaturen",
+        up_title: "Wir reparieren auch",
+        up_text: "Nicht gefunden? Frag uns trotzdem.",
+        up_watch: "Akku, Display, Glas",
+        up_airpods: "Akku, Reinigung, Fehler",
+        up_tablets: "iPad & Android",
+        up_console: "HDMI, Reinigung",
+        up_cta: "Jetzt kurz anfragen",
         why_title: "Warum Handy Notdienst?",
         why_text: "Kurz, ehrlich, ohne Überraschungen.",
         w1_title: "Schnell",
@@ -478,7 +635,20 @@
         impressum: "Impressum",
         privacy: "Datenschutz",
         legal_hint: "Platzhalter – hier kommen Firmenname, Adresse, Kontakt, USt-ID (falls vorhanden) rein.",
-        privacy_hint: "Platzhalter – Datenschutzhinweise (Cookies, Kontakt, Hosting, Analytics falls genutzt)."
+        privacy_hint: "Platzhalter – Datenschutzhinweise (Cookies, Kontakt, Hosting, Analytics falls genutzt).",
+        pop_title: "Brauchst du Hilfe?",
+        pop_text: "Schreib uns kurz bei WhatsApp – wir antworten schnell.",
+        quiz_q1: "Lädt das Handy?",
+        quiz_q2: "Akku schnell leer?",
+        quiz_q3: "Bildschirm schwarz oder flackert?",
+        quiz_yes: "✅ Ja",
+        quiz_no: "❌ Nein",
+        quiz_yes_b: "🔋 Ja",
+        quiz_no_b: "➡️ Nein",
+        quiz_yes_s: "📱 Ja",
+        quiz_no_s: "➡️ Nein",
+        quiz_close: "✕ Schließen",
+        quiz_back: "⏪ Zurück"
       },
       ua: {
         tagline: "Singen • Швидко та надійно",
@@ -488,6 +658,7 @@
         lead: "Дисплей, акумулятор, розʼєм зарядки, камера, після води — допоможемо швидко. Пиши у WhatsApp або дзвони.",
         cta_main: "Залишити заявку",
         cta_prices: "Переглянути ціни",
+        safe_badge: "Без втрати даних",
         trust1: "Швидка діагностика",
         trust2: "Часто в той самий день",
         trust3: "Прозорі ціни",
@@ -511,11 +682,27 @@
         s5_text: "Тихо, хрипить, вас не чують — діагностика і ремонт.",
         s6_title: "Після води",
         s6_text: "Чим швидше — тим більше шансів. Принось якнайшвидше.",
+        ba_title: "До / Після",
+        ba_text: "Типові випадки — як виглядає результат.",
+        ba1_before: "Екран розбитий",
+        ba1_after: "Екран як новий",
+        ba2_before: "Батарея сідає за 2 год",
+        ba2_after: "Цілий день користування",
+        ba3_before: "Заряджає через раз",
+        ba3_after: "Стабільно заряджає",
         prices_title: "Ціни",
         prices_text: "Клікни на ціну → відкриється WhatsApp з моделлю + ремонтом + ціною.",
         prices_note: "* Ціни включають роботу. Можливі зміни залежно від запчастини.",
+        prices_time: "⏱️ Більшість ремонтів займає 30–90 хв (залежить від моделі).",
         samsung_title: "Ремонт Samsung",
         iphone_title: "Ремонт iPhone",
+        up_title: "Також ремонтуємо",
+        up_text: "Не знайшов? Все одно напиши.",
+        up_watch: "Батарея, дисплей, скло",
+        up_airpods: "Батарея, чистка, помилки",
+        up_tablets: "iPad та Android",
+        up_console: "HDMI, чистка",
+        up_cta: "Коротко написати",
         why_title: "Чому Handy Notdienst?",
         why_text: "Коротко, чесно, без сюрпризів.",
         w1_title: "Швидко",
@@ -540,7 +727,20 @@
         impressum: "Impressum",
         privacy: "Datenschutz",
         legal_hint: "Заглушка — сюди додаємо назву, адресу, контакти, USt-ID (якщо є).",
-        privacy_hint: "Заглушка — політика конфіденційності (cookies, контакти, хостинг, аналітика якщо буде)."
+        privacy_hint: "Заглушка — політика конфіденційності (cookies, контакти, хостинг, аналітика якщо буде).",
+        pop_title: "Потрібна допомога?",
+        pop_text: "Напиши в WhatsApp — відповімо швидко.",
+        quiz_q1: "Телефон заряджається?",
+        quiz_q2: "Акумулятор швидко сідає?",
+        quiz_q3: "Екран чорний або блимає?",
+        quiz_yes: "✅ Так",
+        quiz_no: "❌ Ні",
+        quiz_yes_b: "🔋 Так",
+        quiz_no_b: "➡️ Ні",
+        quiz_yes_s: "📱 Так",
+        quiz_no_s: "➡️ Ні",
+        quiz_close: "✕ Закрити",
+        quiz_back: "⏪ Назад"
       },
       en: {
         tagline: "Singen • Fast & reliable",
@@ -550,6 +750,7 @@
         lead: "Screen, battery, charging port, camera, water damage — we help fast. Message us on WhatsApp or call.",
         cta_main: "Request now",
         cta_prices: "View prices",
+        safe_badge: "No data loss",
         trust1: "Quick diagnosis",
         trust2: "Often same day",
         trust3: "Transparent prices",
@@ -573,11 +774,27 @@
         s5_text: "Low sound or you can't be heard — diagnosis & repair.",
         s6_title: "Water damage",
         s6_text: "The faster you act, the better — bring it ASAP.",
+        ba_title: "Before / After",
+        ba_text: "Typical cases — this is the result.",
+        ba1_before: "Cracked screen",
+        ba1_after: "Screen like new",
+        ba2_before: "Battery dies fast",
+        ba2_after: "All-day usage",
+        ba3_before: "Charges sometimes",
+        ba3_after: "Reliable charging",
         prices_title: "Price list",
         prices_text: "Click a price → WhatsApp opens with model + repair + price.",
         prices_note: "* Prices include labor. May vary depending on parts.",
+        prices_time: "⏱️ Most repairs take 30–90 minutes (depending on model).",
         samsung_title: "Samsung repairs",
         iphone_title: "iPhone repairs",
+        up_title: "We also repair",
+        up_text: "Not listed? Ask us anyway.",
+        up_watch: "Battery, screen, glass",
+        up_airpods: "Battery, cleaning, issues",
+        up_tablets: "iPad & Android",
+        up_console: "HDMI, cleaning",
+        up_cta: "Quick request",
         why_title: "Why Handy Notdienst?",
         why_text: "Simple, honest, no surprises.",
         w1_title: "Fast",
@@ -602,62 +819,80 @@
         impressum: "Imprint",
         privacy: "Privacy",
         legal_hint: "Placeholder — company name, address, contact, VAT ID (if any).",
-        privacy_hint: "Placeholder — privacy policy (cookies, contact, hosting, analytics if used)."
+        privacy_hint: "Placeholder — privacy policy (cookies, contact, hosting, analytics if used).",
+        pop_title: "Need help?",
+        pop_text: "Message us on WhatsApp — fast reply.",
+        quiz_q1: "Does the phone charge?",
+        quiz_q2: "Battery drains fast?",
+        quiz_q3: "Screen black or flickering?",
+        quiz_yes: "✅ Yes",
+        quiz_no: "❌ No",
+        quiz_yes_b: "🔋 Yes",
+        quiz_no_b: "➡️ No",
+        quiz_yes_s: "📱 Yes",
+        quiz_no_s: "➡️ No",
+        quiz_close: "✕ Close",
+        quiz_back: "⏪ Back"
       }
     };
 
+    function getLang(){ return localStorage.getItem("hn_lang") || "de"; }
+
     function setLang(lang){
-      document.querySelectorAll(".lang__btn").forEach(b => {
-        b.classList.toggle("is-active", b.dataset.lang === lang);
-      });
+      document.querySelectorAll(".lang__btn").forEach(b => b.classList.toggle("is-active", b.dataset.lang === lang));
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
         const val = dict[lang]?.[key];
-        if (val) el.innerHTML = val;
+        if (val) el.textContent = val; // use textContent for safety
       });
+
+      // Keep some fields using innerHTML (hero h1)
+      const h1 = document.querySelector('[data-i18n="h1"]');
+      if (h1) h1.innerHTML = dict[lang].h1;
 
       localStorage.setItem("hn_lang", lang);
       document.documentElement.lang = (lang === "ua") ? "uk" : lang;
 
-      // update quick WA link and search placeholders
       updateQuickWA(lang);
+      updateLiveBadge();
       updateSearchPlaceholders(lang);
+      updatePopupTexts(lang);
     }
 
     function updateSearchPlaceholders(lang){
       const map = {
-        de: {
-          samsung: "Modell suchen (z.B. S23, Ultra...)",
-          iphone: "Modell suchen (z.B. iPhone 13, Pro...)"
-        },
-        ua: {
-          samsung: "Пошук моделі (напр. S23, Ultra...)",
-          iphone: "Пошук моделі (напр. iPhone 13, Pro...)"
-        },
-        en: {
-          samsung: "Search model (e.g. S23, Ultra...)",
-          iphone: "Search model (e.g. iPhone 13, Pro...)"
-        }
+        de:{ s:"Modell suchen (z.B. S23, Ultra...)", i:"Modell suchen (z.B. iPhone 13, Pro...)" },
+        ua:{ s:"Пошук моделі (напр. S23, Ultra...)", i:"Пошук моделі (напр. iPhone 13, Pro...)" },
+        en:{ s:"Search model (e.g. S23, Ultra...)", i:"Search model (e.g. iPhone 13, Pro...)" }
       };
-      const samsung = document.querySelector('[data-table-search="samsungTable"]');
-      const iphone = document.querySelector('[data-table-search="iphoneTable"]');
-      if (samsung) samsung.placeholder = map[lang].samsung;
-      if (iphone) iphone.placeholder = map[lang].iphone;
+      const inputs = document.querySelectorAll(".price-search");
+      inputs.forEach(inp => {
+        const target = inp.getAttribute("data-filter-target");
+        if (target === "samsungTable") inp.placeholder = map[lang].s;
+        if (target === "iphoneTable") inp.placeholder = map[lang].i;
+      });
     }
 
-    // ===== Quick WhatsApp (model + issue) =====
+    // ===== Header shadow on scroll =====
+    const header = document.querySelector(".header");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 20) header.classList.add("is-scrolled");
+      else header.classList.remove("is-scrolled");
+    });
+
+    // ===== Quick WhatsApp link =====
     function updateQuickWA(lang){
-      const model = (document.getElementById("model")?.value || "").trim();
-      const issue = (document.getElementById("issue")?.value || "").trim();
+      const model = (document.getElementById("model")?.value || "").trim() || "-";
+      const issue = (document.getElementById("issue")?.value || "").trim() || "-";
       const base = `https://wa.me/${WHATSAPP_NUMBER}?text=`;
 
       let msg;
       if (lang === "ua") {
-        msg = `Привіт! Потрібна допомога.%0A%0AМодель: ${encodeURIComponent(model || "-")}%0AПроблема: ${encodeURIComponent(issue || "-")}%0A%0AМісто: ${CITY}`;
+        msg = `Привіт! Потрібна допомога.%0A%0AМодель: ${encodeURIComponent(model)}%0AПроблема: ${encodeURIComponent(issue)}%0A%0AМісто: ${CITY}`;
       } else if (lang === "en") {
-        msg = `Hi! I need help.%0A%0AModel: ${encodeURIComponent(model || "-")}%0AIssue: ${encodeURIComponent(issue || "-")}%0A%0ACity: ${CITY}`;
+        msg = `Hi! I need help.%0A%0AModel: ${encodeURIComponent(model)}%0AIssue: ${encodeURIComponent(issue)}%0A%0ACity: ${CITY}`;
       } else {
-        msg = `Hallo! Ich brauche Hilfe.%0A%0AModell: ${encodeURIComponent(model || "-")}%0AProblem: ${encodeURIComponent(issue || "-")}%0A%0AOrt: ${CITY}`;
+        msg = `Hallo! Ich brauche Hilfe.%0A%0AModell: ${encodeURIComponent(model)}%0AProblem: ${encodeURIComponent(issue)}%0A%0AOrt: ${CITY}`;
       }
 
       const link = document.getElementById("waQuick");
@@ -669,85 +904,353 @@
       if (el) el.addEventListener("input", () => updateQuickWA(getLang()));
     });
 
-    function getLang(){
-      return localStorage.getItem("hn_lang") || "de";
+    // ===== Live badge (hours) =====
+    function updateLiveBadge(){
+      const lang = getLang();
+      const el = document.getElementById("liveBadge");
+      if (!el) return;
+
+      const now = new Date();
+      const day = now.getDay(); // 0 Sun ... 6 Sat
+      const hour = now.getHours();
+
+      const isWorkDay = day >= 1 && day <= 6;      // Mon-Sat
+      const isWorkTime = hour >= 10 && hour < 19;  // 10-19
+      const ok = isWorkDay && isWorkTime;
+
+      const text = {
+        de: ok ? "⏱️ Heute: 30–90 Min möglich" : "⏱️ Schnell via WhatsApp",
+        ua: ok ? "⏱️ Сьогодні: 30–90 хв можливо" : "⏱️ Швидко у WhatsApp",
+        en: ok ? "⏱️ Today: 30–90 min possible" : "⏱️ Fast via WhatsApp"
+      }[lang];
+
+      el.textContent = text;
+      el.dataset.state = ok ? "open" : "closed";
+    }
+    updateLiveBadge();
+    setInterval(updateLiveBadge, 60000);
+
+    // ===== Tracking =====
+    function track(evt, data = {}){
+      try{
+        const key = "hn_events";
+        const arr = JSON.parse(localStorage.getItem(key) || "[]");
+        arr.push({ t: Date.now(), evt, ...data });
+        localStorage.setItem(key, JSON.stringify(arr));
+      } catch(e){}
     }
 
-    // ===== Table search (works for both tables) =====
-    document.querySelectorAll(".price-search").forEach(input => {
-      input.addEventListener("input", () => {
-        const tableId = input.getAttribute("data-table-search");
-        const table = document.getElementById(tableId);
-        if (!table) return;
-
-        const q = input.value.toLowerCase();
-        table.querySelectorAll("tbody tr").forEach(tr => {
-          tr.style.display = tr.innerText.toLowerCase().includes(q) ? "" : "none";
-        });
-      });
-    });
-
-    // ===== Auto sendWA for ALL price cells (no manual onclick) =====
-    function sendWAFromCell(table, row, colIndex, priceText){
+    // ===== Price click -> WhatsApp =====
+    function openWAForPrice(brand, model, repair, price){
       const lang = getLang();
-      const brand = table.dataset.brand || "";
-      const model = row.cells[0]?.innerText.trim() || "";
-      const repair = table.tHead?.rows[0]?.cells[colIndex]?.innerText.trim() || "";
+      const device = `${brand} ${model}`.trim();
 
-      // ignore empty / dash
-      const clean = (priceText || "").trim();
-      if (!clean || clean === "-" ) return;
-
-      // build message
       let text;
       if (lang === "ua") {
-        text =
-          `Привіт!%0A` +
-          `Хочу замовити ремонт:%0A%0A` +
-          `📱 Пристрій: ${encodeURIComponent(brand + " " + model)}%0A` +
-          `🛠️ Ремонт: ${encodeURIComponent(repair)}%0A` +
-          `💶 Ціна: ${encodeURIComponent(clean)}%0A%0A` +
-          `Місто: ${CITY}`;
+        text = `Привіт!%0AХочу ремонт:%0A%0A📱 ${encodeURIComponent(device)}%0A🛠️ ${encodeURIComponent(repair)}%0A💶 ${encodeURIComponent(price)}%0A%0AМісто: ${CITY}`;
       } else if (lang === "en") {
-        text =
-          `Hi!%0A` +
-          `I'd like to request a repair:%0A%0A` +
-          `📱 Device: ${encodeURIComponent(brand + " " + model)}%0A` +
-          `🛠️ Repair: ${encodeURIComponent(repair)}%0A` +
-          `💶 Price: ${encodeURIComponent(clean)}%0A%0A` +
-          `City: ${CITY}`;
+        text = `Hi!%0AI'd like a repair:%0A%0A📱 ${encodeURIComponent(device)}%0A🛠️ ${encodeURIComponent(repair)}%0A💶 ${encodeURIComponent(price)}%0A%0ACity: ${CITY}`;
       } else {
-        text =
-          `Hallo!%0A` +
-          `Ich möchte eine Reparatur anfragen:%0A%0A` +
-          `📱 Gerät: ${encodeURIComponent(brand + " " + model)}%0A` +
-          `🛠️ Reparatur: ${encodeURIComponent(repair)}%0A` +
-          `💶 Preis: ${encodeURIComponent(clean)}%0A%0A` +
-          `Ort: ${CITY}`;
+        text = `Hallo!%0AIch möchte eine Reparatur anfragen:%0A%0A📱 ${encodeURIComponent(device)}%0A🛠️ ${encodeURIComponent(repair)}%0A💶 ${encodeURIComponent(price)}%0A%0AOrt: ${CITY}`;
       }
 
+      track("price_click", { brand, model, repair, price });
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
     }
 
-    // attach events to all price tables
-    document.querySelectorAll(".js-price-table").forEach(table => {
-      table.querySelectorAll("tbody tr").forEach(row => {
-        Array.from(row.cells).forEach((cell, idx) => {
-          if (idx === 0) return; // model column
-          cell.classList.add("price-cell");
-          cell.addEventListener("click", () => sendWAFromCell(table, row, idx, cell.innerText));
+    function bindTablePriceClicks(){
+      document.querySelectorAll(".js-price-table").forEach(table => {
+        const brand = table.dataset.brand || "";
+        const headers = Array.from(table.tHead.rows[0].cells).map(th => th.innerText.trim());
+
+        table.querySelectorAll("tbody tr").forEach(row => {
+          const model = row.cells[0].innerText.trim();
+
+          Array.from(row.cells).forEach((cell, idx) => {
+            if (idx === 0) return;
+            const price = cell.innerText.trim();
+            if (!price || price === "-") return;
+
+            cell.classList.add("price-cell");
+            cell.addEventListener("click", () => {
+              const repair = headers[idx] || "Repair";
+              openWAForPrice(brand, model, repair, price);
+            });
+          });
         });
+      });
+    }
+
+    // ===== Auto-generate mobile cards from tables =====
+    function generateMobileCards(){
+      document.querySelectorAll(".js-price-table").forEach(table => {
+        const brand = table.dataset.brand || "";
+        const container = table.closest(".price-block").querySelector(".js-price-cards");
+        if (!container) return;
+        container.innerHTML = "";
+
+        const headers = Array.from(table.tHead.rows[0].cells).slice(1).map(th => th.innerText.trim());
+
+        table.querySelectorAll("tbody tr").forEach(row => {
+          const model = row.cells[0].innerText.trim();
+
+          const card = document.createElement("div");
+          card.className = "price-card";
+          const h = document.createElement("h4");
+          h.textContent = `${brand} ${model}`;
+          card.appendChild(h);
+
+          headers.forEach((repair, idx) => {
+            const cell = row.cells[idx + 1];
+            if (!cell) return;
+            const price = cell.innerText.trim();
+            if (!price || price === "-") return;
+
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.innerHTML = `${repair} — <strong>${price}</strong>`;
+            btn.addEventListener("click", () => openWAForPrice(brand, model, repair, price));
+            card.appendChild(btn);
+          });
+
+          container.appendChild(card);
+        });
+      });
+    }
+
+    // ===== Search (filters both table + cards) =====
+    function filterPriceBlock(input){
+      const targetId = input.getAttribute("data-filter-target");
+      const table = document.getElementById(targetId);
+      if (!table) return;
+      const q = input.value.toLowerCase();
+
+      // table
+      table.querySelectorAll("tbody tr").forEach(tr => {
+        tr.style.display = tr.innerText.toLowerCase().includes(q) ? "" : "none";
+      });
+
+      // cards (same block)
+      const cards = table.closest(".price-block").querySelectorAll(".price-card");
+      cards.forEach(c => {
+        c.style.display = c.innerText.toLowerCase().includes(q) ? "" : "none";
+      });
+    }
+
+    document.querySelectorAll(".price-search").forEach(input => {
+      input.addEventListener("input", () => filterPriceBlock(input));
+    });
+
+    // ===== Smart popup =====
+    let waClicked = false;
+
+    function updatePopupTexts(lang){
+      // just updates link text target; content comes from i18n
+      const wa = document.getElementById("popupWA");
+      if (!wa) return;
+
+      const msg = (lang==="ua")
+        ? `Привіт! Потрібна консультація. Місто: ${CITY}`
+        : (lang==="en")
+          ? `Hi! I need a quick quote. City: ${CITY}`
+          : `Hallo! Ich brauche kurz Hilfe. Ort: ${CITY}`;
+
+      wa.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+    }
+
+    document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
+      a.addEventListener("click", () => { waClicked = true; track("whatsapp_click", { href: a.href }); });
+    });
+
+    function markSeenPrices(){
+      const sec = document.getElementById("prices");
+      if (!sec) return;
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if (en.isIntersecting){
+            localStorage.setItem("hn_seen_prices", "1");
+            track("seen_prices", {});
+            io.disconnect();
+          }
+        });
+      }, { threshold: 0.2 });
+      io.observe(sec);
+    }
+    markSeenPrices();
+
+    function maybeShowPopup(){
+      const seen = localStorage.getItem("hn_seen_prices") === "1";
+      const dismissed = localStorage.getItem("hn_popup_dismissed") === "1";
+      if (!seen || dismissed || waClicked) return;
+
+      const pop = document.getElementById("smartPopup");
+      const close = document.getElementById("popupClose");
+      if (!pop || !close) return;
+
+      pop.hidden = false;
+      track("popup_shown", {});
+
+      close.onclick = () => {
+        pop.hidden = true;
+        localStorage.setItem("hn_popup_dismissed", "1");
+        track("popup_closed", {});
+      };
+    }
+    setTimeout(maybeShowPopup, 40000);
+
+    // ===== Quiz modal (3 steps, back, progress %, animated success) =====
+    const quizModal = document.getElementById("quizModal");
+    const quizOverlay = document.getElementById("quizOverlay");
+    const quizStartBtn = document.getElementById("quizStartBtn");
+    const quizCloseBtn = document.getElementById("quizClose");
+    const quizBackBtn = document.getElementById("quizBackBtn");
+    const quizProgressFill = document.getElementById("quizProgressFill");
+    const quizProgressText = document.getElementById("quizProgressText");
+
+    let quizStep = 1;
+    let quizAnswers = []; // ["yes"/"no", ...]
+
+    function openQuiz(){
+      quizModal.hidden = false;
+      quizStep = 1;
+      quizAnswers = [];
+      updateQuizUI();
+      track("quiz_open", {});
+    }
+
+    function closeQuiz(){
+      quizModal.hidden = true;
+      track("quiz_close", {});
+    }
+
+    function updateProgress(){
+      const percent = Math.min(quizStep * 33, 100);
+      quizProgressFill.style.width = percent + "%";
+      quizProgressText.textContent = percent + "%";
+    }
+
+    function showQuizScreen(step){
+      document.querySelectorAll(".quiz-screen").forEach(s => s.classList.remove("is-active"));
+      const el = document.querySelector(`.quiz-screen[data-step="${step}"]`);
+      if (el) el.classList.add("is-active");
+    }
+
+    function updateQuizUI(){
+      quizBackBtn.hidden = quizStep <= 1;
+      updateProgress();
+      showQuizScreen(String(quizStep));
+    }
+
+    function showQuizResult(){
+      const lang = getLang();
+
+      // score-based logic
+      const score = { battery: 0, port: 0, display: 0 };
+
+      // Q1 charge? (no -> port)
+      if (quizAnswers[0] === "no") score.port += 2;
+      // Q2 battery drains? (yes -> battery)
+      if (quizAnswers[1] === "yes") score.battery += 3;
+      // Q3 screen black/flicker? (yes -> display)
+      if (quizAnswers[2] === "yes") score.display += 3;
+
+      const resultKey = Object.keys(score).reduce((a,b) => score[a] > score[b] ? a : b);
+
+      const T = {
+        de:{
+          battery:"🔋 Sehr wahrscheinlich: Akku",
+          port:"🔌 Sehr wahrscheinlich: Ladebuchse",
+          display:"📱 Sehr wahrscheinlich: Display / Elektronik",
+          hint:"Schreib uns kurz – wir prüfen das schnell."
+        },
+        ua:{
+          battery:"🔋 Дуже ймовірно: акумулятор",
+          port:"🔌 Дуже ймовірно: розʼєм зарядки",
+          display:"📱 Дуже ймовірно: дисплей або плата",
+          hint:"Напиши нам — швидко перевіримо."
+        },
+        en:{
+          battery:"🔋 Very likely: battery",
+          port:"🔌 Very likely: charging port",
+          display:"📱 Very likely: screen or electronics",
+          hint:"Message us — we’ll check fast."
+        }
+      }[lang];
+
+      document.getElementById("quizResultBadge").textContent = T[resultKey];
+      document.getElementById("quizResultText").textContent = T.hint;
+
+      const msg =
+        lang==="ua"
+          ? `Привіт! Тест показав: ${T[resultKey]}`
+          : (lang==="en")
+            ? `Hi! Quiz result: ${T[resultKey]}`
+            : `Hallo! Quiz-Ergebnis: ${T[resultKey]}`;
+
+      document.getElementById("quizResultWA").href =
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg + " | Ort: " + CITY)}`;
+
+      track("quiz_completed", { result: resultKey, answers: quizAnswers.join(",") });
+
+      // show success screen
+      document.querySelectorAll(".quiz-screen").forEach(s => s.classList.remove("is-active"));
+      document.querySelector(`.quiz-screen[data-step="result"]`).classList.add("is-active");
+
+      // 100%
+      quizProgressFill.style.width = "100%";
+      quizProgressText.textContent = "100%";
+
+      // hide back on result
+      quizBackBtn.hidden = true;
+    }
+
+    // answer buttons
+    document.querySelectorAll(".quiz-actions button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        quizAnswers.push(btn.dataset.answer);
+        quizStep++;
+
+        if (quizStep <= 3){
+          updateQuizUI();
+        } else {
+          showQuizResult();
+        }
       });
     });
 
-    // Language buttons
+    quizBackBtn.addEventListener("click", () => {
+      if (quizStep > 1){
+        quizStep--;
+        quizAnswers.pop();
+        updateQuizUI();
+      }
+    });
+
+    quizStartBtn?.addEventListener("click", openQuiz);
+    quizCloseBtn?.addEventListener("click", closeQuiz);
+    quizOverlay?.addEventListener("click", closeQuiz);
+
+    // ===== Language buttons =====
     document.querySelectorAll(".lang__btn").forEach(btn => {
       btn.addEventListener("click", () => setLang(btn.dataset.lang));
     });
 
-    // init
-    setLang(getLang());
-    updateQuickWA(getLang());
+    // ===== Init =====
+    function init(){
+      setLang(getLang());
+      updateQuickWA(getLang());
+      updatePopupTexts(getLang());
+      bindTablePriceClicks();
+      generateMobileCards();
+
+      // service worker (PWA)
+      if ("serviceWorker" in navigator){
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./sw.js").catch(()=>{});
+        });
+      }
+    }
+    init();
   </script>
 </body>
 </html>
