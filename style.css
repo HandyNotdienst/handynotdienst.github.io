@@ -231,24 +231,25 @@ a{color:inherit;text-decoration:none}
 /* Before/After */
 .ba-grid{
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 16px;
 }
-.ba-card{display:grid; gap: 10px}
-.ba__media{
+.ba-item{margin: 0}
+.ba-image{
+  width: 100%;
+  height: auto;
+  display: block;
   border-radius: 18px;
-  border: 1px dashed var(--line);
-  background: linear-gradient(135deg, rgba(63,169,245,.18), rgba(255,255,255,.03));
-  min-height: 140px;
-  display:grid;
-  place-items:center;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
 }
-.ba__icon{font-size: 42px}
-.ba__top, .ba__bottom{ font-weight: 800; }
-.ba__arrow{ text-align:center; margin: 10px 0; opacity:.7; }
-.ba-card--info{align-content: start}
-.ba__label{font-weight: 900}
-.ba__note{display:flex; flex-wrap:wrap; gap: 8px; margin-top: 6px}
+.ba-compare{
+  margin: 0;
+  text-align: center;
+  font-weight: 800;
+}
 
 @media (max-width: 900px){
   .ba-grid{grid-template-columns: 1fr}
