@@ -1,191 +1,549 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Handy Notdienst – Mobiler Reparaturservice in Singen</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Privater mobiler Reparaturservice in Singen. Akku, Display, Ladebuchse, Software. Faire Preise.">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Handy Notdienst Singen – Handyreparatur (DE/UA)</title>
+  <meta name="description" content="Handy Notdienst in Singen: Display, Akku, Ladebuchse, Kamera, Wasserschaden. Schnell & zuverlässig. WhatsApp & Telefon." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="#top">
+        <span class="brand__mark">HN</span>
+        <span class="brand__text">
+          <strong>Handy Notdienst</strong>
+          <small data-i18n="tagline">Singen • Schnell & zuverlässig</small>
+        </span>
+      </a>
 
-<header class="header">
-  <div class="container header-inner">
-    <div class="brand">
-      <img src="logo.png" alt="Handy Notdienst Logo">
-      <span>Handy Notdienst</span>
-    </div>
+      <div class="header__right">
+        <div class="lang">
+          <button class="lang__btn is-active" type="button" data-lang="de">DE</button>
+          <button class="lang__btn" type="button" data-lang="ua">UA</button>
+        </div>
 
-    <div class="header-right">
-      <div class="lang-switch">
-        <button onclick="setLang('de')" id="btn-de" class="active">DE</button>
-        <button onclick="setLang('ua')" id="btn-ua">UA</button>
+        <a class="pill" href="tel:+4915222416438" aria-label="Telefon anrufen">
+          📞 <span data-i18n="call">Anrufen</span>: <strong>01522 2416438</strong>
+        </a>
+
+        <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">
+          WhatsApp
+        </a>
       </div>
-
-      <a href="tel:+4915222416438" class="phone">📞 01522 2416438</a>
-      <a href="https://wa.me/4915222416438" target="_blank" class="btn-wa">WhatsApp</a>
     </div>
-  </div>
-</header>
+  </header>
 
-<section class="hero">
-  <div class="container">
-    <h1 data-i18n="hero_title">Handy kaputt?<br>Ich helfe dir schnell weiter.</h1>
-    <p data-i18n="hero_text">
-      Privater mobiler Reparaturservice in Singen.<br>
-      Ich komme zu dir – nach Absprache.
-    </p>
+  <!-- Hero -->
+  <main id="top">
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <div class="kicker" data-i18n="kicker">Handyreparatur in Singen</div>
 
-    <div class="hero-buttons">
-      <a href="#contact" class="btn-main" data-i18n="btn_contact">Jetzt Kontakt aufnehmen</a>
-      <a href="https://wa.me/4915222416438" target="_blank" class="btn-outline" data-i18n="btn_wa">WhatsApp schreiben</a>
-    </div>
-  </div>
-</section>
+          <h1 data-i18n="h1">Schneller Smartphone-Service<br/>mit fairen Preisen</h1>
 
-<section class="services">
-  <div class="container services-grid">
-    <div class="service">🔋 <span data-i18n="s1">Akkutausch</span></div>
-    <div class="service">📱 <span data-i18n="s2">Displaywechsel</span></div>
-    <div class="service">⚡ <span data-i18n="s3">Ladebuchsenreparatur</span></div>
-    <div class="service">🛡️ <span data-i18n="s4">Gehäuse- / Deckelwechsel</span></div>
-    <div class="service">💻 <span data-i18n="s5">Software-Probleme</span></div>
-    <div class="service">🛠️ <span data-i18n="s6">Weitere Reparaturen auf Anfrage</span></div>
-  </div>
-</section>
+          <p class="lead" data-i18n="lead">
+            Display, Akku, Ladebuchse, Kamera, Wasserschaden – wir helfen schnell. Schreib uns per WhatsApp oder ruf an.
+          </p>
 
+          <div class="hero__actions">
+            <a class="btn" href="#contact" data-i18n="cta_main">Jetzt anfragen</a>
+            <a class="btn btn--ghost" href="https://wa.me/4915222416438" target="_blank" rel="noopener" data-i18n="cta_wa">
+              WhatsApp schreiben
+            </a>
+          </div>
+
+          <div class="trust">
+            <span class="chip">✅ <span data-i18n="trust1">Schnelle Diagnose</span></span>
+            <span class="chip">⚡ <span data-i18n="trust2">Oft am selben Tag</span></span>
+            <span class="chip">🧾 <span data-i18n="trust3">Transparente Preise</span></span>
+          </div>
+        </div>
+
+        <div class="hero__card card">
+          <h3 data-i18n="quick_title">Schneller Check</h3>
+          <p class="muted" data-i18n="quick_text">Schreib Modell + Problem – wir antworten schnell.</p>
+
+          <div class="mini">
+            <label class="field">
+              <span data-i18n="field_model">Modell</span>
+              <input id="model" type="text" placeholder="z.B. iPhone 13 / Samsung S21" />
+            </label>
+
+            <label class="field">
+              <span data-i18n="field_issue">Problem</span>
+              <input id="issue" type="text" placeholder="Display, Akku, lädt nicht..." />
+            </label>
+
+            <a id="waLink" class="btn btn--wa btn--full" href="https://wa.me/4915222416438" target="_blank" rel="noopener">
+              <span data-i18n="send_wa">An WhatsApp senden</span>
+            </a>
+
+            <p class="hint" data-i18n="hint">
+              Tipp: Je genauer du beschreibst, desto schneller bekommst du einen Preis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="services_title">Services</h2>
+          <p class="muted" data-i18n="services_text">Die häufigsten Reparaturen – schnell & sauber.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card service">
+            <div class="service__icon">📱</div>
+            <h3 data-i18n="s1_title">Display Reparatur</h3>
+            <p data-i18n="s1_text">Glas gebrochen, Touch spinnt, Flecken – Austausch nach Diagnose.</p>
+          </article>
+
+          <article class="card service">
+            <div class="service__icon">🔋</div>
+            <h3 data-i18n="s2_title">Akku Austausch</h3>
+            <p data-i18n="s2_text">Akku schnell leer oder aufgebläht – wir ersetzen sicher.</p>
+          </article>
+
+          <article class="card service">
+            <div class="service__icon">🔌</div>
+            <h3 data-i18n="s3_title">Ladebuchse</h3>
+            <p data-i18n="s3_text">Wackelkontakt / lädt nicht – Reinigung oder Austausch.</p>
+          </article>
+
+          <article class="card service">
+            <div class="service__icon">📷</div>
+            <h3 data-i18n="s4_title">Kamera</h3>
+            <p data-i18n="s4_text">Unscharf, schwarzes Bild, Glas kaputt – wir fixen das.</p>
+          </article>
+
+          <article class="card service">
+            <div class="service__icon">🎧</div>
+            <h3 data-i18n="s5_title">Lautsprecher / Mikro</h3>
+            <p data-i18n="s5_text">Leise, kratzt, du wirst nicht gehört – Diagnose & Reparatur.</p>
+          </article>
+
+          <article class="card service">
+            <div class="service__icon">💧</div>
+            <h3 data-i18n="s6_title">Wasserschaden</h3>
+            <p data-i18n="s6_text">Schnelle Rettung erhöht die Chance – bring das Gerät ASAP.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why -->
+    <section class="section section--alt" id="why">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="why_title">Warum Handy Notdienst?</h2>
+          <p class="muted" data-i18n="why_text">Kurz, ehrlich, ohne Überraschungen.</p>
+        </div>
+
+        <div class="why">
+          <div class="card why__item">
+            <div class="why__icon">⚡</div>
+            <div>
+              <h3 data-i18n="w1_title">Schnell</h3>
+              <p data-i18n="w1_text">Oft am selben Tag – je nach Ersatzteil.</p>
+            </div>
+          </div>
+
+          <div class="card why__item">
+            <div class="why__icon">💶</div>
+            <div>
+              <h3 data-i18n="w2_title">Fair</h3>
+              <p data-i18n="w2_text">Vorher Preisinfo – du entscheidest.</p>
+            </div>
+          </div>
+
+          <div class="card why__item">
+            <div class="why__icon">🛠️</div>
+            <div>
+              <h3 data-i18n="w3_title">Sauberer Service</h3>
+              <p data-i18n="w3_text">Diagnose, Reparatur, Test – danach Übergabe.</p>
+            </div>
+          </div>
+
+          <div class="card why__item">
+            <div class="why__icon">✅</div>
+            <div>
+              <h3 data-i18n="w4_title">Garantie</h3>
+              <p data-i18n="w4_text">Je nach Reparatur/Teil – Details beim Auftrag.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 <!-- PRICES -->
-<section class="prices">
+<section class="section section--alt" id="prices">
   <div class="container">
-    <h2 data-i18n="prices_title">Preise (Orientierung)</h2>
+    <div class="section__head">
+      <h2>Preisliste</h2>
+      <p class="muted">Samsung & iPhone Reparaturen – transparente Preise</p>
+    </div>
 
-    <table>
-      <tr>
-        <th data-i18n="model">Modell</th>
-        <th data-i18n="display">Display</th>
-        <th data-i18n="battery">Akku</th>
-        <th data-i18n="other">Weitere</th>
-      </tr>
-      <tr>
-        <td>iPhone 15</td>
-        <td>~184 €</td>
-        <td>~64 €</td>
-        <td>Rückseite ~84 €</td>
-      </tr>
-      <tr>
-        <td>iPhone 14</td>
-        <td>~124 €</td>
-        <td>~60 €</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td>iPhone 13</td>
-        <td>~124 €</td>
-        <td>~54 €</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td>Samsung S25</td>
-        <td>~174 €</td>
-        <td>~74 €</td>
-        <td>Ladebuchse ~74 €</td>
-      </tr>
-      <tr>
-        <td>Samsung S24</td>
-        <td>~244 €</td>
-        <td>~74 €</td>
-        <td>Ladebuchse ~64 €</td>
-      </tr>
-    </table>
+    <!-- SAMSUNG -->
+    <div class="price-block">
+      <h3>Samsung Reparaturen</h3>
+      <div class="table-wrap">
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Modell</th>
+              <th>Display</th>
+              <th>Akku</th>
+              <th>Ladebuchse</th>
+              <th>Rückseite</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>S25 Ultra</td><td>274€</td><td>84€</td><td>84€</td><td>105€</td></tr>
+            <tr><td>S25 Plus</td><td>234€</td><td>74€</td><td>74€</td><td>94€</td></tr>
+            <tr><td>S25</td><td>174€</td><td>74€</td><td>74€</td><td>84€</td></tr>
+            <tr><td>S24 Ultra</td><td>324€</td><td>84€</td><td>74€</td><td>105€</td></tr>
+            <tr><td>S24 / S24+</td><td>244€ / 274€</td><td>74€</td><td>64€</td><td>94€</td></tr>
+            <tr><td>S23 Ultra</td><td>334€</td><td>84€</td><td>74€</td><td>94€</td></tr>
+            <tr><td>S23 / S23+</td><td>224€ / 254€</td><td>74€</td><td>64€</td><td>84€</td></tr>
+            <tr><td>S22 Ultra</td><td>324€</td><td>74€</td><td>64€</td><td>84€</td></tr>
+            <tr><td>S22 / S22+</td><td>224€ / 254€</td><td>74€</td><td>54€</td><td>74€</td></tr>
+            <tr><td>S21 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
+            <tr><td>S21 / S21+ / FE</td><td>164€ / 184€ / 205€</td><td>64€</td><td>54€</td><td>74€</td></tr>
+            <tr><td>S20 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
+            <tr><td>S20 / S20+ / FE</td><td>205€ / 244€ / 214€</td><td>54€</td><td>44€</td><td>64€</td></tr>
+            <tr><td>S10+ / S10 / S10e</td><td>214€ / 204€ / 184€</td><td>54€</td><td>44€</td><td>64€</td></tr>
+            <tr><td>S9+ / S9</td><td>174€ / 164€</td><td>44€</td><td>34€</td><td>54€</td></tr>
+            <tr><td>S8+ / S8</td><td>164€ / 154€</td><td>44€</td><td>34€</td><td>54€</td></tr>
+            <tr><td>S7 Edge / S7</td><td>134€ / 124€</td><td>34€</td><td>24€</td><td>44€</td></tr>
+            <tr><td>S6 Edge / S6</td><td>114€ / 104€</td><td>34€</td><td>24€</td><td>44€</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-    <p class="price-note" data-i18n="price_note">
-      Alle Preise sind Richtwerte und können je nach Modell und Aufwand variieren.
+    <!-- IPHONE -->
+    <div class="price-block">
+      <h3>iPhone Reparaturen</h3>
+      <div class="table-wrap">
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Modell</th>
+              <th>Display (Original)</th>
+              <th>Akku</th>
+              <th>Rückseite</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>iPhone 16 Pro Max</td><td>374€</td><td>124€</td><td>174€</td></tr>
+            <tr><td>iPhone 16 Pro</td><td>335€</td><td>105€</td><td>164€</td></tr>
+            <tr><td>iPhone 16 Plus</td><td>234€</td><td>84€</td><td>154€</td></tr>
+            <tr><td>iPhone 16</td><td>224€</td><td>74€</td><td>134€</td></tr>
+            <tr><td>iPhone 15 Pro Max</td><td>264€</td><td>84€</td><td>134€</td></tr>
+            <tr><td>iPhone 15 Pro</td><td>234€</td><td>74€</td><td>124€</td></tr>
+            <tr><td>iPhone 15 Plus</td><td>214€</td><td>64€</td><td>104€</td></tr>
+            <tr><td>iPhone 15</td><td>184€</td><td>64€</td><td>84€</td></tr>
+            <tr><td>iPhone 14 Pro Max</td><td>174€</td><td>74€</td><td>115€</td></tr>
+            <tr><td>iPhone 14 Pro</td><td>164€</td><td>64€</td><td>105€</td></tr>
+            <tr><td>iPhone 14 Plus</td><td>144€</td><td>60€</td><td>74€</td></tr>
+            <tr><td>iPhone 14</td><td>124€</td><td>60€</td><td>64€</td></tr>
+            <tr><td>iPhone 13 Pro Max</td><td>164€ / 134€</td><td>54€</td><td>84€</td></tr>
+            <tr><td>iPhone 13 Pro</td><td>154€</td><td>54€</td><td>74€</td></tr>
+            <tr><td>iPhone 13</td><td>124€</td><td>54€</td><td>74€</td></tr>
+            <tr><td>iPhone 13 mini</td><td>114€</td><td>54€</td><td>64€</td></tr>
+            <tr><td>iPhone 12 Pro Max</td><td>124€</td><td>54€</td><td>74€</td></tr>
+            <tr><td>iPhone 12 Pro</td><td>114€</td><td>54€</td><td>64€</td></tr>
+            <tr><td>iPhone 12</td><td>114€</td><td>54€</td><td>64€</td></tr>
+            <tr><td>iPhone 12 mini</td><td>84€</td><td>54€</td><td>54€</td></tr>
+            <tr><td>iPhone 11 Pro Max</td><td>84€</td><td>54€</td><td>54€</td></tr>
+            <tr><td>iPhone 11 Pro</td><td>74€</td><td>54€</td><td>54€</td></tr>
+            <tr><td>iPhone 11</td><td>64€</td><td>54€</td><td>54€</td></tr>
+            <tr><td>iPhone XS Max</td><td>74€</td><td>54€</td><td>54€</td></tr>
+            <tr><td>iPhone X / XS / XR</td><td>54€</td><td>44€</td><td>44€</td></tr>
+            <tr><td>iPhone SE (2022)</td><td>54€</td><td>44€</td><td>34€</td></tr>
+            <tr><td>iPhone SE (2020)</td><td>44€</td><td>34€</td><td>34€</td></tr>
+            <tr><td>iPhone 8 Plus</td><td>44€</td><td>34€</td><td>24€</td></tr>
+            <tr><td>iPhone 8</td><td>34€</td><td>34€</td><td>24€</td></tr>
+            <tr><td>iPhone 7 / 7 Plus</td><td>30€</td><td>24€</td><td>-</td></tr>
+            <tr><td>iPhone 6s / 6s Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
+            <tr><td>iPhone 6 / 6 Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="price-note">
+      * Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.
     </p>
   </div>
 </section>
 
-<section class="contact" id="contact">
-  <div class="container">
-    <h2 data-i18n="contact_title">Kontakt</h2>
-    <p>📍 Singen (Baden-Württemberg)</p>
-    <p>📞 <a href="tel:+4915222416438">01522 2416438</a></p>
-    <p>💬 <a href="https://wa.me/4915222416438" target="_blank">WhatsApp</a></p>
-    <p>📧 <a href="mailto:handy.notdienst.reparatur@gmail.com">handy.notdienst.reparatur@gmail.com</a></p>
-    <p data-i18n="time">🕒 Termine nach Absprache</p>
-  </div>
-</section>
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container contact">
+        <div class="card contact__left">
+          <h2 data-i18n="contact_title">Kontakt</h2>
+          <p class="muted" data-i18n="contact_text">Schreib oder ruf an – wir antworten schnell.</p>
 
-<footer class="footer">
-  <div class="container">
-    <p data-i18n="footer_note">
-      Hinweis: Dies ist ein privater Reparaturservice.
-      Alle Leistungen erfolgen nach individueller Absprache.
-    </p>
-    <p>© <span id="year"></span> Handy Notdienst</p>
-  </div>
-</footer>
+          <div class="contact__list">
+            <a class="contact__row" href="tel:+4915222416438">
+              <span>📞</span>
+              <span><strong data-i18n="contact_call">Anrufen</strong> — 01522 2416438</span>
+            </a>
+            <a class="contact__row" href="https://wa.me/4915222416438" target="_blank" rel="noopener">
+              <span>💬</span>
+              <span><strong>WhatsApp</strong> — <span data-i18n="contact_wa">schreiben</span></span>
+            </a>
+            <div class="contact__row">
+              <span>📍</span>
+              <span><strong>Singen (Baden-Württemberg)</strong><br/><span class="muted" data-i18n="address_hint">Adresse hier eintragen</span></span>
+            </div>
+            <div class="contact__row">
+              <span>🕒</span>
+              <span><strong data-i18n="hours">Öffnungszeiten</strong>: <span class="muted" data-i18n="hours_hint">z.B. Mo–Sa 10:00–19:00</span></span>
+            </div>
+          </div>
 
-<a class="wa-float" href="https://wa.me/4915222416438" target="_blank">💬</a>
+          <div class="contact__actions">
+            <a class="btn" href="https://wa.me/4915222416438" target="_blank" rel="noopener" data-i18n="cta_wa">
+              WhatsApp schreiben
+            </a>
+            <a class="btn btn--ghost" href="#services" data-i18n="cta_services">Services ansehen</a>
+          </div>
+        </div>
 
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
+        <div class="card contact__right">
+          <h3 data-i18n="map_title">Standort</h3>
+          <p class="muted" data-i18n="map_text">Hier kannst du Google Maps einfügen.</p>
 
-const texts = {
-  de: {
-    hero_title: "Handy kaputt?<br>Ich helfe dir schnell weiter.",
-    hero_text: "Privater mobiler Reparaturservice in Singen.<br>Ich komme zu dir – nach Absprache.",
-    btn_contact: "Jetzt Kontakt aufnehmen",
-    btn_wa: "WhatsApp schreiben",
-    s1: "Akkutausch",
-    s2: "Displaywechsel",
-    s3: "Ladebuchsenreparatur",
-    s4: "Gehäuse- / Deckelwechsel",
-    s5: "Software-Probleme",
-    s6: "Weitere Reparaturen auf Anfrage",
-    prices_title: "Preise (Orientierung)",
-    model: "Modell",
-    display: "Display",
-    battery: "Akku",
-    other: "Weitere",
-    price_note: "Alle Preise sind Richtwerte und können je nach Modell und Aufwand variieren.",
-    contact_title: "Kontakt",
-    time: "🕒 Termine nach Absprache",
-    footer_note: "Hinweis: Dies ist ein privater Reparaturservice. Alle Leistungen erfolgen nach individueller Absprache."
-  },
-  ua: {
-    hero_title: "Телефон зламався?<br>Допоможу швидко.",
-    hero_text: "Приватний мобільний сервіс ремонту в Singen.<br>Можу приїхати до тебе — за домовленістю.",
-    btn_contact: "Звʼязатися",
-    btn_wa: "Написати в WhatsApp",
-    s1: "Заміна акумулятора",
-    s2: "Заміна дисплея",
-    s3: "Ремонт розʼєму зарядки",
-    s4: "Заміна корпусу / кришки",
-    s5: "Проблеми з ПЗ",
-    s6: "Інші ремонти — за запитом",
-    prices_title: "Ціни (орієнтовно)",
-    model: "Модель",
-    display: "Дисплей",
-    battery: "Акумулятор",
-    other: "Інше",
-    price_note: "Ціни орієнтовні та можуть змінюватися залежно від моделі та складності.",
-    contact_title: "Контакти",
-    time: "🕒 Час — за домовленістю",
-    footer_note: "Примітка: Це приватний сервіс ремонту. Усі роботи виконуються за домовленістю."
-  }
-};
+          <!-- Replace this placeholder with Google Maps iframe later -->
+          <div class="map">
+            <span>🗺️ <span data-i18n="map_placeholder">Google Maps Platzhalter</span></span>
+          </div>
 
-function setLang(lang){
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
-    el.innerHTML = texts[lang][el.dataset.i18n];
-  });
-  document.getElementById("btn-de").classList.toggle("active", lang==="de");
-  document.getElementById("btn-ua").classList.toggle("active", lang==="ua");
-}
+          <p class="hint" data-i18n="map_hint">
+            Wenn du mir deine genaue Adresse gibst, setze ich den fertigen Maps-Embed rein.
+          </p>
+        </div>
+      </div>
+    </section>
 
-setLang("de");
-</script>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <strong>Handy Notdienst</strong>
+          <div class="muted">Singen • <span id="year"></span></div>
+        </div>
+        <div class="footer__links">
+          <a href="#impressum" data-i18n="impressum">Impressum</a>
+          <a href="#datenschutz" data-i18n="privacy">Datenschutz</a>
+        </div>
+      </div>
+    </footer>
 
+    <!-- Legal sections (placeholders) -->
+    <section class="legal" id="impressum">
+      <div class="container card">
+        <h2 data-i18n="impressum">Impressum</h2>
+        <p class="muted" data-i18n="legal_hint">
+          Platzhalter – hier kommen Firmenname, Adresse, Kontakt, USt-ID (falls vorhanden) rein.
+        </p>
+      </div>
+    </section>
+
+    <section class="legal" id="datenschutz">
+      <div class="container card">
+        <h2 data-i18n="privacy">Datenschutz</h2>
+        <p class="muted" data-i18n="privacy_hint">
+          Platzhalter – Datenschutzhinweise (Cookies, Kontakt, Hosting, Analytics falls genutzt).
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating WhatsApp -->
+  <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener" aria-label="WhatsApp">
+    💬
+  </a>
+
+  <script>
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // i18n dictionary
+    const dict = {
+      de: {
+        tagline: "Singen • Schnell & zuverlässig",
+        call: "Anrufen",
+        kicker: "Handyreparatur in Singen",
+        h1: "Schneller Smartphone-Service<br/>mit fairen Preisen",
+        lead: "Display, Akku, Ladebuchse, Kamera, Wasserschaden – wir helfen schnell. Schreib uns per WhatsApp oder ruf an.",
+        cta_main: "Jetzt anfragen",
+        cta_wa: "WhatsApp schreiben",
+        trust1: "Schnelle Diagnose",
+        trust2: "Oft am selben Tag",
+        trust3: "Transparente Preise",
+        quick_title: "Schneller Check",
+        quick_text: "Schreib Modell + Problem – wir antworten schnell.",
+        field_model: "Modell",
+        field_issue: "Problem",
+        send_wa: "An WhatsApp senden",
+        hint: "Tipp: Je genauer du beschreibst, desto schneller bekommst du einen Preis.",
+        services_title: "Services",
+        services_text: "Die häufigsten Reparaturen – schnell & sauber.",
+        s1_title: "Display Reparatur",
+        s1_text: "Glas gebrochen, Touch spinnt, Flecken – Austausch nach Diagnose.",
+        s2_title: "Akku Austausch",
+        s2_text: "Akku schnell leer oder aufgebläht – wir ersetzen sicher.",
+        s3_title: "Ladebuchse",
+        s3_text: "Wackelkontakt / lädt nicht – Reinigung oder Austausch.",
+        s4_title: "Kamera",
+        s4_text: "Unscharf, schwarzes Bild, Glas kaputt – wir fixen das.",
+        s5_title: "Lautsprecher / Mikro",
+        s5_text: "Leise, kratzt, du wirst nicht gehört – Diagnose & Reparatur.",
+        s6_title: "Wasserschaden",
+        s6_text: "Schnelle Rettung erhöht die Chance – bring das Gerät ASAP.",
+        why_title: "Warum Handy Notdienst?",
+        why_text: "Kurz, ehrlich, ohne Überraschungen.",
+        w1_title: "Schnell",
+        w1_text: "Oft am selben Tag – je nach Ersatzteil.",
+        w2_title: "Fair",
+        w2_text: "Vorher Preisinfo – du entscheidest.",
+        w3_title: "Sauberer Service",
+        w3_text: "Diagnose, Reparatur, Test – danach Übergabe.",
+        w4_title: "Garantie",
+        w4_text: "Je nach Reparatur/Teil – Details beim Auftrag.",
+        contact_title: "Kontakt",
+        contact_text: "Schreib oder ruf an – wir antworten schnell.",
+        contact_call: "Anrufen",
+        contact_wa: "schreiben",
+        address_hint: "Adresse hier eintragen",
+        hours: "Öffnungszeiten",
+        hours_hint: "z.B. Mo–Sa 10:00–19:00",
+        cta_services: "Services ansehen",
+        map_title: "Standort",
+        map_text: "Hier kannst du Google Maps einfügen.",
+        map_placeholder: "Google Maps Platzhalter",
+        map_hint: "Wenn du mir deine genaue Adresse gibst, setze ich den fertigen Maps-Embed rein.",
+        impressum: "Impressum",
+        privacy: "Datenschutz",
+        legal_hint: "Platzhalter – hier kommen Firmenname, Adresse, Kontakt, USt-ID (falls vorhanden) rein.",
+        privacy_hint: "Platzhalter – Datenschutzhinweise (Cookies, Kontakt, Hosting, Analytics falls genutzt)."
+      },
+      ua: {
+        tagline: "Singen • Швидко та надійно",
+        call: "Подзвонити",
+        kicker: "Ремонт телефонів у Singen",
+        h1: "Швидкий сервіс смартфонів<br/>з чесними цінами",
+        lead: "Дисплей, акумулятор, розʼєм зарядки, камера, після води — допоможемо швидко. Пиши у WhatsApp або дзвони.",
+        cta_main: "Залишити заявку",
+        cta_wa: "Написати в WhatsApp",
+        trust1: "Швидка діагностика",
+        trust2: "Часто в той самий день",
+        trust3: "Прозорі ціни",
+        quick_title: "Швидкий запит",
+        quick_text: "Напиши модель + проблему — відповімо швидко.",
+        field_model: "Модель",
+        field_issue: "Проблема",
+        send_wa: "Надіслати в WhatsApp",
+        hint: "Порада: чим точніше опис, тим швидше дамо ціну.",
+        services_title: "Послуги",
+        services_text: "Найпопулярніші ремонти — швидко та акуратно.",
+        s1_title: "Заміна дисплею",
+        s1_text: "Тріщини, не працює сенсор, плями — заміна після діагностики.",
+        s2_title: "Заміна акумулятора",
+        s2_text: "Швидко сідає або надувся — замінимо безпечно.",
+        s3_title: "Розʼєм зарядки",
+        s3_text: "Люфт/не заряджається — чистка або заміна.",
+        s4_title: "Камера",
+        s4_text: "Не фокусується, чорний екран, скло — виправимо.",
+        s5_title: "Динамік / мікрофон",
+        s5_text: "Тихо, хрипить, вас не чують — діагностика і ремонт.",
+        s6_title: "Після води",
+        s6_text: "Чим швидше — тим більше шансів. Принось якнайшвидше.",
+        why_title: "Чому Handy Notdienst?",
+        why_text: "Коротко, чесно, без сюрпризів.",
+        w1_title: "Швидко",
+        w1_text: "Часто в той самий день — залежить від запчастин.",
+        w2_title: "Чесно",
+        w2_text: "Спершу ціна — рішення за тобою.",
+        w3_title: "Акуратно",
+        w3_text: "Діагностика, ремонт, тест — потім видача.",
+        w4_title: "Гарантія",
+        w4_text: "Залежить від ремонту/деталі — скажемо при прийомі.",
+        contact_title: "Контакти",
+        contact_text: "Пиши або дзвони — відповімо швидко.",
+        contact_call: "Подзвонити",
+        contact_wa: "написати",
+        address_hint: "Вкажи адресу тут",
+        hours: "Графік",
+        hours_hint: "напр. Пн–Сб 10:00–19:00",
+        cta_services: "Подивитись послуги",
+        map_title: "Локація",
+        map_text: "Тут можна вставити Google Maps.",
+        map_placeholder: "Місце для Google Maps",
+        map_hint: "Як даси точну адресу — вставлю готовий Maps-iframe.",
+        impressum: "Impressum",
+        privacy: "Datenschutz",
+        legal_hint: "Заглушка — сюди додаємо назву, адресу, контакти, USt-ID (якщо є).",
+        privacy_hint: "Заглушка — політика конфіденційності (cookies, контакти, хостинг, аналітика якщо буде)."
+      }
+    };
+
+    function setLang(lang){
+      // switch active button
+      document.querySelectorAll(".lang__btn").forEach(b => {
+        b.classList.toggle("is-active", b.dataset.lang === lang);
+      });
+
+      // apply translations
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        const val = dict[lang][key];
+        if (!val) return;
+        el.innerHTML = val;
+      });
+
+      // update WhatsApp quick message link
+      updateWhatsAppLink(lang);
+      localStorage.setItem("hn_lang", lang);
+      document.documentElement.lang = lang === "ua" ? "uk" : "de";
+    }
+
+    function updateWhatsAppLink(lang){
+      const model = document.getElementById("model").value.trim();
+      const issue = document.getElementById("issue").value.trim();
+
+      const base = "https://wa.me/4915222416438?text=";
+      const msgDE = `Hallo! Ich brauche Hilfe.%0A%0AModell: ${model || "-"}%0AProblem: ${issue || "-"}%0A%0AOrt: Singen`;
+      const msgUA = `Привіт! Потрібна допомога.%0A%0AМодель: ${model || "-"}%0AПроблема: ${issue || "-"}%0A%0AМісто: Singen`;
+
+      const text = lang === "ua" ? msgUA : msgDE;
+      document.getElementById("waLink").href = base + text;
+    }
+
+    // events
+    document.querySelectorAll(".lang__btn").forEach(btn => {
+      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+    });
+
+    ["model","issue"].forEach(id => {
+      document.getElementById(id).addEventListener("input", () => {
+        const lang = localStorage.getItem("hn_lang") || "de";
+        updateWhatsAppLink(lang);
+      });
+    });
+
+    // init
+    setLang(localStorage.getItem("hn_lang") || "de");
+  </script>
 </body>
 </html>
