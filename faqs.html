@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ – Handy Notdienst Singen</title>
+  <meta name="description" content="FAQ: Dauer, Daten, Termin, Garantie, Originalteile. Handy Notdienst in Singen." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <meta name="theme-color" content="#1b374c">
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html">
+        <img class="brand__logo" src="assets/logo.png" alt="Handy Notdienst Logo" />
+        <span class="brand__text"><strong>Handy Notdienst</strong><small data-i18n="tagline">Singen • Schnell & zuverlässig</small></span>
+      </a>
+
+      <div class="header__right">
+        <span class="badge badge--appt" data-i18n="no_appt">Ohne Termin</span>
+
+        <nav class="topnav">
+          <a href="index.html" data-i18n="nav_home">Start</a>
+          <a href="prices.html" data-i18n="nav_prices">Preise</a>
+          <a href="impressum.html">Impressum</a>
+        </nav>
+
+        <div class="lang">
+          <button class="lang__btn is-active" type="button" data-lang="de">DE</button>
+          <button class="lang__btn" type="button" data-lang="ua">UA</button>
+          <button class="lang__btn" type="button" data-lang="en">EN</button>
+        </div>
+
+        <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h1 class="page-title">FAQ</h1>
+          <p class="muted" data-i18n="faq_sub">Kurze Antworten auf die häufigsten Fragen.</p>
+        </div>
+
+        <div class="faq card">
+          <details open>
+            <summary data-i18n="faq1_q">Wie lange dauert eine Reparatur?</summary>
+            <p class="muted" data-i18n="faq1_a">Viele Reparaturen dauern 30–90 Minuten (je nach Modell und Teil).</p>
+          </details>
+          <details>
+            <summary data-i18n="faq2_q">Bleiben meine Daten erhalten?</summary>
+            <p class="muted" data-i18n="faq2_a">Bei Standard-Reparaturen normalerweise ja. Trotzdem empfehlen wir ein Backup.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq3_q">Brauche ich einen Termin?</summary>
+            <p class="muted" data-i18n="faq3_a">Meistens nicht. Schreib kurz per WhatsApp, dann planen wir es schnell ein.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq4_q">Gibt es Garantie?</summary>
+            <p class="muted" data-i18n="faq4_a">Je nach Reparatur/Teil gibt es Garantie – Details beim Auftrag.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq5_q">Originalteile oder Premium?</summary>
+            <p class="muted" data-i18n="faq5_a">Je nach Gerät bieten wir Original oder Premium – wir erklären dir die Optionen.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq6_q">Was, wenn mein Modell nicht in der Liste steht?</summary>
+            <p class="muted" data-i18n="faq6_a">Frag uns trotzdem. Oft können wir es bestellen oder eine Alternative anbieten.</p>
+          </details>
+        </div>
+
+        <div class="faq-cta">
+          <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <a class="btn btn--ghost" href="prices.html" data-i18n="nav_prices">Preise</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div><strong>Handy Notdienst</strong><div class="muted">Singen</div></div>
+        <div class="footer__links">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <nav class="mobilebar" aria-label="Mobile quick actions">
+    <a class="mobilebar__btn" href="tel:+4915222416438">📞<span data-i18n="mb_call">Call</span></a>
+    <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">💬<span>WhatsApp</span></a>
+    <a class="mobilebar__btn" href="prices.html">💶<span data-i18n="nav_prices">Preise</span></a>
+  </nav>
+
+  <script>
+    const dict = {
+      de:{ tagline:"Singen • Schnell & zuverlässig", no_appt:"Ohne Termin", nav_home:"Start", nav_prices:"Preise", mb_call:"Call",
+        faq_sub:"Kurze Antworten auf die häufigsten Fragen.",
+        faq1_q:"Wie lange dauert eine Reparatur?", faq1_a:"Viele Reparaturen dauern 30–90 Minuten (je nach Modell und Teil).",
+        faq2_q:"Bleiben meine Daten erhalten?", faq2_a:"Bei Standard-Reparaturen normalerweise ja. Trotzdem empfehlen wir ein Backup.",
+        faq3_q:"Brauche ich einen Termin?", faq3_a:"Meistens nicht. Schreib kurz per WhatsApp, dann planen wir es schnell ein.",
+        faq4_q:"Gibt es Garantie?", faq4_a:"Je nach Reparatur/Teil gibt es Garantie – Details beim Auftrag.",
+        faq5_q:"Originalteile oder Premium?", faq5_a:"Je nach Gerät bieten wir Original oder Premium – wir erklären dir die Optionen.",
+        faq6_q:"Was, wenn mein Modell nicht in der Liste steht?", faq6_a:"Frag uns trotzdem. Oft können wir es bestellen oder eine Alternative anbieten."
+      },
+      ua:{ tagline:"Singen • Швидко та надійно", no_appt:"Без запису", nav_home:"Головна", nav_prices:"Ціни", mb_call:"Дзвінок",
+        faq_sub:"Короткі відповіді на найчастіші питання.",
+        faq1_q:"Скільки триває ремонт?", faq1_a:"Багато ремонтів займає 30–90 хв (залежить від моделі і запчастини).",
+        faq2_q:"Дані збережуться?", faq2_a:"Зазвичай так при стандартних ремонтах. Але радимо зробити backup.",
+        faq3_q:"Потрібен запис?", faq3_a:"Зазвичай ні. Напиши у WhatsApp — швидко домовимось.",
+        faq4_q:"Є гарантія?", faq4_a:"Залежить від ремонту/деталі — деталі при прийомі.",
+        faq5_q:"Оригінал чи Premium?", faq5_a:"Залежно від моделі можемо запропонувати Original або Premium.",
+        faq6_q:"Моєї моделі нема у списку", faq6_a:"Все одно напиши — часто можна замовити або знайти альтернативу."
+      },
+      en:{ tagline:"Singen • Fast & reliable", no_appt:"No appointment", nav_home:"Home", nav_prices:"Prices", mb_call:"Call",
+        faq_sub:"Short answers to the most common questions.",
+        faq1_q:"How long does a repair take?", faq1_a:"Many repairs take 30–90 minutes (depending on model and part).",
+        faq2_q:"Will my data stay?", faq2_a:"Usually yes for standard repairs. Still, we recommend a backup.",
+        faq3_q:"Do I need an appointment?", faq3_a:"Usually no. Message us on WhatsApp and we’ll arrange it quickly.",
+        faq4_q:"Is there warranty?", faq4_a:"Depends on repair/part — details when ordering.",
+        faq5_q:"Original or premium parts?", faq5_a:"Depending on the device we offer Original or Premium options.",
+        faq6_q:"My model is not listed", faq6_a:"Ask anyway — we can often order parts or offer an alternative."
+      }
+    };
+
+    function getLang(){ return localStorage.getItem("hn_lang") || "de"; }
+    function setLang(lang){
+      document.querySelectorAll(".lang__btn").forEach(b => b.classList.toggle("is-active", b.dataset.lang === lang));
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        const val = dict[lang]?.[key];
+        if (val) el.textContent = val;
+      });
+      localStorage.setItem("hn_lang", lang);
+      document.documentElement.lang = (lang === "ua") ? "uk" : lang;
+    }
+    document.querySelectorAll(".lang__btn").forEach(btn => btn.addEventListener("click", () => setLang(btn.dataset.lang)));
+    setLang(getLang());
+  </script>
+
+  <!-- FAQ schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Wie lange dauert eine Reparatur?","acceptedAnswer":{"@type":"Answer","text":"Viele Reparaturen dauern 30–90 Minuten (je nach Modell und Teil)."}},
+      {"@type":"Question","name":"Bleiben meine Daten erhalten?","acceptedAnswer":{"@type":"Answer","text":"Bei Standard-Reparaturen normalerweise ja. Trotzdem empfehlen wir ein Backup."}},
+      {"@type":"Question","name":"Brauche ich einen Termin?","acceptedAnswer":{"@type":"Answer","text":"Meistens nicht. Schreib kurz per WhatsApp, dann planen wir es schnell ein."}},
+      {"@type":"Question","name":"Gibt es Garantie?","acceptedAnswer":{"@type":"Answer","text":"Je nach Reparatur/Teil gibt es Garantie – Details beim Auftrag."}},
+      {"@type":"Question","name":"Originalteile oder Premium?","acceptedAnswer":{"@type":"Answer","text":"Je nach Gerät bieten wir Original oder Premium – wir erklären dir die Optionen."}},
+      {"@type":"Question","name":"Was, wenn mein Modell nicht in der Liste steht?","acceptedAnswer":{"@type":"Answer","text":"Frag uns trotzdem. Oft können wir es bestellen oder eine Alternative anbieten."}}
+    ]
+  }
+  </script>
+</body>
+</html>
