@@ -191,6 +191,13 @@
     </div>
 
     <!-- SAMSUNG -->
+    <input
+  type="text"
+  class="price-search"
+  placeholder="Modell suchen (z.B. S20...)"
+  onkeyup="filterTable(this)"
+>
+
     <div class="price-block">
       <h3>Samsung Reparaturen</h3>
       <div class="table-wrap">
@@ -204,6 +211,19 @@
               <th>Rückseite</th>
             </tr>
           </thead>
+          <script>
+function filterTable(input) {
+  const filter = input.value.toLowerCase();
+  const table = input.nextElementSibling.querySelector("table");
+  const rows = table.querySelectorAll("tbody tr");
+
+  rows.forEach(row => {
+    const text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+}
+</script>
+
           <tbody>
             <tr><td>S25 Ultra</td><td>274€</td><td>84€</td><td>84€</td><td>105€</td></tr>
             <tr><td>S25 Plus</td><td>234€</td><td>74€</td><td>74€</td><td>94€</td></tr>
@@ -229,6 +249,13 @@
     </div>
 
     <!-- IPHONE -->
+    <input
+  type="text"
+  class="price-search"
+  placeholder="Modell suchen (z.B. iPhone 13...)"
+  onkeyup="filterTable(this)"
+>
+
     <div class="price-block">
       <h3>iPhone Reparaturen</h3>
       <div class="table-wrap">
@@ -312,16 +339,19 @@
           </div>
 
           <div class="contact__actions">
-            <a class="btn" href="https://wa.me/4915222416438" target="_blank" rel="noopener" data-i18n="cta_wa">
-              WhatsApp schreiben
-            </a>
-            <a class="btn btn--ghost" href="#services" data-i18n="cta_services">Services ansehen</a>
-          </div>
-        </div>
+  <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank">
+    💬 WhatsApp
+  </a>
 
-        <div class="card contact__right">
-          <h3 data-i18n="map_title">Standort</h3>
-          <p class="muted" data-i18n="map_text">Hier kannst du Google Maps einfügen.</p>
+  <a class="btn btn--tg" href="https://t.me/HandyNotdienst" target="_blank">
+    ✈️ Telegram
+  </a>
+
+  <a class="btn btn--mail" href="mailto:handy.notdienst.reparatur@gmail.com">
+    📧 Email
+  </a>
+</div>
+
 
           <!-- Replace this placeholder with Google Maps iframe later -->
           <div class="map">
