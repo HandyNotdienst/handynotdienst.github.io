@@ -229,63 +229,112 @@ a{color:inherit;text-decoration:none}
 .service p{margin:0; color: var(--muted)}
 
 /* Before/After */
-.ba-slider{
-  position: relative;
-  margin: 0 0 16px;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.02);
-  box-shadow: 0 18px 40px rgba(0,0,0,.25);
+.ba-block{
+  --ba-radius: 16px;
+  --ba-border: 1px solid rgba(255,255,255,.08);
+  --ba-shadow: 0 20px 45px rgba(0,0,0,.22);
+  --ba-surface: rgba(255,255,255,.03);
+  --ba-text: #f6f7fb;
+  --ba-muted: rgba(255,255,255,.7);
+  --ba-space-1: .5rem;
+  --ba-space-2: .75rem;
+  --ba-space-3: 1rem;
+  --ba-space-4: 1.5rem;
+  --ba-space-5: 2rem;
   --ba-position: 50%;
 }
-.ba-slider__images{
+.ba-card{
+  padding: var(--ba-space-4);
+  background: var(--ba-surface);
+  border: var(--ba-border);
+  border-radius: calc(var(--ba-radius) + 2px);
+  box-shadow: var(--ba-shadow);
+}
+.ba-viewer{
   position: relative;
+  border-radius: var(--ba-radius);
+  overflow: hidden;
+  border: var(--ba-border);
+  background: rgba(10,20,28,.6);
+  cursor: ew-resize;
+  isolation: isolate;
+  transition: box-shadow .25s ease;
 }
-.ba-slider__image{
+.ba-viewer.is-dragging .ba-handle::after{
+  transform: translate(-50%, -50%) scale(1.08);
+}
+.ba-media{
+  position: relative;
+  min-height: 260px;
+  aspect-ratio: 16 / 9;
+}
+.ba-media__img{
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
 }
-.ba-slider__after{
+.ba-media__after{
   position: absolute;
   inset: 0;
   width: var(--ba-position);
   overflow: hidden;
   transition: width .2s ease;
 }
-.ba-slider__handle{
+.ba-labels{
+  position: absolute;
+  inset: var(--ba-space-3);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 2;
+}
+.ba-label{
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ba-text);
+  padding: .3rem .65rem;
+  border-radius: 999px;
+  background: rgba(12,18,26,.85);
+  border: 1px solid rgba(255,255,255,.2);
+}
+.ba-handle{
   position: absolute;
   top: 0;
-  left: calc(var(--ba-position) - 18px);
+  left: calc(var(--ba-position) - 22px);
   height: 100%;
-  width: 36px;
+  width: 44px;
   pointer-events: none;
+  z-index: 3;
 }
-.ba-slider__handle::before{
+.ba-handle::before{
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
   left: 50%;
-  width: 2px;
-  background: rgba(255,255,255,.65);
+  width: 1px;
+  background: rgba(255,255,255,.85);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.2);
   transform: translateX(-50%);
 }
-.ba-slider__handle::after{
+.ba-handle::after{
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(14,31,44,.92);
-  border: 2px solid rgba(255,255,255,.75);
-  box-shadow: 0 8px 20px rgba(0,0,0,.35);
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,.35));
+  border: 2px solid rgba(10,20,30,.9);
+  box-shadow: 0 10px 25px rgba(0,0,0,.35);
+  transition: transform .2s ease;
 }
-.ba-slider__range{
+.ba-range{
   position: absolute;
   inset: 0;
   width: 100%;
@@ -294,13 +343,16 @@ a{color:inherit;text-decoration:none}
   cursor: ew-resize;
   touch-action: none;
 }
-.ba-slider:focus-within .ba-slider__handle::after{
-  border-color: rgba(110,231,183,.9);
+.ba-viewer:focus-within{
+  box-shadow: 0 0 0 3px rgba(110,231,183,.4);
 }
-.ba-compare{
-  margin: 0;
+.ba-caption{
+  margin: var(--ba-space-3) 0 0;
   text-align: center;
-  font-weight: 800;
+  font-weight: 700;
+  color: var(--ba-muted);
+  letter-spacing: .01em;
+  line-height: 1.7;
 }
 
 /* Prices */

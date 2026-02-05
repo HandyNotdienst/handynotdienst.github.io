@@ -311,8 +311,9 @@
 
   function initBeforeAfterSlider() {
     document.querySelectorAll("[data-ba-slider]").forEach((slider) => {
-      const range = slider.querySelector(".ba-slider__range");
-      if (!range) return;
+      const viewer = slider.querySelector(".ba-viewer");
+      const range = slider.querySelector(".ba-range");
+      if (!viewer || !range) return;
 
       const setPosition = (value) => {
         const clamped = Math.min(100, Math.max(0, Number(value)));
@@ -321,7 +322,7 @@
       };
 
       const updateFromPointer = (event) => {
-        const rect = slider.getBoundingClientRect();
+        const rect = viewer.getBoundingClientRect();
         const offset = event.clientX - rect.left;
         const ratio = rect.width ? offset / rect.width : 0;
         setPosition(ratio * 100);
@@ -330,26 +331,37 @@
       setPosition(range.value || 50);
 
       let isDragging = false;
-      slider.addEventListener("pointerdown", (event) => {
+      viewer.addEventListener("pointerdown", (event) => {
         isDragging = true;
-        slider.setPointerCapture?.(event.pointerId);
+        viewer.classList.add("is-dragging");
+        viewer.setPointerCapture?.(event.pointerId);
         updateFromPointer(event);
       });
-      slider.addEventListener("pointermove", (event) => {
+      viewer.addEventListener("pointermove", (event) => {
         if (!isDragging) return;
         updateFromPointer(event);
       });
-      slider.addEventListener("pointerup", (event) => {
+      viewer.addEventListener("pointerup", (event) => {
         if (!isDragging) return;
         isDragging = false;
-        slider.releasePointerCapture?.(event.pointerId);
+        viewer.classList.remove("is-dragging");
+        viewer.releasePointerCapture?.(event.pointerId);
       });
-      slider.addEventListener("pointerleave", () => {
+      viewer.addEventListener("pointerleave", () => {
         isDragging = false;
+        viewer.classList.remove("is-dragging");
       });
 
       range.addEventListener("input", (event) => {
         setPosition(event.target.value);
+      });
+
+      range.addEventListener("keydown", (event) => {
+        if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+        event.preventDefault();
+        const step = event.shiftKey ? 10 : 2;
+        const direction = event.key === "ArrowRight" ? 1 : -1;
+        setPosition(Number(range.value) + step * direction);
       });
     });
   }
