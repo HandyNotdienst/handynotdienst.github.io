@@ -568,38 +568,6 @@ a{color:inherit;text-decoration:none}
 .why__item p{margin: 0; color: var(--muted)}
 
 /* Why me */
-.why-me__head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.why-me__title{display:none; margin:0 0 6px}
-.why-me__title.is-active{display:block}
-.why-me__lang{
-  display:flex;
-  gap: 6px;
-  padding: 6px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.03);
-}
-.why-me__lang-btn{
-  border: 0;
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 10px;
-  background: transparent;
-  color: var(--muted);
-  font-weight: 900;
-}
-.why-me__lang-btn.is-active{
-  color:#06101f;
-  background: linear-gradient(135deg, var(--accent1), var(--accent2));
-}
-.why-me__content{display:none}
-.why-me__content.is-active{display:block}
 .why-me__story{
   margin: 0 0 14px;
   color: var(--muted);
