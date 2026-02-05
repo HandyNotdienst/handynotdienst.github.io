@@ -398,6 +398,62 @@
     });
   }
 
+  function initWhyMeLang() {
+    const section = document.getElementById("why-me");
+    if (!section) return;
+    const buttons = Array.from(section.querySelectorAll(".why-me__lang-btn"));
+    const contents = Array.from(section.querySelectorAll(".why-me__content"));
+    const titles = Array.from(section.querySelectorAll(".why-me__title"));
+    if (!buttons.length || !contents.length || !titles.length) return;
+
+    const allowed = new Set(["de", "ua", "en"]);
+
+    const setActive = (lang) => {
+      const nextLang = allowed.has(lang) ? lang : "de";
+      contents.forEach((block) => {
+        block.classList.toggle("is-active", block.dataset.lang === nextLang);
+      });
+      titles.forEach((title) => {
+        title.classList.toggle("is-active", title.dataset.lang === nextLang);
+      });
+      buttons.forEach((btn) => {
+        btn.classList.toggle("is-active", btn.dataset.lang === nextLang);
+      });
+      localStorage.setItem("hn_lang", nextLang);
+    };
+
+    const storedLang = localStorage.getItem("hn_lang") || "de";
+    setActive(storedLang);
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => setActive(btn.dataset.lang));
+    });
+  }
+
+  function initReveal() {
+    const items = document.querySelectorAll(".reveal");
+    if (!items.length) return;
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced || !("IntersectionObserver" in window)) {
+      items.forEach((item) => item.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    items.forEach((item) => observer.observe(item));
+  }
+
   function setLang(lang) {
     applyTranslations(lang);
     updateSearchPlaceholders(lang);
@@ -407,6 +463,8 @@
 
   initHeaderShadow();
   initLangButtons();
+  initWhyMeLang();
+  initReveal();
   initPickupButton();
   initBundles();
   initQuiz();
