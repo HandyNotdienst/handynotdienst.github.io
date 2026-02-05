@@ -50,12 +50,19 @@
     </div>
   </header>
   <div class="ticker" aria-live="polite">
-    <div class="container">
-      <div class="ticker__track">
-        <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-        <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-        <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-      </div>
+    <div class="ticker__track">
+      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
+      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
     </div>
   </div>
 
@@ -116,23 +123,47 @@
       </div>
     </section>
 
+    <!-- BEFORE AFTER START -->
     <section class="section section--alt" id="before-after">
       <div class="container">
         <div class="section__head">
           <h2 data-i18n="ba_title">VORHER / NACHHER</h2>
         </div>
 
-        <div class="ba-grid">
-          <figure class="ba-item">
-            <img class="ba-image" src="assets/before-phone.png" alt="Defektes Smartphone vor der Reparatur" />
-          </figure>
-          <figure class="ba-item">
-            <img class="ba-image" src="assets/after-phone.png" alt="Repariertes Smartphone nach der Reparatur" />
-          </figure>
-        </div>
+        <figure class="ba-card" data-ba-slider>
+          <div class="ba-card__media">
+            <img
+              class="ba-card__image ba-card__image--after"
+              src="assets/after-phone.png"
+              alt="Repariertes Smartphone nach der Reparatur"
+            />
+            <div class="ba-card__before">
+              <img
+                class="ba-card__image ba-card__image--before"
+                src="assets/before-phone.png"
+                alt="Defektes Smartphone vor der Reparatur"
+              />
+            </div>
+
+            <span class="ba-card__pill ba-card__pill--before" data-i18n="ba_before">Vorher</span>
+            <span class="ba-card__pill ba-card__pill--after" data-i18n="ba_after">Nachher</span>
+
+            <div
+              class="ba-card__handle"
+              role="separator"
+              aria-label="Vorher-Nachher Vergleich"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="50"
+              tabindex="0"
+            ></div>
+            <input class="ba-card__range" type="range" min="0" max="100" value="50" aria-label="Vorher-Nachher Vergleich" />
+          </div>
+        </figure>
         <p class="ba-compare" data-i18n="ba_compare">🔋 Akku leer nach 2 Std ❌ → 🔋 Ganzer Tag Nutzung ✅</p>
       </div>
     </section>
+    <!-- BEFORE AFTER END -->
 
     <!-- 4) Wie läuft es ab? (3 steps) -->
     <section class="section section--alt" id="how">
@@ -349,6 +380,8 @@
         nav_contact:"Kontakt",
         no_appt:"Ohne Termin",
         ba_title:"VORHER / NACHHER",
+        ba_before:"Vorher",
+        ba_after:"Nachher",
         ba_compare:"🔋 Akku leer nach 2 Std ❌ → 🔋 Ganzer Tag Nutzung ✅",
 
         how_title:"So läuft es ab",
@@ -426,6 +459,8 @@
         nav_contact:"Контакти",
         no_appt:"Без запису",
         ba_title:"ДО / ПІСЛЯ",
+        ba_before:"До",
+        ba_after:"Після",
         ba_compare:"🔋 Акумулятор сідає за 2 год ❌ → 🔋 Цілий день роботи ✅",
 
         how_title:"Як це працює",
@@ -503,6 +538,8 @@
         nav_contact:"Contact",
         no_appt:"No appointment",
         ba_title:"BEFORE / AFTER",
+        ba_before:"Before",
+        ba_after:"After",
         ba_compare:"🔋 Battery empty after 2 hours ❌ → 🔋 All-day usage ✅",
 
         how_title:"How it works",

@@ -309,6 +309,71 @@
     window.addEventListener("scroll", () => header.classList.toggle("is-scrolled", window.scrollY > 20));
   }
 
+  function initBeforeAfterSlider() {
+    document.querySelectorAll("[data-ba-slider]").forEach((slider) => {
+      const range = slider.querySelector(".ba-card__range");
+      const handle = slider.querySelector(".ba-card__handle");
+      if (!range) return;
+
+      const setPosition = (value) => {
+        const clamped = Math.min(100, Math.max(0, Number(value)));
+        slider.style.setProperty("--ba-position", `${clamped}%`);
+        range.value = clamped;
+        if (handle) handle.setAttribute("aria-valuenow", String(Math.round(clamped)));
+      };
+
+      const updateFromPointer = (event) => {
+        const rect = slider.getBoundingClientRect();
+        const offset = event.clientX - rect.left;
+        const ratio = rect.width ? offset / rect.width : 0;
+        setPosition(ratio * 100);
+      };
+
+      setPosition(range.value || 50);
+
+      let isDragging = false;
+      slider.addEventListener("pointerdown", (event) => {
+        isDragging = true;
+        slider.classList.add("is-dragging");
+        slider.setPointerCapture?.(event.pointerId);
+        updateFromPointer(event);
+      });
+      slider.addEventListener("pointermove", (event) => {
+        if (!isDragging) return;
+        updateFromPointer(event);
+      });
+      slider.addEventListener("pointerup", (event) => {
+        if (!isDragging) return;
+        isDragging = false;
+        slider.classList.remove("is-dragging");
+        slider.releasePointerCapture?.(event.pointerId);
+      });
+      slider.addEventListener("pointerleave", () => {
+        isDragging = false;
+        slider.classList.remove("is-dragging");
+      });
+
+      range.addEventListener("input", (event) => {
+        setPosition(event.target.value);
+      });
+
+      const stepByKey = (event) => {
+        const step = event.shiftKey ? 10 : 2;
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          setPosition(Number(range.value) - step);
+        }
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          setPosition(Number(range.value) + step);
+        }
+      };
+
+      handle?.addEventListener("keydown", stepByKey);
+      range.addEventListener("keydown", stepByKey);
+    });
+  }
+
   function initServiceWorker() {
     if (!serviceWorkerPath) return;
     if ("serviceWorker" in navigator) {
@@ -333,6 +398,7 @@
   }
 
   initHeaderShadow();
+  initBeforeAfterSlider();
   initLangButtons();
   initPickupButton();
   initBundles();
