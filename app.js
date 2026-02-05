@@ -162,6 +162,34 @@
       });
   }
 
+  function initPriceToggle() {
+    const toggle = document.querySelector(".js-price-toggle");
+    if (!toggle) return;
+    const buttons = Array.from(toggle.querySelectorAll("[data-brand-toggle]"));
+    const groups = Array.from(document.querySelectorAll(".price-group[data-brand]"));
+    if (!buttons.length || !groups.length) return;
+
+    const setActive = (brand) => {
+      groups.forEach((group) => {
+        const isActive = group.dataset.brand === brand;
+        group.classList.toggle("is-active", isActive);
+        group.setAttribute("aria-hidden", String(!isActive));
+      });
+      buttons.forEach((btn) => {
+        const isActive = btn.dataset.brandToggle === brand;
+        btn.classList.toggle("is-active", isActive);
+        btn.setAttribute("aria-pressed", String(isActive));
+      });
+    };
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => setActive(btn.dataset.brandToggle));
+    });
+
+    const defaultButton = toggle.querySelector('[data-brand-toggle="apple"]') || buttons[0];
+    if (defaultButton) setActive(defaultButton.dataset.brandToggle);
+  }
+
   function initBundles() {
     document.querySelectorAll(".bundle__item").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -384,6 +412,7 @@
   initQuiz();
   initEasterEgg();
   initServiceWorker();
+  initPriceToggle();
 
   document.querySelectorAll(".price-search").forEach((input) => {
     input.addEventListener("input", () => filterPriceBlock(input));
