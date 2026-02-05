@@ -30,8 +30,8 @@
           <a href="faqs.html">FAQ</a>
           <a href="#contact" data-i18n="nav_contact">Kontakt</a>
           <!-- QUIZ subtle -->
-          <button class="quiz-mini" id="quizStartBtn" type="button" aria-label="Quiz">
-            🧠 <span data-i18n="quiz_label">Quiz: Schnell-Check</span>
+          <button class="quiz-mini js-quiz-highlight" id="quizStartBtn" type="button" aria-label="🧠 Diagnose-Quiz (1 Min)">
+            🧠 <span data-i18n="quiz_label">Diagnose-Quiz (1 Min)</span>
           </button>
         </nav>
 
@@ -122,6 +122,13 @@
         </div>
       </div>
     </section>
+
+    <div class="mobile-actions" aria-label="Mobile quick access">
+      <div class="container mobile-actions__inner">
+        <a class="mobile-actions__btn" href="#faq">❓ FAQ</a>
+        <a class="mobile-actions__btn mobile-actions__btn--quiz js-quiz-highlight" href="#quiz">🧠 Diagnose (1 Min)</a>
+      </div>
+    </div>
 
     <section class="section section--alt reveal" id="before-after">
       <div class="container">
@@ -300,6 +307,9 @@
     </footer>
   </main>
 
+  <div id="faq" class="section-anchor" aria-hidden="true"></div>
+  <div id="quiz" class="section-anchor" aria-hidden="true"></div>
+
   <!-- Mobile sticky contact bar (9) -->
   <nav class="mobilebar" aria-label="Mobile quick actions">
     <a class="mobilebar__btn" href="tel:+4915222416438">📞<span data-i18n="mb_call">Call</span></a>
@@ -447,7 +457,7 @@
         quiz_q1:"Lädt das Handy?",
         quiz_q2:"Akku schnell leer?",
         quiz_q3:"Bildschirm schwarz oder flackert?",
-        quiz_label:"Quiz: Schnell-Check (3 Fragen)",
+        quiz_label:"Diagnose-Quiz (1 Min)",
         quiz_yes:"✅ Ja",
         quiz_no:"❌ Nein",
         quiz_yes_b:"🔋 Ja",
@@ -534,7 +544,7 @@
         quiz_q1:"Телефон заряджається?",
         quiz_q2:"Акумулятор швидко сідає?",
         quiz_q3:"Екран чорний або блимає?",
-        quiz_label:"Квіз: швидка діагностика (3 питання)",
+        quiz_label:"Diagnose-Quiz (1 Min)",
         quiz_yes:"✅ Так",
         quiz_no:"❌ Ні",
         quiz_yes_b:"🔋 Так",
@@ -621,7 +631,7 @@
         quiz_q1:"Does the phone charge?",
         quiz_q2:"Battery drains fast?",
         quiz_q3:"Screen black or flickering?",
-        quiz_label:"Quiz: quick diagnosis (3 questions)",
+        quiz_label:"Diagnose-Quiz (1 Min)",
         quiz_yes:"✅ Yes",
         quiz_no:"❌ No",
         quiz_yes_b:"🔋 Yes",
