@@ -422,6 +422,28 @@
     items.forEach((item) => observer.observe(item));
   }
 
+  function initQuizHighlight() {
+    const quizSection = document.getElementById("quiz");
+    const targets = document.querySelectorAll(".js-quiz-highlight");
+    if (!quizSection || !targets.length || !("IntersectionObserver" in window)) return;
+
+    const setActive = (isActive) => {
+      targets.forEach((el) => el.classList.toggle("is-highlighted", isActive));
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target !== quizSection) return;
+          setActive(entry.isIntersecting);
+        });
+      },
+      { rootMargin: "0px 0px -35% 0px", threshold: 0.1 }
+    );
+
+    observer.observe(quizSection);
+  }
+
   function setLang(lang) {
     applyTranslations(lang);
     updateSearchPlaceholders(lang);
@@ -438,6 +460,7 @@
   initEasterEgg();
   initServiceWorker();
   initPriceToggle();
+  initQuizHighlight();
 
   document.querySelectorAll(".price-search").forEach((input) => {
     input.addEventListener("input", () => filterPriceBlock(input));
