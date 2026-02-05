@@ -347,6 +347,12 @@
         viewer.classList.remove("is-dragging");
         viewer.releasePointerCapture?.(event.pointerId);
       });
+      viewer.addEventListener("pointercancel", (event) => {
+        if (!isDragging) return;
+        isDragging = false;
+        viewer.classList.remove("is-dragging");
+        viewer.releasePointerCapture?.(event.pointerId);
+      });
       viewer.addEventListener("pointerleave", () => {
         isDragging = false;
         viewer.classList.remove("is-dragging");
