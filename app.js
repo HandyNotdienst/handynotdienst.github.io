@@ -309,6 +309,50 @@
     window.addEventListener("scroll", () => header.classList.toggle("is-scrolled", window.scrollY > 20));
   }
 
+  function initEasterEgg() {
+    const logo = document.querySelector(".brand");
+    if (!logo) return;
+
+    const messages = ["☕ Kaffee heute gratis 😉", "🔧 Techniker-Level freigeschaltet"];
+    const storageKey = "hn_egg_last_seen";
+    const today = () => new Date().toISOString().slice(0, 10);
+
+    let clickCount = 0;
+    let toastEl;
+
+    function ensureToast() {
+      if (toastEl) return toastEl;
+      toastEl = document.createElement("div");
+      toastEl.className = "egg-toast";
+      toastEl.setAttribute("role", "status");
+      toastEl.setAttribute("aria-live", "polite");
+      document.body.appendChild(toastEl);
+      return toastEl;
+    }
+
+    function showToast(message) {
+      const el = ensureToast();
+      el.textContent = message;
+      el.classList.add("is-visible");
+      window.setTimeout(() => {
+        el.classList.remove("is-visible");
+      }, 3000);
+    }
+
+    logo.addEventListener("click", () => {
+      clickCount += 1;
+      if (clickCount < 10) return;
+      clickCount = 0;
+
+      const lastSeen = localStorage.getItem(storageKey);
+      if (lastSeen === today()) return;
+
+      const message = messages[Math.floor(Math.random() * messages.length)];
+      showToast(message);
+      localStorage.setItem(storageKey, today());
+    });
+  }
+
 
   function initServiceWorker() {
     if (!serviceWorkerPath) return;
@@ -338,6 +382,7 @@
   initPickupButton();
   initBundles();
   initQuiz();
+  initEasterEgg();
   initServiceWorker();
 
   document.querySelectorAll(".price-search").forEach((input) => {
