@@ -309,68 +309,6 @@
     window.addEventListener("scroll", () => header.classList.toggle("is-scrolled", window.scrollY > 20));
   }
 
-  function initBeforeAfterSlider() {
-    document.querySelectorAll("[data-ba-slider]").forEach((slider) => {
-      const viewer = slider.querySelector(".ba-viewer");
-      const range = slider.querySelector(".ba-range");
-      if (!viewer || !range) return;
-
-      const setPosition = (value) => {
-        const clamped = Math.min(100, Math.max(0, Number(value)));
-        slider.style.setProperty("--ba-position", `${clamped}%`);
-        range.value = clamped;
-      };
-
-      const updateFromPointer = (event) => {
-        const rect = viewer.getBoundingClientRect();
-        const offset = event.clientX - rect.left;
-        const ratio = rect.width ? offset / rect.width : 0;
-        setPosition(ratio * 100);
-      };
-
-      setPosition(range.value || 50);
-
-      let isDragging = false;
-      viewer.addEventListener("pointerdown", (event) => {
-        isDragging = true;
-        viewer.classList.add("is-dragging");
-        viewer.setPointerCapture?.(event.pointerId);
-        updateFromPointer(event);
-      });
-      viewer.addEventListener("pointermove", (event) => {
-        if (!isDragging) return;
-        updateFromPointer(event);
-      });
-      viewer.addEventListener("pointerup", (event) => {
-        if (!isDragging) return;
-        isDragging = false;
-        viewer.classList.remove("is-dragging");
-        viewer.releasePointerCapture?.(event.pointerId);
-      });
-      viewer.addEventListener("pointercancel", (event) => {
-        if (!isDragging) return;
-        isDragging = false;
-        viewer.classList.remove("is-dragging");
-        viewer.releasePointerCapture?.(event.pointerId);
-      });
-      viewer.addEventListener("pointerleave", () => {
-        isDragging = false;
-        viewer.classList.remove("is-dragging");
-      });
-
-      range.addEventListener("input", (event) => {
-        setPosition(event.target.value);
-      });
-
-      range.addEventListener("keydown", (event) => {
-        if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
-        event.preventDefault();
-        const step = event.shiftKey ? 10 : 2;
-        const direction = event.key === "ArrowRight" ? 1 : -1;
-        setPosition(Number(range.value) + step * direction);
-      });
-    });
-  }
 
   function initServiceWorker() {
     if (!serviceWorkerPath) return;
@@ -396,7 +334,6 @@
   }
 
   initHeaderShadow();
-  initBeforeAfterSlider();
   initLangButtons();
   initPickupButton();
   initBundles();
