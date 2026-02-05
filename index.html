@@ -129,32 +129,23 @@
           <h2 data-i18n="ba_title">VORHER / NACHHER</h2>
         </div>
 
-        <figure class="ba-slider" data-ba-slider>
-          <div class="ba-slider__images">
-            <img
-              class="ba-slider__image ba-slider__image--before"
-              src="assets/before-phone.png"
-              alt="Defektes Smartphone vor der Reparatur"
-            />
-            <div class="ba-slider__after" aria-hidden="true">
-              <img
-                class="ba-slider__image ba-slider__image--after"
-                src="assets/after-phone.png"
-                alt="Repariertes Smartphone nach der Reparatur"
-              />
+        <div class="ba-showcase">
+          <figure class="ba-card">
+            <div class="ba-media">
+              <img src="assets/before-phone.png" alt="Defektes Smartphone vor der Reparatur" />
+              <span class="ba-label">Vorher</span>
             </div>
-          </div>
-          <div class="ba-slider__handle" aria-hidden="true"></div>
-          <input
-            class="ba-slider__range"
-            type="range"
-            min="0"
-            max="100"
-            value="50"
-            aria-label="Vorher-Nachher Vergleich"
-          />
-        </figure>
-        <p class="ba-compare" data-i18n="ba_compare">🔋 Akku leer nach 2 Std ❌ → 🔋 Ganzer Tag Nutzung ✅</p>
+            <figcaption class="ba-caption" data-i18n="ba_compare">🔋 Akku leer nach 2 Std ❌ → 🔋 Ganzer Tag Nutzung ✅</figcaption>
+          </figure>
+
+          <figure class="ba-card">
+            <div class="ba-media">
+              <img src="assets/after-phone.png" alt="Repariertes Smartphone nach der Reparatur" />
+              <span class="ba-label">Nachher</span>
+            </div>
+            <figcaption class="ba-caption">✅ Repariert, getestet & bereit für den Alltag.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
