@@ -70,6 +70,7 @@
         <div class="price-toggle-block">
           <h2 class="price-toggle__title">Preise nach Marke</h2>
           <p class="price-toggle__helper">Wähle dein Gerät, um schneller den richtigen Preis zu finden</p>
+          <p class="price-list-helper">Beliebte Modelle zuerst – alle anderen per Klick anzeigen</p>
           <div class="price-toggle js-price-toggle" role="group" aria-label="Marke auswählen">
             <button class="price-toggle__btn is-active" type="button" data-brand-toggle="apple" aria-pressed="true">Apple 🍏</button>
             <button class="price-toggle__btn" type="button" data-brand-toggle="samsung" aria-pressed="false">Samsung 🤖</button>
@@ -91,46 +92,47 @@
             <div class="table-wrap">
               <table class="price-table js-price-table" id="iphoneTable" data-brand="iPhone">
                 <thead>
-                  <tr><th>Modell</th><th>Display (Original)</th><th>Akku</th><th>Rückseite</th></tr>
+                  <tr><th>Modell</th><th>Display</th><th>Akku</th><th>Rückseite</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>iPhone 16 Pro Max</td><td>374€</td><td>124€</td><td>174€</td></tr>
-                  <tr><td>iPhone 16 Pro</td><td>335€</td><td>105€</td><td>164€</td></tr>
-                  <tr><td>iPhone 16 Plus</td><td>234€</td><td>84€</td><td>154€</td></tr>
-                  <tr><td>iPhone 16</td><td>224€</td><td>74€</td><td>134€</td></tr>
-                  <tr><td>iPhone 15 Pro Max</td><td>264€</td><td>84€</td><td>134€</td></tr>
-                  <tr><td>iPhone 15 Pro</td><td>234€</td><td>74€</td><td>124€</td></tr>
-                  <tr><td>iPhone 15 Plus</td><td>214€</td><td>64€</td><td>104€</td></tr>
-                  <tr><td>iPhone 15</td><td>184€</td><td>64€</td><td>84€</td></tr>
-                  <tr><td>iPhone 14 Pro Max</td><td>174€</td><td>74€</td><td>115€</td></tr>
-                  <tr><td>iPhone 14 Pro</td><td>164€</td><td>64€</td><td>105€</td></tr>
-                  <tr><td>iPhone 14 Plus</td><td>144€</td><td>60€</td><td>74€</td></tr>
-                  <tr><td>iPhone 14</td><td>124€</td><td>60€</td><td>64€</td></tr>
-                  <tr><td>iPhone 13 Pro Max</td><td>164€ / 134€</td><td>54€</td><td>84€</td></tr>
-                  <tr><td>iPhone 13 Pro</td><td>154€</td><td>54€</td><td>74€</td></tr>
-                  <tr><td>iPhone 13</td><td>124€</td><td>54€</td><td>74€</td></tr>
-                  <tr><td>iPhone 13 mini</td><td>114€</td><td>54€</td><td>64€</td></tr>
-                  <tr><td>iPhone 12 Pro Max</td><td>124€</td><td>54€</td><td>74€</td></tr>
-                  <tr><td>iPhone 12 Pro</td><td>114€</td><td>54€</td><td>64€</td></tr>
-                  <tr><td>iPhone 12</td><td>114€</td><td>54€</td><td>64€</td></tr>
-                  <tr><td>iPhone 12 mini</td><td>84€</td><td>54€</td><td>54€</td></tr>
-                  <tr><td>iPhone 11 Pro Max</td><td>84€</td><td>54€</td><td>54€</td></tr>
-                  <tr><td>iPhone 11 Pro</td><td>74€</td><td>54€</td><td>54€</td></tr>
-                  <tr><td>iPhone 11</td><td>64€</td><td>54€</td><td>54€</td></tr>
-                  <tr><td>iPhone XS Max</td><td>74€</td><td>54€</td><td>54€</td></tr>
-                  <tr><td>iPhone X / XS / XR</td><td>54€</td><td>44€</td><td>44€</td></tr>
-                  <tr><td>iPhone SE (2022)</td><td>54€</td><td>44€</td><td>34€</td></tr>
-                  <tr><td>iPhone SE (2020)</td><td>44€</td><td>34€</td><td>34€</td></tr>
-                  <tr><td>iPhone 8 Plus</td><td>44€</td><td>34€</td><td>24€</td></tr>
-                  <tr><td>iPhone 8</td><td>34€</td><td>34€</td><td>24€</td></tr>
-                  <tr><td>iPhone 7 / 7 Plus</td><td>30€</td><td>24€</td><td>-</td></tr>
-                  <tr><td>iPhone 6s / 6s Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
-                  <tr><td>iPhone 6 / 6 Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
+                  <tr data-series="iphone"><td>iPhone 16 Pro Max</td><td>374€</td><td>124€</td><td>174€</td></tr>
+                  <tr data-series="iphone"><td>iPhone 16 Pro</td><td>335€</td><td>105€</td><td>164€</td></tr>
+                  <tr data-series="iphone"><td>iPhone 16 Plus</td><td>234€</td><td>84€</td><td>154€</td></tr>
+                  <tr data-series="iphone"><td>iPhone 16</td><td>224€</td><td>74€</td><td>134€</td></tr>
+                  <tr data-series="iphone"><td>iPhone 15 Pro Max</td><td>264€</td><td>84€</td><td>134€</td></tr>
+                  <tr data-series="iphone"><td>iPhone 15 Pro</td><td>234€</td><td>74€</td><td>124€</td></tr>
+                  <tr data-series="iphone"><td>iPhone 15 Plus</td><td>214€</td><td>64€</td><td>104€</td></tr>
+                  <tr data-series="iphone"><td>iPhone 15</td><td>184€</td><td>64€</td><td>84€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 14 Pro Max</td><td>174€</td><td>74€</td><td>115€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 14 Pro</td><td>164€</td><td>64€</td><td>105€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 14 Plus</td><td>144€</td><td>60€</td><td>74€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 14</td><td>124€</td><td>60€</td><td>64€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 13 Pro Max</td><td>164€ / 134€</td><td>54€</td><td>84€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 13 Pro</td><td>154€</td><td>54€</td><td>74€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 13</td><td>124€</td><td>54€</td><td>74€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 13 mini</td><td>114€</td><td>54€</td><td>64€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 12 Pro Max</td><td>124€</td><td>54€</td><td>74€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 12 Pro</td><td>114€</td><td>54€</td><td>64€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 12</td><td>114€</td><td>54€</td><td>64€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 12 mini</td><td>84€</td><td>54€</td><td>54€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 11 Pro Max</td><td>84€</td><td>54€</td><td>54€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 11 Pro</td><td>74€</td><td>54€</td><td>54€</td></tr>
+                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 11</td><td>64€</td><td>54€</td><td>54€</td></tr>
+                  <tr data-series="iphone"><td>iPhone XS Max</td><td>74€</td><td>54€</td><td>54€</td></tr>
+                  <tr data-series="iphone"><td>iPhone X / XS / XR</td><td>54€</td><td>44€</td><td>44€</td></tr>
+                  <tr data-series="iphone"><td>iPhone SE (2022)</td><td>54€</td><td>44€</td><td>34€</td></tr>
+                  <tr data-series="iphone"><td>iPhone SE (2020)</td><td>44€</td><td>34€</td><td>34€</td></tr>
+                  <tr data-series="iphone"><td>iPhone 8 Plus</td><td>44€</td><td>34€</td><td>24€</td></tr>
+                  <tr data-series="iphone"><td>iPhone 8</td><td>34€</td><td>34€</td><td>24€</td></tr>
+                  <tr data-series="iphone"><td>iPhone 7 / 7 Plus</td><td>30€</td><td>24€</td><td>-</td></tr>
+                  <tr data-series="iphone"><td>iPhone 6s / 6s Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
+                  <tr data-series="iphone"><td>iPhone 6 / 6 Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
                 </tbody>
               </table>
             </div>
 
             <div class="price-cards js-price-cards"></div>
+            <button class="price-expand-btn" type="button" data-expand-target="iphoneTable" aria-expanded="false">Alle Modelle anzeigen</button>
           </div>
         </div>
 
@@ -154,29 +156,30 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>S25 Ultra</td><td>274€</td><td>84€</td><td>84€</td><td>105€</td></tr>
-                  <tr><td>S25 Plus</td><td>234€</td><td>74€</td><td>74€</td><td>94€</td></tr>
-                  <tr><td>S25</td><td>174€</td><td>74€</td><td>74€</td><td>84€</td></tr>
-                  <tr><td>S24 Ultra</td><td>324€</td><td>84€</td><td>74€</td><td>105€</td></tr>
-                  <tr><td>S24 / S24+</td><td>244€ / 274€</td><td>74€</td><td>64€</td><td>94€</td></tr>
-                  <tr><td>S23 Ultra</td><td>334€</td><td>84€</td><td>74€</td><td>94€</td></tr>
-                  <tr><td>S23 / S23+</td><td>224€ / 254€</td><td>74€</td><td>64€</td><td>84€</td></tr>
-                  <tr><td>S22 Ultra</td><td>324€</td><td>74€</td><td>64€</td><td>84€</td></tr>
-                  <tr><td>S22 / S22+</td><td>224€ / 254€</td><td>74€</td><td>54€</td><td>74€</td></tr>
-                  <tr><td>S21 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
-                  <tr><td>S21 / S21+ / FE</td><td>164€ / 184€ / 205€</td><td>64€</td><td>54€</td><td>74€</td></tr>
-                  <tr><td>S20 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
-                  <tr><td>S20 / S20+ / FE</td><td>205€ / 244€ / 214€</td><td>54€</td><td>44€</td><td>64€</td></tr>
-                  <tr><td>S10+ / S10 / S10e</td><td>214€ / 204€ / 184€</td><td>54€</td><td>44€</td><td>64€</td></tr>
-                  <tr><td>S9+ / S9</td><td>174€ / 164€</td><td>44€</td><td>34€</td><td>54€</td></tr>
-                  <tr><td>S8+ / S8</td><td>164€ / 154€</td><td>44€</td><td>34€</td><td>54€</td></tr>
-                  <tr><td>S7 Edge / S7</td><td>134€ / 124€</td><td>34€</td><td>24€</td><td>44€</td></tr>
-                  <tr><td>S6 Edge / S6</td><td>114€ / 104€</td><td>34€</td><td>24€</td><td>44€</td></tr>
+                  <tr data-series="s"><td>S25 Ultra</td><td>274€</td><td>84€</td><td>84€</td><td>105€</td></tr>
+                  <tr data-series="s"><td>S25 Plus</td><td>234€</td><td>74€</td><td>74€</td><td>94€</td></tr>
+                  <tr data-series="s"><td>S25</td><td>174€</td><td>74€</td><td>74€</td><td>84€</td></tr>
+                  <tr data-series="s"><td>S24 Ultra</td><td>324€</td><td>84€</td><td>74€</td><td>105€</td></tr>
+                  <tr data-series="s"><td>S24 / S24+</td><td>244€ / 274€</td><td>74€</td><td>64€</td><td>94€</td></tr>
+                  <tr data-series="s"><td>S23 Ultra</td><td>334€</td><td>84€</td><td>74€</td><td>94€</td></tr>
+                  <tr data-series="s"><td>S23 / S23+</td><td>224€ / 254€</td><td>74€</td><td>64€</td><td>84€</td></tr>
+                  <tr data-series="s" class="is-popular" data-popular="true"><td>S22 Ultra</td><td>324€</td><td>74€</td><td>64€</td><td>84€</td></tr>
+                  <tr data-series="s" class="is-popular" data-popular="true"><td>S22 / S22+</td><td>224€ / 254€</td><td>74€</td><td>54€</td><td>74€</td></tr>
+                  <tr data-series="s" class="is-popular" data-popular="true"><td>S21 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
+                  <tr data-series="s" class="is-popular" data-popular="true"><td>S21 / S21+ / FE</td><td>164€ / 184€ / 205€</td><td>64€</td><td>54€</td><td>74€</td></tr>
+                  <tr data-series="s" class="is-popular" data-popular="true"><td>S20 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
+                  <tr data-series="s" class="is-popular" data-popular="true"><td>S20 / S20+ / FE</td><td>205€ / 244€ / 214€</td><td>54€</td><td>44€</td><td>64€</td></tr>
+                  <tr data-series="s"><td>S10+ / S10 / S10e</td><td>214€ / 204€ / 184€</td><td>54€</td><td>44€</td><td>64€</td></tr>
+                  <tr data-series="s"><td>S9+ / S9</td><td>174€ / 164€</td><td>44€</td><td>34€</td><td>54€</td></tr>
+                  <tr data-series="s"><td>S8+ / S8</td><td>164€ / 154€</td><td>44€</td><td>34€</td><td>54€</td></tr>
+                  <tr data-series="s"><td>S7 Edge / S7</td><td>134€ / 124€</td><td>34€</td><td>24€</td><td>44€</td></tr>
+                  <tr data-series="s"><td>S6 Edge / S6</td><td>114€ / 104€</td><td>34€</td><td>24€</td><td>44€</td></tr>
                 </tbody>
               </table>
             </div>
 
             <div class="price-cards js-price-cards"></div>
+            <button class="price-expand-btn" type="button" data-expand-target="samsungTable" aria-expanded="false">Alle Modelle anzeigen</button>
           </div>
         </div>
 
