@@ -40,14 +40,22 @@
 
     const model = (document.getElementById("model")?.value || "").trim() || "-";
     const issue = (document.getElementById("issue")?.value || "").trim() || "-";
-    const base = `https://wa.me/${whatsappNumber}?text=`;
 
     let msg;
-    if (lang === "ua") msg = `Привіт!%0AМодель: ${encodeURIComponent(model)}%0AПроблема: ${encodeURIComponent(issue)}%0AМісто: ${city}`;
-    else if (lang === "en") msg = `Hi!%0AModel: ${encodeURIComponent(model)}%0AIssue: ${encodeURIComponent(issue)}%0ACity: ${city}`;
-    else msg = `Hallo!%0AModell: ${encodeURIComponent(model)}%0AProblem: ${encodeURIComponent(issue)}%0AOrt: ${city}`;
+    if (lang === "ua") msg = `Привіт!
+Модель: ${model}
+Проблема: ${issue}
+Місто: ${city}`;
+    else if (lang === "en") msg = `Hi!
+Model: ${model}
+Issue: ${issue}
+City: ${city}`;
+    else msg = `Hallo!
+Modell: ${model}
+Problem: ${issue}
+Ort: ${city}`;
 
-    link.href = base + msg;
+    link.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
   }
 
   function updateLiveBadge() {
@@ -91,9 +99,21 @@
     const lang = getLang();
     const device = `${brand} ${model}`.trim();
     let text;
-    if (lang === "ua") text = `Привіт!%0A📱 ${device}%0A🛠️ ${repair}%0A💶 ${price}%0AМісто: ${city}`;
-    else if (lang === "en") text = `Hi!%0A📱 ${device}%0A🛠️ ${repair}%0A💶 ${price}%0ACity: ${city}`;
-    else text = `Hallo!%0A📱 ${device}%0A🛠️ ${repair}%0A💶 ${price}%0AOrt: ${city}`;
+    if (lang === "ua") text = `Привіт!
+📱 ${device}
+🛠️ ${repair}
+💶 ${price}
+Місто: ${city}`;
+    else if (lang === "en") text = `Hi!
+📱 ${device}
+🛠️ ${repair}
+💶 ${price}
+City: ${city}`;
+    else text = `Hallo!
+📱 ${device}
+🛠️ ${repair}
+💶 ${price}
+Ort: ${city}`;
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank");
   }
 
@@ -114,6 +134,67 @@
     });
   }
 
+  function applyPriceVisibility(table) {
+    const showAll = table.dataset.showAll === "true";
+    table.querySelectorAll("tbody tr").forEach((row) => {
+      const isPopular = row.dataset.popular === "true";
+      const searchMatch = row.dataset.searchMatch !== "false";
+      const shouldShow = searchMatch && (showAll || isPopular);
+      row.classList.toggle("price-row--hidden", !shouldShow);
+    });
+
+    table
+      .closest(".price-block")
+      ?.querySelectorAll(".price-card")
+      .forEach((card) => {
+        const isPopular = card.dataset.popular === "true";
+        const searchMatch = card.dataset.searchMatch !== "false";
+        const shouldShow = searchMatch && (showAll || isPopular);
+        card.classList.toggle("price-card--hidden", !shouldShow);
+      });
+  }
+
+  function animatePriceContainers(table, updateVisibility) {
+    const block = table.closest(".price-block");
+    if (!block) {
+      updateVisibility();
+      return;
+    }
+
+    const containers = [block.querySelector(".table-wrap"), block.querySelector(".price-cards")].filter(Boolean);
+    const starts = containers.map((el) => el.offsetHeight);
+    updateVisibility();
+
+    containers.forEach((el, idx) => {
+      const start = starts[idx];
+      const end = el.scrollHeight;
+      if (Math.abs(end - start) < 4) return;
+
+      el.animate([{ height: `${start}px` }, { height: `${end}px` }], {
+        duration: 260,
+        easing: "ease",
+      });
+    });
+  }
+
+  function initPriceExpanders() {
+    document.querySelectorAll(".price-expand-btn[data-expand-target]").forEach((btn) => {
+      const table = document.getElementById(btn.dataset.expandTarget);
+      if (!table) return;
+
+      table.dataset.showAll = "false";
+      applyPriceVisibility(table);
+
+      btn.addEventListener("click", () => {
+        const expanded = table.dataset.showAll === "true";
+        table.dataset.showAll = expanded ? "false" : "true";
+        btn.textContent = expanded ? "Alle Modelle anzeigen" : "Weniger anzeigen";
+        btn.setAttribute("aria-expanded", String(!expanded));
+        animatePriceContainers(table, () => applyPriceVisibility(table));
+      });
+    });
+  }
+
   function generateMobileCards() {
     document.querySelectorAll(".js-price-table").forEach((table) => {
       const brand = table.dataset.brand || "";
@@ -126,6 +207,8 @@
         const model = row.cells[0].innerText.trim();
         const card = document.createElement("div");
         card.className = "price-card";
+        card.dataset.popular = row.dataset.popular === "true" ? "true" : "false";
+        card.dataset.searchMatch = "true";
         const h = document.createElement("h4");
         h.textContent = `${brand} ${model}`;
         card.appendChild(h);
@@ -150,16 +233,20 @@
   function filterPriceBlock(input) {
     const table = document.getElementById(input.getAttribute("data-filter-target"));
     if (!table) return;
-    const q = input.value.toLowerCase();
-    table.querySelectorAll("tbody tr").forEach((tr) => {
-      tr.style.display = tr.innerText.toLowerCase().includes(q) ? "" : "none";
+    const q = input.value.toLowerCase().trim();
+
+    table.querySelectorAll("tbody tr").forEach((row) => {
+      row.dataset.searchMatch = row.innerText.toLowerCase().includes(q) ? "true" : "false";
     });
+
     table
       .closest(".price-block")
       ?.querySelectorAll(".price-card")
       .forEach((card) => {
-        card.style.display = card.innerText.toLowerCase().includes(q) ? "" : "none";
+        card.dataset.searchMatch = card.innerText.toLowerCase().includes(q) ? "true" : "false";
       });
+
+    applyPriceVisibility(table);
   }
 
   function initPriceToggle() {
@@ -469,6 +556,7 @@
   if (document.querySelector(".js-price-table")) {
     bindTablePriceClicks();
     generateMobileCards();
+    initPriceExpanders();
   }
 
   ["model", "issue"].forEach((id) => {
