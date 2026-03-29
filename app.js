@@ -94,6 +94,99 @@ Ort: ${city}`;
     });
   }
 
+  function splitGroupedModelName(rawName, series = "") {
+    const clean = rawName.trim();
+    if (!clean.includes("/")) return [clean];
+
+    const parts = clean.split("/").map((part) => part.trim()).filter(Boolean);
+    if (!parts.length) return [clean];
+
+    const first = parts[0];
+    const iphonePrefix = first.match(/^iPhone\s+/i)?.[0] || "";
+    const samsungSeriesPrefix = series === "s" ? (first.match(/^S\d+\+?/i)?.[0]?.replace(/\+$/, "") || "") : "";
+
+    return parts.map((part, idx) => {
+      if (idx === 0) return part;
+      if (iphonePrefix && !/^iPhone\s+/i.test(part)) return `${iphonePrefix}${part}`;
+      if (series === "s" && samsungSeriesPrefix) {
+        if (/^(FE|Ultra|Plus)$/i.test(part)) return `${samsungSeriesPrefix} ${part}`;
+        if (!/^S\d+/i.test(part)) return `${samsungSeriesPrefix}${part.startsWith("+") ? part : ` ${part}`}`;
+      }
+      return part;
+    });
+  }
+
+  function normalizeDisplayPrice(row) {
+    const displayCell = row.cells[1];
+    if (!displayCell) return;
+    const model = row.cells[0]?.innerText?.trim() || "";
+    if (!/^iPhone/i.test(model)) return;
+
+    const value = displayCell.innerText.trim();
+    if (!value.includes("/")) return;
+    const parts = value.split("/").map((item) => item.trim()).filter(Boolean);
+    if (parts.length !== 2) {
+      displayCell.textContent = parts[0] || value;
+      return;
+    }
+    displayCell.textContent = `OLED Premium: ${parts[0]} · Standard: ${parts[1]}`;
+  }
+
+  function normalizeModelRows(table) {
+    const tbody = table.tBodies[0];
+    if (!tbody) return;
+
+    Array.from(tbody.rows).forEach((row) => {
+      normalizeDisplayPrice(row);
+      const modelCell = row.cells[0];
+      if (!modelCell) return;
+      const variants = splitGroupedModelName(modelCell.innerText, row.dataset.series || "");
+      if (variants.length <= 1) return;
+
+      variants.forEach((variant) => {
+        const clone = row.cloneNode(true);
+        clone.cells[0].innerText = variant;
+        clone.dataset.searchMatch = "true";
+        tbody.insertBefore(clone, row);
+      });
+      row.remove();
+    });
+  }
+
+  function isPopularModel(brand, model) {
+    if (brand === "apple") return /^(iPhone 11|iPhone 12|iPhone 13|iPhone 14)$/i.test(model);
+    if (brand === "samsung") return /^(S20|S21|S22|S23)$/i.test(model);
+    return false;
+  }
+
+  function sortRowsByPopularity(table) {
+    const tbody = table.tBodies[0];
+    if (!tbody) return;
+    const brand = table.dataset.brandKey || "";
+    const rows = Array.from(tbody.rows);
+
+    rows.forEach((row) => {
+      const model = row.cells[0]?.innerText?.trim() || "";
+      row.dataset.popular = isPopularModel(brand, model) ? "true" : "false";
+      row.dataset.searchMatch = "true";
+    });
+
+    rows.sort((a, b) => {
+      const ap = a.dataset.popular === "true" ? 1 : 0;
+      const bp = b.dataset.popular === "true" ? 1 : 0;
+      return bp - ap;
+    });
+
+    rows.forEach((row) => tbody.appendChild(row));
+  }
+
+  function preparePriceTables() {
+    document.querySelectorAll(".js-price-table").forEach((table) => {
+      normalizeModelRows(table);
+      sortRowsByPopularity(table);
+    });
+  }
+
   function openWAForPrice(brand, model, repair, price) {
     if (!whatsappNumber) return;
     const lang = getLang();
@@ -185,11 +278,21 @@ Ort: ${city}`;
       table.dataset.showAll = "false";
       applyPriceVisibility(table);
 
+      const setBtnLabel = (expanded) => {
+        const lang = getLang();
+        const moreKey = btn.dataset.i18nMore;
+        const lessKey = btn.dataset.i18nLess;
+        const moreText = i18n[lang]?.[moreKey] || "Alle Modelle anzeigen";
+        const lessText = i18n[lang]?.[lessKey] || "Weniger anzeigen";
+        btn.textContent = expanded ? lessText : moreText;
+      };
+      setBtnLabel(false);
+
       btn.addEventListener("click", () => {
         const expanded = table.dataset.showAll === "true";
         table.dataset.showAll = expanded ? "false" : "true";
-        btn.textContent = expanded ? "Alle Modelle anzeigen" : "Weniger anzeigen";
         btn.setAttribute("aria-expanded", String(!expanded));
+        setBtnLabel(!expanded);
         animatePriceContainers(table, () => applyPriceVisibility(table));
       });
     });
@@ -220,7 +323,7 @@ Ort: ${city}`;
           if (!price || price === "-") return;
           const btn = document.createElement("button");
           btn.type = "button";
-          btn.innerHTML = `${repair} — <strong>${price}</strong>`;
+          btn.innerHTML = `<span>${repair}</span><strong>${price}</strong>`;
           btn.addEventListener("click", () => openWAForPrice(brand, model, repair, price));
           card.appendChild(btn);
         });
@@ -536,6 +639,14 @@ Ort: ${city}`;
     updateSearchPlaceholders(lang);
     updateQuickWA(lang);
     updateLiveBadge();
+    document.querySelectorAll(".price-expand-btn[data-expand-target]").forEach((btn) => {
+      const table = document.getElementById(btn.dataset.expandTarget);
+      if (!table) return;
+      const expanded = table.dataset.showAll === "true";
+      const moreText = i18n[lang]?.[btn.dataset.i18nMore] || "Alle Modelle anzeigen";
+      const lessText = i18n[lang]?.[btn.dataset.i18nLess] || "Weniger anzeigen";
+      btn.textContent = expanded ? lessText : moreText;
+    });
   }
 
   initHeaderShadow();
@@ -554,6 +665,7 @@ Ort: ${city}`;
   });
 
   if (document.querySelector(".js-price-table")) {
+    preparePriceTables();
     bindTablePriceClicks();
     generateMobileCards();
     initPriceExpanders();
