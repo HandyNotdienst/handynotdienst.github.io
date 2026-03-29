@@ -51,8 +51,8 @@
     <section class="section">
       <div class="container">
         <div class="section__head">
-          <h1 class="page-title" data-i18n="prices_title">Preisliste</h1>
-          <p class="muted" data-i18n="prices_text">Klick auf einen Preis → WhatsApp öffnet sich mit Modell + Reparatur + Preis.</p>
+          <h1 class="page-title" data-i18n="prices_title">Preise</h1>
+          <p class="muted" data-i18n="prices_text">Preis antippen → Anfrage direkt per WhatsApp</p>
         </div>
 
         <!-- 12) Bundles -->
@@ -68,9 +68,9 @@
         </div>
 
         <div class="price-toggle-block">
-          <h2 class="price-toggle__title">Preise nach Marke</h2>
-          <p class="price-toggle__helper">Wähle dein Gerät, um schneller den richtigen Preis zu finden</p>
-          <p class="price-list-helper">Beliebte Modelle zuerst – alle anderen per Klick anzeigen</p>
+          <h2 class="price-toggle__title" data-i18n="brand_switch_title">Preise nach Marke</h2>
+          <p class="price-toggle__helper" data-i18n="brand_switch_helper">Wähle dein Gerät, um schneller den richtigen Preis zu finden</p>
+          <p class="price-list-helper" data-i18n="popular_helper">Beliebte Modelle zuerst – weitere Modelle per Klick</p>
           <div class="price-toggle js-price-toggle" role="group" aria-label="Marke auswählen">
             <button class="price-toggle__btn is-active" type="button" data-brand-toggle="apple" aria-pressed="true">Apple 🍏</button>
             <button class="price-toggle__btn" type="button" data-brand-toggle="samsung" aria-pressed="false">Samsung 🤖</button>
@@ -89,8 +89,13 @@
               <input class="price-search" type="text" data-filter-target="iphoneTable" placeholder="Modell suchen (z.B. iPhone 13, Pro...)" />
             </div>
 
+            <p class="iphone-info-note">
+              <span class="iphone-info-note__icon" aria-hidden="true">ⓘ</span>
+              <span data-i18n="iphone_parts_notice">Hinweis: Bei neueren iPhones kann nach der Reparatur eine Systemmeldung zum ersetzten Bauteil erscheinen. Diese Meldung wird vom Apple-System erzeugt und ist nicht automatisch eine Aussage über die Qualität des eingebauten Ersatzteils.</span>
+            </p>
+
             <div class="table-wrap">
-              <table class="price-table js-price-table" id="iphoneTable" data-brand="iPhone">
+              <table class="price-table js-price-table" id="iphoneTable" data-brand="iPhone" data-brand-key="apple">
                 <thead>
                   <tr><th>Modell</th><th>Display</th><th>Akku</th><th>Rückseite</th></tr>
                 </thead>
@@ -132,7 +137,7 @@
             </div>
 
             <div class="price-cards js-price-cards"></div>
-            <button class="price-expand-btn" type="button" data-expand-target="iphoneTable" aria-expanded="false">Alle Modelle anzeigen</button>
+            <button class="price-expand-btn" type="button" data-expand-target="iphoneTable" data-i18n-more="show_all_models" data-i18n-less="show_less_models" aria-expanded="false">Alle Modelle anzeigen</button>
           </div>
         </div>
 
@@ -149,7 +154,7 @@
             </div>
 
             <div class="table-wrap">
-              <table class="price-table js-price-table" id="samsungTable" data-brand="Samsung">
+              <table class="price-table js-price-table" id="samsungTable" data-brand="Samsung" data-brand-key="samsung">
                 <thead>
                   <tr>
                     <th>Modell</th><th>Display</th><th>Akku</th><th>Ladebuchse</th><th>Rückseite</th>
@@ -179,10 +184,11 @@
             </div>
 
             <div class="price-cards js-price-cards"></div>
-            <button class="price-expand-btn" type="button" data-expand-target="samsungTable" aria-expanded="false">Alle Modelle anzeigen</button>
+            <button class="price-expand-btn" type="button" data-expand-target="samsungTable" data-i18n-more="show_all_models" data-i18n-less="show_less_models" aria-expanded="false">Alle Modelle anzeigen</button>
           </div>
         </div>
 
+        <p class="price-trust-note" data-i18n="price_trust_note">✓ Daten bleiben erhalten</p>
         <p class="price-note" data-i18n="prices_note">* Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.</p>
         <p class="price-note">⏱️ <span data-i18n="prices_time">Die meisten Reparaturen dauern 30–90 Minuten (je nach Modell).</span></p>
       </div>
@@ -215,27 +221,45 @@
       serviceWorkerPath: "./sw.js"
     };
     window.HN_I18N = {
-      de:{ tagline:"Singen • Schnell & zuverlässig", no_appt:"Ohne Termin", nav_home:"Start", prices_title:"Preisliste",
-        prices_text:"Klick auf einen Preis → WhatsApp öffnet sich mit Modell + Reparatur + Preis.",
+      de:{ tagline:"Singen • Schnell & zuverlässig", no_appt:"Ohne Termin", nav_home:"Start", prices_title:"Preise",
+        prices_text:"Preis antippen → Anfrage direkt per WhatsApp",
+        brand_switch_title:"Preise nach Marke",
+        brand_switch_helper:"Wähle dein Gerät, um schneller den richtigen Preis zu finden",
+        popular_helper:"Beliebte Modelle zuerst – weitere Modelle per Klick",
+        show_all_models:"Alle Modelle anzeigen", show_less_models:"Weniger anzeigen",
         prices_note:"* Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.",
         prices_time:"Die meisten Reparaturen dauern 30–90 Minuten (je nach Modell).",
+        iphone_parts_notice:"Hinweis: Bei neueren iPhones kann nach der Reparatur eine Systemmeldung zum ersetzten Bauteil erscheinen. Diese Meldung wird vom Apple-System erzeugt und ist nicht automatisch eine Aussage über die Qualität des eingebauten Ersatzteils.",
+        price_trust_note:"✓ Daten bleiben erhalten",
         samsung_title:"Samsung Reparaturen", iphone_title:"iPhone Reparaturen", mb_call:"Call",
         bundle_title:"Bundle-Angebote", bundle_text:"Wenn du zwei Reparaturen zusammen machst, können wir oft einen besseren Gesamtpreis anbieten.",
         bundle_1:"📱 Display + 🔋 Akku (Angebot)", bundle_2:"🔋 Akku + 🔌 Ladebuchse (Angebot)", bundle_3:"🔙 Rückseite + 📱 Display (Angebot)"
       },
       ua:{ tagline:"Singen • Швидко та надійно", no_appt:"Без запису", nav_home:"Головна", prices_title:"Ціни",
-        prices_text:"Клікни на ціну → відкриється WhatsApp з моделлю + ремонтом + ціною.",
-        prices_note:"* Ціни включають роботу. Можливі зміни залежно від запчастини.",
-        prices_time:"Більшість ремонтів займає 30–90 хв (залежить від моделі).",
+        prices_text:"Натисни на ціну → запит одразу відкриється у WhatsApp",
+        brand_switch_title:"Ціни за брендом",
+        brand_switch_helper:"Оберіть свій пристрій, щоб швидше знайти потрібну ціну",
+        popular_helper:"Спочатку популярні моделі — інші за одним кліком",
+        show_all_models:"Показати всі моделі", show_less_models:"Показати менше",
+        prices_note:"* Ціни включають роботу. Можливі відмінності залежно від запчастини.",
+        prices_time:"Більшість ремонтів триває 30–90 хвилин (залежно від моделі).",
+        iphone_parts_notice:"Примітка: На новіших iPhone після ремонту може з’явитися системне повідомлення про замінену деталь. Це повідомлення генерується системою Apple і не є автоматичною оцінкою якості встановленої запчастини.",
+        price_trust_note:"✓ Дані зберігаються",
         samsung_title:"Ремонт Samsung", iphone_title:"Ремонт iPhone", mb_call:"Дзвінок",
         bundle_title:"Комплект-ціни", bundle_text:"Якщо робити 2 ремонти разом — часто можемо зробити кращу загальну ціну.",
         bundle_1:"📱 Дисплей + 🔋 Акумулятор (пропозиція)", bundle_2:"🔋 Акумулятор + 🔌 Розʼєм (пропозиція)", bundle_3:"🔙 Задня кришка + 📱 Дисплей (пропозиція)"
       },
       en:{ tagline:"Singen • Fast & reliable", no_appt:"No appointment", nav_home:"Home", prices_title:"Prices",
-        prices_text:"Click a price → WhatsApp opens with model + repair + price.",
-        prices_note:"* Prices include labor. May vary depending on parts.",
-        prices_time:"Most repairs take 30–90 minutes (depending on model).",
-        samsung_title:"Samsung repairs", iphone_title:"iPhone repairs", mb_call:"Call",
+        prices_text:"Tap a price → send your request directly via WhatsApp",
+        brand_switch_title:"Prices by brand",
+        brand_switch_helper:"Choose your device to find the right price faster",
+        popular_helper:"Popular models first — more models in one click",
+        show_all_models:"Show all models", show_less_models:"Show less",
+        prices_note:"* Prices include labor. Variations are possible depending on the replacement part.",
+        prices_time:"Most repairs take 30–90 minutes (depending on the model).",
+        iphone_parts_notice:"Note: On newer iPhones, a system message about the replaced part may appear after the repair. This message is generated by the Apple system and is not automatically a statement about the quality of the installed replacement part.",
+        price_trust_note:"✓ Your data stays intact",
+        samsung_title:"Samsung Repairs", iphone_title:"iPhone Repairs", mb_call:"Call",
         bundle_title:"Bundle offers", bundle_text:"If you do two repairs together, we can often offer a better total price.",
         bundle_1:"📱 Screen + 🔋 Battery (offer)", bundle_2:"🔋 Battery + 🔌 Charging port (offer)", bundle_3:"🔙 Back + 📱 Screen (offer)"
       }
