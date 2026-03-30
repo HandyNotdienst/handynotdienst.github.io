@@ -1278,3 +1278,28 @@ a{color:inherit;text-decoration:none}
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Prices page redesign */
+.prices-section .price-wa-helper{font-size:1.02rem; margin-top:8px;}
+.prices-section .price-group{display:none;}
+.prices-section .price-group.is-active{display:block;}
+.prices-section .price-block{background:linear-gradient(180deg,#1a3449,#162d40); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:18px; margin-bottom:18px;}
+.prices-section .price-head{margin-bottom:10px;}
+.prices-section .price-model-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px;}
+.prices-section .price-model-grid--all{margin-top:12px;}
+.prices-section .price-model-grid--all[hidden]{display:none;}
+.prices-section .price-model-grid.is-revealed{animation:priceReveal .3s ease;}
+.prices-section .price-model-card{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:12px;}
+.prices-section .price-model-card__title{margin:0 0 8px; font-size:1rem;}
+.prices-section .price-model-card__list{list-style:none; margin:0; padding:0; display:grid; gap:8px;}
+.prices-section .price-line{display:flex; justify-content:space-between; align-items:center; gap:10px; background:rgba(63,169,245,.12); border:1px solid rgba(63,169,245,.2); border-radius:10px; padding:10px; cursor:pointer;}
+.prices-section .price-line:hover{background:rgba(63,169,245,.22);}
+.prices-section .price-line strong{white-space:nowrap;}
+.prices-section .price-expand-btn{width:100%; margin-top:12px;}
+.prices-section .iphone-info-note{margin-bottom:14px;}
+@keyframes priceReveal{from{opacity:0; transform:translateY(-6px)}to{opacity:1; transform:translateY(0)}}
+@media (max-width: 860px){
+  .prices-section .price-model-grid{grid-template-columns:1fr;}
+  .prices-section .price-block{padding:14px;}
+  .prices-section .price-line{padding:12px; min-height:48px;}
+}
