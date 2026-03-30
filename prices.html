@@ -48,23 +48,11 @@
   </div>
 
   <main>
-    <section class="section">
+    <section class="section prices-section js-prices-section">
       <div class="container">
         <div class="section__head">
           <h1 class="page-title" data-i18n="prices_title">Preise</h1>
-          <p class="muted" data-i18n="prices_text">Preis antippen → Anfrage direkt per WhatsApp</p>
-        </div>
-
-        <!-- 12) Bundles -->
-        <div class="bundle card">
-          <h2 data-i18n="bundle_title">Bundle-Angebote</h2>
-          <p class="muted" data-i18n="bundle_text">Wenn du zwei Reparaturen zusammen machst, können wir oft einen besseren Gesamtpreis anbieten.</p>
-
-          <div class="bundle__grid">
-            <button class="bundle__item" type="button" data-bundle="Display + Akku" data-i18n="bundle_1">📱 Display + 🔋 Akku (Angebot)</button>
-            <button class="bundle__item" type="button" data-bundle="Akku + Ladebuchse" data-i18n="bundle_2">🔋 Akku + 🔌 Ladebuchse (Angebot)</button>
-            <button class="bundle__item" type="button" data-bundle="Rückseite + Display" data-i18n="bundle_3">🔙 Rückseite + 📱 Display (Angebot)</button>
-          </div>
+          <p class="muted price-wa-helper" data-i18n="prices_text">Preis antippen → Anfrage direkt per WhatsApp</p>
         </div>
 
         <div class="price-toggle-block">
@@ -78,123 +66,42 @@
         </div>
 
         <div class="price-group is-active" data-brand="apple" aria-hidden="false">
-          <!-- iPhone -->
-          <div class="price-block">
+          <div class="price-block" data-brand="apple">
             <div class="price-head">
               <div class="price-brand">
                 <img class="price-brand__img" src="assets/brands/apple.png" alt="Apple" loading="lazy">
                 <h2 data-i18n="iphone_title">iPhone Reparaturen</h2>
               </div>
-
-              <input class="price-search" type="text" data-filter-target="iphoneTable" placeholder="Modell suchen (z.B. iPhone 13, Pro...)" />
             </div>
-
             <p class="iphone-info-note">
               <span class="iphone-info-note__icon" aria-hidden="true">ⓘ</span>
               <span data-i18n="iphone_parts_notice">Hinweis: Bei neueren iPhones kann nach der Reparatur eine Systemmeldung zum ersetzten Bauteil erscheinen. Diese Meldung wird vom Apple-System erzeugt und ist nicht automatisch eine Aussage über die Qualität des eingebauten Ersatzteils.</span>
             </p>
 
-            <div class="table-wrap">
-              <table class="price-table js-price-table" id="iphoneTable" data-brand="iPhone" data-brand-key="apple">
-                <thead>
-                  <tr><th>Modell</th><th>Display</th><th>Akku</th><th>Rückseite</th></tr>
-                </thead>
-                <tbody>
-                  <tr data-series="iphone"><td>iPhone 16 Pro Max</td><td>374€</td><td>124€</td><td>174€</td></tr>
-                  <tr data-series="iphone"><td>iPhone 16 Pro</td><td>335€</td><td>105€</td><td>164€</td></tr>
-                  <tr data-series="iphone"><td>iPhone 16 Plus</td><td>234€</td><td>84€</td><td>154€</td></tr>
-                  <tr data-series="iphone"><td>iPhone 16</td><td>224€</td><td>74€</td><td>134€</td></tr>
-                  <tr data-series="iphone"><td>iPhone 15 Pro Max</td><td>264€</td><td>84€</td><td>134€</td></tr>
-                  <tr data-series="iphone"><td>iPhone 15 Pro</td><td>234€</td><td>74€</td><td>124€</td></tr>
-                  <tr data-series="iphone"><td>iPhone 15 Plus</td><td>214€</td><td>64€</td><td>104€</td></tr>
-                  <tr data-series="iphone"><td>iPhone 15</td><td>184€</td><td>64€</td><td>84€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 14 Pro Max</td><td>174€</td><td>74€</td><td>115€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 14 Pro</td><td>164€</td><td>64€</td><td>105€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 14 Plus</td><td>144€</td><td>60€</td><td>74€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 14</td><td>124€</td><td>60€</td><td>64€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 13 Pro Max</td><td>164€ / 134€</td><td>54€</td><td>84€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 13 Pro</td><td>154€</td><td>54€</td><td>74€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 13</td><td>124€</td><td>54€</td><td>74€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 13 mini</td><td>114€</td><td>54€</td><td>64€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 12 Pro Max</td><td>124€</td><td>54€</td><td>74€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 12 Pro</td><td>114€</td><td>54€</td><td>64€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 12</td><td>114€</td><td>54€</td><td>64€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 12 mini</td><td>84€</td><td>54€</td><td>54€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 11 Pro Max</td><td>84€</td><td>54€</td><td>54€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 11 Pro</td><td>74€</td><td>54€</td><td>54€</td></tr>
-                  <tr data-series="iphone" class="is-popular" data-popular="true"><td>iPhone 11</td><td>64€</td><td>54€</td><td>54€</td></tr>
-                  <tr data-series="iphone"><td>iPhone XS Max</td><td>74€</td><td>54€</td><td>54€</td></tr>
-                  <tr data-series="iphone"><td>iPhone X / XS / XR</td><td>54€</td><td>44€</td><td>44€</td></tr>
-                  <tr data-series="iphone"><td>iPhone SE (2022)</td><td>54€</td><td>44€</td><td>34€</td></tr>
-                  <tr data-series="iphone"><td>iPhone SE (2020)</td><td>44€</td><td>34€</td><td>34€</td></tr>
-                  <tr data-series="iphone"><td>iPhone 8 Plus</td><td>44€</td><td>34€</td><td>24€</td></tr>
-                  <tr data-series="iphone"><td>iPhone 8</td><td>34€</td><td>34€</td><td>24€</td></tr>
-                  <tr data-series="iphone"><td>iPhone 7 / 7 Plus</td><td>30€</td><td>24€</td><td>-</td></tr>
-                  <tr data-series="iphone"><td>iPhone 6s / 6s Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
-                  <tr data-series="iphone"><td>iPhone 6 / 6 Plus</td><td>24€</td><td>14€</td><td>-</td></tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="price-cards js-price-cards"></div>
-            <button class="price-expand-btn" type="button" data-expand-target="iphoneTable" aria-expanded="false">Alle Modelle anzeigen</button>
-            <p class="iphone-info-note iphone-info-note--compact">
-              <span class="iphone-info-note__icon" aria-hidden="true">ⓘ</span>
-              <span data-i18n="iphone_inquiry_notice">Hinweis für iPhone-Reparaturen: Nach der Reparatur kann im Apple-System ein Hinweis zum ersetzten Bauteil erscheinen. Diese Anzeige ist technisch bedingt und nicht automatisch eine Bewertung der Ersatzteilqualität.</span>
-            </p>
+            <div class="price-model-grid js-model-grid" data-brand="apple" data-series="iphone"></div>
+            <button class="price-expand-btn js-show-all" type="button" data-brand="apple" aria-expanded="false" data-i18n="show_all_models">Alle Modelle anzeigen</button>
+            <div class="price-model-grid price-model-grid--all js-all-models" data-brand="apple" hidden></div>
           </div>
         </div>
 
         <div class="price-group" data-brand="samsung" aria-hidden="true">
-          <!-- Samsung -->
-          <div class="price-block">
+          <div class="price-block" data-brand="samsung">
             <div class="price-head">
               <div class="price-brand">
                 <img class="price-brand__img" src="assets/brands/samsung.png" alt="Samsung" loading="lazy">
                 <h2 data-i18n="samsung_title">Samsung Reparaturen</h2>
               </div>
-
-              <input class="price-search" type="text" data-filter-target="samsungTable" placeholder="Modell suchen (z.B. S23, Ultra...)" />
             </div>
 
-            <div class="table-wrap">
-              <table class="price-table js-price-table" id="samsungTable" data-brand="Samsung" data-brand-key="samsung">
-                <thead>
-                  <tr>
-                    <th>Modell</th><th>Display</th><th>Akku</th><th>Ladebuchse</th><th>Rückseite</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr data-series="s"><td>S25 Ultra</td><td>274€</td><td>84€</td><td>84€</td><td>105€</td></tr>
-                  <tr data-series="s"><td>S25 Plus</td><td>234€</td><td>74€</td><td>74€</td><td>94€</td></tr>
-                  <tr data-series="s"><td>S25</td><td>174€</td><td>74€</td><td>74€</td><td>84€</td></tr>
-                  <tr data-series="s"><td>S24 Ultra</td><td>324€</td><td>84€</td><td>74€</td><td>105€</td></tr>
-                  <tr data-series="s"><td>S24 / S24+</td><td>244€ / 274€</td><td>74€</td><td>64€</td><td>94€</td></tr>
-                  <tr data-series="s"><td>S23 Ultra</td><td>334€</td><td>84€</td><td>74€</td><td>94€</td></tr>
-                  <tr data-series="s"><td>S23 / S23+</td><td>224€ / 254€</td><td>74€</td><td>64€</td><td>84€</td></tr>
-                  <tr data-series="s" class="is-popular" data-popular="true"><td>S22 Ultra</td><td>324€</td><td>74€</td><td>64€</td><td>84€</td></tr>
-                  <tr data-series="s" class="is-popular" data-popular="true"><td>S22 / S22+</td><td>224€ / 254€</td><td>74€</td><td>54€</td><td>74€</td></tr>
-                  <tr data-series="s" class="is-popular" data-popular="true"><td>S21 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
-                  <tr data-series="s" class="is-popular" data-popular="true"><td>S21 / S21+ / FE</td><td>164€ / 184€ / 205€</td><td>64€</td><td>54€</td><td>74€</td></tr>
-                  <tr data-series="s" class="is-popular" data-popular="true"><td>S20 Ultra</td><td>284€</td><td>64€</td><td>54€</td><td>74€</td></tr>
-                  <tr data-series="s" class="is-popular" data-popular="true"><td>S20 / S20+ / FE</td><td>205€ / 244€ / 214€</td><td>54€</td><td>44€</td><td>64€</td></tr>
-                  <tr data-series="s"><td>S10+ / S10 / S10e</td><td>214€ / 204€ / 184€</td><td>54€</td><td>44€</td><td>64€</td></tr>
-                  <tr data-series="s"><td>S9+ / S9</td><td>174€ / 164€</td><td>44€</td><td>34€</td><td>54€</td></tr>
-                  <tr data-series="s"><td>S8+ / S8</td><td>164€ / 154€</td><td>44€</td><td>34€</td><td>54€</td></tr>
-                  <tr data-series="s"><td>S7 Edge / S7</td><td>134€ / 124€</td><td>34€</td><td>24€</td><td>44€</td></tr>
-                  <tr data-series="s"><td>S6 Edge / S6</td><td>114€ / 104€</td><td>34€</td><td>24€</td><td>44€</td></tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="price-cards js-price-cards"></div>
-            <button class="price-expand-btn" type="button" data-expand-target="samsungTable" data-i18n-more="show_all_models" data-i18n-less="show_less_models" aria-expanded="false">Alle Modelle anzeigen</button>
+            <div class="price-model-grid js-model-grid" data-brand="samsung" data-series="s"></div>
+            <button class="price-expand-btn js-show-all" type="button" data-brand="samsung" aria-expanded="false" data-i18n="show_all_models">Alle Modelle anzeigen</button>
+            <div class="price-model-grid price-model-grid--all js-all-models" data-brand="samsung" hidden></div>
           </div>
         </div>
 
         <p class="price-trust-note" data-i18n="price_trust_note">✓ Daten bleiben erhalten</p>
         <p class="price-note" data-i18n="prices_note">* Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.</p>
-        <p class="price-note">⏱️ <span data-i18n="prices_time">Die meisten Reparaturen dauern 30–90 Minuten (je nach Modell).</span></p>
+        <p class="price-note" data-i18n="prices_time">⏱️ Die meisten Reparaturen dauern 30–90 Minuten (je nach Modell).</p>
       </div>
     </section>
 
@@ -230,34 +137,42 @@
         brand_switch_title:"Preise nach Marke",
         brand_switch_helper:"Wähle dein Gerät, um schneller den richtigen Preis zu finden",
         popular_helper:"Beliebte Modelle zuerst – weitere Modelle per Klick",
-        show_all_models:"Alle Modelle anzeigen", show_less_models:"Weniger anzeigen",
+        show_all_models:"Alle Modelle anzeigen",
         prices_note:"* Preise inkl. Arbeit. Abweichungen je nach Ersatzteil möglich.",
-        prices_time:"Die meisten Reparaturen dauern 30–90 Minuten (je nach Modell).",
+        prices_time:"⏱️ Die meisten Reparaturen dauern 30–90 Minuten (je nach Modell).",
         iphone_parts_notice:"Hinweis: Bei neueren iPhones kann nach der Reparatur eine Systemmeldung zum ersetzten Bauteil erscheinen. Diese Meldung wird vom Apple-System erzeugt und ist nicht automatisch eine Aussage über die Qualität des eingebauten Ersatzteils.",
-        iphone_inquiry_notice:"Hinweis für iPhone-Reparaturen: Nach der Reparatur kann im Apple-System ein Hinweis zum ersetzten Bauteil erscheinen. Diese Anzeige ist technisch bedingt und nicht automatisch eine Bewertung der Ersatzteilqualität.",
         samsung_title:"Samsung Reparaturen", iphone_title:"iPhone Reparaturen", mb_call:"Call",
-        bundle_title:"Bundle-Angebote", bundle_text:"Wenn du zwei Reparaturen zusammen machst, können wir oft einen besseren Gesamtpreis anbieten.",
-        bundle_1:"📱 Display + 🔋 Akku (Angebot)", bundle_2:"🔋 Akku + 🔌 Ladebuchse (Angebot)", bundle_3:"🔙 Rückseite + 📱 Display (Angebot)"
+        price_trust_note:"✓ Daten bleiben erhalten",
+        repair_display:"Display", repair_oled_premium:"OLED Premium", repair_standard:"Standard", repair_battery:"Akku", repair_backglass:"Rückseite", repair_port:"Ladebuchse",
+        wa_message_intro:"Hallo!", wa_label_device:"Modell", wa_label_repair:"Reparatur", wa_label_price:"Preis", wa_label_city:"Ort"
       },
       ua:{ tagline:"Singen • Швидко та надійно", no_appt:"Без запису", nav_home:"Головна", prices_title:"Ціни",
-        prices_text:"Клікни на ціну → відкриється WhatsApp з моделлю + ремонтом + ціною.",
-        prices_note:"* Ціни включають роботу. Можливі зміни залежно від запчастини.",
-        prices_time:"Більшість ремонтів займає 30–90 хв (залежить від моделі).",
-        iphone_parts_notice:"Примітка: На новіших iPhone після ремонту може з’явитися системне повідомлення про замінену деталь. Це повідомлення генерується системою Apple і не є автоматичною оцінкою якості встановленої запчастини.",
-        iphone_inquiry_notice:"Примітка для ремонту iPhone: Після ремонту в системі Apple може з’явитися повідомлення про замінену деталь. Така індикація є технічно зумовленою і не є автоматичною оцінкою якості запчастини.",
+        prices_text:"Натисни на ціну → запит одразу відкриється у WhatsApp",
+        brand_switch_title:"Ціни за брендом",
+        brand_switch_helper:"Оберіть свій пристрій, щоб швидше знайти потрібну ціну",
+        popular_helper:"Спочатку популярні моделі — інші за одним кліком",
+        show_all_models:"Показати всі моделі",
+        prices_note:"* Ціни включають роботу. Можливі відмінності залежно від запчастини.",
+        prices_time:"⏱️ Більшість ремонтів триває 30–90 хвилин (залежно від моделі).",
+        iphone_parts_notice:"Примітка: на новіших iPhone після ремонту може з’явитися системне повідомлення про замінену деталь. Це повідомлення створюється системою Apple і не є автоматичною оцінкою якості встановленої запчастини.",
         samsung_title:"Ремонт Samsung", iphone_title:"Ремонт iPhone", mb_call:"Дзвінок",
-        bundle_title:"Комплект-ціни", bundle_text:"Якщо робити 2 ремонти разом — часто можемо зробити кращу загальну ціну.",
-        bundle_1:"📱 Дисплей + 🔋 Акумулятор (пропозиція)", bundle_2:"🔋 Акумулятор + 🔌 Розʼєм (пропозиція)", bundle_3:"🔙 Задня кришка + 📱 Дисплей (пропозиція)"
+        price_trust_note:"✓ Дані зберігаються",
+        repair_display:"Дисплей", repair_oled_premium:"OLED Premium", repair_standard:"Стандарт", repair_battery:"Акумулятор", repair_backglass:"Задня кришка", repair_port:"Розʼєм заряджання",
+        wa_message_intro:"Вітаю!", wa_label_device:"Модель", wa_label_repair:"Ремонт", wa_label_price:"Ціна", wa_label_city:"Місто"
       },
       en:{ tagline:"Singen • Fast & reliable", no_appt:"No appointment", nav_home:"Home", prices_title:"Prices",
-        prices_text:"Click a price → WhatsApp opens with model + repair + price.",
-        prices_note:"* Prices include labor. May vary depending on parts.",
-        prices_time:"Most repairs take 30–90 minutes (depending on model).",
-        iphone_parts_notice:"Note: On newer iPhones, a system message about the replaced part may appear after the repair. This message is generated by the Apple system and is not automatically a statement about the quality of the installed replacement part.",
-        iphone_inquiry_notice:"Note for iPhone repairs: After the repair, a notice about the replaced part may appear in the Apple system. This display is technically caused and is not automatically an assessment of replacement-part quality.",
-        samsung_title:"Samsung repairs", iphone_title:"iPhone repairs", mb_call:"Call",
-        bundle_title:"Bundle offers", bundle_text:"If you do two repairs together, we can often offer a better total price.",
-        bundle_1:"📱 Screen + 🔋 Battery (offer)", bundle_2:"🔋 Battery + 🔌 Charging port (offer)", bundle_3:"🔙 Back + 📱 Screen (offer)"
+        prices_text:"Tap a price → send your request directly via WhatsApp",
+        brand_switch_title:"Prices by brand",
+        brand_switch_helper:"Choose your device to find the right price faster",
+        popular_helper:"Popular models first — more models in one click",
+        show_all_models:"Show all models",
+        prices_note:"* Prices include labor. Variations are possible depending on the replacement part.",
+        prices_time:"⏱️ Most repairs take 30–90 minutes (depending on the model).",
+        iphone_parts_notice:"Note: On newer iPhones, a system message about a replaced part may appear after repair. This message is generated by Apple and is not automatically a statement about replacement-part quality.",
+        samsung_title:"Samsung Repairs", iphone_title:"iPhone Repairs", mb_call:"Call",
+        price_trust_note:"✓ Your data stays intact",
+        repair_display:"Display", repair_oled_premium:"OLED Premium", repair_standard:"Standard", repair_battery:"Battery", repair_backglass:"Back glass", repair_port:"Charging port",
+        wa_message_intro:"Hi!", wa_label_device:"Model", wa_label_repair:"Repair", wa_label_price:"Price", wa_label_city:"City"
       }
     };
   </script>

@@ -94,262 +94,125 @@ Ort: ${city}`;
     });
   }
 
-  function splitGroupedModelName(rawName, series = "") {
-    const clean = rawName.trim();
-    if (!clean.includes("/")) return [clean];
+  const PRICE_DATA = {
+    apple: [
+      { model: "iPhone 16 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "374€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "124€" }, { key: "repair_backglass", price: "174€" }] },
+      { model: "iPhone 16 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "335€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "105€" }, { key: "repair_backglass", price: "164€" }] },
+      { model: "iPhone 16 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "234€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "84€" }, { key: "repair_backglass", price: "154€" }] },
+      { model: "iPhone 16", series: "iphone", repairs: [{ key: "repair_display", price: "224€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "74€" }, { key: "repair_backglass", price: "134€" }] },
+      { model: "iPhone 15 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "264€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "84€" }, { key: "repair_backglass", price: "134€" }] },
+      { model: "iPhone 15 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "234€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "74€" }, { key: "repair_backglass", price: "124€" }] },
+      { model: "iPhone 15 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "214€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "64€" }, { key: "repair_backglass", price: "104€" }] },
+      { model: "iPhone 15", series: "iphone", repairs: [{ key: "repair_display", price: "184€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "64€" }, { key: "repair_backglass", price: "84€" }] },
+      { model: "iPhone 14", series: "iphone", repairs: [{ key: "repair_display", price: "124€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "60€" }, { key: "repair_backglass", price: "64€" }] },
+      { model: "iPhone 13", series: "iphone", repairs: [{ key: "repair_display", price: "124€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "54€" }, { key: "repair_backglass", price: "74€" }] },
+      { model: "iPhone 12", series: "iphone", repairs: [{ key: "repair_display", price: "114€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "54€" }, { key: "repair_backglass", price: "64€" }] },
+      { model: "iPhone 11", series: "iphone", repairs: [{ key: "repair_display", price: "64€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "54€" }, { key: "repair_backglass", price: "54€" }] },
+      { model: "iPhone XS", series: "iphone", repairs: [{ key: "repair_display", price: "54€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "44€" }, { key: "repair_backglass", price: "44€" }] },
+      { model: "iPhone XR", series: "iphone", repairs: [{ key: "repair_display", price: "54€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "44€" }, { key: "repair_backglass", price: "44€" }] }
+    ],
+    samsung: [
+      { model: "Galaxy S25 Ultra", series: "s", repairs: [{ key: "repair_display", price: "274€" }, { key: "repair_battery", price: "84€" }, { key: "repair_port", price: "84€" }, { key: "repair_backglass", price: "105€" }] },
+      { model: "Galaxy S24 Ultra", series: "s", repairs: [{ key: "repair_display", price: "324€" }, { key: "repair_battery", price: "84€" }, { key: "repair_port", price: "74€" }, { key: "repair_backglass", price: "105€" }] },
+      { model: "Galaxy S24", series: "s", repairs: [{ key: "repair_display", price: "244€" }, { key: "repair_battery", price: "74€" }, { key: "repair_port", price: "64€" }, { key: "repair_backglass", price: "94€" }] },
+      { model: "Galaxy S24+", series: "s", repairs: [{ key: "repair_display", price: "274€" }, { key: "repair_battery", price: "74€" }, { key: "repair_port", price: "64€" }, { key: "repair_backglass", price: "94€" }] },
+      { model: "Galaxy S23", series: "s", repairs: [{ key: "repair_display", price: "224€" }, { key: "repair_battery", price: "74€" }, { key: "repair_port", price: "64€" }, { key: "repair_backglass", price: "84€" }] },
+      { model: "Galaxy S22", series: "s", repairs: [{ key: "repair_display", price: "224€" }, { key: "repair_battery", price: "74€" }, { key: "repair_port", price: "54€" }, { key: "repair_backglass", price: "74€" }] },
+      { model: "Galaxy S21", series: "s", repairs: [{ key: "repair_display", price: "164€" }, { key: "repair_battery", price: "64€" }, { key: "repair_port", price: "54€" }, { key: "repair_backglass", price: "74€" }] },
+      { model: "Galaxy S20", series: "s", repairs: [{ key: "repair_display", price: "205€" }, { key: "repair_battery", price: "54€" }, { key: "repair_port", price: "44€" }, { key: "repair_backglass", price: "64€" }] },
+      { model: "Galaxy S10", series: "s", repairs: [{ key: "repair_display", price: "204€" }, { key: "repair_battery", price: "54€" }, { key: "repair_port", price: "44€" }, { key: "repair_backglass", price: "64€" }] }
+    ],
+  };
 
-    const parts = clean.split("/").map((part) => part.trim()).filter(Boolean);
-    if (!parts.length) return [clean];
-
-    const first = parts[0];
-    const iphonePrefix = first.match(/^iPhone\s+/i)?.[0] || "";
-    const samsungSeriesPrefix = series === "s" ? (first.match(/^S\d+\+?/i)?.[0]?.replace(/\+$/, "") || "") : "";
-
-    return parts.map((part, idx) => {
-      if (idx === 0) return part;
-      if (iphonePrefix && !/^iPhone\s+/i.test(part)) return `${iphonePrefix}${part}`;
-      if (series === "s" && samsungSeriesPrefix) {
-        if (/^(FE|Ultra|Plus)$/i.test(part)) return `${samsungSeriesPrefix} ${part}`;
-        if (!/^S\d+/i.test(part)) return `${samsungSeriesPrefix}${part.startsWith("+") ? part : ` ${part}`}`;
-      }
-      return part;
-    });
-  }
-
-  function normalizeDisplayPrice(row) {
-    const displayCell = row.cells[1];
-    if (!displayCell) return;
-    const model = row.cells[0]?.innerText?.trim() || "";
-    if (!/^iPhone/i.test(model)) return;
-
-    const value = displayCell.innerText.trim();
-    if (!value.includes("/")) return;
-    const parts = value.split("/").map((item) => item.trim()).filter(Boolean);
-    if (parts.length !== 2) {
-      displayCell.textContent = parts[0] || value;
-      return;
-    }
-    displayCell.textContent = `OLED Premium: ${parts[0]} · Standard: ${parts[1]}`;
-  }
-
-  function normalizeModelRows(table) {
-    const tbody = table.tBodies[0];
-    if (!tbody) return;
-
-    Array.from(tbody.rows).forEach((row) => {
-      normalizeDisplayPrice(row);
-      const modelCell = row.cells[0];
-      if (!modelCell) return;
-      const variants = splitGroupedModelName(modelCell.innerText, row.dataset.series || "");
-      if (variants.length <= 1) return;
-
-      variants.forEach((variant) => {
-        const clone = row.cloneNode(true);
-        clone.cells[0].innerText = variant;
-        clone.dataset.searchMatch = "true";
-        tbody.insertBefore(clone, row);
-      });
-      row.remove();
-    });
-  }
-
-  function isPopularModel(brand, model) {
-    if (brand === "apple") return /^(iPhone 11|iPhone 12|iPhone 13|iPhone 14)$/i.test(model);
-    if (brand === "samsung") return /^(S20|S21|S22|S23)$/i.test(model);
-    return false;
-  }
-
-  function sortRowsByPopularity(table) {
-    const tbody = table.tBodies[0];
-    if (!tbody) return;
-    const brand = table.dataset.brandKey || "";
-    const rows = Array.from(tbody.rows);
-
-    rows.forEach((row) => {
-      const model = row.cells[0]?.innerText?.trim() || "";
-      row.dataset.popular = isPopularModel(brand, model) ? "true" : "false";
-      row.dataset.searchMatch = "true";
-    });
-
-    rows.sort((a, b) => {
-      const ap = a.dataset.popular === "true" ? 1 : 0;
-      const bp = b.dataset.popular === "true" ? 1 : 0;
-      return bp - ap;
-    });
-
-    rows.forEach((row) => tbody.appendChild(row));
-  }
-
-  function preparePriceTables() {
-    document.querySelectorAll(".js-price-table").forEach((table) => {
-      normalizeModelRows(table);
-      sortRowsByPopularity(table);
-    });
-  }
+  const POPULAR_MODELS = {
+    apple: ["iPhone 11", "iPhone 12", "iPhone 13", "iPhone 14"],
+    samsung: ["Galaxy S20", "Galaxy S21", "Galaxy S22", "Galaxy S23"],
+  };
 
   function openWAForPrice(brand, model, repair, price) {
     if (!whatsappNumber) return;
     const lang = getLang();
-    const device = `${brand} ${model}`.trim();
-    let text;
-    if (lang === "ua") text = `Привіт!
-📱 ${device}
-🛠️ ${repair}
-💶 ${price}
-Місто: ${city}`;
-    else if (lang === "en") text = `Hi!
-📱 ${device}
-🛠️ ${repair}
-💶 ${price}
-City: ${city}`;
-    else text = `Hallo!
-📱 ${device}
-🛠️ ${repair}
-💶 ${price}
-Ort: ${city}`;
+    const t = i18n[lang] || i18n.de || {};
+    const text = `${t.wa_message_intro || "Hallo!"}
+📱 ${t.wa_label_device || "Modell"}: ${model}
+🛠️ ${t.wa_label_repair || "Reparatur"}: ${repair}
+💶 ${t.wa_label_price || "Preis"}: ${price}
+${t.wa_label_city || "Ort"}: ${city}`;
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank");
   }
 
-  function bindTablePriceClicks() {
-    document.querySelectorAll(".js-price-table").forEach((table) => {
-      const brand = table.dataset.brand || "";
-      const headers = Array.from(table.tHead.rows[0].cells).map((th) => th.innerText.trim());
-      table.querySelectorAll("tbody tr").forEach((row) => {
-        const model = row.cells[0].innerText.trim();
-        Array.from(row.cells).forEach((cell, idx) => {
-          if (idx === 0) return;
-          const price = cell.innerText.trim();
-          if (!price || price === "-") return;
-          cell.classList.add("price-cell");
-          cell.addEventListener("click", () => openWAForPrice(brand, model, headers[idx] || "Repair", price));
-        });
-      });
-    });
+  function isPopularModel(brand, model) {
+    return (POPULAR_MODELS[brand] || []).includes(model);
   }
 
-  function applyPriceVisibility(table) {
-    const showAll = table.dataset.showAll === "true";
-    table.querySelectorAll("tbody tr").forEach((row) => {
-      const isPopular = row.dataset.popular === "true";
-      const searchMatch = row.dataset.searchMatch !== "false";
-      const shouldShow = searchMatch && (showAll || isPopular);
-      row.classList.toggle("price-row--hidden", !shouldShow);
-    });
-
-    table
-      .closest(".price-block")
-      ?.querySelectorAll(".price-card")
-      .forEach((card) => {
-        const isPopular = card.dataset.popular === "true";
-        const searchMatch = card.dataset.searchMatch !== "false";
-        const shouldShow = searchMatch && (showAll || isPopular);
-        card.classList.toggle("price-card--hidden", !shouldShow);
-      });
-  }
-
-  function animatePriceContainers(table, updateVisibility) {
-    const block = table.closest(".price-block");
-    if (!block) {
-      updateVisibility();
-      return;
+  function getRepairLabel(repair, lang) {
+    const t = i18n[lang] || i18n.de || {};
+    const base = t[repair.key] || repair.key;
+    if (repair.variant) {
+      return `${t[repair.variant] || repair.variant}`;
     }
+    return base;
+  }
 
-    const containers = [block.querySelector(".table-wrap"), block.querySelector(".price-cards")].filter(Boolean);
-    const starts = containers.map((el) => el.offsetHeight);
-    updateVisibility();
+  function createPriceCard(brand, modelData, lang) {
+    const card = document.createElement("article");
+    card.className = "price-model-card";
+    card.dataset.brand = brand;
+    card.dataset.series = modelData.series;
+    card.dataset.popular = String(isPopularModel(brand, modelData.model));
 
-    containers.forEach((el, idx) => {
-      const start = starts[idx];
-      const end = el.scrollHeight;
-      if (Math.abs(end - start) < 4) return;
+    const h3 = document.createElement("h3");
+    h3.className = "price-model-card__title";
+    h3.textContent = modelData.model;
+    card.appendChild(h3);
 
-      el.animate([{ height: `${start}px` }, { height: `${end}px` }], {
-        duration: 260,
-        easing: "ease",
-      });
+    const list = document.createElement("ul");
+    list.className = "price-model-card__list";
+
+    modelData.repairs.forEach((repair) => {
+      const item = document.createElement("li");
+      const isDisplay = repair.key === "repair_display";
+      const label = isDisplay && repair.variant
+        ? `${i18n[lang]?.repair_display || "Display"} (${getRepairLabel(repair, lang)})`
+        : getRepairLabel(repair, lang);
+      item.innerHTML = `<span>${label}</span><strong>${repair.price}</strong>`;
+      item.className = "price-line";
+      item.addEventListener("click", () => openWAForPrice(brand, modelData.model, label, repair.price));
+      list.appendChild(item);
+    });
+
+    card.appendChild(list);
+    return card;
+  }
+
+  function renderPrices(lang) {
+    Object.entries(PRICE_DATA).forEach(([brand, models]) => {
+      const popularWrap = document.querySelector(`.js-model-grid[data-brand="${brand}"]`);
+      const allWrap = document.querySelector(`.js-all-models[data-brand="${brand}"]`);
+      if (!popularWrap || !allWrap) return;
+      popularWrap.innerHTML = "";
+      allWrap.innerHTML = "";
+
+      const popular = models.filter((entry) => isPopularModel(brand, entry.model));
+      const rest = models.filter((entry) => !isPopularModel(brand, entry.model));
+
+      popular.forEach((entry) => popularWrap.appendChild(createPriceCard(brand, entry, lang)));
+      rest.forEach((entry) => allWrap.appendChild(createPriceCard(brand, entry, lang)));
     });
   }
 
   function initPriceExpanders() {
-    document.querySelectorAll(".price-expand-btn[data-expand-target]").forEach((btn) => {
-      const table = document.getElementById(btn.dataset.expandTarget);
-      if (!table) return;
-
-      table.dataset.showAll = "false";
-      applyPriceVisibility(table);
-
-      const setBtnLabel = (expanded) => {
-        const lang = getLang();
-        const moreKey = btn.dataset.i18nMore;
-        const lessKey = btn.dataset.i18nLess;
-        const moreText = i18n[lang]?.[moreKey] || "Alle Modelle anzeigen";
-        const lessText = i18n[lang]?.[lessKey] || "Weniger anzeigen";
-        btn.textContent = expanded ? lessText : moreText;
-      };
-      setBtnLabel(false);
-
+    document.querySelectorAll(".js-show-all[data-brand]").forEach((btn) => {
+      const brand = btn.dataset.brand;
+      const allWrap = document.querySelector(`.js-all-models[data-brand="${brand}"]`);
+      if (!allWrap) return;
       btn.addEventListener("click", () => {
-        const expanded = table.dataset.showAll === "true";
-        table.dataset.showAll = expanded ? "false" : "true";
-        btn.setAttribute("aria-expanded", String(!expanded));
-        setBtnLabel(!expanded);
-        animatePriceContainers(table, () => applyPriceVisibility(table));
+        allWrap.hidden = false;
+        allWrap.classList.add("is-revealed");
+        btn.hidden = true;
+        btn.setAttribute("aria-expanded", "true");
       });
     });
-  }
-
-  function generateMobileCards() {
-    document.querySelectorAll(".js-price-table").forEach((table) => {
-      const brand = table.dataset.brand || "";
-      const container = table.closest(".price-block")?.querySelector(".js-price-cards");
-      if (!container) return;
-      container.innerHTML = "";
-
-      const headers = Array.from(table.tHead.rows[0].cells).slice(1).map((th) => th.innerText.trim());
-      table.querySelectorAll("tbody tr").forEach((row) => {
-        const model = row.cells[0].innerText.trim();
-        const card = document.createElement("div");
-        card.className = "price-card";
-        card.dataset.popular = row.dataset.popular === "true" ? "true" : "false";
-        card.dataset.searchMatch = "true";
-        const h = document.createElement("h4");
-        h.textContent = `${brand} ${model}`;
-        card.appendChild(h);
-
-        headers.forEach((repair, idx) => {
-          const cell = row.cells[idx + 1];
-          if (!cell) return;
-          const price = cell.innerText.trim();
-          if (!price || price === "-") return;
-          const btn = document.createElement("button");
-          btn.type = "button";
-          btn.innerHTML = `<span>${repair}</span><strong>${price}</strong>`;
-          btn.addEventListener("click", () => openWAForPrice(brand, model, repair, price));
-          card.appendChild(btn);
-        });
-
-        container.appendChild(card);
-      });
-    });
-  }
-
-  function filterPriceBlock(input) {
-    const table = document.getElementById(input.getAttribute("data-filter-target"));
-    if (!table) return;
-    const q = input.value.toLowerCase().trim();
-
-    table.querySelectorAll("tbody tr").forEach((row) => {
-      row.dataset.searchMatch = row.innerText.toLowerCase().includes(q) ? "true" : "false";
-    });
-
-    table
-      .closest(".price-block")
-      ?.querySelectorAll(".price-card")
-      .forEach((card) => {
-        card.dataset.searchMatch = card.innerText.toLowerCase().includes(q) ? "true" : "false";
-      });
-
-    applyPriceVisibility(table);
   }
 
   function initPriceToggle() {
@@ -639,14 +502,7 @@ Ort: ${city}`;
     updateSearchPlaceholders(lang);
     updateQuickWA(lang);
     updateLiveBadge();
-    document.querySelectorAll(".price-expand-btn[data-expand-target]").forEach((btn) => {
-      const table = document.getElementById(btn.dataset.expandTarget);
-      if (!table) return;
-      const expanded = table.dataset.showAll === "true";
-      const moreText = i18n[lang]?.[btn.dataset.i18nMore] || "Alle Modelle anzeigen";
-      const lessText = i18n[lang]?.[btn.dataset.i18nLess] || "Weniger anzeigen";
-      btn.textContent = expanded ? lessText : moreText;
-    });
+    if (document.querySelector(".js-prices-section")) renderPrices(lang);
   }
 
   initHeaderShadow();
@@ -660,14 +516,8 @@ Ort: ${city}`;
   initPriceToggle();
   initQuizHighlight();
 
-  document.querySelectorAll(".price-search").forEach((input) => {
-    input.addEventListener("input", () => filterPriceBlock(input));
-  });
-
-  if (document.querySelector(".js-price-table")) {
-    preparePriceTables();
-    bindTablePriceClicks();
-    generateMobileCards();
+  if (document.querySelector(".js-prices-section")) {
+    renderPrices(getLang());
     initPriceExpanders();
   }
 
