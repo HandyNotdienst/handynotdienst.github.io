@@ -124,123 +124,187 @@ Ort: ${city}`;
     ],
   };
 
-  const POPULAR_MODELS = {
-    apple: ["iPhone 11", "iPhone 12", "iPhone 13", "iPhone 14"],
-    samsung: ["Galaxy S20", "Galaxy S21", "Galaxy S22", "Galaxy S23"],
+  const PRICE_IMAGES = {
+    apple: "assets/before-phone.png",
+    samsung: "assets/after-phone.png",
   };
 
-  function openWAForPrice(brand, model, repair, price) {
-    if (!whatsappNumber) return;
-    const lang = getLang();
-    const t = i18n[lang] || i18n.de || {};
-    const text = `${t.wa_message_intro || "Hallo!"}
-📱 ${t.wa_label_device || "Modell"}: ${model}
-🛠️ ${t.wa_label_repair || "Reparatur"}: ${repair}
-💶 ${t.wa_label_price || "Preis"}: ${price}
-${t.wa_label_city || "Ort"}: ${city}`;
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, "_blank");
-  }
-
-  function isPopularModel(brand, model) {
-    return (POPULAR_MODELS[brand] || []).includes(model);
-  }
+  let selectedPriceRepair = null;
 
   function getRepairLabel(repair, lang) {
     const t = i18n[lang] || i18n.de || {};
-    const base = t[repair.key] || repair.key;
-    if (repair.variant) {
-      return `${t[repair.variant] || repair.variant}`;
+    if (repair.key === "repair_display" && repair.variant) {
+      return `${t.repair_display || "Display"} (${t[repair.variant] || repair.variant})`;
     }
-    return base;
+    return t[repair.key] || repair.key;
   }
 
-  function createPriceCard(brand, modelData, lang) {
-    const card = document.createElement("article");
-    card.className = "price-model-card";
-    card.dataset.brand = brand;
-    card.dataset.series = modelData.series;
-    card.dataset.popular = String(isPopularModel(brand, modelData.model));
-
-    const h3 = document.createElement("h3");
-    h3.className = "price-model-card__title";
-    h3.textContent = modelData.model;
-    card.appendChild(h3);
-
-    const list = document.createElement("ul");
-    list.className = "price-model-card__list";
-
-    modelData.repairs.forEach((repair) => {
-      const item = document.createElement("li");
-      const isDisplay = repair.key === "repair_display";
-      const label = isDisplay && repair.variant
-        ? `${i18n[lang]?.repair_display || "Display"} (${getRepairLabel(repair, lang)})`
-        : getRepairLabel(repair, lang);
-      item.innerHTML = `<span>${label}</span><strong>${repair.price}</strong>`;
-      item.className = "price-line";
-      item.addEventListener("click", () => openWAForPrice(brand, modelData.model, label, repair.price));
-      list.appendChild(item);
-    });
-
-    card.appendChild(list);
-    return card;
+  function getPriceCtaText(lang) {
+    const t = i18n[lang] || i18n.de || {};
+    return t.price_selector_cta || t.wa_message_intro || "Per WhatsApp anfragen";
   }
 
-  function renderPrices(lang) {
-    Object.entries(PRICE_DATA).forEach(([brand, models]) => {
-      const popularWrap = document.querySelector(`.js-model-grid[data-brand="${brand}"]`);
-      const allWrap = document.querySelector(`.js-all-models[data-brand="${brand}"]`);
-      if (!popularWrap || !allWrap) return;
-      popularWrap.innerHTML = "";
-      allWrap.innerHTML = "";
+  function getPriceFamily(model) {
+    const iphone = model.match(/^(iPhone\s\d+)/);
+    if (iphone) return iphone[1];
 
-      const popular = models.filter((entry) => isPopularModel(brand, entry.model));
-      const rest = models.filter((entry) => !isPopularModel(brand, entry.model));
+    const galaxy = model.match(/^(Galaxy\sS\d+)/);
+    if (galaxy) return galaxy[1];
 
-      popular.forEach((entry) => popularWrap.appendChild(createPriceCard(brand, entry, lang)));
-      rest.forEach((entry) => allWrap.appendChild(createPriceCard(brand, entry, lang)));
-    });
+    return model;
   }
 
-  function initPriceExpanders() {
-    document.querySelectorAll(".js-show-all[data-brand]").forEach((btn) => {
-      const brand = btn.dataset.brand;
-      const allWrap = document.querySelector(`.js-all-models[data-brand="${brand}"]`);
-      if (!allWrap) return;
-      btn.addEventListener("click", () => {
-        allWrap.hidden = false;
-        allWrap.classList.add("is-revealed");
-        btn.hidden = true;
-        btn.setAttribute("aria-expanded", "true");
+  function getPriceEntries() {
+    return Object.entries(PRICE_DATA).flatMap(([brand, models]) => (
+      models.map((entry) => ({
+        ...entry,
+        brand,
+        family: entry.family || getPriceFamily(entry.model),
+        image: entry.image || PRICE_IMAGES[brand] || "assets/logo.png",
+      }))
+    ));
+  }
+
+  function getPriceFamilies(entries) {
+    const seen = new Set();
+    return entries.reduce((families, entry) => {
+      if (seen.has(entry.family)) return families;
+      seen.add(entry.family);
+      families.push({ family: entry.family, brand: entry.brand, image: entry.image });
+      return families;
+    }, []);
+  }
+
+  function getCurrentPriceEntry() {
+    const modelSelect = document.querySelector("[data-price-model]");
+    const model = modelSelect?.value;
+    return getPriceEntries().find((entry) => entry.model === model) || getPriceEntries()[0];
+  }
+
+  function buildPriceWaHref(entry, repair) {
+    if (!whatsappNumber || !entry) return "#";
+
+    const lang = getLang();
+    const t = i18n[lang] || i18n.de || {};
+    const repairLine = repair
+      ? `${t.wa_label_repair || "Reparatur"}: ${repair.label}\n${t.wa_label_price || "Preis"}: ${repair.price}`
+      : (lang === "ua"
+        ? "Ремонт: загальний запит"
+        : lang === "en"
+          ? "Repair: general inquiry"
+          : "Reparatur: allgemeine Anfrage");
+
+    const text = `${t.wa_message_intro || "Hallo!"}
+📱 ${t.wa_label_device || "Modell"}: ${entry.model}
+🛠️ ${repairLine}
+${t.wa_label_city || "Ort"}: ${city}`;
+
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+  }
+
+  function updatePriceCta(entry) {
+    const cta = document.querySelector("[data-price-cta]");
+    if (!cta || !entry) return;
+    cta.textContent = getPriceCtaText(getLang());
+    cta.href = buildPriceWaHref(entry, selectedPriceRepair);
+  }
+
+  function renderPriceServices(entry, lang) {
+    const list = document.querySelector("[data-price-services]");
+    if (!list || !entry) return;
+
+    list.innerHTML = "";
+    selectedPriceRepair = null;
+
+    entry.repairs.forEach((repair) => {
+      const label = getRepairLabel(repair, lang);
+      const row = document.createElement("button");
+      row.className = "price-service-row";
+      row.type = "button";
+      row.innerHTML = `<span>${label}</span><strong>${repair.price}</strong>`;
+      row.addEventListener("click", () => {
+        selectedPriceRepair = { label, price: repair.price };
+        list.querySelectorAll(".price-service-row").forEach((item) => item.classList.remove("is-selected"));
+        row.classList.add("is-selected");
+        updatePriceCta(entry);
       });
+      list.appendChild(row);
     });
   }
 
-  function initPriceToggle() {
-    const toggle = document.querySelector(".js-price-toggle");
-    if (!toggle) return;
-    const buttons = Array.from(toggle.querySelectorAll("[data-brand-toggle]"));
-    const groups = Array.from(document.querySelectorAll(".price-group[data-brand]"));
-    if (!buttons.length || !groups.length) return;
+  function renderPriceSelection() {
+    const familySelect = document.querySelector("[data-price-family]");
+    const modelSelect = document.querySelector("[data-price-model]");
+    const image = document.querySelector("[data-price-image]");
+    const selectedModel = document.querySelector("[data-price-selected-model]");
+    if (!familySelect || !modelSelect) return;
 
-    const setActive = (brand) => {
-      groups.forEach((group) => {
-        const isActive = group.dataset.brand === brand;
-        group.classList.toggle("is-active", isActive);
-        group.setAttribute("aria-hidden", String(!isActive));
-      });
-      buttons.forEach((btn) => {
-        const isActive = btn.dataset.brandToggle === brand;
-        btn.classList.toggle("is-active", isActive);
-        btn.setAttribute("aria-pressed", String(isActive));
-      });
-    };
+    const lang = getLang();
+    const entries = getPriceEntries();
+    const models = entries.filter((entry) => entry.family === familySelect.value);
+    const entry = models.find((item) => item.model === modelSelect.value) || models[0] || entries[0];
+    if (!entry) return;
 
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", () => setActive(btn.dataset.brandToggle));
+    modelSelect.innerHTML = "";
+    models.forEach((modelEntry) => {
+      const option = document.createElement("option");
+      option.value = modelEntry.model;
+      option.textContent = modelEntry.model;
+      option.selected = modelEntry.model === entry.model;
+      modelSelect.appendChild(option);
     });
 
-    const defaultButton = toggle.querySelector('[data-brand-toggle="apple"]') || buttons[0];
-    if (defaultButton) setActive(defaultButton.dataset.brandToggle);
+    if (image) {
+      image.src = entry.image;
+      image.alt = entry.model;
+    }
+    if (selectedModel) selectedModel.textContent = entry.model;
+
+    renderPriceServices(entry, lang);
+    updatePriceCta(entry);
+  }
+
+  function renderPrices() {
+    const familySelect = document.querySelector("[data-price-family]");
+    const modelSelect = document.querySelector("[data-price-model]");
+    if (!familySelect || !modelSelect) return;
+
+    const currentFamily = familySelect.value;
+    const entries = getPriceEntries();
+    const families = getPriceFamilies(entries);
+
+    familySelect.innerHTML = "";
+    families.forEach((item) => {
+      const option = document.createElement("option");
+      option.value = item.family;
+      option.textContent = item.family;
+      familySelect.appendChild(option);
+    });
+
+    familySelect.value = families.some((item) => item.family === currentFamily)
+      ? currentFamily
+      : (families.find((item) => item.family === "iPhone 15") || families[0])?.family;
+
+    renderPriceSelection();
+  }
+
+  function initPriceSelector() {
+    const familySelect = document.querySelector("[data-price-family]");
+    const modelSelect = document.querySelector("[data-price-model]");
+    const cta = document.querySelector("[data-price-cta]");
+    if (!familySelect || !modelSelect) return;
+
+    familySelect.addEventListener("change", () => {
+      selectedPriceRepair = null;
+      renderPriceSelection();
+    });
+    modelSelect.addEventListener("change", () => {
+      selectedPriceRepair = null;
+      renderPriceSelection();
+    });
+    cta?.addEventListener("click", () => updatePriceCta(getCurrentPriceEntry()));
+
+    renderPrices();
   }
 
   function initBundles() {
@@ -502,7 +566,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
     updateSearchPlaceholders(lang);
     updateQuickWA(lang);
     updateLiveBadge();
-    if (document.querySelector(".js-prices-section")) renderPrices(lang);
+    if (document.querySelector(".js-prices-section")) renderPrices();
   }
 
   initHeaderShadow();
@@ -513,12 +577,11 @@ ${t.wa_label_city || "Ort"}: ${city}`;
   initQuiz();
   initEasterEgg();
   initServiceWorker();
-  initPriceToggle();
+  initPriceSelector();
   initQuizHighlight();
 
   if (document.querySelector(".js-prices-section")) {
-    renderPrices(getLang());
-    initPriceExpanders();
+    renderPrices();
   }
 
   ["model", "issue"].forEach((id) => {
