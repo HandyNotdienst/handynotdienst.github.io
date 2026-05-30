@@ -96,20 +96,37 @@ Ort: ${city}`;
 
   const PRICE_DATA = {
     apple: [
-      { model: "iPhone 16 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "374€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "124€" }, { key: "repair_backglass", price: "174€" }] },
-      { model: "iPhone 16 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "335€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "105€" }, { key: "repair_backglass", price: "164€" }] },
-      { model: "iPhone 16 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "234€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "84€" }, { key: "repair_backglass", price: "154€" }] },
-      { model: "iPhone 16", series: "iphone", repairs: [{ key: "repair_display", price: "224€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "74€" }, { key: "repair_backglass", price: "134€" }] },
-      { model: "iPhone 15 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "264€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "84€" }, { key: "repair_backglass", price: "134€" }] },
-      { model: "iPhone 15 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "234€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "74€" }, { key: "repair_backglass", price: "124€" }] },
-      { model: "iPhone 15 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "214€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "64€" }, { key: "repair_backglass", price: "104€" }] },
-      { model: "iPhone 15", series: "iphone", repairs: [{ key: "repair_display", price: "184€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "64€" }, { key: "repair_backglass", price: "84€" }] },
-      { model: "iPhone 14", series: "iphone", repairs: [{ key: "repair_display", price: "124€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "60€" }, { key: "repair_backglass", price: "64€" }] },
-      { model: "iPhone 13", series: "iphone", repairs: [{ key: "repair_display", price: "124€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "54€" }, { key: "repair_backglass", price: "74€" }] },
-      { model: "iPhone 12", series: "iphone", repairs: [{ key: "repair_display", price: "114€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "54€" }, { key: "repair_backglass", price: "64€" }] },
-      { model: "iPhone 11", series: "iphone", repairs: [{ key: "repair_display", price: "64€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "54€" }, { key: "repair_backglass", price: "54€" }] },
-      { model: "iPhone XS", series: "iphone", repairs: [{ key: "repair_display", price: "54€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "44€" }, { key: "repair_backglass", price: "44€" }] },
-      { model: "iPhone XR", series: "iphone", repairs: [{ key: "repair_display", price: "54€", variant: "repair_oled_premium" }, { key: "repair_battery", price: "44€" }, { key: "repair_backglass", price: "44€" }] }
+      { model: "iPhone 16 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "399€" }, { key: "repair_battery", price: "139€" }, { key: "repair_original_battery", price: "149€" }, { key: "repair_backglass", price: "189€" }] },
+      { model: "iPhone 16 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "359€" }, { key: "repair_battery", price: "129€" }, { key: "repair_original_battery", price: "129€" }, { key: "repair_backglass", price: "179€" }] },
+      { model: "iPhone 16 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "269€" }, { key: "repair_battery", price: "109€" }, { key: "repair_original_battery", price: "109€" }, { key: "repair_backglass", price: "169€" }] },
+      { model: "iPhone 16", series: "iphone", repairs: [{ key: "repair_display", price: "249€" }, { key: "repair_battery", price: "99€" }, { key: "repair_original_battery", price: "109€" }, { key: "repair_backglass", price: "149€" }] },
+      { model: "iPhone 15 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "299€" }, { key: "repair_battery", price: "109€" }, { key: "repair_original_battery", price: "119€" }, { key: "repair_backglass", price: "149€" }] },
+      { model: "iPhone 15 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "269€" }, { key: "repair_battery", price: "99€" }, { key: "repair_original_battery", price: "119€" }, { key: "repair_backglass", price: "139€" }] },
+      { model: "iPhone 15 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "239€" }, { key: "repair_battery", price: "89€" }, { key: "repair_original_battery", price: "99€" }, { key: "repair_backglass", price: "119€" }] },
+      { model: "iPhone 15", series: "iphone", repairs: [{ key: "repair_display", price: "209€" }, { key: "repair_battery", price: "89€" }, { key: "repair_original_battery", price: "99€" }, { key: "repair_backglass", price: "99€" }] },
+      { model: "iPhone 14 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "209€" }, { key: "repair_battery", price: "99€" }, { key: "repair_original_battery", price: "129€" }, { key: "repair_backglass", price: "139€" }] },
+      { model: "iPhone 14 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "199€" }, { key: "repair_battery", price: "89€" }, { key: "repair_original_battery", price: "119€" }, { key: "repair_backglass", price: "129€" }] },
+      { model: "iPhone 14 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "169€" }, { key: "repair_battery", price: "85€" }, { key: "repair_original_battery", price: "99€" }, { key: "repair_backglass", price: "99€" }] },
+      { model: "iPhone 14", series: "iphone", repairs: [{ key: "repair_display", price: "149€" }, { key: "repair_battery", price: "85€" }, { key: "repair_original_battery", price: "99€" }, { key: "repair_backglass", price: "89€" }] },
+      { model: "iPhone 13 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "189€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "109€" }] },
+      { model: "iPhone 13 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "179€" }, { key: "repair_battery", price: "79€" }, { key: "repair_original_battery", price: "109€" }, { key: "repair_backglass", price: "99€" }] },
+      { model: "iPhone 13", series: "iphone", repairs: [{ key: "repair_display", price: "149€" }, { key: "repair_battery", price: "79€" }, { key: "repair_original_battery", price: "89€" }, { key: "repair_backglass", price: "99€" }] },
+      { model: "iPhone 13 mini", series: "iphone", repairs: [{ key: "repair_display", price: "139€" }, { key: "repair_battery", price: "79€" }, { key: "repair_original_battery", price: "99€" }, { key: "repair_backglass", price: "89€" }] },
+      { model: "iPhone 12 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "149€" }, { key: "repair_battery", price: "79€" }, { key: "repair_original_battery", price: "99€" }, { key: "repair_backglass", price: "99€" }] },
+      { model: "iPhone 12 / 12 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "139€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "89€" }] },
+      { model: "iPhone 12 mini", series: "iphone", repairs: [{ key: "repair_display", price: "109€" }, { key: "repair_battery", price: "79€" }, { key: "repair_original_battery", price: "89€" }, { key: "repair_backglass", price: "79€" }] },
+      { model: "iPhone 11 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "119€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "79€" }] },
+      { model: "iPhone 11 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "109€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "79€" }] },
+      { model: "iPhone 11", series: "iphone", repairs: [{ key: "repair_display", price: "89€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "79€" }] },
+      { model: "iPhone XS Max", series: "iphone", repairs: [{ key: "repair_display", price: "99€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "79€" }] },
+      { model: "iPhone X / XS / XR", series: "iphone", repairs: [{ key: "repair_display", price: "79€" }, { key: "repair_battery", price: "69€" }, { key: "repair_backglass", price: "69€" }] },
+      { model: "iPhone SE (2022)", series: "iphone", repairs: [{ key: "repair_display", price: "79€" }, { key: "repair_battery", price: "69€" }, { key: "repair_backglass", price: "59€" }] },
+      { model: "iPhone SE (2020)", series: "iphone", repairs: [{ key: "repair_display", price: "69€" }, { key: "repair_battery", price: "59€" }, { key: "repair_backglass", price: "59€" }] },
+      { model: "iPhone 8 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "69€" }, { key: "repair_battery", price: "59€" }, { key: "repair_backglass", price: "49€" }] },
+      { model: "iPhone 8", series: "iphone", repairs: [{ key: "repair_display", price: "59€" }, { key: "repair_battery", price: "59€" }, { key: "repair_backglass", price: "49€" }] },
+      { model: "iPhone 7 / 7 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "49€" }, { key: "repair_battery", price: "49€" }] },
+      { model: "iPhone 6s / 6s Plus", series: "iphone", repairs: [{ key: "repair_display", price: "39€" }, { key: "repair_battery", price: "39€" }] },
+      { model: "iPhone 6 / 6 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "39€" }, { key: "repair_battery", price: "39€" }] }
     ],
     samsung: [
       { model: "Galaxy S25 Ultra", series: "s", repairs: [{ key: "repair_display", price: "274€" }, { key: "repair_battery", price: "84€" }, { key: "repair_port", price: "84€" }, { key: "repair_backglass", price: "105€" }] },
@@ -131,6 +148,20 @@ Ort: ${city}`;
 
   let selectedPriceRepair = null;
 
+  function slugifyPriceModel(model) {
+    return model
+      .toLowerCase()
+      .replace(/\+/g, " plus ")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  function getPriceImage(entry, brand) {
+    if (entry.image) return entry.image;
+    if (brand === "apple") return `assets/phones/${slugifyPriceModel(entry.model)}.png`;
+    return PRICE_IMAGES[brand] || "assets/logo.png";
+  }
+
   function getRepairLabel(repair, lang) {
     const t = i18n[lang] || i18n.de || {};
     if (repair.key === "repair_display" && repair.variant) {
@@ -142,6 +173,16 @@ Ort: ${city}`;
   function getPriceCtaText(lang) {
     const t = i18n[lang] || i18n.de || {};
     return t.price_selector_cta || t.wa_message_intro || "Per WhatsApp anfragen";
+  }
+
+  function getStockLabel(stock, lang) {
+    const t = i18n[lang] || i18n.de || {};
+    const labels = {
+      available: t.stock_available || "Auf Lager",
+      unavailable: t.stock_unavailable || "Nicht auf Lager",
+      on_request: t.stock_on_request || "Verfügbarkeit prüfen",
+    };
+    return labels[stock] || labels.on_request;
   }
 
   function getPriceFamily(model) {
@@ -160,7 +201,7 @@ Ort: ${city}`;
         ...entry,
         brand,
         family: entry.family || getPriceFamily(entry.model),
-        image: entry.image || PRICE_IMAGES[brand] || "assets/logo.png",
+        image: getPriceImage(entry, brand),
       }))
     ));
   }
@@ -186,8 +227,11 @@ Ort: ${city}`;
 
     const lang = getLang();
     const t = i18n[lang] || i18n.de || {};
+    const stockLine = repair?.stock
+      ? `\n${t.wa_label_stock || "Lager"}: ${getStockLabel(repair.stock, lang)}`
+      : "";
     const repairLine = repair
-      ? `${t.wa_label_repair || "Reparatur"}: ${repair.label}\n${t.wa_label_price || "Preis"}: ${repair.price}`
+      ? `${t.wa_label_repair || "Reparatur"}: ${repair.label}\n${t.wa_label_price || "Preis"}: ${repair.price}${stockLine}`
       : (lang === "ua"
         ? "Ремонт: загальний запит"
         : lang === "en"
@@ -221,9 +265,27 @@ ${t.wa_label_city || "Ort"}: ${city}`;
       const row = document.createElement("button");
       row.className = "price-service-row";
       row.type = "button";
-      row.innerHTML = `<span>${label}</span><strong>${repair.price}</strong>`;
+
+      const labelEl = document.createElement("span");
+      labelEl.textContent = label;
+
+      const metaEl = document.createElement("span");
+      metaEl.className = "price-service-row__meta";
+
+      if (repair.stock) {
+        const stockEl = document.createElement("small");
+        stockEl.className = `price-stock price-stock--${repair.stock}`;
+        stockEl.textContent = getStockLabel(repair.stock, lang);
+        metaEl.appendChild(stockEl);
+      }
+
+      const priceEl = document.createElement("strong");
+      priceEl.textContent = repair.price;
+      metaEl.appendChild(priceEl);
+
+      row.append(labelEl, metaEl);
       row.addEventListener("click", () => {
-        selectedPriceRepair = { label, price: repair.price };
+        selectedPriceRepair = { label, price: repair.price, stock: repair.stock || "" };
         list.querySelectorAll(".price-service-row").forEach((item) => item.classList.remove("is-selected"));
         row.classList.add("is-selected");
         updatePriceCta(entry);
