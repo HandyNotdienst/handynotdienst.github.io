@@ -129,7 +129,6 @@ Ort: ${city}`;
     samsung: "assets/after-phone.png",
   };
 
-  let selectedPriceBrand = "apple";
   let selectedPriceRepair = null;
 
   function getRepairLabel(repair, lang) {
@@ -166,25 +165,20 @@ Ort: ${city}`;
     ));
   }
 
-  function getPriceFamilies(entries, brand) {
+  function getPriceFamilies(entries) {
     const seen = new Set();
-    return entries
-      .filter((entry) => !brand || entry.brand === brand)
-      .reduce((families, entry) => {
-        if (seen.has(entry.family)) return families;
-        seen.add(entry.family);
-        families.push({ family: entry.family, brand: entry.brand, image: entry.image });
-        return families;
-      }, []);
+    return entries.reduce((families, entry) => {
+      if (seen.has(entry.family)) return families;
+      seen.add(entry.family);
+      families.push({ family: entry.family, brand: entry.brand, image: entry.image });
+      return families;
+    }, []);
   }
 
   function getCurrentPriceEntry() {
     const modelSelect = document.querySelector("[data-price-model]");
     const model = modelSelect?.value;
-    const entries = getPriceEntries();
-    return entries.find((entry) => entry.brand === selectedPriceBrand && entry.model === model)
-      || entries.find((entry) => entry.brand === selectedPriceBrand)
-      || entries[0];
+    return getPriceEntries().find((entry) => entry.model === model) || getPriceEntries()[0];
   }
 
   function buildPriceWaHref(entry, repair) {
@@ -246,7 +240,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
     if (!familySelect || !modelSelect) return;
 
     const lang = getLang();
-    const entries = getPriceEntries().filter((entry) => entry.brand === selectedPriceBrand);
+    const entries = getPriceEntries();
     const models = entries.filter((entry) => entry.family === familySelect.value);
     const entry = models.find((item) => item.model === modelSelect.value) || models[0] || entries[0];
     if (!entry) return;
@@ -276,8 +270,8 @@ ${t.wa_label_city || "Ort"}: ${city}`;
     if (!familySelect || !modelSelect) return;
 
     const currentFamily = familySelect.value;
-    const entries = getPriceEntries().filter((entry) => entry.brand === selectedPriceBrand);
-    const families = getPriceFamilies(entries, selectedPriceBrand);
+    const entries = getPriceEntries();
+    const families = getPriceFamilies(entries);
 
     familySelect.innerHTML = "";
     families.forEach((item) => {
@@ -287,16 +281,9 @@ ${t.wa_label_city || "Ort"}: ${city}`;
       familySelect.appendChild(option);
     });
 
-    const preferredFamily = selectedPriceBrand === "apple" ? "iPhone 15" : "Galaxy S23";
     familySelect.value = families.some((item) => item.family === currentFamily)
       ? currentFamily
-      : (families.find((item) => item.family === preferredFamily) || families[0])?.family;
-
-    document.querySelectorAll("[data-price-brand]").forEach((btn) => {
-      const isActive = btn.dataset.priceBrand === selectedPriceBrand;
-      btn.classList.toggle("is-active", isActive);
-      btn.setAttribute("aria-pressed", String(isActive));
-    });
+      : (families.find((item) => item.family === "iPhone 15") || families[0])?.family;
 
     renderPriceSelection();
   }
@@ -305,16 +292,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
     const familySelect = document.querySelector("[data-price-family]");
     const modelSelect = document.querySelector("[data-price-model]");
     const cta = document.querySelector("[data-price-cta]");
-    const brandButtons = Array.from(document.querySelectorAll("[data-price-brand]"));
     if (!familySelect || !modelSelect) return;
-
-    brandButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        selectedPriceBrand = btn.dataset.priceBrand || selectedPriceBrand;
-        selectedPriceRepair = null;
-        renderPrices();
-      });
-    });
 
     familySelect.addEventListener("change", () => {
       selectedPriceRepair = null;
