@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://handy-notdienst-singen.de/sitemap.xml
