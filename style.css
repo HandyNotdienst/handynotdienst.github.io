@@ -1400,6 +1400,41 @@ a{color:inherit;text-decoration:none}
   line-height: 1;
   letter-spacing: -.035em;
 }
+.price-brand-switch{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.price-brand-switch__btn{
+  display: grid;
+  gap: 3px;
+  min-height: 64px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  color: rgba(238,243,247,.78);
+  background: rgba(255,255,255,.055);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.price-brand-switch__btn strong{
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.1;
+}
+.price-brand-switch__logo{
+  color: rgba(238,243,247,.56);
+  font-size: 12px;
+  font-weight: 900;
+}
+.price-brand-switch__btn:hover,
+.price-brand-switch__btn.is-active{
+  border-color: rgba(63,169,245,.45);
+  background: rgba(63,169,245,.14);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+}
 .price-selector-controls{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1645,6 +1680,9 @@ a{color:inherit;text-decoration:none}
     border-radius: 24px;
   }
   .price-selector-controls{
+    grid-template-columns: 1fr;
+  }
+  .price-brand-switch{
     grid-template-columns: 1fr;
   }
   .price-selector-card__content,
