@@ -35,13 +35,11 @@
 
       <div class="header__right">
         <nav class="topnav" aria-label="Navigation">
+          <a href="index.html" data-i18n="nav_home">Start</a>
           <a href="prices.html" data-i18n="nav_prices">Preise</a>
           <a href="faqs.html">FAQ</a>
           <a href="#contact" data-i18n="nav_contact">Kontakt</a>
-          <!-- QUIZ subtle -->
-          <button class="quiz-mini js-quiz-highlight" id="quizStartBtn" type="button" aria-label="🧠 Diagnose-Quiz (1 Min)">
-            🧠 <span data-i18n="quiz_label">Diagnose-Quiz (1 Min)</span>
-          </button>
+          <a href="impressum.html">Impressum</a>
         </nav>
 
         <div class="lang" aria-label="Language switch">
@@ -49,10 +47,6 @@
           <button class="lang__btn" type="button" data-lang="ua">UA</button>
           <button class="lang__btn" type="button" data-lang="en">EN</button>
         </div>
-
-        <a class="pill" href="tel:+4915222416438" aria-label="Telefon anrufen">
-          📞 <span data-i18n="call">Anrufen</span>: <strong>01522 2416438</strong>
-        </a>
 
         <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">WhatsApp</a>
       </div>
@@ -76,66 +70,146 @@
   </div>
 
   <main id="top">
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__content">
-          <div class="kicker" data-i18n="kicker">Handyreparatur in Singen</div>
+    <section class="hero hero--concept js-prices-section">
+      <div class="container concept-hero">
+        <div class="concept-hero__copy">
+          <div class="concept-badge"><span data-i18n="no_appt">Ohne Termin</span><span data-i18n="hero_help_now">Sofort Hilfe</span></div>
 
-          <h1 data-i18n="h1">Schneller Smartphone-Service<br/>mit fairen Preisen</h1>
+          <h1 data-i18n="home_concept_h1">Schneller Smartphone-Service mit <span>fairen Preisen</span></h1>
 
           <p class="lead" data-i18n="lead">
             Display, Akku, Ladebuchse, Kamera, Wasserschaden – wir helfen schnell. Schreib uns per WhatsApp oder ruf an.
           </p>
 
-          <div class="hero__actions">
-            <a class="btn" href="#contact" data-i18n="cta_main">Jetzt anfragen</a>
-            <a class="btn btn--ghost" href="prices.html" data-i18n="cta_prices">Preise ansehen</a>
-            <a class="btn btn--ghost" href="#pickup" data-i18n="cta_pickup">Abholung/Lieferung</a>
-          </div>
-
-          <div class="trust">
-            <span class="chip chip--live" id="liveBadge">⏱️ …</span>
-            <span class="chip">🔒 <span data-i18n="safe_badge">Ohne Datenverlust</span></span>
-            <span class="chip">✅ <span data-i18n="trust1">Schnelle Diagnose</span></span>
-            <span class="chip">⚡ <span data-i18n="trust2">Oft am selben Tag</span></span>
-            <span class="chip">🧾 <span data-i18n="trust3">Transparente Preise</span></span>
-          </div>
-        </div>
-
-        <div class="hero__card card">
-          <h3 data-i18n="quick_title">Schneller Check</h3>
-          <p class="muted" data-i18n="quick_text">Schreib Modell + Problem – wir antworten schnell.</p>
-
-          <div class="mini">
-            <label class="field">
-              <span data-i18n="field_model">Modell</span>
-              <input id="model" type="text" placeholder="z.B. iPhone 13 / Samsung S21" />
-            </label>
-
-            <label class="field">
-              <span data-i18n="field_issue">Problem</span>
-              <input id="issue" type="text" placeholder="Display, Akku, lädt nicht..." />
-            </label>
-
-            <a id="waQuick" class="btn btn--wa btn--full" href="https://wa.me/4915222416438" target="_blank" rel="noopener">
-              <span data-i18n="send_wa">An WhatsApp senden</span>
-            </a>
-
-            <div class="mini__grid">
-              <a class="btn btn--tg btn--full" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener">✈️ Telegram</a>
-              <a class="btn btn--mail btn--full" href="mailto:handy.notdienst.reparatur@gmail.com">📧 Email</a>
+          <div class="concept-proof">
+            <div class="concept-proof__item">
+              <span class="concept-proof__icon concept-proof__icon--green">↯</span>
+              <strong data-i18n="hero_proof_fast">Schnell vor Ort</strong>
+              <small data-i18n="hero_proof_fast_text">meist in 30–60 Min.</small>
             </div>
+            <div class="concept-proof__item">
+              <span class="concept-proof__icon concept-proof__icon--amber">⌑</span>
+              <strong data-i18n="hero_proof_warranty">Garantie auf</strong>
+              <small data-i18n="hero_proof_warranty_text">alle Reparaturen</small>
+            </div>
+            <div class="concept-proof__item">
+              <span class="concept-proof__icon concept-proof__icon--blue">✓</span>
+              <strong data-i18n="hero_proof_price">Faire & transparente</strong>
+              <small data-i18n="hero_proof_price_text">Preise</small>
+            </div>
+          </div>
 
-            <p class="hint" data-i18n="hint">Tipp: Je genauer du beschreibst, desto schneller bekommst du einen Preis.</p>
+          <div class="hero__actions">
+            <a class="btn btn--wa concept-cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener" data-i18n="cta_main">Jetzt per WhatsApp anfragen</a>
+            <a class="btn btn--ghost concept-call" href="tel:+4915222416438">01522 2416438 anrufen</a>
+          </div>
+
+          <div class="concept-safe">
+            <span>⌁ <span data-i18n="hero_quality">Ersatzteile in Erstausrüster-Qualität</span></span>
+            <span>▣ <span data-i18n="safe_badge">Ohne Datenverlust</span></span>
           </div>
         </div>
+
+        <div class="concept-hero__product">
+          <picture>
+            <source type="image/webp" srcset="assets/phones/optimized/iphone-15-pro-max-420.webp 420w, assets/phones/optimized/iphone-15-pro-max-800.webp 800w" sizes="(max-width: 900px) 92vw, 560px">
+            <img src="assets/phones/iphone-15-pro-max.png" alt="iPhone 15 Pro Max Reparatur bei Handy Notdienst Singen" decoding="async" fetchpriority="high">
+          </picture>
+          <div class="rating-card" aria-label="Bewertung">
+            <span class="rating-card__mark">☆</span>
+            <strong>4,9 / 5</strong>
+            <small data-i18n="hero_rating_text">über 250+ Bewertungen</small>
+            <span class="rating-card__stars">★★★★★</span>
+            <small data-i18n="hero_rating_area">Aus Singen und Umgebung</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="container home-price-studio" data-price-selector>
+        <div class="home-price-panel home-price-panel--controls">
+          <div class="home-price-head">
+            <div>
+              <h2 data-i18n="home_prices_title">Reparatur & Preise</h2>
+              <p data-i18n="home_prices_text">Gerät wählen und sofort den Preis sehen.</p>
+            </div>
+            <div class="price-brand-switch price-brand-switch--compact" role="group" aria-label="Marke auswählen">
+              <button class="price-brand-switch__btn is-active" type="button" data-price-brand="apple">
+                <span class="price-brand-switch__logo">Apple</span>
+                <strong>iPhone</strong>
+              </button>
+              <button class="price-brand-switch__btn" type="button" data-price-brand="samsung">
+                <span class="price-brand-switch__logo">Samsung</span>
+                <strong>Galaxy</strong>
+              </button>
+            </div>
+          </div>
+
+          <div class="home-price-selects">
+            <div class="price-selector-field">
+              <label class="price-selector-label" for="homePriceFamilySelect" data-i18n="price_selector_family_label">Modell</label>
+              <select class="price-selector-select" id="homePriceFamilySelect" data-price-family></select>
+            </div>
+            <div class="price-selector-field">
+              <label class="price-selector-label" for="homePriceModelSelect" data-i18n="price_selector_model_label">Speicher</label>
+              <select class="price-selector-select" id="homePriceModelSelect" data-price-model></select>
+            </div>
+          </div>
+
+          <div class="price-service-list home-price-services" data-price-services></div>
+        </div>
+
+        <div class="home-price-panel home-price-panel--device price-selector-preview" aria-live="polite">
+          <div class="home-device-frame">
+            <picture class="price-selector-picture" data-price-picture>
+              <source type="image/webp" srcset="assets/phones/optimized/iphone-15-pro-max-420.webp 420w, assets/phones/optimized/iphone-15-pro-max-800.webp 800w" sizes="(max-width: 760px) 84vw, 320px" data-price-source-webp>
+              <img class="price-selector-device-img home-device-img" src="assets/phones/iphone-15-pro-max.png" alt="iPhone 15 Pro Max Reparatur bei Handy Notdienst Singen" decoding="async" data-price-image>
+            </picture>
+          </div>
+          <div class="price-selector-device-copy">
+            <span class="price-selector-device-kicker" data-i18n="price_selector_selected_label">Ausgewähltes Gerät</span>
+            <strong data-price-selected-model>iPhone 15 Pro Max</strong>
+          </div>
+        </div>
+
+        <div class="home-price-panel home-price-panel--summary">
+          <div class="stock-status">
+            <span class="stock-status__icon">✓</span>
+            <div>
+              <strong data-price-summary-stock>Verfügbarkeit prüfen</strong>
+              <small data-i18n="home_stock_fast">Beim WhatsApp-Check bestätigen wir die Verfügbarkeit.</small>
+            </div>
+          </div>
+
+          <div class="repair-summary">
+            <span data-i18n="home_selected_repair">Ausgewählte Reparatur</span>
+            <strong data-price-summary-model>iPhone 15 Pro Max</strong>
+            <div class="repair-summary__line">
+              <span data-price-summary-repair>Display</span>
+              <strong data-price-summary-price>299€</strong>
+            </div>
+          </div>
+
+          <ul class="summary-checks">
+            <li><span>♡</span><strong data-i18n="summary_part_title">Original Ersatzteil</strong><small data-i18n="summary_part_text">100% Passgenauigkeit</small></li>
+            <li><span>○</span><strong data-i18n="summary_warranty_title">Garantie</strong><small data-i18n="summary_warranty_text">Details beim Auftrag</small></li>
+            <li><span>▣</span><strong data-i18n="summary_data_title">Datensicherheit</strong><small data-i18n="summary_data_text">Deine Daten bleiben sicher</small></li>
+          </ul>
+
+          <a class="btn btn--wa price-selector-cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener" data-price-cta data-i18n="price_selector_cta">Jetzt per WhatsApp anfragen</a>
+        </div>
+      </div>
+
+      <div class="container concept-action-dock" aria-label="Schnelle Aktionen">
+        <a href="tel:+4915222416438"><span>☎</span><strong data-i18n="contact_call">Anrufen</strong><small>01522 2416438</small></a>
+        <a class="concept-action-dock__primary" href="https://wa.me/4915222416438" target="_blank" rel="noopener"><span>◉</span><strong>WhatsApp</strong><small data-i18n="dock_wa_text">Schnell & unverbindlich</small></a>
+        <a href="prices.html"><span>◇</span><strong data-i18n="cta_prices">Preise ansehen</strong><small data-i18n="dock_prices_text">Gerät & Reparatur wählen</small></a>
       </div>
     </section>
 
     <div class="mobile-actions" aria-label="Mobile quick access">
       <div class="container mobile-actions__inner">
         <a class="mobile-actions__btn" href="#faq">❓ FAQ</a>
-        <a class="mobile-actions__btn mobile-actions__btn--quiz js-quiz-highlight" href="#quiz">🧠 Diagnose (1 Min)</a>
+        <a class="mobile-actions__btn mobile-actions__btn--quiz js-quiz-highlight js-quiz-open" href="#quiz">🧠 Diagnose (1 Min)</a>
       </div>
     </div>
 
@@ -391,7 +465,7 @@
       whatsappNumber: "4915222416438",
       city: "Singen",
       defaultLang: "de",
-      htmlKeys: ["h1"],
+      htmlKeys: ["h1", "home_concept_h1"],
       serviceWorkerPath: "./sw.js"
     };
     window.HN_I18N = {
@@ -400,11 +474,35 @@
         call:"Anrufen",
         kicker:"Handyreparatur in Singen",
         h1:"Schneller Smartphone-Service<br/>mit fairen Preisen",
+        home_concept_h1:"Schneller Smartphone-Service mit <span>fairen Preisen</span>",
         lead:"Display, Akku, Ladebuchse, Kamera, Wasserschaden – wir helfen schnell. Schreib uns per WhatsApp oder ruf an.",
-        cta_main:"Jetzt anfragen",
+        cta_main:"Jetzt per WhatsApp anfragen",
         cta_prices:"Preise ansehen",
         cta_pickup:"Abholung/Lieferung",
+        nav_home:"Start",
         safe_badge:"Ohne Datenverlust",
+        hero_help_now:"Sofort Hilfe",
+        hero_proof_fast:"Schnell vor Ort",
+        hero_proof_fast_text:"meist in 30–60 Min.",
+        hero_proof_warranty:"Garantie auf",
+        hero_proof_warranty_text:"alle Reparaturen",
+        hero_proof_price:"Faire & transparente",
+        hero_proof_price_text:"Preise",
+        hero_quality:"Ersatzteile in Erstausrüster-Qualität",
+        hero_rating_text:"über 250+ Bewertungen",
+        hero_rating_area:"Aus Singen und Umgebung",
+        home_prices_title:"Reparatur & Preise",
+        home_prices_text:"Gerät wählen und sofort den Preis sehen.",
+        home_stock_fast:"Beim WhatsApp-Check bestätigen wir die Verfügbarkeit.",
+        home_selected_repair:"Ausgewählte Reparatur",
+        dock_wa_text:"Schnell & unverbindlich",
+        dock_prices_text:"Gerät & Reparatur wählen",
+        summary_part_title:"Original Ersatzteil",
+        summary_part_text:"100% Passgenauigkeit",
+        summary_warranty_title:"Garantie",
+        summary_warranty_text:"Details beim Auftrag",
+        summary_data_title:"Datensicherheit",
+        summary_data_text:"Deine Daten bleiben sicher",
         trust1:"Schnelle Diagnose",
         trust2:"Oft am selben Tag",
         trust3:"Transparente Preise",
@@ -468,6 +566,13 @@
 
         mb_call:"Call",
         mb_prices:"Preise",
+        price_selector_family_label:"Modell",
+        price_selector_model_label:"Speicher",
+        price_selector_selected_label:"Ausgewähltes Gerät",
+        price_selector_cta:"Jetzt per WhatsApp anfragen",
+        repair_display:"Display", repair_oled_premium:"OLED Premium", repair_standard:"Standard", repair_battery:"Akku", repair_original_battery:"Original Akku OEM 99+%", repair_backglass:"Rückglas", repair_port:"Ladebuchse",
+        stock_available:"Ersatzteil auf Lager", stock_unavailable:"Nicht auf Lager", stock_on_request:"Verfügbarkeit prüfen",
+        wa_message_intro:"Hallo!", wa_label_device:"Modell", wa_label_repair:"Reparatur", wa_label_price:"Preis", wa_label_stock:"Lager", wa_label_city:"Ort",
 
         quiz_q1:"Lädt das Handy?",
         quiz_q2:"Akku schnell leer?",
@@ -487,11 +592,35 @@
         call:"Подзвонити",
         kicker:"Ремонт телефонів у Singen",
         h1:"Швидкий сервіс смартфонів<br/>з чесними цінами",
+        home_concept_h1:"Швидкий сервіс смартфонів з <span>чесними цінами</span>",
         lead:"Дисплей, акумулятор, розʼєм зарядки, камера, після води — допоможемо швидко. Пиши у WhatsApp або дзвони.",
-        cta_main:"Залишити заявку",
+        cta_main:"Запитати у WhatsApp",
         cta_prices:"Переглянути ціни",
         cta_pickup:"Забір/доставка",
+        nav_home:"Головна",
         safe_badge:"Без втрати даних",
+        hero_help_now:"Швидка допомога",
+        hero_proof_fast:"Швидко на місці",
+        hero_proof_fast_text:"часто за 30–60 хв",
+        hero_proof_warranty:"Гарантія на",
+        hero_proof_warranty_text:"усі ремонти",
+        hero_proof_price:"Чесні та прозорі",
+        hero_proof_price_text:"ціни",
+        hero_quality:"Запчастини якісного рівня",
+        hero_rating_text:"понад 250+ відгуків",
+        hero_rating_area:"Singen та околиці",
+        home_prices_title:"Ремонт і ціни",
+        home_prices_text:"Оберіть пристрій і одразу побачте ціну.",
+        home_stock_fast:"Наявність підтвердимо у WhatsApp.",
+        home_selected_repair:"Обраний ремонт",
+        dock_wa_text:"Швидко і без зобовʼязань",
+        dock_prices_text:"Оберіть пристрій і ремонт",
+        summary_part_title:"Оригінальна запчастина",
+        summary_part_text:"100% сумісність",
+        summary_warranty_title:"Гарантія",
+        summary_warranty_text:"Деталі при замовленні",
+        summary_data_title:"Безпека даних",
+        summary_data_text:"Ваші дані залишаються в безпеці",
         trust1:"Швидка діагностика",
         trust2:"Часто в той самий день",
         trust3:"Прозорі ціни",
@@ -555,6 +684,13 @@
 
         mb_call:"Дзвінок",
         mb_prices:"Ціни",
+        price_selector_family_label:"Модель",
+        price_selector_model_label:"Памʼять",
+        price_selector_selected_label:"Обраний пристрій",
+        price_selector_cta:"Запитати у WhatsApp",
+        repair_display:"Дисплей", repair_oled_premium:"OLED Premium", repair_standard:"Стандарт", repair_battery:"Акумулятор", repair_original_battery:"Оригінальний акумулятор OEM 99+%", repair_backglass:"Заднє скло", repair_port:"Розʼєм заряджання",
+        stock_available:"Запчастина є на складі", stock_unavailable:"Немає на складі", stock_on_request:"Перевірити наявність",
+        wa_message_intro:"Вітаю!", wa_label_device:"Модель", wa_label_repair:"Ремонт", wa_label_price:"Ціна", wa_label_stock:"Склад", wa_label_city:"Місто",
 
         quiz_q1:"Телефон заряджається?",
         quiz_q2:"Акумулятор швидко сідає?",
@@ -574,11 +710,35 @@
         call:"Call",
         kicker:"Phone repair in Singen",
         h1:"Fast smartphone service<br/>with fair prices",
+        home_concept_h1:"Fast smartphone service with <span>fair prices</span>",
         lead:"Screen, battery, charging port, camera, water damage — we help fast. Message us on WhatsApp or call.",
-        cta_main:"Request now",
+        cta_main:"Ask on WhatsApp now",
         cta_prices:"View prices",
         cta_pickup:"Pickup/Delivery",
+        nav_home:"Home",
         safe_badge:"No data loss",
+        hero_help_now:"Fast help",
+        hero_proof_fast:"Fast local service",
+        hero_proof_fast_text:"often in 30–60 min",
+        hero_proof_warranty:"Warranty on",
+        hero_proof_warranty_text:"all repairs",
+        hero_proof_price:"Fair & transparent",
+        hero_proof_price_text:"prices",
+        hero_quality:"OEM-quality replacement parts",
+        hero_rating_text:"over 250+ reviews",
+        hero_rating_area:"From Singen and nearby",
+        home_prices_title:"Repair & Prices",
+        home_prices_text:"Choose your device and see the price instantly.",
+        home_stock_fast:"We confirm availability in WhatsApp.",
+        home_selected_repair:"Selected repair",
+        dock_wa_text:"Fast & non-binding",
+        dock_prices_text:"Choose device & repair",
+        summary_part_title:"Original replacement part",
+        summary_part_text:"100% fit",
+        summary_warranty_title:"Warranty",
+        summary_warranty_text:"Details on request",
+        summary_data_title:"Data safety",
+        summary_data_text:"Your data stays safe",
         trust1:"Quick diagnosis",
         trust2:"Often same day",
         trust3:"Transparent prices",
@@ -642,6 +802,13 @@
 
         mb_call:"Call",
         mb_prices:"Prices",
+        price_selector_family_label:"Model",
+        price_selector_model_label:"Storage",
+        price_selector_selected_label:"Selected device",
+        price_selector_cta:"Ask on WhatsApp now",
+        repair_display:"Display", repair_oled_premium:"OLED Premium", repair_standard:"Standard", repair_battery:"Battery", repair_original_battery:"Original battery OEM 99+%", repair_backglass:"Back glass", repair_port:"Charging port",
+        stock_available:"Part in stock", stock_unavailable:"Not in stock", stock_on_request:"Check availability",
+        wa_message_intro:"Hi!", wa_label_device:"Model", wa_label_repair:"Repair", wa_label_price:"Price", wa_label_stock:"Stock", wa_label_city:"City",
 
         quiz_q1:"Does the phone charge?",
         quiz_q2:"Battery drains fast?",
