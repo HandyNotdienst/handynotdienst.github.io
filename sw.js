@@ -1,4 +1,4 @@
-const CACHE = "hn-v11";
+const CACHE = "hn-v12";
 const ASSETS = [
   "./",
   "./index.html",
@@ -11,10 +11,28 @@ const ASSETS = [
   "./manifest.webmanifest",
   "./assets/logo.png",
   "./assets/og-image.png",
-  "./assets/model-finder/optimized/back-cover-lookup.webp",
-  "./assets/model-finder/optimized/connector-lookup.webp",
-  "./assets/model-finder/optimized/old-back-cover-lookup.webp",
-  "./assets/model-finder/optimized/sim-tray-lookup.webp"
+  "./assets/model-finder/optimized/camera-one.webp",
+  "./assets/model-finder/optimized/camera-three.webp",
+  "./assets/model-finder/optimized/camera-two-diagonal.webp",
+  "./assets/model-finder/optimized/camera-two-vertical.webp",
+  "./assets/model-finder/optimized/connector-port.webp",
+  "./assets/model-finder/optimized/finder-hero-1280.webp",
+  "./assets/model-finder/optimized/finder-hero-720.webp",
+  "./assets/model-finder/optimized/flat-rounded-edges.webp",
+  "./assets/model-finder/optimized/help-illustration.webp",
+  "./assets/model-finder/optimized/model-finder-icon.webp",
+  "./assets/model-finder/optimized/notch-dynamic-island.webp",
+  "./assets/model-finder/optimized/old-back-cover.webp",
+  "./assets/model-finder/optimized/portrait-420.webp",
+  "./assets/model-finder/optimized/portrait-720.webp",
+  "./assets/model-finder/optimized/repair-before-after-640.webp",
+  "./assets/model-finder/optimized/repair-before-after-980.webp",
+  "./assets/model-finder/optimized/settings-about.webp",
+  "./assets/model-finder/optimized/sim-tray.webp",
+  "./assets/model-finder/optimized/trust-data-safe.webp",
+  "./assets/model-finder/optimized/trust-fair-price.webp",
+  "./assets/model-finder/optimized/trust-fast-repair.webp",
+  "./assets/model-finder/optimized/trust-warranty.webp"
 ];
 
 self.addEventListener("install", (e) => {
