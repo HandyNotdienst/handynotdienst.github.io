@@ -372,8 +372,10 @@
     .option-media img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
+      box-sizing: border-box;
+      padding: 10px;
     }
 
     .option-media-badge {
@@ -660,8 +662,10 @@
       display: block;
       width: 100%;
       aspect-ratio: 16 / 10;
-      object-fit: cover;
+      object-fit: contain;
       background: rgba(15, 23, 42, 0.04);
+      box-sizing: border-box;
+      padding: 10px;
     }
 
     .photo-slot .caption {
@@ -1230,22 +1234,22 @@
       settings_about: "https://deine-domain.de/bilder/settings-about.jpg"
     */
     const PHOTO_HINTS = {
-      settings_about: "",
-      settings_model_tap: "",
-      sim_tray_lookup: "../assets/model-finder/optimized/sim-tray-lookup.webp",
-      connector_lookup: "../assets/model-finder/optimized/connector-lookup.webp",
-      back_cover_lookup: "../assets/model-finder/optimized/back-cover-lookup.webp",
-      old_back_cover_lookup: "../assets/model-finder/optimized/old-back-cover-lookup.webp",
-      original_exterior: "",
+      settings_about: "../assets/model-finder/optimized/settings-about.webp",
+      settings_model_tap: "../assets/model-finder/optimized/settings-about.webp",
+      sim_tray_lookup: "../assets/model-finder/optimized/sim-tray.webp",
+      connector_lookup: "../assets/model-finder/optimized/connector-port.webp",
+      back_cover_lookup: "../assets/model-finder/optimized/old-back-cover.webp",
+      old_back_cover_lookup: "../assets/model-finder/optimized/old-back-cover.webp",
+      original_exterior: "../assets/model-finder/optimized/repair-before-after-640.webp",
       home_button: "",
       no_home_button: "",
-      dynamic_island: "",
-      notch: "",
-      camera_one: "",
-      camera_two: "",
-      camera_three: "",
-      camera_diagonal: "",
-      camera_vertical: "",
+      dynamic_island: "../assets/model-finder/optimized/notch-dynamic-island.webp",
+      notch: "../assets/model-finder/optimized/notch-dynamic-island.webp",
+      camera_one: "../assets/model-finder/optimized/camera-one.webp",
+      camera_two: "../assets/model-finder/optimized/camera-two-diagonal.webp",
+      camera_three: "../assets/model-finder/optimized/camera-three.webp",
+      camera_diagonal: "../assets/model-finder/optimized/camera-two-diagonal.webp",
+      camera_vertical: "../assets/model-finder/optimized/camera-two-vertical.webp",
       camera_control: "",
       no_camera_control: "",
       action_button: "",
@@ -1258,8 +1262,8 @@
       headphone_jack: "",
       no_headphone_jack: "",
       engraved_s: "",
-      flat_edges: "",
-      rounded_edges: "",
+      flat_edges: "../assets/model-finder/optimized/flat-rounded-edges.webp",
+      rounded_edges: "../assets/model-finder/optimized/flat-rounded-edges.webp",
       size_small: "",
       size_standard: "",
       size_large: "",
@@ -1270,8 +1274,8 @@
       unique_13pro: "",
       unique_16: "",
       unique_17: "",
-      box_receipt: "",
-      retail_label: ""
+      box_receipt: "../assets/model-finder/optimized/help-illustration.webp",
+      retail_label: "../assets/model-finder/optimized/help-illustration.webp"
     };
 
     const COLOR_ICONS = {
