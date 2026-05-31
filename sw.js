@@ -1,10 +1,14 @@
-const CACHE = "hn-v1";
+const CACHE = "hn-v2";
 const ASSETS = [
   "./",
   "./index.html",
+  "./prices.html",
+  "./faqs.html",
   "./style.css",
+  "./app.js",
   "./manifest.webmanifest",
-  "./assets/logo.png"
+  "./assets/logo.png",
+  "./assets/og-image.png"
 ];
 
 self.addEventListener("install", (e) => {

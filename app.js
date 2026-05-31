@@ -8,6 +8,23 @@
   const serviceWorkerPath = config.serviceWorkerPath || "";
 
   const hasI18n = Object.keys(i18n).length > 0;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function trackEvent(name, params = {}) {
+    const payload = { event: name, ...params };
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(payload);
+
+    if (typeof window.gtag === "function") {
+      window.gtag("event", name, params);
+    }
+    if (typeof window.plausible === "function") {
+      window.plausible(name, { props: params });
+    }
+    window.dispatchEvent(new CustomEvent("hn:analytics", { detail: payload }));
+  }
+
+  window.HN_trackEvent = trackEvent;
 
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -163,6 +180,15 @@ Ort: ${city}`;
     return PRICE_IMAGES[brand] || "assets/logo.png";
   }
 
+  function getPriceImageSources(entry, brand) {
+    if (brand !== "apple") return {};
+    const slug = slugifyPriceModel(entry.model);
+    return {
+      webp: `assets/phones/optimized/${slug}-420.webp 420w, assets/phones/optimized/${slug}-800.webp 800w`,
+      sizes: "(max-width: 560px) 92vw, (max-width: 820px) 430px, 390px",
+    };
+  }
+
   function getRepairLabel(repair, lang) {
     const t = i18n[lang] || i18n.de || {};
     if (repair.key === "repair_display" && repair.variant) {
@@ -254,18 +280,83 @@ ${t.wa_label_city || "Ort"}: ${city}`;
     cta.href = buildPriceWaHref(entry, selectedPriceRepair);
   }
 
+  function setPriceCtaReady(isReady) {
+    document.querySelector("[data-price-selector]")?.classList.toggle("is-repair-selected", isReady);
+    document.querySelector("[data-price-cta]")?.classList.toggle("is-ready", isReady);
+  }
+
+  function animatePriceValue(el, price) {
+    const match = String(price).match(/(\d+)/);
+    if (!match || prefersReducedMotion) {
+      el.textContent = price;
+      return;
+    }
+
+    const end = Number(match[1]);
+    const suffix = String(price).replace(match[1], "");
+    const startedAt = performance.now();
+    const duration = 360;
+
+    function tick(now) {
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = `${Math.round(end * eased)}${suffix}`;
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = price;
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  function updatePricePreview(entry) {
+    const image = document.querySelector("[data-price-image]");
+    const webpSource = document.querySelector("[data-price-source-webp]");
+    const preview = document.querySelector(".price-selector-preview");
+    const selectedModel = document.querySelector("[data-price-selected-model]");
+    if (!entry) return;
+
+    const brand = entry.brand || selectedPriceBrand;
+    const sources = getPriceImageSources(entry, brand);
+    const setImage = () => {
+      if (webpSource) {
+        webpSource.srcset = sources.webp || "";
+        webpSource.sizes = sources.sizes || "";
+      }
+      if (image) {
+        image.src = entry.image;
+        image.alt = `${entry.model} Reparatur bei Handy Notdienst Singen`;
+      }
+      if (selectedModel) selectedModel.textContent = entry.model;
+    };
+
+    if (!preview || prefersReducedMotion) {
+      setImage();
+      return;
+    }
+
+    preview.classList.add("is-switching");
+    window.setTimeout(() => {
+      setImage();
+      preview.classList.remove("is-switching");
+      preview.classList.add("is-settled");
+      window.setTimeout(() => preview.classList.remove("is-settled"), 360);
+    }, 120);
+  }
+
   function renderPriceServices(entry, lang) {
     const list = document.querySelector("[data-price-services]");
     if (!list || !entry) return;
 
     list.innerHTML = "";
     selectedPriceRepair = null;
+    setPriceCtaReady(false);
 
-    entry.repairs.forEach((repair) => {
+    entry.repairs.forEach((repair, index) => {
       const label = getRepairLabel(repair, lang);
       const row = document.createElement("button");
       row.className = "price-service-row";
       row.type = "button";
+      row.style.setProperty("--row-index", index);
 
       const labelEl = document.createElement("span");
       labelEl.textContent = label;
@@ -281,7 +372,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
       }
 
       const priceEl = document.createElement("strong");
-      priceEl.textContent = repair.price;
+      animatePriceValue(priceEl, repair.price);
       metaEl.appendChild(priceEl);
 
       row.append(labelEl, metaEl);
@@ -289,7 +380,15 @@ ${t.wa_label_city || "Ort"}: ${city}`;
         selectedPriceRepair = { label, price: repair.price, stock: repair.stock || "" };
         list.querySelectorAll(".price-service-row").forEach((item) => item.classList.remove("is-selected"));
         row.classList.add("is-selected");
+        setPriceCtaReady(true);
         updatePriceCta(entry);
+        trackEvent("repair_select", {
+          brand: entry.brand,
+          model: entry.model,
+          repair: label,
+          price: repair.price,
+          stock: repair.stock || "unknown",
+        });
       });
       list.appendChild(row);
     });
@@ -298,8 +397,6 @@ ${t.wa_label_city || "Ort"}: ${city}`;
   function renderPriceSelection() {
     const familySelect = document.querySelector("[data-price-family]");
     const modelSelect = document.querySelector("[data-price-model]");
-    const image = document.querySelector("[data-price-image]");
-    const selectedModel = document.querySelector("[data-price-selected-model]");
     if (!familySelect || !modelSelect) return;
 
     const lang = getLang();
@@ -317,11 +414,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
       modelSelect.appendChild(option);
     });
 
-    if (image) {
-      image.src = entry.image;
-      image.alt = entry.model;
-    }
-    if (selectedModel) selectedModel.textContent = entry.model;
+    updatePricePreview(entry);
 
     renderPriceServices(entry, lang);
     updatePriceCta(entry);
@@ -363,21 +456,36 @@ ${t.wa_label_city || "Ort"}: ${city}`;
         selectedPriceBrand = button.dataset.priceBrand || "apple";
         brandButtons.forEach((item) => item.classList.toggle("is-active", item === button));
         selectedPriceRepair = null;
+        setPriceCtaReady(false);
         familySelect.value = "";
         modelSelect.value = "";
         renderPrices();
+        trackEvent("brand_select", { brand: selectedPriceBrand });
       });
     });
 
     familySelect.addEventListener("change", () => {
       selectedPriceRepair = null;
+      setPriceCtaReady(false);
       renderPriceSelection();
+      trackEvent("model_family_select", { brand: selectedPriceBrand, family: familySelect.value });
     });
     modelSelect.addEventListener("change", () => {
       selectedPriceRepair = null;
+      setPriceCtaReady(false);
       renderPriceSelection();
+      trackEvent("model_select", { brand: selectedPriceBrand, model: modelSelect.value });
     });
-    cta?.addEventListener("click", () => updatePriceCta(getCurrentPriceEntry()));
+    cta?.addEventListener("click", () => {
+      const entry = getCurrentPriceEntry();
+      updatePriceCta(entry);
+      trackEvent("price_whatsapp_click", {
+        brand: entry?.brand,
+        model: entry?.model,
+        repair: selectedPriceRepair?.label || "general",
+        price: selectedPriceRepair?.price || "",
+      });
+    });
 
     renderPrices();
   }
@@ -614,6 +722,44 @@ ${t.wa_label_city || "Ort"}: ${city}`;
     items.forEach((item) => observer.observe(item));
   }
 
+  function initFaqAccordion() {
+    const items = document.querySelectorAll(".faq details");
+    if (!items.length) return;
+
+    items.forEach((details) => {
+      details.classList.add("faq__item");
+      const summary = details.querySelector("summary");
+      if (!summary) return;
+
+      summary.addEventListener("click", (event) => {
+        event.preventDefault();
+        const willOpen = !details.open;
+
+        items.forEach((item) => {
+          if (item !== details) item.open = false;
+        });
+
+        details.open = willOpen;
+        trackEvent("faq_toggle", {
+          question: summary.textContent.trim(),
+          open: willOpen,
+        });
+      });
+    });
+  }
+
+  function initAnalyticsTracking() {
+    document.addEventListener("click", (event) => {
+      const waLink = event.target.closest?.('a[href*="wa.me"]');
+      if (!waLink) return;
+      trackEvent("whatsapp_click", {
+        location: waLink.closest("header") ? "header" : waLink.closest(".mobilebar") ? "mobilebar" : "content",
+        label: waLink.textContent.trim(),
+        href: waLink.href,
+      });
+    });
+  }
+
   function initQuizHighlight() {
     const quizSection = document.getElementById("quiz");
     const targets = document.querySelectorAll(".js-quiz-highlight");
@@ -647,6 +793,8 @@ ${t.wa_label_city || "Ort"}: ${city}`;
   initHeaderShadow();
   initLangButtons();
   initReveal();
+  initFaqAccordion();
+  initAnalyticsTracking();
   initPickupButton();
   initBundles();
   initQuiz();
