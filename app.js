@@ -285,6 +285,25 @@ ${t.wa_label_city || "Ort"}: ${city}`;
     document.querySelector("[data-price-cta]")?.classList.toggle("is-ready", isReady);
   }
 
+  function updatePriceSummary(entry, repair) {
+    const modelEl = document.querySelector("[data-price-summary-model]");
+    const repairEl = document.querySelector("[data-price-summary-repair]");
+    const priceEl = document.querySelector("[data-price-summary-price]");
+    const stockEl = document.querySelector("[data-price-summary-stock]");
+    if (!entry) return;
+
+    const lang = getLang();
+    const activeRepair = repair || entry.repairs[0];
+    const label = activeRepair?.label || (activeRepair ? getRepairLabel(activeRepair, lang) : "");
+    const price = activeRepair?.price || "";
+    const stock = activeRepair?.stock || "on_request";
+
+    if (modelEl) modelEl.textContent = entry.model;
+    if (repairEl) repairEl.textContent = label || "Display";
+    if (priceEl) priceEl.textContent = price;
+    if (stockEl) stockEl.textContent = getStockLabel(stock, lang);
+  }
+
   function animatePriceValue(el, price) {
     const match = String(price).match(/(\d+)/);
     if (!match || prefersReducedMotion) {
@@ -354,7 +373,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
     entry.repairs.forEach((repair, index) => {
       const label = getRepairLabel(repair, lang);
       const row = document.createElement("button");
-      row.className = "price-service-row";
+      row.className = `price-service-row${index === 0 ? " is-selected" : ""}`;
       row.type = "button";
       row.style.setProperty("--row-index", index);
 
@@ -377,21 +396,31 @@ ${t.wa_label_city || "Ort"}: ${city}`;
 
       row.append(labelEl, metaEl);
       row.addEventListener("click", () => {
-        selectedPriceRepair = { label, price: repair.price, stock: repair.stock || "" };
+        selectedPriceRepair = { label, price: repair.price, stock: repair.stock || "on_request" };
         list.querySelectorAll(".price-service-row").forEach((item) => item.classList.remove("is-selected"));
         row.classList.add("is-selected");
         setPriceCtaReady(true);
+        updatePriceSummary(entry, selectedPriceRepair);
         updatePriceCta(entry);
         trackEvent("repair_select", {
           brand: entry.brand,
           model: entry.model,
           repair: label,
           price: repair.price,
-          stock: repair.stock || "unknown",
+          stock: repair.stock || "on_request",
         });
       });
       list.appendChild(row);
     });
+
+    const defaultRepair = entry.repairs[0];
+    if (defaultRepair) {
+      const label = getRepairLabel(defaultRepair, lang);
+      selectedPriceRepair = { label, price: defaultRepair.price, stock: defaultRepair.stock || "on_request" };
+      updatePriceSummary(entry, selectedPriceRepair);
+      updatePriceCta(entry);
+    }
+    setPriceCtaReady(false);
   }
 
   function renderPriceSelection() {
@@ -527,7 +556,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
     if (!quizModal) return;
 
     const quizOverlay = document.getElementById("quizOverlay");
-    const quizStartBtn = document.getElementById("quizStartBtn");
+    const quizStartBtns = document.querySelectorAll("#quizStartBtn, .js-quiz-open");
     const quizCloseBtn = document.getElementById("quizClose");
     const quizBackBtn = document.getElementById("quizBackBtn");
     const quizProgressFill = document.getElementById("quizProgressFill");
@@ -536,7 +565,8 @@ ${t.wa_label_city || "Ort"}: ${city}`;
     let quizStep = 1;
     let quizAnswers = [];
 
-    function openQuiz() {
+    function openQuiz(event) {
+      event?.preventDefault();
       quizModal.hidden = false;
       quizStep = 1;
       quizAnswers = [];
@@ -626,7 +656,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
       }
     });
 
-    quizStartBtn?.addEventListener("click", openQuiz);
+    quizStartBtns.forEach((btn) => btn.addEventListener("click", openQuiz));
     quizCloseBtn?.addEventListener("click", closeQuiz);
     quizOverlay?.addEventListener("click", closeQuiz);
   }
@@ -684,6 +714,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
 
   function initServiceWorker() {
     if (!serviceWorkerPath) return;
+    if (["localhost", "127.0.0.1", "::1"].includes(window.location.hostname)) return;
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker.register(serviceWorkerPath).catch(() => {});
