@@ -781,6 +781,14 @@ ${t.wa_label_city || "Ort"}: ${city}`;
 
   function initAnalyticsTracking() {
     document.addEventListener("click", (event) => {
+      const finderLink = event.target.closest?.("[data-model-finder-link]");
+      if (finderLink) {
+        trackEvent("model_finder_open", {
+          location: finderLink.closest(".price-selector-head") ? "prices_header" : "content",
+          href: finderLink.href,
+        });
+      }
+
       const waLink = event.target.closest?.('a[href*="wa.me"]');
       if (!waLink) return;
       trackEvent("whatsapp_click", {
