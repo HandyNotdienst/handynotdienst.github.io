@@ -466,9 +466,11 @@ ${t.wa_label_city || "Ort"}: ${city}`;
       familySelect.appendChild(option);
     });
 
+    const preferredStartFamily = selectedPriceBrand === "apple" ? "iPhone 12" : "Galaxy S24";
+
     familySelect.value = families.some((item) => item.family === currentFamily)
       ? currentFamily
-      : (families.find((item) => item.family === (selectedPriceBrand === "apple" ? "iPhone 15" : "Galaxy S24")) || families[0])?.family;
+      : (families.find((item) => item.family === preferredStartFamily) || families[0])?.family;
 
     renderPriceSelection();
   }
