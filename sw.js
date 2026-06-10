@@ -1,4 +1,4 @@
-const CACHE = "hn-v12";
+const CACHE = "hn-v13";
 const ASSETS = [
   "./",
   "./index.html",
@@ -11,6 +11,17 @@ const ASSETS = [
   "./manifest.webmanifest",
   "./assets/logo.png",
   "./assets/og-image.png",
+  "./assets/logos/call.svg",
+  "./assets/logos/data-security.png",
+  "./assets/logos/email.png",
+  "./assets/logos/part-options.png",
+  "./assets/logos/prices.png",
+  "./assets/logos/proof-fast.png",
+  "./assets/logos/proof-price.png",
+  "./assets/logos/proof-warranty.png",
+  "./assets/logos/telegram.png",
+  "./assets/logos/warranty-details.png",
+  "./assets/logos/whatsapp.png",
   "./assets/model-finder/optimized/camera-one.webp",
   "./assets/model-finder/optimized/camera-three.webp",
   "./assets/model-finder/optimized/camera-two-diagonal.webp",
