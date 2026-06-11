@@ -70,12 +70,12 @@
   </div>
 
   <main id="top">
-    <section class="hero hero--concept js-prices-section">
+    <section class="hero hero--concept">
       <div class="container concept-hero">
         <div class="concept-hero__copy">
           <div class="concept-badge"><span data-i18n="no_appt">Ohne Termin</span><span data-i18n="hero_help_now">Sofort Hilfe</span></div>
 
-          <h1 data-i18n="home_concept_h1">Faire Preise.<br class="hero-mobile-break"> Schnelle Reparaturen.<br><span>Zufriedene Kunden.</span></h1>
+          <h1 data-i18n="home_concept_h1">Faire Preise.<br class="hero-mobile-break"> Schnelle <br class="hero-mobile-break">Reparaturen.<br><span>Zufriedene <br class="hero-mobile-break">Kunden.</span></h1>
 
           <p class="lead" data-i18n="lead">
             Display, Akku, Ladebuchse, Kamera, Wasserschaden – wir helfen schnell. Schreib uns per WhatsApp oder ruf an.
@@ -126,84 +126,27 @@
         </div>
       </div>
 
-      <div class="container home-price-studio" data-price-selector>
-        <div class="home-price-panel home-price-panel--controls">
-          <div class="home-price-head">
-            <div>
-              <h2 data-i18n="home_prices_title">Reparatur & Preise</h2>
-              <p data-i18n="home_prices_text">Gerät wählen und sofort den Preis sehen.</p>
-            </div>
-            <div class="price-brand-switch price-brand-switch--compact" role="group" aria-label="Marke auswählen">
-              <button class="price-brand-switch__btn is-active" type="button" data-price-brand="apple">
-                <span class="price-brand-switch__logo"><img src="assets/logos/apple-logo.png" alt="" width="32" height="32" aria-hidden="true" /></span>
-                <strong>iPhone</strong>
-              </button>
-              <button class="price-brand-switch__btn" type="button" data-price-brand="samsung">
-                <span class="price-brand-switch__logo"><img src="assets/logos/samsung-galaxy-logo.png" alt="" width="86" height="40" aria-hidden="true" /></span>
-                <strong>Galaxy</strong>
-              </button>
-            </div>
-          </div>
-
-          <div class="home-price-selects">
-            <div class="price-selector-field">
-              <label class="price-selector-label" for="homePriceFamilySelect" data-i18n="price_selector_family_label">Modell</label>
-              <select class="price-selector-select" id="homePriceFamilySelect" data-price-family></select>
-            </div>
-            <div class="price-selector-field">
-              <label class="price-selector-label" for="homePriceModelSelect" data-i18n="price_selector_model_label">Variante</label>
-              <select class="price-selector-select" id="homePriceModelSelect" data-price-model></select>
-            </div>
-          </div>
-
-          <div class="price-service-list home-price-services" data-price-services></div>
+      <div class="container home-price-cta">
+        <div class="home-price-cta__copy">
+          <span class="home-price-cta__eyebrow" data-i18n="home_price_cta_eyebrow">Preise ohne Umwege</span>
+          <h2 data-i18n="home_price_cta_title">Gerät auswählen, Preis prüfen, direkt anfragen.</h2>
+          <p data-i18n="home_price_cta_text">Die komplette Preisliste ist übersichtlich nach iPhone und Samsung getrennt. So bleibt die Startseite ruhig und du findest schneller den passenden Reparaturpreis.</p>
         </div>
-
-        <div class="home-price-panel home-price-panel--device price-selector-preview" aria-live="polite">
-          <div class="home-device-frame">
-            <picture class="price-selector-picture" data-price-picture>
-              <source type="image/webp" srcset="assets/phones/optimized/iphone-12-pro-max-420.webp 420w, assets/phones/optimized/iphone-12-pro-max-800.webp 800w" sizes="(max-width: 760px) 84vw, 320px" data-price-source-webp>
-              <img class="price-selector-device-img home-device-img" src="assets/phones/iphone-12-pro-max.png" alt="iPhone 12 Pro Max Reparatur bei Handy Notdienst Singen" decoding="async" data-price-image>
-            </picture>
-          </div>
-          <div class="price-selector-device-copy">
-            <span class="price-selector-device-kicker" data-i18n="price_selector_selected_label">Ausgewähltes Gerät</span>
-            <strong data-price-selected-model>iPhone 12 Pro Max</strong>
-          </div>
-        </div>
-
-        <div class="home-price-panel home-price-panel--summary">
-          <div class="stock-status">
-            <span class="stock-status__icon" aria-hidden="true"></span>
-            <div>
-              <strong data-price-summary-stock>Verfügbarkeit prüfen</strong>
-              <small data-i18n="home_stock_fast">Beim WhatsApp-Check bestätigen wir die Verfügbarkeit.</small>
-            </div>
-          </div>
-
-          <div class="repair-summary">
-            <span data-i18n="home_selected_repair">Ausgewählte Reparatur</span>
-            <strong data-price-summary-model>iPhone 12 Pro Max</strong>
-            <div class="repair-summary__line">
-              <span data-price-summary-repair>Display</span>
-              <strong data-price-summary-price>149€</strong>
-            </div>
-          </div>
-
-          <ul class="summary-checks">
-            <li><span class="summary-checks__icon asset-icon--part-options" aria-hidden="true"></span><strong data-i18n="summary_part_title">Ersatzteil-Optionen</strong><small data-i18n="summary_part_text">Original/Premium mit Garantie oder Budget ohne Garantie - vorab geklärt</small></li>
-            <li><span class="summary-checks__icon asset-icon--warranty-details" aria-hidden="true"></span><strong data-i18n="summary_warranty_title">Garantie</strong><small data-i18n="summary_warranty_text">Je nach gewählter Teilqualität</small></li>
-            <li><span class="summary-checks__icon asset-icon--data-security" aria-hidden="true"></span><strong data-i18n="summary_data_title">Datensicherheit</strong><small data-i18n="summary_data_text">Deine Daten bleiben sicher</small></li>
+        <div class="home-price-cta__panel">
+          <ul class="home-price-cta__checks" aria-label="Preisvorteile">
+            <li><span class="asset-icon asset-icon--prices" aria-hidden="true"></span><span data-i18n="home_price_cta_point_1">iPhone & Samsung getrennt</span></li>
+            <li><span class="asset-icon asset-icon--part-options" aria-hidden="true"></span><span data-i18n="home_price_cta_point_2">Display, Akku, Rückglas und mehr</span></li>
+            <li><span class="asset-icon asset-icon--whatsapp" aria-hidden="true"></span><span data-i18n="home_price_cta_point_3">Nach Auswahl sofort per WhatsApp anfragen</span></li>
           </ul>
-
-          <a class="btn btn--wa price-selector-cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener" data-price-cta data-i18n="price_selector_cta">Jetzt per WhatsApp anfragen</a>
+          <a class="btn btn--prices home-price-cta__button" href="prices.html" data-i18n="home_price_cta_button">Preise ansehen</a>
+          <small data-i18n="home_price_cta_note">Auf der Preis-Seite ist iPhone 12 als schneller Einstieg vorausgewählt.</small>
         </div>
       </div>
 
       <div class="container concept-action-dock" aria-label="Schnelle Aktionen">
         <a href="tel:+4915222416438"><span class="concept-action-dock__icon asset-icon--call" aria-hidden="true"></span><strong data-i18n="contact_call">Anrufen</strong><small>01522 2416438</small></a>
         <a class="concept-action-dock__primary" href="https://wa.me/4915222416438" target="_blank" rel="noopener"><span class="concept-action-dock__icon asset-icon--whatsapp" aria-hidden="true"></span><strong>WhatsApp</strong><small data-i18n="dock_wa_text">Schnell & unverbindlich</small></a>
-        <a href="prices.html"><span class="concept-action-dock__icon asset-icon--prices" aria-hidden="true"></span><strong data-i18n="cta_prices">Preise ansehen</strong><small data-i18n="dock_prices_text">Gerät & Reparatur wählen</small></a>
+        <a class="js-quiz-highlight js-quiz-open" href="#quiz"><span class="concept-action-dock__icon asset-icon--part-options" aria-hidden="true"></span><strong data-i18n="quiz_label">Diagnose (1 Min)</strong><small data-i18n="dock_quiz_text">Problem kurz eingrenzen</small></a>
       </div>
     </section>
 
@@ -284,7 +227,6 @@
           </p>
           <div class="pickup__actions">
             <button class="btn btn--ghost" id="btnPickup" type="button" data-i18n="pick_btn">Abholung anfragen</button>
-            <a class="btn" href="prices.html" data-i18n="pick_prices">Preise ansehen</a>
           </div>
           <p class="hint" data-i18n="pick_hint">Hinweis: Abholung/Lieferung nur nach Absprache.</p>
         </div>
@@ -475,7 +417,7 @@
         call:"Anrufen",
         kicker:"Handyreparatur in Singen",
         h1:"Faire Preise. Schnelle Reparaturen.<br/>Zufriedene Kunden.",
-        home_concept_h1:"Faire Preise.<br class='hero-mobile-break'> Schnelle Reparaturen.<br><span>Zufriedene Kunden.</span>",
+        home_concept_h1:"Faire Preise.<br class='hero-mobile-break'> Schnelle <br class='hero-mobile-break'>Reparaturen.<br><span>Zufriedene <br class='hero-mobile-break'>Kunden.</span>",
         lead:"Display, Akku, Ladebuchse, Kamera, Wasserschaden – wir helfen schnell. Schreib uns per WhatsApp oder ruf an.",
         cta_main:"Jetzt per WhatsApp anfragen",
         cta_prices:"Preise ansehen",
@@ -492,12 +434,16 @@
         hero_quality:"Ersatzteile in Erstausrüster-Qualität",
         hero_rating_text:"über 250+ Bewertungen",
         hero_rating_area:"Aus Singen und Umgebung",
-        home_prices_title:"Reparatur & Preise",
-        home_prices_text:"Gerät wählen und sofort den Preis sehen.",
-        home_stock_fast:"Beim WhatsApp-Check bestätigen wir die Verfügbarkeit.",
-        home_selected_repair:"Ausgewählte Reparatur",
+        home_price_cta_eyebrow:"Preise ohne Umwege",
+        home_price_cta_title:"Gerät auswählen, Preis prüfen, direkt anfragen.",
+        home_price_cta_text:"Die komplette Preisliste ist übersichtlich nach iPhone und Samsung getrennt. So bleibt die Startseite ruhig und du findest schneller den passenden Reparaturpreis.",
+        home_price_cta_point_1:"iPhone & Samsung getrennt",
+        home_price_cta_point_2:"Display, Akku, Rückglas und mehr",
+        home_price_cta_point_3:"Nach Auswahl sofort per WhatsApp anfragen",
+        home_price_cta_button:"Preise ansehen",
+        home_price_cta_note:"Auf der Preis-Seite ist iPhone 12 als schneller Einstieg vorausgewählt.",
         dock_wa_text:"Schnell & unverbindlich",
-        dock_prices_text:"Gerät & Reparatur wählen",
+        dock_quiz_text:"Problem kurz eingrenzen",
         summary_part_title:"Ersatzteil-Optionen",
         summary_part_text:"Original/Premium mit Garantie oder Budget ohne Garantie - vorab geklärt",
         summary_warranty_title:"Garantie",
@@ -595,7 +541,7 @@
         call:"Подзвонити",
         kicker:"Ремонт телефонів у Singen",
         h1:"Чесні ціни. Швидкий ремонт.<br/>Задоволені клієнти.",
-        home_concept_h1:"Чесні ціни.<br class='hero-mobile-break'> Швидкий ремонт.<br><span>Задоволені клієнти.</span>",
+        home_concept_h1:"Чесні ціни.<br class='hero-mobile-break'> Швидкий <br class='hero-mobile-break'>ремонт.<br><span>Задоволені <br class='hero-mobile-break'>клієнти.</span>",
         lead:"Дисплей, акумулятор, розʼєм зарядки, камера, після води — допоможемо швидко. Пиши у WhatsApp або дзвони.",
         cta_main:"Запитати у WhatsApp",
         cta_prices:"Переглянути ціни",
@@ -612,12 +558,16 @@
         hero_quality:"Запчастини якісного рівня",
         hero_rating_text:"понад 250+ відгуків",
         hero_rating_area:"Singen та околиці",
-        home_prices_title:"Ремонт і ціни",
-        home_prices_text:"Оберіть пристрій і одразу побачте ціну.",
-        home_stock_fast:"Наявність підтвердимо у WhatsApp.",
-        home_selected_repair:"Обраний ремонт",
+        home_price_cta_eyebrow:"Ціни без зайвих кроків",
+        home_price_cta_title:"Оберіть модель, перевірте ціну, одразу надішліть запит.",
+        home_price_cta_text:"Повний прайс-лист розділений на iPhone і Samsung. Так головна сторінка залишається спокійною, а потрібну ціну легше знайти.",
+        home_price_cta_point_1:"iPhone і Samsung окремо",
+        home_price_cta_point_2:"Дисплей, акумулятор, заднє скло та інше",
+        home_price_cta_point_3:"Після вибору одразу запит у WhatsApp",
+        home_price_cta_button:"Переглянути ціни",
+        home_price_cta_note:"На сторінці цін iPhone 12 вибрано як швидкий старт.",
         dock_wa_text:"Швидко і без зобовʼязань",
-        dock_prices_text:"Оберіть пристрій і ремонт",
+        dock_quiz_text:"Швидко визначити проблему",
         summary_part_title:"Варіанти запчастин",
         summary_part_text:"Original/Premium з гарантією або бюджетний варіант без гарантії - узгоджуємо до ремонту",
         summary_warranty_title:"Гарантія",
@@ -715,7 +665,7 @@
         call:"Call",
         kicker:"Phone repair in Singen",
         h1:"Fair prices. Fast repairs.<br/>Happy customers.",
-        home_concept_h1:"Fair prices.<br class='hero-mobile-break'> Fast repairs.<br><span>Happy customers.</span>",
+        home_concept_h1:"Fair prices.<br class='hero-mobile-break'> Fast <br class='hero-mobile-break'>repairs.<br><span>Happy <br class='hero-mobile-break'>customers.</span>",
         lead:"Screen, battery, charging port, camera, water damage — we help fast. Message us on WhatsApp or call.",
         cta_main:"Ask on WhatsApp now",
         cta_prices:"View prices",
@@ -732,12 +682,16 @@
         hero_quality:"OEM-quality replacement parts",
         hero_rating_text:"over 250+ reviews",
         hero_rating_area:"From Singen and nearby",
-        home_prices_title:"Repair & Prices",
-        home_prices_text:"Choose your device and see the price instantly.",
-        home_stock_fast:"We confirm availability in WhatsApp.",
-        home_selected_repair:"Selected repair",
+        home_price_cta_eyebrow:"Prices without friction",
+        home_price_cta_title:"Choose your device, check the price, ask directly.",
+        home_price_cta_text:"The full price list is separated clearly by iPhone and Samsung. The homepage stays calm, and you find the right repair price faster.",
+        home_price_cta_point_1:"iPhone & Samsung separated",
+        home_price_cta_point_2:"Display, battery, back glass and more",
+        home_price_cta_point_3:"Ask on WhatsApp right after choosing",
+        home_price_cta_button:"View prices",
+        home_price_cta_note:"The price page starts with iPhone 12 as a quick entry point.",
         dock_wa_text:"Fast & non-binding",
-        dock_prices_text:"Choose device & repair",
+        dock_quiz_text:"Narrow down the issue",
         summary_part_title:"Part options",
         summary_part_text:"Original/Premium with warranty or budget without warranty - agreed upfront",
         summary_warranty_title:"Warranty",
