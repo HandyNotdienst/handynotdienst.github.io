@@ -1,4 +1,4 @@
-const CACHE = "hn-v15";
+const CACHE = "hn-v16";
 const ASSETS = [
   "./",
   "./index.html",
@@ -11,6 +11,9 @@ const ASSETS = [
   "./manifest.webmanifest",
   "./assets/logo.png",
   "./assets/og-image.png",
+  "./assets/hero/owner-repair-420.jpg",
+  "./assets/hero/owner-repair-640.jpg",
+  "./assets/hero/owner-repair-960.jpg",
   "./assets/logos/call.svg",
   "./assets/logos/data-security.png",
   "./assets/logos/email.png",
