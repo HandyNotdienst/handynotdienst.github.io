@@ -1,4 +1,4 @@
-const CACHE = "hn-v16";
+const CACHE = "hn-v17";
 const ASSETS = [
   "./",
   "./index.html",
@@ -14,6 +14,7 @@ const ASSETS = [
   "./assets/hero/owner-repair-420.jpg",
   "./assets/hero/owner-repair-640.jpg",
   "./assets/hero/owner-repair-960.jpg",
+  "./assets/hero/owner-repair-1280.jpg",
   "./assets/logos/call.svg",
   "./assets/logos/data-security.png",
   "./assets/logos/email.png",
