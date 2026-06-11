@@ -1,4 +1,4 @@
-const CACHE = "hn-v17";
+const CACHE = "hn-v18";
 const ASSETS = [
   "./",
   "./index.html",
@@ -16,6 +16,7 @@ const ASSETS = [
   "./assets/hero/owner-repair-960.jpg",
   "./assets/hero/owner-repair-1280.jpg",
   "./assets/logos/call.svg",
+  "./assets/logos/apple-logo.png",
   "./assets/logos/data-security.png",
   "./assets/logos/email.png",
   "./assets/logos/part-options.png",
@@ -23,6 +24,7 @@ const ASSETS = [
   "./assets/logos/proof-fast.png",
   "./assets/logos/proof-price.png",
   "./assets/logos/proof-warranty.png",
+  "./assets/logos/samsung-galaxy-logo.png",
   "./assets/logos/telegram.png",
   "./assets/logos/warranty-details.png",
   "./assets/logos/whatsapp.png",
