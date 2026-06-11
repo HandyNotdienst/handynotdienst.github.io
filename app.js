@@ -72,7 +72,20 @@ Modell: ${model}
 Problem: ${issue}
 Ort: ${city}`;
 
-    link.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
+    link.href = buildWhatsAppHref(msg);
+  }
+
+  function cleanWhatsAppText(text) {
+    return String(text || "")
+      .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\uFE0F]/gu, "")
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
+  function buildWhatsAppHref(message) {
+    if (!whatsappNumber) return "#";
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(cleanWhatsAppText(message))}`;
   }
 
   function updateLiveBadge() {
@@ -266,11 +279,11 @@ Ort: ${city}`;
           : "Reparatur: allgemeine Anfrage");
 
     const text = `${t.wa_message_intro || "Hallo!"}
-📱 ${t.wa_label_device || "Modell"}: ${entry.model}
-🛠️ ${repairLine}
+${t.wa_label_device || "Modell"}: ${entry.model}
+${repairLine}
 ${t.wa_label_city || "Ort"}: ${city}`;
 
-    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+    return buildWhatsAppHref(text);
   }
 
   function updatePriceCta(entry) {
@@ -533,7 +546,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
             : lang === "en"
               ? `Hi! I'd like a bundle: ${bundle}. City: ${city}`
               : `Hallo! Ich möchte ein Bundle anfragen: ${bundle}. Ort: ${city}`;
-        window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+        window.open(buildWhatsAppHref(msg), "_blank");
       });
     });
   }
@@ -549,7 +562,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
           : lang === "en"
             ? `Hi! I'd like to arrange pickup/delivery. City: ${city}`
             : `Hallo! Ich möchte Abholung/Lieferung anfragen. Ort: ${city}`;
-      window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+      window.open(buildWhatsAppHref(msg), "_blank");
     });
   }
 
@@ -632,7 +645,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
             ? `Hi! Quiz result: ${T[resultKey]} | City: ${city}`
             : `Hallo! Quiz-Ergebnis: ${T[resultKey]} | Ort: ${city}`;
 
-      document.getElementById("quizResultWA").href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
+      document.getElementById("quizResultWA").href = buildWhatsAppHref(msg);
 
       document.querySelectorAll(".quiz-screen").forEach((s) => s.classList.remove("is-active"));
       document.querySelector(`.quiz-screen[data-step="result"]`)?.classList.add("is-active");
