@@ -425,6 +425,27 @@ a{color:inherit;text-decoration:none}
   object-fit: contain;
   filter: drop-shadow(0 22px 26px rgba(7,21,33,.22));
 }
+.concept-hero__product--owner{
+  overflow:hidden;
+  align-items:stretch;
+  padding: 0;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.82), rgba(230,241,246,.96));
+}
+.concept-hero__product--owner picture{
+  width: 100%;
+  height: 420px;
+  display:block;
+}
+.concept-hero__product--owner img{
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center 28%;
+  filter: none;
+}
 .rating-card{
   position:absolute;
   right: -28px;
@@ -774,6 +795,9 @@ a{color:inherit;text-decoration:none}
   .concept-hero__product picture{
     height: 285px;
   }
+  .concept-hero__product--owner picture{
+    height: 370px;
+  }
   .rating-card{
     position: static;
     width: min(100%, 260px);
@@ -855,6 +879,9 @@ a{color:inherit;text-decoration:none}
   }
   .concept-hero__product picture{
     height: 250px;
+  }
+  .concept-hero__product--owner picture{
+    height: 330px;
   }
   .rating-card{
     display:none;
