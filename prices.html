@@ -31,13 +31,15 @@
       </a>
 
       <div class="header__right">
-        <nav class="topnav">
+        <nav class="topnav" aria-label="Navigation">
           <a href="index.html" data-i18n="nav_home">Start</a>
+          <a href="prices.html" data-i18n="nav_prices">Preise</a>
           <a href="faqs.html">FAQ</a>
+          <a href="index.html#contact" data-i18n="nav_contact">Kontakt</a>
           <a href="impressum.html">Impressum</a>
         </nav>
 
-        <div class="lang">
+        <div class="lang" aria-label="Language switch">
           <button class="lang__btn is-active" type="button" data-lang="de">DE</button>
           <button class="lang__btn" type="button" data-lang="ua">UA</button>
           <button class="lang__btn" type="button" data-lang="en">EN</button>
@@ -159,7 +161,7 @@
       serviceWorkerPath: "./sw.js"
     };
     window.HN_I18N = {
-      de:{ tagline:"Singen • Schnell & zuverlässig", no_appt:"Ohne Termin", nav_home:"Start", prices_title:"Preise",
+      de:{ tagline:"Singen • Schnell & zuverlässig", no_appt:"Ohne Termin", nav_home:"Start", nav_prices:"Preise", nav_contact:"Kontakt", prices_title:"Preise",
         prices_text:"Preis antippen → Anfrage direkt per WhatsApp",
         price_selector_title:"Was kostet die Reparatur?",
         price_selector_subtitle:"Wähle dein Gerät und sieh dir die voraussichtlichen Preise für gängige Reparaturen an.",
@@ -188,7 +190,7 @@
         stock_available:"Auf Lager", stock_unavailable:"Nicht auf Lager", stock_on_request:"Verfügbarkeit prüfen",
         wa_message_intro:"Hallo!", wa_label_device:"Modell", wa_label_repair:"Reparatur", wa_label_price:"Preis", wa_label_stock:"Lager", wa_label_city:"Ort"
       },
-      ua:{ tagline:"Singen • Швидко та надійно", no_appt:"Без запису", nav_home:"Головна", prices_title:"Ціни",
+      ua:{ tagline:"Singen • Швидко та надійно", no_appt:"Без запису", nav_home:"Головна", nav_prices:"Ціни", nav_contact:"Контакти", prices_title:"Ціни",
         prices_text:"Натисни на ціну → запит одразу відкриється у WhatsApp",
         price_selector_title:"Скільки коштує ремонт?",
         price_selector_subtitle:"Оберіть свій пристрій і перегляньте орієнтовні ціни на популярні ремонти.",
@@ -217,7 +219,7 @@
         stock_available:"Є на складі", stock_unavailable:"Немає на складі", stock_on_request:"Перевірити наявність",
         wa_message_intro:"Вітаю!", wa_label_device:"Модель", wa_label_repair:"Ремонт", wa_label_price:"Ціна", wa_label_stock:"Склад", wa_label_city:"Місто"
       },
-      en:{ tagline:"Singen • Fast & reliable", no_appt:"No appointment", nav_home:"Home", prices_title:"Prices",
+      en:{ tagline:"Singen • Fast & reliable", no_appt:"No appointment", nav_home:"Home", nav_prices:"Prices", nav_contact:"Contact", prices_title:"Prices",
         prices_text:"Tap a price → send your request directly via WhatsApp",
         price_selector_title:"How much does the repair cost?",
         price_selector_subtitle:"Choose your device and see the estimated prices for common repairs.",

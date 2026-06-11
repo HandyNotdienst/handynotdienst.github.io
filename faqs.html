@@ -27,13 +27,15 @@
       </a>
 
       <div class="header__right">
-        <nav class="topnav">
+        <nav class="topnav" aria-label="Navigation">
           <a href="index.html" data-i18n="nav_home">Start</a>
           <a href="prices.html" data-i18n="nav_prices">Preise</a>
+          <a href="faqs.html">FAQ</a>
+          <a href="index.html#contact" data-i18n="nav_contact">Kontakt</a>
           <a href="impressum.html">Impressum</a>
         </nav>
 
-        <div class="lang">
+        <div class="lang" aria-label="Language switch">
           <button class="lang__btn is-active" type="button" data-lang="de">DE</button>
           <button class="lang__btn" type="button" data-lang="ua">UA</button>
           <button class="lang__btn" type="button" data-lang="en">EN</button>
@@ -120,7 +122,7 @@
       serviceWorkerPath: "./sw.js"
     };
     window.HN_I18N = {
-      de:{ tagline:"Singen • Schnell & zuverlässig", no_appt:"Ohne Termin", nav_home:"Start", nav_prices:"Preise", mb_call:"Call",
+      de:{ tagline:"Singen • Schnell & zuverlässig", no_appt:"Ohne Termin", nav_home:"Start", nav_prices:"Preise", nav_contact:"Kontakt", mb_call:"Call",
         faq_sub:"Kurze Antworten auf die häufigsten Fragen.",
         faq1_q:"Wie lange dauert eine Reparatur?", faq1_a:"Viele Reparaturen dauern 30–90 Minuten (je nach Modell und Teil).",
         faq2_q:"Bleiben meine Daten erhalten?", faq2_a:"Bei Standard-Reparaturen normalerweise ja. Trotzdem empfehlen wir ein Backup.",
@@ -129,7 +131,7 @@
         faq5_q:"Originalteile oder Premium?", faq5_a:"Je nach Gerät bieten wir Original oder Premium – wir erklären dir die Optionen.",
         faq6_q:"Was, wenn mein Modell nicht in der Liste steht?", faq6_a:"Frag uns trotzdem. Oft können wir es bestellen oder eine Alternative anbieten."
       },
-      ua:{ tagline:"Singen • Швидко та надійно", no_appt:"Без запису", nav_home:"Головна", nav_prices:"Ціни", mb_call:"Дзвінок",
+      ua:{ tagline:"Singen • Швидко та надійно", no_appt:"Без запису", nav_home:"Головна", nav_prices:"Ціни", nav_contact:"Контакти", mb_call:"Дзвінок",
         faq_sub:"Короткі відповіді на найчастіші питання.",
         faq1_q:"Скільки триває ремонт?", faq1_a:"Багато ремонтів займає 30–90 хв (залежить від моделі і запчастини).",
         faq2_q:"Дані збережуться?", faq2_a:"Зазвичай так при стандартних ремонтах. Але радимо зробити backup.",
@@ -138,7 +140,7 @@
         faq5_q:"Оригінал чи Premium?", faq5_a:"Залежно від моделі можемо запропонувати Original або Premium.",
         faq6_q:"Моєї моделі нема у списку", faq6_a:"Все одно напиши — часто можна замовити або знайти альтернативу."
       },
-      en:{ tagline:"Singen • Fast & reliable", no_appt:"No appointment", nav_home:"Home", nav_prices:"Prices", mb_call:"Call",
+      en:{ tagline:"Singen • Fast & reliable", no_appt:"No appointment", nav_home:"Home", nav_prices:"Prices", nav_contact:"Contact", mb_call:"Call",
         faq_sub:"Short answers to the most common questions.",
         faq1_q:"How long does a repair take?", faq1_a:"Many repairs take 30–90 minutes (depending on model and part).",
         faq2_q:"Will my data stay?", faq2_a:"Usually yes for standard repairs. Still, we recommend a backup.",
