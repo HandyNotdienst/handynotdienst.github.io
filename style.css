@@ -538,7 +538,13 @@ a{color:inherit;text-decoration:none}
   border-radius: 13px;
 }
 .price-brand-switch--compact .price-brand-switch__logo{
-  display:none;
+  height: 22px;
+}
+.price-brand-switch--compact .price-brand-switch__logo img{
+  max-height: 22px;
+}
+.price-brand-switch--compact .price-brand-switch__btn[data-price-brand="apple"] .price-brand-switch__logo img{
+  max-width: 24px;
 }
 .home-price-selects{
   display:grid;
@@ -2899,7 +2905,8 @@ a{color:inherit;text-decoration:none}
 }
 .price-brand-switch__btn{
   display: grid;
-  gap: 3px;
+  gap: 6px;
+  align-content: center;
   min-height: 64px;
   padding: 12px 14px;
   border: 1px solid rgba(255,255,255,.12);
@@ -2916,9 +2923,21 @@ a{color:inherit;text-decoration:none}
   line-height: 1.1;
 }
 .price-brand-switch__logo{
-  color: rgba(238,243,247,.56);
-  font-size: 12px;
-  font-weight: 900;
+  display:flex;
+  align-items:center;
+  height: 28px;
+}
+.price-brand-switch__logo img{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width: 96px;
+  max-height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,.28));
+}
+.price-brand-switch__btn[data-price-brand="apple"] .price-brand-switch__logo img{
+  max-width: 30px;
 }
 .price-brand-switch__btn:hover,
 .price-brand-switch__btn.is-active{
