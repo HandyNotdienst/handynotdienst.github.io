@@ -842,6 +842,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
 
     const key = config.logoIntroSessionKey || "hn_logo_intro_seen_v1";
     const mark = overlay.querySelector("[data-logo-intro-mark]");
+    const title = overlay.querySelector("[data-logo-intro-title]");
     const headerLogo = document.querySelector(".brand__logo");
     const skipButton = overlay.querySelector("[data-logo-intro-skip]");
     let gsap = window.gsap;
@@ -945,6 +946,22 @@ ${t.wa_label_city || "Ort"}: ${city}`;
       };
     }
 
+    function prepareTitleChars() {
+      if (!title) return [];
+      if (!title.dataset.logoIntroSplit) {
+        const text = title.textContent.trim();
+        title.textContent = "";
+        Array.from(text).forEach((char) => {
+          const span = document.createElement("span");
+          span.className = char === " " ? "logo-intro__title-char logo-intro__title-char--space" : "logo-intro__title-char";
+          span.textContent = char === " " ? "\u00a0" : char;
+          title.appendChild(span);
+        });
+        title.dataset.logoIntroSplit = "true";
+      }
+      return title.querySelectorAll(".logo-intro__title-char");
+    }
+
     function playIntro() {
       if (done) return;
 
@@ -952,17 +969,54 @@ ${t.wa_label_city || "Ort"}: ${city}`;
       const orb = overlay.querySelector(".logo-intro__orb");
       const shine = overlay.querySelector(".logo-intro__shine");
       const lights = overlay.querySelectorAll(".logo-intro__light");
+      const titleChars = prepareTitleChars();
 
       gsap.set(overlay, { autoAlpha: 1 });
       gsap.set(mark, { autoAlpha: 0.68, scale: 0.84, y: 18, transformOrigin: "50% 50%" });
       gsap.set(orb, { autoAlpha: 0.72, scale: 0.84 });
       gsap.set(lights, { autoAlpha: 0, x: -40 });
       gsap.set(shine, { autoAlpha: 0, x: 0 });
+      if (title) {
+        gsap.set(title, {
+          "--title-sweep-x": "-135%",
+          autoAlpha: 0.88,
+          y: 8,
+          scale: 0.98,
+          filter: "blur(0px)",
+          transformOrigin: "50% 50%",
+        });
+        gsap.set(titleChars, {
+          autoAlpha: 0.9,
+          y: 3,
+          scale: 0.98,
+          filter: "blur(0px)",
+          transformOrigin: "50% 50%",
+        });
+      }
 
       timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
       timeline
         .to(orb, { autoAlpha: 1, scale: 1, duration: 0.72 }, 0)
-        .to(mark, { autoAlpha: 1, scale: 1, y: 0, duration: 0.78, ease: "back.out(1.35)" }, 0.08)
+        .to(mark, { autoAlpha: 1, scale: 1, y: 0, duration: 0.78, ease: "back.out(1.35)" }, 0.08);
+
+      if (title) {
+        timeline
+          .to(title, { autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.54 }, 0.34)
+          .to(titleChars, {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 0.46,
+            ease: "back.out(1.7)",
+            stagger: { each: 0.018, from: "center" },
+          }, 0.42)
+          .to(title, { "--title-sweep-x": "145%", duration: 0.76, ease: "power2.inOut" }, 0.58)
+          .to(title, { scale: 1.045, duration: 0.22, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0.82)
+          .to(title, { autoAlpha: 0, y: -12, scale: 0.94, filter: "blur(10px)", duration: 0.34, ease: "power2.in" }, 1.32);
+      }
+
+      timeline
         .to(lights, { autoAlpha: 0.82, x: 0, duration: 0.64, stagger: 0.12 }, 0.16)
         .to(shine, { autoAlpha: 0.9, x: "310%", duration: 0.82, ease: "power2.inOut" }, 0.62)
         .to(mark, { scale: 1.055, duration: 0.42, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0.86)
