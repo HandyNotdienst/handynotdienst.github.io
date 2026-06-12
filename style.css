@@ -217,6 +217,67 @@ body.intro-complete .float-wa{
   opacity:0;
   pointer-events:none;
 }
+.logo-intro__title{
+  --title-sweep-x:-135%;
+  position:absolute;
+  z-index:2;
+  top:calc(100% + clamp(12px, 2.1vw, 26px));
+  left:50%;
+  width:min(88vw, 820px);
+  overflow:hidden;
+  padding:.08em .04em .14em;
+  transform:translateX(-50%);
+  color:#f4fbff;
+  font-size:min(clamp(34px, 5vw, 72px), 10vw);
+  line-height:.96;
+  letter-spacing:0;
+  text-align:center;
+  white-space:nowrap;
+  font-weight:950;
+  background:
+    linear-gradient(92deg, #ffffff 0%, #d8f4ff 34%, #8ceeff 52%, #ffffff 70%, #9cf58e 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:#f4fbff;
+  text-shadow:
+    0 0 20px rgba(169,221,255,.34),
+    0 0 54px rgba(53,215,101,.20),
+    0 20px 54px rgba(0,0,0,.42);
+  filter:drop-shadow(0 0 18px rgba(169,221,255,.28));
+  will-change:transform, opacity, filter;
+}
+.logo-intro__title::before,
+.logo-intro__title::after{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+}
+.logo-intro__title::before{
+  z-index:-1;
+  inset:-56% -12% -42%;
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(169,221,255,.24), transparent 62%),
+    radial-gradient(ellipse at 50% 50%, rgba(53,215,101,.14), transparent 70%);
+  filter:blur(16px);
+}
+.logo-intro__title::after{
+  z-index:1;
+  top:-24%;
+  bottom:-30%;
+  left:0;
+  width:34%;
+  transform:translateX(var(--title-sweep-x)) skewX(-18deg);
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.82), transparent);
+  filter:blur(9px);
+  mix-blend-mode:screen;
+}
+.logo-intro__title-char{
+  display:inline-block;
+  will-change:transform, opacity, filter;
+}
+.logo-intro__title-char--space{
+  width:.34em;
+}
 .logo-intro__light{
   position:absolute;
   width:min(46vw, 520px);
@@ -892,6 +953,12 @@ body.intro-complete .float-wa{
   }
   .logo-intro__mark{
     width:min(68vw, 260px);
+  }
+  .logo-intro__title{
+    top:calc(100% + 10px);
+    width:calc(100vw - 32px);
+    font-size:min(clamp(34px, 5vw, 72px), 9.7vw);
+    line-height:1;
   }
   .logo-intro__light{
     width:82vw;
