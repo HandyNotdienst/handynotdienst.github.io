@@ -15,6 +15,7 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preload" as="image" href="assets/hero/owner-repair-960.jpg" imagesrcset="assets/hero/owner-repair-420.jpg 420w, assets/hero/owner-repair-640.jpg 640w, assets/hero/owner-repair-960.jpg 960w, assets/hero/owner-repair-1280.jpg 1280w" imagesizes="(max-width: 700px) calc(100vw - 48px), 620px" />
+  <link rel="preload" as="image" href="assets/logo-intro.webp" type="image/webp" />
   <link rel="stylesheet" href="style.css" />
 
   <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -24,6 +25,36 @@
 </head>
 
 <body>
+  <script>
+    (() => {
+      try {
+        const key = "hn_logo_intro_seen_v1";
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!reduced && !sessionStorage.getItem(key)) {
+          document.body.classList.add("intro-pending");
+          window.HN_logoIntroFallback = window.setTimeout(() => {
+            sessionStorage.setItem(key, "1");
+            document.body.classList.remove("intro-pending");
+            document.body.classList.add("intro-complete");
+            document.querySelector("[data-logo-intro]")?.remove();
+          }, 6500);
+        }
+      } catch (error) {}
+    })();
+  </script>
+  <div class="logo-intro" data-logo-intro aria-hidden="true">
+    <div class="logo-intro__light logo-intro__light--one"></div>
+    <div class="logo-intro__light logo-intro__light--two"></div>
+    <div class="logo-intro__stage">
+      <div class="logo-intro__orb"></div>
+      <picture class="logo-intro__mark" data-logo-intro-mark>
+        <source srcset="assets/logo-intro.webp" type="image/webp" />
+        <img src="assets/logo-intro.png" alt="" width="768" height="768" decoding="async" />
+      </picture>
+      <div class="logo-intro__shine"></div>
+    </div>
+    <button class="logo-intro__skip" type="button" data-logo-intro-skip tabindex="-1">Überspringen</button>
+  </div>
   <header class="header">
     <div class="container header__inner">
       <a class="brand" href="index.html" aria-label="Handy Notdienst">
@@ -409,7 +440,9 @@
       city: "Singen",
       defaultLang: "de",
       htmlKeys: ["h1", "home_concept_h1"],
-      serviceWorkerPath: "./sw.js"
+      serviceWorkerPath: "./sw.js",
+      logoIntro: true,
+      logoIntroSessionKey: "hn_logo_intro_seen_v1"
     };
     window.HN_I18N = {
       de:{
@@ -825,6 +858,11 @@
     ]
   }
   </script>
+  <script>
+    window.HN_GSAP_READY = Boolean(window.gsap);
+    window.HN_GSAP_FAILED = false;
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" onload="window.HN_GSAP_READY=true;window.dispatchEvent(new Event('hn:gsap-ready'))" onerror="window.HN_GSAP_FAILED=true;window.dispatchEvent(new Event('hn:gsap-failed'))"></script>
   <script src="app.js"></script>
 </body>
 </html>

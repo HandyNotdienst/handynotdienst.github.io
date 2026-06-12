@@ -836,6 +836,169 @@ ${t.wa_label_city || "Ort"}: ${city}`;
     observer.observe(quizSection);
   }
 
+  function initLogoIntro() {
+    const overlay = document.querySelector("[data-logo-intro]");
+    if (!overlay) return;
+
+    const key = config.logoIntroSessionKey || "hn_logo_intro_seen_v1";
+    const mark = overlay.querySelector("[data-logo-intro-mark]");
+    const headerLogo = document.querySelector(".brand__logo");
+    const skipButton = overlay.querySelector("[data-logo-intro-skip]");
+    let gsap = window.gsap;
+
+    let alreadySeen = false;
+    try {
+      alreadySeen = sessionStorage.getItem(key) === "1";
+    } catch (error) {}
+
+    function clearInlineFallback() {
+      if (window.HN_logoIntroFallback) {
+        window.clearTimeout(window.HN_logoIntroFallback);
+        window.HN_logoIntroFallback = null;
+      }
+    }
+
+    function revealImmediately(reason) {
+      clearInlineFallback();
+      if (reason === "fallback") {
+        rememberSession();
+      }
+      document.body.classList.remove("intro-pending");
+      document.body.classList.add("intro-complete");
+      overlay.remove();
+      if (reason !== "seen") {
+        trackEvent("logo_intro_skip", { reason });
+      }
+    }
+
+    if (!config.logoIntro || alreadySeen || prefersReducedMotion || !mark || !headerLogo) {
+      revealImmediately(!config.logoIntro ? "disabled" : alreadySeen ? "seen" : prefersReducedMotion ? "reduced_motion" : "fallback");
+      return;
+    }
+
+    if (!gsap) {
+      if (window.HN_GSAP_FAILED) {
+        revealImmediately("fallback");
+        return;
+      }
+
+      document.body.classList.add("intro-pending");
+      clearInlineFallback();
+
+      let waitDone = false;
+      const finishWait = (ready) => {
+        if (waitDone || !overlay.isConnected) return;
+        waitDone = true;
+        gsap = window.gsap;
+        if (ready && gsap) {
+          initLogoIntro();
+        } else {
+          revealImmediately("fallback");
+        }
+      };
+
+      window.addEventListener("hn:gsap-ready", () => finishWait(true), { once: true });
+      window.addEventListener("hn:gsap-failed", () => finishWait(false), { once: true });
+      window.setTimeout(() => finishWait(Boolean(window.gsap)), 950);
+      return;
+    }
+
+    document.body.classList.add("intro-pending");
+    clearInlineFallback();
+
+    let done = false;
+    let timeline;
+    const fallbackTimer = window.setTimeout(() => completeIntro("timeout"), 5600);
+
+    function rememberSession() {
+      try {
+        sessionStorage.setItem(key, "1");
+      } catch (error) {}
+    }
+
+    function completeIntro(reason) {
+      if (done) return;
+      done = true;
+      window.clearTimeout(fallbackTimer);
+      rememberSession();
+      timeline?.kill();
+      gsap.set(headerLogo, { clearProps: "all" });
+      document.body.classList.remove("intro-pending");
+      document.body.classList.add("intro-complete");
+      overlay.classList.add("is-complete");
+      window.setTimeout(() => overlay.remove(), reason === "animated" ? 460 : 120);
+      trackEvent(reason === "skip" ? "logo_intro_skip" : "logo_intro_complete", { reason });
+    }
+
+    function getFlightTarget() {
+      const markRect = mark.getBoundingClientRect();
+      const targetRect = headerLogo.getBoundingClientRect();
+      const markCenterX = markRect.left + markRect.width / 2;
+      const markCenterY = markRect.top + markRect.height / 2;
+      const targetCenterX = targetRect.left + targetRect.width / 2;
+      const targetCenterY = targetRect.top + targetRect.height / 2;
+
+      return {
+        x: targetCenterX - markCenterX,
+        y: targetCenterY - markCenterY,
+        scale: Math.max(0.12, targetRect.width / markRect.width),
+      };
+    }
+
+    function playIntro() {
+      if (done) return;
+
+      let flight = { x: 0, y: 0, scale: 0.16 };
+      const orb = overlay.querySelector(".logo-intro__orb");
+      const shine = overlay.querySelector(".logo-intro__shine");
+      const lights = overlay.querySelectorAll(".logo-intro__light");
+
+      gsap.set(overlay, { autoAlpha: 1 });
+      gsap.set(mark, { autoAlpha: 0.68, scale: 0.84, y: 18, transformOrigin: "50% 50%" });
+      gsap.set(orb, { autoAlpha: 0.72, scale: 0.84 });
+      gsap.set(lights, { autoAlpha: 0, x: -40 });
+      gsap.set(shine, { autoAlpha: 0, x: 0 });
+
+      timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+      timeline
+        .to(orb, { autoAlpha: 1, scale: 1, duration: 0.72 }, 0)
+        .to(mark, { autoAlpha: 1, scale: 1, y: 0, duration: 0.78, ease: "back.out(1.35)" }, 0.08)
+        .to(lights, { autoAlpha: 0.82, x: 0, duration: 0.64, stagger: 0.12 }, 0.16)
+        .to(shine, { autoAlpha: 0.9, x: "310%", duration: 0.82, ease: "power2.inOut" }, 0.62)
+        .to(mark, { scale: 1.055, duration: 0.42, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0.86)
+        .to(lights, { autoAlpha: 0, duration: 0.36 }, 1.3)
+        .add(() => {
+          flight = getFlightTarget();
+          gsap.set(headerLogo, { autoAlpha: 0, scale: 0.72 });
+        }, 1.58)
+        .to(mark, {
+          x: () => flight.x,
+          y: () => flight.y,
+          scale: () => flight.scale,
+          duration: 0.92,
+          ease: "power3.inOut",
+          filter: "drop-shadow(0 8px 18px rgba(0,0,0,.28)) drop-shadow(0 0 0 rgba(101,199,255,0))",
+        }, 1.62)
+        .to(orb, { autoAlpha: 0, scale: 1.18, duration: 0.55, ease: "power2.inOut" }, 1.72)
+        .add(() => {
+          document.body.classList.remove("intro-pending");
+          document.body.classList.add("intro-complete");
+          gsap.set(headerLogo, { clearProps: "all" });
+        }, 2.3)
+        .to(overlay, { autoAlpha: 0, duration: 0.42, ease: "power2.out" }, 2.34)
+        .add(() => completeIntro("animated"));
+    }
+
+    skipButton?.addEventListener("click", () => completeIntro("skip"), { once: true });
+
+    const image = mark.querySelector("img");
+    if (image?.decode) {
+      image.decode().then(playIntro).catch(playIntro);
+    } else {
+      playIntro();
+    }
+  }
+
   function setLang(lang) {
     applyTranslations(lang);
     updateSearchPlaceholders(lang);
@@ -845,6 +1008,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
   }
 
   initHeaderShadow();
+  initLogoIntro();
   initLangButtons();
   initReveal();
   initFaqAccordion();
