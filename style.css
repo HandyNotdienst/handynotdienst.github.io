@@ -134,6 +134,12 @@ body.intro-complete .float-wa{
   transform:none;
   transition:opacity .55s ease, transform .55s ease;
 }
+body.intro-pending .mobilebar{
+  transform:translateX(-50%) translateY(8px);
+}
+body.intro-complete .mobilebar{
+  transform:translateX(-50%);
+}
 .logo-intro::before,
 .logo-intro::after{
   content:"";
