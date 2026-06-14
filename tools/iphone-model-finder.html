@@ -4075,9 +4075,16 @@
       transitionDirection: "forward"
     };
 
+    function normalizeToolLang(value) {
+      const code = String(value || "").toLowerCase().split("-")[0];
+      if (code === "ua") return "uk";
+      if (["de", "uk", "en"].includes(code)) return code;
+      return "de";
+    }
+
     try {
       const queryLang = new URLSearchParams(window.location.search).get("lang");
-      if (["de", "uk", "en"].includes(queryLang)) state.lang = queryLang;
+      state.lang = normalizeToolLang(queryLang);
     } catch (_) {}
 
     const screenEl = document.getElementById("screen");
@@ -4095,7 +4102,7 @@
     });
 
     function t(key) {
-      return STRINGS[state.lang][key] || key;
+      return STRINGS[state.lang]?.[key] || STRINGS.de?.[key] || key;
     }
 
     function snapshot() {

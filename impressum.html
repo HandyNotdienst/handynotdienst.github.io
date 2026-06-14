@@ -44,11 +44,7 @@
           <a href="index.html#contact" data-i18n="nav_contact">Kontakt</a>
         </nav>
 
-        <div class="lang" aria-label="Language switch">
-          <button class="lang__btn is-active" type="button" data-lang="de">DE</button>
-          <button class="lang__btn" type="button" data-lang="ua">UA</button>
-          <button class="lang__btn" type="button" data-lang="en">EN</button>
-        </div>
+        <div class="lang" data-language-picker aria-label="Language switch"></div>
 
         <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">WhatsApp</a>
       </div>
@@ -68,18 +64,18 @@
     <section class="section section--clean">
       <div class="container">
         <div class="card legalpage">
-          <h1>Impressum</h1>
-          <p class="muted">Bitte ergänze hier: Name/Firma, Adresse, Kontakt, ggf. USt-ID.</p>
+          <h1 data-i18n="impressum_title">Impressum</h1>
+          <p class="muted" data-i18n="impressum_intro">Bitte ergänze hier: Name/Firma, Adresse, Kontakt, ggf. USt-ID.</p>
 
           <hr class="sep">
 
           <p><strong>Handy Notdienst</strong><br>
-          Singen (Baden-Württemberg)</p>
+          <span data-i18n="impressum_location">Singen (Baden-Württemberg)</span></p>
 
-          <p><strong>Telefon:</strong> 01522 2416438<br>
-          <strong>Email:</strong> handy.notdienst.reparatur@gmail.com</p>
+          <p><strong data-i18n="impressum_phone_label">Telefon:</strong> 01522 2416438<br>
+          <strong data-i18n="impressum_email_label">Email:</strong> handy.notdienst.reparatur@gmail.com</p>
 
-          <p class="muted">Hinweis: Das ist ein Platzhalter. Für Deutschland muss das Impressum korrekt ausgefüllt werden.</p>
+          <p class="muted" data-i18n="impressum_notice">Hinweis: Das ist ein Platzhalter. Für Deutschland muss das Impressum korrekt ausgefüllt werden.</p>
         </div>
       </div>
     </section>
@@ -89,15 +85,15 @@
     <div class="container footer__inner">
       <div><strong>Handy Notdienst</strong><div class="muted">Singen</div></div>
       <div class="footer__links">
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
+        <a href="impressum.html" data-i18n="footer_impressum">Impressum</a>
+        <a href="datenschutz.html" data-i18n="footer_privacy">Datenschutz</a>
       </div>
     </div>
   </footer>
   <nav class="mobilebar" aria-label="Mobile quick actions">
-    <a class="mobilebar__btn mobilebar__btn--call" href="tel:+4915222416438"><span>Call</span></a>
+    <a class="mobilebar__btn mobilebar__btn--call" href="tel:+4915222416438"><span data-i18n="mb_call">Call</span></a>
     <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener"><span>WhatsApp</span></a>
-    <a class="mobilebar__btn mobilebar__btn--prices" href="prices.html"><span>Preise</span></a>
+    <a class="mobilebar__btn mobilebar__btn--prices" href="prices.html"><span data-i18n="mb_prices">Preise</span></a>
   </nav>
   <script src="app.js"></script>
 </body>
