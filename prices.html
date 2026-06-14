@@ -3,6 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    (() => {
+      try {
+        const key = "hn_price_transition_v1";
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!reduced && sessionStorage.getItem(key)) {
+          document.documentElement.classList.add("price-transition-arriving");
+        }
+      } catch (error) {}
+    })();
+  </script>
   <title>Preise – Handy Notdienst Singen</title>
   <meta name="description" content="Preise für iPhone und Samsung Reparaturen in Singen. Klick auf Preis → WhatsApp mit Modell + Reparatur + Preis." />
   <link rel="canonical" href="https://handy-notdienst-singen.de/prices.html" />
