@@ -795,6 +795,17 @@ ${t.wa_label_city || "Ort"}: ${city}`;
   }
 
   function initAnalyticsTracking() {
+    const getClickLocation = (el) => {
+      if (el.closest("header")) return "header";
+      if (el.closest(".mobilebar")) return "mobilebar";
+      if (el.closest(".float-wa")) return "floating_cta";
+      if (el.closest("#contact")) return "contact";
+      if (el.closest(".concept-action-dock")) return "action_dock";
+      if (el.closest(".concept-hero")) return "hero";
+      if (el.closest(".price-panel") || el.closest(".price-shell")) return "prices";
+      return "content";
+    };
+
     document.addEventListener("click", (event) => {
       const finderLink = event.target.closest?.("[data-model-finder-link]");
       if (finderLink) {
@@ -804,12 +815,33 @@ ${t.wa_label_city || "Ort"}: ${city}`;
         });
       }
 
+      const phoneLink = event.target.closest?.('a[href^="tel:"]');
+      if (phoneLink) {
+        trackEvent("phone_click", {
+          location: getClickLocation(phoneLink),
+          label: phoneLink.textContent.trim(),
+          phone: phoneLink.getAttribute("href").replace(/^tel:/, ""),
+        });
+      }
+
       const waLink = event.target.closest?.('a[href*="wa.me"]');
       if (!waLink) return;
       trackEvent("whatsapp_click", {
-        location: waLink.closest("header") ? "header" : waLink.closest(".mobilebar") ? "mobilebar" : "content",
+        location: getClickLocation(waLink),
         label: waLink.textContent.trim(),
         href: waLink.href,
+      });
+    });
+
+    document.addEventListener("submit", (event) => {
+      const form = event.target;
+      if (!(form instanceof HTMLFormElement)) return;
+      trackEvent("contact_form_submit", {
+        location: getClickLocation(form),
+        id: form.id || undefined,
+        name: form.getAttribute("name") || undefined,
+        method: (form.getAttribute("method") || "get").toLowerCase(),
+        action: form.getAttribute("action") || window.location.pathname,
       });
     });
   }
