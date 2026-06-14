@@ -26,6 +26,18 @@
 
   window.HN_trackEvent = trackEvent;
 
+  function getClickLocation(el) {
+    if (!el?.closest) return "content";
+    if (el.closest("header")) return "header";
+    if (el.closest(".mobilebar")) return "mobilebar";
+    if (el.closest(".float-wa")) return "floating_cta";
+    if (el.closest("#contact")) return "contact";
+    if (el.closest(".concept-action-dock")) return "action_dock";
+    if (el.closest(".concept-hero")) return "hero";
+    if (el.closest(".price-selector-shell") || el.closest(".price-panel") || el.closest(".price-shell")) return "prices";
+    return "content";
+  }
+
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -795,17 +807,6 @@ ${t.wa_label_city || "Ort"}: ${city}`;
   }
 
   function initAnalyticsTracking() {
-    const getClickLocation = (el) => {
-      if (el.closest("header")) return "header";
-      if (el.closest(".mobilebar")) return "mobilebar";
-      if (el.closest(".float-wa")) return "floating_cta";
-      if (el.closest("#contact")) return "contact";
-      if (el.closest(".concept-action-dock")) return "action_dock";
-      if (el.closest(".concept-hero")) return "hero";
-      if (el.closest(".price-panel") || el.closest(".price-shell")) return "prices";
-      return "content";
-    };
-
     document.addEventListener("click", (event) => {
       const finderLink = event.target.closest?.("[data-model-finder-link]");
       if (finderLink) {
@@ -843,6 +844,94 @@ ${t.wa_label_city || "Ort"}: ${city}`;
         method: (form.getAttribute("method") || "get").toLowerCase(),
         action: form.getAttribute("action") || window.location.pathname,
       });
+    });
+  }
+
+  function initPageTransitionToPrices() {
+    const key = "hn_price_transition_v1";
+    const transitionMs = 330;
+    const arrivalMs = 700;
+    const isPricesPath = (url) => url.pathname.endsWith("/prices.html");
+    const isCurrentPricesPage = isPricesPath(window.location);
+
+    if (isCurrentPricesPage) {
+      let hadTransition = false;
+      try {
+        hadTransition = sessionStorage.getItem(key) === "1";
+        sessionStorage.removeItem(key);
+      } catch (error) {}
+
+      if (hadTransition || document.documentElement.classList.contains("price-transition-arriving")) {
+        trackEvent("price_transition_arrive", { path: window.location.pathname });
+        window.setTimeout(() => {
+          document.documentElement.classList.remove("price-transition-arriving");
+        }, arrivalMs);
+      }
+    }
+
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest?.("a[href]");
+      if (!link || event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (link.hasAttribute("download")) return;
+      if (link.target && link.target !== "_self") return;
+
+      const href = link.getAttribute("href") || "";
+      if (!href || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:")) return;
+
+      let targetUrl;
+      try {
+        targetUrl = new URL(link.href, window.location.href);
+      } catch (error) {
+        return;
+      }
+
+      if (targetUrl.origin !== window.location.origin) return;
+      if (!isPricesPath(targetUrl)) return;
+      if (targetUrl.hash) return;
+
+      if (prefersReducedMotion) return;
+      event.preventDefault();
+
+      if (document.body.classList.contains("price-transition-active")) return;
+      document.body.classList.add("price-transition-active");
+
+      try {
+        sessionStorage.setItem(key, "1");
+      } catch (error) {}
+
+      trackEvent("price_transition_start", {
+        from: window.location.pathname,
+        to: targetUrl.pathname,
+        location: getClickLocation(link),
+        label: link.textContent.trim(),
+      });
+
+      const messages = {
+        de: "Reparaturpreise werden geöffnet",
+        ua: "Відкриваємо ціни на ремонт",
+        en: "Opening repair prices",
+      };
+      const overlay = document.createElement("div");
+      const content = document.createElement("div");
+      const mark = document.createElement("span");
+      const text = document.createElement("span");
+
+      overlay.className = "page-transition";
+      overlay.setAttribute("aria-hidden", "true");
+      content.className = "page-transition__content";
+      mark.className = "page-transition__price-mark";
+      mark.textContent = "€";
+      text.className = "page-transition__text";
+      text.textContent = messages[getLang()] || messages.de;
+
+      content.append(mark, text);
+      overlay.append(content);
+      document.body.append(overlay);
+
+      window.setTimeout(() => {
+        window.location.href = targetUrl.href;
+      }, transitionMs);
     });
   }
 
@@ -1099,6 +1188,7 @@ ${t.wa_label_city || "Ort"}: ${city}`;
   initReveal();
   initFaqAccordion();
   initAnalyticsTracking();
+  initPageTransitionToPrices();
   initPickupButton();
   initBundles();
   initQuiz();
