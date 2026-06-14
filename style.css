@@ -3143,29 +3143,58 @@ html[dir="rtl"] .lang__check::after{
 @media (max-width: 560px){
   .header__inner{
     display:grid;
-    grid-template-columns: 1fr;
-    padding: 6px 0;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items:start;
+    column-gap:10px;
+    padding: 5px 0;
+  }
+  .brand{
+    min-width:0;
+    gap:9px;
   }
   .header__right{
-    width:100%;
-    justify-content:flex-start;
+    width:auto;
+    justify-content:flex-end;
+    justify-self:end;
+    grid-column:2;
+    grid-row:1;
   }
   .lang{
     width:auto;
+    justify-self:end;
     transform:none;
-    transform-origin:center;
+    transform-origin:top right;
+  }
+  .lang__trigger{
+    min-height:36px;
+    gap:6px;
+    padding:6px 8px;
+    border-radius:14px;
+  }
+  .lang__globe{
+    width:18px;
+    height:18px;
+    border-width:2px;
+  }
+  .lang__current{
+    padding:4px 7px;
+    font-size:11px;
+  }
+  .lang__chevron{
+    width:7px;
+    height:7px;
   }
   .lang__panel{
     position:absolute;
-    left:0;
-    right:auto;
+    left:auto;
+    right:0;
     top:calc(100% + 8px);
     bottom:auto;
     width:min(360px, calc(100vw - 20px));
     max-height:min(72svh, 620px);
     border-radius:22px;
     transform:translateY(8px) scale(.985);
-    transform-origin:top left;
+    transform-origin:top right;
   }
   .lang.is-open .lang__panel{
     transform:translateY(0) scale(1);
@@ -3183,8 +3212,15 @@ html[dir="rtl"] .lang__check::after{
   }
 
   .brand__logo{
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
+    border-radius:13px;
+  }
+  .brand__text strong{
+    font-size:14px;
+  }
+  .brand__text small{
+    font-size:10.5px;
   }
 }
 
