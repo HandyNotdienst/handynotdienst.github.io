@@ -3000,6 +3000,15 @@ html[dir="rtl"] .lang__check::after{
   transition: background .24s ease, border-color .24s ease, box-shadow .24s ease;
 }
 .faq details + details{margin-top: 10px;}
+.faq__section-title{
+  margin: 22px 0 10px;
+  color: rgba(238,243,247,.76);
+  font-size: 13px;
+  font-weight: 950;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.faq__section-title:first-child{margin-top: 0;}
 .faq details[open]{
   border-color: rgba(63,169,245,.34);
   background: rgba(63,169,245,.08);
@@ -3049,6 +3058,9 @@ html[dir="rtl"] .lang__check::after{
 }
 .section--clean .faq summary{
   color: var(--ink);
+}
+.section--clean .faq__section-title{
+  color: rgba(7,21,33,.56);
 }
 .section--clean .faq .muted{
   color: var(--ink-muted);
