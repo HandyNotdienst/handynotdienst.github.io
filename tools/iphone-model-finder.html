@@ -3,6 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f5f7">
+  <script>
+    (() => {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const requested = params.get("theme");
+        const saved = localStorage.getItem("hn_theme");
+        const system = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        const theme = requested === "light" || requested === "dark"
+          ? requested
+          : (saved === "light" || saved === "dark" ? saved : system);
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "light" ? "#f5f5f7" : "#071521");
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+        document.documentElement.style.colorScheme = "light";
+      }
+    })();
+  </script>
   <title>iPhone Modell-Finder | Handy Notdienst Singen</title>
   <style>
     :root {
@@ -23,6 +43,23 @@
       --radius-sm: 20px;
     }
 
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #071521;
+      --bg-soft: #0d2231;
+      --card: rgba(18, 42, 58, 0.88);
+      --card-2: rgba(11, 29, 42, 0.96);
+      --text: #eef3f7;
+      --muted: #b6c6d3;
+      --line: rgba(255, 255, 255, 0.10);
+      --accent: #65c7ff;
+      --accent-2: #a9ddff;
+      --success: #35d765;
+      --warning: #f4b860;
+      --danger: #ff8f86;
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.34), 0 0 0 1px rgba(255,255,255,.03);
+    }
+
     * { box-sizing: border-box; }
 
     html, body {
@@ -34,6 +71,13 @@
         radial-gradient(circle at top center, rgba(0, 113, 227, 0.07), transparent 30%),
         linear-gradient(180deg, #fcfcfe 0%, #f5f5f7 42%, #eef2f6 100%);
       min-height: 100%;
+    }
+
+    html[data-theme="dark"] body {
+      background:
+        radial-gradient(circle at top center, rgba(101, 199, 255, 0.14), transparent 36%),
+        radial-gradient(circle at 20% 20%, rgba(53, 215, 101, 0.08), transparent 34%),
+        linear-gradient(180deg, #071521 0%, #0d2231 48%, #071521 100%);
     }
 
     body {
@@ -5088,6 +5132,14 @@
     }
 
     window.addEventListener("resize", sendHeightToParent);
+    window.addEventListener("message", (event) => {
+      if (!event.data || event.data.type !== "hn-theme-change") return;
+      const theme = event.data.theme === "light" || event.data.theme === "dark" ? event.data.theme : "";
+      if (!theme) return;
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "light" ? "#f5f5f7" : "#071521");
+    });
     const heightObserver = new MutationObserver(() => sendHeightToParent());
     heightObserver.observe(document.body, { childList: true, subtree: true, attributes: true, characterData: true });
     document.querySelectorAll("[data-lang]").forEach(x => x.classList.toggle("active", x.dataset.lang === state.lang));

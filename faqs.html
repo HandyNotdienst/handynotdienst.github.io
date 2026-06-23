@@ -3,6 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem("hn_theme");
+        const system = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        const theme = saved === "light" || saved === "dark" ? saved : system;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch (error) {
+        document.documentElement.dataset.theme = "dark";
+        document.documentElement.style.colorScheme = "dark";
+      }
+    })();
+  </script>
   <title>FAQ – Handy Notdienst Singen</title>
   <meta name="description" content="FAQ zu iPhone Reparatur in Singen: Daten, OEM Pull Akku, Display-Qualität, Ladebuchse, Ersatzteile, Wasserschaden und Versand." />
   <link rel="canonical" href="https://handy-notdienst-singen.de/faqs.html" />
@@ -46,6 +60,13 @@
         </nav>
 
         <div class="lang" data-language-picker aria-label="Language switch"></div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Theme wechseln">
+          <span class="theme-toggle__halo" aria-hidden="true"></span>
+          <span class="theme-toggle__icon" aria-hidden="true">
+            <span class="theme-toggle__sun"></span>
+            <span class="theme-toggle__moon"></span>
+          </span>
+        </button>
 
         <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">WhatsApp</a>
       </div>

@@ -8,6 +8,12 @@
   const serviceWorkerPath = config.serviceWorkerPath || "";
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const themeMedia = window.matchMedia("(prefers-color-scheme: light)");
+  const THEME_STORAGE_KEY = "hn_theme";
+  const THEME_COLORS = {
+    dark: "#1b374c",
+    light: "#eef5f8",
+  };
 
   const LANGUAGES = [
     { code: "de", short: "DE", name: "Deutsch", nativeName: "Deutsch", search: "de deutsch german allemand niemiecki tedesco" },
@@ -39,7 +45,12 @@
     return LANGUAGE_CODES.has(normalized) ? normalized : "";
   }
 
+  function normalizeTheme(value) {
+    return value === "light" || value === "dark" ? value : "";
+  }
+
   const defaultLang = normalizeLang(requestedDefaultLang) || "de";
+  let currentTheme = normalizeTheme(document.documentElement.dataset.theme) || "dark";
 
   const GLOBAL_I18N = {
     de: {
@@ -2009,6 +2020,49 @@
     },
   };
 
+  const THEME_I18N = {
+    de: {
+      theme_switch_to_light: "Zum hellen Theme wechseln",
+      theme_switch_to_dark: "Zum dunklen Theme wechseln",
+    },
+    uk: {
+      theme_switch_to_light: "Увімкнути світлу тему",
+      theme_switch_to_dark: "Увімкнути темну тему",
+    },
+    en: {
+      theme_switch_to_light: "Switch to light theme",
+      theme_switch_to_dark: "Switch to dark theme",
+    },
+    ru: {
+      theme_switch_to_light: "Включить светлую тему",
+      theme_switch_to_dark: "Включить темную тему",
+    },
+    pl: {
+      theme_switch_to_light: "Przełącz na jasny motyw",
+      theme_switch_to_dark: "Przełącz na ciemny motyw",
+    },
+    it: {
+      theme_switch_to_light: "Passa al tema chiaro",
+      theme_switch_to_dark: "Passa al tema scuro",
+    },
+    ar: {
+      theme_switch_to_light: "التبديل إلى الوضع الفاتح",
+      theme_switch_to_dark: "التبديل إلى الوضع الداكن",
+    },
+    ku: {
+      theme_switch_to_light: "Derbasî tema ronahî bibe",
+      theme_switch_to_dark: "Derbasî tema tarî bibe",
+    },
+    fr: {
+      theme_switch_to_light: "Passer au thème clair",
+      theme_switch_to_dark: "Passer au thème sombre",
+    },
+    sl: {
+      theme_switch_to_light: "Preklopi na svetlo temo",
+      theme_switch_to_dark: "Preklopi na temno temo",
+    },
+  };
+
   Object.entries(EXTRA_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...GLOBAL_I18N.de, ...values };
   });
@@ -2016,6 +2070,9 @@
     GLOBAL_I18N[lang] = { ...GLOBAL_I18N.de, ...values, ...(HOME_SECTION_I18N[lang] || {}) };
   });
   Object.entries(FAQ_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
+  Object.entries(THEME_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
 
@@ -2117,6 +2174,95 @@
     return currentLang || getStoredLang() || detectInitialLang();
   }
 
+  function getStoredTheme() {
+    try {
+      return normalizeTheme(localStorage.getItem(THEME_STORAGE_KEY));
+    } catch (error) {
+      return "";
+    }
+  }
+
+  function getSystemTheme() {
+    return themeMedia.matches ? "light" : "dark";
+  }
+
+  function updateThemeMeta(theme) {
+    document.documentElement.style.colorScheme = theme;
+    let meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "theme-color");
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", THEME_COLORS[theme] || THEME_COLORS.dark);
+  }
+
+  function updateThemeToggles(theme = currentTheme) {
+    const lang = currentLang || getStoredLang() || defaultLang;
+    const labelKey = theme === "dark" ? "theme_switch_to_light" : "theme_switch_to_dark";
+    const label = resolveI18n(lang, labelKey) || (theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.setAttribute("aria-label", label);
+      button.setAttribute("title", label);
+      button.dataset.themeState = theme;
+      button.classList.toggle("is-light", theme === "light");
+      button.classList.toggle("is-dark", theme === "dark");
+    });
+  }
+
+  function applyTheme(theme, source = "auto") {
+    const nextTheme = normalizeTheme(theme) || "dark";
+    currentTheme = nextTheme;
+    document.documentElement.dataset.theme = nextTheme;
+    updateThemeMeta(nextTheme);
+    updateThemeToggles(nextTheme);
+    window.dispatchEvent(new CustomEvent("hn:theme-change", { detail: { theme: nextTheme, source } }));
+  }
+
+  function initThemeSystem() {
+    const storedTheme = getStoredTheme();
+    const autoTheme = getSystemTheme();
+    applyTheme(storedTheme || autoTheme, storedTheme ? "stored" : "auto");
+
+    if (!storedTheme) {
+      try {
+        const key = "hn_theme_auto_detected_v1";
+        if (!sessionStorage.getItem(key)) {
+          sessionStorage.setItem(key, "1");
+          trackEvent("theme_auto_detect", { theme: autoTheme });
+        }
+      } catch (error) {}
+    }
+
+    const onSystemThemeChange = () => {
+      if (!getStoredTheme()) applyTheme(getSystemTheme(), "auto");
+    };
+    if (typeof themeMedia.addEventListener === "function") {
+      themeMedia.addEventListener("change", onSystemThemeChange);
+    } else if (typeof themeMedia.addListener === "function") {
+      themeMedia.addListener(onSystemThemeChange);
+    }
+
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      if (button.dataset.themeToggleReady === "true") return;
+      button.dataset.themeToggleReady = "true";
+      button.addEventListener("click", () => {
+        const previous = currentTheme;
+        const nextTheme = previous === "dark" ? "light" : "dark";
+        try {
+          localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+        } catch (error) {}
+        applyTheme(nextTheme, "manual");
+        button.classList.remove("is-animating");
+        void button.offsetWidth;
+        button.classList.add("is-animating");
+        window.setTimeout(() => button.classList.remove("is-animating"), 520);
+        trackEvent("theme_toggle", { theme: nextTheme, previous });
+      });
+    });
+  }
+
   function applyTranslations(lang) {
     if (!hasI18n) return;
 
@@ -2124,6 +2270,7 @@
     document.documentElement.lang = code;
     document.documentElement.dir = code === "ar" ? "rtl" : "ltr";
     updateLanguagePickers(code);
+    updateThemeToggles(currentTheme);
 
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
@@ -3368,6 +3515,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
 
   initHeaderShadow();
   initLogoIntro();
+  initThemeSystem();
   initLangButtons();
   initReveal();
   initFaqAccordion();
