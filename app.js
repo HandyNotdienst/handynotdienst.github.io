@@ -170,7 +170,8 @@
       repair_oled_premium: "OLED Premium",
       repair_standard: "Standard",
       repair_battery: "Akku",
-      repair_original_battery: "iPhone OEM Akku 99–100% (Used OEM Pull Grade A)",
+      repair_original_battery: "iPhone OEM Akku 99–100%",
+      repair_original_battery_info: "Replacement battery for iPhone with 99–100% battery health. OEM Pull availability varies.",
       repair_backglass: "Rückglas",
       repair_port: "Ladebuchse",
       stock_available: "Auf Lager",
@@ -370,7 +371,7 @@
       repair_oled_premium: "OLED Premium",
       repair_standard: "Стандарт",
       repair_battery: "Акумулятор",
-      repair_original_battery: "iPhone OEM Akku 99–100% (Used OEM Pull Grade A)",
+      repair_original_battery: "iPhone OEM Akku 99–100%",
       repair_backglass: "Заднє скло",
       repair_port: "Розʼєм заряджання",
       stock_available: "Є на складі",
@@ -573,7 +574,7 @@
       repair_oled_premium: "OLED Premium",
       repair_standard: "Standard",
       repair_battery: "Battery",
-      repair_original_battery: "iPhone OEM Akku 99–100% (Used OEM Pull Grade A)",
+      repair_original_battery: "iPhone OEM Akku 99–100%",
       repair_backglass: "Back glass",
       repair_port: "Charging port",
       stock_available: "In stock",
@@ -701,7 +702,7 @@
       price_selector_note: "Итоговая стоимость и гарантия зависят от состояния устройства и выбранного качества детали. OEM Pull аккумуляторы 99–100% доступны не всегда и подтверждаются заранее.",
       repair_display: "Дисплей",
       repair_battery: "Аккумулятор",
-      repair_original_battery: "iPhone OEM Akku 99–100% (Used OEM Pull Grade A)",
+      repair_original_battery: "iPhone OEM Akku 99–100%",
       repair_backglass: "Заднее стекло",
       repair_port: "Разъем зарядки",
       stock_available: "В наличии",
@@ -789,7 +790,7 @@
       price_stock_note: "Baterie OEM Pull nie zawsze są dostępne. Dostępność potwierdzimy podczas sprawdzenia przez WhatsApp.",
       repair_display: "Wyświetlacz",
       repair_battery: "Bateria",
-      repair_original_battery: "iPhone OEM Akku 99–100% (Used OEM Pull Grade A)",
+      repair_original_battery: "iPhone OEM Akku 99–100%",
       repair_backglass: "Tylne szkło",
       repair_port: "Gniazdo ładowania",
       stock_available: "Na stanie",
@@ -869,7 +870,7 @@
       price_selector_cta: "Chiedi via WhatsApp",
       repair_display: "Display",
       repair_battery: "Batteria",
-      repair_original_battery: "iPhone OEM Akku 99–100% (Used OEM Pull Grade A)",
+      repair_original_battery: "iPhone OEM Akku 99–100%",
       repair_backglass: "Vetro posteriore",
       repair_port: "Porta di ricarica",
       stock_on_request: "Verifica disponibilità",
@@ -941,7 +942,7 @@
       price_selector_cta: "اسأل عبر WhatsApp",
       repair_display: "الشاشة",
       repair_battery: "البطارية",
-      repair_original_battery: "iPhone OEM Akku 99–100% (Used OEM Pull Grade A)",
+      repair_original_battery: "iPhone OEM Akku 99–100%",
       repair_backglass: "الزجاج الخلفي",
       repair_port: "منفذ الشحن",
       stock_on_request: "تحقق من التوفر",
@@ -1013,7 +1014,7 @@
       price_selector_cta: "Li WhatsAppê bipirse",
       repair_display: "Dîmender",
       repair_battery: "Batarya",
-      repair_original_battery: "iPhone OEM Akku 99–100% (Used OEM Pull Grade A)",
+      repair_original_battery: "iPhone OEM Akku 99–100%",
       repair_backglass: "Camê paş",
       repair_port: "Porta şarjê",
       stock_on_request: "Berdestbûnê bipirse",
@@ -1081,7 +1082,7 @@
       price_selector_cta: "Demander via WhatsApp",
       repair_display: "Écran",
       repair_battery: "Batterie",
-      repair_original_battery: "iPhone OEM Akku 99–100% (Used OEM Pull Grade A)",
+      repair_original_battery: "iPhone OEM Akku 99–100%",
       repair_backglass: "Vitre arrière",
       repair_port: "Port de charge",
       stock_on_request: "Vérifier la disponibilité",
@@ -1153,7 +1154,7 @@
       price_selector_cta: "Vprašaj prek WhatsApp",
       repair_display: "Zaslon",
       repair_battery: "Baterija",
-      repair_original_battery: "iPhone OEM Akku 99–100% (Used OEM Pull Grade A)",
+      repair_original_battery: "iPhone OEM Akku 99–100%",
       repair_backglass: "Zadnje steklo",
       repair_port: "Polnilni priključek",
       stock_on_request: "Preveri razpoložljivost",
@@ -1945,6 +1946,17 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
 
       const labelEl = document.createElement("span");
       labelEl.textContent = label;
+
+      if (repair.key === "repair_original_battery") {
+        const infoText = resolveI18n(lang, "repair_original_battery_info")
+          || "Replacement battery for iPhone with 99–100% battery health. OEM Pull availability varies.";
+        const infoEl = document.createElement("span");
+        infoEl.className = "price-service-info";
+        infoEl.setAttribute("aria-label", infoText);
+        infoEl.setAttribute("title", infoText);
+        infoEl.textContent = "i";
+        labelEl.append(" ", infoEl);
+      }
 
       const metaEl = document.createElement("span");
       metaEl.className = "price-service-row__meta";

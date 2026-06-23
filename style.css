@@ -3710,6 +3710,28 @@ html[dir="rtl"] .lang__check::after{
   color: rgba(238,243,247,.82);
   font-weight: 820;
 }
+.price-service-row .price-service-info{
+  display:inline-grid;
+  place-items:center;
+  width:19px;
+  height:19px;
+  margin-left:5px;
+  border:1px solid rgba(101,199,255,.48);
+  border-radius:50%;
+  background:rgba(101,199,255,.13);
+  color:#a9ddff;
+  font-size:12px;
+  font-weight:1000;
+  line-height:1;
+  vertical-align:middle;
+  box-shadow:0 0 16px rgba(101,199,255,.16);
+}
+.price-service-row:hover .price-service-info,
+.price-service-row.is-selected .price-service-info{
+  color:#d7efff;
+  border-color:rgba(101,199,255,.68);
+  background:rgba(101,199,255,.18);
+}
 .price-service-row strong{
   color: #ffffff;
   font-size: 18px;
