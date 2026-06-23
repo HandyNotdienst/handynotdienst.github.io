@@ -1,4 +1,4 @@
-const CACHE = "hn-v24";
+const CACHE = "hn-v25";
 const ASSETS = [
   "./",
   "./index.html",
@@ -13,6 +13,11 @@ const ASSETS = [
   "./assets/logo-intro.png",
   "./assets/logo-intro.webp",
   "./assets/og-image.png",
+  "./assets/phones/iphone-12-pro-max.png",
+  "./assets/phones/iphone-17.png",
+  "./assets/phones/iphone-17-pro.png",
+  "./assets/phones/iphone-17-pro-max.png",
+  "./assets/phones/iphone-air.png",
   "./assets/hero/owner-repair-420.jpg",
   "./assets/hero/owner-repair-640.jpg",
   "./assets/hero/owner-repair-960.jpg",

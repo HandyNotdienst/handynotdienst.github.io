@@ -1681,10 +1681,10 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
 
   const PRICE_DATA = {
     apple: [
-      { model: "iPhone Air", series: "iphone", family: "iPhone Air", image: "assets/phones/iphone-16.png", repairs: [{ key: "repair_original_battery", price: "149€", stock: "on_request" }] },
-      { model: "iPhone 17 Pro Max", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-16-pro-max.png", repairs: [{ key: "repair_original_battery", price: "169€", stock: "on_request" }] },
-      { model: "iPhone 17 Pro", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-16-pro.png", repairs: [{ key: "repair_original_battery", price: "149€", stock: "on_request" }] },
-      { model: "iPhone 17", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-16.png", repairs: [{ key: "repair_original_battery", price: "139€", stock: "on_request" }] },
+      { model: "iPhone Air", series: "iphone", family: "iPhone Air", image: "assets/phones/iphone-air.png", repairs: [{ key: "repair_original_battery", price: "149€", stock: "on_request" }] },
+      { model: "iPhone 17 Pro Max", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17-pro-max.png", repairs: [{ key: "repair_original_battery", price: "169€", stock: "on_request" }] },
+      { model: "iPhone 17 Pro", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17-pro.png", repairs: [{ key: "repair_original_battery", price: "149€", stock: "on_request" }] },
+      { model: "iPhone 17", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17.png", repairs: [{ key: "repair_original_battery", price: "139€", stock: "on_request" }] },
       { model: "iPhone 16e / 17e", series: "iphone", family: "iPhone 16e / 17e", image: "assets/phones/iphone-16.png", repairs: [{ key: "repair_original_battery", price: "119€", stock: "on_request" }] },
       { model: "iPhone 16 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "399€" }, { key: "repair_battery", price: "139€" }, { key: "repair_original_battery", price: "139€", stock: "on_request" }, { key: "repair_backglass", price: "189€" }] },
       { model: "iPhone 16 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "359€" }, { key: "repair_battery", price: "129€" }, { key: "repair_backglass", price: "179€" }] },
@@ -1702,7 +1702,7 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
       { model: "iPhone 13 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "179€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "99€" }] },
       { model: "iPhone 13", series: "iphone", repairs: [{ key: "repair_display", price: "149€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "99€" }] },
       { model: "iPhone 13 mini", series: "iphone", repairs: [{ key: "repair_display", price: "139€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "89€" }] },
-      { model: "iPhone 12 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "149€" }, { key: "repair_battery", price: "79€" }, { key: "repair_original_battery", price: "99€", stock: "on_request" }, { key: "repair_backglass", price: "99€" }] },
+      { model: "iPhone 12 Pro Max", series: "iphone", image: "assets/phones/iphone-12-pro-max.png", repairs: [{ key: "repair_display", price: "149€" }, { key: "repair_battery", price: "79€" }, { key: "repair_original_battery", price: "99€", stock: "on_request" }, { key: "repair_backglass", price: "99€" }] },
       { model: "iPhone 12 / 12 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "139€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "89€" }] },
       { model: "iPhone 12 mini", series: "iphone", repairs: [{ key: "repair_display", price: "109€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "79€" }] },
       { model: "iPhone 11 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "119€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "79€" }] },
