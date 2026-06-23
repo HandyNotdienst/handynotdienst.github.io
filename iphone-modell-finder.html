@@ -3,6 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem("hn_theme");
+        const system = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        const theme = saved === "light" || saved === "dark" ? saved : system;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch (error) {
+        document.documentElement.dataset.theme = "dark";
+        document.documentElement.style.colorScheme = "dark";
+      }
+    })();
+  </script>
   <title>iPhone Modell finden – Handy Notdienst Singen</title>
   <meta name="description" content="Unsicher, welches iPhone du hast? Finde die Modellnummer über Einstellungen, SIM-Fach, Anschluss oder Rückseite und prüfe danach direkt den Reparaturpreis." />
   <link rel="canonical" href="https://handy-notdienst-singen.de/iphone-modell-finder.html" />
@@ -57,6 +71,13 @@
         </nav>
 
         <div class="lang" data-language-picker aria-label="Language switch"></div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Theme wechseln">
+          <span class="theme-toggle__halo" aria-hidden="true"></span>
+          <span class="theme-toggle__icon" aria-hidden="true">
+            <span class="theme-toggle__sun"></span>
+            <span class="theme-toggle__moon"></span>
+          </span>
+        </button>
 
         <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">WhatsApp</a>
       </div>
@@ -377,12 +398,23 @@
         return code === "ua" ? "uk" : code;
       }
 
-      function syncFinderLang() {
+      function currentFinderTheme() {
+        const stored = localStorage.getItem("hn_theme") || document.documentElement.dataset.theme || "dark";
+        return stored === "light" || stored === "dark" ? stored : "dark";
+      }
+
+      function syncFinderParams() {
         const lang = currentQuizLang();
+        const theme = currentFinderTheme();
         const url = new URL(iframe.getAttribute("src"), window.location.href);
-        if (url.searchParams.get("lang") === lang) return;
+        if (url.searchParams.get("lang") === lang && url.searchParams.get("theme") === theme) return;
         url.searchParams.set("lang", lang);
+        url.searchParams.set("theme", theme);
         iframe.src = `${url.pathname}${url.search}`;
+      }
+
+      function notifyFinderTheme() {
+        iframe.contentWindow?.postMessage({ type: "hn-theme-change", theme: currentFinderTheme() }, "*");
       }
 
       window.addEventListener("message", (event) => {
@@ -391,9 +423,13 @@
         iframe.style.height = `${Math.max(760, Number(event.data.height || 0))}px`;
       });
 
-      window.addEventListener("hn:language-change", () => window.setTimeout(syncFinderLang, 0));
+      window.addEventListener("hn:language-change", () => window.setTimeout(syncFinderParams, 0));
+      window.addEventListener("hn:theme-change", () => {
+        notifyFinderTheme();
+        window.setTimeout(syncFinderParams, 0);
+      });
 
-      syncFinderLang();
+      syncFinderParams();
     })();
   </script>
 </body>

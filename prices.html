@@ -6,6 +6,20 @@
   <script>
     (() => {
       try {
+        const saved = localStorage.getItem("hn_theme");
+        const system = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        const theme = saved === "light" || saved === "dark" ? saved : system;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch (error) {
+        document.documentElement.dataset.theme = "dark";
+        document.documentElement.style.colorScheme = "dark";
+      }
+    })();
+  </script>
+  <script>
+    (() => {
+      try {
         const key = "hn_price_transition_v1";
         const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (!reduced && sessionStorage.getItem(key)) {
@@ -61,6 +75,13 @@
         </nav>
 
         <div class="lang" data-language-picker aria-label="Language switch"></div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Theme wechseln">
+          <span class="theme-toggle__halo" aria-hidden="true"></span>
+          <span class="theme-toggle__icon" aria-hidden="true">
+            <span class="theme-toggle__sun"></span>
+            <span class="theme-toggle__moon"></span>
+          </span>
+        </button>
 
         <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">WhatsApp</a>
       </div>
