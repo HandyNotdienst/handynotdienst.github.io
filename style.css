@@ -3564,6 +3564,9 @@ html[dir="rtl"] .lang__check::after{
 .price-selector-field{
   min-width: 0;
 }
+.price-selector-field--models{
+  grid-column: 1 / -1;
+}
 .price-selector-label{
   display: block;
   margin: 0 0 8px;
@@ -3592,7 +3595,73 @@ html[dir="rtl"] .lang__check::after{
   color: #06101f;
   background: #eef3f7;
 }
+.price-selector-select--state{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.price-model-buttons{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  gap: 10px;
+}
+.price-model-button{
+  position: relative;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 12px;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 17px;
+  color: rgba(238,243,247,.88);
+  background:
+    radial-gradient(circle at 18% 10%, rgba(255,255,255,.11), transparent 36%),
+    linear-gradient(135deg, rgba(255,255,255,.095), rgba(255,255,255,.04));
+  font: inherit;
+  font-size: clamp(13px, 1.45vw, 15px);
+  font-weight: 900;
+  line-height: 1.12;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(0,0,0,.16);
+  transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease, color .18s ease;
+}
+.price-model-button::after{
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 13px;
+  border: 1px solid transparent;
+  pointer-events: none;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.price-model-button:hover{
+  transform: translateY(-1px);
+  border-color: rgba(63,169,245,.45);
+  color: #fff;
+}
+.price-model-button.is-active{
+  border-color: rgba(97,226,93,.82);
+  color: #fff;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(97,226,93,.28), transparent 36%),
+    linear-gradient(135deg, rgba(63,169,245,.20), rgba(97,226,93,.12));
+  box-shadow: 0 16px 36px rgba(0,0,0,.24), 0 0 0 1px rgba(97,226,93,.20), 0 0 26px rgba(97,226,93,.16);
+}
+.price-model-button.is-active::after{
+  border-color: rgba(97,226,93,.35);
+  box-shadow: inset 0 0 14px rgba(97,226,93,.10);
+}
 .price-selector-select:focus-visible,
+.price-model-button:focus-visible,
 .price-service-row:focus-visible,
 .price-selector-cta:focus-visible{
   outline: 3px solid rgba(63,169,245,.66);
