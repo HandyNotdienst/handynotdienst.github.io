@@ -1929,6 +1929,38 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     }, 120);
   }
 
+  function renderPriceModelButtons(models, activeEntry) {
+    const buttonGroup = document.querySelector("[data-price-model-buttons]");
+    const modelSelect = document.querySelector("[data-price-model]");
+    if (!buttonGroup || !modelSelect) return;
+
+    buttonGroup.innerHTML = "";
+    models.forEach((modelEntry) => {
+      const isActive = modelEntry.model === activeEntry.model;
+      const button = document.createElement("button");
+      button.className = `price-model-button${isActive ? " is-active" : ""}`;
+      button.type = "button";
+      button.role = "radio";
+      button.setAttribute("aria-checked", String(isActive));
+      button.dataset.priceModelButton = modelEntry.model;
+
+      const name = document.createElement("span");
+      name.textContent = modelEntry.model;
+      button.appendChild(name);
+
+      button.addEventListener("click", () => {
+        if (modelSelect.value === modelEntry.model) return;
+        modelSelect.value = modelEntry.model;
+        selectedPriceRepair = null;
+        setPriceCtaReady(false);
+        renderPriceSelection();
+        trackEvent("model_select", { brand: selectedPriceBrand, model: modelEntry.model, input: "button" });
+      });
+
+      buttonGroup.appendChild(button);
+    });
+  }
+
   function renderPriceServices(entry, lang) {
     const list = document.querySelector("[data-price-services]");
     if (!list || !entry) return;
@@ -2020,6 +2052,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       option.selected = modelEntry.model === entry.model;
       modelSelect.appendChild(option);
     });
+    renderPriceModelButtons(models, entry);
 
     updatePricePreview(entry);
 

@@ -116,9 +116,10 @@
                 <select class="price-selector-select" id="priceFamilySelect" data-price-family></select>
               </div>
 
-              <div class="price-selector-field">
-                <label class="price-selector-label" for="priceModelSelect" data-i18n="price_selector_model_label">Modell</label>
-                <select class="price-selector-select" id="priceModelSelect" data-price-model></select>
+              <div class="price-selector-field price-selector-field--models">
+                <label class="price-selector-label" id="priceModelButtonsLabel" for="priceModelSelect" data-i18n="price_selector_model_label">Modell</label>
+                <select class="price-selector-select price-selector-select--state" id="priceModelSelect" data-price-model aria-hidden="true" tabindex="-1"></select>
+                <div class="price-model-buttons" role="radiogroup" aria-labelledby="priceModelButtonsLabel" data-price-model-buttons></div>
               </div>
             </div>
           </div>
