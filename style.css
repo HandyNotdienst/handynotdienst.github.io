@@ -4887,3 +4887,364 @@ html[data-theme="light"] .samsung-summary__price-block strong{
     grid-template-columns:1fr;
   }
 }
+
+/* Samsung modal wizard */
+body.samsung-modal-open{
+  overflow:hidden;
+}
+
+.samsung-modal[hidden],
+.samsung-modal [data-samsung-step-panel][hidden]{
+  display:none !important;
+}
+
+.samsung-modal{
+  position:fixed;
+  inset:0;
+  z-index:1200;
+  display:grid;
+  place-items:center;
+  grid-template-columns:1fr;
+  padding:clamp(10px, 2.2vw, 28px);
+  overflow:hidden;
+}
+
+.samsung-modal__backdrop{
+  position:absolute;
+  inset:0;
+  border:0;
+  background:
+    radial-gradient(720px 440px at 76% 18%, rgba(63,169,245,.18), transparent 72%),
+    radial-gradient(620px 380px at 20% 84%, rgba(53,215,101,.12), transparent 70%),
+    rgba(2,10,17,.76);
+  backdrop-filter:blur(18px) saturate(1.14);
+  cursor:pointer;
+}
+
+.samsung-modal__dialog{
+  position:relative;
+  z-index:1;
+  display:grid;
+  gap:18px;
+  width:min(1120px, calc(100vw - 24px));
+  max-height:min(880px, calc(100svh - 24px));
+  overflow:auto;
+  overscroll-behavior:contain;
+  padding:clamp(16px, 2.4vw, 28px);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:28px;
+  background:
+    linear-gradient(145deg, rgba(20,45,62,.98), rgba(7,18,29,.98)),
+    var(--surface);
+  box-shadow:0 34px 110px rgba(0,0,0,.54), inset 0 1px 0 rgba(255,255,255,.08);
+  animation:samsungModalIn .22s ease both;
+}
+
+@keyframes samsungModalIn{
+  from{ opacity:0; transform:translateY(16px) scale(.985); }
+  to{ opacity:1; transform:translateY(0) scale(1); }
+}
+
+.samsung-modal__header,
+.samsung-modal__footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.samsung-modal__header h2{
+  margin:4px 0 0;
+  font-size:clamp(26px, 3vw, 44px);
+  line-height:1;
+}
+
+.samsung-modal__eyebrow{
+  display:inline-flex;
+  padding:6px 10px;
+  border-radius:999px;
+  color:#06131f;
+  background:linear-gradient(135deg, var(--accent1), var(--accent2));
+  font-size:11px;
+  font-weight:950;
+  text-transform:uppercase;
+}
+
+.samsung-modal__close{
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  width:44px;
+  height:44px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:50%;
+  color:var(--text);
+  background:rgba(255,255,255,.07);
+  font:inherit;
+  font-size:22px;
+  font-weight:900;
+  cursor:pointer;
+  transition:transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.samsung-modal__close:hover{
+  transform:rotate(90deg) scale(1.04);
+  border-color:rgba(63,169,245,.45);
+  background:rgba(255,255,255,.12);
+}
+
+.samsung-modal__progress{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0, 1fr));
+  gap:8px;
+}
+
+.samsung-modal__progress-step{
+  min-height:5px;
+  border-radius:999px;
+  background:rgba(255,255,255,.13);
+  overflow:hidden;
+}
+
+.samsung-modal__progress-step::before{
+  content:"";
+  display:block;
+  width:100%;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg, var(--accent1), var(--accent2));
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .22s ease;
+}
+
+.samsung-modal__progress-step.is-done::before,
+.samsung-modal__progress-step.is-active::before{
+  transform:scaleX(1);
+}
+
+.samsung-modal .samsung-configurator__main{
+  display:block;
+}
+
+.samsung-modal .samsung-step{
+  min-height:min(58svh, 560px);
+  animation:samsungStepIn .2s ease both;
+}
+
+@keyframes samsungStepIn{
+  from{ opacity:0; transform:translateY(10px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+.samsung-modal .samsung-step--summary{
+  min-height:auto;
+  padding:0;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+}
+
+.samsung-modal .samsung-summary{
+  position:static;
+  grid-template-columns:minmax(220px, .42fr) minmax(0, 1fr);
+  align-items:stretch;
+  min-height:min(56svh, 540px);
+}
+
+.samsung-modal .samsung-summary__visual{
+  min-height:100%;
+}
+
+.samsung-modal .samsung-summary__visual img{
+  width:min(100%, 360px);
+  max-height:340px;
+}
+
+.samsung-modal .samsung-card-grid--series{
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+}
+
+.samsung-modal .samsung-card-grid--series .samsung-choice-card{
+  min-height:210px;
+  justify-content:start;
+  align-content:end;
+  padding:18px;
+  background:
+    linear-gradient(180deg, rgba(5,14,22,.16), rgba(5,14,22,.78)),
+    radial-gradient(220px 130px at 78% 28%, rgba(255,255,255,.15), transparent 72%),
+    var(--samsung-series-bg, none),
+    linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
+  background-repeat:no-repeat;
+  background-size:100% 100%, 100% 100%, auto 88%, 100% 100%;
+  background-position:center, center, 82% 32%, center;
+}
+
+.samsung-modal .samsung-card-grid--series .samsung-choice-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(90deg, rgba(0,0,0,.34), transparent 58%);
+}
+
+.samsung-modal .samsung-card-grid--series .samsung-choice-card img{
+  display:none;
+}
+
+.samsung-modal .samsung-card-grid--series .samsung-choice-card strong{
+  font-size:clamp(19px, 2vw, 28px);
+}
+
+.samsung-modal .samsung-card-grid--series .samsung-choice-card small{
+  color:rgba(255,255,255,.78);
+}
+
+.samsung-other-inline{
+  display:grid;
+  gap:12px;
+  margin-top:18px;
+  padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.10);
+}
+
+.samsung-other-inline h4{
+  margin:0 0 4px;
+  font-size:16px;
+}
+
+.samsung-other-inline p{
+  margin:0;
+}
+
+.samsung-modal .samsung-card-grid--devices{
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+}
+
+.samsung-modal__footer{
+  position:sticky;
+  bottom:-1px;
+  margin:0 -2px -2px;
+  padding-top:12px;
+  background:linear-gradient(180deg, transparent, rgba(7,18,29,.92) 34%);
+}
+
+.samsung-modal__nav{
+  min-height:48px;
+  border-radius:16px;
+}
+
+.samsung-modal__next:disabled,
+.samsung-modal__nav:disabled{
+  opacity:.46;
+  cursor:not-allowed;
+  transform:none;
+}
+
+html[data-theme="light"] .samsung-modal__backdrop{
+  background:
+    radial-gradient(720px 440px at 76% 18%, rgba(23,127,194,.18), transparent 72%),
+    radial-gradient(620px 380px at 20% 84%, rgba(34,197,94,.12), transparent 70%),
+    rgba(233,242,246,.76);
+}
+
+html[data-theme="light"] .samsung-modal__dialog{
+  border-color:rgba(7,21,33,.12);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.98), rgba(229,241,247,.98)),
+    var(--surface);
+  box-shadow:0 34px 100px rgba(33,70,94,.26), inset 0 1px 0 rgba(255,255,255,.86);
+}
+
+html[data-theme="light"] .samsung-modal__close{
+  border-color:rgba(7,21,33,.12);
+  background:rgba(255,255,255,.78);
+}
+
+html[data-theme="light"] .samsung-modal__progress-step{
+  background:rgba(7,21,33,.12);
+}
+
+html[data-theme="light"] .samsung-modal .samsung-card-grid--series .samsung-choice-card{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.84)),
+    radial-gradient(220px 130px at 78% 28%, rgba(7,21,33,.13), transparent 72%),
+    var(--samsung-series-bg, none),
+    linear-gradient(135deg, rgba(255,255,255,.90), rgba(229,241,247,.82));
+  background-repeat:no-repeat;
+  background-size:100% 100%, 100% 100%, auto 88%, 100% 100%;
+  background-position:center, center, 82% 32%, center;
+}
+
+html[data-theme="light"] .samsung-modal .samsung-card-grid--series .samsung-choice-card::after{
+  background:linear-gradient(90deg, rgba(255,255,255,.78), rgba(255,255,255,.16) 60%);
+}
+
+html[data-theme="light"] .samsung-modal .samsung-card-grid--series .samsung-choice-card small{
+  color:rgba(16,35,49,.68);
+}
+
+html[data-theme="light"] .samsung-modal__footer{
+  background:linear-gradient(180deg, transparent, rgba(246,250,252,.94) 34%);
+}
+
+@media (max-width: 860px){
+  .samsung-modal{
+    align-items:end;
+    padding:8px;
+  }
+  .samsung-modal__dialog{
+    width:100%;
+    max-height:calc(100svh - 16px);
+    border-radius:24px 24px 18px 18px;
+  }
+  .samsung-modal .samsung-card-grid--series{
+    grid-template-columns:1fr 1fr;
+  }
+  .samsung-modal .samsung-summary{
+    grid-template-columns:1fr;
+  }
+  .samsung-modal .samsung-summary__visual{
+    min-height:220px;
+  }
+}
+
+@media (max-width: 560px){
+  .samsung-modal__dialog{
+    padding:14px;
+    gap:14px;
+  }
+  .samsung-modal__header h2{
+    font-size:24px;
+  }
+  .samsung-modal .samsung-step{
+    min-height:auto;
+    padding:14px;
+  }
+  .samsung-modal .samsung-card-grid--series .samsung-choice-card{
+    min-height:158px;
+    background-size:100% 100%, 100% 100%, auto 78%, 100% 100%;
+  }
+  .samsung-modal .samsung-card-grid--devices,
+  .samsung-modal .samsung-card-grid--repairs,
+  .samsung-modal .samsung-model-grid{
+    grid-template-columns:1fr;
+  }
+  .samsung-modal__footer{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .samsung-modal__next{
+    grid-column:1 / -1;
+    order:-1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .samsung-modal__dialog,
+  .samsung-modal .samsung-step,
+  .samsung-modal__progress-step::before{
+    animation:none !important;
+    transition:none !important;
+  }
+}
