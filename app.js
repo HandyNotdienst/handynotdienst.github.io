@@ -2196,6 +2196,19 @@
     },
   };
 
+  const SAMSUNG_MODAL_I18N = {
+    de: { samsung_series_hint: "Waehle zuerst die Galaxy-Serie. Danach fuehren wir dich Schritt fuer Schritt weiter.", samsung_back: "Zurueck", samsung_next: "Weiter", samsung_close: "Schliessen" },
+    uk: { samsung_series_hint: "Спочатку оберіть серію Galaxy. Далі ми проведемо вас крок за кроком.", samsung_back: "Назад", samsung_next: "Далі", samsung_close: "Закрити" },
+    en: { samsung_series_hint: "Choose the Galaxy series first. Then we guide you step by step.", samsung_back: "Back", samsung_next: "Next", samsung_close: "Close" },
+    ru: { samsung_series_hint: "Сначала выберите серию Galaxy. Затем мы проведем вас шаг за шагом.", samsung_back: "Назад", samsung_next: "Далее", samsung_close: "Закрыть" },
+    pl: { samsung_series_hint: "Najpierw wybierz serię Galaxy. Potem poprowadzimy Cię krok po kroku.", samsung_back: "Wstecz", samsung_next: "Dalej", samsung_close: "Zamknij" },
+    it: { samsung_series_hint: "Scegli prima la serie Galaxy. Poi ti guidiamo passo dopo passo.", samsung_back: "Indietro", samsung_next: "Avanti", samsung_close: "Chiudi" },
+    ar: { samsung_series_hint: "اختر سلسلة Galaxy أولاً. بعدها نرشدك خطوة بخطوة.", samsung_back: "رجوع", samsung_next: "التالي", samsung_close: "إغلاق" },
+    ku: { samsung_series_hint: "Pêşî seriya Galaxy hilbijêre. Paşê em te gav bi gav rêber dikin.", samsung_back: "Paşve", samsung_next: "Pêşve", samsung_close: "Bigire" },
+    fr: { samsung_series_hint: "Choisis d'abord la série Galaxy. Ensuite nous te guidons étape par étape.", samsung_back: "Retour", samsung_next: "Suivant", samsung_close: "Fermer" },
+    sl: { samsung_series_hint: "Najprej izberi serijo Galaxy. Nato te vodimo korak za korakom.", samsung_back: "Nazaj", samsung_next: "Naprej", samsung_close: "Zapri" },
+  };
+
   Object.entries(EXTRA_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...GLOBAL_I18N.de, ...values };
   });
@@ -2209,6 +2222,9 @@
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
   Object.entries(SAMSUNG_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
+  Object.entries(SAMSUNG_MODAL_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
 
@@ -2674,10 +2690,13 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
 
   let selectedPriceRepair = null;
   let selectedPriceBrand = "apple";
-  let selectedSamsungSeries = "galaxy-s";
-  let selectedSamsungModel = "Galaxy S24";
-  let selectedSamsungRepair = "display";
+  let selectedSamsungSeries = "";
+  let selectedSamsungModel = "";
+  let selectedSamsungRepair = "";
   let selectedSamsungOtherDevice = null;
+  let selectedSamsungStep = "series";
+  let lastSamsungTrigger = null;
+  const SAMSUNG_STEPS = ["series", "models", "repairs", "summary"];
 
   function slugifyPriceModel(model) {
     return model
@@ -2801,7 +2820,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   }
 
   function getSamsungModelSeries(model) {
-    return SAMSUNG_SERIES.find((series) => series.models.includes(model)) || getSamsungSeries();
+    return SAMSUNG_SERIES.find((series) => series.models.includes(model)) || getSamsungSeries(selectedSamsungSeries);
   }
 
   function getSamsungSeriesImage(seriesKey = selectedSamsungSeries) {
@@ -2809,6 +2828,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   }
 
   function getSamsungModelImage(model) {
+    if (!model) return getSamsungSeriesImage(selectedSamsungSeries);
     const series = getSamsungModelSeries(model);
     return SAMSUNG_MODEL_IMAGES[model] || getSamsungSeriesImage(series.key);
   }
@@ -2824,6 +2844,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   }
 
   function getSamsungRepairLabelByKey(key, lang = getLang()) {
+    if (!key) return resolveI18n(lang, "samsung_none") || "-";
     const repair = getSamsungRepair(key);
     return resolveI18n(lang, repair.i18n) || repair.key;
   }
@@ -2833,6 +2854,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   }
 
   function getSamsungRepairPrice(model, repairKey) {
+    if (!model || !repairKey) return "";
     const repair = getSamsungRepair(repairKey);
     if (repair.askOnly) return "";
     const price = SAMSUNG_PRICE_MAP[model]?.[repairKey] || "";
@@ -2840,10 +2862,11 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   }
 
   function getSamsungCurrentModel() {
+    if (!selectedSamsungSeries) return selectedSamsungModel || "";
     const series = getSamsungSeries();
     return series.models.includes(selectedSamsungModel)
       ? selectedSamsungModel
-      : (series.models.find((model) => model === "Galaxy S24") || series.models[0]);
+      : "";
   }
 
   function getSamsungSummaryState() {
@@ -2866,14 +2889,14 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       };
     }
 
-    const series = getSamsungSeries();
+    const series = selectedSamsungSeries ? getSamsungSeries() : null;
     const model = getSamsungCurrentModel();
     const repairLabel = getSamsungRepairLabelByKey(selectedSamsungRepair, lang);
     const price = getSamsungRepairPrice(model, selectedSamsungRepair);
     return {
       device: getSamsungDeviceLabel("phone", lang),
-      series: series.label,
-      model,
+      series: series?.label || (resolveI18n(lang, "samsung_none") || "-"),
+      model: model || (resolveI18n(lang, "samsung_none") || "-"),
       repair: repairLabel,
       price: price || getSamsungAskLabel(lang),
       note: resolveI18n(lang, "samsung_summary_note") || "",
@@ -2898,18 +2921,167 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     return buildWhatsAppHref(text);
   }
 
+  function getSamsungModal() {
+    return document.querySelector("[data-samsung-modal]");
+  }
+
+  function isSamsungModalOpen() {
+    const modal = getSamsungModal();
+    return Boolean(modal && !modal.hidden);
+  }
+
+  function resetSamsungWizard() {
+    selectedSamsungSeries = "";
+    selectedSamsungModel = "";
+    selectedSamsungRepair = "";
+    selectedSamsungOtherDevice = null;
+    selectedSamsungStep = "series";
+    const search = document.querySelector("[data-samsung-model-search]");
+    if (search) search.value = "";
+  }
+
+  function setBrandButtonState(brand = "apple") {
+    document.querySelectorAll("[data-price-brand]").forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.priceBrand === brand);
+    });
+  }
+
+  function getSamsungStepIndex(step = selectedSamsungStep) {
+    return Math.max(0, SAMSUNG_STEPS.indexOf(step));
+  }
+
+  function canAdvanceSamsungStep() {
+    if (selectedSamsungStep === "series") return Boolean(selectedSamsungSeries);
+    if (selectedSamsungStep === "models") return Boolean(selectedSamsungModel);
+    if (selectedSamsungStep === "repairs") return Boolean(selectedSamsungRepair);
+    return false;
+  }
+
+  function focusSamsungStep() {
+    const modal = getSamsungModal();
+    if (!modal || modal.hidden) return;
+    const selectors = {
+      series: "[data-samsung-series] button",
+      models: "[data-samsung-model-search]",
+      repairs: "[data-samsung-repairs] button",
+      summary: "[data-samsung-cta]",
+    };
+    const target = modal.querySelector(selectors[selectedSamsungStep]) || modal.querySelector("[data-samsung-dialog]");
+    if (target && typeof target.focus === "function") {
+      window.setTimeout(() => target.focus({ preventScroll: true }), 30);
+    }
+  }
+
+  function updateSamsungWizardUi() {
+    const modal = getSamsungModal();
+    if (!modal) return;
+    const stepIndex = getSamsungStepIndex();
+    modal.dataset.samsungStep = selectedSamsungStep;
+    modal.querySelectorAll("[data-samsung-step-panel]").forEach((panel) => {
+      panel.hidden = panel.dataset.samsungStepPanel !== selectedSamsungStep;
+    });
+
+    const progress = modal.querySelector("[data-samsung-progress]");
+    if (progress) {
+      progress.innerHTML = SAMSUNG_STEPS.map((step, index) => (
+        `<span class="samsung-modal__progress-step${index < stepIndex ? " is-done" : ""}${index === stepIndex ? " is-active" : ""}"></span>`
+      )).join("");
+    }
+
+    const back = modal.querySelector("[data-samsung-back]");
+    const next = modal.querySelector("[data-samsung-next]");
+    if (back) back.disabled = stepIndex === 0;
+    if (next) {
+      next.hidden = selectedSamsungStep === "summary";
+      next.disabled = !canAdvanceSamsungStep();
+    }
+  }
+
+  function setSamsungStep(step, focus = true) {
+    if (!SAMSUNG_STEPS.includes(step)) return;
+    selectedSamsungStep = step;
+    updateSamsungWizardUi();
+    if (focus) focusSamsungStep();
+  }
+
+  function goToNextSamsungStep() {
+    if (!canAdvanceSamsungStep()) return;
+    if (selectedSamsungStep === "series") setSamsungStep("models");
+    else if (selectedSamsungStep === "models") setSamsungStep("repairs");
+    else if (selectedSamsungStep === "repairs") setSamsungStep("summary");
+  }
+
+  function goToPreviousSamsungStep() {
+    if (selectedSamsungStep === "summary" && selectedSamsungOtherDevice) {
+      selectedSamsungOtherDevice = null;
+      setSamsungStep("series");
+      renderSamsungConfigurator();
+      return;
+    }
+    const index = getSamsungStepIndex();
+    if (index > 0) setSamsungStep(SAMSUNG_STEPS[index - 1]);
+  }
+
+  function openSamsungModal(trigger = null) {
+    const modal = getSamsungModal();
+    if (!modal) return;
+    if (modal.parentElement !== document.body) document.body.appendChild(modal);
+    lastSamsungTrigger = trigger || document.querySelector("[data-price-brand='samsung']");
+    resetSamsungWizard();
+    selectedPriceBrand = "apple";
+    selectedPriceRepair = null;
+    setPriceCtaReady(false);
+    setBrandButtonState("samsung");
+    modal.hidden = false;
+    document.body.classList.add("samsung-modal-open");
+    renderSamsungConfigurator();
+    applyTranslations(getLang());
+    focusSamsungStep();
+    trackEvent("samsung_modal_open", { source: "price_brand_switch" });
+  }
+
+  function closeSamsungModal() {
+    const modal = getSamsungModal();
+    if (!modal || modal.hidden) return;
+    modal.hidden = true;
+    document.body.classList.remove("samsung-modal-open");
+    selectedPriceBrand = "apple";
+    setBrandButtonState("apple");
+    setPriceSelectorMode("apple");
+    trackEvent("samsung_modal_close", { step: selectedSamsungStep });
+    if (lastSamsungTrigger && typeof lastSamsungTrigger.focus === "function") {
+      window.setTimeout(() => lastSamsungTrigger.focus({ preventScroll: true }), 0);
+    }
+  }
+
+  function trapSamsungModalFocus(event) {
+    const modal = getSamsungModal();
+    if (!modal || modal.hidden || event.key !== "Tab") return;
+    const focusable = Array.from(modal.querySelectorAll("a[href], button:not([disabled]):not([hidden]), input:not([disabled]), [tabindex]:not([tabindex='-1'])"))
+      .filter((el) => el.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
   function setPriceSelectorMode(brand) {
-    const isSamsung = brand === "samsung";
-    document.querySelector("[data-price-selector]")?.classList.toggle("is-samsung-mode", isSamsung);
+    document.querySelector("[data-price-selector]")?.classList.toggle("is-samsung-mode", false);
     document.querySelectorAll("[data-price-apple-panel]").forEach((panel) => {
-      panel.hidden = isSamsung;
+      panel.hidden = false;
     });
     const samsungRoot = document.querySelector("[data-samsung-configurator]");
-    if (samsungRoot) samsungRoot.hidden = !isSamsung;
+    if (samsungRoot && !isSamsungModalOpen()) samsungRoot.hidden = true;
 
     const title = document.querySelector(".price-selector-card__title");
     if (title) {
-      title.textContent = resolveI18n(getLang(), isSamsung ? "samsung_config_title" : "price_selector_card_title");
+      title.textContent = resolveI18n(getLang(), "price_selector_card_title");
     }
   }
 
@@ -2922,9 +3094,10 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     SAMSUNG_SERIES.forEach((series) => {
       const button = document.createElement("button");
       button.type = "button";
-      button.className = `samsung-choice-card${series.key === selectedSamsungSeries && !selectedSamsungOtherDevice ? " is-active" : ""}`;
+      button.className = `samsung-choice-card samsung-choice-card--series${series.key === selectedSamsungSeries && !selectedSamsungOtherDevice ? " is-active" : ""}`;
       button.dataset.samsungSeries = series.key;
       button.setAttribute("aria-pressed", String(series.key === selectedSamsungSeries && !selectedSamsungOtherDevice));
+      button.style.setProperty("--samsung-series-bg", `url("${getSamsungSeriesImage(series.key)}")`);
 
       const image = document.createElement("img");
       image.src = getSamsungSeriesImage(series.key);
@@ -2942,11 +3115,12 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       button.addEventListener("click", () => {
         selectedSamsungOtherDevice = null;
         selectedSamsungSeries = series.key;
-        selectedSamsungModel = series.models.find((model) => model === "Galaxy S24") || series.models[0];
-        selectedSamsungRepair = "display";
+        selectedSamsungModel = "";
+        selectedSamsungRepair = "";
         const search = document.querySelector("[data-samsung-model-search]");
         if (search) search.value = "";
         renderSamsungConfigurator();
+        setSamsungStep("models");
         trackEvent("samsung_series_select", { series: series.label });
       });
 
@@ -2960,6 +3134,10 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     if (!container) return;
 
     const lang = getLang();
+    if (!selectedSamsungSeries) {
+      container.innerHTML = "";
+      return;
+    }
     const series = getSamsungSeries();
     const query = String(search?.value || "").trim().toLowerCase();
     const models = series.models.filter((model) => model.toLowerCase().includes(query));
@@ -2993,7 +3171,9 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       button.addEventListener("click", () => {
         selectedSamsungOtherDevice = null;
         selectedSamsungModel = model;
+        selectedSamsungRepair = "";
         renderSamsungConfigurator();
+        setSamsungStep("repairs");
         trackEvent("samsung_model_select", { series: series.label, model });
       });
 
@@ -3007,6 +3187,10 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
 
     const lang = getLang();
     const model = getSamsungCurrentModel();
+    if (!model) {
+      container.innerHTML = "";
+      return;
+    }
     container.innerHTML = "";
 
     SAMSUNG_REPAIRS.forEach((repair) => {
@@ -3035,6 +3219,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
         selectedSamsungOtherDevice = null;
         selectedSamsungRepair = repair.key;
         renderSamsungConfigurator();
+        setSamsungStep("summary");
         trackEvent("samsung_repair_select", {
           model,
           repair: getSamsungRepairLabelByKey(repair.key, lang),
@@ -3074,7 +3259,11 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       button.append(image, name, hint);
       button.addEventListener("click", () => {
         selectedSamsungOtherDevice = device.key;
+        selectedSamsungSeries = "";
+        selectedSamsungModel = "";
+        selectedSamsungRepair = "";
         renderSamsungConfigurator();
+        setSamsungStep("summary");
         trackEvent("samsung_other_device_select", { device: device.key });
       });
 
@@ -3115,12 +3304,15 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     const search = document.querySelector("[data-samsung-model-search]");
     if (search) search.placeholder = resolveI18n(getLang(), "samsung_model_search_placeholder") || "Modell suchen";
 
-    selectedSamsungModel = getSamsungCurrentModel();
+    if (selectedSamsungSeries && selectedSamsungModel && !getSamsungSeries().models.includes(selectedSamsungModel)) {
+      selectedSamsungModel = "";
+    }
     renderSamsungSeries();
     renderSamsungModels();
     renderSamsungRepairs();
     renderSamsungOtherDevices();
     updateSamsungSummary();
+    updateSamsungWizardUi();
   }
 
   function updatePriceSummary(entry, repair) {
@@ -3336,13 +3528,8 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     const modelSelect = document.querySelector("[data-price-model]");
     if (!familySelect || !modelSelect) return;
 
+    if (selectedPriceBrand === "samsung") selectedPriceBrand = "apple";
     setPriceSelectorMode(selectedPriceBrand);
-    if (selectedPriceBrand === "samsung") {
-      selectedPriceRepair = null;
-      setPriceCtaReady(false);
-      renderSamsungConfigurator();
-      return;
-    }
 
     const currentFamily = familySelect.value;
     const entries = getPriceEntries().filter((entry) => entry.brand === selectedPriceBrand);
@@ -3376,19 +3563,18 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
 
     brandButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        selectedPriceBrand = button.dataset.priceBrand || "apple";
-        brandButtons.forEach((item) => item.classList.toggle("is-active", item === button));
+        const brand = button.dataset.priceBrand || "apple";
+        if (brand === "samsung") {
+          trackEvent("brand_select", { brand });
+          openSamsungModal(button);
+          return;
+        }
+        selectedPriceBrand = brand;
+        setBrandButtonState(selectedPriceBrand);
         selectedPriceRepair = null;
         setPriceCtaReady(false);
         familySelect.value = "";
         modelSelect.value = "";
-        if (selectedPriceBrand === "samsung") {
-          selectedSamsungOtherDevice = null;
-          selectedSamsungSeries = "galaxy-s";
-          selectedSamsungModel = "Galaxy S24";
-          selectedSamsungRepair = "display";
-          if (samsungSearch) samsungSearch.value = "";
-        }
         renderPrices();
         trackEvent("brand_select", { brand: selectedPriceBrand });
       });
@@ -3419,6 +3605,20 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     samsungSearch?.addEventListener("input", () => {
       selectedSamsungOtherDevice = null;
       renderSamsungConfigurator();
+    });
+    document.querySelectorAll("[data-samsung-modal-close]").forEach((button) => {
+      button.addEventListener("click", closeSamsungModal);
+    });
+    document.querySelector("[data-samsung-back]")?.addEventListener("click", goToPreviousSamsungStep);
+    document.querySelector("[data-samsung-next]")?.addEventListener("click", goToNextSamsungStep);
+    document.addEventListener("keydown", (event) => {
+      if (!isSamsungModalOpen()) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeSamsungModal();
+        return;
+      }
+      trapSamsungModalFocus(event);
     });
     samsungCta?.addEventListener("click", () => {
       const state = getSamsungSummaryState();
