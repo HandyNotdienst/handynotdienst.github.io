@@ -131,7 +131,7 @@
               </button>
             </div>
 
-            <div class="price-selector-controls" aria-label="Reparaturpreis auswählen">
+            <div class="price-selector-controls" aria-label="Reparaturpreis auswählen" data-price-apple-panel>
               <div class="price-selector-field">
                 <label class="price-selector-label" for="priceFamilySelect" data-i18n="price_selector_family_label">Gerätetyp</label>
                 <select class="price-selector-select" id="priceFamilySelect" data-price-family></select>
@@ -145,7 +145,7 @@
             </div>
           </div>
 
-          <div class="price-selector-preview" aria-live="polite">
+          <div class="price-selector-preview" aria-live="polite" data-price-apple-panel>
             <div class="price-selector-device-frame">
               <picture class="price-selector-picture" data-price-picture>
                 <source type="image/webp" data-price-source-webp>
@@ -158,7 +158,7 @@
             </div>
           </div>
 
-          <div class="price-selector-results">
+          <div class="price-selector-results" data-price-apple-panel>
             <div class="price-selector-results__head">
               <h3 data-i18n="price_selector_services_title">Verfügbare Reparaturen</h3>
               <span data-i18n="price_selector_estimate_label">voraussichtlich</span>
@@ -166,6 +166,103 @@
             <div class="price-service-list" data-price-services></div>
             <p class="price-stock-note" data-i18n="price_stock_note">Ersatzteil-Verfügbarkeit wird beim WhatsApp-Check bestätigt.</p>
             <a class="btn btn--wa price-selector-cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener" data-price-cta data-i18n="price_selector_cta">Per WhatsApp anfragen</a>
+          </div>
+
+          <div class="samsung-configurator samsung-modal" data-samsung-configurator data-samsung-modal role="dialog" aria-modal="true" aria-labelledby="samsungModalTitle" hidden>
+            <button class="samsung-modal__backdrop" type="button" aria-label="Schliessen" data-samsung-modal-close></button>
+            <div class="samsung-modal__dialog" tabindex="-1" data-samsung-dialog>
+              <header class="samsung-modal__header">
+                <div>
+                  <span class="samsung-modal__eyebrow">Samsung Galaxy</span>
+                  <h2 id="samsungModalTitle" data-i18n="samsung_config_title">Reparatur konfigurieren</h2>
+                </div>
+                <button class="samsung-modal__close" type="button" aria-label="Schliessen" data-samsung-modal-close>
+                  <span aria-hidden="true">x</span>
+                </button>
+              </header>
+
+              <div class="samsung-modal__progress" data-samsung-progress aria-hidden="true"></div>
+
+              <div class="samsung-configurator__main">
+              <section class="samsung-step samsung-step--series" aria-labelledby="samsungSeriesTitle" data-samsung-step-panel="series">
+                <span class="samsung-step__eyebrow" data-i18n="samsung_step_series">Schritt 1</span>
+                <h3 id="samsungSeriesTitle" data-i18n="samsung_series_title">Serie wählen</h3>
+                <p data-i18n="samsung_series_hint">Wähle zuerst die Galaxy-Serie. Handy ist bereits vorausgewählt.</p>
+                <div class="samsung-card-grid samsung-card-grid--series" data-samsung-series></div>
+                <div class="samsung-other-inline">
+                  <div>
+                    <h4 data-i18n="samsung_other_title">Andere Geraete</h4>
+                    <p data-i18n="samsung_other_hint">Fuer Tablet, Watch und Laptop bitte Problem kurz beschreiben, damit wir den Preis ermitteln koennen.</p>
+                  </div>
+                  <div class="samsung-card-grid samsung-card-grid--devices" data-samsung-other-devices></div>
+                </div>
+              </section>
+
+              <section class="samsung-step samsung-step--models" aria-labelledby="samsungModelsTitle" data-samsung-step-panel="models" hidden>
+                <span class="samsung-step__eyebrow" data-i18n="samsung_step_model">Schritt 2</span>
+                <h3 id="samsungModelsTitle" data-i18n="samsung_model_title">Modell wählen</h3>
+                <label class="samsung-search">
+                  <span class="sr-only" data-i18n="samsung_model_search_label">Modell suchen</span>
+                  <input type="search" data-samsung-model-search placeholder="Modell suchen" autocomplete="off">
+                </label>
+                <div class="samsung-model-grid" data-samsung-models></div>
+              </section>
+
+              <section class="samsung-step samsung-step--repairs" aria-labelledby="samsungRepairTitle" data-samsung-step-panel="repairs" hidden>
+                <span class="samsung-step__eyebrow" data-i18n="samsung_step_repair">Schritt 3</span>
+                <h3 id="samsungRepairTitle" data-i18n="samsung_repair_title">Schadensart wählen</h3>
+                <p data-i18n="samsung_repair_hint">Wenn du unsicher bist, wähle Diagnose oder Unbekannt.</p>
+                <div class="samsung-card-grid samsung-card-grid--repairs" data-samsung-repairs></div>
+              </section>
+
+              <section class="samsung-step samsung-step--other" aria-labelledby="samsungOtherTitle" hidden>
+                <h3 id="samsungOtherTitle" data-i18n="samsung_other_title">Andere Geräte</h3>
+                <p data-i18n="samsung_other_hint">Für Tablet, Watch und Laptop bitte Problem kurz beschreiben, damit wir den Preis ermitteln können.</p>
+                <div class="samsung-card-grid samsung-card-grid--devices" data-samsung-other-devices></div>
+              </section>
+            </div>
+
+            <section class="samsung-step samsung-step--summary" aria-labelledby="samsungSummaryTitle" data-samsung-step-panel="summary" hidden>
+            <aside class="samsung-summary" aria-live="polite">
+              <div class="samsung-summary__visual">
+                <img src="assets/samsung/series/galaxy-s.png" alt="" loading="lazy" decoding="async" data-samsung-summary-image>
+              </div>
+              <div class="samsung-summary__content">
+                <span class="samsung-summary__eyebrow" data-i18n="samsung_summary_title">Reparaturübersicht</span>
+                <h3 id="samsungSummaryTitle" data-i18n="samsung_summary_title">Reparaturuebersicht</h3>
+                <dl class="samsung-summary__list">
+                  <div>
+                    <dt data-i18n="samsung_summary_device">Gerät</dt>
+                    <dd data-samsung-summary-device>Handy</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="samsung_summary_series">Serie</dt>
+                    <dd data-samsung-summary-series>Galaxy S</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="samsung_summary_model">Modell</dt>
+                    <dd data-samsung-summary-model>Galaxy S24</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="samsung_summary_damage">Schaden</dt>
+                    <dd data-samsung-summary-repair>Display</dd>
+                  </div>
+                </dl>
+                <div class="samsung-summary__price-block">
+                  <span data-i18n="samsung_summary_price_label">Reparaturpreis</span>
+                  <strong data-samsung-summary-price>Einfach fragen</strong>
+                </div>
+                <p data-samsung-summary-note data-i18n="samsung_summary_note">Preise sind Richtwerte. Verfügbarkeit und Endpreis bestätigen wir per WhatsApp.</p>
+                <a class="btn btn--wa samsung-summary__cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener" data-samsung-cta data-i18n="samsung_summary_cta">Jetzt per WhatsApp anfragen</a>
+              </div>
+            </aside>
+            </section>
+              <footer class="samsung-modal__footer">
+                <button class="btn btn--ghost samsung-modal__nav" type="button" data-samsung-back data-i18n="samsung_back">Zurueck</button>
+                <button class="btn btn--ghost samsung-modal__nav" type="button" data-samsung-modal-close data-i18n="samsung_close">Schliessen</button>
+                <button class="btn btn--wa samsung-modal__nav samsung-modal__next" type="button" data-samsung-next data-i18n="samsung_next">Weiter</button>
+              </footer>
+            </div>
           </div>
         </div>
 

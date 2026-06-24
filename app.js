@@ -2063,6 +2063,152 @@
     },
   };
 
+  const SAMSUNG_I18N = {
+    de: {
+      samsung_config_title: "Reparatur konfigurieren",
+      samsung_step_series: "Schritt 1", samsung_series_title: "Serie wählen", samsung_series_hint: "Wähle zuerst die Galaxy-Serie. Handy ist bereits vorausgewählt.",
+      samsung_step_model: "Schritt 2", samsung_model_title: "Modell wählen", samsung_model_search_label: "Modell suchen", samsung_model_search_placeholder: "Modell suchen",
+      samsung_no_models: "Kein Modell gefunden. Schreib uns kurz per WhatsApp.",
+      samsung_step_repair: "Schritt 3", samsung_repair_title: "Schadensart wählen", samsung_repair_hint: "Wenn du unsicher bist, wähle Diagnose oder Unbekannt.",
+      samsung_other_title: "Andere Geräte", samsung_other_hint: "Für Tablet, Watch und Laptop bitte Problem kurz beschreiben, damit wir den Preis ermitteln können.",
+      samsung_device_phone: "Handy", samsung_device_tablet: "Tablet", samsung_device_watch: "Watch", samsung_device_laptop: "Laptop",
+      samsung_summary_title: "Reparaturübersicht", samsung_summary_device: "Gerät", samsung_summary_series: "Serie", samsung_summary_model: "Modell", samsung_summary_damage: "Schaden",
+      samsung_summary_price_label: "Reparaturpreis", samsung_summary_note: "Preise sind Richtwerte. Verfügbarkeit und Endpreis bestätigen wir per WhatsApp.", samsung_summary_cta: "Jetzt per WhatsApp anfragen",
+      samsung_price_ask: "Einfach fragen", samsung_other_summary_note: "Bitte Modell und Problem kurz beschreiben, damit wir den Preis ermitteln können.", samsung_none: "Noch nicht gewählt",
+      samsung_repair_display: "Display", samsung_repair_battery: "Akku", samsung_repair_port: "Ladebuchse", samsung_repair_backglass: "Rückseite", samsung_repair_camera: "Kamera", samsung_repair_water: "Wasserschaden", samsung_repair_unknown: "Unbekannt / Diagnose",
+    },
+    uk: {
+      samsung_config_title: "Налаштувати ремонт",
+      samsung_step_series: "Крок 1", samsung_series_title: "Оберіть серію", samsung_series_hint: "Спочатку оберіть серію Galaxy. Смартфон уже вибраний.",
+      samsung_step_model: "Крок 2", samsung_model_title: "Оберіть модель", samsung_model_search_label: "Пошук моделі", samsung_model_search_placeholder: "Пошук моделі",
+      samsung_no_models: "Модель не знайдено. Напишіть нам у WhatsApp.",
+      samsung_step_repair: "Крок 3", samsung_repair_title: "Оберіть тип поломки", samsung_repair_hint: "Якщо не впевнені, оберіть діагностику або невідомо.",
+      samsung_other_title: "Інші пристрої", samsung_other_hint: "Для Tablet, Watch і Laptop коротко опишіть проблему, щоб ми могли визначити ціну.",
+      samsung_device_phone: "Смартфон", samsung_device_tablet: "Tablet", samsung_device_watch: "Watch", samsung_device_laptop: "Laptop",
+      samsung_summary_title: "Огляд ремонту", samsung_summary_device: "Пристрій", samsung_summary_series: "Серія", samsung_summary_model: "Модель", samsung_summary_damage: "Поломка",
+      samsung_summary_price_label: "Ціна ремонту", samsung_summary_note: "Ціни орієнтовні. Наявність і фінальну ціну підтвердимо у WhatsApp.", samsung_summary_cta: "Запитати у WhatsApp",
+      samsung_price_ask: "Просто запитати", samsung_other_summary_note: "Опишіть модель і проблему, щоб ми могли визначити ціну.", samsung_none: "Ще не вибрано",
+      samsung_repair_display: "Дисплей", samsung_repair_battery: "Акумулятор", samsung_repair_port: "Роз'єм зарядки", samsung_repair_backglass: "Задня кришка", samsung_repair_camera: "Камера", samsung_repair_water: "Пошкодження водою", samsung_repair_unknown: "Невідомо / діагностика",
+    },
+    en: {
+      samsung_config_title: "Configure repair",
+      samsung_step_series: "Step 1", samsung_series_title: "Choose series", samsung_series_hint: "Choose the Galaxy series first. Phone is already selected.",
+      samsung_step_model: "Step 2", samsung_model_title: "Choose model", samsung_model_search_label: "Search model", samsung_model_search_placeholder: "Search model",
+      samsung_no_models: "No model found. Send us a quick WhatsApp message.",
+      samsung_step_repair: "Step 3", samsung_repair_title: "Choose damage", samsung_repair_hint: "If you are unsure, choose diagnosis or unknown.",
+      samsung_other_title: "Other devices", samsung_other_hint: "For tablet, watch and laptop, briefly describe the issue so we can calculate the price.",
+      samsung_device_phone: "Phone", samsung_device_tablet: "Tablet", samsung_device_watch: "Watch", samsung_device_laptop: "Laptop",
+      samsung_summary_title: "Repair overview", samsung_summary_device: "Device", samsung_summary_series: "Series", samsung_summary_model: "Model", samsung_summary_damage: "Damage",
+      samsung_summary_price_label: "Repair price", samsung_summary_note: "Prices are estimates. Availability and final price are confirmed on WhatsApp.", samsung_summary_cta: "Ask via WhatsApp",
+      samsung_price_ask: "Simply ask", samsung_other_summary_note: "Please describe model and issue so we can calculate the price.", samsung_none: "Not selected yet",
+      samsung_repair_display: "Display", samsung_repair_battery: "Battery", samsung_repair_port: "Charging port", samsung_repair_backglass: "Back cover", samsung_repair_camera: "Camera", samsung_repair_water: "Water damage", samsung_repair_unknown: "Unknown / diagnosis",
+    },
+    ru: {
+      samsung_config_title: "Настроить ремонт",
+      samsung_step_series: "Шаг 1", samsung_series_title: "Выберите серию", samsung_series_hint: "Сначала выберите серию Galaxy. Смартфон уже выбран.",
+      samsung_step_model: "Шаг 2", samsung_model_title: "Выберите модель", samsung_model_search_label: "Поиск модели", samsung_model_search_placeholder: "Поиск модели",
+      samsung_no_models: "Модель не найдена. Напишите нам в WhatsApp.",
+      samsung_step_repair: "Шаг 3", samsung_repair_title: "Выберите поломку", samsung_repair_hint: "Если не уверены, выберите диагностику или неизвестно.",
+      samsung_other_title: "Другие устройства", samsung_other_hint: "Для Tablet, Watch и Laptop кратко опишите проблему, чтобы мы рассчитали цену.",
+      samsung_device_phone: "Смартфон", samsung_device_tablet: "Tablet", samsung_device_watch: "Watch", samsung_device_laptop: "Laptop",
+      samsung_summary_title: "Обзор ремонта", samsung_summary_device: "Устройство", samsung_summary_series: "Серия", samsung_summary_model: "Модель", samsung_summary_damage: "Поломка",
+      samsung_summary_price_label: "Цена ремонта", samsung_summary_note: "Цены ориентировочные. Наличие и финальную цену подтвердим в WhatsApp.", samsung_summary_cta: "Спросить в WhatsApp",
+      samsung_price_ask: "Просто спросить", samsung_other_summary_note: "Опишите модель и проблему, чтобы мы рассчитали цену.", samsung_none: "Еще не выбрано",
+      samsung_repair_display: "Дисплей", samsung_repair_battery: "Аккумулятор", samsung_repair_port: "Разъем зарядки", samsung_repair_backglass: "Задняя крышка", samsung_repair_camera: "Камера", samsung_repair_water: "Попадание воды", samsung_repair_unknown: "Неизвестно / диагностика",
+    },
+    pl: {
+      samsung_config_title: "Skonfiguruj naprawę",
+      samsung_step_series: "Krok 1", samsung_series_title: "Wybierz serię", samsung_series_hint: "Najpierw wybierz serię Galaxy. Telefon jest już wybrany.",
+      samsung_step_model: "Krok 2", samsung_model_title: "Wybierz model", samsung_model_search_label: "Szukaj modelu", samsung_model_search_placeholder: "Szukaj modelu",
+      samsung_no_models: "Nie znaleziono modelu. Napisz do nas na WhatsApp.",
+      samsung_step_repair: "Krok 3", samsung_repair_title: "Wybierz uszkodzenie", samsung_repair_hint: "Jeśli nie masz pewności, wybierz diagnostykę lub nieznane.",
+      samsung_other_title: "Inne urządzenia", samsung_other_hint: "Dla tabletu, zegarka i laptopa opisz krótko problem, abyśmy mogli ustalić cenę.",
+      samsung_device_phone: "Telefon", samsung_device_tablet: "Tablet", samsung_device_watch: "Watch", samsung_device_laptop: "Laptop",
+      samsung_summary_title: "Podsumowanie naprawy", samsung_summary_device: "Urządzenie", samsung_summary_series: "Seria", samsung_summary_model: "Model", samsung_summary_damage: "Uszkodzenie",
+      samsung_summary_price_label: "Cena naprawy", samsung_summary_note: "Ceny są orientacyjne. Dostępność i cenę końcową potwierdzimy przez WhatsApp.", samsung_summary_cta: "Zapytaj przez WhatsApp",
+      samsung_price_ask: "Po prostu zapytaj", samsung_other_summary_note: "Opisz model i problem, abyśmy mogli ustalić cenę.", samsung_none: "Jeszcze nie wybrano",
+      samsung_repair_display: "Wyświetlacz", samsung_repair_battery: "Bateria", samsung_repair_port: "Gniazdo ładowania", samsung_repair_backglass: "Tylna obudowa", samsung_repair_camera: "Kamera", samsung_repair_water: "Zalanie", samsung_repair_unknown: "Nieznane / diagnostyka",
+    },
+    it: {
+      samsung_config_title: "Configura riparazione",
+      samsung_step_series: "Passo 1", samsung_series_title: "Scegli la serie", samsung_series_hint: "Scegli prima la serie Galaxy. Il telefono è già selezionato.",
+      samsung_step_model: "Passo 2", samsung_model_title: "Scegli il modello", samsung_model_search_label: "Cerca modello", samsung_model_search_placeholder: "Cerca modello",
+      samsung_no_models: "Nessun modello trovato. Scrivici su WhatsApp.",
+      samsung_step_repair: "Passo 3", samsung_repair_title: "Scegli il danno", samsung_repair_hint: "Se non sei sicuro, scegli diagnosi o sconosciuto.",
+      samsung_other_title: "Altri dispositivi", samsung_other_hint: "Per tablet, watch e laptop descrivi brevemente il problema, così calcoliamo il prezzo.",
+      samsung_device_phone: "Telefono", samsung_device_tablet: "Tablet", samsung_device_watch: "Watch", samsung_device_laptop: "Laptop",
+      samsung_summary_title: "Riepilogo riparazione", samsung_summary_device: "Dispositivo", samsung_summary_series: "Serie", samsung_summary_model: "Modello", samsung_summary_damage: "Danno",
+      samsung_summary_price_label: "Prezzo riparazione", samsung_summary_note: "I prezzi sono indicativi. Disponibilità e prezzo finale vengono confermati su WhatsApp.", samsung_summary_cta: "Chiedi su WhatsApp",
+      samsung_price_ask: "Chiedi semplicemente", samsung_other_summary_note: "Descrivi modello e problema, così calcoliamo il prezzo.", samsung_none: "Non ancora selezionato",
+      samsung_repair_display: "Display", samsung_repair_battery: "Batteria", samsung_repair_port: "Porta di ricarica", samsung_repair_backglass: "Retro", samsung_repair_camera: "Fotocamera", samsung_repair_water: "Danno da acqua", samsung_repair_unknown: "Sconosciuto / diagnosi",
+    },
+    ar: {
+      samsung_config_title: "إعداد الإصلاح",
+      samsung_step_series: "الخطوة 1", samsung_series_title: "اختر السلسلة", samsung_series_hint: "اختر سلسلة Galaxy أولاً. الهاتف محدد مسبقاً.",
+      samsung_step_model: "الخطوة 2", samsung_model_title: "اختر الموديل", samsung_model_search_label: "بحث عن موديل", samsung_model_search_placeholder: "بحث عن موديل",
+      samsung_no_models: "لم يتم العثور على موديل. راسلنا عبر واتساب.",
+      samsung_step_repair: "الخطوة 3", samsung_repair_title: "اختر نوع العطل", samsung_repair_hint: "إذا لم تكن متأكداً، اختر التشخيص أو غير معروف.",
+      samsung_other_title: "أجهزة أخرى", samsung_other_hint: "للتابلت والساعة واللابتوب، اشرح المشكلة باختصار كي نحدد السعر.",
+      samsung_device_phone: "هاتف", samsung_device_tablet: "تابلت", samsung_device_watch: "ساعة", samsung_device_laptop: "لابتوب",
+      samsung_summary_title: "ملخص الإصلاح", samsung_summary_device: "الجهاز", samsung_summary_series: "السلسلة", samsung_summary_model: "الموديل", samsung_summary_damage: "العطل",
+      samsung_summary_price_label: "سعر الإصلاح", samsung_summary_note: "الأسعار تقديرية. نؤكد التوفر والسعر النهائي عبر واتساب.", samsung_summary_cta: "اسأل عبر واتساب",
+      samsung_price_ask: "اسأل ببساطة", samsung_other_summary_note: "يرجى وصف الموديل والمشكلة كي نحدد السعر.", samsung_none: "لم يتم الاختيار بعد",
+      samsung_repair_display: "الشاشة", samsung_repair_battery: "البطارية", samsung_repair_port: "منفذ الشحن", samsung_repair_backglass: "الغطاء الخلفي", samsung_repair_camera: "الكاميرا", samsung_repair_water: "ضرر الماء", samsung_repair_unknown: "غير معروف / تشخيص",
+    },
+    ku: {
+      samsung_config_title: "Çakkirinê saz bike",
+      samsung_step_series: "Gav 1", samsung_series_title: "Seriyê hilbijêre", samsung_series_hint: "Pêşî seriya Galaxy hilbijêre. Telefon jixwe hilbijartî ye.",
+      samsung_step_model: "Gav 2", samsung_model_title: "Modelê hilbijêre", samsung_model_search_label: "Modelê bigere", samsung_model_search_placeholder: "Modelê bigere",
+      samsung_no_models: "Model nehat dîtin. Li WhatsAppê ji me re binivîse.",
+      samsung_step_repair: "Gav 3", samsung_repair_title: "Cureyê zirarê hilbijêre", samsung_repair_hint: "Ger ne bawer î, teşhîs an nenas hilbijêre.",
+      samsung_other_title: "Cîhazên din", samsung_other_hint: "Ji bo tablet, watch û laptop pirsgirêkê kurt rave bike, da ku em bihayê diyar bikin.",
+      samsung_device_phone: "Telefon", samsung_device_tablet: "Tablet", samsung_device_watch: "Watch", samsung_device_laptop: "Laptop",
+      samsung_summary_title: "Kurteya çakkirinê", samsung_summary_device: "Cîhaz", samsung_summary_series: "Serî", samsung_summary_model: "Model", samsung_summary_damage: "Zirar",
+      samsung_summary_price_label: "Bihayê çakkirinê", samsung_summary_note: "Biha texmînî ne. Amadeyî û bihayê dawî li WhatsAppê piştrast dikin.", samsung_summary_cta: "Li WhatsAppê bipirse",
+      samsung_price_ask: "Tenê bipirse", samsung_other_summary_note: "Model û pirsgirêkê rave bike, da ku em bihayê diyar bikin.", samsung_none: "Hîn nehatiye hilbijartin",
+      samsung_repair_display: "Display", samsung_repair_battery: "Battery", samsung_repair_port: "Porta şarjê", samsung_repair_backglass: "Pişt", samsung_repair_camera: "Kamera", samsung_repair_water: "Zirara avê", samsung_repair_unknown: "Nenas / teşhîs",
+    },
+    fr: {
+      samsung_config_title: "Configurer la réparation",
+      samsung_step_series: "Étape 1", samsung_series_title: "Choisir la série", samsung_series_hint: "Choisis d'abord la série Galaxy. Téléphone est déjà sélectionné.",
+      samsung_step_model: "Étape 2", samsung_model_title: "Choisir le modèle", samsung_model_search_label: "Rechercher un modèle", samsung_model_search_placeholder: "Rechercher un modèle",
+      samsung_no_models: "Aucun modèle trouvé. Écris-nous sur WhatsApp.",
+      samsung_step_repair: "Étape 3", samsung_repair_title: "Choisir le problème", samsung_repair_hint: "Si tu n'es pas sûr, choisis diagnostic ou inconnu.",
+      samsung_other_title: "Autres appareils", samsung_other_hint: "Pour tablette, watch et ordinateur portable, décris brièvement le problème afin que nous puissions estimer le prix.",
+      samsung_device_phone: "Téléphone", samsung_device_tablet: "Tablette", samsung_device_watch: "Watch", samsung_device_laptop: "Ordinateur",
+      samsung_summary_title: "Résumé réparation", samsung_summary_device: "Appareil", samsung_summary_series: "Série", samsung_summary_model: "Modèle", samsung_summary_damage: "Problème",
+      samsung_summary_price_label: "Prix réparation", samsung_summary_note: "Les prix sont indicatifs. Disponibilité et prix final sont confirmés sur WhatsApp.", samsung_summary_cta: "Demander sur WhatsApp",
+      samsung_price_ask: "Demander simplement", samsung_other_summary_note: "Décris le modèle et le problème afin que nous puissions estimer le prix.", samsung_none: "Pas encore choisi",
+      samsung_repair_display: "Écran", samsung_repair_battery: "Batterie", samsung_repair_port: "Port de charge", samsung_repair_backglass: "Dos", samsung_repair_camera: "Caméra", samsung_repair_water: "Dégât des eaux", samsung_repair_unknown: "Inconnu / diagnostic",
+    },
+    sl: {
+      samsung_config_title: "Konfiguriraj popravilo",
+      samsung_step_series: "Korak 1", samsung_series_title: "Izberi serijo", samsung_series_hint: "Najprej izberi serijo Galaxy. Telefon je že izbran.",
+      samsung_step_model: "Korak 2", samsung_model_title: "Izberi model", samsung_model_search_label: "Išči model", samsung_model_search_placeholder: "Išči model",
+      samsung_no_models: "Model ni najden. Piši nam na WhatsApp.",
+      samsung_step_repair: "Korak 3", samsung_repair_title: "Izberi okvaro", samsung_repair_hint: "Če nisi prepričan, izberi diagnostiko ali neznano.",
+      samsung_other_title: "Druge naprave", samsung_other_hint: "Za tablet, watch in laptop na kratko opiši težavo, da lahko določimo ceno.",
+      samsung_device_phone: "Telefon", samsung_device_tablet: "Tablet", samsung_device_watch: "Watch", samsung_device_laptop: "Laptop",
+      samsung_summary_title: "Pregled popravila", samsung_summary_device: "Naprava", samsung_summary_series: "Serija", samsung_summary_model: "Model", samsung_summary_damage: "Okvara",
+      samsung_summary_price_label: "Cena popravila", samsung_summary_note: "Cene so okvirne. Dobavljivost in končno ceno potrdimo prek WhatsAppa.", samsung_summary_cta: "Vprašaj prek WhatsAppa",
+      samsung_price_ask: "Preprosto vprašaj", samsung_other_summary_note: "Opiši model in težavo, da lahko določimo ceno.", samsung_none: "Še ni izbrano",
+      samsung_repair_display: "Zaslon", samsung_repair_battery: "Baterija", samsung_repair_port: "Polnilni priključek", samsung_repair_backglass: "Zadnja stran", samsung_repair_camera: "Kamera", samsung_repair_water: "Poškodba zaradi vode", samsung_repair_unknown: "Neznano / diagnostika",
+    },
+  };
+
+  const SAMSUNG_MODAL_I18N = {
+    de: { samsung_series_hint: "Waehle zuerst die Galaxy-Serie. Danach fuehren wir dich Schritt fuer Schritt weiter.", samsung_back: "Zurueck", samsung_next: "Weiter", samsung_close: "Schliessen" },
+    uk: { samsung_series_hint: "Спочатку оберіть серію Galaxy. Далі ми проведемо вас крок за кроком.", samsung_back: "Назад", samsung_next: "Далі", samsung_close: "Закрити" },
+    en: { samsung_series_hint: "Choose the Galaxy series first. Then we guide you step by step.", samsung_back: "Back", samsung_next: "Next", samsung_close: "Close" },
+    ru: { samsung_series_hint: "Сначала выберите серию Galaxy. Затем мы проведем вас шаг за шагом.", samsung_back: "Назад", samsung_next: "Далее", samsung_close: "Закрыть" },
+    pl: { samsung_series_hint: "Najpierw wybierz serię Galaxy. Potem poprowadzimy Cię krok po kroku.", samsung_back: "Wstecz", samsung_next: "Dalej", samsung_close: "Zamknij" },
+    it: { samsung_series_hint: "Scegli prima la serie Galaxy. Poi ti guidiamo passo dopo passo.", samsung_back: "Indietro", samsung_next: "Avanti", samsung_close: "Chiudi" },
+    ar: { samsung_series_hint: "اختر سلسلة Galaxy أولاً. بعدها نرشدك خطوة بخطوة.", samsung_back: "رجوع", samsung_next: "التالي", samsung_close: "إغلاق" },
+    ku: { samsung_series_hint: "Pêşî seriya Galaxy hilbijêre. Paşê em te gav bi gav rêber dikin.", samsung_back: "Paşve", samsung_next: "Pêşve", samsung_close: "Bigire" },
+    fr: { samsung_series_hint: "Choisis d'abord la série Galaxy. Ensuite nous te guidons étape par étape.", samsung_back: "Retour", samsung_next: "Suivant", samsung_close: "Fermer" },
+    sl: { samsung_series_hint: "Najprej izberi serijo Galaxy. Nato te vodimo korak za korakom.", samsung_back: "Nazaj", samsung_next: "Naprej", samsung_close: "Zapri" },
+  };
+
   Object.entries(EXTRA_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...GLOBAL_I18N.de, ...values };
   });
@@ -2073,6 +2219,12 @@
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
   Object.entries(THEME_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
+  Object.entries(SAMSUNG_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
+  Object.entries(SAMSUNG_MODAL_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
 
@@ -2399,8 +2551,152 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     samsung: "assets/after-phone.png",
   };
 
+  const SAMSUNG_ASSETS = {
+    device: {
+      phone: "assets/samsung/device/phone.png",
+      tablet: "assets/samsung/device/tablet.png",
+      watch: "assets/samsung/device/watch.png",
+      laptop: "assets/samsung/device/laptop.png",
+    },
+    series: {
+      "galaxy-s": "assets/samsung/series/galaxy-s.png",
+      "galaxy-a": "assets/samsung/series/galaxy-a.png",
+      "galaxy-z-flip": "assets/samsung/series/galaxy-z-flip.png",
+      "galaxy-z-fold": "assets/samsung/series/galaxy-z-fold.png",
+      "galaxy-note": "assets/samsung/series/galaxy-note.png",
+      "galaxy-m": "assets/samsung/series/galaxy-m.png",
+      "galaxy-xcover": "assets/samsung/series/galaxy-xcover.png",
+    },
+    repair: {
+      display: "assets/samsung/icons/display.png",
+      battery: "assets/samsung/icons/battery.png",
+      port: "assets/samsung/icons/port.png",
+      backglass: "assets/samsung/icons/backglass.png",
+      camera: "assets/samsung/icons/camera.png",
+      water: "assets/samsung/icons/water.png",
+      unknown: "assets/samsung/icons/unknown.png",
+    },
+  };
+
+  const SAMSUNG_SERIES = [
+    { key: "galaxy-s", label: "Galaxy S", models: ["Galaxy S10e", "Galaxy S10", "Galaxy S10+", "Galaxy S10 5G", "Galaxy S20", "Galaxy S20+", "Galaxy S20 Ultra", "Galaxy S20 FE", "Galaxy S21", "Galaxy S21+", "Galaxy S21 Ultra", "Galaxy S21 FE", "Galaxy S22", "Galaxy S22+", "Galaxy S22 Ultra", "Galaxy S23", "Galaxy S23+", "Galaxy S23 Ultra", "Galaxy S23 FE", "Galaxy S24", "Galaxy S24+", "Galaxy S24 Ultra", "Galaxy S24 FE", "Galaxy S25", "Galaxy S25+", "Galaxy S25 Ultra", "Galaxy S25 Edge", "Galaxy S25 FE"] },
+    { key: "galaxy-a", label: "Galaxy A", models: ["Galaxy A01", "Galaxy A02", "Galaxy A03", "Galaxy A04", "Galaxy A05", "Galaxy A06", "Galaxy A10", "Galaxy A11", "Galaxy A12", "Galaxy A13", "Galaxy A14", "Galaxy A15", "Galaxy A16", "Galaxy A20", "Galaxy A20e", "Galaxy A21", "Galaxy A22", "Galaxy A23", "Galaxy A24", "Galaxy A25", "Galaxy A26", "Galaxy A30", "Galaxy A31", "Galaxy A32", "Galaxy A33", "Galaxy A34", "Galaxy A35", "Galaxy A36", "Galaxy A50", "Galaxy A51", "Galaxy A52", "Galaxy A53", "Galaxy A54", "Galaxy A55", "Galaxy A56", "Galaxy A70", "Galaxy A71", "Galaxy A72", "Galaxy A73", "Galaxy A80", "Galaxy A90 5G"] },
+    { key: "galaxy-z-flip", label: "Galaxy Z Flip", models: ["Galaxy Z Flip", "Galaxy Z Flip 5G", "Galaxy Z Flip3", "Galaxy Z Flip4", "Galaxy Z Flip5", "Galaxy Z Flip6", "Galaxy Z Flip7", "Galaxy Z Flip7 FE"] },
+    { key: "galaxy-z-fold", label: "Galaxy Z Fold", models: ["Galaxy Fold", "Galaxy Z Fold2", "Galaxy Z Fold3", "Galaxy Z Fold4", "Galaxy Z Fold5", "Galaxy Z Fold6", "Galaxy Z Fold7", "Galaxy Z Fold Special Edition"] },
+    { key: "galaxy-note", label: "Galaxy Note", models: ["Galaxy Note10", "Galaxy Note10+", "Galaxy Note20", "Galaxy Note20 Ultra"] },
+    { key: "galaxy-m", label: "Galaxy M", models: ["Galaxy M10", "Galaxy M10s", "Galaxy M20", "Galaxy M21", "Galaxy M30", "Galaxy M30s", "Galaxy M31", "Galaxy M31s", "Galaxy M32", "Galaxy M33", "Galaxy M34", "Galaxy M35", "Galaxy M40", "Galaxy M51", "Galaxy M52", "Galaxy M53", "Galaxy M54", "Galaxy M55", "Galaxy M56", "Galaxy M05", "Galaxy M15", "Galaxy M16"] },
+    { key: "galaxy-xcover", label: "Galaxy XCover", models: ["Galaxy XCover Pro", "Galaxy XCover 5", "Galaxy XCover 6 Pro", "Galaxy XCover 7"] },
+  ];
+
+  const SAMSUNG_REPAIRS = [
+    { key: "display", i18n: "samsung_repair_display", image: SAMSUNG_ASSETS.repair.display },
+    { key: "battery", i18n: "samsung_repair_battery", image: SAMSUNG_ASSETS.repair.battery },
+    { key: "port", i18n: "samsung_repair_port", image: SAMSUNG_ASSETS.repair.port },
+    { key: "backglass", i18n: "samsung_repair_backglass", image: SAMSUNG_ASSETS.repair.backglass },
+    { key: "camera", i18n: "samsung_repair_camera", image: SAMSUNG_ASSETS.repair.camera, askOnly: true },
+    { key: "water", i18n: "samsung_repair_water", image: SAMSUNG_ASSETS.repair.water, askOnly: true },
+    { key: "unknown", i18n: "samsung_repair_unknown", image: SAMSUNG_ASSETS.repair.unknown, askOnly: true },
+  ];
+
+  const SAMSUNG_OTHER_DEVICES = [
+    { key: "tablet", i18n: "samsung_device_tablet", image: SAMSUNG_ASSETS.device.tablet, modelImage: "assets/samsung/models/galaxy-tab.png" },
+    { key: "watch", i18n: "samsung_device_watch", image: SAMSUNG_ASSETS.device.watch },
+    { key: "laptop", i18n: "samsung_device_laptop", image: SAMSUNG_ASSETS.device.laptop, modelImage: "assets/samsung/models/galaxy-laptop.png" },
+  ];
+
+  const SAMSUNG_PRICE_MAP = {
+    "Galaxy S10e": { display: "199€", battery: "79€", port: "59€", backglass: "79€" },
+    "Galaxy S10": { display: "219€", battery: "79€", port: "59€", backglass: "79€" },
+    "Galaxy S10+": { display: "229€", battery: "89€", port: "59€", backglass: "79€" },
+    "Galaxy S10 5G": { battery: "89€" },
+    "Galaxy S20": { display: "220€", battery: "79€", port: "59€", backglass: "79€" },
+    "Galaxy S20+": { display: "259€", battery: "89€", port: "59€", backglass: "79€" },
+    "Galaxy S20 Ultra": { display: "299€", battery: "99€", port: "69€", backglass: "89€" },
+    "Galaxy S20 FE": { display: "229€", battery: "79€", port: "59€", backglass: "79€" },
+    "Galaxy S21": { display: "179€", battery: "79€", port: "69€", backglass: "89€" },
+    "Galaxy S21+": { display: "199€", battery: "89€", port: "69€", backglass: "89€" },
+    "Galaxy S21 Ultra": { display: "299€", battery: "99€", port: "69€", backglass: "89€" },
+    "Galaxy S21 FE": { display: "220€", battery: "89€", port: "69€", backglass: "89€" },
+    "Galaxy S22": { display: "239€", battery: "89€", port: "69€", backglass: "89€" },
+    "Galaxy S22+": { display: "269€", battery: "89€", port: "69€", backglass: "89€" },
+    "Galaxy S22 Ultra": { display: "339€", battery: "99€", port: "79€", backglass: "99€" },
+    "Galaxy S23": { display: "239€", battery: "99€", port: "79€", backglass: "99€" },
+    "Galaxy S23+": { display: "269€", battery: "99€", port: "79€", backglass: "99€" },
+    "Galaxy S23 Ultra": { display: "349€", battery: "109€", port: "89€", backglass: "109€" },
+    "Galaxy S24": { display: "259€", port: "79€", backglass: "109€" },
+    "Galaxy S24+": { display: "289€", battery: "89€", port: "79€", backglass: "109€" },
+    "Galaxy S24 Ultra": { display: "339€", battery: "99€", port: "89€", backglass: "120€" },
+    "Galaxy S25": { display: "189€", battery: "89€", port: "89€", backglass: "99€" },
+    "Galaxy S25+": { display: "249€", battery: "99€", port: "89€", backglass: "109€" },
+    "Galaxy S25 Ultra": { display: "289€", port: "99€", backglass: "120€" },
+    "Galaxy A12": { battery: "69€" },
+    "Galaxy A13": { battery: "69€" },
+    "Galaxy A14": { battery: "79€" },
+    "Galaxy A15": { battery: "69€" },
+    "Galaxy A16": { battery: "79€" },
+    "Galaxy A23": { battery: "79€" },
+    "Galaxy A24": { battery: "79€" },
+    "Galaxy A34": { battery: "79€" },
+    "Galaxy A50": { battery: "69€" },
+    "Galaxy A51": { battery: "69€" },
+    "Galaxy A52": { battery: "79€" },
+    "Galaxy A53": { battery: "79€" },
+    "Galaxy A54": { battery: "79€" },
+    "Galaxy Z Flip3": { battery: "109€" },
+    "Galaxy Z Flip4": { battery: "119€" },
+    "Galaxy Z Flip5": { battery: "119€" },
+    "Galaxy Z Fold2": { battery: "129€" },
+    "Galaxy Z Fold3": { battery: "129€" },
+    "Galaxy Z Fold4": { battery: "139€" },
+    "Galaxy Z Fold5": { battery: "139€" },
+    "Galaxy Note10": { battery: "89€" },
+    "Galaxy Note10+": { battery: "89€" },
+    "Galaxy Note20": { battery: "89€" },
+    "Galaxy Note20 Ultra": { battery: "99€" },
+  };
+
+  const SAMSUNG_MODEL_IMAGES = {
+    "Galaxy S10e": "assets/samsung/models/galaxy-s10-family.jpeg",
+    "Galaxy S10": "assets/samsung/models/galaxy-s10-family.jpeg",
+    "Galaxy S10+": "assets/samsung/models/galaxy-s10-family.jpeg",
+    "Galaxy S20": "assets/samsung/models/galaxy-s20-family.jpeg",
+    "Galaxy S20+": "assets/samsung/models/galaxy-s20-family.jpeg",
+    "Galaxy S20 Ultra": "assets/samsung/models/galaxy-s20-family.jpeg",
+    "Galaxy S20 FE": "assets/samsung/models/galaxy-s20-family.jpeg",
+    "Galaxy S21": "assets/samsung/models/galaxy-s21-family.jpeg",
+    "Galaxy S21+": "assets/samsung/models/galaxy-s21-family.jpeg",
+    "Galaxy S21 Ultra": "assets/samsung/models/galaxy-s21-family.jpeg",
+    "Galaxy S21 FE": "assets/samsung/models/galaxy-s21-family.jpeg",
+    "Galaxy S22": "assets/samsung/models/galaxy-s22-family.jpeg",
+    "Galaxy S22+": "assets/samsung/models/galaxy-s22-family.jpeg",
+    "Galaxy S22 Ultra": "assets/samsung/models/galaxy-s22-family.jpeg",
+    "Galaxy S23": "assets/samsung/models/galaxy-s23-family.jpeg",
+    "Galaxy S23+": "assets/samsung/models/galaxy-s23-family.jpeg",
+    "Galaxy S23 Ultra": "assets/samsung/models/galaxy-s23-family.jpeg",
+    "Galaxy S24": "assets/samsung/models/galaxy-s24.jpeg",
+    "Galaxy S24+": "assets/samsung/models/galaxy-s24-family.jpeg",
+    "Galaxy S24 Ultra": "assets/samsung/models/galaxy-s24-ultra.jpeg",
+    "Galaxy S25": "assets/samsung/models/galaxy-s25.jpeg",
+    "Galaxy S25+": "assets/samsung/models/galaxy-s25-family.jpeg",
+    "Galaxy S25 Ultra": "assets/samsung/models/galaxy-s25-family.jpeg",
+    "Galaxy S25 Edge": "assets/samsung/models/galaxy-s25-edge.jpeg",
+    "Galaxy A16": "assets/samsung/models/galaxy-a16.png",
+    "Galaxy A26": "assets/samsung/models/galaxy-a26.png",
+    "Galaxy A36": "assets/samsung/models/galaxy-a36.png",
+    "Galaxy A56": "assets/samsung/models/galaxy-a56.png",
+    "Galaxy Z Flip7": "assets/samsung/models/galaxy-z-flip7.png",
+    "Galaxy Z Fold7": "assets/samsung/models/galaxy-z-fold7.png",
+  };
+
   let selectedPriceRepair = null;
   let selectedPriceBrand = "apple";
+  let selectedSamsungSeries = "";
+  let selectedSamsungModel = "";
+  let selectedSamsungRepair = "";
+  let selectedSamsungOtherDevice = null;
+  let selectedSamsungStep = "series";
+  let lastSamsungTrigger = null;
+  const SAMSUNG_STEPS = ["series", "models", "repairs", "summary"];
 
   function slugifyPriceModel(model) {
     return model
@@ -2513,6 +2809,510 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   function setPriceCtaReady(isReady) {
     document.querySelector("[data-price-selector]")?.classList.toggle("is-repair-selected", isReady);
     document.querySelector("[data-price-cta]")?.classList.toggle("is-ready", isReady);
+  }
+
+  function getSamsungSeries(key = selectedSamsungSeries) {
+    return SAMSUNG_SERIES.find((series) => series.key === key) || SAMSUNG_SERIES[0];
+  }
+
+  function getSamsungRepair(key = selectedSamsungRepair) {
+    return SAMSUNG_REPAIRS.find((repair) => repair.key === key) || SAMSUNG_REPAIRS[0];
+  }
+
+  function getSamsungModelSeries(model) {
+    return SAMSUNG_SERIES.find((series) => series.models.includes(model)) || getSamsungSeries(selectedSamsungSeries);
+  }
+
+  function getSamsungSeriesImage(seriesKey = selectedSamsungSeries) {
+    return SAMSUNG_ASSETS.series[seriesKey] || SAMSUNG_ASSETS.series["galaxy-s"];
+  }
+
+  function getSamsungModelImage(model) {
+    if (!model) return getSamsungSeriesImage(selectedSamsungSeries);
+    const series = getSamsungModelSeries(model);
+    return SAMSUNG_MODEL_IMAGES[model] || getSamsungSeriesImage(series.key);
+  }
+
+  function getSamsungDeviceLabel(key, lang = getLang()) {
+    const labels = {
+      phone: "samsung_device_phone",
+      tablet: "samsung_device_tablet",
+      watch: "samsung_device_watch",
+      laptop: "samsung_device_laptop",
+    };
+    return resolveI18n(lang, labels[key]) || key;
+  }
+
+  function getSamsungRepairLabelByKey(key, lang = getLang()) {
+    if (!key) return resolveI18n(lang, "samsung_none") || "-";
+    const repair = getSamsungRepair(key);
+    return resolveI18n(lang, repair.i18n) || repair.key;
+  }
+
+  function getSamsungAskLabel(lang = getLang()) {
+    return resolveI18n(lang, "samsung_price_ask") || "Einfach fragen";
+  }
+
+  function getSamsungRepairPrice(model, repairKey) {
+    if (!model || !repairKey) return "";
+    const repair = getSamsungRepair(repairKey);
+    if (repair.askOnly) return "";
+    const price = SAMSUNG_PRICE_MAP[model]?.[repairKey] || "";
+    return /nicht verf/i.test(price) ? "" : price;
+  }
+
+  function getSamsungCurrentModel() {
+    if (!selectedSamsungSeries) return selectedSamsungModel || "";
+    const series = getSamsungSeries();
+    return series.models.includes(selectedSamsungModel)
+      ? selectedSamsungModel
+      : "";
+  }
+
+  function getSamsungSummaryState() {
+    const lang = getLang();
+    const otherDevice = selectedSamsungOtherDevice
+      ? SAMSUNG_OTHER_DEVICES.find((device) => device.key === selectedSamsungOtherDevice)
+      : null;
+
+    if (otherDevice) {
+      const label = getSamsungDeviceLabel(otherDevice.key, lang);
+      return {
+        device: label,
+        series: resolveI18n(lang, "samsung_none") || "-",
+        model: label,
+        repair: resolveI18n(lang, "samsung_repair_unknown") || "Unbekannt / Diagnose",
+        price: getSamsungAskLabel(lang),
+        note: resolveI18n(lang, "samsung_other_summary_note") || "",
+        image: otherDevice.modelImage || otherDevice.image,
+        ask: true,
+      };
+    }
+
+    const series = selectedSamsungSeries ? getSamsungSeries() : null;
+    const model = getSamsungCurrentModel();
+    const repairLabel = getSamsungRepairLabelByKey(selectedSamsungRepair, lang);
+    const price = getSamsungRepairPrice(model, selectedSamsungRepair);
+    return {
+      device: getSamsungDeviceLabel("phone", lang),
+      series: series?.label || (resolveI18n(lang, "samsung_none") || "-"),
+      model: model || (resolveI18n(lang, "samsung_none") || "-"),
+      repair: repairLabel,
+      price: price || getSamsungAskLabel(lang),
+      note: resolveI18n(lang, "samsung_summary_note") || "",
+      image: getSamsungModelImage(model),
+      ask: !price,
+    };
+  }
+
+  function buildSamsungWaHref() {
+    if (!whatsappNumber) return "#";
+
+    const lang = getLang();
+    const state = getSamsungSummaryState();
+    const text = `${resolveI18n(lang, "wa_message_intro") || "Hallo!"}
+${resolveI18n(lang, "samsung_summary_device") || "Gerät"}: ${state.device}
+${resolveI18n(lang, "samsung_summary_series") || "Serie"}: ${state.series}
+${resolveI18n(lang, "wa_label_device") || "Modell"}: ${state.model}
+${resolveI18n(lang, "wa_label_repair") || "Reparatur"}: ${state.repair}
+${resolveI18n(lang, "wa_label_price") || "Preis"}: ${state.price}
+${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
+
+    return buildWhatsAppHref(text);
+  }
+
+  function getSamsungModal() {
+    return document.querySelector("[data-samsung-modal]");
+  }
+
+  function isSamsungModalOpen() {
+    const modal = getSamsungModal();
+    return Boolean(modal && !modal.hidden);
+  }
+
+  function resetSamsungWizard() {
+    selectedSamsungSeries = "";
+    selectedSamsungModel = "";
+    selectedSamsungRepair = "";
+    selectedSamsungOtherDevice = null;
+    selectedSamsungStep = "series";
+    const search = document.querySelector("[data-samsung-model-search]");
+    if (search) search.value = "";
+  }
+
+  function setBrandButtonState(brand = "apple") {
+    document.querySelectorAll("[data-price-brand]").forEach((button) => {
+      button.classList.toggle("is-active", button.dataset.priceBrand === brand);
+    });
+  }
+
+  function getSamsungStepIndex(step = selectedSamsungStep) {
+    return Math.max(0, SAMSUNG_STEPS.indexOf(step));
+  }
+
+  function canAdvanceSamsungStep() {
+    if (selectedSamsungStep === "series") return Boolean(selectedSamsungSeries);
+    if (selectedSamsungStep === "models") return Boolean(selectedSamsungModel);
+    if (selectedSamsungStep === "repairs") return Boolean(selectedSamsungRepair);
+    return false;
+  }
+
+  function focusSamsungStep() {
+    const modal = getSamsungModal();
+    if (!modal || modal.hidden) return;
+    const selectors = {
+      series: "[data-samsung-series] button",
+      models: "[data-samsung-model-search]",
+      repairs: "[data-samsung-repairs] button",
+      summary: "[data-samsung-cta]",
+    };
+    const target = modal.querySelector(selectors[selectedSamsungStep]) || modal.querySelector("[data-samsung-dialog]");
+    if (target && typeof target.focus === "function") {
+      window.setTimeout(() => target.focus({ preventScroll: true }), 30);
+    }
+  }
+
+  function updateSamsungWizardUi() {
+    const modal = getSamsungModal();
+    if (!modal) return;
+    const stepIndex = getSamsungStepIndex();
+    modal.dataset.samsungStep = selectedSamsungStep;
+    modal.querySelectorAll("[data-samsung-step-panel]").forEach((panel) => {
+      panel.hidden = panel.dataset.samsungStepPanel !== selectedSamsungStep;
+    });
+
+    const progress = modal.querySelector("[data-samsung-progress]");
+    if (progress) {
+      progress.innerHTML = SAMSUNG_STEPS.map((step, index) => (
+        `<span class="samsung-modal__progress-step${index < stepIndex ? " is-done" : ""}${index === stepIndex ? " is-active" : ""}"></span>`
+      )).join("");
+    }
+
+    const back = modal.querySelector("[data-samsung-back]");
+    const next = modal.querySelector("[data-samsung-next]");
+    if (back) back.disabled = stepIndex === 0;
+    if (next) {
+      next.hidden = selectedSamsungStep === "summary";
+      next.disabled = !canAdvanceSamsungStep();
+    }
+  }
+
+  function setSamsungStep(step, focus = true) {
+    if (!SAMSUNG_STEPS.includes(step)) return;
+    selectedSamsungStep = step;
+    updateSamsungWizardUi();
+    if (focus) focusSamsungStep();
+  }
+
+  function goToNextSamsungStep() {
+    if (!canAdvanceSamsungStep()) return;
+    if (selectedSamsungStep === "series") setSamsungStep("models");
+    else if (selectedSamsungStep === "models") setSamsungStep("repairs");
+    else if (selectedSamsungStep === "repairs") setSamsungStep("summary");
+  }
+
+  function goToPreviousSamsungStep() {
+    if (selectedSamsungStep === "summary" && selectedSamsungOtherDevice) {
+      selectedSamsungOtherDevice = null;
+      setSamsungStep("series");
+      renderSamsungConfigurator();
+      return;
+    }
+    const index = getSamsungStepIndex();
+    if (index > 0) setSamsungStep(SAMSUNG_STEPS[index - 1]);
+  }
+
+  function openSamsungModal(trigger = null) {
+    const modal = getSamsungModal();
+    if (!modal) return;
+    if (modal.parentElement !== document.body) document.body.appendChild(modal);
+    lastSamsungTrigger = trigger || document.querySelector("[data-price-brand='samsung']");
+    resetSamsungWizard();
+    selectedPriceBrand = "apple";
+    selectedPriceRepair = null;
+    setPriceCtaReady(false);
+    setBrandButtonState("samsung");
+    modal.hidden = false;
+    document.body.classList.add("samsung-modal-open");
+    renderSamsungConfigurator();
+    applyTranslations(getLang());
+    focusSamsungStep();
+    trackEvent("samsung_modal_open", { source: "price_brand_switch" });
+  }
+
+  function closeSamsungModal() {
+    const modal = getSamsungModal();
+    if (!modal || modal.hidden) return;
+    modal.hidden = true;
+    document.body.classList.remove("samsung-modal-open");
+    selectedPriceBrand = "apple";
+    setBrandButtonState("apple");
+    setPriceSelectorMode("apple");
+    trackEvent("samsung_modal_close", { step: selectedSamsungStep });
+    if (lastSamsungTrigger && typeof lastSamsungTrigger.focus === "function") {
+      window.setTimeout(() => lastSamsungTrigger.focus({ preventScroll: true }), 0);
+    }
+  }
+
+  function trapSamsungModalFocus(event) {
+    const modal = getSamsungModal();
+    if (!modal || modal.hidden || event.key !== "Tab") return;
+    const focusable = Array.from(modal.querySelectorAll("a[href], button:not([disabled]):not([hidden]), input:not([disabled]), [tabindex]:not([tabindex='-1'])"))
+      .filter((el) => el.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  function setPriceSelectorMode(brand) {
+    document.querySelector("[data-price-selector]")?.classList.toggle("is-samsung-mode", false);
+    document.querySelectorAll("[data-price-apple-panel]").forEach((panel) => {
+      panel.hidden = false;
+    });
+    const samsungRoot = document.querySelector("[data-samsung-configurator]");
+    if (samsungRoot && !isSamsungModalOpen()) samsungRoot.hidden = true;
+
+    const title = document.querySelector(".price-selector-card__title");
+    if (title) {
+      title.textContent = resolveI18n(getLang(), "price_selector_card_title");
+    }
+  }
+
+  function renderSamsungSeries() {
+    const container = document.querySelector("[data-samsung-series]");
+    if (!container) return;
+    const lang = getLang();
+    container.innerHTML = "";
+
+    SAMSUNG_SERIES.forEach((series) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `samsung-choice-card samsung-choice-card--series${series.key === selectedSamsungSeries && !selectedSamsungOtherDevice ? " is-active" : ""}`;
+      button.dataset.samsungSeries = series.key;
+      button.setAttribute("aria-pressed", String(series.key === selectedSamsungSeries && !selectedSamsungOtherDevice));
+      button.style.setProperty("--samsung-series-bg", `url("${getSamsungSeriesImage(series.key)}")`);
+
+      const image = document.createElement("img");
+      image.src = getSamsungSeriesImage(series.key);
+      image.alt = "";
+      image.loading = "lazy";
+      image.decoding = "async";
+
+      const name = document.createElement("strong");
+      name.textContent = series.label;
+
+      const count = document.createElement("small");
+      count.textContent = `${series.models.length} ${resolveI18n(lang, "price_selector_model_label") || "Modelle"}`;
+
+      button.append(image, name, count);
+      button.addEventListener("click", () => {
+        selectedSamsungOtherDevice = null;
+        selectedSamsungSeries = series.key;
+        selectedSamsungModel = "";
+        selectedSamsungRepair = "";
+        const search = document.querySelector("[data-samsung-model-search]");
+        if (search) search.value = "";
+        renderSamsungConfigurator();
+        setSamsungStep("models");
+        trackEvent("samsung_series_select", { series: series.label });
+      });
+
+      container.appendChild(button);
+    });
+  }
+
+  function renderSamsungModels() {
+    const container = document.querySelector("[data-samsung-models]");
+    const search = document.querySelector("[data-samsung-model-search]");
+    if (!container) return;
+
+    const lang = getLang();
+    if (!selectedSamsungSeries) {
+      container.innerHTML = "";
+      return;
+    }
+    const series = getSamsungSeries();
+    const query = String(search?.value || "").trim().toLowerCase();
+    const models = series.models.filter((model) => model.toLowerCase().includes(query));
+    container.innerHTML = "";
+
+    if (!models.length) {
+      const empty = document.createElement("p");
+      empty.className = "samsung-empty";
+      empty.textContent = resolveI18n(lang, "samsung_no_models") || "Kein Modell gefunden.";
+      container.appendChild(empty);
+      return;
+    }
+
+    models.forEach((model) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `samsung-model-card${model === selectedSamsungModel && !selectedSamsungOtherDevice ? " is-active" : ""}`;
+      button.dataset.samsungModel = model;
+      button.setAttribute("aria-pressed", String(model === selectedSamsungModel && !selectedSamsungOtherDevice));
+
+      const image = document.createElement("img");
+      image.src = getSamsungModelImage(model);
+      image.alt = `${model} Reparatur bei Handy Notdienst Singen`;
+      image.loading = "lazy";
+      image.decoding = "async";
+
+      const name = document.createElement("strong");
+      name.textContent = model;
+
+      button.append(image, name);
+      button.addEventListener("click", () => {
+        selectedSamsungOtherDevice = null;
+        selectedSamsungModel = model;
+        selectedSamsungRepair = "";
+        renderSamsungConfigurator();
+        setSamsungStep("repairs");
+        trackEvent("samsung_model_select", { series: series.label, model });
+      });
+
+      container.appendChild(button);
+    });
+  }
+
+  function renderSamsungRepairs() {
+    const container = document.querySelector("[data-samsung-repairs]");
+    if (!container) return;
+
+    const lang = getLang();
+    const model = getSamsungCurrentModel();
+    if (!model) {
+      container.innerHTML = "";
+      return;
+    }
+    container.innerHTML = "";
+
+    SAMSUNG_REPAIRS.forEach((repair) => {
+      const price = getSamsungRepairPrice(model, repair.key);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `samsung-choice-card samsung-choice-card--repair${repair.key === selectedSamsungRepair && !selectedSamsungOtherDevice ? " is-active" : ""}`;
+      button.dataset.samsungRepair = repair.key;
+      button.setAttribute("aria-pressed", String(repair.key === selectedSamsungRepair && !selectedSamsungOtherDevice));
+
+      const image = document.createElement("img");
+      image.src = repair.image;
+      image.alt = "";
+      image.loading = "lazy";
+      image.decoding = "async";
+
+      const name = document.createElement("strong");
+      name.textContent = getSamsungRepairLabelByKey(repair.key, lang);
+
+      const priceHint = document.createElement("small");
+      priceHint.textContent = price || getSamsungAskLabel(lang);
+      if (!price) priceHint.className = "is-ask";
+
+      button.append(image, name, priceHint);
+      button.addEventListener("click", () => {
+        selectedSamsungOtherDevice = null;
+        selectedSamsungRepair = repair.key;
+        renderSamsungConfigurator();
+        setSamsungStep("summary");
+        trackEvent("samsung_repair_select", {
+          model,
+          repair: getSamsungRepairLabelByKey(repair.key, lang),
+          price: price || getSamsungAskLabel(lang),
+        });
+      });
+
+      container.appendChild(button);
+    });
+  }
+
+  function renderSamsungOtherDevices() {
+    const container = document.querySelector("[data-samsung-other-devices]");
+    if (!container) return;
+    const lang = getLang();
+    container.innerHTML = "";
+
+    SAMSUNG_OTHER_DEVICES.forEach((device) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `samsung-choice-card samsung-choice-card--device${device.key === selectedSamsungOtherDevice ? " is-active" : ""}`;
+      button.dataset.samsungDevice = device.key;
+      button.setAttribute("aria-pressed", String(device.key === selectedSamsungOtherDevice));
+
+      const image = document.createElement("img");
+      image.src = device.image;
+      image.alt = "";
+      image.loading = "lazy";
+      image.decoding = "async";
+
+      const name = document.createElement("strong");
+      name.textContent = getSamsungDeviceLabel(device.key, lang);
+
+      const hint = document.createElement("small");
+      hint.textContent = getSamsungAskLabel(lang);
+
+      button.append(image, name, hint);
+      button.addEventListener("click", () => {
+        selectedSamsungOtherDevice = device.key;
+        selectedSamsungSeries = "";
+        selectedSamsungModel = "";
+        selectedSamsungRepair = "";
+        renderSamsungConfigurator();
+        setSamsungStep("summary");
+        trackEvent("samsung_other_device_select", { device: device.key });
+      });
+
+      container.appendChild(button);
+    });
+  }
+
+  function updateSamsungSummary() {
+    const state = getSamsungSummaryState();
+    const image = document.querySelector("[data-samsung-summary-image]");
+    const device = document.querySelector("[data-samsung-summary-device]");
+    const series = document.querySelector("[data-samsung-summary-series]");
+    const model = document.querySelector("[data-samsung-summary-model]");
+    const repair = document.querySelector("[data-samsung-summary-repair]");
+    const price = document.querySelector("[data-samsung-summary-price]");
+    const note = document.querySelector("[data-samsung-summary-note]");
+    const cta = document.querySelector("[data-samsung-cta]");
+
+    if (image) {
+      image.src = state.image;
+      image.alt = `${state.model} Reparatur bei Handy Notdienst Singen`;
+    }
+    if (device) device.textContent = state.device;
+    if (series) series.textContent = state.series;
+    if (model) model.textContent = state.model;
+    if (repair) repair.textContent = state.repair;
+    if (price) {
+      price.textContent = state.price;
+      price.classList.toggle("is-ask", state.ask);
+    }
+    if (note) note.textContent = state.note;
+    if (cta) cta.href = buildSamsungWaHref();
+  }
+
+  function renderSamsungConfigurator() {
+    const root = document.querySelector("[data-samsung-configurator]");
+    if (!root) return;
+    const search = document.querySelector("[data-samsung-model-search]");
+    if (search) search.placeholder = resolveI18n(getLang(), "samsung_model_search_placeholder") || "Modell suchen";
+
+    if (selectedSamsungSeries && selectedSamsungModel && !getSamsungSeries().models.includes(selectedSamsungModel)) {
+      selectedSamsungModel = "";
+    }
+    renderSamsungSeries();
+    renderSamsungModels();
+    renderSamsungRepairs();
+    renderSamsungOtherDevices();
+    updateSamsungSummary();
+    updateSamsungWizardUi();
   }
 
   function updatePriceSummary(entry, repair) {
@@ -2728,6 +3528,9 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     const modelSelect = document.querySelector("[data-price-model]");
     if (!familySelect || !modelSelect) return;
 
+    if (selectedPriceBrand === "samsung") selectedPriceBrand = "apple";
+    setPriceSelectorMode(selectedPriceBrand);
+
     const currentFamily = familySelect.value;
     const entries = getPriceEntries().filter((entry) => entry.brand === selectedPriceBrand);
     const families = getPriceFamilies(entries);
@@ -2753,13 +3556,21 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     const familySelect = document.querySelector("[data-price-family]");
     const modelSelect = document.querySelector("[data-price-model]");
     const cta = document.querySelector("[data-price-cta]");
+    const samsungSearch = document.querySelector("[data-samsung-model-search]");
+    const samsungCta = document.querySelector("[data-samsung-cta]");
     const brandButtons = document.querySelectorAll("[data-price-brand]");
     if (!familySelect || !modelSelect) return;
 
     brandButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        selectedPriceBrand = button.dataset.priceBrand || "apple";
-        brandButtons.forEach((item) => item.classList.toggle("is-active", item === button));
+        const brand = button.dataset.priceBrand || "apple";
+        if (brand === "samsung") {
+          trackEvent("brand_select", { brand });
+          openSamsungModal(button);
+          return;
+        }
+        selectedPriceBrand = brand;
+        setBrandButtonState(selectedPriceBrand);
         selectedPriceRepair = null;
         setPriceCtaReady(false);
         familySelect.value = "";
@@ -2789,6 +3600,35 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
         model: entry?.model,
         repair: selectedPriceRepair?.label || "general",
         price: selectedPriceRepair?.price || "",
+      });
+    });
+    samsungSearch?.addEventListener("input", () => {
+      selectedSamsungOtherDevice = null;
+      renderSamsungConfigurator();
+    });
+    document.querySelectorAll("[data-samsung-modal-close]").forEach((button) => {
+      button.addEventListener("click", closeSamsungModal);
+    });
+    document.querySelector("[data-samsung-back]")?.addEventListener("click", goToPreviousSamsungStep);
+    document.querySelector("[data-samsung-next]")?.addEventListener("click", goToNextSamsungStep);
+    document.addEventListener("keydown", (event) => {
+      if (!isSamsungModalOpen()) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeSamsungModal();
+        return;
+      }
+      trapSamsungModalFocus(event);
+    });
+    samsungCta?.addEventListener("click", () => {
+      const state = getSamsungSummaryState();
+      samsungCta.href = buildSamsungWaHref();
+      trackEvent("samsung_price_whatsapp_click", {
+        device: state.device,
+        series: state.series,
+        model: state.model,
+        repair: state.repair,
+        price: state.price,
       });
     });
 
