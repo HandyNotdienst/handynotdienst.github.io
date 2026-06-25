@@ -2209,6 +2209,19 @@
     sl: { samsung_series_hint: "Najprej izberi serijo Galaxy. Nato te vodimo korak za korakom.", samsung_back: "Nazaj", samsung_next: "Naprej", samsung_close: "Zapri" },
   };
 
+  const PRICE_REMINDER_I18N = {
+    de: { price_reminder_title: "Preise ansehen", price_reminder_text: "Gerät wählen und sofort Preis prüfen" },
+    uk: { price_reminder_title: "Переглянути ціни", price_reminder_text: "Оберіть пристрій і швидко перевірте ціну" },
+    en: { price_reminder_title: "View prices", price_reminder_text: "Choose your device and check the price" },
+    ru: { price_reminder_title: "Посмотреть цены", price_reminder_text: "Выберите устройство и быстро узнайте цену" },
+    pl: { price_reminder_title: "Zobacz ceny", price_reminder_text: "Wybierz urządzenie i sprawdź cenę" },
+    it: { price_reminder_title: "Vedi i prezzi", price_reminder_text: "Scegli il dispositivo e controlla il prezzo" },
+    ar: { price_reminder_title: "عرض الأسعار", price_reminder_text: "اختر الجهاز وتحقق من السعر بسرعة" },
+    ku: { price_reminder_title: "Bihan bibîne", price_reminder_text: "Cîhazê hilbijêre û bihayê kontrol bike" },
+    fr: { price_reminder_title: "Voir les prix", price_reminder_text: "Choisis ton appareil et vérifie le prix" },
+    sl: { price_reminder_title: "Poglej cene", price_reminder_text: "Izberi napravo in preveri ceno" },
+  };
+
   Object.entries(EXTRA_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...GLOBAL_I18N.de, ...values };
   });
@@ -2225,6 +2238,9 @@
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
   Object.entries(SAMSUNG_MODAL_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
+  Object.entries(PRICE_REMINDER_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
 
@@ -4095,6 +4111,81 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     });
   }
 
+  function initPriceReminder() {
+    const reminder = document.querySelector("[data-price-reminder]");
+    if (!reminder) return;
+
+    const path = window.location.pathname.replace(/\/+$/, "");
+    const isHome = path === "" || path.endsWith("/index.html");
+    if (!isHome) return;
+
+    const storageKey = "hn_price_reminder_dismissed_v1";
+    let dismissed = false;
+    try {
+      dismissed = sessionStorage.getItem(storageKey) === "1";
+    } catch (error) {}
+    if (dismissed) return;
+
+    const link = reminder.querySelector("a[href]");
+    const close = reminder.querySelector("[data-price-reminder-close]");
+    let timer = null;
+    let observer = null;
+    let shown = false;
+
+    function showReminder() {
+      if (shown) return;
+      try {
+        if (sessionStorage.getItem(storageKey) === "1") return;
+      } catch (error) {}
+      shown = true;
+      reminder.hidden = false;
+      requestAnimationFrame(() => reminder.classList.add("is-visible"));
+      trackEvent("price_reminder_show", { delay_ms: 10000 });
+    }
+
+    function startTimer() {
+      if (timer) return;
+      timer = window.setTimeout(showReminder, 10000);
+    }
+
+    function waitUntilVisible() {
+      if (!document.body.classList.contains("intro-pending")) {
+        startTimer();
+        return;
+      }
+
+      observer = new MutationObserver(() => {
+        if (document.body.classList.contains("intro-pending")) return;
+        observer?.disconnect();
+        observer = null;
+        startTimer();
+      });
+      observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    }
+
+    close?.addEventListener("click", () => {
+      if (timer) window.clearTimeout(timer);
+      observer?.disconnect();
+      try {
+        sessionStorage.setItem(storageKey, "1");
+      } catch (error) {}
+      reminder.classList.remove("is-visible");
+      window.setTimeout(() => {
+        reminder.hidden = true;
+      }, prefersReducedMotion ? 0 : 220);
+      trackEvent("price_reminder_dismiss", { location: getClickLocation(reminder) });
+    });
+
+    link?.addEventListener("click", () => {
+      try {
+        sessionStorage.setItem(storageKey, "1");
+      } catch (error) {}
+      trackEvent("price_reminder_click", { location: getClickLocation(reminder) });
+    });
+
+    waitUntilVisible();
+  }
+
   function initQuizHighlight() {
     const quizSection = document.getElementById("quiz");
     const targets = document.querySelectorAll(".js-quiz-highlight");
@@ -4361,6 +4452,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   initFaqAccordion();
   initAnalyticsTracking();
   initPageTransitionToPrices();
+  initPriceReminder();
   initPickupButton();
   initBundles();
   initQuiz();

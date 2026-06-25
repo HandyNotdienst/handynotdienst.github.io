@@ -5248,3 +5248,142 @@ html[data-theme="light"] .samsung-modal__footer{
     transition:none !important;
   }
 }
+
+/* Price discoverability */
+.btn--prices,
+.btn[href="prices.html"],
+.mobilebar__btn--prices{
+  transform-origin:center;
+  animation:priceCtaPulse 3.15s ease-in-out infinite;
+}
+
+@keyframes priceCtaPulse{
+  0%, 72%, 100%{
+    transform:scale(1);
+  }
+  82%{
+    transform:scale(1.035);
+  }
+  90%{
+    transform:scale(.995);
+  }
+}
+
+.price-reminder[hidden]{
+  display:none !important;
+}
+
+.price-reminder{
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  z-index:82;
+  display:flex;
+  align-items:flex-start;
+  width:min(330px, calc(100vw - 36px));
+  opacity:0;
+  transform:translateY(14px) scale(.98);
+  transition:opacity .22s ease, transform .22s ease;
+}
+
+.price-reminder.is-visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+.price-reminder__link{
+  width:100%;
+  min-height:66px;
+  justify-content:flex-start;
+  align-items:flex-start;
+  flex-direction:column;
+  gap:2px;
+  padding:13px 48px 13px 17px;
+  border-radius:20px;
+  text-align:left;
+  box-shadow:
+    0 24px 58px rgba(12,24,34,.34),
+    0 14px 34px rgba(83,235,111,.20),
+    inset 0 1px 0 rgba(255,255,255,.72);
+}
+
+.price-reminder__link::before{
+  position:absolute;
+  left:17px;
+  top:50%;
+  transform:translateY(-50%);
+  opacity:.16;
+  width:46px;
+  height:46px;
+}
+
+.price-reminder__link span,
+.price-reminder__link small{
+  position:relative;
+  z-index:1;
+  padding-left:52px;
+}
+
+.price-reminder__link small{
+  color:rgba(6,16,31,.72);
+  font-size:12px;
+  line-height:1.25;
+  font-weight:900;
+}
+
+.price-reminder__close{
+  position:absolute;
+  top:9px;
+  right:9px;
+  z-index:2;
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  border:1px solid rgba(6,16,31,.12);
+  border-radius:50%;
+  color:#06101f;
+  background:rgba(255,255,255,.62);
+  font:inherit;
+  font-size:14px;
+  font-weight:950;
+  cursor:pointer;
+  transition:transform .18s ease, background .18s ease;
+}
+
+.price-reminder__close:hover{
+  transform:scale(1.06);
+  background:rgba(255,255,255,.88);
+}
+
+html[data-theme="light"] .price-reminder__link{
+  box-shadow:
+    0 24px 58px rgba(39,74,96,.18),
+    0 14px 34px rgba(83,235,111,.18),
+    inset 0 1px 0 rgba(255,255,255,.82);
+}
+
+@media (max-width: 760px){
+  .price-reminder{
+    left:8px;
+    right:8px;
+    bottom:92px;
+    width:auto;
+  }
+  .price-reminder__link{
+    min-height:62px;
+    border-radius:18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .btn--prices,
+  .btn[href="prices.html"],
+  .mobilebar__btn--prices,
+  .price-reminder,
+  .price-reminder__close{
+    animation:none !important;
+    transition:none !important;
+    transform:none !important;
+  }
+}
