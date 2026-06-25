@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <script>
     (() => {
       try {
@@ -31,6 +33,7 @@
   <link rel="preload" as="image" href="assets/hero/owner-repair-960.jpg" imagesrcset="assets/hero/owner-repair-420.jpg 420w, assets/hero/owner-repair-640.jpg 640w, assets/hero/owner-repair-960.jpg 960w, assets/hero/owner-repair-1280.jpg 1280w" imagesizes="(max-width: 700px) calc(100vw - 48px), 620px" />
   <link rel="preload" as="image" href="assets/logo-intro.webp" type="image/webp" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="print.css" media="print" />
 
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="manifest" href="manifest.webmanifest">
@@ -40,16 +43,44 @@
   <!-- Google tag (gtag.js) -->
   <script>
     window.HN_GA_MEASUREMENT_ID = "G-WR8LVE0JCB";
+    window.HN_COOKIE_CONSENT_KEY = "hn_cookie_consent";
     window.dataLayer = window.dataLayer || [];
     function gtag(){window.dataLayer.push(arguments);}
     window.gtag = window.gtag || gtag;
+    const hnAnalyticsConsent = (() => {
+      try {
+        return localStorage.getItem(window.HN_COOKIE_CONSENT_KEY);
+      } catch (error) {
+        return null;
+      }
+    })();
+    gtag("consent", "default", {
+      analytics_storage: hnAnalyticsConsent === "granted" ? "granted" : "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      wait_for_update: 500
+    });
     gtag("js", new Date());
-    gtag("config", window.HN_GA_MEASUREMENT_ID);
+    gtag("config", window.HN_GA_MEASUREMENT_ID, {
+      anonymize_ip: true,
+      send_page_view: hnAnalyticsConsent === "granted"
+    });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WR8LVE0JCB"></script>
 </head>
 
 <body>
+
+  <noscript>
+    <div class="noscript-fallback">
+      <strong>Handy Notdienst Singen</strong>
+      <span>JavaScript ist deaktiviert. Kontakt und Preise bleiben verfuegbar.</span>
+      <a href="tel:+4915222416438">01522 2416438</a>
+      <a href="https://wa.me/4915222416438">WhatsApp</a>
+      <a href="prices.html">Preise</a>
+    </div>
+  </noscript>
   <script>
     (() => {
       try {
@@ -84,7 +115,7 @@
   <header class="header">
     <div class="container header__inner">
       <a class="brand" href="index.html" aria-label="Handy Notdienst">
-        <img class="brand__logo" src="assets/logo.png" alt="Handy Notdienst Logo" />
+        <img class="brand__logo" src="assets/logo.png" alt="Handy Notdienst Logo" width="60" height="60" />
         <span class="brand__text">
           <strong>Handy Notdienst</strong>
           <small data-i18n="tagline">Singen • Schnell & zuverlässig</small>
@@ -108,7 +139,7 @@
           </span>
         </button>
 
-        <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       </div>
     </div>
   </header>
@@ -160,7 +191,7 @@
           </div>
 
           <div class="hero__actions">
-            <a class="btn btn--wa concept-cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener" data-i18n="cta_main">Jetzt per WhatsApp anfragen</a>
+            <a class="btn btn--wa concept-cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-i18n="cta_main">Jetzt per WhatsApp anfragen</a>
             <a class="btn btn--ghost btn--quiz concept-quiz js-quiz-highlight js-quiz-open" href="#quiz" data-i18n="quiz_label">Diagnose (1 Min)</a>
             <a class="btn btn--ghost btn--call concept-call" href="tel:+4915222416438">01522 2416438 anrufen</a>
           </div>
@@ -205,7 +236,7 @@
 
       <div class="container concept-action-dock" aria-label="Schnelle Aktionen">
         <a href="tel:+4915222416438"><span class="concept-action-dock__icon asset-icon--call" aria-hidden="true"></span><strong data-i18n="contact_call">Anrufen</strong><small>01522 2416438</small></a>
-        <a class="concept-action-dock__primary" href="https://wa.me/4915222416438" target="_blank" rel="noopener"><span class="concept-action-dock__icon asset-icon--whatsapp" aria-hidden="true"></span><strong>WhatsApp</strong><small data-i18n="dock_wa_text">Schnell & unverbindlich</small></a>
+        <a class="concept-action-dock__primary" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer"><span class="concept-action-dock__icon asset-icon--whatsapp" aria-hidden="true"></span><strong>WhatsApp</strong><small data-i18n="dock_wa_text">Schnell & unverbindlich</small></a>
         <a class="js-quiz-highlight js-quiz-open" href="#quiz"><span class="concept-action-dock__icon asset-icon--part-options" aria-hidden="true"></span><strong data-i18n="quiz_label">Diagnose (1 Min)</strong><small data-i18n="dock_quiz_text">Problem kurz eingrenzen</small></a>
       </div>
     </section>
@@ -228,7 +259,7 @@
             <div class="ba-media">
               <picture>
                 <source type="image/webp" srcset="assets/optimized/before-phone-640.webp 640w, assets/optimized/before-phone-1100.webp 1100w" sizes="(max-width: 900px) 92vw, 548px">
-                <img src="assets/before-phone.png" alt="Defektes Smartphone vor der Reparatur" data-i18n-alt="ba_before_alt" loading="lazy" decoding="async" />
+                <img src="assets/before-phone.png" alt="Defektes Smartphone vor der Reparatur" data-i18n-alt="ba_before_alt" width="1536" height="1024" loading="lazy" decoding="async" />
               </picture>
               <span class="ba-label" data-i18n="ba_before_label">Vorher</span>
             </div>
@@ -239,7 +270,7 @@
             <div class="ba-media">
               <picture>
                 <source type="image/webp" srcset="assets/optimized/after-phone-640.webp 640w, assets/optimized/after-phone-1100.webp 1100w" sizes="(max-width: 900px) 92vw, 548px">
-                <img src="assets/after-phone.png" alt="Repariertes Smartphone nach der Reparatur" data-i18n-alt="ba_after_alt" loading="lazy" decoding="async" />
+                <img src="assets/after-phone.png" alt="Repariertes Smartphone nach der Reparatur" data-i18n-alt="ba_after_alt" width="1536" height="1024" loading="lazy" decoding="async" />
               </picture>
               <span class="ba-label" data-i18n="ba_after_label">Nachher</span>
             </div>
@@ -365,16 +396,16 @@
 
           <div class="contact__list">
             <a class="contact__row" href="tel:+4915222416438"><span class="contact__icon asset-icon--call" aria-hidden="true"></span><span><strong data-i18n="contact_call">Anrufen</strong> — 01522 2416438</span></a>
-            <a class="contact__row" href="https://wa.me/4915222416438" target="_blank" rel="noopener"><span class="contact__icon contact__icon--whatsapp asset-icon--whatsapp" aria-hidden="true"></span><span><strong>WhatsApp</strong> — <span data-i18n="contact_wa">schreiben</span></span></a>
-            <a class="contact__row" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener"><span class="contact__icon asset-icon--telegram" aria-hidden="true"></span><span><strong>Telegram</strong> — @HandyNotdienst</span></a>
+            <a class="contact__row" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer"><span class="contact__icon contact__icon--whatsapp asset-icon--whatsapp" aria-hidden="true"></span><span><strong>WhatsApp</strong> — <span data-i18n="contact_wa">schreiben</span></span></a>
+            <a class="contact__row" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener noreferrer"><span class="contact__icon asset-icon--telegram" aria-hidden="true"></span><span><strong>Telegram</strong> — @HandyNotdienst</span></a>
             <a class="contact__row" href="mailto:handy.notdienst.reparatur@gmail.com"><span class="contact__icon asset-icon--email" aria-hidden="true"></span><span><strong>Email</strong> — handy.notdienst.reparatur@gmail.com</span></a>
             <div class="contact__row"><span class="contact__icon asset-icon--proof-fast" aria-hidden="true"></span><span><strong data-i18n="mobile_service_title">Mobiler Service in Singen</strong><br/><span class="muted" data-i18n="address_hint">Kein offenes Ladenlokal – Übergabe, Abholung oder Vor-Ort-Termin nach Absprache.</span></span></div>
             <div class="contact__row"><span class="contact__icon asset-icon--warranty-details" aria-hidden="true"></span><span><strong data-i18n="hours">Termine</strong>: <span class="muted" data-i18n="hours_hint">meist kurzfristig nach WhatsApp-Check möglich</span></span></div>
           </div>
 
           <div class="contact__actions">
-            <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">WhatsApp</a>
-            <a class="btn btn--tg" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener">Telegram</a>
+            <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a class="btn btn--tg" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener noreferrer">Telegram</a>
             <a class="btn btn--mail" href="mailto:handy.notdienst.reparatur@gmail.com">Email</a>
           </div>
         </div>
@@ -405,12 +436,12 @@
   <!-- Mobile sticky contact bar (9) -->
   <nav class="mobilebar" aria-label="Mobile quick actions">
     <a class="mobilebar__btn mobilebar__btn--call" href="tel:+4915222416438"><span data-i18n="mb_call">Call</span></a>
-    <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener"><span>WhatsApp</span></a>
+    <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span></a>
     <a class="mobilebar__btn mobilebar__btn--prices" href="prices.html"><span data-i18n="mb_prices">Preise</span></a>
   </nav>
 
   <!-- Floating WhatsApp -->
-  <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener" aria-label="WhatsApp"></a>
+  <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"></a>
 
   <div class="price-reminder" data-price-reminder hidden>
     <a class="btn btn--prices price-reminder__link" href="prices.html">
@@ -460,7 +491,7 @@
             <div class="quiz-success__badge" id="quizResultBadge">…</div>
             <p class="muted" id="quizResultText">…</p>
             <div class="quiz-success__actions">
-              <a class="btn btn--wa" id="quizResultWA" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn btn--wa" id="quizResultWA" target="_blank" rel="noopener noreferrer">WhatsApp</a>
               <button class="btn btn--ghost" id="quizClose" type="button" data-i18n="quiz_close">✕ Schließen</button>
             </div>
           </div>

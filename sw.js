@@ -1,4 +1,4 @@
-const CACHE = "hn-v31";
+const CACHE = "hn-v32";
 const ASSETS = [
   "./",
   "./index.html",
@@ -7,6 +7,7 @@ const ASSETS = [
   "./tools/iphone-model-finder.html",
   "./faqs.html",
   "./style.css",
+  "./print.css",
   "./app.js",
   "./manifest.webmanifest",
   "./assets/logo.png",
@@ -22,6 +23,10 @@ const ASSETS = [
   "./assets/hero/owner-repair-640.jpg",
   "./assets/hero/owner-repair-960.jpg",
   "./assets/hero/owner-repair-1280.jpg",
+  "./assets/optimized/before-phone-640.webp",
+  "./assets/optimized/before-phone-1100.webp",
+  "./assets/optimized/after-phone-640.webp",
+  "./assets/optimized/after-phone-1100.webp",
   "./assets/logos/call.svg",
   "./assets/logos/apple-logo.png",
   "./assets/logos/data-security.png",

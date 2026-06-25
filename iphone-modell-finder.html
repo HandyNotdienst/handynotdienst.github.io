@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <script>
     (() => {
       try {
@@ -37,25 +39,54 @@
     imagesizes="(max-width: 900px) calc(100vw - 48px), 44vw"
   />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="print.css" media="print" />
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <meta name="theme-color" content="#1b374c">
   <link rel="preconnect" href="https://www.googletagmanager.com">
   <!-- Google tag (gtag.js) -->
   <script>
     window.HN_GA_MEASUREMENT_ID = "G-WR8LVE0JCB";
+    window.HN_COOKIE_CONSENT_KEY = "hn_cookie_consent";
     window.dataLayer = window.dataLayer || [];
     function gtag(){window.dataLayer.push(arguments);}
     window.gtag = window.gtag || gtag;
+    const hnAnalyticsConsent = (() => {
+      try {
+        return localStorage.getItem(window.HN_COOKIE_CONSENT_KEY);
+      } catch (error) {
+        return null;
+      }
+    })();
+    gtag("consent", "default", {
+      analytics_storage: hnAnalyticsConsent === "granted" ? "granted" : "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      wait_for_update: 500
+    });
     gtag("js", new Date());
-    gtag("config", window.HN_GA_MEASUREMENT_ID);
+    gtag("config", window.HN_GA_MEASUREMENT_ID, {
+      anonymize_ip: true,
+      send_page_view: hnAnalyticsConsent === "granted"
+    });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WR8LVE0JCB"></script>
 </head>
 <body>
+
+  <noscript>
+    <div class="noscript-fallback">
+      <strong>Handy Notdienst Singen</strong>
+      <span>JavaScript ist deaktiviert. Kontakt und Preise bleiben verfuegbar.</span>
+      <a href="tel:+4915222416438">01522 2416438</a>
+      <a href="https://wa.me/4915222416438">WhatsApp</a>
+      <a href="prices.html">Preise</a>
+    </div>
+  </noscript>
   <header class="header">
     <div class="container header__inner">
       <a class="brand" href="index.html" aria-label="Handy Notdienst">
-        <img class="brand__logo" src="assets/logo.png" alt="Handy Notdienst Logo" />
+        <img class="brand__logo" src="assets/logo.png" alt="Handy Notdienst Logo" width="60" height="60" />
         <span class="brand__text">
           <strong>Handy Notdienst</strong>
           <small data-i18n="tagline">Singen • Schnell & zuverlässig</small>
@@ -79,7 +110,7 @@
           </span>
         </button>
 
-        <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       </div>
     </div>
   </header>
@@ -104,7 +135,7 @@
           <p class="lead" data-i18n="finder_intro">Wenn du beim Preis nicht sicher bist, wähle zuerst den Modell-Finder. Am sichersten ist die A-Nummer aus den Einstellungen, dem SIM-Fach, dem Anschluss oder der Rückseite.</p>
           <div class="model-finder-actions">
             <a class="btn" href="prices.html" data-i18n="finder_price_cta">Danach Preis prüfen</a>
-            <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener" data-i18n="finder_wa_cta">Hilfe per WhatsApp</a>
+            <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-i18n="finder_wa_cta">Hilfe per WhatsApp</a>
           </div>
         </div>
 
@@ -219,7 +250,7 @@
           </picture>
           <h2 data-i18n="finder_person_title">Nicht sicher? Ich schaue mit dir drauf.</h2>
           <p data-i18n="finder_person_text">Schick ein Foto vom Modellhinweis oder vom iPhone per WhatsApp. Du bekommst schnell eine klare Antwort.</p>
-          <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener" data-i18n="finder_person_cta">Foto per WhatsApp senden</a>
+          <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-i18n="finder_person_cta">Foto per WhatsApp senden</a>
         </article>
 
         <article class="model-finder-support-card">
@@ -247,11 +278,11 @@
 
   <nav class="mobilebar" aria-label="Mobile quick actions">
     <a class="mobilebar__btn mobilebar__btn--call" href="tel:+4915222416438"><span data-i18n="mb_call">Call</span></a>
-    <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener"><span>WhatsApp</span></a>
+    <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span></a>
     <a class="mobilebar__btn mobilebar__btn--prices" href="prices.html"><span data-i18n="mb_prices">Preise</span></a>
   </nav>
 
-  <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener" aria-label="WhatsApp"></a>
+  <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"></a>
 
   <script>
     window.HN_CONFIG = {
