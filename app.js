@@ -10,6 +10,7 @@
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const themeMedia = window.matchMedia("(prefers-color-scheme: light)");
   const THEME_STORAGE_KEY = "hn_theme";
+  const COOKIE_CONSENT_KEY = window.HN_COOKIE_CONSENT_KEY || "hn_cookie_consent";
   const THEME_COLORS = {
     dark: "#1b374c",
     light: "#eef5f8",
@@ -2222,6 +2223,89 @@
     sl: { price_reminder_title: "Poglej cene", price_reminder_text: "Izberi napravo in preveri ceno" },
   };
 
+  const COOKIE_I18N = {
+    de: {
+      cookie_consent_label: "Analytics-Einstellungen",
+      cookie_consent_title: "Analytics nur mit Zustimmung",
+      cookie_consent_text: "Wir nutzen Google Analytics, um Klicks auf Preise, Anruf und WhatsApp zu verstehen. Ohne Zustimmung bleibt Analytics deaktiviert.",
+      cookie_consent_accept: "Zustimmen",
+      cookie_consent_decline: "Ablehnen",
+      cookie_consent_privacy: "Datenschutz",
+    },
+    uk: {
+      cookie_consent_label: "Налаштування аналітики",
+      cookie_consent_title: "Аналітика тільки за згодою",
+      cookie_consent_text: "Ми використовуємо Google Analytics, щоб розуміти кліки на ціни, дзвінок і WhatsApp. Без згоди аналітика вимкнена.",
+      cookie_consent_accept: "Погодитись",
+      cookie_consent_decline: "Відхилити",
+      cookie_consent_privacy: "Захист даних",
+    },
+    en: {
+      cookie_consent_label: "Analytics settings",
+      cookie_consent_title: "Analytics only with consent",
+      cookie_consent_text: "We use Google Analytics to understand clicks on prices, calls and WhatsApp. Without consent, analytics stays disabled.",
+      cookie_consent_accept: "Accept",
+      cookie_consent_decline: "Decline",
+      cookie_consent_privacy: "Privacy",
+    },
+    ru: {
+      cookie_consent_label: "Настройки аналитики",
+      cookie_consent_title: "Аналитика только с согласием",
+      cookie_consent_text: "Мы используем Google Analytics, чтобы понимать клики по ценам, звонкам и WhatsApp. Без согласия аналитика отключена.",
+      cookie_consent_accept: "Согласиться",
+      cookie_consent_decline: "Отклонить",
+      cookie_consent_privacy: "Защита данных",
+    },
+    pl: {
+      cookie_consent_label: "Ustawienia analityki",
+      cookie_consent_title: "Analityka tylko za zgodą",
+      cookie_consent_text: "Używamy Google Analytics, aby rozumieć kliknięcia w ceny, połączenia i WhatsApp. Bez zgody analityka pozostaje wyłączona.",
+      cookie_consent_accept: "Akceptuję",
+      cookie_consent_decline: "Odrzuć",
+      cookie_consent_privacy: "Prywatność",
+    },
+    it: {
+      cookie_consent_label: "Impostazioni analytics",
+      cookie_consent_title: "Analytics solo con consenso",
+      cookie_consent_text: "Usiamo Google Analytics per capire i clic su prezzi, chiamate e WhatsApp. Senza consenso, analytics resta disattivato.",
+      cookie_consent_accept: "Accetta",
+      cookie_consent_decline: "Rifiuta",
+      cookie_consent_privacy: "Privacy",
+    },
+    ar: {
+      cookie_consent_label: "إعدادات التحليلات",
+      cookie_consent_title: "التحليلات فقط بالموافقة",
+      cookie_consent_text: "نستخدم Google Analytics لفهم النقرات على الأسعار والاتصال وWhatsApp. بدون موافقة تبقى التحليلات معطلة.",
+      cookie_consent_accept: "موافقة",
+      cookie_consent_decline: "رفض",
+      cookie_consent_privacy: "حماية البيانات",
+    },
+    ku: {
+      cookie_consent_label: "Mîhengên analytics",
+      cookie_consent_title: "Analytics tenê bi erêkirinê",
+      cookie_consent_text: "Em Google Analytics bikar tînin da ku klikên ser biha, bang û WhatsApp fam bikin. Bê erêkirin analytics girtî dimîne.",
+      cookie_consent_accept: "Erê bike",
+      cookie_consent_decline: "Red bike",
+      cookie_consent_privacy: "Parastina daneyan",
+    },
+    fr: {
+      cookie_consent_label: "Paramètres analytics",
+      cookie_consent_title: "Analytics uniquement avec consentement",
+      cookie_consent_text: "Nous utilisons Google Analytics pour comprendre les clics sur les prix, les appels et WhatsApp. Sans consentement, analytics reste désactivé.",
+      cookie_consent_accept: "Accepter",
+      cookie_consent_decline: "Refuser",
+      cookie_consent_privacy: "Confidentialité",
+    },
+    sl: {
+      cookie_consent_label: "Nastavitve analitike",
+      cookie_consent_title: "Analitika samo s soglasjem",
+      cookie_consent_text: "Google Analytics uporabljamo za razumevanje klikov na cene, klice in WhatsApp. Brez soglasja analitika ostane izklopljena.",
+      cookie_consent_accept: "Sprejmi",
+      cookie_consent_decline: "Zavrni",
+      cookie_consent_privacy: "Zasebnost",
+    },
+  };
+
   Object.entries(EXTRA_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...GLOBAL_I18N.de, ...values };
   });
@@ -2243,16 +2327,55 @@
   Object.entries(PRICE_REMINDER_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
+  Object.entries(COOKIE_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
 
   const hasI18n = Object.keys(i18n).length > 0 || Object.keys(GLOBAL_I18N).length > 0;
   let currentLang = null;
+
+  function getCookieConsent() {
+    try {
+      const value = localStorage.getItem(COOKIE_CONSENT_KEY);
+      return value === "granted" || value === "denied" ? value : "";
+    } catch (error) {
+      return "";
+    }
+  }
+
+  function setCookieConsent(value) {
+    try {
+      localStorage.setItem(COOKIE_CONSENT_KEY, value);
+    } catch (error) {}
+  }
+
+  function isAnalyticsGranted() {
+    return getCookieConsent() === "granted";
+  }
+
+  function updateAnalyticsConsent(value, sendPageView = false) {
+    if (typeof window.gtag !== "function") return;
+    const granted = value === "granted";
+    window.gtag("consent", "update", {
+      analytics_storage: granted ? "granted" : "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+    });
+    if (granted && sendPageView && window.HN_GA_MEASUREMENT_ID) {
+      window.gtag("config", window.HN_GA_MEASUREMENT_ID, {
+        anonymize_ip: true,
+        send_page_view: true,
+      });
+    }
+  }
 
   function trackEvent(name, params = {}) {
     const payload = { event: name, ...params };
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(payload);
 
-    if (typeof window.gtag === "function") {
+    if (typeof window.gtag === "function" && isAnalyticsGranted()) {
       window.gtag("event", name, params);
     }
     if (typeof window.plausible === "function") {
@@ -2298,6 +2421,56 @@
 
   function formatI18n(lang, key, params = {}) {
     return String(resolveI18n(lang, key)).replace(/\{(\w+)\}/g, (_, name) => params[name] ?? "");
+  }
+
+  function initCookieConsent() {
+    if (!document.body || document.querySelector("[data-cookie-consent]")) return;
+
+    const stored = getCookieConsent();
+    if (stored === "granted" || stored === "denied") {
+      updateAnalyticsConsent(stored, false);
+      return;
+    }
+
+    const banner = document.createElement("section");
+    banner.className = "cookie-consent";
+    banner.setAttribute("data-cookie-consent", "");
+    banner.setAttribute("role", "dialog");
+    banner.setAttribute("aria-live", "polite");
+    banner.innerHTML = `
+      <div class="cookie-consent__copy">
+        <strong data-cookie-title></strong>
+        <p data-cookie-text></p>
+        <a href="datenschutz.html" data-cookie-privacy></a>
+      </div>
+      <div class="cookie-consent__actions">
+        <button class="cookie-consent__btn cookie-consent__btn--ghost" type="button" data-cookie-decline></button>
+        <button class="cookie-consent__btn cookie-consent__btn--accept" type="button" data-cookie-accept></button>
+      </div>
+    `;
+
+    const render = (lang = getLang() || defaultLang) => {
+      banner.setAttribute("aria-label", resolveI18n(lang, "cookie_consent_label"));
+      banner.querySelector("[data-cookie-title]")?.replaceChildren(document.createTextNode(resolveI18n(lang, "cookie_consent_title")));
+      banner.querySelector("[data-cookie-text]")?.replaceChildren(document.createTextNode(resolveI18n(lang, "cookie_consent_text")));
+      banner.querySelector("[data-cookie-privacy]")?.replaceChildren(document.createTextNode(resolveI18n(lang, "cookie_consent_privacy")));
+      banner.querySelector("[data-cookie-accept]")?.replaceChildren(document.createTextNode(resolveI18n(lang, "cookie_consent_accept")));
+      banner.querySelector("[data-cookie-decline]")?.replaceChildren(document.createTextNode(resolveI18n(lang, "cookie_consent_decline")));
+    };
+
+    const close = (value) => {
+      setCookieConsent(value);
+      updateAnalyticsConsent(value, value === "granted");
+      banner.remove();
+      trackEvent("cookie_consent_update", { consent: value });
+    };
+
+    banner.querySelector("[data-cookie-accept]")?.addEventListener("click", () => close("granted"));
+    banner.querySelector("[data-cookie-decline]")?.addEventListener("click", () => close("denied"));
+    window.addEventListener("hn:language-change", (event) => render(event.detail?.lang));
+
+    render();
+    document.body.appendChild(banner);
   }
 
   function getStoredLang() {
@@ -4448,6 +4621,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   initLogoIntro();
   initThemeSystem();
   initLangButtons();
+  initCookieConsent();
   initReveal();
   initFaqAccordion();
   initAnalyticsTracking();
