@@ -444,11 +444,21 @@
   <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"></a>
 
   <div class="price-reminder" data-price-reminder hidden>
-    <a class="btn btn--prices price-reminder__link" href="prices.html">
-      <span data-i18n="price_reminder_title">Preise ansehen</span>
-      <small data-i18n="price_reminder_text">Gerät wählen und sofort Preis prüfen</small>
+    <a class="price-reminder__link" href="prices.html">
+      <span class="price-reminder__ambient" aria-hidden="true"></span>
+      <span class="price-reminder__scan" aria-hidden="true"></span>
+      <span class="price-reminder__badge" aria-hidden="true">
+        <span class="price-reminder__badge-ring"></span>
+        <span class="price-reminder__badge-symbol">&euro;</span>
+      </span>
+      <span class="price-reminder__copy">
+        <span class="price-reminder__kicker" data-i18n="price_reminder_kicker">Smart Preischeck</span>
+        <strong data-i18n="price_reminder_title">Preis sofort prüfen</strong>
+        <small data-i18n="price_reminder_text">Modell wählen und direkt anfragen</small>
+      </span>
+      <span class="price-reminder__action" aria-hidden="true">&rarr;</span>
     </a>
-    <button class="price-reminder__close" type="button" data-price-reminder-close aria-label="Preishinweis schliessen">x</button>
+    <button class="price-reminder__close" type="button" data-price-reminder-close data-i18n-aria-label="price_reminder_close" aria-label="Preishinweis schliessen"><span aria-hidden="true">&times;</span></button>
   </div>
 
   <!-- QUIZ MODAL (same as earlier) -->

@@ -2211,16 +2211,16 @@
   };
 
   const PRICE_REMINDER_I18N = {
-    de: { price_reminder_title: "Preise ansehen", price_reminder_text: "Gerät wählen und sofort Preis prüfen" },
-    uk: { price_reminder_title: "Переглянути ціни", price_reminder_text: "Оберіть пристрій і швидко перевірте ціну" },
-    en: { price_reminder_title: "View prices", price_reminder_text: "Choose your device and check the price" },
-    ru: { price_reminder_title: "Посмотреть цены", price_reminder_text: "Выберите устройство и быстро узнайте цену" },
-    pl: { price_reminder_title: "Zobacz ceny", price_reminder_text: "Wybierz urządzenie i sprawdź cenę" },
-    it: { price_reminder_title: "Vedi i prezzi", price_reminder_text: "Scegli il dispositivo e controlla il prezzo" },
-    ar: { price_reminder_title: "عرض الأسعار", price_reminder_text: "اختر الجهاز وتحقق من السعر بسرعة" },
-    ku: { price_reminder_title: "Bihan bibîne", price_reminder_text: "Cîhazê hilbijêre û bihayê kontrol bike" },
-    fr: { price_reminder_title: "Voir les prix", price_reminder_text: "Choisis ton appareil et vérifie le prix" },
-    sl: { price_reminder_title: "Poglej cene", price_reminder_text: "Izberi napravo in preveri ceno" },
+    de: { price_reminder_kicker: "Smart Preischeck", price_reminder_title: "Preis sofort prüfen", price_reminder_text: "Modell wählen und direkt anfragen", price_reminder_close: "Preishinweis schliessen" },
+    uk: { price_reminder_kicker: "Розумна перевірка ціни", price_reminder_title: "Перевірити ціну зараз", price_reminder_text: "Оберіть модель і одразу надішліть запит", price_reminder_close: "Закрити підказку з цінами" },
+    en: { price_reminder_kicker: "Smart price check", price_reminder_title: "Check the price now", price_reminder_text: "Choose a model and request directly", price_reminder_close: "Close price reminder" },
+    ru: { price_reminder_kicker: "Умная проверка цены", price_reminder_title: "Проверить цену сейчас", price_reminder_text: "Выберите модель и сразу отправьте запрос", price_reminder_close: "Закрыть подсказку с ценами" },
+    pl: { price_reminder_kicker: "Szybka wycena", price_reminder_title: "Sprawdź cenę teraz", price_reminder_text: "Wybierz model i od razu wyślij zapytanie", price_reminder_close: "Zamknij przypomnienie o cenach" },
+    it: { price_reminder_kicker: "Controllo prezzo smart", price_reminder_title: "Controlla subito il prezzo", price_reminder_text: "Scegli il modello e invia la richiesta", price_reminder_close: "Chiudi il promemoria prezzi" },
+    ar: { price_reminder_kicker: "فحص سعر ذكي", price_reminder_title: "تحقق من السعر الآن", price_reminder_text: "اختر الموديل وأرسل الطلب مباشرة", price_reminder_close: "إغلاق تذكير الأسعار" },
+    ku: { price_reminder_kicker: "Kontrola bihayê zîrek", price_reminder_title: "Niha bihayê kontrol bike", price_reminder_text: "Modelê hilbijêre û daxwazê rasterast bişîne", price_reminder_close: "Bîranîna bihayan bigire" },
+    fr: { price_reminder_kicker: "Check prix intelligent", price_reminder_title: "Vérifier le prix maintenant", price_reminder_text: "Choisis le modèle et envoie la demande", price_reminder_close: "Fermer le rappel des prix" },
+    sl: { price_reminder_kicker: "Pametno preverjanje cene", price_reminder_title: "Preveri ceno zdaj", price_reminder_text: "Izberi model in takoj pošlji povpraševanje", price_reminder_close: "Zapri opomnik za cene" },
   };
 
   const COOKIE_I18N = {
@@ -2391,6 +2391,7 @@
     if (el.closest("header")) return "header";
     if (el.closest(".mobilebar")) return "mobilebar";
     if (el.closest(".float-wa")) return "floating_cta";
+    if (el.closest(".price-reminder")) return "price_reminder";
     if (el.closest("#contact")) return "contact";
     if (el.closest(".concept-action-dock")) return "action_dock";
     if (el.closest(".concept-hero")) return "hero";
@@ -2625,6 +2626,12 @@
       const key = el.getAttribute("data-i18n-alt");
       const val = resolveI18n(code, key);
       if (val) el.setAttribute("alt", val);
+    });
+
+    document.querySelectorAll("[data-i18n-aria-label]").forEach((el) => {
+      const key = el.getAttribute("data-i18n-aria-label");
+      const val = resolveI18n(code, key);
+      if (val) el.setAttribute("aria-label", val);
     });
   }
 
@@ -4303,13 +4310,34 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     const close = reminder.querySelector("[data-price-reminder-close]");
     let timer = null;
     let observer = null;
+    let cookieObserver = null;
+    const controller = new AbortController();
     let shown = false;
+
+    function cleanup() {
+      if (timer) window.clearTimeout(timer);
+      timer = null;
+      observer?.disconnect();
+      observer = null;
+      cookieObserver?.disconnect();
+      cookieObserver = null;
+      controller.abort();
+    }
+
+    function cookieBannerVisible() {
+      const banner = document.querySelector("[data-cookie-consent]");
+      return Boolean(banner && banner.isConnected && !document.body.classList.contains("intro-pending"));
+    }
 
     function showReminder() {
       if (shown) return;
       try {
         if (sessionStorage.getItem(storageKey) === "1") return;
       } catch (error) {}
+      if (cookieBannerVisible()) {
+        waitForCookieConsent();
+        return;
+      }
       shown = true;
       reminder.hidden = false;
       requestAnimationFrame(() => reminder.classList.add("is-visible"));
@@ -4318,12 +4346,31 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
 
     function startTimer() {
       if (timer) return;
-      timer = window.setTimeout(showReminder, 10000);
+      timer = window.setTimeout(() => {
+        timer = null;
+        showReminder();
+      }, 10000);
+    }
+
+    function waitForCookieConsent() {
+      if (!cookieBannerVisible()) {
+        startTimer();
+        return;
+      }
+      if (cookieObserver) return;
+      cookieObserver = new MutationObserver(() => {
+        if (cookieBannerVisible()) return;
+        cookieObserver?.disconnect();
+        cookieObserver = null;
+        startTimer();
+      });
+      cookieObserver.observe(document.body, { childList: true, subtree: true, attributes: true });
     }
 
     function waitUntilVisible() {
       if (!document.body.classList.contains("intro-pending")) {
-        startTimer();
+        if (cookieBannerVisible()) waitForCookieConsent();
+        else startTimer();
         return;
       }
 
@@ -4331,14 +4378,13 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
         if (document.body.classList.contains("intro-pending")) return;
         observer?.disconnect();
         observer = null;
-        startTimer();
+        if (cookieBannerVisible()) waitForCookieConsent();
+        else startTimer();
       });
       observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
     }
 
     close?.addEventListener("click", () => {
-      if (timer) window.clearTimeout(timer);
-      observer?.disconnect();
       try {
         sessionStorage.setItem(storageKey, "1");
       } catch (error) {}
@@ -4347,14 +4393,18 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
         reminder.hidden = true;
       }, prefersReducedMotion ? 0 : 220);
       trackEvent("price_reminder_dismiss", { location: getClickLocation(reminder) });
-    });
+      cleanup();
+    }, { signal: controller.signal });
 
     link?.addEventListener("click", () => {
       try {
         sessionStorage.setItem(storageKey, "1");
       } catch (error) {}
       trackEvent("price_reminder_click", { location: getClickLocation(reminder) });
-    });
+      cleanup();
+    }, { signal: controller.signal });
+
+    window.addEventListener("pagehide", cleanup, { once: true, signal: controller.signal });
 
     waitUntilVisible();
   }
