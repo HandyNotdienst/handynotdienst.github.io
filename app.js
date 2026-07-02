@@ -2306,6 +2306,139 @@
     },
   };
 
+  const SHIPPING_I18N = {
+    de: {
+      nav_shipping: "Versand",
+      footer_shipping_terms: "Versandbedingungen",
+      mb_shipping_flow: "Ablauf",
+      price_mode_local: "In Singen",
+      price_mode_shipping: "Per Versand",
+      price_mode_local_note: "Lokale Übergabe, Abholung oder mobiler Termin nach WhatsApp-Check.",
+      price_mode_shipping_note: "Bei Versand bekommst du zuerst Versandhinweise. Keine Reparatur ohne Freigabe.",
+      price_mode_shipping_cta: "Versand per WhatsApp anfragen",
+      shipping_kicker: "Deutschlandweiter Versand",
+      shipping_h1: "Handy einschicken. Erst prüfen. Dann entscheiden.",
+      shipping_lead: "Du kannst dein Smartphone aus ganz Deutschland einsenden. Die Reparatur startet erst, wenn Diagnose, Reparaturoption und finaler Preis von dir freigegeben sind.",
+      shipping_hero_cta: "Versand per WhatsApp starten",
+      shipping_hero_secondary: "Ablauf ansehen",
+      shipping_trust_no_auto: "Keine Reparatur ohne Freigabe",
+      shipping_trust_final_price: "Finaler Preis vor Start",
+      shipping_trust_tracking: "Rückversand mit Sendungsnummer",
+      shipping_status_title: "WhatsApp Status",
+      shipping_status_text: "Diagnose erhalten - Freigabe offen",
+      shipping_entry_title: "Wähle den passenden Weg",
+      shipping_entry_text: "Lokal in Singen bleibt möglich. Versand ist der einfache Weg, wenn du weiter weg wohnst.",
+      shipping_entry_local_title: "Vor Ort in Singen",
+      shipping_entry_local_text: "Für schnelle Übergabe oder Reparatur nach kurzer Absprache.",
+      shipping_entry_pickup_title: "Abholung in Singen",
+      shipping_entry_pickup_text: "Wenn es zeitlich passt, kann eine Abholung innerhalb Singen vereinbart werden.",
+      shipping_entry_shipping_title: "Versand aus ganz Deutschland",
+      shipping_entry_shipping_text: "Du bekommst Versandhinweise per WhatsApp und entscheidest nach der Diagnose.",
+      shipping_flow_title: "So läuft Versand-Reparatur ab",
+      shipping_flow_text: "Erst prüfen. Dann entscheiden. Dann reparieren.",
+      shipping_step_1_title: "WhatsApp Anfrage",
+      shipping_step_1_text: "Schick Modell, Schaden, Ort und gern Fotos. Danach bekommst du die nächsten Schritte.",
+      shipping_step_2_title: "Versandhinweise erhalten",
+      shipping_step_2_text: "Die Einsendeadresse wird nicht öffentlich angezeigt, sondern nach Kontakt und Klärung geschickt.",
+      shipping_step_3_title: "Diagnose & Freigabe",
+      shipping_step_3_text: "Du bekommst Diagnose, Reparaturoption und finalen Preis. Ohne Freigabe wird nicht repariert.",
+      shipping_step_4_title: "Reparatur & Rückversand",
+      shipping_step_4_text: "Nach Freigabe wird repariert, getestet und mit Sendungsnummer zurückgeschickt.",
+      shipping_approval_badge: "Wichtig für dein Vertrauen",
+      shipping_approval_title: "Das Einsenden bedeutet noch keine automatische Reparatur.",
+      shipping_approval_text: "Du entscheidest nach der Diagnose. Wenn eine Reparatur nicht sinnvoll ist, besprechen wir eine Alternative oder den Rückversand.",
+      shipping_approval_1: "Keine Reparatur ohne Freigabe.",
+      shipping_approval_2: "Du bekommst zuerst Diagnose, Reparaturoption und finalen Preis.",
+      shipping_approval_3: "Rückversand mit Sendungsnummer.",
+      shipping_pack_title: "Verpackungs-Checkliste",
+      shipping_pack_text: "Kurz, praktisch, ohne Stress: so kommt dein Gerät sicher an.",
+      shipping_pack_open: "Checkliste öffnen",
+      shipping_pack_1: "Gerät ausschalten und SIM-Karte entfernen.",
+      shipping_pack_2: "Wenn möglich Backup erstellen und Sperrcode vorab klären.",
+      shipping_pack_3: "Gerät weich polstern, am besten in einer kleinen Box im Paket.",
+      shipping_pack_4: "Zettel mit Name, Rückkontakt, Modell und Fehlerbeschreibung beilegen.",
+      shipping_pack_5: "Nur mit verfolgbarer Sendung verschicken.",
+      shipping_faq_title: "Häufige Fragen zum Versand",
+      shipping_final_title: "Bereit für die Versand-Reparatur?",
+      shipping_final_text: "Schreib kurz Modell, Schaden und Ort. Du bekommst danach die Versandhinweise und kannst in Ruhe entscheiden.",
+      shipping_final_cta: "Versandhinweise per WhatsApp erhalten",
+      service_choice_title: "Drei Wege zur Reparatur",
+      service_choice_text: "Wähle, was zu dir passt: lokal in Singen, Abholung nach Absprache oder Versand aus ganz Deutschland.",
+      service_choice_local_title: "Vor Ort in Singen",
+      service_choice_local_text: "Kurze Abstimmung per WhatsApp, dann Übergabe oder mobiler Termin in Singen.",
+      service_choice_pickup_title: "Abholung in Singen",
+      service_choice_pickup_text: "Wenn es zeitlich passt, kann ich Abholung oder Rückgabe innerhalb Singen vereinbaren.",
+      service_choice_shipping_title: "Versand aus ganz Deutschland",
+      service_choice_shipping_text: "Erst prüfen, dann entscheiden: keine Reparatur ohne deine Freigabe.",
+      service_choice_hint: "Versandadresse und genaue Hinweise bekommst du erst nach dem WhatsApp-Check.",
+      faq_section_shipping: "Versandreparatur",
+      faq_shipping_approval_q: "Wird automatisch repariert, wenn ich mein Gerät einsende?",
+      faq_shipping_approval_a: "Nein. Erst nach Diagnose, finalem Preis und deiner ausdrücklichen Freigabe beginnt die Reparatur.",
+      faq_shipping_payment_q: "Wann bezahle ich?",
+      faq_shipping_payment_a: "Die Zahlung wird nach Freigabe und vor dem Rückversand geklärt. Details bekommst du im WhatsApp-Verlauf.",
+      faq_shipping_cost_q: "Wer trägt die Versandkosten?",
+      faq_shipping_cost_a: "Die Einsendekosten trägt der Kunde. Rückversand und mögliche Zusatzkosten werden vorab transparent geklärt.",
+      faq_shipping_pack_q: "Wie soll ich mein Gerät verpacken?",
+      faq_shipping_pack_a: "Bitte gut polstern, SIM-Karte entfernen und einen Zettel mit Modell, Fehlerbeschreibung und Rückkontakt beilegen. Versand nur verfolgbar.",
+      faq_shipping_data_q: "Bleiben meine Daten erhalten?",
+      faq_shipping_data_a: "Bei Standardreparaturen normalerweise ja. Trotzdem empfehlen wir vor dem Versand ein Backup.",
+      faq_shipping_tracking_q: "Bekomme ich eine Sendungsnummer?",
+      faq_shipping_tracking_a: "Ja, der Rückversand erfolgt mit Sendungsnummer, sobald das Gerät repariert, getestet und versandbereit ist.",
+      faq_shipping_water_q: "Geht Versand auch bei Wasserschaden?",
+      faq_shipping_water_a: "Ja, aber eine erfolgreiche Reparatur kann nicht garantiert werden. Nach der Diagnose entscheidest du über die nächsten Schritte.",
+      faq_shipping_unprofitable_q: "Was passiert, wenn sich die Reparatur nicht lohnt?",
+      faq_shipping_unprofitable_a: "Dann besprechen wir ehrlich die Optionen: Rückversand, Ankauf, Ersatzteiloption oder keine Reparatur.",
+      shipping_terms_title: "Versandbedingungen",
+      shipping_terms_intro: "Diese Hinweise erklären den Ablauf der Reparatur per Versand. Sie ersetzen keine individuelle Absprache im WhatsApp-Verlauf.",
+      shipping_terms_before_title: "1. Vor dem Einsenden",
+      shipping_terms_before_text: "Bitte kontaktiere uns zuerst per WhatsApp. Sende Modell, Schaden, Ort und wenn möglich Fotos. Die Einsendeadresse wird erst nach der Vorabklärung mitgeteilt.",
+      shipping_terms_no_auto_title: "2. Keine automatische Reparatur",
+      shipping_terms_no_auto_text: "Das Einsenden bedeutet noch keine automatische Reparatur. Nach Eingang bekommst du Diagnose, Reparaturoption und finalen Preis. Repariert wird erst nach deiner Freigabe.",
+      shipping_terms_cost_title: "3. Versandkosten und Rückversand",
+      shipping_terms_cost_text: "Die Einsendekosten trägt der Kunde. Rückversand, Sendungsnummer und mögliche Zusatzkosten werden vorab transparent geklärt.",
+      shipping_terms_data_title: "4. Daten und Backup",
+      shipping_terms_data_text: "Bei Standardreparaturen bleiben Daten normalerweise erhalten. Trotzdem empfehlen wir vor jeder Reparatur ein Backup.",
+      shipping_terms_damage_title: "5. Sonderfälle",
+      shipping_terms_damage_text: "Bei Wasserschaden, starken Sturzschäden oder nicht wirtschaftlicher Reparatur wird die weitere Vorgehensweise vorab besprochen.",
+      shipping_terms_notice: "Hinweis: Bitte diese Informationen vor aktiver Werbung final rechtlich prüfen lassen.",
+    },
+    uk: {
+      nav_shipping: "Доставка",
+      footer_shipping_terms: "Умови доставки",
+      mb_shipping_flow: "Процес",
+      price_mode_local: "У Singen",
+      price_mode_shipping: "Поштою",
+      price_mode_local_note: "Передача, забір або мобільний термін у Singen після WhatsApp-перевірки.",
+      price_mode_shipping_note: "Для ремонту поштою спочатку надішлю інструкції. Без твоєї згоди ремонт не починається.",
+      price_mode_shipping_cta: "Запитати Versand у WhatsApp",
+      shipping_kicker: "Відправка по Німеччині",
+      shipping_h1: "Надішли телефон. Спочатку перевірка. Потім рішення.",
+      shipping_hero_cta: "Почати через WhatsApp",
+      faq_section_shipping: "Ремонт поштою",
+    },
+    en: {
+      nav_shipping: "Shipping",
+      footer_shipping_terms: "Shipping terms",
+      mb_shipping_flow: "Flow",
+      price_mode_local: "In Singen",
+      price_mode_shipping: "By shipping",
+      price_mode_local_note: "Local handover, pickup or mobile appointment after WhatsApp check.",
+      price_mode_shipping_note: "For shipping, you first receive shipping instructions. No repair without approval.",
+      price_mode_shipping_cta: "Ask for mail-in repair",
+      shipping_kicker: "Germany-wide shipping",
+      shipping_h1: "Send in your phone. Check first. Decide after.",
+      shipping_hero_cta: "Start by WhatsApp",
+      faq_section_shipping: "Mail-in repair",
+    },
+    ru: { nav_shipping: "Доставка", footer_shipping_terms: "Условия доставки", mb_shipping_flow: "Процесс", price_mode_local: "В Singen", price_mode_shipping: "Почтой", price_mode_shipping_cta: "Спросить про отправку", faq_section_shipping: "Ремонт почтой" },
+    pl: { nav_shipping: "Wysyłka", footer_shipping_terms: "Warunki wysyłki", mb_shipping_flow: "Proces", price_mode_local: "W Singen", price_mode_shipping: "Wysyłkowo", price_mode_shipping_cta: "Zapytaj o wysyłkę", faq_section_shipping: "Naprawa wysyłkowa" },
+    it: { nav_shipping: "Spedizione", footer_shipping_terms: "Condizioni spedizione", mb_shipping_flow: "Procedura", price_mode_local: "A Singen", price_mode_shipping: "Per spedizione", price_mode_shipping_cta: "Chiedi la spedizione", faq_section_shipping: "Riparazione per spedizione" },
+    ar: { nav_shipping: "الشحن", footer_shipping_terms: "شروط الشحن", mb_shipping_flow: "الخطوات", price_mode_local: "في Singen", price_mode_shipping: "بالشحن", price_mode_shipping_cta: "اسأل عن الشحن", faq_section_shipping: "إصلاح عبر الشحن" },
+    ku: { nav_shipping: "Şandin", footer_shipping_terms: "Mercên şandinê", mb_shipping_flow: "Rêbaz", price_mode_local: "Li Singen", price_mode_shipping: "Bi şandinê", price_mode_shipping_cta: "Derbarê şandinê bipirse", faq_section_shipping: "Tamîra bi şandinê" },
+    fr: { nav_shipping: "Envoi", footer_shipping_terms: "Conditions d'envoi", mb_shipping_flow: "Étapes", price_mode_local: "À Singen", price_mode_shipping: "Par envoi", price_mode_shipping_cta: "Demander l'envoi", faq_section_shipping: "Réparation par envoi" },
+    sl: { nav_shipping: "Pošiljanje", footer_shipping_terms: "Pogoji pošiljanja", mb_shipping_flow: "Potek", price_mode_local: "V Singen", price_mode_shipping: "Po pošti", price_mode_shipping_cta: "Vprašaj za pošiljanje", faq_section_shipping: "Popravilo po pošti" },
+  };
+
   Object.entries(EXTRA_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...GLOBAL_I18N.de, ...values };
   });
@@ -2329,6 +2462,18 @@
   });
   Object.entries(COOKIE_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
+  Object.entries(SHIPPING_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
+  const LEGAL_SOURCE_OF_TRUTH = {
+    privacy_intro: "Diese Datenschutzhinweise erklären kurz, welche Daten bei Kontakt, Versand-Anfrage, Website-Nutzung und Analytics verarbeitet werden.",
+    privacy_contact_text: "Wenn du per Telefon, Email, WhatsApp oder Telegram Kontakt aufnimmst, werden die von dir gesendeten Angaben zur Bearbeitung deiner Reparaturanfrage verwendet.",
+    privacy_hosting_text: "Diese Website wird statisch gehostet. Dabei können technisch notwendige Server-Logfiles entstehen.",
+    privacy_notice: "Google Analytics wird nur nach Zustimmung aktiviert. Bei Versand-Anfragen können zusätzlich Modell, Schaden, Kontaktweg, Versandstatus und Rückversand-Informationen verarbeitet werden.",
+  };
+  Object.keys(GLOBAL_I18N).forEach((lang) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || {}), ...LEGAL_SOURCE_OF_TRUTH };
   });
 
   const hasI18n = Object.keys(i18n).length > 0 || Object.keys(GLOBAL_I18N).length > 0;
@@ -2392,6 +2537,7 @@
     if (el.closest(".mobilebar")) return "mobilebar";
     if (el.closest(".float-wa")) return "floating_cta";
     if (el.closest(".price-reminder")) return "price_reminder";
+    if (el.closest(".shipping-page")) return "shipping";
     if (el.closest("#contact")) return "contact";
     if (el.closest(".concept-action-dock")) return "action_dock";
     if (el.closest(".concept-hero")) return "hero";
@@ -2886,6 +3032,7 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
 
   let selectedPriceRepair = null;
   let selectedPriceBrand = "apple";
+  let selectedPriceDeliveryMode = "local";
   let selectedSamsungSeries = "";
   let selectedSamsungModel = "";
   let selectedSamsungRepair = "";
@@ -2926,6 +3073,9 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
   }
 
   function getPriceCtaText(lang) {
+    if (selectedPriceDeliveryMode === "shipping") {
+      return resolveI18n(lang, "price_mode_shipping_cta") || "Versand per WhatsApp anfragen";
+    }
     return resolveI18n(lang, "price_selector_cta") || resolveI18n(lang, "wa_message_intro") || "Per WhatsApp anfragen";
   }
 
@@ -2980,6 +3130,20 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     if (!whatsappNumber || !entry) return "#";
 
     const lang = getLang();
+    if (selectedPriceDeliveryMode === "shipping") {
+      const repairLabel = repair?.label || (resolveI18n(lang, "wa_repair_general") || "allgemeine Anfrage");
+      const price = repair?.price || (resolveI18n(lang, "samsung_price_ask") || "Einfach fragen");
+      const text = `Hallo! Ich möchte eine Reparatur per Versand anfragen.
+
+Modell: ${entry.model}
+Reparatur: ${repairLabel}
+Preis laut Liste: ${price}
+Ort: Deutschland
+
+Bitte sende mir die Versandhinweise.`;
+      return buildWhatsAppHref(text);
+    }
+
     const stockLine = repair?.stock
       ? `\n${resolveI18n(lang, "wa_label_stock") || "Lager"}: ${getStockLabel(repair.stock, lang)}`
       : "";
@@ -2995,11 +3159,30 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     return buildWhatsAppHref(text);
   }
 
+  function updatePriceShippingUi() {
+    const lang = getLang();
+    const isShipping = selectedPriceDeliveryMode === "shipping";
+    document.querySelector("[data-price-selector]")?.classList.toggle("is-shipping-mode", isShipping);
+    document.querySelectorAll("[data-price-shipping-mode]").forEach((button) => {
+      const active = button.dataset.priceShippingMode === selectedPriceDeliveryMode;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    const note = document.querySelector("[data-price-shipping-note]");
+    if (note) {
+      const key = isShipping ? "price_mode_shipping_note" : "price_mode_local_note";
+      note.textContent = resolveI18n(lang, key) || "";
+    }
+    const hint = document.querySelector("[data-price-shipping-hint]");
+    if (hint) hint.hidden = !isShipping;
+  }
+
   function updatePriceCta(entry) {
     const cta = document.querySelector("[data-price-cta]");
     if (!cta || !entry) return;
     cta.textContent = getPriceCtaText(getLang());
     cta.href = buildPriceWaHref(entry, selectedPriceRepair);
+    updatePriceShippingUi();
   }
 
   function setPriceCtaReady(isReady) {
@@ -3106,6 +3289,17 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
 
     const lang = getLang();
     const state = getSamsungSummaryState();
+    if (selectedPriceDeliveryMode === "shipping") {
+      const text = `Hallo! Ich möchte eine Reparatur per Versand anfragen.
+
+Modell: ${state.model}
+Reparatur: ${state.repair}
+Preis laut Liste: ${state.price}
+Ort: Deutschland
+
+Bitte sende mir die Versandhinweise.`;
+      return buildWhatsAppHref(text);
+    }
     const text = `${resolveI18n(lang, "wa_message_intro") || "Hallo!"}
 ${resolveI18n(lang, "samsung_summary_device") || "Gerät"}: ${state.device}
 ${resolveI18n(lang, "samsung_summary_series") || "Serie"}: ${state.series}
@@ -3755,6 +3949,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     const samsungSearch = document.querySelector("[data-samsung-model-search]");
     const samsungCta = document.querySelector("[data-samsung-cta]");
     const brandButtons = document.querySelectorAll("[data-price-brand]");
+    const shippingButtons = document.querySelectorAll("[data-price-shipping-mode]");
     if (!familySelect || !modelSelect) return;
 
     brandButtons.forEach((button) => {
@@ -3788,6 +3983,17 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       renderPriceSelection();
       trackEvent("model_select", { brand: selectedPriceBrand, model: modelSelect.value });
     });
+    shippingButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const mode = button.dataset.priceShippingMode === "shipping" ? "shipping" : "local";
+        if (selectedPriceDeliveryMode === mode) return;
+        selectedPriceDeliveryMode = mode;
+        updatePriceShippingUi();
+        updatePriceCta(getCurrentPriceEntry());
+        updateSamsungSummary();
+        trackEvent("shipping_price_mode_select", { mode });
+      });
+    });
     cta?.addEventListener("click", () => {
       const entry = getCurrentPriceEntry();
       updatePriceCta(entry);
@@ -3797,6 +4003,14 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
         repair: selectedPriceRepair?.label || "general",
         price: selectedPriceRepair?.price || "",
       });
+      if (selectedPriceDeliveryMode === "shipping") {
+        trackEvent("shipping_whatsapp_click", {
+          source: "prices",
+          brand: entry?.brand,
+          model: entry?.model,
+          repair: selectedPriceRepair?.label || "general",
+        });
+      }
     });
     samsungSearch?.addEventListener("input", () => {
       selectedSamsungOtherDevice = null;
@@ -3826,9 +4040,17 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
         repair: state.repair,
         price: state.price,
       });
+      if (selectedPriceDeliveryMode === "shipping") {
+        trackEvent("shipping_whatsapp_click", {
+          source: "samsung_modal",
+          model: state.model,
+          repair: state.repair,
+        });
+      }
     });
 
     renderPrices();
+    updatePriceShippingUi();
   }
 
   function initBundles() {
@@ -4163,6 +4385,12 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
           question: summary.textContent.trim(),
           open: willOpen,
         });
+        if ((summary.dataset.i18n || "").startsWith("faq_shipping_")) {
+          trackEvent("shipping_faq_toggle", {
+            question: summary.textContent.trim(),
+            open: willOpen,
+          });
+        }
       });
     });
   }
@@ -4648,6 +4876,40 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     }
   }
 
+  function initShippingService() {
+    const page = document.querySelector("[data-shipping-page]");
+    if (!page) return;
+
+    trackEvent("shipping_page_view", { path: window.location.pathname });
+
+    document.querySelectorAll("[data-shipping-cta]").forEach((link) => {
+      link.addEventListener("click", () => {
+        const source = link.dataset.shippingCta || getClickLocation(link);
+        trackEvent("shipping_cta_click", { source });
+        if (link.href && link.href.includes("wa.me")) {
+          trackEvent("shipping_whatsapp_click", { source });
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-shipping-checklist]").forEach((details) => {
+      details.addEventListener("toggle", () => {
+        if (details.open) {
+          trackEvent("shipping_packing_checklist_open", { location: getClickLocation(details) });
+        }
+      });
+    });
+
+    page.querySelectorAll(".shipping-faq details").forEach((details) => {
+      details.addEventListener("toggle", () => {
+        trackEvent("shipping_faq_toggle", {
+          question: details.querySelector("summary")?.textContent?.trim() || "",
+          open: details.open,
+        });
+      });
+    });
+  }
+
   function setLang(lang, source = "manual") {
     const code = normalizeLang(lang) || defaultLang;
     currentLang = code;
@@ -4676,6 +4938,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   initFaqAccordion();
   initAnalyticsTracking();
   initPageTransitionToPrices();
+  initShippingService();
   initPriceReminder();
   initPickupButton();
   initBundles();

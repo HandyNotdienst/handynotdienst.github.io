@@ -1,8 +1,10 @@
-const CACHE = "hn-v33";
+const CACHE = "hn-v34";
 const ASSETS = [
   "./",
   "./index.html",
   "./prices.html",
+  "./versand-reparatur.html",
+  "./versandbedingungen.html",
   "./iphone-modell-finder.html",
   "./tools/iphone-model-finder.html",
   "./faqs.html",
