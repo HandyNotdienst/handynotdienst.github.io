@@ -3376,8 +3376,8 @@ html[data-theme="light"] .shipping-picture--light{
   height: 46px;
   border-radius:50%;
   background:
-    radial-gradient(circle at 32% 22%, rgba(124,221,255,.30), transparent 42%),
-    linear-gradient(145deg, #1b374c, #0f2637);
+    radial-gradient(circle at 32% 22%, rgba(124,221,255,.24), transparent 42%),
+    radial-gradient(circle at 50% 50%, rgba(27,55,76,.90) 0%, rgba(27,55,76,.72) 56%, rgba(27,55,76,.38) 100%);
   border:1px solid rgba(124,221,255,.24);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 12px 24px rgba(0,0,0,.24);
 }
@@ -3435,6 +3435,15 @@ html[data-theme="light"] .shipping-picture--light{
   object-position:center;
   border-radius: 27px;
 }
+.shipping-hero__visual .shipping-picture--hero.shipping-picture--light{
+  display:none;
+}
+html[data-theme="light"] .shipping-hero__visual .shipping-picture--hero.shipping-picture--dark{
+  display:none;
+}
+html[data-theme="light"] .shipping-hero__visual .shipping-picture--hero.shipping-picture--light{
+  display:block;
+}
 .shipping-timeline{
   display:grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -3474,8 +3483,8 @@ html[data-theme="light"] .shipping-picture--light{
   aspect-ratio:1;
   border-radius:50%;
   background:
-    radial-gradient(circle at 32% 22%, rgba(124,221,255,.34), transparent 42%),
-    linear-gradient(145deg, #1b374c, #0f2637);
+    radial-gradient(circle at 32% 22%, rgba(124,221,255,.24), transparent 42%),
+    radial-gradient(circle at 50% 50%, rgba(27,55,76,.90) 0%, rgba(27,55,76,.72) 56%, rgba(27,55,76,.38) 100%);
   border:1px solid rgba(124,221,255,.22);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.14),
@@ -3566,16 +3575,10 @@ html[data-theme="light"] .shipping-picture--light{
 .shipping-checklist li:nth-child(3)::before{content:"📦";}
 .shipping-checklist li:nth-child(4)::before{content:"📝";}
 .shipping-checklist li:nth-child(5)::before{content:"🔎";}
-}
 .shipping-pack-card{
   max-width:none;
   margin:0;
   align-self:center;
-}
-.shipping-pack-card summary{
-  cursor:pointer;
-  font-weight:950;
-  color: var(--text);
 }
 .shipping-packing__grid{
   display:grid;
@@ -3693,19 +3696,22 @@ html[data-theme="light"] .shipping-picture--light{
     margin-bottom: 12px;
   }
   .shipping-logistics-strip{
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
   }
   .shipping-logistics-strip li{
-    min-height: 88px;
-    padding: 9px 8px;
+    min-height: 74px;
+    padding: 8px 6px;
+    gap: 5px;
+    font-size: 10.5px;
   }
   .shipping-logistics-strip__icon{
-    width: 42px;
-    height: 42px;
+    width: 36px;
+    height: 36px;
   }
   .shipping-logistics-strip__icon::before{
-    width: 26px;
-    height: 26px;
+    width: 22px;
+    height: 22px;
   }
   .shipping-packing__visual{
     max-width: 340px;
@@ -5216,8 +5222,8 @@ html[data-theme="light"] .shipping-card-visual::before,
 html[data-theme="light"] .shipping-packing__visual::before,
 html[data-theme="light"] .shipping-logistics-strip__icon{
   background:
-    radial-gradient(circle at 32% 22%, rgba(124,221,255,.34), transparent 42%),
-    linear-gradient(145deg, #1b374c, #0f2637);
+    radial-gradient(circle at 32% 22%, rgba(124,221,255,.24), transparent 42%),
+    radial-gradient(circle at 50% 50%, rgba(27,55,76,.90) 0%, rgba(27,55,76,.72) 56%, rgba(27,55,76,.38) 100%);
   border-color: rgba(27,55,76,.22);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.16),
