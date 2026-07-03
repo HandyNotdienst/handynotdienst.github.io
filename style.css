@@ -3362,9 +3362,6 @@ html[data-theme="light"] .shipping-picture--light{
   isolation:isolate;
 }
 .shipping-hero__visual .shipping-picture--hero{
-  aspect-ratio: 3 / 4;
-  max-width: min(520px, 100%);
-  margin-inline:auto;
   overflow:hidden;
   border-radius: 30px;
   background:
@@ -3373,10 +3370,9 @@ html[data-theme="light"] .shipping-picture--light{
   box-shadow: 0 30px 90px rgba(0,0,0,.46);
 }
 .shipping-hero__visual .shipping-picture--hero img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
+  aspect-ratio:1;
+  object-fit:contain;
+  padding: clamp(10px, 2vw, 22px);
 }
 .shipping-status-card{
   position:absolute;
