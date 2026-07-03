@@ -356,7 +356,7 @@
             </div>
             <h3 data-i18n="service_choice_shipping_title">Versand aus ganz Deutschland</h3>
             <p class="muted" data-i18n="service_choice_shipping_text">Erst prüfen, dann entscheiden: keine Reparatur ohne deine Freigabe.</p>
-            <a class="btn btn--prices" href="versand-reparatur.html" data-i18n="nav_shipping">Versand</a>
+            <a class="btn btn--prices btn--shipping" href="versand-reparatur.html" data-i18n="nav_shipping">Versand</a>
           </article>
         </div>
         <p class="hint" data-i18n="service_choice_hint">Versandadresse und genaue Hinweise bekommst du erst nach dem WhatsApp-Check.</p>
@@ -465,10 +465,10 @@
         </div>
 
         <div class="card contact__right">
-          <h3 data-i18n="map_title">So läuft die Übergabe</h3>
-          <p class="muted" data-i18n="map_text">Bis ein eigener Laden geöffnet ist, läuft alles flexibel nach kurzer Absprache.</p>
-          <div class="map service-area"><span><strong data-i18n="map_placeholder">Singen & Umgebung</strong><small data-i18n="service_area_text">Ich repariere vorbereitet zu Hause und kann innerhalb Singen persönlich vorbeikommen oder eine Übergabe vereinbaren.</small></span></div>
-          <p class="hint" data-i18n="map_hint">Bitte zuerst per WhatsApp Modell, Schaden und gewünschte Übergabe schreiben.</p>
+          <h3 data-i18n="map_title">Übergabe, Abholung oder Versand</h3>
+          <p class="muted" data-i18n="map_text">Aktuell ohne offenes Ladenlokal: lokal flexibel in Singen oder per Versand aus Deutschland.</p>
+          <div class="map service-area"><span><strong data-i18n="map_placeholder">Singen & deutschlandweiter Versand</strong><small data-i18n="service_area_text">Innerhalb Singen sind Übergabe, Abholung oder mobiler Termin nach Absprache möglich. Außerhalb Singen läuft die Reparatur per verfolgbarer Sendung.</small></span></div>
+          <p class="hint" data-i18n="map_hint">Bitte zuerst per WhatsApp Modell, Schaden und gewünschten Weg schreiben: Singen, Abholung oder Versand.</p>
         </div>
       </div>
     </section>
@@ -490,7 +490,7 @@
 
   <!-- Mobile sticky contact bar (9) -->
   <nav class="mobilebar" aria-label="Mobile quick actions">
-    <a class="mobilebar__btn mobilebar__btn--call" href="tel:+4915222416438"><span data-i18n="mb_call">Call</span></a>
+    <a class="mobilebar__btn mobilebar__btn--shipping" href="versand-reparatur.html"><span data-i18n="nav_shipping">Versand</span></a>
     <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span></a>
     <a class="mobilebar__btn mobilebar__btn--prices" href="prices.html"><span data-i18n="mb_prices">Preise</span></a>
   </nav>
@@ -673,11 +673,11 @@
         address_hint:"Kein offenes Ladenlokal – Übergabe, Abholung oder Vor-Ort-Termin nach Absprache.",
         hours:"Termine",
         hours_hint:"meist kurzfristig nach WhatsApp-Check möglich",
-        map_title:"So läuft die Übergabe",
-        map_text:"Bis ein eigener Laden geöffnet ist, läuft alles flexibel nach kurzer Absprache.",
-        map_placeholder:"Singen & Umgebung",
-        service_area_text:"Ich repariere vorbereitet zu Hause und kann innerhalb Singen persönlich vorbeikommen oder eine Übergabe vereinbaren.",
-        map_hint:"Bitte zuerst per WhatsApp Modell, Schaden und gewünschte Übergabe schreiben.",
+        map_title:"Übergabe, Abholung oder Versand",
+        map_text:"Aktuell ohne offenes Ladenlokal: lokal flexibel in Singen oder per Versand aus Deutschland.",
+        map_placeholder:"Singen & deutschlandweiter Versand",
+        service_area_text:"Innerhalb Singen sind Übergabe, Abholung oder mobiler Termin nach Absprache möglich. Außerhalb Singen läuft die Reparatur per verfolgbarer Sendung.",
+        map_hint:"Bitte zuerst per WhatsApp Modell, Schaden und gewünschten Weg schreiben: Singen, Abholung oder Versand.",
 
         mb_call:"Call",
         mb_prices:"Preise",
@@ -797,11 +797,11 @@
         address_hint:"Поки що без відкритого магазину — передача, забір або виїзд за домовленістю.",
         hours:"Запис",
         hours_hint:"часто можливий швидко після перевірки у WhatsApp",
-        map_title:"Як відбувається передача",
-        map_text:"Поки власний магазин ще готується, все робимо гнучко після короткої домовленості.",
-        map_placeholder:"Singen та околиці",
-        service_area_text:"Я готую ремонт вдома і можу особисто підʼїхати в межах Singen або домовитися про передачу.",
-        map_hint:"Спочатку напиши у WhatsApp модель, проблему і бажаний спосіб передачі.",
+        map_title:"Передача, забір або відправка",
+        map_text:"Поки немає відкритого магазину: гнучко локально в Singen або через доставку по Німеччині.",
+        map_placeholder:"Singen і доставка по Німеччині",
+        service_area_text:"У межах Singen можливі передача, забір або мобільний термін за домовленістю. За межами Singen ремонт проходить через відстежувану посилку.",
+        map_hint:"Спершу напиши в WhatsApp модель, пошкодження і бажаний шлях: Singen, забір або Versand.",
 
         mb_call:"Дзвінок",
         mb_prices:"Ціни",
@@ -921,11 +921,11 @@
         address_hint:"No open shop yet — handover, pickup or on-site visit by arrangement.",
         hours:"Appointments",
         hours_hint:"often possible shortly after the WhatsApp check",
-        map_title:"How handover works",
-        map_text:"Until a dedicated shop opens, everything runs flexibly after a quick check.",
-        map_placeholder:"Singen & nearby area",
-        service_area_text:"I prepare repairs at home and can personally come by within Singen or arrange a handover.",
-        map_hint:"Please send model, damage and preferred handover by WhatsApp first.",
+        map_title:"Handover, pickup or shipping",
+        map_text:"Currently without an open shop: flexible locally in Singen or by mail-in repair within Germany.",
+        map_placeholder:"Singen & Germany-wide shipping",
+        service_area_text:"Within Singen, handover, pickup or a mobile appointment can be arranged. Outside Singen, the repair runs by trackable parcel.",
+        map_hint:"Please first send model, damage and preferred option by WhatsApp: Singen, pickup or shipping.",
 
         mb_call:"Call",
         mb_prices:"Prices",
