@@ -3165,8 +3165,8 @@ html[data-theme="light"] .lang__check{
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  gap: 10px;
-  min-height: 230px;
+  gap: 12px;
+  min-height: 330px;
 }
 .service-choice__card::after,
 .shipping-entry-card::after{
@@ -3196,6 +3196,55 @@ html[data-theme="light"] .lang__check{
   margin-top:auto;
 }
 
+.shipping-picture{
+  display:block;
+  min-width:0;
+}
+.shipping-picture--light{
+  display:none;
+}
+html[data-theme="light"] .shipping-picture--dark{
+  display:none;
+}
+html[data-theme="light"] .shipping-picture--light{
+  display:block;
+}
+.shipping-picture img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+.shipping-card-visual{
+  position:relative;
+  z-index:1;
+  width:100%;
+  aspect-ratio: 16 / 10;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  margin-bottom: 4px;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 50% 8%, rgba(101,199,255,.20), transparent 58%),
+    linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.035));
+  border:1px solid rgba(255,255,255,.12);
+}
+.shipping-card-visual::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background: linear-gradient(180deg, transparent 54%, rgba(7,21,33,.30));
+}
+.shipping-card-visual .shipping-picture{
+  width:min(82%, 260px);
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,.24));
+}
+.shipping-card-visual img{
+  aspect-ratio:1;
+  object-fit:contain;
+}
+
 .shipping-page{
   overflow:hidden;
 }
@@ -3214,6 +3263,9 @@ html[data-theme="light"] .lang__check{
   gap: clamp(24px, 5vw, 64px);
   align-items:center;
 }
+.shipping-hero__copy{
+  min-width:0;
+}
 .shipping-kicker{
   display:inline-flex;
   align-items:center;
@@ -3229,13 +3281,19 @@ html[data-theme="light"] .lang__check{
 }
 .shipping-hero h1{
   max-width: 720px;
+  max-inline-size:100%;
   margin: 16px 0 14px;
   font-size: clamp(38px, 6vw, 72px);
   line-height: .98;
   letter-spacing: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens:auto;
 }
 .shipping-hero p{
   max-width: 62ch;
+  overflow-wrap:anywhere;
+  word-break:break-word;
 }
 .shipping-hero__actions{
   display:flex;
@@ -3265,22 +3323,56 @@ html[data-theme="light"] .lang__check{
   height: 24px;
   flex:none;
 }
+.shipping-logistics-strip{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 16px 0 0;
+  padding:0;
+  list-style:none;
+}
+.shipping-logistics-strip li{
+  display:grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  align-items:center;
+  gap: 8px;
+  min-width:0;
+  padding: 8px;
+  border-radius: 16px;
+  color:rgba(238,243,247,.78);
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.10);
+  font-size: 11px;
+  font-weight: 850;
+}
+.shipping-logistics-strip__icon{
+  display:block;
+  width: 36px;
+  height: 28px;
+  background: var(--shipping-logistics-icon) center / contain no-repeat;
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,.24));
+}
+.shipping-logistics-strip__icon--parcel{--shipping-logistics-icon: url("assets/shipping/parcel.png");}
+.shipping-logistics-strip__icon--courier{--shipping-logistics-icon: url("assets/shipping/courier.png");}
+.shipping-logistics-strip__icon--delivery{--shipping-logistics-icon: url("assets/shipping/delivery-car.png");}
+.shipping-logistics-strip__icon--locker{--shipping-logistics-icon: url("assets/shipping/parcel-locker.png");}
 .shipping-hero__visual{
   position:relative;
   min-width:0;
+  isolation:isolate;
 }
-.shipping-hero__visual picture{
-  display:block;
+.shipping-hero__visual .shipping-picture--hero{
   overflow:hidden;
   border-radius: 30px;
-  background: rgba(255,255,255,.94);
+  background:
+    radial-gradient(circle at 50% 4%, rgba(255,255,255,.96), rgba(240,247,250,.92) 52%, rgba(217,230,238,.96));
   border:1px solid rgba(255,255,255,.32);
   box-shadow: 0 30px 90px rgba(0,0,0,.46);
 }
-.shipping-hero__visual img{
-  display:block;
-  width:100%;
-  height:auto;
+.shipping-hero__visual .shipping-picture--hero img{
+  aspect-ratio:1;
+  object-fit:contain;
+  padding: clamp(10px, 2vw, 22px);
 }
 .shipping-status-card{
   position:absolute;
@@ -3319,6 +3411,31 @@ html[data-theme="light"] .lang__check{
 }
 .shipping-timeline li{
   position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-height: 360px;
+}
+.shipping-timeline__media{
+  position:relative;
+  display:grid;
+  place-items:center;
+  min-height: 160px;
+  margin: -4px -4px 14px;
+  border-radius: 20px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(101,199,255,.18), transparent 58%),
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.10);
+}
+.shipping-timeline__media .shipping-picture{
+  width:min(82%, 210px);
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,.23));
+}
+.shipping-timeline__media img{
+  aspect-ratio:1;
+  object-fit:contain;
 }
 .shipping-timeline__step{
   width: 40px;
@@ -3377,13 +3494,40 @@ html[data-theme="light"] .lang__check{
   border:1px solid rgba(53,215,101,.24);
 }
 .shipping-pack-card{
-  max-width: 840px;
-  margin: 0 auto;
+  max-width:none;
+  margin:0;
+  align-self:center;
 }
 .shipping-pack-card summary{
   cursor:pointer;
   font-weight:950;
   color: var(--text);
+}
+.shipping-packing__grid{
+  display:grid;
+  grid-template-columns: minmax(220px, 360px) minmax(0, 1fr);
+  gap: clamp(18px, 4vw, 42px);
+  align-items:center;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.shipping-packing__visual{
+  position:relative;
+  overflow:hidden;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(244,184,96,.16), transparent 58%),
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 24px 70px rgba(0,0,0,.24);
+}
+.shipping-picture--packing{
+  padding: 14px;
+}
+.shipping-picture--packing img{
+  aspect-ratio:1;
+  object-fit:contain;
+  filter: drop-shadow(0 20px 34px rgba(0,0,0,.22));
 }
 .shipping-final__card{
   max-width: 860px;
@@ -3409,6 +3553,16 @@ html[data-theme="light"] .lang__check{
   .shipping-hero__grid{
     align-items:start;
   }
+  .shipping-logistics-strip{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .shipping-packing__grid{
+    grid-template-columns: 1fr;
+  }
+  .shipping-packing__visual{
+    max-width: 420px;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 640px){
@@ -3423,7 +3577,19 @@ html[data-theme="light"] .lang__check{
     grid-template-columns: 1fr;
   }
   .shipping-hero h1{
-    font-size: clamp(34px, 10vw, 48px);
+    max-width: 100%;
+    font-size: clamp(28px, 8vw, 36px);
+    line-height: 1.02;
+  }
+  .shipping-hero__actions{
+    display:grid;
+    grid-template-columns: 1fr;
+  }
+  .shipping-hero__actions .btn{
+    min-width:0;
+    width:100%;
+    justify-content:center;
+    white-space:normal;
   }
   .shipping-status-card{
     position:relative;
@@ -3434,6 +3600,34 @@ html[data-theme="light"] .lang__check{
   .service-choice__card,
   .shipping-entry-card{
     min-height: 0;
+  }
+  .shipping-card-visual{
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+  }
+  .shipping-card-visual .shipping-picture{
+    width:min(76%, 240px);
+  }
+  .shipping-timeline li{
+    min-height: 0;
+  }
+  .shipping-timeline__media{
+    min-height: 148px;
+    margin-bottom: 12px;
+  }
+  .shipping-logistics-strip{
+    grid-template-columns: 1fr;
+  }
+  .shipping-logistics-strip li{
+    grid-template-columns: 32px minmax(0, 1fr);
+    padding: 7px;
+  }
+  .shipping-logistics-strip__icon{
+    width: 32px;
+    height: 24px;
+  }
+  .shipping-packing__visual{
+    max-width: 340px;
   }
 }
 
@@ -4912,8 +5106,28 @@ html[data-theme="light"] .shipping-hero{
 }
 html[data-theme="light"] .shipping-hero h1,
 html[data-theme="light"] .shipping-hero p,
-html[data-theme="light"] .shipping-trust-list li{
+html[data-theme="light"] .shipping-trust-list li,
+html[data-theme="light"] .shipping-logistics-strip li{
   color: var(--text);
+}
+html[data-theme="light"] .shipping-card-visual,
+html[data-theme="light"] .shipping-timeline__media,
+html[data-theme="light"] .shipping-packing__visual{
+  background:
+    radial-gradient(circle at 50% 8%, rgba(23,127,194,.13), transparent 58%),
+    linear-gradient(180deg, rgba(255,255,255,.86), rgba(225,238,246,.62));
+  border-color: rgba(11,29,42,.10);
+  box-shadow: 0 18px 44px rgba(39,74,96,.12);
+}
+html[data-theme="light"] .shipping-logistics-strip li{
+  background: rgba(255,255,255,.70);
+  border-color: rgba(11,29,42,.10);
+}
+html[data-theme="light"] .shipping-logistics-strip__icon,
+html[data-theme="light"] .shipping-card-visual .shipping-picture,
+html[data-theme="light"] .shipping-timeline__media .shipping-picture,
+html[data-theme="light"] .shipping-picture--packing img{
+  filter: drop-shadow(0 14px 22px rgba(39,74,96,.16));
 }
 html[data-theme="light"] .shipping-status-card{
   background: rgba(255,255,255,.92);
