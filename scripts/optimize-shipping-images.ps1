@@ -96,9 +96,11 @@ function Render-Webp(
   [string]$SourceUrl,
   [int]$Width,
   [int]$Height,
-  [double]$Quality
+  [double]$Quality,
+  [string]$Fit = "contain"
 ) {
   $srcJson = $SourceUrl | ConvertTo-Json -Compress
+  $fitJson = $Fit | ConvertTo-Json -Compress
   $qualityString = $Quality.ToString([Globalization.CultureInfo]::InvariantCulture)
 
   $expression = @"
@@ -106,6 +108,7 @@ function Render-Webp(
   const src = $srcJson;
   const width = $Width;
   const height = $Height;
+  const fit = $fitJson;
   const quality = $qualityString;
   const img = new Image();
   img.decoding = "async";
@@ -123,7 +126,9 @@ function Render-Webp(
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = "high";
 
-  const scale = Math.min(width / img.naturalWidth, height / img.naturalHeight);
+  const scale = fit === "cover"
+    ? Math.max(width / img.naturalWidth, height / img.naturalHeight)
+    : Math.min(width / img.naturalWidth, height / img.naturalHeight);
   const drawW = Math.round(img.naturalWidth * scale);
   const drawH = Math.round(img.naturalHeight * scale);
   const drawX = Math.round((width - drawW) / 2);
@@ -207,6 +212,38 @@ try {
     $baseName = [IO.Path]::GetFileNameWithoutExtension($file)
     foreach ($size in $sizes) {
       $rendered = Render-Webp $socket $nextRef $source $size.width $size.height 0.82
+      if (-not $rendered.ok) {
+        $skipped += 1
+        continue
+      }
+
+      $outFile = Join-Path $shippingDir ("{0}-{1}.webp" -f $baseName, $size.suffix)
+      [IO.File]::WriteAllBytes($outFile, [Convert]::FromBase64String($rendered.data))
+      $created += 1
+    }
+  }
+
+  $heroSources = @(
+    "delivery-hero-dark.jpg",
+    "delivery-hero-light.jpg"
+  )
+  $heroSizes = @(
+    @{ suffix = "420"; width = 420; height = 560 },
+    @{ suffix = "760"; width = 760; height = 1013 },
+    @{ suffix = "960"; width = 960; height = 1280 }
+  )
+
+  foreach ($fileName in $heroSources) {
+    $file = Join-Path $shippingDir $fileName
+    if (-not (Test-Path -LiteralPath $file)) {
+      $skipped += 1
+      continue
+    }
+
+    $source = ConvertTo-FileUrl $file
+    $baseName = [IO.Path]::GetFileNameWithoutExtension($file)
+    foreach ($size in $heroSizes) {
+      $rendered = Render-Webp $socket $nextRef $source $size.width $size.height 0.84 "cover"
       if (-not $rendered.ok) {
         $skipped += 1
         continue
