@@ -101,6 +101,7 @@
         <nav class="topnav" aria-label="Navigation">
           <a href="index.html" data-i18n="nav_home">Start</a>
           <a href="prices.html" data-i18n="nav_prices">Preise</a>
+          <a href="versand-reparatur.html" data-i18n="nav_shipping">Versand</a>
           <a href="faqs.html">FAQ</a>
           <a href="index.html#contact" data-i18n="nav_contact">Kontakt</a>
         </nav>
@@ -140,6 +141,11 @@
               <span data-i18n="price_model_finder_btn">iPhone Modell finden</span>
             </a>
           </div>
+          <div class="price-mode-switch" role="group" aria-label="Reparaturart wählen" data-price-shipping-toggle>
+            <button class="price-mode-switch__btn is-active" type="button" data-price-shipping-mode="local" aria-pressed="true" data-i18n="price_mode_local">In Singen</button>
+            <button class="price-mode-switch__btn" type="button" data-price-shipping-mode="shipping" aria-pressed="false" data-i18n="price_mode_shipping">Per Versand</button>
+          </div>
+          <p class="price-mode-note" data-price-shipping-note data-i18n="price_mode_local_note">Lokale Übergabe, Abholung oder mobiler Termin nach WhatsApp-Check.</p>
         </div>
 
         <div class="price-selector-card" data-price-selector>
@@ -195,6 +201,7 @@
               <span data-i18n="price_selector_estimate_label">voraussichtlich</span>
             </div>
             <div class="price-service-list" data-price-services></div>
+            <p class="price-shipping-hint" data-price-shipping-hint hidden data-i18n="price_mode_shipping_note">Bei Versand bekommst du zuerst Versandhinweise. Keine Reparatur ohne Freigabe.</p>
             <p class="price-stock-note" data-i18n="price_stock_note">Ersatzteil-Verfügbarkeit wird beim WhatsApp-Check bestätigt.</p>
             <a class="btn btn--wa price-selector-cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-price-cta data-i18n="price_selector_cta">Per WhatsApp anfragen</a>
           </div>
@@ -307,6 +314,7 @@
         <div class="footer__links">
           <a href="impressum.html" data-i18n="footer_impressum">Impressum</a>
           <a href="datenschutz.html" data-i18n="footer_privacy">Datenschutz</a>
+          <a href="versandbedingungen.html" data-i18n="footer_shipping_terms">Versandbedingungen</a>
         </div>
       </div>
     </footer>

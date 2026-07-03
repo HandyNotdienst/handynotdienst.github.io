@@ -126,6 +126,7 @@
         <nav class="topnav" aria-label="Navigation">
           <a href="index.html" data-i18n="nav_home">Start</a>
           <a href="prices.html" data-i18n="nav_prices">Preise</a>
+          <a href="versand-reparatur.html" data-i18n="nav_shipping">Versand</a>
           <a href="faqs.html">FAQ</a>
           <a href="#contact" data-i18n="nav_contact">Kontakt</a>
         </nav>
@@ -309,7 +310,37 @@
     </section>
 
     <!-- 3) Abholung/Lieferung -->
-    <section class="section section--trust reveal" id="pickup">
+    <section class="section section--trust reveal" id="service-options">
+      <div class="container service-choice">
+        <div class="section__head">
+          <h2 data-i18n="service_choice_title">Drei Wege zur Reparatur</h2>
+          <p class="muted" data-i18n="service_choice_text">Wähle, was zu dir passt: lokal in Singen, Abholung nach Absprache oder Versand aus ganz Deutschland.</p>
+        </div>
+        <div class="service-choice__grid">
+          <article class="card service-choice__card">
+            <span class="service-choice__icon asset-icon--proof-fast" aria-hidden="true"></span>
+            <h3 data-i18n="service_choice_local_title">Vor Ort in Singen</h3>
+            <p class="muted" data-i18n="service_choice_local_text">Kurze Abstimmung per WhatsApp, dann Übergabe oder mobiler Termin in Singen.</p>
+            <a class="btn btn--ghost btn--call" href="tel:+4915222416438" data-i18n="contact_call">Anrufen</a>
+          </article>
+          <article class="card service-choice__card">
+            <span class="service-choice__icon asset-icon--part-options" aria-hidden="true"></span>
+            <h3 data-i18n="service_choice_pickup_title">Abholung in Singen</h3>
+            <p class="muted" data-i18n="service_choice_pickup_text">Wenn es zeitlich passt, kann ich Abholung oder Rückgabe innerhalb Singen vereinbaren.</p>
+            <a class="btn btn--ghost btn--wa" href="https://wa.me/4915222416438?text=Hallo!%20Ich%20m%C3%B6chte%20Abholung%20in%20Singen%20anfragen." target="_blank" rel="noopener noreferrer" data-shipping-cta="home-pickup" data-i18n="pick_btn">Abholung anfragen</a>
+          </article>
+          <article class="card service-choice__card service-choice__card--shipping">
+            <span class="service-choice__icon asset-icon--prices" aria-hidden="true"></span>
+            <h3 data-i18n="service_choice_shipping_title">Versand aus ganz Deutschland</h3>
+            <p class="muted" data-i18n="service_choice_shipping_text">Erst prüfen, dann entscheiden: keine Reparatur ohne deine Freigabe.</p>
+            <a class="btn btn--prices" href="versand-reparatur.html" data-i18n="nav_shipping">Versand</a>
+          </article>
+        </div>
+        <p class="hint" data-i18n="service_choice_hint">Versandadresse und genaue Hinweise bekommst du erst nach dem WhatsApp-Check.</p>
+      </div>
+    </section>
+
+    <section class="section section--trust reveal" id="pickup" hidden>
       <div class="container pickup">
         <div class="card pickup__card">
           <h2 data-i18n="pick_title">Abholung / Lieferung (Singen)</h2>
@@ -425,6 +456,7 @@
         <div class="footer__links">
           <a href="impressum.html" data-i18n="footer_impressum">Impressum</a>
           <a href="datenschutz.html" data-i18n="footer_privacy">Datenschutz</a>
+          <a href="versandbedingungen.html" data-i18n="footer_shipping_terms">Versandbedingungen</a>
         </div>
       </div>
     </footer>

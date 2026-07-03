@@ -86,6 +86,7 @@
         <nav class="topnav" aria-label="Navigation">
           <a href="index.html" data-i18n="nav_home">Start</a>
           <a href="prices.html" data-i18n="nav_prices">Preise</a>
+          <a href="versand-reparatur.html" data-i18n="nav_shipping">Versand</a>
           <a href="faqs.html">FAQ</a>
           <a href="index.html#contact" data-i18n="nav_contact">Kontakt</a>
         </nav>
@@ -204,6 +205,40 @@
             <p class="muted" data-i18n="faq_quality_choice_a">Ja. Bei vielen Modellen kannst du zwischen verschiedenen Display- und Akkuqualitäten wählen.</p>
           </details>
 
+          <h2 class="faq__section-title" data-i18n="faq_section_shipping">Versandreparatur</h2>
+          <details>
+            <summary data-i18n="faq_shipping_approval_q">Wird automatisch repariert, wenn ich mein Gerät einsende?</summary>
+            <p class="muted" data-i18n="faq_shipping_approval_a">Nein. Erst nach Diagnose, finalem Preis und deiner ausdrücklichen Freigabe beginnt die Reparatur.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq_shipping_payment_q">Wann bezahle ich?</summary>
+            <p class="muted" data-i18n="faq_shipping_payment_a">Die Zahlung wird nach Freigabe und vor dem Rückversand geklärt. Details bekommst du im WhatsApp-Verlauf.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq_shipping_cost_q">Wer trägt die Versandkosten?</summary>
+            <p class="muted" data-i18n="faq_shipping_cost_a">Die Einsendekosten trägt der Kunde. Rückversand und mögliche Zusatzkosten werden vorab transparent geklärt.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq_shipping_pack_q">Wie soll ich mein Gerät verpacken?</summary>
+            <p class="muted" data-i18n="faq_shipping_pack_a">Bitte gut polstern, SIM-Karte entfernen und einen Zettel mit Modell, Fehlerbeschreibung und Rückkontakt beilegen. Versand nur verfolgbar.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq_shipping_data_q">Bleiben meine Daten erhalten?</summary>
+            <p class="muted" data-i18n="faq_shipping_data_a">Bei Standardreparaturen normalerweise ja. Trotzdem empfehlen wir vor dem Versand ein Backup.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq_shipping_tracking_q">Bekomme ich eine Sendungsnummer?</summary>
+            <p class="muted" data-i18n="faq_shipping_tracking_a">Ja, der Rückversand erfolgt mit Sendungsnummer, sobald das Gerät repariert, getestet und versandbereit ist.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq_shipping_water_q">Geht Versand auch bei Wasserschaden?</summary>
+            <p class="muted" data-i18n="faq_shipping_water_a">Ja, aber eine erfolgreiche Reparatur kann nicht garantiert werden. Nach der Diagnose entscheidest du über die nächsten Schritte.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq_shipping_unprofitable_q">Was passiert, wenn sich die Reparatur nicht lohnt?</summary>
+            <p class="muted" data-i18n="faq_shipping_unprofitable_a">Dann besprechen wir ehrlich die Optionen: Rückversand, Ankauf, Ersatzteiloption oder keine Reparatur.</p>
+          </details>
+
           <h2 class="faq__section-title" data-i18n="faq_section_other">Sonstiges</h2>
           <details>
             <summary data-i18n="faq_buy_broken_q">Kauft ihr auch defekte Geräte an?</summary>
@@ -232,6 +267,7 @@
         <div class="footer__links">
           <a href="impressum.html" data-i18n="footer_impressum">Impressum</a>
           <a href="datenschutz.html" data-i18n="footer_privacy">Datenschutz</a>
+          <a href="versandbedingungen.html" data-i18n="footer_shipping_terms">Versandbedingungen</a>
         </div>
       </div>
     </footer>
@@ -280,6 +316,54 @@
       {"@type":"Question","name":"Kauft ihr auch defekte Geräte an?","acceptedAnswer":{"@type":"Answer","text":"Ja. Wir kaufen viele defekte iPhones an. Kontaktiere uns mit Modell und Fehlerbeschreibung."}},
       {"@type":"Question","name":"Repariert ihr auch Geräte mit Wasserschaden?","acceptedAnswer":{"@type":"Answer","text":"Ja. Eine erfolgreiche Reparatur kann jedoch nicht in jedem Fall garantiert werden. Eine Diagnose erfolgt vorab."}},
       {"@type":"Question","name":"Kann ich mein Gerät einsenden?","acceptedAnswer":{"@type":"Answer","text":"Ja. Auf Anfrage bieten wir auch einen Reparaturservice per Versand an."}}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wird automatisch repariert, wenn ich mein Gerät einsende?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nein. Erst nach Diagnose, finalem Preis und deiner ausdrücklichen Freigabe beginnt die Reparatur."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wann bezahle ich?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Zahlung wird nach Freigabe und vor dem Rückversand geklärt. Details bekommst du im WhatsApp-Verlauf."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wer trägt die Versandkosten?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Einsendekosten trägt der Kunde. Rückversand und mögliche Zusatzkosten werden vorab transparent geklärt."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie soll ich mein Gerät verpacken?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bitte gut polstern, SIM-Karte entfernen und einen Zettel mit Modell, Fehlerbeschreibung und Rückkontakt beilegen. Versand nur verfolgbar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Bekomme ich eine Sendungsnummer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, der Rückversand erfolgt mit Sendungsnummer, sobald das Gerät repariert, getestet und versandbereit ist."
+        }
+      }
     ]
   }
   </script>
