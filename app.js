@@ -2495,11 +2495,141 @@
     price_iphone17_budget_note: "Budget-Importteile sind günstiger, haben aber eine Lieferzeit von durchschnittlich ca. 10-14 Werktagen. Verfügbarkeit, Farbe und Passform können je nach Charge leicht abweichen.",
     price_iphone17_oem_note: "OEM Pull Teile sind originale Apple-Teile aus ausgebauten Geräten. Sie bieten in der Regel die beste Passform und ein hochwertiges Ergebnis, sind aber abhängig von Verfügbarkeit und Zustand.",
     price_iphone17_damage_note: "Wichtig: Preise gelten, sofern keine zusätzlichen Schäden an Rahmen, Kamera, Face ID, Ladebuchse oder Mainboard vorhanden sind.",
+    price_from: "ab",
+    quality_chip_premium: "Premium",
+    quality_chip_original: "Original OEM",
+    quality_chip_budget: "Budget",
+    quality_hint_premium: "Schneller verfügbar",
+    quality_hint_original: "Beste Passform, je nach Verfügbarkeit",
+    quality_hint_budget: "Günstiger, ca. 10-14 Werktage",
+    price_quality_details_title: "Qualitäten kurz erklärt",
+    price_quality_details_premium: "Premium: gute Qualität und meist schneller verfügbar.",
+    price_quality_details_original: "Original OEM: beste Passform, abhängig von Verfügbarkeit und Zustand.",
+    price_quality_details_budget: "Budget: günstiger, mit ca. 10-14 Werktagen Lieferzeit.",
     wa_label_quality: "Teilequalität",
     wa_label_note: "Hinweis",
   };
+  const PRICE_OPTION_I18N = {
+    uk: {
+      price_from: "від",
+      quality_chip_premium: "Преміум",
+      quality_chip_original: "Original OEM",
+      quality_chip_budget: "Бюджет",
+      quality_hint_premium: "Швидше доступно",
+      quality_hint_original: "Найкраща посадка, залежить від наявності",
+      quality_hint_budget: "Дешевше, приблизно 10-14 робочих днів",
+      price_quality_details_title: "Коротко про якість",
+      price_quality_details_premium: "Преміум: хороша якість і зазвичай швидша доступність.",
+      price_quality_details_original: "Original OEM: найкраща посадка, залежить від наявності та стану.",
+      price_quality_details_budget: "Бюджет: дешевше, доставка деталей приблизно 10-14 робочих днів.",
+    },
+    en: {
+      price_from: "from",
+      quality_chip_premium: "Premium",
+      quality_chip_original: "Original OEM",
+      quality_chip_budget: "Budget",
+      quality_hint_premium: "Available faster",
+      quality_hint_original: "Best fit, depending on availability",
+      quality_hint_budget: "Cheaper, approx. 10-14 working days",
+      price_quality_details_title: "Part quality explained",
+      price_quality_details_premium: "Premium: good quality and usually available faster.",
+      price_quality_details_original: "Original OEM: best fit, depending on availability and condition.",
+      price_quality_details_budget: "Budget: cheaper, with approx. 10-14 working days delivery time.",
+    },
+    ru: {
+      price_from: "от",
+      quality_chip_premium: "Премиум",
+      quality_chip_original: "Original OEM",
+      quality_chip_budget: "Бюджет",
+      quality_hint_premium: "Доступно быстрее",
+      quality_hint_original: "Лучшая посадка, зависит от наличия",
+      quality_hint_budget: "Дешевле, примерно 10-14 рабочих дней",
+      price_quality_details_title: "Кратко о качестве",
+      price_quality_details_premium: "Премиум: хорошее качество и обычно быстрее доступно.",
+      price_quality_details_original: "Original OEM: лучшая посадка, зависит от наличия и состояния.",
+      price_quality_details_budget: "Бюджет: дешевле, срок поставки около 10-14 рабочих дней.",
+    },
+    pl: {
+      price_from: "od",
+      quality_chip_premium: "Premium",
+      quality_chip_original: "Original OEM",
+      quality_chip_budget: "Budżet",
+      quality_hint_premium: "Szybciej dostępne",
+      quality_hint_original: "Najlepsze dopasowanie, zależnie od dostępności",
+      quality_hint_budget: "Taniej, ok. 10-14 dni roboczych",
+      price_quality_details_title: "Krótko o jakości",
+      price_quality_details_premium: "Premium: dobra jakość i zwykle szybsza dostępność.",
+      price_quality_details_original: "Original OEM: najlepsze dopasowanie, zależnie od dostępności i stanu.",
+      price_quality_details_budget: "Budżet: taniej, z czasem dostawy ok. 10-14 dni roboczych.",
+    },
+    it: {
+      price_from: "da",
+      quality_chip_premium: "Premium",
+      quality_chip_original: "Original OEM",
+      quality_chip_budget: "Budget",
+      quality_hint_premium: "Disponibile più velocemente",
+      quality_hint_original: "Migliore aderenza, secondo disponibilità",
+      quality_hint_budget: "Più economico, circa 10-14 giorni lavorativi",
+      price_quality_details_title: "Qualità in breve",
+      price_quality_details_premium: "Premium: buona qualità e di solito disponibile più velocemente.",
+      price_quality_details_original: "Original OEM: migliore aderenza, secondo disponibilità e stato.",
+      price_quality_details_budget: "Budget: più economico, con consegna in circa 10-14 giorni lavorativi.",
+    },
+    ar: {
+      price_from: "من",
+      quality_chip_premium: "Premium",
+      quality_chip_original: "Original OEM",
+      quality_chip_budget: "Budget",
+      quality_hint_premium: "متوفر أسرع",
+      quality_hint_original: "أفضل توافق حسب التوفر",
+      quality_hint_budget: "أرخص، حوالي 10-14 يوم عمل",
+      price_quality_details_title: "شرح مختصر للجودة",
+      price_quality_details_premium: "Premium: جودة جيدة وغالبا متوفر أسرع.",
+      price_quality_details_original: "Original OEM: أفضل توافق، حسب التوفر والحالة.",
+      price_quality_details_budget: "Budget: أرخص، مع وقت توريد حوالي 10-14 يوم عمل.",
+    },
+    ku: {
+      price_from: "ji",
+      quality_chip_premium: "Premium",
+      quality_chip_original: "Original OEM",
+      quality_chip_budget: "Budget",
+      quality_hint_premium: "Zûtir amade ye",
+      quality_hint_original: "Lihevhatina herî baş, li gorî amadeyiyê",
+      quality_hint_budget: "Erzantir, nêzî 10-14 rojên kar",
+      price_quality_details_title: "Kalîte bi kurtî",
+      price_quality_details_premium: "Premium: kalîteya baş û pir caran zûtir amade ye.",
+      price_quality_details_original: "Original OEM: lihevhatina herî baş, li gorî amadeyî û rewşê.",
+      price_quality_details_budget: "Budget: erzantir, bi dema gihandina nêzî 10-14 rojên kar.",
+    },
+    fr: {
+      price_from: "dès",
+      quality_chip_premium: "Premium",
+      quality_chip_original: "Original OEM",
+      quality_chip_budget: "Budget",
+      quality_hint_premium: "Disponible plus vite",
+      quality_hint_original: "Meilleur ajustement, selon disponibilité",
+      quality_hint_budget: "Moins cher, env. 10-14 jours ouvrés",
+      price_quality_details_title: "Qualités en bref",
+      price_quality_details_premium: "Premium : bonne qualité et souvent disponible plus vite.",
+      price_quality_details_original: "Original OEM : meilleur ajustement, selon disponibilité et état.",
+      price_quality_details_budget: "Budget : moins cher, avec env. 10-14 jours ouvrés de livraison.",
+    },
+    sl: {
+      price_from: "od",
+      quality_chip_premium: "Premium",
+      quality_chip_original: "Original OEM",
+      quality_chip_budget: "Budget",
+      quality_hint_premium: "Hitreje dobavljivo",
+      quality_hint_original: "Najboljše prileganje, glede na dobavljivost",
+      quality_hint_budget: "Ugodneje, približno 10-14 delovnih dni",
+      price_quality_details_title: "Kakovosti na kratko",
+      price_quality_details_premium: "Premium: dobra kakovost in običajno hitrejša dobavljivost.",
+      price_quality_details_original: "Original OEM: najboljše prileganje, odvisno od dobavljivosti in stanja.",
+      price_quality_details_budget: "Budget: ugodneje, z dobavo približno 10-14 delovnih dni.",
+    },
+  };
   LANGUAGES.forEach(({ code }) => {
-    GLOBAL_I18N[code] = { ...(GLOBAL_I18N[code] || GLOBAL_I18N.de), ...PRICE_OPTION_I18N_DE };
+    GLOBAL_I18N[code] = { ...(GLOBAL_I18N[code] || GLOBAL_I18N.de), ...PRICE_OPTION_I18N_DE, ...(PRICE_OPTION_I18N[code] || {}) };
   });
   const LEGAL_SOURCE_OF_TRUTH = {
     privacy_intro: "Diese Datenschutzhinweise erklären kurz, welche Daten bei Kontakt, Versand-Anfrage, Website-Nutzung und Analytics verarbeitet werden.",
@@ -3132,10 +3262,76 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     return key ? (resolveI18n(lang, key) || key) : "";
   }
 
+  function getRepairBaseLabel(repair, lang) {
+    return resolveI18n(lang, repair.key) || repair.key;
+  }
+
   function getRepairLabel(repair, lang) {
-    const baseLabel = resolveI18n(lang, repair.key) || repair.key;
+    const baseLabel = getRepairBaseLabel(repair, lang);
     const qualityLabel = getRepairQualityLabel(repair, lang);
     return qualityLabel ? `${baseLabel} · ${qualityLabel}` : baseLabel;
+  }
+
+  function getRepairQualityType(repair) {
+    const quality = repair?.quality || repair?.variant || "";
+    if (quality === "quality_budget_import") return "budget";
+    if (quality === "quality_oem_pull_grade_a") return "original";
+    if (quality === "quality_premium_aftermarket_xo7") return "premium";
+    return "";
+  }
+
+  function getRepairQualityChipLabel(repair, lang) {
+    const type = getRepairQualityType(repair);
+    const key = {
+      premium: "quality_chip_premium",
+      original: "quality_chip_original",
+      budget: "quality_chip_budget",
+    }[type];
+    return key ? (resolveI18n(lang, key) || type) : getRepairQualityLabel(repair, lang);
+  }
+
+  function getRepairQualityHint(repair, lang) {
+    const type = getRepairQualityType(repair);
+    const key = {
+      premium: "quality_hint_premium",
+      original: "quality_hint_original",
+      budget: "quality_hint_budget",
+    }[type];
+    return key ? (resolveI18n(lang, key) || "") : getRepairNoteText(repair, lang);
+  }
+
+  function getRepairDisplayLabel(repair, lang) {
+    const baseLabel = getRepairBaseLabel(repair, lang);
+    const chipLabel = getRepairQualityChipLabel(repair, lang);
+    return chipLabel ? `${baseLabel} · ${chipLabel}` : getRepairLabel(repair, lang);
+  }
+
+  function getNumericPrice(price) {
+    const match = String(price || "").match(/\d+/);
+    return match ? Number(match[0]) : Number.POSITIVE_INFINITY;
+  }
+
+  function getLowestRepairPrice(repairs) {
+    return repairs.reduce((lowest, repair) => (
+      getNumericPrice(repair.price) < getNumericPrice(lowest.price) ? repair : lowest
+    ), repairs[0])?.price || "";
+  }
+
+  function groupRepairOptions(repairs) {
+    return repairs.reduce((result, repair) => {
+      if (repair.key === "repair_original_battery") {
+        result.standalone.push(repair);
+        return result;
+      }
+
+      let group = result.groups.find((item) => item.key === repair.key);
+      if (!group) {
+        group = { key: repair.key, repairs: [] };
+        result.groups.push(group);
+      }
+      group.repairs.push(repair);
+      return result;
+    }, { groups: [], standalone: [] });
   }
 
   function getPriceCtaText(lang) {
@@ -3198,7 +3394,7 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
 
     const lang = getLang();
     if (selectedPriceDeliveryMode === "shipping") {
-      const repairLabel = repair?.label || (resolveI18n(lang, "wa_repair_general") || "allgemeine Anfrage");
+      const repairLabel = repair?.waLabel || repair?.label || (resolveI18n(lang, "wa_repair_general") || "allgemeine Anfrage");
       const price = repair?.price || (resolveI18n(lang, "samsung_price_ask") || "Einfach fragen");
       const qualityLine = repair?.quality
         ? `${resolveI18n(lang, "wa_label_quality") || "Teilequalität"}: ${repair.quality}`
@@ -3230,8 +3426,9 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     const noteLine = repair?.note
       ? `\n${resolveI18n(lang, "wa_label_note") || "Hinweis"}: ${repair.note}`
       : "";
+    const repairLabel = repair?.waLabel || repair?.label;
     const repairLine = repair
-      ? `${resolveI18n(lang, "wa_label_repair") || "Reparatur"}: ${repair.label}${qualityLine}\n${resolveI18n(lang, "wa_label_price") || "Preis"}: ${repair.price}${noteLine}${stockLine}`
+      ? `${resolveI18n(lang, "wa_label_repair") || "Reparatur"}: ${repairLabel}${qualityLine}\n${resolveI18n(lang, "wa_label_price") || "Preis"}: ${repair.price}${noteLine}${stockLine}`
       : (resolveI18n(lang, "wa_repair_general") || "Reparatur: allgemeine Anfrage");
 
     const text = `${resolveI18n(lang, "wa_message_intro") || "Hallo!"}
@@ -3807,9 +4004,10 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     if (stockEl) stockEl.textContent = getStockLabel(stock, lang);
   }
 
-  function getSelectedRepairPayload(repair, lang) {
+  function getSelectedRepairPayload(repair, lang, displayLabel = "") {
     return {
-      label: getRepairLabel(repair, lang),
+      label: displayLabel || getRepairLabel(repair, lang),
+      waLabel: getRepairBaseLabel(repair, lang),
       price: repair.price,
       stock: repair.stock || "on_request",
       quality: getRepairQualityLabel(repair, lang),
@@ -3933,6 +4131,228 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     });
   }
 
+  function applyPriceRepairSelection(entry, repair, lang, displayLabel = "", ready = true, shouldTrack = false) {
+    selectedPriceRepair = getSelectedRepairPayload(repair, lang, displayLabel);
+    setPriceCtaReady(ready);
+    updatePriceSummary(entry, selectedPriceRepair);
+    updatePriceCta(entry);
+
+    if (shouldTrack) {
+      trackEvent("repair_select", {
+        brand: entry.brand,
+        model: entry.model,
+        repair: selectedPriceRepair.waLabel || selectedPriceRepair.label,
+        quality: selectedPriceRepair.quality || "",
+        price: repair.price,
+        stock: repair.stock || "on_request",
+      });
+    }
+  }
+
+  function renderFlatPriceServiceRow(list, entry, repair, index, lang, isSelected = index === 0) {
+    const label = getRepairLabel(repair, lang);
+    const note = getRepairNoteText(repair, lang);
+    const row = document.createElement("button");
+    row.className = `price-service-row${isSelected ? " is-selected" : ""}`;
+    row.type = "button";
+    row.style.setProperty("--row-index", index);
+
+    const labelEl = document.createElement("span");
+    labelEl.className = "price-service-row__label";
+    const titleEl = document.createElement("span");
+    titleEl.className = "price-service-row__title";
+    titleEl.textContent = label;
+    labelEl.appendChild(titleEl);
+
+    if (repair.key === "repair_original_battery") {
+      const infoText = resolveI18n(lang, "repair_original_battery_info")
+        || "Replacement battery for iPhone with 99–100% battery health. OEM Pull availability varies.";
+      const infoEl = document.createElement("span");
+      infoEl.className = "price-service-info";
+      infoEl.setAttribute("aria-label", infoText);
+      infoEl.setAttribute("title", infoText);
+      infoEl.textContent = "i";
+      titleEl.append(" ", infoEl);
+    }
+
+    if (note) {
+      const noteEl = document.createElement("small");
+      noteEl.className = "price-service-row__note";
+      noteEl.textContent = note;
+      labelEl.appendChild(noteEl);
+    }
+
+    const metaEl = document.createElement("span");
+    metaEl.className = "price-service-row__meta";
+
+    if (repair.stock) {
+      const stockEl = document.createElement("small");
+      stockEl.className = `price-stock price-stock--${repair.stock}`;
+      stockEl.textContent = getStockLabel(repair.stock, lang);
+      metaEl.appendChild(stockEl);
+    }
+
+    const priceEl = document.createElement("strong");
+    animatePriceValue(priceEl, repair.price);
+    metaEl.appendChild(priceEl);
+
+    row.append(labelEl, metaEl);
+    row.setAttribute("aria-label", [label, note, repair.price].filter(Boolean).join(" - "));
+    row.addEventListener("click", () => {
+      list.querySelectorAll(".price-service-row").forEach((item) => item.classList.remove("is-selected"));
+      list.querySelectorAll(".price-repair-group").forEach((item) => item.classList.remove("is-selected"));
+      list.querySelectorAll(".price-quality-chip").forEach((item) => {
+        item.classList.remove("is-selected");
+        item.setAttribute("aria-pressed", "false");
+      });
+      row.classList.add("is-selected");
+      applyPriceRepairSelection(entry, repair, lang, label, true, true);
+    });
+    list.appendChild(row);
+    return row;
+  }
+
+  function renderPriceQualityDetails(list, lang) {
+    const details = document.createElement("details");
+    details.className = "price-quality-details";
+
+    const summary = document.createElement("summary");
+    summary.textContent = resolveI18n(lang, "price_quality_details_title") || "Qualitäten kurz erklärt";
+    details.appendChild(summary);
+
+    const detailList = document.createElement("ul");
+    [
+      "price_quality_details_premium",
+      "price_quality_details_original",
+      "price_quality_details_budget",
+    ].forEach((key) => {
+      const item = document.createElement("li");
+      item.textContent = resolveI18n(lang, key) || "";
+      detailList.appendChild(item);
+    });
+    details.appendChild(detailList);
+    list.appendChild(details);
+  }
+
+  function selectGroupedRepair(list, entry, groupEl, chipEl, hintTextEl, stockSlotEl, repair, lang, ready = true, shouldTrack = false) {
+    const displayLabel = getRepairDisplayLabel(repair, lang);
+    list.querySelectorAll(".price-service-row").forEach((item) => item.classList.remove("is-selected"));
+    list.querySelectorAll(".price-repair-group").forEach((item) => item.classList.remove("is-selected"));
+    list.querySelectorAll(".price-quality-chip").forEach((item) => {
+      item.classList.remove("is-selected");
+      item.setAttribute("aria-pressed", "false");
+    });
+
+    groupEl.classList.add("is-selected");
+    chipEl.classList.add("is-selected");
+    chipEl.setAttribute("aria-pressed", "true");
+    hintTextEl.textContent = getRepairQualityHint(repair, lang);
+    stockSlotEl.innerHTML = "";
+
+    if (repair.stock) {
+      const stockEl = document.createElement("small");
+      stockEl.className = `price-stock price-stock--${repair.stock}`;
+      stockEl.textContent = getStockLabel(repair.stock, lang);
+      stockSlotEl.appendChild(stockEl);
+    }
+
+    applyPriceRepairSelection(entry, repair, lang, displayLabel, ready, shouldTrack);
+  }
+
+  function renderGroupedIphone17Services(list, entry, lang) {
+    const { groups, standalone } = groupRepairOptions(entry.repairs);
+    let defaultSelection = null;
+
+    groups.forEach((group, groupIndex) => {
+      const groupLabel = resolveI18n(lang, group.key) || group.key;
+      const groupEl = document.createElement("section");
+      const titleId = `price-repair-${slugifyPriceModel(entry.model)}-${group.key}`;
+      groupEl.className = "price-repair-group";
+      groupEl.setAttribute("role", "group");
+      groupEl.setAttribute("aria-labelledby", titleId);
+      groupEl.style.setProperty("--row-index", groupIndex);
+
+      const head = document.createElement("div");
+      head.className = "price-repair-group__head";
+
+      const title = document.createElement("strong");
+      title.className = "price-repair-group__title";
+      title.id = titleId;
+      title.textContent = groupLabel;
+
+      const from = document.createElement("small");
+      from.className = "price-repair-group__from";
+      from.textContent = `${resolveI18n(lang, "price_from") || "ab"} ${getLowestRepairPrice(group.repairs)}`;
+
+      head.append(title, from);
+      groupEl.appendChild(head);
+
+      const chips = document.createElement("div");
+      chips.className = "price-quality-chips";
+      chips.setAttribute("role", "group");
+      chips.setAttribute("aria-label", groupLabel);
+
+      const hint = document.createElement("div");
+      hint.className = "price-quality-hint";
+      const hintText = document.createElement("span");
+      const stockSlot = document.createElement("span");
+      stockSlot.className = "price-quality-stock";
+      hint.append(hintText, stockSlot);
+
+      group.repairs.forEach((repair, repairIndex) => {
+        const chipLabel = getRepairQualityChipLabel(repair, lang);
+        const chip = document.createElement("button");
+        chip.className = "price-quality-chip";
+        chip.type = "button";
+        chip.setAttribute("aria-pressed", "false");
+        chip.setAttribute("aria-label", `${groupLabel} ${chipLabel} ${repair.price}`);
+
+        const chipName = document.createElement("span");
+        chipName.textContent = chipLabel;
+        const chipPrice = document.createElement("strong");
+        chipPrice.textContent = repair.price;
+        chip.append(chipName, chipPrice);
+
+        chip.addEventListener("click", () => {
+          selectGroupedRepair(list, entry, groupEl, chip, hintText, stockSlot, repair, lang, true, true);
+        });
+
+        chips.appendChild(chip);
+        if (!defaultSelection && groupIndex === 0 && repairIndex === 0) {
+          defaultSelection = { groupEl, chip, hintText, stockSlot, repair };
+        }
+      });
+
+      groupEl.append(chips, hint);
+      list.appendChild(groupEl);
+    });
+
+    standalone.forEach((repair, index) => {
+      renderFlatPriceServiceRow(list, entry, repair, groups.length + index, lang, false);
+    });
+    renderPriceQualityDetails(list, lang);
+
+    if (defaultSelection) {
+      selectGroupedRepair(
+        list,
+        entry,
+        defaultSelection.groupEl,
+        defaultSelection.chip,
+        defaultSelection.hintText,
+        defaultSelection.stockSlot,
+        defaultSelection.repair,
+        lang,
+        false,
+        false,
+      );
+      return;
+    }
+
+    if (standalone[0]) {
+      applyPriceRepairSelection(entry, standalone[0], lang, getRepairLabel(standalone[0], lang), false, false);
+    }
+  }
+
   function renderPriceServices(entry, lang) {
     const list = document.querySelector("[data-price-services]");
     if (!list || !entry) return;
@@ -3941,81 +4361,20 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     selectedPriceRepair = null;
     setPriceCtaReady(false);
 
+    if (entry.family === "iPhone 17") {
+      renderGroupedIphone17Services(list, entry, lang);
+      return;
+    }
+
     entry.repairs.forEach((repair, index) => {
-      const label = getRepairLabel(repair, lang);
-      const note = getRepairNoteText(repair, lang);
-      const row = document.createElement("button");
-      row.className = `price-service-row${index === 0 ? " is-selected" : ""}`;
-      row.type = "button";
-      row.style.setProperty("--row-index", index);
-
-      const labelEl = document.createElement("span");
-      labelEl.className = "price-service-row__label";
-      const titleEl = document.createElement("span");
-      titleEl.className = "price-service-row__title";
-      titleEl.textContent = label;
-      labelEl.appendChild(titleEl);
-
-      if (repair.key === "repair_original_battery") {
-        const infoText = resolveI18n(lang, "repair_original_battery_info")
-          || "Replacement battery for iPhone with 99–100% battery health. OEM Pull availability varies.";
-        const infoEl = document.createElement("span");
-        infoEl.className = "price-service-info";
-        infoEl.setAttribute("aria-label", infoText);
-        infoEl.setAttribute("title", infoText);
-        infoEl.textContent = "i";
-        titleEl.append(" ", infoEl);
-      }
-
-      if (note) {
-        const noteEl = document.createElement("small");
-        noteEl.className = "price-service-row__note";
-        noteEl.textContent = note;
-        labelEl.appendChild(noteEl);
-      }
-
-      const metaEl = document.createElement("span");
-      metaEl.className = "price-service-row__meta";
-
-      if (repair.stock) {
-        const stockEl = document.createElement("small");
-        stockEl.className = `price-stock price-stock--${repair.stock}`;
-        stockEl.textContent = getStockLabel(repair.stock, lang);
-        metaEl.appendChild(stockEl);
-      }
-
-      const priceEl = document.createElement("strong");
-      animatePriceValue(priceEl, repair.price);
-      metaEl.appendChild(priceEl);
-
-      row.append(labelEl, metaEl);
-      row.setAttribute("aria-label", [label, note, repair.price].filter(Boolean).join(" - "));
-      row.addEventListener("click", () => {
-        selectedPriceRepair = getSelectedRepairPayload(repair, lang);
-        list.querySelectorAll(".price-service-row").forEach((item) => item.classList.remove("is-selected"));
-        row.classList.add("is-selected");
-        setPriceCtaReady(true);
-        updatePriceSummary(entry, selectedPriceRepair);
-        updatePriceCta(entry);
-        trackEvent("repair_select", {
-          brand: entry.brand,
-          model: entry.model,
-          repair: label,
-          price: repair.price,
-          stock: repair.stock || "on_request",
-        });
-      });
-      list.appendChild(row);
+      renderFlatPriceServiceRow(list, entry, repair, index, lang);
     });
     renderPriceSeriesNotes(list, entry, lang);
 
     const defaultRepair = entry.repairs[0];
     if (defaultRepair) {
-      selectedPriceRepair = getSelectedRepairPayload(defaultRepair, lang);
-      updatePriceSummary(entry, selectedPriceRepair);
-      updatePriceCta(entry);
+      applyPriceRepairSelection(entry, defaultRepair, lang, getRepairLabel(defaultRepair, lang), false, false);
     }
-    setPriceCtaReady(false);
   }
 
   function renderPriceSelection() {
