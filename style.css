@@ -4412,6 +4412,52 @@ body.intro-pending .cookie-consent{
 .price-model-finder-link:hover img{
   transform: scale(1.05);
 }
+.price-future-strip{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .625rem;
+  margin-top: 1rem;
+}
+.price-future-strip__item{
+  min-width: 0;
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .375rem .625rem;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: .875rem;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(63,169,245,.14), transparent 44%),
+    rgba(255,255,255,.045);
+  color: rgba(238,243,247,.78);
+  font-size: .8125rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.price-future-strip__icon{
+  flex: 0 0 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(101,199,255,.26);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 24%, rgba(255,255,255,.16), transparent 42%),
+    linear-gradient(135deg, rgba(27,55,76,.96), rgba(8,24,38,.88));
+  box-shadow: inset 0 0 18px rgba(255,255,255,.05), 0 10px 22px rgba(3,12,22,.20);
+}
+.price-future-strip__icon img{
+  width: 76%;
+  height: 76%;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,.24));
+}
 .price-selector-card{
   width: min(1120px, 100%);
   margin: 0 auto;
@@ -4735,6 +4781,7 @@ body.intro-pending .cookie-consent{
   display: grid;
 }
 .price-service-row{
+  position: relative;
   width: 100%;
   display: flex;
   align-items: flex-start;
@@ -4763,6 +4810,38 @@ body.intro-pending .cookie-consent{
   gap: .3125rem;
   min-width: 0;
   flex: 1 1 auto;
+  margin-inline-start: 3rem;
+}
+.price-service-row__icon,
+.price-repair-group__icon{
+  position: absolute;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(101,199,255,.25);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 24%, rgba(255,255,255,.16), transparent 42%),
+    linear-gradient(135deg, rgba(27,55,76,.96), rgba(8,24,38,.88));
+  box-shadow: inset 0 0 18px rgba(255,255,255,.05), 0 10px 22px rgba(3,12,22,.20);
+  pointer-events: none;
+}
+.price-service-row__icon{
+  width: 36px;
+  height: 36px;
+  inset-inline-start: .125rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.price-service-row.is-selected .price-service-row__icon,
+.price-service-row--framed .price-service-row__icon{
+  inset-inline-start: .875rem;
+}
+.price-service-row__icon img,
+.price-repair-group__icon img{
+  width: 76%;
+  height: 76%;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,.24));
 }
 .price-service-row__title{
   overflow-wrap: anywhere;
@@ -4835,6 +4914,7 @@ body.intro-pending .cookie-consent{
   box-shadow: 0 0 0 1px rgba(63,169,245,.20), 0 1rem 2rem rgba(4,16,28,.18);
 }
 .price-repair-group__head{
+  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -4842,10 +4922,18 @@ body.intro-pending .cookie-consent{
 }
 .price-repair-group__title{
   min-width: 0;
+  padding-inline-start: 2.75rem;
   color: var(--text);
   font-size: 1rem;
   line-height: 1.2;
   overflow-wrap: anywhere;
+}
+.price-repair-group__icon{
+  width: 34px;
+  height: 34px;
+  inset-inline-start: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .price-repair-group__included{
   display: inline-flex;
@@ -5168,6 +5256,15 @@ body.intro-pending .cookie-consent{
   .price-service-row__note{
     font-size: .71875rem;
   }
+  .price-future-strip{
+    justify-content: stretch;
+    gap: .5rem;
+  }
+  .price-future-strip__item{
+    flex: 1 1 12rem;
+    justify-content: flex-start;
+    text-align: start;
+  }
   .price-repair-group{
     padding: .75rem;
     border-radius: 1rem;
@@ -5451,6 +5548,19 @@ html[data-theme="light"] .price-service-row--framed.is-selected{
   background:
     radial-gradient(circle at 12% 0%, rgba(34,197,94,.14), transparent 44%),
     rgba(255,255,255,.88);
+}
+html[data-theme="light"] .price-future-strip__item{
+  color: rgba(16,35,49,.72);
+  border-color: rgba(7,21,33,.10);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(23,127,194,.11), transparent 44%),
+    rgba(255,255,255,.72);
+}
+html[data-theme="light"] .price-future-strip__icon,
+html[data-theme="light"] .price-service-row__icon,
+html[data-theme="light"] .price-repair-group__icon{
+  border-color: rgba(23,127,194,.24);
+  box-shadow: inset 0 0 18px rgba(255,255,255,.06), 0 10px 22px rgba(39,74,96,.16);
 }
 html[data-theme="light"] .price-series-note{
   background:
