@@ -4733,10 +4733,10 @@ body.intro-pending .cookie-consent{
 .price-service-row{
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
-  padding: 16px 2px;
+  gap: 1rem;
+  padding: 1rem .125rem;
   border: 0;
   border-bottom: 1px solid rgba(255,255,255,.10);
   color: var(--text);
@@ -4753,6 +4753,25 @@ body.intro-pending .cookie-consent{
 .price-service-row span{
   color: rgba(238,243,247,.82);
   font-weight: 820;
+}
+.price-service-row__label{
+  display: grid;
+  gap: .3125rem;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.price-service-row__title{
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.24;
+}
+.price-service-row__note{
+  display: block;
+  color: rgba(238,243,247,.58);
+  font-size: .75rem;
+  font-weight: 760;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 .price-service-row .price-service-info{
   display:inline-grid;
@@ -4786,8 +4805,9 @@ body.intro-pending .cookie-consent{
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
+  gap: .5rem;
   flex: 0 0 auto;
+  max-width: 44%;
 }
 .price-stock{
   display: inline-flex;
@@ -4808,6 +4828,10 @@ body.intro-pending .cookie-consent{
 .price-stock--unavailable{
   color: #ffd0d0;
   background: rgba(239,68,68,.16);
+}
+.price-stock--leadtime{
+  color: #ffe3ae;
+  background: rgba(244,184,96,.16);
 }
 .price-service-row:hover,
 .price-service-row.is-selected{
@@ -4880,6 +4904,30 @@ body.intro-pending .cookie-consent{
   color: rgba(238,243,247,.58);
   font-size: 13px;
   text-align: center;
+}
+.price-series-note{
+  margin-top: .875rem;
+  padding: .875rem;
+  border-radius: 1rem;
+  color: rgba(238,243,247,.70);
+  background:
+    radial-gradient(circle at 8% 10%, rgba(244,184,96,.14), transparent 42%),
+    rgba(255,255,255,.045);
+  border: 1px solid rgba(244,184,96,.16);
+  font-size: .78125rem;
+  line-height: 1.45;
+}
+.price-series-note strong{
+  display: block;
+  margin-bottom: .5rem;
+  color: var(--text);
+  font-size: .8125rem;
+}
+.price-series-note ul{
+  display: grid;
+  gap: .4375rem;
+  margin: 0;
+  padding-left: 1.125rem;
 }
 
 @media (max-width: 820px){
@@ -4957,15 +5005,20 @@ body.intro-pending .cookie-consent{
     gap: 2px;
   }
   .price-service-row{
-    padding: 14px 0;
+    padding: .875rem 0;
+    gap: .625rem;
   }
   .price-service-row__meta{
     align-items: flex-end;
     flex-direction: column;
-    gap: 4px;
+    gap: .25rem;
+    max-width: 38%;
+  }
+  .price-service-row__note{
+    font-size: .71875rem;
   }
   .price-service-row.is-selected{
-    padding-inline: 12px;
+    padding-inline: .75rem;
   }
 }
 
@@ -5176,6 +5229,19 @@ html[data-theme="light"] .price-service-row .price-service-info{
   border-color: rgba(23,127,194,.32);
   background: rgba(23,127,194,.08);
 }
+html[data-theme="light"] .price-service-row__note,
+html[data-theme="light"] .price-series-note{
+  color: rgba(16,35,49,.68);
+}
+html[data-theme="light"] .price-series-note{
+  background:
+    radial-gradient(circle at 8% 10%, rgba(244,184,96,.18), transparent 42%),
+    rgba(255,255,255,.74);
+  border-color: rgba(125,86,25,.14);
+}
+html[data-theme="light"] .price-series-note strong{
+  color: var(--text);
+}
 html[data-theme="light"] .price-stock{
   color: rgba(16,35,49,.70);
   background: rgba(7,21,33,.06);
@@ -5187,6 +5253,10 @@ html[data-theme="light"] .price-stock--available{
 html[data-theme="light"] .price-stock--unavailable{
   color: #9f1d1d;
   background: rgba(239,68,68,.10);
+}
+html[data-theme="light"] .price-stock--leadtime{
+  color: #7a4d08;
+  background: rgba(244,184,96,.16);
 }
 html[data-theme="light"] .service-choice__card,
 html[data-theme="light"] .shipping-entry-card,

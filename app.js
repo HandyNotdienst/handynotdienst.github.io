@@ -2478,6 +2478,29 @@
   Object.entries(SHIPPING_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
+  const PRICE_OPTION_I18N_DE = {
+    repair_back_housing: "Rückgehäuse komplett",
+    repair_midframe_backglass: "Mittelrahmen + Rückglas",
+    quality_premium_aftermarket_xo7: "Premium Aftermarket OLED XO7 Soft, 120 Hz",
+    quality_oem_pull_grade_a: "OEM Pull Grade A",
+    quality_budget_import: "Budget-Importteil",
+    repair_note_premium_aftermarket: "Gute Qualität, schneller verfügbar als OEM",
+    repair_note_oem_display: "Originales ausgebautes Display in sehr gutem Zustand",
+    repair_note_oem_backglass: "Originales Rückglas, bessere Passform",
+    repair_note_oem_housing: "Originalgehäuse mit Kleinteilen",
+    repair_note_budget_import: "Lieferzeit ca. 10-14 Werktage, Verfügbarkeit schwankt",
+    stock_leadtime_10_14: "10-14 Werktage",
+    price_iphone17_notes_title: "Hinweise zur iPhone 17 Serie",
+    price_iphone17_included_note: "Alle Preise inkl. Einbau. Preise gelten für die angegebene Teilequalität. Der Reparaturtermin erfolgt erst nach Teileingang, wenn ein Teil bestellt werden muss.",
+    price_iphone17_budget_note: "Budget-Importteile sind günstiger, haben aber eine Lieferzeit von durchschnittlich ca. 10-14 Werktagen. Verfügbarkeit, Farbe und Passform können je nach Charge leicht abweichen.",
+    price_iphone17_oem_note: "OEM Pull Teile sind originale Apple-Teile aus ausgebauten Geräten. Sie bieten in der Regel die beste Passform und ein hochwertiges Ergebnis, sind aber abhängig von Verfügbarkeit und Zustand.",
+    price_iphone17_damage_note: "Wichtig: Preise gelten, sofern keine zusätzlichen Schäden an Rahmen, Kamera, Face ID, Ladebuchse oder Mainboard vorhanden sind.",
+    wa_label_quality: "Teilequalität",
+    wa_label_note: "Hinweis",
+  };
+  LANGUAGES.forEach(({ code }) => {
+    GLOBAL_I18N[code] = { ...(GLOBAL_I18N[code] || GLOBAL_I18N.de), ...PRICE_OPTION_I18N_DE };
+  });
   const LEGAL_SOURCE_OF_TRUTH = {
     privacy_intro: "Diese Datenschutzhinweise erklären kurz, welche Daten bei Kontakt, Versand-Anfrage, Website-Nutzung und Analytics verarbeitet werden.",
     privacy_contact_text: "Wenn du per Telefon, Email, WhatsApp oder Telegram Kontakt aufnimmst, werden die von dir gesendeten Angaben zur Bearbeitung deiner Reparaturanfrage verwendet.",
@@ -2848,12 +2871,34 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     });
   }
 
+  function repairOption(key, price, quality, note, stock = "") {
+    return { key, price, quality, note, stock };
+  }
+
+  function iphone17SeriesRepairs(prices, batteryPrice) {
+    const repairs = [
+      repairOption("repair_display", prices.displayPremium, "quality_premium_aftermarket_xo7", "repair_note_premium_aftermarket"),
+      repairOption("repair_display", prices.displayOem, "quality_oem_pull_grade_a", "repair_note_oem_display", "on_request"),
+      repairOption("repair_backglass", prices.backglassBudget, "quality_budget_import", "repair_note_budget_import", "leadtime"),
+      repairOption("repair_backglass", prices.backglassOem, "quality_oem_pull_grade_a", "repair_note_oem_backglass", "on_request"),
+      repairOption("repair_back_housing", prices.housingOem, "quality_oem_pull_grade_a", "repair_note_oem_housing", "on_request"),
+      repairOption("repair_back_housing", prices.housingBudget, "quality_budget_import", "repair_note_budget_import", "leadtime"),
+    ];
+
+    if (prices.midframeBudget) {
+      repairs.push(repairOption("repair_midframe_backglass", prices.midframeBudget, "quality_budget_import", "repair_note_budget_import", "leadtime"));
+    }
+
+    repairs.push({ key: "repair_original_battery", price: batteryPrice, stock: "on_request" });
+    return repairs;
+  }
+
   const PRICE_DATA = {
     apple: [
       { model: "iPhone Air", series: "iphone", family: "iPhone Air", image: "assets/phones/iphone-air.png", repairs: [{ key: "repair_original_battery", price: "149€", stock: "on_request" }] },
-      { model: "iPhone 17 Pro Max", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17-pro-max.png", repairs: [{ key: "repair_original_battery", price: "169€", stock: "on_request" }] },
-      { model: "iPhone 17 Pro", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17-pro.png", repairs: [{ key: "repair_original_battery", price: "149€", stock: "on_request" }] },
-      { model: "iPhone 17", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17.png", repairs: [{ key: "repair_original_battery", price: "139€", stock: "on_request" }] },
+      { model: "iPhone 17 Pro Max", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17-pro-max.png", repairs: iphone17SeriesRepairs({ displayPremium: "299€", displayOem: "459€", backglassBudget: "149€", backglassOem: "159€", housingOem: "449€", housingBudget: "249€", midframeBudget: "249€" }, "169€") },
+      { model: "iPhone 17 Pro", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17-pro.png", repairs: iphone17SeriesRepairs({ displayPremium: "299€", displayOem: "399€", backglassBudget: "149€", backglassOem: "159€", housingOem: "369€", housingBudget: "229€" }, "149€") },
+      { model: "iPhone 17", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17.png", repairs: iphone17SeriesRepairs({ displayPremium: "239€", displayOem: "389€", backglassBudget: "129€", backglassOem: "159€", housingOem: "249€", housingBudget: "199€" }, "139€") },
       { model: "iPhone 16e / 17e", series: "iphone", family: "iPhone 16e / 17e", image: "assets/phones/iphone-16.png", repairs: [{ key: "repair_original_battery", price: "119€", stock: "on_request" }] },
       { model: "iPhone 16 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "399€" }, { key: "repair_battery", price: "139€" }, { key: "repair_original_battery", price: "139€", stock: "on_request" }, { key: "repair_backglass", price: "189€" }] },
       { model: "iPhone 16 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "359€" }, { key: "repair_battery", price: "129€" }, { key: "repair_backglass", price: "179€" }] },
@@ -3077,11 +3122,20 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     };
   }
 
+  function getRepairQualityLabel(repair, lang) {
+    const key = repair?.quality || repair?.variant || "";
+    return key ? (resolveI18n(lang, key) || key) : "";
+  }
+
+  function getRepairNoteText(repair, lang) {
+    const key = repair?.note || "";
+    return key ? (resolveI18n(lang, key) || key) : "";
+  }
+
   function getRepairLabel(repair, lang) {
-    if (repair.key === "repair_display" && repair.variant) {
-      return `${resolveI18n(lang, "repair_display") || "Display"} (${resolveI18n(lang, repair.variant) || repair.variant})`;
-    }
-    return resolveI18n(lang, repair.key) || repair.key;
+    const baseLabel = resolveI18n(lang, repair.key) || repair.key;
+    const qualityLabel = getRepairQualityLabel(repair, lang);
+    return qualityLabel ? `${baseLabel} · ${qualityLabel}` : baseLabel;
   }
 
   function getPriceCtaText(lang) {
@@ -3096,6 +3150,7 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
       available: resolveI18n(lang, "stock_available") || "Auf Lager",
       unavailable: resolveI18n(lang, "stock_unavailable") || "Nicht auf Lager",
       on_request: resolveI18n(lang, "stock_on_request") || "Verfügbarkeit prüfen",
+      leadtime: resolveI18n(lang, "stock_leadtime_10_14") || "10-14 Werktage",
     };
     return labels[stock] || labels.on_request;
   }
@@ -3145,22 +3200,38 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     if (selectedPriceDeliveryMode === "shipping") {
       const repairLabel = repair?.label || (resolveI18n(lang, "wa_repair_general") || "allgemeine Anfrage");
       const price = repair?.price || (resolveI18n(lang, "samsung_price_ask") || "Einfach fragen");
-      const text = `Hallo! Ich möchte eine Reparatur per Versand anfragen.
-
-Modell: ${entry.model}
-Reparatur: ${repairLabel}
-Preis laut Liste: ${price}
-Ort: Deutschland
-
-Bitte sende mir die Versandhinweise.`;
+      const qualityLine = repair?.quality
+        ? `${resolveI18n(lang, "wa_label_quality") || "Teilequalität"}: ${repair.quality}`
+        : null;
+      const noteLine = repair?.note
+        ? `${resolveI18n(lang, "wa_label_note") || "Hinweis"}: ${repair.note}`
+        : null;
+      const text = [
+        "Hallo! Ich möchte eine Reparatur per Versand anfragen.",
+        "",
+        `Modell: ${entry.model}`,
+        `Reparatur: ${repairLabel}`,
+        qualityLine,
+        `Preis laut Liste: ${price}`,
+        noteLine,
+        "Ort: Deutschland",
+        "",
+        "Bitte sende mir die Versandhinweise.",
+      ].filter((line) => line !== null).join("\n");
       return buildWhatsAppHref(text);
     }
 
     const stockLine = repair?.stock
       ? `\n${resolveI18n(lang, "wa_label_stock") || "Lager"}: ${getStockLabel(repair.stock, lang)}`
       : "";
+    const qualityLine = repair?.quality
+      ? `\n${resolveI18n(lang, "wa_label_quality") || "Teilequalität"}: ${repair.quality}`
+      : "";
+    const noteLine = repair?.note
+      ? `\n${resolveI18n(lang, "wa_label_note") || "Hinweis"}: ${repair.note}`
+      : "";
     const repairLine = repair
-      ? `${resolveI18n(lang, "wa_label_repair") || "Reparatur"}: ${repair.label}\n${resolveI18n(lang, "wa_label_price") || "Preis"}: ${repair.price}${stockLine}`
+      ? `${resolveI18n(lang, "wa_label_repair") || "Reparatur"}: ${repair.label}${qualityLine}\n${resolveI18n(lang, "wa_label_price") || "Preis"}: ${repair.price}${noteLine}${stockLine}`
       : (resolveI18n(lang, "wa_repair_general") || "Reparatur: allgemeine Anfrage");
 
     const text = `${resolveI18n(lang, "wa_message_intro") || "Hallo!"}
@@ -3736,6 +3807,42 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     if (stockEl) stockEl.textContent = getStockLabel(stock, lang);
   }
 
+  function getSelectedRepairPayload(repair, lang) {
+    return {
+      label: getRepairLabel(repair, lang),
+      price: repair.price,
+      stock: repair.stock || "on_request",
+      quality: getRepairQualityLabel(repair, lang),
+      note: getRepairNoteText(repair, lang),
+    };
+  }
+
+  function renderPriceSeriesNotes(list, entry, lang) {
+    if (entry.family !== "iPhone 17") return;
+
+    const noteKeys = [
+      "price_iphone17_included_note",
+      "price_iphone17_budget_note",
+      "price_iphone17_oem_note",
+      "price_iphone17_damage_note",
+    ];
+    const note = document.createElement("aside");
+    note.className = "price-series-note";
+
+    const title = document.createElement("strong");
+    title.textContent = resolveI18n(lang, "price_iphone17_notes_title") || "Hinweise zur iPhone 17 Serie";
+    note.appendChild(title);
+
+    const listEl = document.createElement("ul");
+    noteKeys.forEach((key) => {
+      const item = document.createElement("li");
+      item.textContent = resolveI18n(lang, key) || "";
+      listEl.appendChild(item);
+    });
+    note.appendChild(listEl);
+    list.appendChild(note);
+  }
+
   function animatePriceValue(el, price) {
     const match = String(price).match(/(\d+)/);
     if (!match || prefersReducedMotion) {
@@ -3836,13 +3943,18 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
 
     entry.repairs.forEach((repair, index) => {
       const label = getRepairLabel(repair, lang);
+      const note = getRepairNoteText(repair, lang);
       const row = document.createElement("button");
       row.className = `price-service-row${index === 0 ? " is-selected" : ""}`;
       row.type = "button";
       row.style.setProperty("--row-index", index);
 
       const labelEl = document.createElement("span");
-      labelEl.textContent = label;
+      labelEl.className = "price-service-row__label";
+      const titleEl = document.createElement("span");
+      titleEl.className = "price-service-row__title";
+      titleEl.textContent = label;
+      labelEl.appendChild(titleEl);
 
       if (repair.key === "repair_original_battery") {
         const infoText = resolveI18n(lang, "repair_original_battery_info")
@@ -3852,7 +3964,14 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
         infoEl.setAttribute("aria-label", infoText);
         infoEl.setAttribute("title", infoText);
         infoEl.textContent = "i";
-        labelEl.append(" ", infoEl);
+        titleEl.append(" ", infoEl);
+      }
+
+      if (note) {
+        const noteEl = document.createElement("small");
+        noteEl.className = "price-service-row__note";
+        noteEl.textContent = note;
+        labelEl.appendChild(noteEl);
       }
 
       const metaEl = document.createElement("span");
@@ -3870,8 +3989,9 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       metaEl.appendChild(priceEl);
 
       row.append(labelEl, metaEl);
+      row.setAttribute("aria-label", [label, note, repair.price].filter(Boolean).join(" - "));
       row.addEventListener("click", () => {
-        selectedPriceRepair = { label, price: repair.price, stock: repair.stock || "on_request" };
+        selectedPriceRepair = getSelectedRepairPayload(repair, lang);
         list.querySelectorAll(".price-service-row").forEach((item) => item.classList.remove("is-selected"));
         row.classList.add("is-selected");
         setPriceCtaReady(true);
@@ -3887,11 +4007,11 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       });
       list.appendChild(row);
     });
+    renderPriceSeriesNotes(list, entry, lang);
 
     const defaultRepair = entry.repairs[0];
     if (defaultRepair) {
-      const label = getRepairLabel(defaultRepair, lang);
-      selectedPriceRepair = { label, price: defaultRepair.price, stock: defaultRepair.stock || "on_request" };
+      selectedPriceRepair = getSelectedRepairPayload(defaultRepair, lang);
       updatePriceSummary(entry, selectedPriceRepair);
       updatePriceCta(entry);
     }
