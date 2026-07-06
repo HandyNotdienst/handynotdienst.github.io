@@ -166,7 +166,7 @@
       pickup_message: "Hallo! Ich möchte Abholung/Lieferung anfragen. Ort: {city}",
       price_model_finder_btn: "iPhone Modell finden",
       price_selector_title: "Was kostet die Reparatur?",
-      price_selector_subtitle: "Wähle dein Gerät und sieh dir die voraussichtlichen Preise für gängige Reparaturen an.",
+      price_selector_subtitle: "Wähle dein Gerät und sieh die Preise inkl. Einbau für gängige Reparaturen.",
       price_selector_card_eyebrow: "Preise sofort prüfen",
       price_selector_trust_note: "Daten bleiben erhalten",
       price_selector_card_title: "Gerät auswählen",
@@ -174,7 +174,7 @@
       price_selector_model_label: "Modell",
       price_selector_selected_label: "Ausgewähltes Gerät",
       price_selector_services_title: "Verfügbare Reparaturen",
-      price_selector_estimate_label: "voraussichtlich",
+      price_selector_estimate_label: "Preise inkl. Einbau",
       price_selector_cta: "Per WhatsApp anfragen",
       price_stock_note: "OEM Pull Akkus sind nicht immer verfügbar. Die Verfügbarkeit wird beim WhatsApp-Check bestätigt.",
       price_selector_note: "Die endgültigen Kosten und Garantie hängen vom Zustand des Geräts und der gewählten Ersatzteilqualität ab. OEM Pull Akkus 99–100% sind nicht immer verfügbar und werden vorab bestätigt.",
@@ -367,7 +367,7 @@
       pickup_message: "Вітаю! Хочу домовитись про забір/доставку. Місто: {city}",
       price_model_finder_btn: "Знайти модель iPhone",
       price_selector_title: "Скільки коштує ремонт?",
-      price_selector_subtitle: "Оберіть пристрій і перегляньте орієнтовні ціни на популярні ремонти.",
+      price_selector_subtitle: "Оберіть пристрій і перегляньте ціни з установкою на популярні ремонти.",
       price_selector_card_eyebrow: "Швидка перевірка цін",
       price_selector_trust_note: "Дані зберігаються",
       price_selector_card_title: "Оберіть пристрій",
@@ -375,7 +375,7 @@
       price_selector_model_label: "Модель",
       price_selector_selected_label: "Обраний пристрій",
       price_selector_services_title: "Доступні ремонти",
-      price_selector_estimate_label: "орієнтовно",
+      price_selector_estimate_label: "Ціни з установкою",
       price_selector_cta: "Запитати у WhatsApp",
       price_stock_note: "OEM Pull акумулятори доступні не завжди. Наявність підтвердимо під час запиту у WhatsApp.",
       price_selector_note: "Остаточна вартість і гарантія залежать від стану пристрою та обраної якості запчастини. OEM Pull акумулятори 99–100% доступні не завжди і підтверджуються заздалегідь.",
@@ -570,7 +570,7 @@
       pickup_message: "Hi! I would like to arrange pickup/delivery. City: {city}",
       price_model_finder_btn: "Find iPhone model",
       price_selector_title: "How much does the repair cost?",
-      price_selector_subtitle: "Choose your device and see estimated prices for common repairs.",
+      price_selector_subtitle: "Choose your device and see prices incl. installation for common repairs.",
       price_selector_card_eyebrow: "Check prices instantly",
       price_selector_trust_note: "Your data stays safe",
       price_selector_card_title: "Choose your device",
@@ -578,7 +578,7 @@
       price_selector_model_label: "Model",
       price_selector_selected_label: "Selected device",
       price_selector_services_title: "Available repairs",
-      price_selector_estimate_label: "estimated",
+      price_selector_estimate_label: "Prices incl. installation",
       price_selector_cta: "Ask via WhatsApp",
       price_stock_note: "OEM Pull batteries are not always available. Availability is confirmed during the WhatsApp check.",
       price_selector_note: "Final cost and warranty depend on device condition and selected part quality. OEM Pull batteries 99–100% are not always available and are confirmed upfront.",
@@ -699,7 +699,7 @@
       hours: "Встречи",
       hours_hint: "часто быстро после WhatsApp-проверки",
       price_selector_title: "Сколько стоит ремонт?",
-      price_selector_subtitle: "Выберите устройство и посмотрите ориентировочные цены на частые ремонты.",
+      price_selector_subtitle: "Выберите устройство и посмотрите цены с установкой на частые ремонты.",
       price_model_finder_btn: "Найти модель iPhone",
       price_selector_card_eyebrow: "Быстрая проверка цен",
       price_selector_trust_note: "Данные сохраняются",
@@ -708,7 +708,7 @@
       price_selector_model_label: "Модель",
       price_selector_selected_label: "Выбранное устройство",
       price_selector_services_title: "Доступные ремонты",
-      price_selector_estimate_label: "примерно",
+      price_selector_estimate_label: "Цены с установкой",
       price_selector_cta: "Спросить в WhatsApp",
       price_stock_note: "OEM Pull аккумуляторы доступны не всегда. Наличие подтвердим во время WhatsApp-проверки.",
       price_selector_note: "Итоговая стоимость и гарантия зависят от состояния устройства и выбранного качества детали. OEM Pull аккумуляторы 99–100% доступны не всегда и подтверждаются заранее.",
@@ -790,14 +790,14 @@
       contact_title: "Kontakt",
       contact_text: "Napisz albo zadzwoń - obecnie pracuję mobilnie i po uzgodnieniu w Singen.",
       price_selector_title: "Ile kosztuje naprawa?",
-      price_selector_subtitle: "Wybierz urządzenie i zobacz orientacyjne ceny popularnych napraw.",
+      price_selector_subtitle: "Wybierz urządzenie i zobacz ceny z montażem najczęstszych napraw.",
       price_model_finder_btn: "Znajdź model iPhone",
       price_selector_card_title: "Wybierz urządzenie",
       price_selector_family_label: "Typ urządzenia",
       price_selector_model_label: "Model",
       price_selector_selected_label: "Wybrane urządzenie",
       price_selector_services_title: "Dostępne naprawy",
-      price_selector_estimate_label: "orientacyjnie",
+      price_selector_estimate_label: "Ceny z montażem",
       price_selector_cta: "Zapytaj przez WhatsApp",
       price_stock_note: "Baterie OEM Pull nie zawsze są dostępne. Dostępność potwierdzimy podczas sprawdzenia przez WhatsApp.",
       repair_display: "Wyświetlacz",
@@ -871,14 +871,14 @@
       contact_title: "Contatto",
       contact_text: "Scrivi o chiama - attualmente lavoro in modo mobile e su appuntamento a Singen.",
       price_selector_title: "Quanto costa la riparazione?",
-      price_selector_subtitle: "Scegli il dispositivo e vedi i prezzi stimati delle riparazioni più comuni.",
+      price_selector_subtitle: "Scegli il dispositivo e vedi i prezzi con montaggio per le riparazioni più comuni.",
       price_model_finder_btn: "Trova modello iPhone",
       price_selector_card_title: "Scegli dispositivo",
       price_selector_family_label: "Tipo dispositivo",
       price_selector_model_label: "Modello",
       price_selector_selected_label: "Dispositivo scelto",
       price_selector_services_title: "Riparazioni disponibili",
-      price_selector_estimate_label: "stimato",
+      price_selector_estimate_label: "Prezzi con montaggio",
       price_selector_cta: "Chiedi via WhatsApp",
       repair_display: "Display",
       repair_battery: "Batteria",
@@ -943,14 +943,14 @@
       contact_title: "تواصل",
       contact_text: "اكتب أو اتصل - حاليا أعمل بشكل متنقل وباتفاق مسبق في Singen.",
       price_selector_title: "كم تكلفة الإصلاح؟",
-      price_selector_subtitle: "اختر جهازك وشاهد الأسعار التقريبية للإصلاحات الشائعة.",
+      price_selector_subtitle: "اختر جهازك وشاهد الأسعار مع التركيب للإصلاحات الشائعة.",
       price_model_finder_btn: "اعرف موديل iPhone",
       price_selector_card_title: "اختر الجهاز",
       price_selector_family_label: "نوع الجهاز",
       price_selector_model_label: "الموديل",
       price_selector_selected_label: "الجهاز المختار",
       price_selector_services_title: "الإصلاحات المتاحة",
-      price_selector_estimate_label: "تقريبي",
+      price_selector_estimate_label: "الأسعار تشمل التركيب",
       price_selector_cta: "اسأل عبر WhatsApp",
       repair_display: "الشاشة",
       repair_battery: "البطارية",
@@ -1015,14 +1015,14 @@
       contact_title: "Têkilî",
       contact_text: "Binivîse an bang bike - niha ez mobîl û bi lihevkirinê li Singen dixebitim.",
       price_selector_title: "Tamîr çiqas e?",
-      price_selector_subtitle: "Amûra xwe hilbijêre û buhaya nêzîk a tamîrên gelemperî bibîne.",
+      price_selector_subtitle: "Amûra xwe hilbijêre û bihayên bi danînê re ji bo tamîrên gelemperî bibîne.",
       price_model_finder_btn: "Modela iPhone bibîne",
       price_selector_card_title: "Amûr hilbijêre",
       price_selector_family_label: "Cureyê amûrê",
       price_selector_model_label: "Model",
       price_selector_selected_label: "Amûra hilbijartî",
       price_selector_services_title: "Tamîrên berdest",
-      price_selector_estimate_label: "nêzîk",
+      price_selector_estimate_label: "Biha bi danînê re",
       price_selector_cta: "Li WhatsAppê bipirse",
       repair_display: "Dîmender",
       repair_battery: "Batarya",
@@ -1083,14 +1083,14 @@
       contact_title: "Contact",
       contact_text: "Écrivez ou appelez - actuellement je travaille en mobile et sur rendez-vous à Singen.",
       price_selector_title: "Combien coûte la réparation ?",
-      price_selector_subtitle: "Choisissez votre appareil et voyez les prix estimés des réparations courantes.",
+      price_selector_subtitle: "Choisissez votre appareil et voyez les prix pose incluse pour les réparations courantes.",
       price_model_finder_btn: "Trouver le modèle iPhone",
       price_selector_card_title: "Choisir l'appareil",
       price_selector_family_label: "Type d'appareil",
       price_selector_model_label: "Modèle",
       price_selector_selected_label: "Appareil choisi",
       price_selector_services_title: "Réparations disponibles",
-      price_selector_estimate_label: "estimé",
+      price_selector_estimate_label: "Prix pose incluse",
       price_selector_cta: "Demander via WhatsApp",
       repair_display: "Écran",
       repair_battery: "Batterie",
@@ -1155,14 +1155,14 @@
       contact_title: "Kontakt",
       contact_text: "Piši ali pokliči - trenutno delam mobilno in po dogovoru v Singen.",
       price_selector_title: "Koliko stane popravilo?",
-      price_selector_subtitle: "Izberi napravo in poglej okvirne cene pogostih popravil.",
+      price_selector_subtitle: "Izberi napravo in poglej cene z vgradnjo za pogosta popravila.",
       price_model_finder_btn: "Najdi model iPhone",
       price_selector_card_title: "Izberi napravo",
       price_selector_family_label: "Tip naprave",
       price_selector_model_label: "Model",
       price_selector_selected_label: "Izbrana naprava",
       price_selector_services_title: "Razpoložljiva popravila",
-      price_selector_estimate_label: "okvirno",
+      price_selector_estimate_label: "Cene z vgradnjo",
       price_selector_cta: "Vprašaj prek WhatsApp",
       repair_display: "Zaslon",
       repair_battery: "Baterija",
@@ -2495,13 +2495,13 @@
     price_iphone17_budget_note: "Budget-Importteile sind günstiger, haben aber eine Lieferzeit von durchschnittlich ca. 10-14 Werktagen. Verfügbarkeit, Farbe und Passform können je nach Charge leicht abweichen.",
     price_iphone17_oem_note: "OEM Pull Teile sind originale Apple-Teile aus ausgebauten Geräten. Sie bieten in der Regel die beste Passform und ein hochwertiges Ergebnis, sind aber abhängig von Verfügbarkeit und Zustand.",
     price_iphone17_damage_note: "Wichtig: Preise gelten, sofern keine zusätzlichen Schäden an Rahmen, Kamera, Face ID, Ladebuchse oder Mainboard vorhanden sind.",
-    price_from: "ab",
+    price_included_short: "inkl. Einbau",
     quality_chip_premium: "Premium",
     quality_chip_original: "Original OEM",
     quality_chip_budget: "Budget",
-    quality_hint_premium: "Schneller verfügbar",
+    quality_hint_premium: "Gute Qualität, meist schneller verfügbar",
     quality_hint_original: "Beste Passform, je nach Verfügbarkeit",
-    quality_hint_budget: "Günstiger, ca. 10-14 Werktage",
+    quality_hint_budget: "Günstiger, ca. 10-14 Werktage Lieferzeit",
     price_quality_details_title: "Qualitäten kurz erklärt",
     price_quality_details_premium: "Premium: gute Qualität und meist schneller verfügbar.",
     price_quality_details_original: "Original OEM: beste Passform, abhängig von Verfügbarkeit und Zustand.",
@@ -2511,117 +2511,117 @@
   };
   const PRICE_OPTION_I18N = {
     uk: {
-      price_from: "від",
+      price_included_short: "з установкою",
       quality_chip_premium: "Преміум",
       quality_chip_original: "Original OEM",
       quality_chip_budget: "Бюджет",
-      quality_hint_premium: "Швидше доступно",
-      quality_hint_original: "Найкраща посадка, залежить від наявності",
-      quality_hint_budget: "Дешевше, приблизно 10-14 робочих днів",
+      quality_hint_premium: "Хороша якість, зазвичай швидше доступно",
+      quality_hint_original: "Найкраща сумісність, залежить від наявності",
+      quality_hint_budget: "Дешевше, доставка приблизно 10-14 робочих днів",
       price_quality_details_title: "Коротко про якість",
       price_quality_details_premium: "Преміум: хороша якість і зазвичай швидша доступність.",
       price_quality_details_original: "Original OEM: найкраща посадка, залежить від наявності та стану.",
       price_quality_details_budget: "Бюджет: дешевше, доставка деталей приблизно 10-14 робочих днів.",
     },
     en: {
-      price_from: "from",
+      price_included_short: "incl. installation",
       quality_chip_premium: "Premium",
       quality_chip_original: "Original OEM",
       quality_chip_budget: "Budget",
-      quality_hint_premium: "Available faster",
+      quality_hint_premium: "Good quality, usually available faster",
       quality_hint_original: "Best fit, depending on availability",
-      quality_hint_budget: "Cheaper, approx. 10-14 working days",
+      quality_hint_budget: "Cheaper, approx. 10-14 working days delivery",
       price_quality_details_title: "Part quality explained",
       price_quality_details_premium: "Premium: good quality and usually available faster.",
       price_quality_details_original: "Original OEM: best fit, depending on availability and condition.",
       price_quality_details_budget: "Budget: cheaper, with approx. 10-14 working days delivery time.",
     },
     ru: {
-      price_from: "от",
+      price_included_short: "с установкой",
       quality_chip_premium: "Премиум",
       quality_chip_original: "Original OEM",
       quality_chip_budget: "Бюджет",
-      quality_hint_premium: "Доступно быстрее",
+      quality_hint_premium: "Хорошее качество, обычно доступно быстрее",
       quality_hint_original: "Лучшая посадка, зависит от наличия",
-      quality_hint_budget: "Дешевле, примерно 10-14 рабочих дней",
+      quality_hint_budget: "Дешевле, доставка примерно 10-14 рабочих дней",
       price_quality_details_title: "Кратко о качестве",
       price_quality_details_premium: "Премиум: хорошее качество и обычно быстрее доступно.",
       price_quality_details_original: "Original OEM: лучшая посадка, зависит от наличия и состояния.",
       price_quality_details_budget: "Бюджет: дешевле, срок поставки около 10-14 рабочих дней.",
     },
     pl: {
-      price_from: "od",
+      price_included_short: "z montażem",
       quality_chip_premium: "Premium",
       quality_chip_original: "Original OEM",
       quality_chip_budget: "Budżet",
-      quality_hint_premium: "Szybciej dostępne",
+      quality_hint_premium: "Dobra jakość, zwykle szybciej dostępne",
       quality_hint_original: "Najlepsze dopasowanie, zależnie od dostępności",
-      quality_hint_budget: "Taniej, ok. 10-14 dni roboczych",
+      quality_hint_budget: "Taniej, dostawa ok. 10-14 dni roboczych",
       price_quality_details_title: "Krótko o jakości",
       price_quality_details_premium: "Premium: dobra jakość i zwykle szybsza dostępność.",
       price_quality_details_original: "Original OEM: najlepsze dopasowanie, zależnie od dostępności i stanu.",
       price_quality_details_budget: "Budżet: taniej, z czasem dostawy ok. 10-14 dni roboczych.",
     },
     it: {
-      price_from: "da",
+      price_included_short: "montaggio incluso",
       quality_chip_premium: "Premium",
       quality_chip_original: "Original OEM",
       quality_chip_budget: "Budget",
-      quality_hint_premium: "Disponibile più velocemente",
+      quality_hint_premium: "Buona qualità, di solito disponibile più velocemente",
       quality_hint_original: "Migliore aderenza, secondo disponibilità",
-      quality_hint_budget: "Più economico, circa 10-14 giorni lavorativi",
+      quality_hint_budget: "Più economico, consegna circa 10-14 giorni lavorativi",
       price_quality_details_title: "Qualità in breve",
       price_quality_details_premium: "Premium: buona qualità e di solito disponibile più velocemente.",
       price_quality_details_original: "Original OEM: migliore aderenza, secondo disponibilità e stato.",
       price_quality_details_budget: "Budget: più economico, con consegna in circa 10-14 giorni lavorativi.",
     },
     ar: {
-      price_from: "من",
+      price_included_short: "يشمل التركيب",
       quality_chip_premium: "Premium",
       quality_chip_original: "Original OEM",
       quality_chip_budget: "Budget",
-      quality_hint_premium: "متوفر أسرع",
+      quality_hint_premium: "جودة جيدة، غالبا متوفر أسرع",
       quality_hint_original: "أفضل توافق حسب التوفر",
-      quality_hint_budget: "أرخص، حوالي 10-14 يوم عمل",
+      quality_hint_budget: "أرخص، التوريد حوالي 10-14 يوم عمل",
       price_quality_details_title: "شرح مختصر للجودة",
       price_quality_details_premium: "Premium: جودة جيدة وغالبا متوفر أسرع.",
       price_quality_details_original: "Original OEM: أفضل توافق، حسب التوفر والحالة.",
       price_quality_details_budget: "Budget: أرخص، مع وقت توريد حوالي 10-14 يوم عمل.",
     },
     ku: {
-      price_from: "ji",
+      price_included_short: "bi danînê re",
       quality_chip_premium: "Premium",
       quality_chip_original: "Original OEM",
       quality_chip_budget: "Budget",
-      quality_hint_premium: "Zûtir amade ye",
+      quality_hint_premium: "Kalîteya baş, pir caran zûtir amade ye",
       quality_hint_original: "Lihevhatina herî baş, li gorî amadeyiyê",
-      quality_hint_budget: "Erzantir, nêzî 10-14 rojên kar",
+      quality_hint_budget: "Erzantir, gihandin nêzî 10-14 rojên kar",
       price_quality_details_title: "Kalîte bi kurtî",
       price_quality_details_premium: "Premium: kalîteya baş û pir caran zûtir amade ye.",
       price_quality_details_original: "Original OEM: lihevhatina herî baş, li gorî amadeyî û rewşê.",
       price_quality_details_budget: "Budget: erzantir, bi dema gihandina nêzî 10-14 rojên kar.",
     },
     fr: {
-      price_from: "dès",
+      price_included_short: "pose incluse",
       quality_chip_premium: "Premium",
       quality_chip_original: "Original OEM",
       quality_chip_budget: "Budget",
-      quality_hint_premium: "Disponible plus vite",
+      quality_hint_premium: "Bonne qualité, souvent disponible plus vite",
       quality_hint_original: "Meilleur ajustement, selon disponibilité",
-      quality_hint_budget: "Moins cher, env. 10-14 jours ouvrés",
+      quality_hint_budget: "Moins cher, livraison env. 10-14 jours ouvrés",
       price_quality_details_title: "Qualités en bref",
       price_quality_details_premium: "Premium : bonne qualité et souvent disponible plus vite.",
       price_quality_details_original: "Original OEM : meilleur ajustement, selon disponibilité et état.",
       price_quality_details_budget: "Budget : moins cher, avec env. 10-14 jours ouvrés de livraison.",
     },
     sl: {
-      price_from: "od",
+      price_included_short: "z vgradnjo",
       quality_chip_premium: "Premium",
       quality_chip_original: "Original OEM",
       quality_chip_budget: "Budget",
-      quality_hint_premium: "Hitreje dobavljivo",
+      quality_hint_premium: "Dobra kakovost, običajno hitreje dobavljivo",
       quality_hint_original: "Najboljše prileganje, glede na dobavljivost",
-      quality_hint_budget: "Ugodneje, približno 10-14 delovnih dni",
+      quality_hint_budget: "Ugodneje, dobava približno 10-14 delovnih dni",
       price_quality_details_title: "Kakovosti na kratko",
       price_quality_details_premium: "Premium: dobra kakovost in običajno hitrejša dobavljivost.",
       price_quality_details_original: "Original OEM: najboljše prileganje, odvisno od dobavljivosti in stanja.",
@@ -3280,6 +3280,20 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     return "";
   }
 
+  function getRepairQualityOrder(repair) {
+    const type = getRepairQualityType(repair);
+    const order = { budget: 0, premium: 1, original: 2 };
+    return Object.prototype.hasOwnProperty.call(order, type) ? order[type] : 9;
+  }
+
+  function sortRepairOptionsForDisplay(repairs) {
+    return [...repairs].sort((a, b) => (
+      getRepairQualityOrder(a) - getRepairQualityOrder(b)
+      || getNumericPrice(a.price) - getNumericPrice(b.price)
+      || String(getRepairQualityType(a)).localeCompare(String(getRepairQualityType(b)))
+    ));
+  }
+
   function getRepairQualityChipLabel(repair, lang) {
     const type = getRepairQualityType(repair);
     const key = {
@@ -3309,12 +3323,6 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
   function getNumericPrice(price) {
     const match = String(price || "").match(/\d+/);
     return match ? Number(match[0]) : Number.POSITIVE_INFINITY;
-  }
-
-  function getLowestRepairPrice(repairs) {
-    return repairs.reduce((lowest, repair) => (
-      getNumericPrice(repair.price) < getNumericPrice(lowest.price) ? repair : lowest
-    ), repairs[0])?.price || "";
   }
 
   function groupRepairOptions(repairs) {
@@ -3371,6 +3379,20 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
         image: getPriceImage(entry, brand),
       }))
     ));
+  }
+
+  function sortPriceModelsForDisplay(models) {
+    const iphone17Order = {
+      "iPhone 17": 0,
+      "iPhone 17 Pro": 1,
+      "iPhone 17 Pro Max": 2,
+    };
+    if (!models.some((entry) => entry.family === "iPhone 17")) return models;
+    return [...models].sort((a, b) => {
+      const aRank = Object.prototype.hasOwnProperty.call(iphone17Order, a.model) ? iphone17Order[a.model] : 99;
+      const bRank = Object.prototype.hasOwnProperty.call(iphone17Order, b.model) ? iphone17Order[b.model] : 99;
+      return aRank - bRank || a.model.localeCompare(b.model);
+    });
   }
 
   function getPriceFamilies(entries) {
@@ -4149,11 +4171,11 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     }
   }
 
-  function renderFlatPriceServiceRow(list, entry, repair, index, lang, isSelected = index === 0) {
+  function renderFlatPriceServiceRow(list, entry, repair, index, lang, isSelected = index === 0, extraClass = "") {
     const label = getRepairLabel(repair, lang);
     const note = getRepairNoteText(repair, lang);
     const row = document.createElement("button");
-    row.className = `price-service-row${isSelected ? " is-selected" : ""}`;
+    row.className = ["price-service-row", extraClass, isSelected ? "is-selected" : ""].filter(Boolean).join(" ");
     row.type = "button";
     row.style.setProperty("--row-index", index);
 
@@ -4280,11 +4302,11 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       title.id = titleId;
       title.textContent = groupLabel;
 
-      const from = document.createElement("small");
-      from.className = "price-repair-group__from";
-      from.textContent = `${resolveI18n(lang, "price_from") || "ab"} ${getLowestRepairPrice(group.repairs)}`;
+      const included = document.createElement("small");
+      included.className = "price-repair-group__included";
+      included.textContent = resolveI18n(lang, "price_included_short") || "inkl. Einbau";
 
-      head.append(title, from);
+      head.append(title, included);
       groupEl.appendChild(head);
 
       const chips = document.createElement("div");
@@ -4299,7 +4321,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       stockSlot.className = "price-quality-stock";
       hint.append(hintText, stockSlot);
 
-      group.repairs.forEach((repair, repairIndex) => {
+      sortRepairOptionsForDisplay(group.repairs).forEach((repair, repairIndex) => {
         const chipLabel = getRepairQualityChipLabel(repair, lang);
         const chip = document.createElement("button");
         chip.className = "price-quality-chip";
@@ -4328,7 +4350,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     });
 
     standalone.forEach((repair, index) => {
-      renderFlatPriceServiceRow(list, entry, repair, groups.length + index, lang, false);
+      renderFlatPriceServiceRow(list, entry, repair, groups.length + index, lang, false, "price-service-row--framed");
     });
     renderPriceQualityDetails(list, lang);
 
@@ -4384,7 +4406,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
 
     const lang = getLang();
     const entries = getPriceEntries().filter((entry) => entry.brand === selectedPriceBrand);
-    const models = entries.filter((entry) => entry.family === familySelect.value);
+    const models = sortPriceModelsForDisplay(entries.filter((entry) => entry.family === familySelect.value));
     const entry = models.find((item) => item.model === modelSelect.value) || models[0] || entries[0];
     if (!entry) return;
 
