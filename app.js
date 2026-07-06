@@ -3373,6 +3373,27 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     ));
   }
 
+  function getIphoneVariantRank(model, family) {
+    const text = String(model || "").toLowerCase().replace(/\s+/g, " ").trim();
+    const familyText = String(family || "").toLowerCase().replace(/\s+/g, " ").trim();
+    if (!text.startsWith("iphone")) return 99;
+    if (text === familyText || text.startsWith(`${familyText} /`)) return 0;
+    if (/\bmini\b/.test(text)) return 1;
+    if (/\bplus\b/.test(text)) return 2;
+    if (/\bpro max\b/.test(text)) return 4;
+    if (/\bpro\b/.test(text)) return 3;
+    if (/\bmax\b/.test(text)) return 4;
+    return 0;
+  }
+
+  function sortPriceModelsForDisplay(models) {
+    if (!models.some((entry) => entry.brand === "apple" && String(entry.model || "").startsWith("iPhone"))) return models;
+    return [...models].sort((a, b) => (
+      getIphoneVariantRank(a.model, a.family) - getIphoneVariantRank(b.model, b.family)
+      || String(a.model || "").localeCompare(String(b.model || ""))
+    ));
+  }
+
   function getPriceFamilies(entries) {
     const seen = new Set();
     return entries.reduce((families, entry) => {
@@ -4384,7 +4405,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
 
     const lang = getLang();
     const entries = getPriceEntries().filter((entry) => entry.brand === selectedPriceBrand);
-    const models = entries.filter((entry) => entry.family === familySelect.value);
+    const models = sortPriceModelsForDisplay(entries.filter((entry) => entry.family === familySelect.value));
     const entry = models.find((item) => item.model === modelSelect.value) || models[0] || entries[0];
     if (!entry) return;
 
