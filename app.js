@@ -2631,6 +2631,62 @@
   LANGUAGES.forEach(({ code }) => {
     GLOBAL_I18N[code] = { ...(GLOBAL_I18N[code] || GLOBAL_I18N.de), ...PRICE_OPTION_I18N_DE, ...(PRICE_OPTION_I18N[code] || {}) };
   });
+
+  const PRICE_FUTURE_I18N = {
+    de: {
+      price_future_iphone: "iPhone Reparaturen",
+      price_future_watch: "Apple Watch auf Anfrage",
+      price_future_macbook: "MacBook auf Anfrage",
+    },
+    uk: {
+      price_future_iphone: "Ремонт iPhone",
+      price_future_watch: "Apple Watch за запитом",
+      price_future_macbook: "MacBook за запитом",
+    },
+    en: {
+      price_future_iphone: "iPhone repairs",
+      price_future_watch: "Apple Watch on request",
+      price_future_macbook: "MacBook on request",
+    },
+    ru: {
+      price_future_iphone: "Ремонт iPhone",
+      price_future_watch: "Apple Watch по запросу",
+      price_future_macbook: "MacBook по запросу",
+    },
+    pl: {
+      price_future_iphone: "Naprawy iPhone",
+      price_future_watch: "Apple Watch na zapytanie",
+      price_future_macbook: "MacBook na zapytanie",
+    },
+    it: {
+      price_future_iphone: "Riparazioni iPhone",
+      price_future_watch: "Apple Watch su richiesta",
+      price_future_macbook: "MacBook su richiesta",
+    },
+    ar: {
+      price_future_iphone: "إصلاحات iPhone",
+      price_future_watch: "Apple Watch عند الطلب",
+      price_future_macbook: "MacBook عند الطلب",
+    },
+    ku: {
+      price_future_iphone: "Çareseriya iPhone",
+      price_future_watch: "Apple Watch li ser daxwazê",
+      price_future_macbook: "MacBook li ser daxwazê",
+    },
+    fr: {
+      price_future_iphone: "Réparations iPhone",
+      price_future_watch: "Apple Watch sur demande",
+      price_future_macbook: "MacBook sur demande",
+    },
+    sl: {
+      price_future_iphone: "Popravila iPhone",
+      price_future_watch: "Apple Watch na povpraševanje",
+      price_future_macbook: "MacBook na povpraševanje",
+    },
+  };
+  Object.entries(PRICE_FUTURE_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
   const LEGAL_SOURCE_OF_TRUTH = {
     privacy_intro: "Diese Datenschutzhinweise erklären kurz, welche Daten bei Kontakt, Versand-Anfrage, Website-Nutzung und Analytics verarbeitet werden.",
     privacy_contact_text: "Wenn du per Telefon, Email, WhatsApp oder Telegram Kontakt aufnimmst, werden die von dir gesendeten Angaben zur Bearbeitung deiner Reparaturanfrage verwendet.",
@@ -3318,6 +3374,38 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     const baseLabel = getRepairBaseLabel(repair, lang);
     const chipLabel = getRepairQualityChipLabel(repair, lang);
     return chipLabel ? `${baseLabel} · ${chipLabel}` : getRepairLabel(repair, lang);
+  }
+
+  const PRICE_REPAIR_ICONS = {
+    repair_display: "assets/iphone-icons/display-repair.webp",
+    repair_battery: "assets/iphone-icons/battery-repair.webp",
+    repair_original_battery: "assets/iphone-icons/oem-battery-repair.webp",
+    repair_backglass: "assets/iphone-icons/backglass-repair.webp",
+    repair_back_housing: "assets/iphone-icons/backglass-repair.webp",
+    repair_midframe_backglass: "assets/iphone-icons/backglass-repair.webp",
+  };
+
+  function getPriceRepairIcon(repairOrKey) {
+    const key = typeof repairOrKey === "string" ? repairOrKey : repairOrKey?.key;
+    return PRICE_REPAIR_ICONS[key] || "assets/iphone-icons/iphone-device.svg";
+  }
+
+  function createPriceIconSlot(className, src, size) {
+    const slot = document.createElement("span");
+    slot.className = className;
+    slot.setAttribute("aria-hidden", "true");
+
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "";
+    img.width = size;
+    img.height = size;
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.setAttribute("aria-hidden", "true");
+    img.setAttribute("role", "presentation");
+    slot.appendChild(img);
+    return slot;
   }
 
   function getNumericPrice(price) {
@@ -4185,6 +4273,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     row.className = ["price-service-row", extraClass, isSelected ? "is-selected" : ""].filter(Boolean).join(" ");
     row.type = "button";
     row.style.setProperty("--row-index", index);
+    row.appendChild(createPriceIconSlot("price-service-row__icon", getPriceRepairIcon(repair), 36));
 
     const labelEl = document.createElement("span");
     labelEl.className = "price-service-row__label";
@@ -4313,6 +4402,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       included.className = "price-repair-group__included";
       included.textContent = resolveI18n(lang, "price_included_short") || "inkl. Einbau";
 
+      head.appendChild(createPriceIconSlot("price-repair-group__icon", getPriceRepairIcon(group.key), 34));
       head.append(title, included);
       groupEl.appendChild(head);
 
