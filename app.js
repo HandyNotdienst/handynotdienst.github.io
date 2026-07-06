@@ -3381,18 +3381,25 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     ));
   }
 
+  function getIphoneVariantRank(model, family) {
+    const text = String(model || "").toLowerCase().replace(/\s+/g, " ").trim();
+    const familyText = String(family || "").toLowerCase().replace(/\s+/g, " ").trim();
+    if (!text.startsWith("iphone")) return 99;
+    if (text === familyText || text.startsWith(`${familyText} /`)) return 0;
+    if (/\bmini\b/.test(text)) return 1;
+    if (/\bplus\b/.test(text)) return 2;
+    if (/\bpro max\b/.test(text)) return 4;
+    if (/\bpro\b/.test(text)) return 3;
+    if (/\bmax\b/.test(text)) return 4;
+    return 0;
+  }
+
   function sortPriceModelsForDisplay(models) {
-    const iphone17Order = {
-      "iPhone 17": 0,
-      "iPhone 17 Pro": 1,
-      "iPhone 17 Pro Max": 2,
-    };
-    if (!models.some((entry) => entry.family === "iPhone 17")) return models;
-    return [...models].sort((a, b) => {
-      const aRank = Object.prototype.hasOwnProperty.call(iphone17Order, a.model) ? iphone17Order[a.model] : 99;
-      const bRank = Object.prototype.hasOwnProperty.call(iphone17Order, b.model) ? iphone17Order[b.model] : 99;
-      return aRank - bRank || a.model.localeCompare(b.model);
-    });
+    if (!models.some((entry) => entry.brand === "apple" && String(entry.model || "").startsWith("iPhone"))) return models;
+    return [...models].sort((a, b) => (
+      getIphoneVariantRank(a.model, a.family) - getIphoneVariantRank(b.model, b.family)
+      || String(a.model || "").localeCompare(String(b.model || ""))
+    ));
   }
 
   function getPriceFamilies(entries) {
