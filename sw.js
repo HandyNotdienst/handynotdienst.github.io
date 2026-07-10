@@ -1,14 +1,19 @@
-const CACHE = "hn-v42";
+const CACHE = "hn-v43";
 const ASSETS = [
   "./",
   "./index.html",
   "./prices.html",
   "./versand-reparatur.html",
+  "./liquid-glass-demo.html",
   "./versandbedingungen.html",
   "./iphone-modell-finder.html",
   "./tools/iphone-model-finder.html",
   "./faqs.html",
   "./style.css",
+  "./src/liquidGlass.css",
+  "./src/liquidGlass.js",
+  "./src/shaders/vertex.glsl",
+  "./src/shaders/fragment.glsl",
   "./print.css",
   "./app.js",
   "./manifest.webmanifest",

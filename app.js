@@ -5173,6 +5173,40 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     }
   }
 
+  function initLiquidGlassLoader() {
+    const targets = Array.from(document.querySelectorAll("[data-liquid-glass]"));
+    if (!targets.length) return;
+
+    const markFallback = () => {
+      targets.forEach((target) => target.classList.add("liquid-glass", "liquid-glass--fallback"));
+    };
+
+    const load = () => import("./src/liquidGlass.js")
+      .then(({ LiquidGlass }) => {
+        LiquidGlass.enhanceAll("[data-liquid-glass]");
+        trackEvent("liquid_glass_init", { count: targets.length });
+      })
+      .catch(() => {
+        markFallback();
+        trackEvent("liquid_glass_fallback", { reason: "module_load" });
+      });
+
+    if (!("IntersectionObserver" in window)) {
+      load();
+      return;
+    }
+
+    let loaded = false;
+    const observer = new IntersectionObserver((entries) => {
+      if (loaded || !entries.some((entry) => entry.isIntersecting)) return;
+      loaded = true;
+      observer.disconnect();
+      load();
+    }, { rootMargin: "420px 0px", threshold: 0.01 });
+
+    targets.forEach((target) => observer.observe(target));
+  }
+
   function closeLanguagePickers() {
     document.querySelectorAll("[data-language-picker].is-open").forEach((picker) => {
       picker.classList.remove("is-open");
@@ -5468,6 +5502,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   initBundles();
   initQuiz();
   initEasterEgg();
+  initLiquidGlassLoader();
   initServiceWorker();
   initPriceSelector();
   initQuizHighlight();
