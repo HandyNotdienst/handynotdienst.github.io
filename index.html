@@ -19,6 +19,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preload" as="image" href="assets/hero/owner-repair-960.jpg" imagesrcset="assets/hero/owner-repair-420.jpg 420w, assets/hero/owner-repair-640.jpg 640w, assets/hero/owner-repair-960.jpg 960w, assets/hero/owner-repair-1280.jpg 1280w" imagesizes="(max-width: 700px) calc(100vw - 48px), 620px" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="src/liquidGlass.css" />
   <link rel="stylesheet" href="print.css" media="print" />
 
   <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -40,7 +41,7 @@
     </div>
   </noscript>
   <a class="skip-link" href="#main-content" data-i18n="skip_to_content">Zum Inhalt springen</a>
-  <header class="header">
+  <header class="header" data-liquid-glass="nav">
     <div class="container header__inner">
       <a class="brand" href="index.html" aria-label="Handy Notdienst">
         <img class="brand__logo" src="assets/logo.png" alt="Handy Notdienst Logo" width="60" height="60" />
@@ -119,7 +120,7 @@
             <source type="image/jpeg" srcset="assets/hero/owner-repair-420.jpg 420w, assets/hero/owner-repair-640.jpg 640w, assets/hero/owner-repair-960.jpg 960w, assets/hero/owner-repair-1280.jpg 1280w" sizes="(max-width: 700px) calc(100vw - 48px), 620px">
             <img src="assets/hero/owner-repair-960.jpg" alt="Handy Notdienst Singen Reparaturservice mit Vorher-Nachher Smartphone und Werkzeug" width="960" height="546" decoding="async" fetchpriority="high">
           </picture>
-          <div class="rating-card rating-card--trust" aria-label="Vertrauenshinweise">
+          <div class="rating-card rating-card--trust" aria-label="Vertrauenshinweise" data-liquid-glass="panel" data-liquid-glass-texture="assets/hero/owner-repair-960.jpg" data-liquid-glass-refraction="0.12" data-liquid-glass-distortion="0.06">
             <span class="rating-card__mark asset-icon--proof-price" aria-hidden="true"></span>
             <strong data-i18n="hero_trust_title">Klar vor dem Auftrag</strong>
             <small data-i18n="hero_trust_text">Preis, Dauer und Teilequalität werden vorab bestätigt.</small>
@@ -128,7 +129,7 @@
         </div>
       </div>
 
-      <div class="container home-price-cta">
+      <div class="container home-price-cta" data-liquid-glass="hero" data-liquid-glass-texture="gradient" data-liquid-glass-refraction="0.18">
         <div class="home-price-cta__copy">
           <span class="home-price-cta__eyebrow" data-i18n="home_price_cta_eyebrow">Preise ohne Umwege</span>
           <h2 data-i18n="home_price_cta_title">Gerät auswählen, Preis prüfen, direkt anfragen.</h2>
@@ -227,7 +228,7 @@
           <p class="muted" data-i18n="service_choice_text">Wähle, was zu dir passt: lokal in Singen, Abholung nach Absprache oder Versand aus ganz Deutschland.</p>
         </div>
         <div class="service-choice__grid">
-          <article class="card service-choice__card">
+          <article class="card service-choice__card" data-liquid-glass="panel" data-liquid-glass-texture="gradient">
             <div class="shipping-card-visual service-choice__visual" aria-hidden="true">
               <picture class="shipping-picture shipping-picture--card">
                 <source type="image/webp" srcset="assets/shipping/local-singen-dark-420.webp 420w, assets/shipping/local-singen-dark-760.webp 760w" sizes="(max-width: 640px) 80vw, 280px">
@@ -238,7 +239,7 @@
             <p class="muted" data-i18n="service_choice_local_text">Kurze Abstimmung per WhatsApp, dann Übergabe oder mobiler Termin in Singen.</p>
             <a class="btn btn--ghost btn--call" href="tel:+4915222416438" data-i18n="contact_call">Anrufen</a>
           </article>
-          <article class="card service-choice__card">
+          <article class="card service-choice__card" data-liquid-glass="panel" data-liquid-glass-texture="gradient">
             <div class="shipping-card-visual service-choice__visual" aria-hidden="true">
               <picture class="shipping-picture shipping-picture--card">
                 <source type="image/webp" srcset="assets/shipping/pickup-singen-dark-420.webp 420w, assets/shipping/pickup-singen-dark-760.webp 760w" sizes="(max-width: 640px) 80vw, 280px">
@@ -249,7 +250,7 @@
             <p class="muted" data-i18n="service_choice_pickup_text">Wenn es zeitlich passt, kann ich Abholung oder Rückgabe innerhalb Singen vereinbaren.</p>
             <a class="btn btn--ghost btn--wa" href="https://wa.me/4915222416438?text=Hallo!%20Ich%20m%C3%B6chte%20Abholung%20in%20Singen%20anfragen." target="_blank" rel="noopener noreferrer" data-shipping-cta="home-pickup" data-i18n="pick_btn">Abholung anfragen</a>
           </article>
-          <article class="card service-choice__card service-choice__card--shipping">
+          <article class="card service-choice__card service-choice__card--shipping" data-liquid-glass="panel" data-liquid-glass-texture="gradient">
             <div class="shipping-card-visual service-choice__visual" aria-hidden="true">
               <picture class="shipping-picture shipping-picture--card">
                 <source type="image/webp" srcset="assets/shipping/shipping-germany-dark-420.webp 420w, assets/shipping/shipping-germany-dark-760.webp 760w" sizes="(max-width: 640px) 80vw, 280px">
@@ -391,7 +392,7 @@
   <div id="quiz" class="section-anchor" aria-hidden="true"></div>
 
   <!-- Mobile sticky contact bar (9) -->
-  <nav class="mobilebar" aria-label="Mobile quick actions">
+  <nav class="mobilebar" aria-label="Mobile quick actions" data-liquid-glass="dock">
     <a class="mobilebar__btn mobilebar__btn--shipping" href="versand-reparatur.html"><span data-i18n="nav_shipping">Versand</span></a>
     <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span></a>
     <a class="mobilebar__btn mobilebar__btn--prices" href="prices.html"><span data-i18n="mb_prices">Preise</span></a>

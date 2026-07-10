@@ -19,6 +19,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preload" as="image" href="assets/phones/iphone-12-pro-max.png" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="src/liquidGlass.css" />
   <link rel="stylesheet" href="print.css" media="print" />
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <meta name="theme-color" content="#1b374c">
@@ -36,7 +37,7 @@
     </div>
   </noscript>
   <a class="skip-link" href="#main-content" data-i18n="skip_to_content">Zum Inhalt springen</a>
-  <header class="header">
+  <header class="header" data-liquid-glass="nav">
     <div class="container header__inner">
       <a class="brand" href="index.html">
         <img class="brand__logo" src="assets/logo.png" alt="Handy Notdienst Logo" width="60" height="60" />
@@ -87,7 +88,7 @@
           <p class="price-mode-note" data-price-shipping-note data-i18n="price_mode_local_note">Lokale Übergabe, Abholung oder mobiler Termin nach WhatsApp-Check.</p>
         </div>
 
-        <div class="price-selector-card" data-price-selector>
+        <div class="price-selector-card" data-price-selector data-liquid-glass="hero" data-liquid-glass-texture="assets/phones/iphone-12-pro-max.png" data-liquid-glass-refraction="0.16" data-liquid-glass-distortion="0.08">
           <div class="price-selector-card__content">
             <div class="price-selector-card__topline">
               <span class="price-selector-eyebrow" data-i18n="price_selector_card_eyebrow">Preise sofort prüfen</span>
@@ -121,7 +122,7 @@
             </div>
           </div>
 
-          <div class="price-selector-preview" aria-live="polite" data-price-apple-panel>
+          <div class="price-selector-preview" aria-live="polite" data-price-apple-panel data-liquid-glass="panel" data-liquid-glass-texture="assets/phones/iphone-12-pro-max.png" data-liquid-glass-refraction="0.12" data-liquid-glass-distortion="0.06">
             <div class="price-selector-device-frame">
               <picture class="price-selector-picture" data-price-picture>
                 <source type="image/webp" data-price-source-webp>
@@ -273,7 +274,7 @@
     </footer>
   </main>
 
-  <nav class="mobilebar" aria-label="Mobile quick actions">
+  <nav class="mobilebar" aria-label="Mobile quick actions" data-liquid-glass="dock">
     <a class="mobilebar__btn mobilebar__btn--shipping" href="versand-reparatur.html"><span data-i18n="nav_shipping">Versand</span></a>
     <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span></a>
     <a class="mobilebar__btn mobilebar__btn--prices" href="prices.html"><span data-i18n="mb_prices">Preise</span></a>

@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Liquid Glass Demo - Handy Notdienst</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="src/liquidGlass.css" />
+  <style>
+    body {
+      min-height: 100svh;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(91, 217, 255, 0.24), transparent 34%),
+        radial-gradient(circle at 86% 8%, rgba(131, 235, 91, 0.16), transparent 28%),
+        linear-gradient(145deg, #04101c, #0e2637 52%, #06111c);
+      color: #f2f8ff;
+      overflow-x: hidden;
+    }
+
+    .lg-demo {
+      padding: 96px 0;
+    }
+
+    .lg-demo__hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 460px);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .lg-demo__panel,
+    .lg-demo__device,
+    .lg-demo__dock {
+      padding: clamp(22px, 4vw, 42px);
+    }
+
+    .lg-demo__panel h1 {
+      max-width: 10ch;
+      margin: 0 0 18px;
+      font-size: clamp(46px, 7vw, 96px);
+      line-height: 0.94;
+      letter-spacing: 0;
+    }
+
+    .lg-demo__panel p {
+      max-width: 58ch;
+      color: rgba(236, 248, 255, 0.78);
+    }
+
+    .lg-demo__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .lg-demo__card {
+      min-height: 170px;
+      padding: 22px;
+    }
+
+    .lg-demo__device {
+      display: grid;
+      place-items: center;
+      min-height: 520px;
+    }
+
+    .lg-demo__device img {
+      width: min(78%, 340px);
+      height: auto;
+      filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.34));
+    }
+
+    .lg-demo__dock {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 20;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      width: min(520px, calc(100vw - 32px));
+      transform: translateX(-50%);
+    }
+
+    .lg-demo__dock a {
+      flex: 1;
+      color: #f7fbff;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    @media (max-width: 860px) {
+      .lg-demo {
+        padding: 56px 0 140px;
+      }
+
+      .lg-demo__hero,
+      .lg-demo__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lg-demo__device {
+        min-height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="lg-demo">
+    <div class="container lg-demo__hero">
+      <section class="lg-demo__panel" data-liquid-glass="hero" data-liquid-glass-texture="gradient" data-liquid-glass-refraction="0.22" data-liquid-glass-distortion="0.13">
+        <p class="concept-badge">Liquid Glass Engine</p>
+        <h1>Real glass. Real texture.</h1>
+        <p>
+          This page demonstrates the reusable Handy Notdienst Liquid Glass material:
+          subtle refraction, fresnel edges, specular sweep, chromatic micro-shift and
+          automatic CSS fallback.
+        </p>
+        <div class="lg-demo__grid">
+          <article class="lg-demo__card" data-liquid-glass="panel" data-liquid-glass-texture="assets/hero/owner-repair-960.jpg">
+            <h2>Image texture</h2>
+            <p class="muted">Controlled texture sampling bends the visual behind the glass.</p>
+          </article>
+          <article class="lg-demo__card" data-liquid-glass="subtle">
+            <h2>CSS fallback</h2>
+            <p class="muted">No texture? The surface keeps a premium fallback material.</p>
+          </article>
+          <article class="lg-demo__card" data-liquid-glass="panel" data-liquid-glass-texture="gradient">
+            <h2>Gradient texture</h2>
+            <p class="muted">Useful for CTA surfaces without a natural media source.</p>
+          </article>
+        </div>
+      </section>
+
+      <aside class="lg-demo__device" data-liquid-glass="panel" data-liquid-glass-texture="assets/phones/iphone-12-pro-max.png" data-liquid-glass-refraction="0.16">
+        <img src="assets/phones/iphone-12-pro-max.png" alt="iPhone preview inside Liquid Glass demo" width="800" height="800" />
+      </aside>
+    </div>
+  </main>
+
+  <nav class="lg-demo__dock" aria-label="Demo quick actions" data-liquid-glass="dock">
+    <a href="index.html">Start</a>
+    <a href="prices.html">Preise</a>
+    <a href="versand-reparatur.html">Versand</a>
+  </nav>
+
+  <script type="module">
+    import { LiquidGlass, defineLiquidGlassElement } from "./src/liquidGlass.js";
+
+    defineLiquidGlassElement();
+    LiquidGlass.enhanceAll("[data-liquid-glass]");
+  </script>
+</body>
+</html>

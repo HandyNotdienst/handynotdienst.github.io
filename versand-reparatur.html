@@ -20,6 +20,7 @@
   <link rel="preload" as="image" href="assets/shipping/delivery-hero-dark-760.webp" imagesrcset="assets/shipping/delivery-hero-dark-420.webp 420w, assets/shipping/delivery-hero-dark-760.webp 760w, assets/shipping/delivery-hero-dark-960.webp 960w" imagesizes="(max-width: 820px) 86vw, 560px" type="image/webp" />
   <link rel="preload" as="image" href="assets/shipping/delivery-hero-light-760.webp" imagesrcset="assets/shipping/delivery-hero-light-420.webp 420w, assets/shipping/delivery-hero-light-760.webp 760w, assets/shipping/delivery-hero-light-960.webp 960w" imagesizes="(max-width: 820px) 86vw, 560px" type="image/webp" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="src/liquidGlass.css" />
   <link rel="stylesheet" href="print.css" media="print" />
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <meta name="theme-color" content="#1b374c">
@@ -37,7 +38,7 @@
   </noscript>
   <a class="skip-link" href="#main-content" data-i18n="skip_to_content">Zum Inhalt springen</a>
 
-  <header class="header">
+  <header class="header" data-liquid-glass="nav">
     <div class="container header__inner">
       <a class="brand" href="index.html" aria-label="Handy Notdienst">
         <img class="brand__logo" src="assets/logo.png" alt="Handy Notdienst Logo" width="60" height="60" />
@@ -110,7 +111,7 @@
           <p class="muted" data-i18n="shipping_entry_text">Lokal in Singen bleibt möglich. Versand ist der einfache Weg, wenn du weiter weg wohnst.</p>
         </div>
         <div class="shipping-entry__grid">
-          <article class="card shipping-entry-card">
+          <article class="card shipping-entry-card" data-liquid-glass="panel">
             <div class="shipping-card-visual" aria-hidden="true">
               <picture class="shipping-picture shipping-picture--card">
                 <source type="image/webp" srcset="assets/shipping/local-singen-dark-420.webp 420w, assets/shipping/local-singen-dark-760.webp 760w" sizes="(max-width: 640px) 80vw, 280px">
@@ -120,7 +121,7 @@
             <h3 data-i18n="shipping_entry_local_title">Vor Ort in Singen</h3>
             <p class="muted" data-i18n="shipping_entry_local_text">Für schnelle Übergabe oder Reparatur nach kurzer Absprache.</p>
           </article>
-          <article class="card shipping-entry-card">
+          <article class="card shipping-entry-card" data-liquid-glass="panel">
             <div class="shipping-card-visual" aria-hidden="true">
               <picture class="shipping-picture shipping-picture--card">
                 <source type="image/webp" srcset="assets/shipping/pickup-singen-dark-420.webp 420w, assets/shipping/pickup-singen-dark-760.webp 760w" sizes="(max-width: 640px) 80vw, 280px">
@@ -130,7 +131,7 @@
             <h3 data-i18n="shipping_entry_pickup_title">Abholung in Singen</h3>
             <p class="muted" data-i18n="shipping_entry_pickup_text">Wenn es zeitlich passt, kann eine Abholung innerhalb Singen vereinbart werden.</p>
           </article>
-          <article class="card shipping-entry-card shipping-entry-card--accent">
+          <article class="card shipping-entry-card shipping-entry-card--accent" data-liquid-glass="panel">
             <div class="shipping-card-visual" aria-hidden="true">
               <picture class="shipping-picture shipping-picture--card">
                 <source type="image/webp" srcset="assets/shipping/shipping-germany-dark-420.webp 420w, assets/shipping/shipping-germany-dark-760.webp 760w" sizes="(max-width: 640px) 80vw, 280px">
@@ -201,7 +202,7 @@
 
     <section class="section section--trust reveal" aria-labelledby="shippingApprovalTitle">
       <div class="container shipping-approval">
-        <div class="card shipping-approval__card">
+        <div class="card shipping-approval__card" data-liquid-glass="hero" data-liquid-glass-texture="gradient" data-liquid-glass-refraction="0.14" data-liquid-glass-distortion="0.08">
           <span class="shipping-approval__badge" data-i18n="shipping_approval_badge">Wichtig für dein Vertrauen</span>
           <h2 id="shippingApprovalTitle" data-i18n="shipping_approval_title">Das Einsenden bedeutet noch keine automatische Reparatur.</h2>
           <p class="muted" data-i18n="shipping_approval_text">Du entscheidest nach der Diagnose. Wenn eine Reparatur nicht sinnvoll ist, besprechen wir eine Alternative oder den Rückversand.</p>
@@ -227,7 +228,7 @@
               <img src="assets/shipping/packing-checklist.png" alt="" role="presentation" width="1254" height="1254" loading="lazy" decoding="async">
             </picture>
           </div>
-          <div class="card shipping-pack-card">
+          <div class="card shipping-pack-card" data-liquid-glass="panel">
             <ul class="shipping-checklist">
               <li data-i18n="shipping_pack_1">Gerät ausschalten und SIM-Karte entfernen.</li>
               <li data-i18n="shipping_pack_2">Wenn möglich Backup erstellen und Sperrcode vorab klären.</li>
@@ -268,7 +269,7 @@
 
     <section class="section shipping-final reveal">
       <div class="container">
-        <div class="card shipping-final__card">
+        <div class="card shipping-final__card" data-liquid-glass="hero" data-liquid-glass-texture="gradient" data-liquid-glass-refraction="0.14" data-liquid-glass-distortion="0.08">
           <h2 data-i18n="shipping_final_title">Bereit für die Versand-Reparatur?</h2>
           <p class="muted" data-i18n="shipping_final_text">Schreib kurz Modell, Schaden und Ort. Du bekommst danach die Versandhinweise und kannst in Ruhe entscheiden.</p>
           <a class="btn btn--wa" href="https://wa.me/4915222416438?text=Hallo!%20Ich%20m%C3%B6chte%20eine%20Reparatur%20per%20Versand%20anfragen.%0A%0AGer%C3%A4t%3A%0ASchaden%3A%0AOrt%3A%0AIch%20m%C3%B6chte%20die%20Versandhinweise%20erhalten.%0A%0ABitte%20sende%20mir%20die%20n%C3%A4chsten%20Schritte." target="_blank" rel="noopener noreferrer" data-shipping-cta="final" data-i18n="shipping_final_cta">Versandhinweise per WhatsApp erhalten</a>
@@ -288,7 +289,7 @@
     </div>
   </footer>
 
-  <nav class="mobilebar mobilebar--shipping" aria-label="Mobile quick actions">
+  <nav class="mobilebar mobilebar--shipping" aria-label="Mobile quick actions" data-liquid-glass="dock">
     <a class="mobilebar__btn mobilebar__btn--prices" href="prices.html"><span data-i18n="mb_prices">Preise</span></a>
     <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438?text=Hallo!%20Ich%20m%C3%B6chte%20eine%20Reparatur%20per%20Versand%20anfragen.%0A%0AGer%C3%A4t%3A%0ASchaden%3A%0AOrt%3A%0AIch%20m%C3%B6chte%20die%20Versandhinweise%20erhalten.%0A%0ABitte%20sende%20mir%20die%20n%C3%A4chsten%20Schritte." target="_blank" rel="noopener noreferrer" data-shipping-cta="mobilebar"><span>WhatsApp</span></a>
     <a class="mobilebar__btn mobilebar__btn--flow" href="#shipping-flow"><span data-i18n="mb_shipping_flow">Ablauf</span></a>
