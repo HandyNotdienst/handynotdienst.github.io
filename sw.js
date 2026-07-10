@@ -1,4 +1,4 @@
-const CACHE = "hn-v41";
+const CACHE = "hn-v42";
 const ASSETS = [
   "./",
   "./index.html",
@@ -138,7 +138,14 @@ const ASSETS = [
   "./assets/model-finder/optimized/trust-data-safe.webp",
   "./assets/model-finder/optimized/trust-fair-price.webp",
   "./assets/model-finder/optimized/trust-fast-repair.webp",
-  "./assets/model-finder/optimized/trust-warranty.webp"
+  "./assets/model-finder/optimized/trust-warranty.webp",
+  "./assets/iphone-icons/display-repair.webp",
+  "./assets/iphone-icons/battery-repair.webp",
+  "./assets/iphone-icons/oem-battery-repair.webp",
+  "./assets/iphone-icons/backglass-repair.webp",
+  "./assets/iphone-icons/iphone-device.svg",
+  "./assets/iphone-icons/apple-watch.svg",
+  "./assets/iphone-icons/macbook.svg"
 ];
 
 self.addEventListener("install", (e) => {
