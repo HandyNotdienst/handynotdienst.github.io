@@ -1,5 +1,11 @@
 (() => {
-  const config = window.HN_CONFIG || {};
+  const config = {
+    whatsappNumber: "4915222416438",
+    city: "Singen",
+    defaultLang: "de",
+    serviceWorkerPath: "./sw.js",
+    ...(window.HN_CONFIG || {}),
+  };
   const i18n = window.HN_I18N || {};
   const htmlKeys = new Set(config.htmlKeys || []);
   const requestedDefaultLang = config.defaultLang || "de";
@@ -58,7 +64,6 @@
       language_picker_label: "Sprache wählen",
       language_search_placeholder: "Sprache suchen",
       language_no_results: "Keine Sprache gefunden",
-      price_transition_text: "Reparaturpreise werden geöffnet",
       live_badge_open: "Heute: 30-90 Min möglich",
       live_badge_closed: "Schnell via WhatsApp",
       search_samsung_placeholder: "Modell suchen (z.B. S23, Ultra...)",
@@ -85,7 +90,7 @@
       hero_proof_price_text: "transparent",
       hero_quality: "Ersatzteile in Erstausrüster-Qualität",
       safe_badge: "Ohne Datenverlust",
-      hero_rating_text: "über 250+ Bewertungen",
+      hero_rating_text: "Preis und Ablauf vorab geklärt",
       hero_rating_area: "Aus Singen und Umgebung",
       home_price_cta_eyebrow: "Preise ohne Umwege",
       home_price_cta_title: "Gerät auswählen, Preis prüfen, direkt anfragen.",
@@ -242,24 +247,23 @@
       finder_help_text: "Danach wählst du auf der Preisseite die passende Reparatur. Die Verfügbarkeit bestätige ich vor dem Auftrag.",
       finder_help_cta: "Zur Preisseite",
       impressum_title: "Impressum",
-      impressum_intro: "Bitte ergänze hier: Name/Firma, Adresse, Kontakt, ggf. USt-ID.",
+      impressum_intro: "Handy Notdienst befindet sich im Aufbau. Anbieterangaben werden vor der offiziellen gewerblichen Nutzung vollständig ergänzt.",
       impressum_location: "Singen (Baden-Württemberg)",
       impressum_phone_label: "Telefon:",
       impressum_email_label: "Email:",
-      impressum_notice: "Hinweis: Das ist ein Platzhalter. Für Deutschland muss das Impressum korrekt ausgefüllt werden.",
+      impressum_notice: "Transparente Vorabfassung: Pflichtangaben werden nach Registrierung und rechtlicher Prüfung ergänzt.",
       privacy_title: "Datenschutz",
-      privacy_intro: "Platzhalter - hier gehört eine korrekte Datenschutzerklärung rein (Hosting, Kontakt, Cookies etc.).",
+      privacy_intro: "Diese Datenschutzhinweise erklären, welche Daten bei Kontakt, Website-Nutzung, Versand-Anfragen und Analytics verarbeitet werden.",
       privacy_contact_title: "Kontakt",
       privacy_contact_text: "Wenn Nutzer per Email/WhatsApp/Telegram Kontakt aufnehmen, werden Daten zur Bearbeitung der Anfrage verwendet.",
       privacy_hosting_title: "Server/Hosting",
       privacy_hosting_text: "Diese Webseite wird statisch gehostet (z.B. GitHub Pages). Logfiles können technisch anfallen.",
-      privacy_notice: "Hinweis: Das ist ein Platzhalter. Für Deutschland bitte eine rechtskonforme Datenschutzerklärung verwenden.",
+      privacy_notice: "Diese Vorabfassung wird vor der offiziellen gewerblichen Nutzung rechtlich geprüft.",
     },
     uk: {
       language_picker_label: "Вибрати мову",
       language_search_placeholder: "Пошук мови",
       language_no_results: "Мову не знайдено",
-      price_transition_text: "Відкриваємо ціни на ремонт",
       live_badge_open: "Сьогодні: можливо за 30-90 хв",
       live_badge_closed: "Швидко через WhatsApp",
       search_samsung_placeholder: "Пошук моделі (напр. S23, Ultra...)",
@@ -286,7 +290,7 @@
       hero_proof_price_text: "прозоро",
       hero_quality: "Запчастини OEM/Premium якості",
       safe_badge: "Без втрати даних",
-      hero_rating_text: "понад 250+ відгуків",
+      hero_rating_text: "Ціну й порядок узгоджуємо заздалегідь",
       hero_rating_area: "З Singen та околиць",
       home_price_cta_eyebrow: "Ціни без зайвих кроків",
       home_price_cta_title: "Оберіть пристрій, перевірте ціну, одразу напишіть.",
@@ -442,18 +446,18 @@
       finder_help_text: "Після цього оберіть ремонт на сторінці цін. Наявність деталі підтверджую перед замовленням.",
       finder_help_cta: "До сторінки цін",
       impressum_title: "Impressum",
-      impressum_intro: "Будь ласка, додайте тут: імʼя/фірму, адресу, контакт, за потреби USt-ID.",
+      impressum_intro: "Handy Notdienst перебуває на етапі запуску. Дані постачальника будуть повністю додані перед офіційною комерційною діяльністю.",
       impressum_location: "Singen (Baden-Württemberg)",
       impressum_phone_label: "Телефон:",
       impressum_email_label: "Email:",
-      impressum_notice: "Примітка: це заповнювач. Для Німеччини Impressum має бути правильно заповнений.",
+      impressum_notice: "Прозора попередня версія: обовʼязкові дані будуть додані після реєстрації та юридичної перевірки.",
       privacy_title: "Захист даних",
-      privacy_intro: "Заповнювач - тут має бути коректна політика конфіденційності (хостинг, контакт, cookies тощо).",
+      privacy_intro: "Ці примітки пояснюють, які дані обробляються під час контакту, користування сайтом, запитів на відправку та Analytics.",
       privacy_contact_title: "Контакт",
       privacy_contact_text: "Якщо користувачі звертаються через Email/WhatsApp/Telegram, дані використовуються для обробки запиту.",
       privacy_hosting_title: "Сервер/хостинг",
       privacy_hosting_text: "Цей сайт розміщений статично (наприклад, GitHub Pages). Технічні log-файли можуть виникати.",
-      privacy_notice: "Примітка: це заповнювач. Для Німеччини потрібна юридично коректна політика конфіденційності.",
+      privacy_notice: "Цю попередню версію буде юридично перевірено перед офіційною комерційною діяльністю.",
     },
   };
 
@@ -462,7 +466,6 @@
       language_picker_label: "Choose language",
       language_search_placeholder: "Search language",
       language_no_results: "No language found",
-      price_transition_text: "Opening repair prices",
       live_badge_open: "Today: 30-90 min possible",
       live_badge_closed: "Fast via WhatsApp",
       search_samsung_placeholder: "Search model (e.g. S23, Ultra...)",
@@ -489,7 +492,7 @@
       hero_proof_price_text: "transparent",
       hero_quality: "OEM/Premium-quality parts",
       safe_badge: "No data loss",
-      hero_rating_text: "over 250+ reviews",
+      hero_rating_text: "Price and process agreed upfront",
       hero_rating_area: "From Singen and nearby",
       home_price_cta_eyebrow: "Prices without detours",
       home_price_cta_title: "Choose device, check price, ask directly.",
@@ -645,18 +648,18 @@
       finder_help_text: "After that, choose the repair on the prices page. I confirm part availability before the order.",
       finder_help_cta: "Go to prices",
       impressum_title: "Legal notice",
-      impressum_intro: "Please add here: name/company, address, contact, VAT ID if applicable.",
+      impressum_intro: "Handy Notdienst is still being set up. Provider details will be completed before official commercial use.",
       impressum_location: "Singen (Baden-Württemberg)",
       impressum_phone_label: "Phone:",
       impressum_email_label: "Email:",
-      impressum_notice: "Note: This is a placeholder. For Germany, the legal notice must be completed correctly.",
+      impressum_notice: "Transparent draft: mandatory details will be added after registration and legal review.",
       privacy_title: "Privacy",
-      privacy_intro: "Placeholder - a proper privacy policy belongs here (hosting, contact, cookies etc.).",
+      privacy_intro: "These privacy notes explain which data is processed during contact, website use, shipping requests and Analytics.",
       privacy_contact_title: "Contact",
       privacy_contact_text: "If users contact us by email/WhatsApp/Telegram, data is used to process the request.",
       privacy_hosting_title: "Server/hosting",
       privacy_hosting_text: "This website is hosted statically (e.g. GitHub Pages). Technical log files may occur.",
-      privacy_notice: "Note: This is a placeholder. Please use a legally compliant privacy policy for Germany.",
+      privacy_notice: "This draft will be legally reviewed before official commercial use.",
     },
   };
 
@@ -665,7 +668,6 @@
       language_picker_label: "Выбрать язык",
       language_search_placeholder: "Поиск языка",
       language_no_results: "Язык не найден",
-      price_transition_text: "Открываем цены ремонта",
       live_badge_open: "Сегодня: возможно 30-90 мин",
       live_badge_closed: "Быстро через WhatsApp",
       search_samsung_placeholder: "Поиск модели (например S23, Ultra...)",
@@ -750,23 +752,22 @@
       finder_back_prices: "К прайсу",
       finder_after_cta: "Посмотреть цену ремонта",
       impressum_title: "Impressum",
-      impressum_intro: "Добавьте здесь: имя/фирма, адрес, контакт, при необходимости USt-ID.",
+      impressum_intro: "Handy Notdienst находится на этапе запуска. Данные поставщика будут полностью добавлены перед официальным коммерческим использованием.",
       impressum_phone_label: "Телефон:",
       impressum_email_label: "Email:",
-      impressum_notice: "Примечание: это заполнитель. Для Германии Impressum должен быть заполнен правильно.",
+      impressum_notice: "Прозрачная предварительная версия: обязательные данные будут добавлены после регистрации и юридической проверки.",
       privacy_title: "Защита данных",
-      privacy_intro: "Заполнитель - здесь должна быть корректная политика конфиденциальности (хостинг, контакт, cookies и т.д.).",
+      privacy_intro: "Эти сведения объясняют, какие данные обрабатываются при контакте, использовании сайта, запросах на отправку и Analytics.",
       privacy_contact_title: "Контакт",
       privacy_contact_text: "Если пользователи обращаются по Email/WhatsApp/Telegram, данные используются для обработки запроса.",
       privacy_hosting_title: "Сервер/хостинг",
       privacy_hosting_text: "Сайт размещен статически (например, GitHub Pages). Технические log-файлы возможны.",
-      privacy_notice: "Примечание: это заполнитель. Для Германии нужна юридически корректная политика конфиденциальности.",
+      privacy_notice: "Эта предварительная версия будет юридически проверена перед официальным коммерческим использованием.",
     },
     pl: {
       language_picker_label: "Wybierz język",
       language_search_placeholder: "Szukaj języka",
       language_no_results: "Nie znaleziono języka",
-      price_transition_text: "Otwieramy ceny napraw",
       live_badge_open: "Dzisiaj: możliwe 30-90 min",
       live_badge_closed: "Szybko przez WhatsApp",
       tagline: "Singen • szybko i niezawodnie",
@@ -830,24 +831,23 @@
       finder_price_cta: "Potem sprawdź cenę",
       finder_wa_cta: "Pomoc przez WhatsApp",
       impressum_title: "Nota prawna",
-      impressum_intro: "Uzupełnij tutaj: imię/firma, adres, kontakt, ewentualnie USt-ID.",
+      impressum_intro: "Handy Notdienst jest w trakcie uruchamiania. Dane dostawcy zostaną uzupełnione przed oficjalnym użyciem komercyjnym.",
       impressum_location: "Singen (Badenia-Wirtembergia)",
       impressum_phone_label: "Telefon:",
       impressum_email_label: "Email:",
-      impressum_notice: "Uwaga: to jest tekst zastępczy. W Niemczech nota prawna musi być poprawnie uzupełniona.",
+      impressum_notice: "Przejrzysta wersja robocza: obowiązkowe dane zostaną dodane po rejestracji i kontroli prawnej.",
       privacy_title: "Ochrona danych",
-      privacy_intro: "Tekst zastępczy - tutaj powinna znajdować się poprawna polityka prywatności (hosting, kontakt, cookies itd.).",
+      privacy_intro: "Te informacje wyjaśniają, jakie dane są przetwarzane przy kontakcie, korzystaniu ze strony, zapytaniach wysyłkowych i Analytics.",
       privacy_contact_title: "Kontakt",
       privacy_contact_text: "Jeśli użytkownicy kontaktują się przez Email/WhatsApp/Telegram, dane są używane do obsługi zapytania.",
       privacy_hosting_title: "Serwer/hosting",
       privacy_hosting_text: "Ta strona jest hostowana statycznie (np. GitHub Pages). Techniczne logi mogą powstawać.",
-      privacy_notice: "Uwaga: to jest tekst zastępczy. Dla Niemiec należy użyć prawnie zgodnej polityki prywatności.",
+      privacy_notice: "Ta wersja robocza zostanie sprawdzona prawnie przed oficjalnym użyciem komercyjnym.",
     },
     it: {
       language_picker_label: "Scegli lingua",
       language_search_placeholder: "Cerca lingua",
       language_no_results: "Lingua non trovata",
-      price_transition_text: "Apro i prezzi di riparazione",
       live_badge_open: "Oggi: possibile 30-90 min",
       live_badge_closed: "Rapido via WhatsApp",
       tagline: "Singen • veloce e affidabile",
@@ -902,24 +902,23 @@
       finder_price_cta: "Poi controlla il prezzo",
       finder_wa_cta: "Aiuto via WhatsApp",
       impressum_title: "Note legali",
-      impressum_intro: "Inserisci qui: nome/azienda, indirizzo, contatto, eventuale USt-ID.",
+      impressum_intro: "Handy Notdienst è in fase di avvio. I dati del fornitore saranno completati prima dell'uso commerciale ufficiale.",
       impressum_location: "Singen (Baden-Württemberg)",
       impressum_phone_label: "Telefono:",
       impressum_email_label: "Email:",
-      impressum_notice: "Nota: questo è un segnaposto. Per la Germania le note legali devono essere compilate correttamente.",
+      impressum_notice: "Bozza trasparente: i dati obbligatori saranno aggiunti dopo registrazione e verifica legale.",
       privacy_title: "Privacy",
-      privacy_intro: "Segnaposto - qui va inserita una corretta informativa sulla privacy (hosting, contatto, cookie ecc.).",
+      privacy_intro: "Queste note spiegano quali dati vengono trattati durante contatto, uso del sito, richieste di spedizione e Analytics.",
       privacy_contact_title: "Contatto",
       privacy_contact_text: "Se gli utenti contattano via Email/WhatsApp/Telegram, i dati vengono usati per elaborare la richiesta.",
       privacy_hosting_title: "Server/hosting",
       privacy_hosting_text: "Questo sito è ospitato staticamente (ad es. GitHub Pages). Possono essere generati log tecnici.",
-      privacy_notice: "Nota: questo è un segnaposto. Per la Germania usare una privacy policy conforme alla legge.",
+      privacy_notice: "Questa bozza sarà verificata legalmente prima dell'uso commerciale ufficiale.",
     },
     ar: {
       language_picker_label: "اختيار اللغة",
       language_search_placeholder: "ابحث عن لغة",
       language_no_results: "لم يتم العثور على لغة",
-      price_transition_text: "يتم فتح أسعار الإصلاح",
       live_badge_open: "اليوم: ممكن خلال 30-90 دقيقة",
       live_badge_closed: "سريع عبر WhatsApp",
       tagline: "Singen • سريع وموثوق",
@@ -974,24 +973,23 @@
       finder_price_cta: "ثم تحقق من السعر",
       finder_wa_cta: "مساعدة عبر WhatsApp",
       impressum_title: "البيانات القانونية",
-      impressum_intro: "يرجى إضافة: الاسم/الشركة، العنوان، بيانات الاتصال، ورقم الضريبة إن وجد.",
+      impressum_intro: "Handy Notdienst ما زال في مرحلة الإعداد. سيتم إكمال بيانات المزود قبل الاستخدام التجاري الرسمي.",
       impressum_location: "Singen (Baden-Württemberg)",
       impressum_phone_label: "هاتف:",
       impressum_email_label: "Email:",
-      impressum_notice: "ملاحظة: هذا نص مؤقت. في ألمانيا يجب ملء البيانات القانونية بشكل صحيح.",
+      impressum_notice: "مسودة شفافة: ستضاف البيانات الإلزامية بعد التسجيل والمراجعة القانونية.",
       privacy_title: "حماية البيانات",
-      privacy_intro: "نص مؤقت - هنا يجب إضافة سياسة خصوصية صحيحة (الاستضافة، الاتصال، cookies وغيرها).",
+      privacy_intro: "توضح هذه الملاحظات البيانات التي تتم معالجتها عند التواصل واستخدام الموقع وطلبات الشحن وAnalytics.",
       privacy_contact_title: "تواصل",
       privacy_contact_text: "عند التواصل عبر Email/WhatsApp/Telegram تُستخدم البيانات لمعالجة الطلب.",
       privacy_hosting_title: "الخادم/الاستضافة",
       privacy_hosting_text: "يتم استضافة هذا الموقع بشكل ثابت (مثلا GitHub Pages). قد تظهر ملفات سجل تقنية.",
-      privacy_notice: "ملاحظة: هذا نص مؤقت. لألمانيا يرجى استخدام سياسة خصوصية متوافقة قانونيا.",
+      privacy_notice: "ستتم مراجعة هذه المسودة قانونيا قبل الاستخدام التجاري الرسمي.",
     },
     ku: {
       language_picker_label: "Ziman hilbijêre",
       language_search_placeholder: "Li zimanê bigere",
       language_no_results: "Ziman nehat dîtin",
-      price_transition_text: "Buhayên tamîrê vedibin",
       live_badge_open: "Îro: 30-90 deqîqe gengaz e",
       live_badge_closed: "Zû bi WhatsApp",
       tagline: "Singen • zû û bawerbar",
@@ -1042,24 +1040,23 @@
       finder_price_cta: "Paşê buhayê kontrol bike",
       finder_wa_cta: "Alîkarî bi WhatsApp",
       impressum_title: "Agahdariya qanûnî",
-      impressum_intro: "Li vir zêde bike: nav/şirket, navnîşan, têkilî, heke hebe USt-ID.",
+      impressum_intro: "Handy Notdienst hîn di qonaxa amadekirinê de ye. Agahdariyên pêşkêşkarî berî bikaranîna bazirganî ya fermî temam dibin.",
       impressum_location: "Singen (Baden-Württemberg)",
       impressum_phone_label: "Telefon:",
       impressum_email_label: "Email:",
-      impressum_notice: "Têbînî: ev cîgir e. Ji bo Almanyayê agahdariya qanûnî divê rast were temamkirin.",
+      impressum_notice: "Pêşnûmeyeke zelal: agahdariyên mecbûrî piştî qeydkirin û kontrola qanûnî têne zêdekirin.",
       privacy_title: "Parastina daneyan",
-      privacy_intro: "Cîgir - li vir divê daxuyaniya parastina daneyan a rast be (hosting, têkilî, cookies hwd.).",
+      privacy_intro: "Ev agahdarî dibêjin ka di têkilî, bikaranîna malperê, daxwazên şandinê û Analytics de kîjan dane têne xebitandin.",
       privacy_contact_title: "Têkilî",
       privacy_contact_text: "Dema bikarhêner bi Email/WhatsApp/Telegram têkilî digirin, dane ji bo bersiva daxwazê tên bikaranîn.",
       privacy_hosting_title: "Server/hosting",
       privacy_hosting_text: "Ev malper statîk tê hostkirin (wek GitHub Pages). Logên teknîkî dikarin çêbin.",
-      privacy_notice: "Têbînî: ev cîgir e. Ji bo Almanyayê daxuyaniya qanûnî ya parastina daneyan bikar bîne.",
+      privacy_notice: "Ev pêşnûme berî bikaranîna bazirganî ya fermî dê qanûnî were kontrolkirin.",
     },
     fr: {
       language_picker_label: "Choisir la langue",
       language_search_placeholder: "Rechercher une langue",
       language_no_results: "Aucune langue trouvée",
-      price_transition_text: "Ouverture des prix de réparation",
       live_badge_open: "Aujourd'hui : 30-90 min possible",
       live_badge_closed: "Rapide via WhatsApp",
       tagline: "Singen • rapide et fiable",
@@ -1114,24 +1111,23 @@
       finder_price_cta: "Puis vérifier le prix",
       finder_wa_cta: "Aide via WhatsApp",
       impressum_title: "Mentions légales",
-      impressum_intro: "Veuillez ajouter ici : nom/entreprise, adresse, contact, éventuellement USt-ID.",
+      impressum_intro: "Handy Notdienst est en cours de mise en place. Les informations du prestataire seront complétées avant l'utilisation commerciale officielle.",
       impressum_location: "Singen (Bade-Wurtemberg)",
       impressum_phone_label: "Téléphone :",
       impressum_email_label: "Email :",
-      impressum_notice: "Remarque : ceci est un texte provisoire. Pour l'Allemagne, les mentions légales doivent être complétées correctement.",
+      impressum_notice: "Version provisoire transparente : les mentions obligatoires seront ajoutées après enregistrement et vérification juridique.",
       privacy_title: "Confidentialité",
-      privacy_intro: "Texte provisoire - une politique de confidentialité correcte doit figurer ici (hébergement, contact, cookies, etc.).",
+      privacy_intro: "Ces notes expliquent quelles données sont traitées lors du contact, de l'utilisation du site, des demandes d'envoi et d'Analytics.",
       privacy_contact_title: "Contact",
       privacy_contact_text: "Si les utilisateurs contactent par Email/WhatsApp/Telegram, les données sont utilisées pour traiter la demande.",
       privacy_hosting_title: "Serveur/hébergement",
       privacy_hosting_text: "Ce site est hébergé statiquement (p. ex. GitHub Pages). Des logs techniques peuvent être générés.",
-      privacy_notice: "Remarque : ceci est un texte provisoire. Pour l'Allemagne, utilisez une politique de confidentialité conforme.",
+      privacy_notice: "Cette version provisoire sera vérifiée juridiquement avant l'utilisation commerciale officielle.",
     },
     sl: {
       language_picker_label: "Izberi jezik",
       language_search_placeholder: "Poišči jezik",
       language_no_results: "Jezik ni najden",
-      price_transition_text: "Odpiram cene popravil",
       live_badge_open: "Danes: možno 30-90 min",
       live_badge_closed: "Hitro prek WhatsApp",
       tagline: "Singen • hitro in zanesljivo",
@@ -1182,18 +1178,18 @@
       finder_price_cta: "Nato preveri ceno",
       finder_wa_cta: "Pomoč prek WhatsApp",
       impressum_title: "Pravno obvestilo",
-      impressum_intro: "Tukaj dodaj: ime/podjetje, naslov, kontakt, po potrebi USt-ID.",
+      impressum_intro: "Handy Notdienst je še v pripravi. Podatki ponudnika bodo dopolnjeni pred uradno komercialno uporabo.",
       impressum_location: "Singen (Baden-Württemberg)",
       impressum_phone_label: "Telefon:",
       impressum_email_label: "Email:",
-      impressum_notice: "Opomba: to je nadomestno besedilo. Za Nemčijo mora biti pravno obvestilo pravilno izpolnjeno.",
+      impressum_notice: "Pregledna osnutna različica: obvezni podatki bodo dodani po registraciji in pravnem pregledu.",
       privacy_title: "Varstvo podatkov",
-      privacy_intro: "Nadomestno besedilo - tukaj spada pravilna izjava o zasebnosti (hosting, kontakt, cookies itd.).",
+      privacy_intro: "Ta obvestila pojasnjujejo, kateri podatki se obdelujejo pri stiku, uporabi strani, zahtevah za pošiljanje in Analytics.",
       privacy_contact_title: "Kontakt",
       privacy_contact_text: "Če uporabniki vzpostavijo stik prek Email/WhatsApp/Telegram, se podatki uporabijo za obdelavo zahtevka.",
       privacy_hosting_title: "Strežnik/hosting",
       privacy_hosting_text: "Ta stran je gostovana statično (npr. GitHub Pages). Tehnični logi lahko nastanejo.",
-      privacy_notice: "Opomba: to je nadomestno besedilo. Za Nemčijo uporabite pravno skladno izjavo o zasebnosti.",
+      privacy_notice: "Ta osnutek bo pravno preverjen pred uradno komercialno uporabo.",
     },
   };
 
@@ -2210,19 +2206,6 @@
     sl: { samsung_series_hint: "Najprej izberi serijo Galaxy. Nato te vodimo korak za korakom.", samsung_back: "Nazaj", samsung_next: "Naprej", samsung_close: "Zapri" },
   };
 
-  const PRICE_REMINDER_I18N = {
-    de: { price_reminder_kicker: "Smart Preischeck", price_reminder_title: "Preis sofort prüfen", price_reminder_text: "Modell wählen und direkt anfragen", price_reminder_close: "Preishinweis schliessen" },
-    uk: { price_reminder_kicker: "Розумна перевірка ціни", price_reminder_title: "Перевірити ціну зараз", price_reminder_text: "Оберіть модель і одразу надішліть запит", price_reminder_close: "Закрити підказку з цінами" },
-    en: { price_reminder_kicker: "Smart price check", price_reminder_title: "Check the price now", price_reminder_text: "Choose a model and request directly", price_reminder_close: "Close price reminder" },
-    ru: { price_reminder_kicker: "Умная проверка цены", price_reminder_title: "Проверить цену сейчас", price_reminder_text: "Выберите модель и сразу отправьте запрос", price_reminder_close: "Закрыть подсказку с ценами" },
-    pl: { price_reminder_kicker: "Szybka wycena", price_reminder_title: "Sprawdź cenę teraz", price_reminder_text: "Wybierz model i od razu wyślij zapytanie", price_reminder_close: "Zamknij przypomnienie o cenach" },
-    it: { price_reminder_kicker: "Controllo prezzo smart", price_reminder_title: "Controlla subito il prezzo", price_reminder_text: "Scegli il modello e invia la richiesta", price_reminder_close: "Chiudi il promemoria prezzi" },
-    ar: { price_reminder_kicker: "فحص سعر ذكي", price_reminder_title: "تحقق من السعر الآن", price_reminder_text: "اختر الموديل وأرسل الطلب مباشرة", price_reminder_close: "إغلاق تذكير الأسعار" },
-    ku: { price_reminder_kicker: "Kontrola bihayê zîrek", price_reminder_title: "Niha bihayê kontrol bike", price_reminder_text: "Modelê hilbijêre û daxwazê rasterast bişîne", price_reminder_close: "Bîranîna bihayan bigire" },
-    fr: { price_reminder_kicker: "Check prix intelligent", price_reminder_title: "Vérifier le prix maintenant", price_reminder_text: "Choisis le modèle et envoie la demande", price_reminder_close: "Fermer le rappel des prix" },
-    sl: { price_reminder_kicker: "Pametno preverjanje cene", price_reminder_title: "Preveri ceno zdaj", price_reminder_text: "Izberi model in takoj pošlji povpraševanje", price_reminder_close: "Zapri opomnik za cene" },
-  };
-
   const COOKIE_I18N = {
     de: {
       cookie_consent_label: "Analytics-Einstellungen",
@@ -2469,9 +2452,6 @@
   Object.entries(SAMSUNG_MODAL_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
-  Object.entries(PRICE_REMINDER_I18N).forEach(([lang, values]) => {
-    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
-  });
   Object.entries(COOKIE_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
@@ -2631,14 +2611,422 @@
   LANGUAGES.forEach(({ code }) => {
     GLOBAL_I18N[code] = { ...(GLOBAL_I18N[code] || GLOBAL_I18N.de), ...PRICE_OPTION_I18N_DE, ...(PRICE_OPTION_I18N[code] || {}) };
   });
-  const LEGAL_SOURCE_OF_TRUTH = {
-    privacy_intro: "Diese Datenschutzhinweise erklären kurz, welche Daten bei Kontakt, Versand-Anfrage, Website-Nutzung und Analytics verarbeitet werden.",
-    privacy_contact_text: "Wenn du per Telefon, Email, WhatsApp oder Telegram Kontakt aufnimmst, werden die von dir gesendeten Angaben zur Bearbeitung deiner Reparaturanfrage verwendet.",
-    privacy_hosting_text: "Diese Website wird statisch gehostet. Dabei können technisch notwendige Server-Logfiles entstehen.",
-    privacy_notice: "Google Analytics wird nur nach Zustimmung aktiviert. Bei Versand-Anfragen können zusätzlich Modell, Schaden, Kontaktweg, Versandstatus und Rückversand-Informationen verarbeitet werden.",
+
+  const PRICE_FUTURE_I18N = {
+    de: {
+      price_future_iphone: "iPhone Reparaturen",
+      price_future_watch: "Apple Watch auf Anfrage",
+      price_future_macbook: "MacBook auf Anfrage",
+    },
+    uk: {
+      price_future_iphone: "Ремонт iPhone",
+      price_future_watch: "Apple Watch за запитом",
+      price_future_macbook: "MacBook за запитом",
+    },
+    en: {
+      price_future_iphone: "iPhone repairs",
+      price_future_watch: "Apple Watch on request",
+      price_future_macbook: "MacBook on request",
+    },
+    ru: {
+      price_future_iphone: "Ремонт iPhone",
+      price_future_watch: "Apple Watch по запросу",
+      price_future_macbook: "MacBook по запросу",
+    },
+    pl: {
+      price_future_iphone: "Naprawy iPhone",
+      price_future_watch: "Apple Watch na zapytanie",
+      price_future_macbook: "MacBook na zapytanie",
+    },
+    it: {
+      price_future_iphone: "Riparazioni iPhone",
+      price_future_watch: "Apple Watch su richiesta",
+      price_future_macbook: "MacBook su richiesta",
+    },
+    ar: {
+      price_future_iphone: "إصلاحات iPhone",
+      price_future_watch: "Apple Watch عند الطلب",
+      price_future_macbook: "MacBook عند الطلب",
+    },
+    ku: {
+      price_future_iphone: "Çareseriya iPhone",
+      price_future_watch: "Apple Watch li ser daxwazê",
+      price_future_macbook: "MacBook li ser daxwazê",
+    },
+    fr: {
+      price_future_iphone: "Réparations iPhone",
+      price_future_watch: "Apple Watch sur demande",
+      price_future_macbook: "MacBook sur demande",
+    },
+    sl: {
+      price_future_iphone: "Popravila iPhone",
+      price_future_watch: "Apple Watch na povpraševanje",
+      price_future_macbook: "MacBook na povpraševanje",
+    },
   };
-  Object.keys(GLOBAL_I18N).forEach((lang) => {
-    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || {}), ...LEGAL_SOURCE_OF_TRUTH };
+  Object.entries(PRICE_FUTURE_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
+  const TRUST_I18N = {
+    de: {
+      skip_to_content: "Zum Inhalt springen",
+      home_concept_h1: "Smartphone-Reparatur in Singen - Preis vor der Reparatur klar.",
+      lead: "Display, Akku, Ladebuchse, Kamera oder Wasserschaden: Schreib kurz Modell und Schaden. Du bekommst Preis, Dauer und Teileoption vorab.",
+      hero_help_now: "Singen & Umgebung",
+      hero_service_note: "nach Absprache",
+      hero_proof_fast: "Preis vorab",
+      hero_proof_fast_text: "keine Reparatur ohne Freigabe",
+      hero_proof_warranty: "Daten bleiben auf dem Gerät",
+      hero_proof_warranty_text: "Standard-Reparaturen ohne Löschen",
+      hero_proof_price: "Übergabe nach Absprache",
+      hero_proof_price_text: "Singen, Abholung oder Versand",
+      hero_quality: "Ersatzteile in Original- oder Premium-Qualität",
+      hero_trust_title: "Klar vor dem Auftrag",
+      hero_trust_text: "Preis, Dauer und Teilequalität werden vorab bestätigt.",
+      hero_rating_area: "Singen und Umgebung",
+      contact_call_with_number: "01522 2416438 anrufen",
+    },
+    uk: {
+      skip_to_content: "Перейти до вмісту",
+      home_concept_h1: "Ремонт смартфонів у Singen - ціна зрозуміла до ремонту.",
+      lead: "Дисплей, акумулятор, розʼєм зарядки, камера або пошкодження водою: напишіть модель і проблему. Ви отримаєте ціну, термін і варіант запчастини заздалегідь.",
+      hero_help_now: "Singen та околиці",
+      hero_service_note: "за домовленістю",
+      hero_proof_fast: "Ціна заздалегідь",
+      hero_proof_fast_text: "ремонт тільки після підтвердження",
+      hero_proof_warranty: "Дані залишаються на пристрої",
+      hero_proof_warranty_text: "стандартний ремонт без видалення",
+      hero_proof_price: "Передача за домовленістю",
+      hero_proof_price_text: "Singen, забір або доставка",
+      hero_quality: "Запчастини Original або Premium якості",
+      hero_trust_title: "Усе зрозуміло до замовлення",
+      hero_trust_text: "Ціну, термін і якість запчастини підтверджуємо заздалегідь.",
+      hero_rating_area: "Singen та околиці",
+      contact_call_with_number: "Подзвонити: 01522 2416438",
+    },
+    en: {
+      skip_to_content: "Skip to content",
+      home_concept_h1: "Smartphone repair in Singen - clear price before repair.",
+      lead: "Screen, battery, charging port, camera or water damage: send the model and issue. You get the price, timing and part option upfront.",
+      hero_help_now: "Singen & nearby",
+      hero_service_note: "by arrangement",
+      hero_proof_fast: "Price upfront",
+      hero_proof_fast_text: "no repair without approval",
+      hero_proof_warranty: "Data stays on your device",
+      hero_proof_warranty_text: "standard repairs without wiping",
+      hero_proof_price: "Handover by arrangement",
+      hero_proof_price_text: "Singen, pickup or shipping",
+      hero_quality: "Original or Premium-quality parts",
+      hero_trust_title: "Clear before the order",
+      hero_trust_text: "Price, timing and part quality are confirmed upfront.",
+      hero_rating_area: "Singen and nearby",
+      contact_call_with_number: "Call 01522 2416438",
+    },
+    ru: {
+      skip_to_content: "Перейти к содержимому",
+      home_concept_h1: "Ремонт смартфонов в Singen - цена понятна до ремонта.",
+      lead: "Дисплей, аккумулятор, разъем зарядки, камера или повреждение водой: напишите модель и проблему. Вы заранее получите цену, срок и вариант детали.",
+      hero_help_now: "Singen и рядом",
+      hero_service_note: "по договоренности",
+      hero_proof_fast: "Цена заранее",
+      hero_proof_fast_text: "ремонт только после подтверждения",
+      hero_proof_warranty: "Данные остаются на устройстве",
+      hero_proof_warranty_text: "стандартный ремонт без удаления",
+      hero_proof_price: "Передача по договоренности",
+      hero_proof_price_text: "Singen, забор или отправка",
+      hero_quality: "Детали Original или Premium качества",
+      hero_trust_title: "Все ясно до заказа",
+      hero_trust_text: "Цена, срок и качество детали подтверждаются заранее.",
+      hero_rating_area: "Singen и окрестности",
+      contact_call_with_number: "Позвонить: 01522 2416438",
+    },
+    pl: {
+      skip_to_content: "Przejdź do treści",
+      home_concept_h1: "Naprawa smartfonów w Singen - cena jasna przed naprawą.",
+      lead: "Ekran, bateria, gniazdo ładowania, kamera lub zalanie: napisz model i problem. Cenę, czas i wariant części otrzymasz z góry.",
+      hero_help_now: "Singen i okolice",
+      hero_service_note: "po uzgodnieniu",
+      hero_proof_fast: "Cena z góry",
+      hero_proof_fast_text: "bez naprawy bez akceptacji",
+      hero_proof_warranty: "Dane zostają na urządzeniu",
+      hero_proof_warranty_text: "standardowe naprawy bez kasowania",
+      hero_proof_price: "Przekazanie po uzgodnieniu",
+      hero_proof_price_text: "Singen, odbiór albo wysyłka",
+      hero_quality: "Części jakości Original lub Premium",
+      hero_trust_title: "Jasne przed zleceniem",
+      hero_trust_text: "Cena, czas i jakość części są potwierdzane z góry.",
+      hero_rating_area: "Singen i okolice",
+      contact_call_with_number: "Zadzwoń: 01522 2416438",
+    },
+    it: {
+      skip_to_content: "Vai al contenuto",
+      home_concept_h1: "Riparazione smartphone a Singen - prezzo chiaro prima della riparazione.",
+      lead: "Display, batteria, porta di ricarica, fotocamera o danni da acqua: scrivi modello e problema. Ricevi in anticipo prezzo, tempi e opzione del ricambio.",
+      hero_help_now: "Singen e dintorni",
+      hero_service_note: "su accordo",
+      hero_proof_fast: "Prezzo in anticipo",
+      hero_proof_fast_text: "nessuna riparazione senza approvazione",
+      hero_proof_warranty: "I dati restano sul dispositivo",
+      hero_proof_warranty_text: "riparazioni standard senza cancellazione",
+      hero_proof_price: "Consegna su accordo",
+      hero_proof_price_text: "Singen, ritiro o spedizione",
+      hero_quality: "Ricambi qualità Original o Premium",
+      hero_trust_title: "Chiaro prima dell'ordine",
+      hero_trust_text: "Prezzo, tempi e qualità del ricambio vengono confermati in anticipo.",
+      hero_rating_area: "Singen e dintorni",
+      contact_call_with_number: "Chiama: 01522 2416438",
+    },
+    ar: {
+      skip_to_content: "انتقل إلى المحتوى",
+      home_concept_h1: "إصلاح الهواتف في Singen - السعر واضح قبل الإصلاح.",
+      lead: "الشاشة أو البطارية أو منفذ الشحن أو الكاميرا أو ضرر الماء: أرسل الموديل والمشكلة. تحصل مسبقا على السعر والمدة وخيار القطعة.",
+      hero_help_now: "Singen والمناطق القريبة",
+      hero_service_note: "حسب الاتفاق",
+      hero_proof_fast: "السعر مسبقا",
+      hero_proof_fast_text: "لا إصلاح بدون موافقة",
+      hero_proof_warranty: "تبقى البيانات على الجهاز",
+      hero_proof_warranty_text: "إصلاحات عادية بدون حذف",
+      hero_proof_price: "التسليم حسب الاتفاق",
+      hero_proof_price_text: "Singen أو الاستلام أو الشحن",
+      hero_quality: "قطع بجودة Original أو Premium",
+      hero_trust_title: "وضوح قبل الطلب",
+      hero_trust_text: "يتم تأكيد السعر والمدة وجودة القطعة مسبقا.",
+      hero_rating_area: "Singen والمناطق القريبة",
+      contact_call_with_number: "اتصل: 01522 2416438",
+    },
+    ku: {
+      skip_to_content: "Here naverokê",
+      home_concept_h1: "Tamîra smartphone li Singen - buha berî tamîrê zelal e.",
+      lead: "Dîmender, batarya, porta şarjê, kamera an zerara avê: model û pirsgirêkê binivîse. Tu berê buha, dem û vebijarka parçeyê digirî.",
+      hero_help_now: "Singen û derdor",
+      hero_service_note: "bi lihevkirinê",
+      hero_proof_fast: "Buha berê",
+      hero_proof_fast_text: "bê pejirandinê tamîr tune",
+      hero_proof_warranty: "Dane li ser amûrê dimînin",
+      hero_proof_warranty_text: "tamîrên standard bê jêbirin",
+      hero_proof_price: "Radestkirin bi lihevkirinê",
+      hero_proof_price_text: "Singen, wergirtin an şandin",
+      hero_quality: "Parçeyên qalîteya Original an Premium",
+      hero_trust_title: "Berî fermandarî zelal",
+      hero_trust_text: "Buha, dem û qalîteya parçeyê berê têne piştrastkirin.",
+      hero_rating_area: "Singen û derdor",
+      contact_call_with_number: "Bang bike: 01522 2416438",
+    },
+    fr: {
+      skip_to_content: "Aller au contenu",
+      home_concept_h1: "Réparation smartphone à Singen - prix clair avant réparation.",
+      lead: "Écran, batterie, port de charge, caméra ou dégât d'eau : envoyez le modèle et le problème. Vous recevez le prix, le délai et l'option de pièce à l'avance.",
+      hero_help_now: "Singen et environs",
+      hero_service_note: "sur rendez-vous",
+      hero_proof_fast: "Prix à l'avance",
+      hero_proof_fast_text: "pas de réparation sans accord",
+      hero_proof_warranty: "Les données restent sur l'appareil",
+      hero_proof_warranty_text: "réparations standard sans effacement",
+      hero_proof_price: "Remise sur rendez-vous",
+      hero_proof_price_text: "Singen, collecte ou envoi",
+      hero_quality: "Pièces qualité Original ou Premium",
+      hero_trust_title: "Clair avant la commande",
+      hero_trust_text: "Le prix, le délai et la qualité de la pièce sont confirmés à l'avance.",
+      hero_rating_area: "Singen et environs",
+      contact_call_with_number: "Appeler : 01522 2416438",
+    },
+    sl: {
+      skip_to_content: "Preskoči na vsebino",
+      home_concept_h1: "Popravilo pametnih telefonov v Singen - cena jasna pred popravilom.",
+      lead: "Zaslon, baterija, polnilni priključek, kamera ali poškodba zaradi vode: pošlji model in težavo. Ceno, čas in možnost dela dobiš vnaprej.",
+      hero_help_now: "Singen in okolica",
+      hero_service_note: "po dogovoru",
+      hero_proof_fast: "Cena vnaprej",
+      hero_proof_fast_text: "brez popravila brez potrditve",
+      hero_proof_warranty: "Podatki ostanejo na napravi",
+      hero_proof_warranty_text: "standardna popravila brez brisanja",
+      hero_proof_price: "Predaja po dogovoru",
+      hero_proof_price_text: "Singen, prevzem ali pošiljanje",
+      hero_quality: "Deli kakovosti Original ali Premium",
+      hero_trust_title: "Jasno pred naročilom",
+      hero_trust_text: "Cena, čas in kakovost dela so potrjeni vnaprej.",
+      hero_rating_area: "Singen in okolica",
+      contact_call_with_number: "Pokliči: 01522 2416438",
+    },
+  };
+  Object.entries(TRUST_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
+
+  const LEGAL_DRAFT_I18N = {
+    de: {
+      impressum_intro: "Handy Notdienst befindet sich im Aufbau. Die Anbieterangaben werden vor der offiziellen gewerblichen Nutzung vollständig ergänzt.",
+      impressum_provider_title: "Anbieterangaben",
+      impressum_status: "Dienst im Aufbau, noch ohne offene Ladenadresse.",
+      impressum_final_title: "Hinweis zur Finalisierung",
+      impressum_notice: "Diese Seite ist eine transparente Vorabfassung. Name, ladungsfähige Anschrift und weitere Pflichtangaben werden nicht erfunden, sondern nach der Registrierung ergänzt und rechtlich geprüft.",
+      privacy_intro: "Diese Datenschutzhinweise erklären kurz, welche Daten bei Kontakt, Website-Nutzung, Versand-Anfragen und Analytics verarbeitet werden.",
+      privacy_contact_text: "Wenn du per Telefon, Email, WhatsApp oder Telegram Kontakt aufnimmst, werden die von dir gesendeten Angaben zur Bearbeitung deiner Reparaturanfrage verwendet.",
+      privacy_hosting_text: "Diese Website wird statisch gehostet. Dabei können technisch notwendige Server-Logfiles entstehen.",
+      privacy_analytics_title: "Analytics",
+      privacy_analytics_text: "Google Analytics wird nur nach Zustimmung aktiviert. Ohne Zustimmung bleibt Analytics deaktiviert.",
+      privacy_shipping_title: "Reparatur- und Versand-Anfragen",
+      privacy_shipping_text: "Bei Versand- oder Reparaturanfragen können Modell, Schaden, Kontaktweg, Versandstatus und Rückversand-Informationen verarbeitet werden, soweit das für Anfrage, Abstimmung und Abwicklung nötig ist.",
+      privacy_rights_title: "Deine Rechte",
+      privacy_rights_text: "Du kannst Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch und Datenübertragbarkeit verlangen. Bei Einwilligungen kannst du deine Zustimmung mit Wirkung für die Zukunft widerrufen.",
+      privacy_notice: "Diese Fassung ist eine transparente Vorabfassung und wird vor der offiziellen gewerblichen Nutzung rechtlich geprüft.",
+    },
+    uk: {
+      impressum_intro: "Handy Notdienst перебуває на етапі запуску. Дані постачальника будуть повністю додані перед офіційною комерційною діяльністю.",
+      impressum_provider_title: "Дані постачальника",
+      impressum_status: "Сервіс у запуску, поки що без відкритої адреси магазину.",
+      impressum_final_title: "Примітка щодо фіналізації",
+      impressum_notice: "Це прозора попередня версія. Імʼя, офіційна адреса для кореспонденції та інші обовʼязкові дані не вигадуються, а будуть додані після реєстрації та юридичної перевірки.",
+      privacy_intro: "Ці примітки коротко пояснюють, які дані обробляються під час контакту, користування сайтом, запитів на відправку та Analytics.",
+      privacy_contact_text: "Якщо ви звертаєтесь телефоном, Email, WhatsApp або Telegram, надіслані вами дані використовуються для обробки запиту на ремонт.",
+      privacy_hosting_text: "Цей сайт розміщений статично. При цьому можуть виникати технічно необхідні server log files.",
+      privacy_analytics_title: "Analytics",
+      privacy_analytics_text: "Google Analytics активується тільки після згоди. Без згоди Analytics залишається вимкненою.",
+      privacy_shipping_title: "Запити на ремонт і відправку",
+      privacy_shipping_text: "Для запитів на ремонт або відправку можуть оброблятися модель, пошкодження, спосіб контакту, статус відправки та інформація для зворотної доставки, якщо це потрібно для запиту й виконання.",
+      privacy_rights_title: "Ваші права",
+      privacy_rights_text: "Ви можете вимагати доступ, виправлення, видалення, обмеження обробки, заперечення та перенесення даних. Згоду можна відкликати на майбутнє.",
+      privacy_notice: "Це прозора попередня версія, яку буде юридично перевірено перед офіційною комерційною діяльністю.",
+    },
+    en: {
+      impressum_intro: "Handy Notdienst is still being set up. Provider details will be completed before official commercial use.",
+      impressum_provider_title: "Provider information",
+      impressum_status: "Service in setup, currently without an open shop address.",
+      impressum_final_title: "Finalization note",
+      impressum_notice: "This page is a transparent draft. Name, serviceable address and other mandatory details are not invented; they will be added after registration and legal review.",
+      privacy_intro: "These privacy notes briefly explain which data is processed during contact, website use, shipping requests and Analytics.",
+      privacy_contact_text: "If you contact us by phone, email, WhatsApp or Telegram, the information you send is used to process your repair request.",
+      privacy_hosting_text: "This website is statically hosted. Technically necessary server log files may be created.",
+      privacy_analytics_title: "Analytics",
+      privacy_analytics_text: "Google Analytics is activated only after consent. Without consent, Analytics remains disabled.",
+      privacy_shipping_title: "Repair and shipping requests",
+      privacy_shipping_text: "For repair or shipping requests, model, damage, contact channel, shipping status and return-shipping information may be processed where needed for the request, coordination and handling.",
+      privacy_rights_title: "Your rights",
+      privacy_rights_text: "You may request access, correction, erasure, restriction, objection and data portability. Consent can be withdrawn for the future.",
+      privacy_notice: "This is a transparent draft and will be legally reviewed before official commercial use.",
+    },
+    ru: {
+      impressum_intro: "Handy Notdienst находится на этапе запуска. Данные поставщика будут полностью добавлены перед официальным коммерческим использованием.",
+      impressum_provider_title: "Данные поставщика",
+      impressum_status: "Сервис в запуске, пока без открытого адреса магазина.",
+      impressum_final_title: "Примечание о финализации",
+      impressum_notice: "Это прозрачная предварительная версия. Имя, официальный адрес для корреспонденции и другие обязательные данные не выдумываются, а будут добавлены после регистрации и юридической проверки.",
+      privacy_intro: "Эти сведения кратко объясняют, какие данные обрабатываются при контакте, использовании сайта, запросах на отправку и Analytics.",
+      privacy_contact_text: "Если вы связываетесь по телефону, Email, WhatsApp или Telegram, отправленные вами данные используются для обработки запроса на ремонт.",
+      privacy_hosting_text: "Этот сайт размещен статически. При этом могут возникать технически необходимые server log files.",
+      privacy_analytics_title: "Analytics",
+      privacy_analytics_text: "Google Analytics активируется только после согласия. Без согласия Analytics остается отключенной.",
+      privacy_shipping_title: "Запросы на ремонт и отправку",
+      privacy_shipping_text: "Для запросов на ремонт или отправку могут обрабатываться модель, повреждение, способ связи, статус отправки и информация для обратной доставки, если это необходимо для запроса и выполнения.",
+      privacy_rights_title: "Ваши права",
+      privacy_rights_text: "Вы можете запросить доступ, исправление, удаление, ограничение обработки, возражение и переносимость данных. Согласие можно отозвать на будущее.",
+      privacy_notice: "Это прозрачная предварительная версия, которая будет юридически проверена перед официальным коммерческим использованием.",
+    },
+    pl: {
+      impressum_intro: "Handy Notdienst jest w trakcie uruchamiania. Dane dostawcy zostaną uzupełnione przed oficjalnym użyciem komercyjnym.",
+      impressum_provider_title: "Dane dostawcy",
+      impressum_status: "Usługa w przygotowaniu, obecnie bez otwartego adresu sklepu.",
+      impressum_final_title: "Informacja o finalizacji",
+      impressum_notice: "To jest przejrzysta wersja robocza. Imię, adres do doręczeń i inne obowiązkowe dane nie są wymyślane; zostaną dodane po rejestracji i kontroli prawnej.",
+      privacy_intro: "Te informacje krótko wyjaśniają, jakie dane są przetwarzane przy kontakcie, korzystaniu ze strony, zapytaniach wysyłkowych i Analytics.",
+      privacy_contact_text: "Jeśli kontaktujesz się telefonicznie, przez Email, WhatsApp lub Telegram, przesłane informacje są używane do obsługi zapytania o naprawę.",
+      privacy_hosting_text: "Ta strona jest hostowana statycznie. Mogą powstawać technicznie konieczne server log files.",
+      privacy_analytics_title: "Analytics",
+      privacy_analytics_text: "Google Analytics jest aktywowany tylko po zgodzie. Bez zgody Analytics pozostaje wyłączony.",
+      privacy_shipping_title: "Zapytania o naprawę i wysyłkę",
+      privacy_shipping_text: "Przy zapytaniach o naprawę lub wysyłkę mogą być przetwarzane model, uszkodzenie, kanał kontaktu, status wysyłki i informacje o odesłaniu, jeśli jest to potrzebne do obsługi.",
+      privacy_rights_title: "Twoje prawa",
+      privacy_rights_text: "Możesz zażądać dostępu, sprostowania, usunięcia, ograniczenia, sprzeciwu i przenoszenia danych. Zgodę można wycofać na przyszłość.",
+      privacy_notice: "To jest przejrzysta wersja robocza i zostanie sprawdzona prawnie przed oficjalnym użyciem komercyjnym.",
+    },
+    it: {
+      impressum_intro: "Handy Notdienst è in fase di avvio. I dati del fornitore saranno completati prima dell'uso commerciale ufficiale.",
+      impressum_provider_title: "Dati del fornitore",
+      impressum_status: "Servizio in fase di avvio, attualmente senza indirizzo di negozio aperto.",
+      impressum_final_title: "Nota sulla finalizzazione",
+      impressum_notice: "Questa pagina è una bozza trasparente. Nome, indirizzo valido per notifiche e altri dati obbligatori non vengono inventati; saranno aggiunti dopo registrazione e verifica legale.",
+      privacy_intro: "Queste note spiegano brevemente quali dati vengono trattati durante contatto, uso del sito, richieste di spedizione e Analytics.",
+      privacy_contact_text: "Se ci contatti per telefono, Email, WhatsApp o Telegram, le informazioni inviate vengono usate per gestire la richiesta di riparazione.",
+      privacy_hosting_text: "Questo sito è ospitato staticamente. Possono essere creati server log files tecnicamente necessari.",
+      privacy_analytics_title: "Analytics",
+      privacy_analytics_text: "Google Analytics viene attivato solo dopo il consenso. Senza consenso, Analytics resta disattivato.",
+      privacy_shipping_title: "Richieste di riparazione e spedizione",
+      privacy_shipping_text: "Per richieste di riparazione o spedizione possono essere trattati modello, danno, canale di contatto, stato della spedizione e informazioni di ritorno, se necessari alla gestione.",
+      privacy_rights_title: "I tuoi diritti",
+      privacy_rights_text: "Puoi richiedere accesso, correzione, cancellazione, limitazione, opposizione e portabilità dei dati. Il consenso può essere revocato per il futuro.",
+      privacy_notice: "Questa è una bozza trasparente e sarà verificata legalmente prima dell'uso commerciale ufficiale.",
+    },
+    ar: {
+      impressum_intro: "Handy Notdienst ما زال في مرحلة الإعداد. سيتم إكمال بيانات المزود قبل الاستخدام التجاري الرسمي.",
+      impressum_provider_title: "بيانات المزود",
+      impressum_status: "الخدمة قيد الإعداد، ولا يوجد حاليا عنوان متجر مفتوح.",
+      impressum_final_title: "ملاحظة حول الإكمال",
+      impressum_notice: "هذه صفحة مسودة شفافة. لا يتم اختراع الاسم أو العنوان القانوني أو البيانات الإلزامية الأخرى، بل ستضاف بعد التسجيل والمراجعة القانونية.",
+      privacy_intro: "توضح هذه الملاحظات باختصار البيانات التي تتم معالجتها عند التواصل، واستخدام الموقع، وطلبات الشحن، وAnalytics.",
+      privacy_contact_text: "إذا تواصلت عبر الهاتف أو Email أو WhatsApp أو Telegram، تُستخدم المعلومات التي ترسلها لمعالجة طلب الإصلاح.",
+      privacy_hosting_text: "يتم استضافة هذا الموقع بشكل ثابت. قد تنشأ server log files ضرورية تقنيا.",
+      privacy_analytics_title: "Analytics",
+      privacy_analytics_text: "يتم تفعيل Google Analytics فقط بعد الموافقة. بدون موافقة يبقى Analytics معطلا.",
+      privacy_shipping_title: "طلبات الإصلاح والشحن",
+      privacy_shipping_text: "في طلبات الإصلاح أو الشحن قد تتم معالجة الموديل، الضرر، وسيلة التواصل، حالة الشحن ومعلومات الإرجاع إذا كانت ضرورية للطلب والتنفيذ.",
+      privacy_rights_title: "حقوقك",
+      privacy_rights_text: "يمكنك طلب الوصول والتصحيح والحذف والتقييد والاعتراض ونقل البيانات. ويمكن سحب الموافقة للمستقبل.",
+      privacy_notice: "هذه مسودة شفافة وستتم مراجعتها قانونيا قبل الاستخدام التجاري الرسمي.",
+    },
+    ku: {
+      impressum_intro: "Handy Notdienst hîn di qonaxa amadekirinê de ye. Agahdariyên pêşkêşkarî berî bikaranîna bazirganî ya fermî temam dibin.",
+      impressum_provider_title: "Agahdariyên pêşkêşkarî",
+      impressum_status: "Xizmet di amadekirinê de ye, niha bê navnîşana dikaneke vekirî.",
+      impressum_final_title: "Têbîniya temamkirinê",
+      impressum_notice: "Ev rûpel pêşnûmeyeke zelal e. Nav, navnîşana fermî û agahdariyên mecbûrî nayên çêkirin; piştî qeydkirin û kontrola qanûnî têne zêdekirin.",
+      privacy_intro: "Ev agahdarî bi kurtî dibêjin ka di têkilî, bikaranîna malperê, daxwazên şandinê û Analytics de kîjan dane têne xebitandin.",
+      privacy_contact_text: "Ger tu bi telefon, Email, WhatsApp an Telegram têkilî bigirî, agahdariyên şandî ji bo daxwaza tamîrê têne bikaranîn.",
+      privacy_hosting_text: "Ev malper statîk tê hostkirin. Server log files ên teknîkî yên pêwîst dikarin çêbin.",
+      privacy_analytics_title: "Analytics",
+      privacy_analytics_text: "Google Analytics tenê piştî razîbûnê tê çalakirin. Bê razîbûn, Analytics girtî dimîne.",
+      privacy_shipping_title: "Daxwazên tamîr û şandinê",
+      privacy_shipping_text: "Ji bo daxwazên tamîr an şandinê, model, zirar, rêya têkilî, rewşa şandinê û agahdariyên vegerandinê dikarin têne xebitandin heke ji bo pêvajoyê pêwîst bin.",
+      privacy_rights_title: "Mafên te",
+      privacy_rights_text: "Tu dikarî gihîştin, rastkirin, jêbirin, sînordarkirin, nerazîbûn û veguhastina daneyan bixwazî. Razîbûn dikare ji bo pêşerojê were vekişandin.",
+      privacy_notice: "Ev pêşnûmeyeke zelal e û berî bikaranîna bazirganî ya fermî dê qanûnî were kontrolkirin.",
+    },
+    fr: {
+      impressum_intro: "Handy Notdienst est en cours de mise en place. Les informations du prestataire seront complétées avant l'utilisation commerciale officielle.",
+      impressum_provider_title: "Informations du prestataire",
+      impressum_status: "Service en préparation, actuellement sans adresse de boutique ouverte.",
+      impressum_final_title: "Note de finalisation",
+      impressum_notice: "Cette page est une version provisoire transparente. Le nom, l'adresse valable pour notifications et les autres mentions obligatoires ne sont pas inventés ; ils seront ajoutés après enregistrement et vérification juridique.",
+      privacy_intro: "Ces notes expliquent brièvement quelles données sont traitées lors du contact, de l'utilisation du site, des demandes d'envoi et d'Analytics.",
+      privacy_contact_text: "Si vous nous contactez par téléphone, Email, WhatsApp ou Telegram, les informations envoyées sont utilisées pour traiter votre demande de réparation.",
+      privacy_hosting_text: "Ce site est hébergé statiquement. Des server log files techniquement nécessaires peuvent être créés.",
+      privacy_analytics_title: "Analytics",
+      privacy_analytics_text: "Google Analytics n'est activé qu'après consentement. Sans consentement, Analytics reste désactivé.",
+      privacy_shipping_title: "Demandes de réparation et d'envoi",
+      privacy_shipping_text: "Pour les demandes de réparation ou d'envoi, le modèle, le dommage, le canal de contact, le statut d'envoi et les informations de retour peuvent être traités si nécessaire.",
+      privacy_rights_title: "Vos droits",
+      privacy_rights_text: "Vous pouvez demander l'accès, la rectification, l'effacement, la limitation, l'opposition et la portabilité des données. Le consentement peut être retiré pour l'avenir.",
+      privacy_notice: "Ceci est une version provisoire transparente et sera vérifiée juridiquement avant l'utilisation commerciale officielle.",
+    },
+    sl: {
+      impressum_intro: "Handy Notdienst je še v pripravi. Podatki ponudnika bodo dopolnjeni pred uradno komercialno uporabo.",
+      impressum_provider_title: "Podatki ponudnika",
+      impressum_status: "Storitev je v pripravi, trenutno brez odprtega naslova trgovine.",
+      impressum_final_title: "Opomba o dokončanju",
+      impressum_notice: "To je pregledna osnutna različica. Ime, naslov za vročanje in drugi obvezni podatki niso izmišljeni; dodani bodo po registraciji in pravnem pregledu.",
+      privacy_intro: "Ta obvestila na kratko pojasnjujejo, kateri podatki se obdelujejo pri stiku, uporabi strani, zahtevah za pošiljanje in Analytics.",
+      privacy_contact_text: "Če nas kontaktiraš po telefonu, Emailu, WhatsAppu ali Telegramu, se poslane informacije uporabijo za obdelavo zahteve za popravilo.",
+      privacy_hosting_text: "Ta stran je gostovana statično. Nastanejo lahko tehnično potrebni server log files.",
+      privacy_analytics_title: "Analytics",
+      privacy_analytics_text: "Google Analytics se aktivira samo po privolitvi. Brez privolitve Analytics ostane izključen.",
+      privacy_shipping_title: "Zahteve za popravilo in pošiljanje",
+      privacy_shipping_text: "Pri zahtevah za popravilo ali pošiljanje se lahko obdelujejo model, poškodba, kanal stika, status pošiljke in podatki za vračilo, če je to potrebno za obdelavo.",
+      privacy_rights_title: "Tvoje pravice",
+      privacy_rights_text: "Zahtevaš lahko dostop, popravek, izbris, omejitev, ugovor in prenosljivost podatkov. Privolitev lahko prekličeš za prihodnost.",
+      privacy_notice: "To je pregledna osnutna različica in bo pravno preverjena pred uradno komercialno uporabo.",
+    },
+  };
+  Object.entries(LEGAL_DRAFT_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
 
   const hasI18n = Object.keys(i18n).length > 0 || Object.keys(GLOBAL_I18N).length > 0;
@@ -2672,6 +3060,10 @@
       ad_user_data: "denied",
       ad_personalization: "denied",
     });
+    if (granted && typeof window.HN_LOAD_ANALYTICS === "function") {
+      window.HN_LOAD_ANALYTICS({ sendPageView });
+      return;
+    }
     if (granted && sendPageView && window.HN_GA_MEASUREMENT_ID) {
       window.gtag("config", window.HN_GA_MEASUREMENT_ID, {
         anonymize_ip: true,
@@ -2701,7 +3093,6 @@
     if (el.closest("header")) return "header";
     if (el.closest(".mobilebar")) return "mobilebar";
     if (el.closest(".float-wa")) return "floating_cta";
-    if (el.closest(".price-reminder")) return "price_reminder";
     if (el.closest(".shipping-page")) return "shipping";
     if (el.closest("#contact")) return "contact";
     if (el.closest(".concept-action-dock")) return "action_dock";
@@ -3318,6 +3709,38 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     const baseLabel = getRepairBaseLabel(repair, lang);
     const chipLabel = getRepairQualityChipLabel(repair, lang);
     return chipLabel ? `${baseLabel} · ${chipLabel}` : getRepairLabel(repair, lang);
+  }
+
+  const PRICE_REPAIR_ICONS = {
+    repair_display: "assets/iphone-icons/display-repair.webp",
+    repair_battery: "assets/iphone-icons/battery-repair.webp",
+    repair_original_battery: "assets/iphone-icons/oem-battery-repair.webp",
+    repair_backglass: "assets/iphone-icons/backglass-repair.webp",
+    repair_back_housing: "assets/iphone-icons/backglass-repair.webp",
+    repair_midframe_backglass: "assets/iphone-icons/backglass-repair.webp",
+  };
+
+  function getPriceRepairIcon(repairOrKey) {
+    const key = typeof repairOrKey === "string" ? repairOrKey : repairOrKey?.key;
+    return PRICE_REPAIR_ICONS[key] || "assets/iphone-icons/iphone-device.svg";
+  }
+
+  function createPriceIconSlot(className, src, size) {
+    const slot = document.createElement("span");
+    slot.className = className;
+    slot.setAttribute("aria-hidden", "true");
+
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "";
+    img.width = size;
+    img.height = size;
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.setAttribute("aria-hidden", "true");
+    img.setAttribute("role", "presentation");
+    slot.appendChild(img);
+    return slot;
   }
 
   function getNumericPrice(price) {
@@ -4185,6 +4608,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     row.className = ["price-service-row", extraClass, isSelected ? "is-selected" : ""].filter(Boolean).join(" ");
     row.type = "button";
     row.style.setProperty("--row-index", index);
+    row.appendChild(createPriceIconSlot("price-service-row__icon", getPriceRepairIcon(repair), 36));
 
     const labelEl = document.createElement("span");
     labelEl.className = "price-service-row__label";
@@ -4313,6 +4737,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       included.className = "price-repair-group__included";
       included.textContent = resolveI18n(lang, "price_included_short") || "inkl. Einbau";
 
+      head.appendChild(createPriceIconSlot("price-repair-group__icon", getPriceRepairIcon(group.key), 34));
       head.append(title, included);
       groupEl.appendChild(head);
 
@@ -4956,207 +5381,6 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     });
   }
 
-  function initPageTransitionToPrices() {
-    const key = "hn_price_transition_v1";
-    const transitionMs = 330;
-    const arrivalMs = 700;
-    const isPricesPath = (url) => url.pathname.endsWith("/prices.html");
-    const isCurrentPricesPage = isPricesPath(window.location);
-
-    if (isCurrentPricesPage) {
-      let hadTransition = false;
-      try {
-        hadTransition = sessionStorage.getItem(key) === "1";
-        sessionStorage.removeItem(key);
-      } catch (error) {}
-
-      if (hadTransition || document.documentElement.classList.contains("price-transition-arriving")) {
-        trackEvent("price_transition_arrive", { path: window.location.pathname });
-        window.setTimeout(() => {
-          document.documentElement.classList.remove("price-transition-arriving");
-        }, arrivalMs);
-      }
-    }
-
-    document.addEventListener("click", (event) => {
-      const link = event.target.closest?.("a[href]");
-      if (!link || event.defaultPrevented || event.button !== 0) return;
-      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      if (link.hasAttribute("download")) return;
-      if (link.target && link.target !== "_self") return;
-
-      const href = link.getAttribute("href") || "";
-      if (!href || href.startsWith("#") || href.startsWith("tel:") || href.startsWith("mailto:")) return;
-
-      let targetUrl;
-      try {
-        targetUrl = new URL(link.href, window.location.href);
-      } catch (error) {
-        return;
-      }
-
-      if (targetUrl.origin !== window.location.origin) return;
-      if (!isPricesPath(targetUrl)) return;
-      if (targetUrl.hash) return;
-
-      if (prefersReducedMotion) return;
-      event.preventDefault();
-
-      if (document.body.classList.contains("price-transition-active")) return;
-      document.body.classList.add("price-transition-active");
-
-      try {
-        sessionStorage.setItem(key, "1");
-      } catch (error) {}
-
-      trackEvent("price_transition_start", {
-        from: window.location.pathname,
-        to: targetUrl.pathname,
-        location: getClickLocation(link),
-        label: link.textContent.trim(),
-      });
-
-      const overlay = document.createElement("div");
-      const content = document.createElement("div");
-      const mark = document.createElement("span");
-      const text = document.createElement("span");
-
-      overlay.className = "page-transition";
-      overlay.setAttribute("aria-hidden", "true");
-      content.className = "page-transition__content";
-      mark.className = "page-transition__price-mark";
-      mark.textContent = "€";
-      text.className = "page-transition__text";
-      text.textContent = resolveI18n(getLang(), "price_transition_text") || "Reparaturpreise werden geöffnet";
-
-      content.append(mark, text);
-      overlay.append(content);
-      document.body.append(overlay);
-
-      window.setTimeout(() => {
-        window.location.href = targetUrl.href;
-      }, transitionMs);
-    });
-  }
-
-  function initPriceReminder() {
-    const reminder = document.querySelector("[data-price-reminder]");
-    if (!reminder) return;
-
-    const path = window.location.pathname.replace(/\/+$/, "");
-    const isHome = path === "" || path.endsWith("/index.html");
-    if (!isHome) return;
-
-    const storageKey = "hn_price_reminder_dismissed_v1";
-    let dismissed = false;
-    try {
-      dismissed = sessionStorage.getItem(storageKey) === "1";
-    } catch (error) {}
-    if (dismissed) return;
-
-    const link = reminder.querySelector("a[href]");
-    const close = reminder.querySelector("[data-price-reminder-close]");
-    let timer = null;
-    let observer = null;
-    let cookieObserver = null;
-    const controller = new AbortController();
-    let shown = false;
-
-    function cleanup() {
-      if (timer) window.clearTimeout(timer);
-      timer = null;
-      observer?.disconnect();
-      observer = null;
-      cookieObserver?.disconnect();
-      cookieObserver = null;
-      controller.abort();
-    }
-
-    function cookieBannerVisible() {
-      const banner = document.querySelector("[data-cookie-consent]");
-      return Boolean(banner && banner.isConnected && !document.body.classList.contains("intro-pending"));
-    }
-
-    function showReminder() {
-      if (shown) return;
-      try {
-        if (sessionStorage.getItem(storageKey) === "1") return;
-      } catch (error) {}
-      if (cookieBannerVisible()) {
-        waitForCookieConsent();
-        return;
-      }
-      shown = true;
-      reminder.hidden = false;
-      requestAnimationFrame(() => reminder.classList.add("is-visible"));
-      trackEvent("price_reminder_show", { delay_ms: 10000 });
-    }
-
-    function startTimer() {
-      if (timer) return;
-      timer = window.setTimeout(() => {
-        timer = null;
-        showReminder();
-      }, 10000);
-    }
-
-    function waitForCookieConsent() {
-      if (!cookieBannerVisible()) {
-        startTimer();
-        return;
-      }
-      if (cookieObserver) return;
-      cookieObserver = new MutationObserver(() => {
-        if (cookieBannerVisible()) return;
-        cookieObserver?.disconnect();
-        cookieObserver = null;
-        startTimer();
-      });
-      cookieObserver.observe(document.body, { childList: true, subtree: true, attributes: true });
-    }
-
-    function waitUntilVisible() {
-      if (!document.body.classList.contains("intro-pending")) {
-        if (cookieBannerVisible()) waitForCookieConsent();
-        else startTimer();
-        return;
-      }
-
-      observer = new MutationObserver(() => {
-        if (document.body.classList.contains("intro-pending")) return;
-        observer?.disconnect();
-        observer = null;
-        if (cookieBannerVisible()) waitForCookieConsent();
-        else startTimer();
-      });
-      observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
-    }
-
-    close?.addEventListener("click", () => {
-      try {
-        sessionStorage.setItem(storageKey, "1");
-      } catch (error) {}
-      reminder.classList.remove("is-visible");
-      window.setTimeout(() => {
-        reminder.hidden = true;
-      }, prefersReducedMotion ? 0 : 220);
-      trackEvent("price_reminder_dismiss", { location: getClickLocation(reminder) });
-      cleanup();
-    }, { signal: controller.signal });
-
-    link?.addEventListener("click", () => {
-      try {
-        sessionStorage.setItem(storageKey, "1");
-      } catch (error) {}
-      trackEvent("price_reminder_click", { location: getClickLocation(reminder) });
-      cleanup();
-    }, { signal: controller.signal });
-
-    window.addEventListener("pagehide", cleanup, { once: true, signal: controller.signal });
-
-    waitUntilVisible();
-  }
-
   function initQuizHighlight() {
     const quizSection = document.getElementById("quiz");
     const targets = document.querySelectorAll(".js-quiz-highlight");
@@ -5177,223 +5401,6 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     );
 
     observer.observe(quizSection);
-  }
-
-  function initLogoIntro() {
-    const overlay = document.querySelector("[data-logo-intro]");
-    if (!overlay) return;
-
-    const key = config.logoIntroSessionKey || "hn_logo_intro_seen_v1";
-    const mark = overlay.querySelector("[data-logo-intro-mark]");
-    const title = overlay.querySelector("[data-logo-intro-title]");
-    const headerLogo = document.querySelector(".brand__logo");
-    const skipButton = overlay.querySelector("[data-logo-intro-skip]");
-    let gsap = window.gsap;
-
-    let alreadySeen = false;
-    try {
-      alreadySeen = sessionStorage.getItem(key) === "1";
-    } catch (error) {}
-
-    function clearInlineFallback() {
-      if (window.HN_logoIntroFallback) {
-        window.clearTimeout(window.HN_logoIntroFallback);
-        window.HN_logoIntroFallback = null;
-      }
-    }
-
-    function revealImmediately(reason) {
-      clearInlineFallback();
-      if (reason === "fallback") {
-        rememberSession();
-      }
-      document.body.classList.remove("intro-pending");
-      document.body.classList.add("intro-complete");
-      overlay.remove();
-      if (reason !== "seen") {
-        trackEvent("logo_intro_skip", { reason });
-      }
-    }
-
-    if (!config.logoIntro || alreadySeen || prefersReducedMotion || !mark || !headerLogo) {
-      revealImmediately(!config.logoIntro ? "disabled" : alreadySeen ? "seen" : prefersReducedMotion ? "reduced_motion" : "fallback");
-      return;
-    }
-
-    if (!gsap) {
-      if (window.HN_GSAP_FAILED) {
-        revealImmediately("fallback");
-        return;
-      }
-
-      document.body.classList.add("intro-pending");
-      clearInlineFallback();
-
-      let waitDone = false;
-      const finishWait = (ready) => {
-        if (waitDone || !overlay.isConnected) return;
-        waitDone = true;
-        gsap = window.gsap;
-        if (ready && gsap) {
-          initLogoIntro();
-        } else {
-          revealImmediately("fallback");
-        }
-      };
-
-      window.addEventListener("hn:gsap-ready", () => finishWait(true), { once: true });
-      window.addEventListener("hn:gsap-failed", () => finishWait(false), { once: true });
-      window.setTimeout(() => finishWait(Boolean(window.gsap)), 950);
-      return;
-    }
-
-    document.body.classList.add("intro-pending");
-    clearInlineFallback();
-
-    let done = false;
-    let timeline;
-    const fallbackTimer = window.setTimeout(() => completeIntro("timeout"), 5600);
-
-    function rememberSession() {
-      try {
-        sessionStorage.setItem(key, "1");
-      } catch (error) {}
-    }
-
-    function completeIntro(reason) {
-      if (done) return;
-      done = true;
-      window.clearTimeout(fallbackTimer);
-      rememberSession();
-      timeline?.kill();
-      gsap.set(headerLogo, { clearProps: "all" });
-      document.body.classList.remove("intro-pending");
-      document.body.classList.add("intro-complete");
-      overlay.classList.add("is-complete");
-      window.setTimeout(() => overlay.remove(), reason === "animated" ? 460 : 120);
-      trackEvent(reason === "skip" ? "logo_intro_skip" : "logo_intro_complete", { reason });
-    }
-
-    function getFlightTarget() {
-      const markRect = mark.getBoundingClientRect();
-      const targetRect = headerLogo.getBoundingClientRect();
-      const markCenterX = markRect.left + markRect.width / 2;
-      const markCenterY = markRect.top + markRect.height / 2;
-      const targetCenterX = targetRect.left + targetRect.width / 2;
-      const targetCenterY = targetRect.top + targetRect.height / 2;
-
-      return {
-        x: targetCenterX - markCenterX,
-        y: targetCenterY - markCenterY,
-        scale: Math.max(0.12, targetRect.width / markRect.width),
-      };
-    }
-
-    function prepareTitleChars() {
-      if (!title) return [];
-      if (!title.dataset.logoIntroSplit) {
-        const text = title.textContent.trim();
-        title.textContent = "";
-        Array.from(text).forEach((char) => {
-          const span = document.createElement("span");
-          span.className = char === " " ? "logo-intro__title-char logo-intro__title-char--space" : "logo-intro__title-char";
-          span.textContent = char === " " ? "\u00a0" : char;
-          title.appendChild(span);
-        });
-        title.dataset.logoIntroSplit = "true";
-      }
-      return title.querySelectorAll(".logo-intro__title-char");
-    }
-
-    function playIntro() {
-      if (done) return;
-
-      let flight = { x: 0, y: 0, scale: 0.16 };
-      const orb = overlay.querySelector(".logo-intro__orb");
-      const shine = overlay.querySelector(".logo-intro__shine");
-      const lights = overlay.querySelectorAll(".logo-intro__light");
-      const titleChars = prepareTitleChars();
-
-      gsap.set(overlay, { autoAlpha: 1 });
-      gsap.set(mark, { autoAlpha: 0.68, scale: 0.84, y: 18, transformOrigin: "50% 50%" });
-      gsap.set(orb, { autoAlpha: 0.72, scale: 0.84 });
-      gsap.set(lights, { autoAlpha: 0, x: -40 });
-      gsap.set(shine, { autoAlpha: 0, x: 0 });
-      if (title) {
-        gsap.set(title, {
-          "--title-sweep-x": "-135%",
-          autoAlpha: 0.88,
-          y: 8,
-          scale: 0.98,
-          filter: "blur(0px)",
-          transformOrigin: "50% 50%",
-        });
-        gsap.set(titleChars, {
-          autoAlpha: 0.9,
-          y: 3,
-          scale: 0.98,
-          filter: "blur(0px)",
-          transformOrigin: "50% 50%",
-        });
-      }
-
-      timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
-      timeline
-        .to(orb, { autoAlpha: 1, scale: 1, duration: 0.72 }, 0)
-        .to(mark, { autoAlpha: 1, scale: 1, y: 0, duration: 0.78, ease: "back.out(1.35)" }, 0.08);
-
-      if (title) {
-        timeline
-          .to(title, { autoAlpha: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.54 }, 0.34)
-          .to(titleChars, {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            filter: "blur(0px)",
-            duration: 0.46,
-            ease: "back.out(1.7)",
-            stagger: { each: 0.018, from: "center" },
-          }, 0.42)
-          .to(title, { "--title-sweep-x": "145%", duration: 0.76, ease: "power2.inOut" }, 0.58)
-          .to(title, { scale: 1.045, duration: 0.22, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0.82)
-          .to(title, { autoAlpha: 0, y: -12, scale: 0.94, filter: "blur(10px)", duration: 0.34, ease: "power2.in" }, 1.32);
-      }
-
-      timeline
-        .to(lights, { autoAlpha: 0.82, x: 0, duration: 0.64, stagger: 0.12 }, 0.16)
-        .to(shine, { autoAlpha: 0.9, x: "310%", duration: 0.82, ease: "power2.inOut" }, 0.62)
-        .to(mark, { scale: 1.055, duration: 0.42, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0.86)
-        .to(lights, { autoAlpha: 0, duration: 0.36 }, 1.3)
-        .add(() => {
-          flight = getFlightTarget();
-          gsap.set(headerLogo, { autoAlpha: 0, scale: 0.72 });
-        }, 1.58)
-        .to(mark, {
-          x: () => flight.x,
-          y: () => flight.y,
-          scale: () => flight.scale,
-          duration: 0.92,
-          ease: "power3.inOut",
-          filter: "drop-shadow(0 8px 18px rgba(0,0,0,.28)) drop-shadow(0 0 0 rgba(101,199,255,0))",
-        }, 1.62)
-        .to(orb, { autoAlpha: 0, scale: 1.18, duration: 0.55, ease: "power2.inOut" }, 1.72)
-        .add(() => {
-          document.body.classList.remove("intro-pending");
-          document.body.classList.add("intro-complete");
-          gsap.set(headerLogo, { clearProps: "all" });
-        }, 2.3)
-        .to(overlay, { autoAlpha: 0, duration: 0.42, ease: "power2.out" }, 2.34)
-        .add(() => completeIntro("animated"));
-    }
-
-    skipButton?.addEventListener("click", () => completeIntro("skip"), { once: true });
-
-    const image = mark.querySelector("img");
-    if (image?.decode) {
-      image.decode().then(playIntro).catch(playIntro);
-    } else {
-      playIntro();
-    }
   }
 
   function initShippingService() {
@@ -5450,16 +5457,13 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   }
 
   initHeaderShadow();
-  initLogoIntro();
   initThemeSystem();
   initLangButtons();
   initCookieConsent();
   initReveal();
   initFaqAccordion();
   initAnalyticsTracking();
-  initPageTransitionToPrices();
   initShippingService();
-  initPriceReminder();
   initPickupButton();
   initBundles();
   initQuiz();

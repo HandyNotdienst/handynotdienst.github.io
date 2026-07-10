@@ -5,20 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <script>
-    (() => {
-      try {
-        const saved = localStorage.getItem("hn_theme");
-        const system = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-        const theme = saved === "light" || saved === "dark" ? saved : system;
-        document.documentElement.dataset.theme = theme;
-        document.documentElement.style.colorScheme = theme;
-      } catch (error) {
-        document.documentElement.dataset.theme = "dark";
-        document.documentElement.style.colorScheme = "dark";
-      }
-    })();
-  </script>
+  <script src="theme.js"></script>
   <title>Versandbedingungen - Handy Notdienst Singen</title>
   <meta name="description" content="Hinweise zur Versand-Reparatur bei Handy Notdienst Singen: Einsenden, Freigabe, Zahlung, Rückversand und Daten." />
   <link rel="canonical" href="https://handy-notdienst-singen.de/versandbedingungen.html" />
@@ -33,34 +20,7 @@
   <link rel="stylesheet" href="print.css" media="print" />
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <meta name="theme-color" content="#1b374c">
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <script>
-    window.HN_GA_MEASUREMENT_ID = "G-WR8LVE0JCB";
-    window.HN_COOKIE_CONSENT_KEY = "hn_cookie_consent";
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){window.dataLayer.push(arguments);}
-    window.gtag = window.gtag || gtag;
-    const hnAnalyticsConsent = (() => {
-      try {
-        return localStorage.getItem(window.HN_COOKIE_CONSENT_KEY);
-      } catch (error) {
-        return null;
-      }
-    })();
-    gtag("consent", "default", {
-      analytics_storage: hnAnalyticsConsent === "granted" ? "granted" : "denied",
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-      wait_for_update: 500
-    });
-    gtag("js", new Date());
-    gtag("config", window.HN_GA_MEASUREMENT_ID, {
-      anonymize_ip: true,
-      send_page_view: hnAnalyticsConsent === "granted"
-    });
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WR8LVE0JCB"></script>
+  <script src="analytics.js"></script>
 </head>
 <body>
   <noscript>
@@ -72,6 +32,7 @@
       <a href="prices.html">Preise</a>
     </div>
   </noscript>
+  <a class="skip-link" href="#main-content" data-i18n="skip_to_content">Zum Inhalt springen</a>
 
   <header class="header">
     <div class="container header__inner">
@@ -103,7 +64,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="section section--clean">
       <div class="container">
         <article class="card legalpage legalpage--shipping">
@@ -150,14 +111,6 @@
     <a class="mobilebar__btn mobilebar__btn--prices" href="prices.html"><span data-i18n="mb_prices">Preise</span></a>
   </nav>
 
-  <script>
-    window.HN_CONFIG = {
-      whatsappNumber: "4915222416438",
-      city: "Singen",
-      defaultLang: "de",
-      serviceWorkerPath: "./sw.js"
-    };
-  </script>
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
