@@ -73,6 +73,7 @@ const PRESETS = {
 
 const shaderCache = new Map();
 const MAX_WEBGL_INSTANCES = 6;
+const MIN_WEBGL_SURFACE_SIZE = 24;
 let activeWebglInstances = 0;
 const prefersReducedMotion = () => window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
@@ -152,6 +153,18 @@ function getBorderRadiusPx(element, configured) {
   if (configured !== null && configured !== undefined && configured !== "") return Number(configured) || 0;
   const computed = getComputedStyle(element).borderTopLeftRadius || "0";
   return Number.parseFloat(computed) || 0;
+}
+
+function hasRenderableSurface(element) {
+  const rect = element.getBoundingClientRect();
+  const style = getComputedStyle(element);
+  return (
+    rect.width >= MIN_WEBGL_SURFACE_SIZE &&
+    rect.height >= MIN_WEBGL_SURFACE_SIZE &&
+    style.display !== "none" &&
+    style.visibility !== "hidden" &&
+    Number.parseFloat(style.opacity || "1") > 0.01
+  );
 }
 
 function createGradientTexture(size = 384) {
@@ -234,6 +247,7 @@ export class LiquidGlass {
     this.startTime = performance.now();
     this.resizeObserver = null;
     this.intersectionObserver = null;
+    this.activationObserver = null;
     this.uniforms = {};
     this.buffers = {};
     this.webglActive = false;
@@ -252,7 +266,12 @@ export class LiquidGlass {
       this.textureSource = await resolveTextureSource(this.options.texture);
       if (!this.textureSource) return;
       if (this.destroyed) return;
+      if (!hasRenderableSurface(this.element)) {
+        this.deferUntilRenderable();
+        return;
+      }
       if (activeWebglInstances >= MAX_WEBGL_INSTANCES) return;
+      this.disconnectActivationObserver();
       this.setupCanvas();
       await this.setupWebGL();
       activeWebglInstances += 1;
@@ -369,6 +388,22 @@ export class LiquidGlass {
     }
   }
 
+  deferUntilRenderable() {
+    if (this.activationObserver || this.destroyed || typeof ResizeObserver === "undefined") return;
+    this.activationObserver = new ResizeObserver(() => {
+      if (this.destroyed || this.webglActive || !hasRenderableSurface(this.element)) return;
+      this.disconnectActivationObserver();
+      this.init();
+    });
+    this.activationObserver.observe(this.element);
+  }
+
+  disconnectActivationObserver() {
+    if (!this.activationObserver) return;
+    this.activationObserver.disconnect();
+    this.activationObserver = null;
+  }
+
   uploadTexture() {
     if (!this.gl || !this.textureSource) return;
     const gl = this.gl;
@@ -465,6 +500,7 @@ export class LiquidGlass {
 
   destroyWebGLOnly() {
     this.stopLoop();
+    this.disconnectActivationObserver();
     if (this.resizeObserver) this.resizeObserver.disconnect();
     if (this.intersectionObserver) this.intersectionObserver.disconnect();
     this.element.removeEventListener("pointermove", this.onPointerMove);

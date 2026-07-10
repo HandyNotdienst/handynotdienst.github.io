@@ -126,6 +126,8 @@ Implemented safeguards:
 - Lazy ES module import from `app.js` only when a marked surface approaches viewport.
 - IntersectionObserver renders only visible WebGL surfaces.
 - ResizeObserver updates geometry without polling.
+- Hidden or tiny responsive surfaces stay on the CSS material until they become
+  renderable, instead of opening a WebGL context at `1x1`.
 - Device pixel ratio cap: desktop up to `1.6`, mobile/balanced up to `1.15`.
 - Maximum of six active WebGL surfaces per page; the rest use CSS fallback.
 - `prefers-reduced-motion: reduce` disables WebGL animation and uses static fallback.
