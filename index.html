@@ -5,20 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <script>
-    (() => {
-      try {
-        const saved = localStorage.getItem("hn_theme");
-        const system = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-        const theme = saved === "light" || saved === "dark" ? saved : system;
-        document.documentElement.dataset.theme = theme;
-        document.documentElement.style.colorScheme = theme;
-      } catch (error) {
-        document.documentElement.dataset.theme = "dark";
-        document.documentElement.style.colorScheme = "dark";
-      }
-    })();
-  </script>
+  <script src="theme.js"></script>
   <title>Handy Notdienst Singen – Handyreparatur (DE/UA/EN)</title>
   <meta name="description" content="Handy Notdienst in Singen: Display, Akku, Ladebuchse, Kamera, Wasserschaden. Schnell & zuverlässig. WhatsApp, Telegram, Email." />
   <link rel="canonical" href="https://handy-notdienst-singen.de/" />
@@ -31,7 +18,6 @@
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preload" as="image" href="assets/hero/owner-repair-960.jpg" imagesrcset="assets/hero/owner-repair-420.jpg 420w, assets/hero/owner-repair-640.jpg 640w, assets/hero/owner-repair-960.jpg 960w, assets/hero/owner-repair-1280.jpg 1280w" imagesizes="(max-width: 700px) calc(100vw - 48px), 620px" />
-  <link rel="preload" as="image" href="assets/logo-intro.webp" type="image/webp" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="print.css" media="print" />
 
@@ -39,35 +25,7 @@
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#1b374c">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <!-- Google tag (gtag.js) -->
-  <script>
-    window.HN_GA_MEASUREMENT_ID = "G-WR8LVE0JCB";
-    window.HN_COOKIE_CONSENT_KEY = "hn_cookie_consent";
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){window.dataLayer.push(arguments);}
-    window.gtag = window.gtag || gtag;
-    const hnAnalyticsConsent = (() => {
-      try {
-        return localStorage.getItem(window.HN_COOKIE_CONSENT_KEY);
-      } catch (error) {
-        return null;
-      }
-    })();
-    gtag("consent", "default", {
-      analytics_storage: hnAnalyticsConsent === "granted" ? "granted" : "denied",
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-      wait_for_update: 500
-    });
-    gtag("js", new Date());
-    gtag("config", window.HN_GA_MEASUREMENT_ID, {
-      anonymize_ip: true,
-      send_page_view: hnAnalyticsConsent === "granted"
-    });
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WR8LVE0JCB"></script>
+  <script src="analytics.js"></script>
 </head>
 
 <body>
@@ -81,37 +39,7 @@
       <a href="prices.html">Preise</a>
     </div>
   </noscript>
-  <script>
-    (() => {
-      try {
-        const key = "hn_logo_intro_seen_v1";
-        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        if (!reduced && !sessionStorage.getItem(key)) {
-          document.body.classList.add("intro-pending");
-          window.HN_logoIntroFallback = window.setTimeout(() => {
-            sessionStorage.setItem(key, "1");
-            document.body.classList.remove("intro-pending");
-            document.body.classList.add("intro-complete");
-            document.querySelector("[data-logo-intro]")?.remove();
-          }, 6500);
-        }
-      } catch (error) {}
-    })();
-  </script>
-  <div class="logo-intro" data-logo-intro aria-hidden="true">
-    <div class="logo-intro__light logo-intro__light--one"></div>
-    <div class="logo-intro__light logo-intro__light--two"></div>
-    <div class="logo-intro__stage">
-      <div class="logo-intro__orb"></div>
-      <picture class="logo-intro__mark" data-logo-intro-mark>
-        <source srcset="assets/logo-intro.webp" type="image/webp" />
-        <img src="assets/logo-intro.png" alt="" width="768" height="768" decoding="async" />
-      </picture>
-      <div class="logo-intro__shine"></div>
-      <div class="logo-intro__title" data-logo-intro-title>Handy Notdienst</div>
-    </div>
-    <button class="logo-intro__skip" type="button" data-logo-intro-skip tabindex="-1">Überspringen</button>
-  </div>
+  <a class="skip-link" href="#main-content" data-i18n="skip_to_content">Zum Inhalt springen</a>
   <header class="header">
     <div class="container header__inner">
       <a class="brand" href="index.html" aria-label="Handy Notdienst">
@@ -144,57 +72,40 @@
       </div>
     </div>
   </header>
-  <div class="ticker" aria-live="polite">
-    <div class="ticker__track">
-      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-      <span class="ticker__item" data-i18n="no_appt">Ohne Termin</span>
-    </div>
-  </div>
-
-  <main id="top">
+  <main id="main-content" tabindex="-1">
     <section class="hero hero--concept">
       <div class="container concept-hero">
         <div class="concept-hero__copy">
-          <div class="concept-badge"><span data-i18n="no_appt">Ohne Termin</span><span data-i18n="hero_help_now">Sofort Hilfe</span></div>
+          <div class="concept-badge"><span data-i18n="hero_help_now">Singen & Umgebung</span><span data-i18n="hero_service_note">nach Absprache</span></div>
 
-          <h1 data-i18n="home_concept_h1">Faire Preise.<br class="hero-mobile-break"> Schnelle <br class="hero-mobile-break">Reparaturen.<br><span>Zufriedene <br class="hero-mobile-break">Kunden.</span></h1>
+          <h1 data-i18n="home_concept_h1">Smartphone-Reparatur in Singen – Preis vor der Reparatur klar.</h1>
 
           <p class="lead" data-i18n="lead">
-            Display, Akku, Ladebuchse, Kamera, Wasserschaden – wir helfen schnell. Schreib uns per WhatsApp oder ruf an.
+            Display, Akku, Ladebuchse, Kamera oder Wasserschaden: Schreib kurz Modell und Schaden. Du bekommst Preis, Dauer und Teileoption vorab.
           </p>
 
           <div class="concept-proof">
             <div class="concept-proof__item">
               <span class="concept-proof__icon concept-proof__icon--green asset-icon--proof-fast" aria-hidden="true"></span>
-              <strong data-i18n="hero_proof_fast">Schnell vor Ort</strong>
-              <small data-i18n="hero_proof_fast_text">meist in 30–60 Min.</small>
+              <strong data-i18n="hero_proof_fast">Preis vorab</strong>
+              <small data-i18n="hero_proof_fast_text">keine Reparatur ohne Freigabe</small>
             </div>
             <div class="concept-proof__item">
               <span class="concept-proof__icon concept-proof__icon--amber asset-icon--proof-warranty" aria-hidden="true"></span>
-              <strong data-i18n="hero_proof_warranty">Garantie auf</strong>
-              <small data-i18n="hero_proof_warranty_text">alle Reparaturen</small>
+              <strong data-i18n="hero_proof_warranty">Daten bleiben auf dem Gerät</strong>
+              <small data-i18n="hero_proof_warranty_text">Standard-Reparaturen ohne Löschen</small>
             </div>
             <div class="concept-proof__item">
               <span class="concept-proof__icon concept-proof__icon--blue asset-icon--proof-price" aria-hidden="true"></span>
-              <strong data-i18n="hero_proof_price">Faire Preise</strong>
-              <small data-i18n="hero_proof_price_text">transparent</small>
+              <strong data-i18n="hero_proof_price">Übergabe nach Absprache</strong>
+              <small data-i18n="hero_proof_price_text">Singen, Abholung oder Versand</small>
             </div>
           </div>
 
           <div class="hero__actions">
             <a class="btn btn--wa concept-cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-i18n="cta_main">Jetzt per WhatsApp anfragen</a>
-            <a class="btn btn--ghost btn--quiz concept-quiz js-quiz-highlight js-quiz-open" href="#quiz" data-i18n="quiz_label">Diagnose (1 Min)</a>
-            <a class="btn btn--ghost btn--call concept-call" href="tel:+4915222416438">01522 2416438 anrufen</a>
+            <a class="btn btn--ghost btn--prices concept-prices" href="prices.html" data-i18n="cta_prices">Preise ansehen</a>
+            <a class="btn btn--ghost btn--call concept-call" href="tel:+4915222416438" data-i18n="contact_call_with_number">01522 2416438 anrufen</a>
           </div>
 
           <div class="concept-safe">
@@ -208,12 +119,11 @@
             <source type="image/jpeg" srcset="assets/hero/owner-repair-420.jpg 420w, assets/hero/owner-repair-640.jpg 640w, assets/hero/owner-repair-960.jpg 960w, assets/hero/owner-repair-1280.jpg 1280w" sizes="(max-width: 700px) calc(100vw - 48px), 620px">
             <img src="assets/hero/owner-repair-960.jpg" alt="Handy Notdienst Singen Reparaturservice mit Vorher-Nachher Smartphone und Werkzeug" width="960" height="546" decoding="async" fetchpriority="high">
           </picture>
-          <div class="rating-card" aria-label="Bewertung">
-            <span class="rating-card__mark">☆</span>
-            <strong>4,9 / 5</strong>
-            <small data-i18n="hero_rating_text">über 250+ Bewertungen</small>
-            <span class="rating-card__stars">★★★★★</span>
-            <small data-i18n="hero_rating_area">Aus Singen und Umgebung</small>
+          <div class="rating-card rating-card--trust" aria-label="Vertrauenshinweise">
+            <span class="rating-card__mark asset-icon--proof-price" aria-hidden="true"></span>
+            <strong data-i18n="hero_trust_title">Klar vor dem Auftrag</strong>
+            <small data-i18n="hero_trust_text">Preis, Dauer und Teilequalität werden vorab bestätigt.</small>
+            <small data-i18n="hero_rating_area">Singen und Umgebung</small>
           </div>
         </div>
       </div>
@@ -490,24 +400,6 @@
   <!-- Floating WhatsApp -->
   <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"></a>
 
-  <div class="price-reminder" data-price-reminder hidden>
-    <a class="price-reminder__link" href="prices.html">
-      <span class="price-reminder__ambient" aria-hidden="true"></span>
-      <span class="price-reminder__scan" aria-hidden="true"></span>
-      <span class="price-reminder__badge" aria-hidden="true">
-        <span class="price-reminder__badge-ring"></span>
-        <span class="price-reminder__badge-symbol">&euro;</span>
-      </span>
-      <span class="price-reminder__copy">
-        <span class="price-reminder__kicker" data-i18n="price_reminder_kicker">Smart Preischeck</span>
-        <strong data-i18n="price_reminder_title">Preis sofort prüfen</strong>
-        <small data-i18n="price_reminder_text">Modell wählen und direkt anfragen</small>
-      </span>
-      <span class="price-reminder__action" aria-hidden="true">&rarr;</span>
-    </a>
-    <button class="price-reminder__close" type="button" data-price-reminder-close data-i18n-aria-label="price_reminder_close" aria-label="Preishinweis schliessen"><span aria-hidden="true">&times;</span></button>
-  </div>
-
   <!-- QUIZ MODAL (same as earlier) -->
   <div class="quiz-modal" id="quizModal" hidden>
     <div class="quiz-modal__overlay" id="quizOverlay"></div>
@@ -560,38 +452,32 @@
   </div>
 
   <script>
-    window.HN_CONFIG = {
-      whatsappNumber: "4915222416438",
-      city: "Singen",
-      defaultLang: "de",
-      htmlKeys: ["h1", "home_concept_h1"],
-      serviceWorkerPath: "./sw.js",
-      logoIntro: true,
-      logoIntroSessionKey: "hn_logo_intro_seen_v1"
-    };
     window.HN_I18N = {
       de:{
         tagline:"Singen • Schnell & zuverlässig",
         call:"Anrufen",
         kicker:"Handyreparatur in Singen",
-        h1:"Faire Preise. Schnelle Reparaturen.<br/>Zufriedene Kunden.",
-        home_concept_h1:"Faire Preise.<br class='hero-mobile-break'> Schnelle <br class='hero-mobile-break'>Reparaturen.<br><span>Zufriedene <br class='hero-mobile-break'>Kunden.</span>",
-        lead:"Display, Akku, Ladebuchse, Kamera, Wasserschaden – wir helfen schnell. Schreib uns per WhatsApp oder ruf an.",
+        h1:"Smartphone-Reparatur in Singen – Preis vor der Reparatur klar.",
+        home_concept_h1:"Smartphone-Reparatur in Singen – Preis vor der Reparatur klar.",
+        lead:"Display, Akku, Ladebuchse, Kamera oder Wasserschaden: Schreib kurz Modell und Schaden. Du bekommst Preis, Dauer und Teileoption vorab.",
         cta_main:"Jetzt per WhatsApp anfragen",
         cta_prices:"Preise ansehen",
         cta_pickup:"Abholung/Lieferung",
         nav_home:"Start",
         safe_badge:"Ohne Datenverlust",
-        hero_help_now:"Sofort Hilfe",
-        hero_proof_fast:"Schnell vor Ort",
-        hero_proof_fast_text:"meist in 30–60 Min.",
-        hero_proof_warranty:"Garantie auf",
-        hero_proof_warranty_text:"alle Reparaturen",
-        hero_proof_price:"Faire Preise",
-        hero_proof_price_text:"transparent",
+        hero_help_now:"Singen & Umgebung",
+        hero_service_note:"nach Absprache",
+        hero_proof_fast:"Preis vorab",
+        hero_proof_fast_text:"keine Reparatur ohne Freigabe",
+        hero_proof_warranty:"Daten bleiben auf dem Gerät",
+        hero_proof_warranty_text:"Standard-Reparaturen ohne Löschen",
+        hero_proof_price:"Übergabe nach Absprache",
+        hero_proof_price_text:"Singen, Abholung oder Versand",
         hero_quality:"Ersatzteile in Erstausrüster-Qualität",
-        hero_rating_text:"über 250+ Bewertungen",
-        hero_rating_area:"Aus Singen und Umgebung",
+        hero_trust_title:"Klar vor dem Auftrag",
+        hero_trust_text:"Preis, Dauer und Teilequalität werden vorab bestätigt.",
+        hero_rating_area:"Singen und Umgebung",
+        contact_call_with_number:"01522 2416438 anrufen",
         home_price_cta_eyebrow:"Preise ohne Umwege",
         home_price_cta_title:"Gerät auswählen, Preis prüfen, direkt anfragen.",
         home_price_cta_text:"Die komplette Preisliste ist übersichtlich nach iPhone und Samsung getrennt. So bleibt die Startseite ruhig und du findest schneller den passenden Reparaturpreis.",
@@ -698,24 +584,27 @@
         tagline:"Singen • Швидко та надійно",
         call:"Подзвонити",
         kicker:"Ремонт телефонів у Singen",
-        h1:"Чесні ціни. Швидкий ремонт.<br/>Задоволені клієнти.",
-        home_concept_h1:"Чесні ціни.<br class='hero-mobile-break'> Швидкий <br class='hero-mobile-break'>ремонт.<br><span>Задоволені <br class='hero-mobile-break'>клієнти.</span>",
-        lead:"Дисплей, акумулятор, розʼєм зарядки, камера, після води — допоможемо швидко. Пиши у WhatsApp або дзвони.",
+        h1:"Ремонт смартфонів у Singen — ціна зрозуміла до ремонту.",
+        home_concept_h1:"Ремонт смартфонів у Singen — ціна зрозуміла до ремонту.",
+        lead:"Дисплей, акумулятор, розʼєм зарядки, камера або пошкодження водою: напишіть модель і проблему. Ви отримаєте ціну, термін і варіант запчастини заздалегідь.",
         cta_main:"Запитати у WhatsApp",
         cta_prices:"Переглянути ціни",
         cta_pickup:"Забір/доставка",
         nav_home:"Головна",
         safe_badge:"Без втрати даних",
-        hero_help_now:"Швидка допомога",
-        hero_proof_fast:"Швидко на місці",
-        hero_proof_fast_text:"часто за 30–60 хв",
-        hero_proof_warranty:"Гарантія на",
-        hero_proof_warranty_text:"усі ремонти",
-        hero_proof_price:"Чесні ціни",
-        hero_proof_price_text:"прозоро",
+        hero_help_now:"Singen та околиці",
+        hero_service_note:"за домовленістю",
+        hero_proof_fast:"Ціна заздалегідь",
+        hero_proof_fast_text:"ремонт тільки після підтвердження",
+        hero_proof_warranty:"Дані залишаються на пристрої",
+        hero_proof_warranty_text:"стандартний ремонт без видалення",
+        hero_proof_price:"Передача за домовленістю",
+        hero_proof_price_text:"Singen, забір або доставка",
         hero_quality:"Запчастини якісного рівня",
-        hero_rating_text:"понад 250+ відгуків",
+        hero_trust_title:"Усе зрозуміло до замовлення",
+        hero_trust_text:"Ціну, термін і якість запчастини підтверджуємо заздалегідь.",
         hero_rating_area:"Singen та околиці",
+        contact_call_with_number:"Подзвонити: 01522 2416438",
         home_price_cta_eyebrow:"Ціни без зайвих кроків",
         home_price_cta_title:"Оберіть модель, перевірте ціну, одразу надішліть запит.",
         home_price_cta_text:"Повний прайс-лист розділений на iPhone і Samsung. Так головна сторінка залишається спокійною, а потрібну ціну легше знайти.",
@@ -822,24 +711,27 @@
         tagline:"Singen • Fast & reliable",
         call:"Call",
         kicker:"Phone repair in Singen",
-        h1:"Fair prices. Fast repairs.<br/>Happy customers.",
-        home_concept_h1:"Fair prices.<br class='hero-mobile-break'> Fast <br class='hero-mobile-break'>repairs.<br><span>Happy <br class='hero-mobile-break'>customers.</span>",
-        lead:"Screen, battery, charging port, camera, water damage — we help fast. Message us on WhatsApp or call.",
+        h1:"Smartphone repair in Singen — clear price before repair.",
+        home_concept_h1:"Smartphone repair in Singen — clear price before repair.",
+        lead:"Screen, battery, charging port, camera or water damage: send the model and issue. You get the price, timing and part option upfront.",
         cta_main:"Ask on WhatsApp now",
         cta_prices:"View prices",
         cta_pickup:"Pickup/Delivery",
         nav_home:"Home",
         safe_badge:"No data loss",
-        hero_help_now:"Fast help",
-        hero_proof_fast:"Fast local service",
-        hero_proof_fast_text:"often in 30–60 min",
-        hero_proof_warranty:"Warranty on",
-        hero_proof_warranty_text:"all repairs",
-        hero_proof_price:"Fair prices",
-        hero_proof_price_text:"transparent",
+        hero_help_now:"Singen & nearby",
+        hero_service_note:"by arrangement",
+        hero_proof_fast:"Price upfront",
+        hero_proof_fast_text:"no repair without approval",
+        hero_proof_warranty:"Data stays on your device",
+        hero_proof_warranty_text:"standard repairs without wiping",
+        hero_proof_price:"Handover by arrangement",
+        hero_proof_price_text:"Singen, pickup or shipping",
         hero_quality:"OEM-quality replacement parts",
-        hero_rating_text:"over 250+ reviews",
-        hero_rating_area:"From Singen and nearby",
+        hero_trust_title:"Clear before the order",
+        hero_trust_text:"Price, timing and part quality are confirmed upfront.",
+        hero_rating_area:"Singen and nearby",
+        contact_call_with_number:"Call 01522 2416438",
         home_price_cta_eyebrow:"Prices without friction",
         home_price_cta_title:"Choose your device, check the price, ask directly.",
         home_price_cta_text:"The full price list is separated clearly by iPhone and Samsung. The homepage stays calm, and you find the right repair price faster.",
@@ -983,11 +875,6 @@
     ]
   }
   </script>
-  <script>
-    window.HN_GSAP_READY = Boolean(window.gsap);
-    window.HN_GSAP_FAILED = false;
-  </script>
-  <script async src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" onload="window.HN_GSAP_READY=true;window.dispatchEvent(new Event('hn:gsap-ready'))" onerror="window.HN_GSAP_FAILED=true;window.dispatchEvent(new Event('hn:gsap-failed'))"></script>
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
