@@ -57,6 +57,7 @@ const glass = new LiquidGlass({
   chromaticAberration: 0.08,
   highlightIntensity: 0.42,
   borderGlow: 0.52,
+  canvasOpacity: 0.28,
   borderRadius: 28,
   shadowStrength: 0.35,
   animationSpeed: 0.42,
@@ -80,9 +81,17 @@ Markup:
 ```html
 <div
   class="card"
-  data-liquid-glass="panel"
+  data-liquid-glass="media"
   data-liquid-glass-texture="assets/phones/iphone-12-pro-max.png"
-  data-liquid-glass-refraction="0.14">
+  data-liquid-glass-refraction="0.06">
+  ...
+</div>
+```
+
+For content-heavy cards, prefer the quiet readable material:
+
+```html
+<div class="card" data-liquid-glass="text-panel">
   ...
 </div>
 ```
@@ -90,8 +99,10 @@ Markup:
 ## Presets
 
 - `nav` - subtle header/docked navigation material.
-- `panel` - general premium cards.
-- `hero` - stronger refraction for high-value CTA/product surfaces.
+- `text-panel` - readable CSS-first material for text-heavy cards.
+- `panel` - general premium cards with restrained values.
+- `media` - controlled WebGL refraction for image/product previews.
+- `hero` - stronger refraction for demo/high-value media surfaces.
 - `dock` - bottom navigation/dock material.
 - `subtle` - low-intensity fallback-style glass.
 
@@ -105,7 +116,8 @@ Real refraction needs something stable to sample. Use one of:
 
 If no texture is provided, the element uses the CSS fallback material. This is
 intentional for headers, mobile navigation and small cards where a WebGL context
-would not add enough value.
+would not add enough value. Avoid using generated textures behind long text;
+use `text-panel` so readability stays stronger than the material effect.
 
 ## Performance
 
