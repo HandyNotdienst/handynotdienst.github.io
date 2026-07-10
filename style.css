@@ -4358,6 +4358,15 @@ body.intro-pending .cookie-consent{
   font-size: clamp(22px, 3vw, 30px);
   line-height: 1.15;
 }
+.price-selector-preview[data-liquid-glass="text-panel"]{
+  color: var(--text);
+}
+.price-selector-preview[data-liquid-glass="text-panel"] .price-selector-device-kicker{
+  color: rgba(238,243,247,.62);
+}
+.price-selector-preview[data-liquid-glass="text-panel"] .price-selector-device-copy strong{
+  color: #ffffff;
+}
 .price-selector-results{
   grid-column: 1 / 2;
   padding: clamp(18px, 3vw, 24px);
@@ -5014,6 +5023,15 @@ html[data-theme="light"] .price-selector-results{
   border-color: rgba(7,21,33,.11);
   background: rgba(255,255,255,.70);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+}
+html[data-theme="light"] .price-selector-preview[data-liquid-glass="text-panel"]{
+  color: var(--ink);
+}
+html[data-theme="light"] .price-selector-preview[data-liquid-glass="text-panel"] .price-selector-device-kicker{
+  color: rgba(11,29,42,.58);
+}
+html[data-theme="light"] .price-selector-preview[data-liquid-glass="text-panel"] .price-selector-device-copy strong{
+  color: var(--ink);
 }
 html[data-theme="light"] .price-selector-trust{
   color: #8a5b12;
