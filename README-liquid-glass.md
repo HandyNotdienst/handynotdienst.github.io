@@ -10,7 +10,7 @@ WebGL layer adds controlled refraction where a texture is available.
 - `src/liquidGlass.css` - shared material CSS and fallback styling.
 - `src/shaders/vertex.glsl` - fullscreen quad vertex shader.
 - `src/shaders/fragment.glsl` - refraction, blur, fresnel, chromatic shift and highlights.
-- `liquid-glass-demo.html` - standalone demo; production `index.html` remains unchanged.
+- `liquid-glass-demo.html` - standalone demo; production pages use the effect only on selected decorative surfaces.
 
 ## Architecture
 
@@ -88,7 +88,7 @@ Markup:
 </div>
 ```
 
-For content-heavy cards, prefer the quiet readable material:
+For short content cards, the quiet readable material is available:
 
 ```html
 <div class="card" data-liquid-glass="text-panel">
@@ -99,7 +99,7 @@ For content-heavy cards, prefer the quiet readable material:
 ## Presets
 
 - `nav` - subtle header/docked navigation material.
-- `text-panel` - readable CSS-first material for text-heavy cards.
+- `text-panel` - readable CSS-first material for short text cards; avoid it on long copy or price lists.
 - `panel` - general premium cards with restrained values.
 - `media` - controlled WebGL refraction for image/product previews.
 - `hero` - stronger refraction for demo/high-value media surfaces.
@@ -116,8 +116,11 @@ Real refraction needs something stable to sample. Use one of:
 
 If no texture is provided, the element uses the CSS fallback material. This is
 intentional for headers, mobile navigation and small cards where a WebGL context
-would not add enough value. Avoid using generated textures behind long text;
-use `text-panel` so readability stays stronger than the material effect.
+would not add enough value. Avoid using generated textures behind long text.
+Production guidance after visual QA: reserve real refraction for navigation,
+docks, media previews and small decorative surfaces. Text-heavy cards, trust
+copy and price configurators should use ordinary premium panels instead, so the
+material never competes with reading or decision making.
 
 ## Performance
 
