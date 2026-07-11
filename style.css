@@ -2884,14 +2884,15 @@ html[data-theme="light"] .shipping-picture--light{
   font-size: clamp(38px, 6vw, 72px);
   line-height: .98;
   letter-spacing: 0;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  hyphens:auto;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+  text-wrap: balance;
 }
 .shipping-hero p{
   max-width: 62ch;
-  overflow-wrap:anywhere;
-  word-break:break-word;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 .shipping-hero__actions{
   display:flex;
@@ -3103,8 +3104,9 @@ html[data-theme="light"] .shipping-hero__visual .shipping-picture--hero.shipping
 .shipping-approval__card{
   border-color: rgba(244,184,96,.30);
   background:
-    radial-gradient(520px 240px at 92% 12%, rgba(244,184,96,.18), transparent 68%),
-    rgba(255,255,255,.045);
+    radial-gradient(520px 240px at 92% 12%, rgba(244,184,96,.14), transparent 68%),
+    linear-gradient(155deg, rgba(24,52,69,.96), rgba(8,24,37,.97));
+  box-shadow: 0 26px 64px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.08);
 }
 .shipping-approval__badge{
   display:inline-flex;
@@ -3158,6 +3160,10 @@ html[data-theme="light"] .shipping-hero__visual .shipping-picture--hero.shipping
   max-width:none;
   margin:0;
   align-self:center;
+  background:
+    radial-gradient(420px 220px at 8% 0%, rgba(101,199,255,.10), transparent 68%),
+    linear-gradient(155deg, rgba(23,49,66,.94), rgba(9,27,40,.96));
+  border-color: rgba(190,226,244,.13);
 }
 .shipping-packing__grid{
   display:grid;
@@ -3195,8 +3201,9 @@ html[data-theme="light"] .shipping-hero__visual .shipping-picture--hero.shipping
   text-align:center;
   border-color: rgba(53,215,101,.24);
   background:
-    radial-gradient(520px 260px at 50% 0%, rgba(53,215,101,.16), transparent 68%),
-    rgba(255,255,255,.045);
+    radial-gradient(520px 260px at 50% 0%, rgba(53,215,101,.14), transparent 68%),
+    linear-gradient(155deg, rgba(24,52,69,.96), rgba(8,24,37,.97));
+  box-shadow: 0 26px 64px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.08);
 }
 .shipping-final__card .btn{
   max-width:100%;
@@ -5181,8 +5188,11 @@ html[data-theme="light"] .shipping-entry-card,
 html[data-theme="light"] .shipping-approval__card,
 html[data-theme="light"] .shipping-pack-card,
 html[data-theme="light"] .shipping-final__card{
-  background: rgba(255,255,255,.84);
+  background:
+    radial-gradient(460px 220px at 85% 0%, rgba(101,199,255,.10), transparent 68%),
+    linear-gradient(155deg, rgba(255,255,255,.94), rgba(232,244,250,.90));
   border-color: rgba(11,29,42,.10);
+  box-shadow: 0 22px 54px rgba(39,74,96,.13), inset 0 1px 0 rgba(255,255,255,.82);
 }
 html[data-theme="light"] .shipping-hero{
   background:

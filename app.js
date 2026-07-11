@@ -2399,7 +2399,7 @@
       price_mode_shipping_note: "Для ремонту поштою спочатку надішлю інструкції. Без твоєї згоди ремонт не починається.",
       price_mode_shipping_cta: "Запитати Versand у WhatsApp",
       shipping_kicker: "Відправка по Німеччині",
-      shipping_h1: "Надішли телефон. Спочатку перевірка. Потім рішення.",
+      shipping_h1: "Надішли телефон. Спершу перевірка, потім рішення.",
       shipping_hero_cta: "Почати через WhatsApp",
       shipping_logistics_pack: "М'яко запакувати",
       shipping_logistics_send: "Надіслати з трекінгом",

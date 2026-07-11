@@ -33,7 +33,7 @@ float fbm(vec2 p){float v=0.0;float a=0.5;for(int i=0;i<4;i++){v+=a*noise(p);p*=
 float roundedRectAlpha(vec2 uv,float radiusPx){vec2 s=uResolution;vec2 p=(uv-0.5)*s;vec2 h=s*0.5;float r=min(radiusPx,min(h.x,h.y)-1.0);vec2 q=abs(p)-h+r;float d=length(max(q,0.0))+min(max(q.x,q.y),0.0)-r;return 1.0-smoothstep(-1.5,1.5,d);}
 vec3 saturateColor(vec3 color,float amount){float gray=dot(color,vec3(0.299,0.587,0.114));return mix(vec3(gray),color,amount);}
 vec4 sampleGlass(vec2 uv,float blurPx){vec2 px=1.0/max(uResolution,vec2(1.0));vec2 o=px*blurPx;vec4 c=texture2D(uTexture,uv)*0.28;c+=texture2D(uTexture,uv+vec2(o.x,0.0))*0.10;c+=texture2D(uTexture,uv-vec2(o.x,0.0))*0.10;c+=texture2D(uTexture,uv+vec2(0.0,o.y))*0.10;c+=texture2D(uTexture,uv-vec2(0.0,o.y))*0.10;c+=texture2D(uTexture,uv+vec2(o.x,o.y))*0.08;c+=texture2D(uTexture,uv+vec2(-o.x,o.y))*0.08;c+=texture2D(uTexture,uv+vec2(o.x,-o.y))*0.08;c+=texture2D(uTexture,uv+vec2(-o.x,-o.y))*0.08;return c;}
-void main(){vec2 uv=vUv;vec2 centered=uv-0.5;float t=uTime*0.08;float n=fbm(uv*8.0+vec2(t,-t*0.7+uScroll*0.001));vec2 normal=normalize(vec2(fbm(uv*9.0+vec2(2.0,t))-0.5,fbm(uv*9.0+vec2(-t,4.0))-0.5)+0.0001);float edge=smoothstep(0.34,0.72,length(centered*vec2(uResolution.x/max(uResolution.y,1.0),1.0)));vec2 mousePull=(uMouse-0.5)*0.012*uIntensity;vec2 refractOffset=normal*(0.006+uRefraction*0.028)*uIntensity;refractOffset+=centered*edge*uRefraction*0.012;refractOffset+=mousePull*(0.35+edge);refractOffset+=(n-0.5)*uDistortion*0.025;vec2 distortedUv=clamp(uv+refractOffset,0.002,0.998);float blurPx=mix(0.8,10.0,clamp(uBlur/28.0,0.0,1.0));vec4 base=sampleGlass(distortedUv,blurPx);float ca=uChromaticAberration*0.006;float red=texture2D(uTexture,clamp(distortedUv+normal*ca,0.0,1.0)).r;float blue=texture2D(uTexture,clamp(distortedUv-normal*ca,0.0,1.0)).b;base.r=mix(base.r,red,0.34);base.b=mix(base.b,blue,0.34);vec3 color=saturateColor(base.rgb,uSaturation)*uBrightness;color=mix(color,vec3(0.92,0.98,1.0),0.10*uIntensity);float fresnel=pow(edge,2.2)*uBorderGlow;vec2 lightPos=mix(vec2(0.18,0.12),vec2(0.86,0.22),0.5+0.5*sin(uTime*0.18));lightPos=mix(lightPos,uMouse,0.28);float spec=pow(max(0.0,1.0-distance(uv,lightPos)*2.4),4.0)*uHighlightIntensity;float sweep=smoothstep(0.015,0.0,abs((uv.x+uv.y*0.32)-(0.18+0.18*sin(uTime*0.16))))*0.18*uHighlightIntensity;float inner=smoothstep(0.72,0.0,length(centered))*0.045;color+=vec3(0.72,0.92,1.0)*fresnel*0.42;color+=vec3(1.0,1.0,0.96)*(spec+sweep+inner);float alpha=roundedRectAlpha(uv,uBorderRadius);float opacity=clamp(uOpacity+fresnel*0.18+spec*0.08,0.0,0.96);gl_FragColor=vec4(color,opacity*alpha);}
+void main(){vec2 uv=vUv;vec2 centered=uv-0.5;float t=uTime*0.08;float n=fbm(uv*8.0+vec2(t,-t*0.7+uScroll*0.001));vec2 normal=normalize(vec2(fbm(uv*9.0+vec2(2.0,t))-0.5,fbm(uv*9.0+vec2(-t,4.0))-0.5)+0.0001);float edge=smoothstep(0.34,0.72,length(centered*vec2(uResolution.x/max(uResolution.y,1.0),1.0)));vec2 mousePull=(uMouse-0.5)*0.007*uIntensity;vec2 refractOffset=normal*(0.003+uRefraction*0.018)*uIntensity;refractOffset+=centered*edge*uRefraction*0.006;refractOffset+=mousePull*(0.35+edge);refractOffset+=(n-0.5)*uDistortion*0.012;vec2 distortedUv=clamp(uv+refractOffset,0.002,0.998);float blurPx=mix(0.6,6.0,clamp(uBlur/28.0,0.0,1.0));vec4 base=sampleGlass(distortedUv,blurPx);float ca=uChromaticAberration*0.0035;float red=texture2D(uTexture,clamp(distortedUv+normal*ca,0.0,1.0)).r;float blue=texture2D(uTexture,clamp(distortedUv-normal*ca,0.0,1.0)).b;base.r=mix(base.r,red,0.22);base.b=mix(base.b,blue,0.22);vec3 color=saturateColor(base.rgb,uSaturation)*uBrightness;color=mix(color,vec3(0.88,0.96,1.0),0.04*uIntensity);float fresnel=pow(edge,2.2)*uBorderGlow;vec2 lightPos=mix(vec2(0.18,0.12),vec2(0.86,0.22),0.5+0.5*sin(uTime*0.18));lightPos=mix(lightPos,uMouse,0.28);float spec=pow(max(0.0,1.0-distance(uv,lightPos)*2.4),4.0)*uHighlightIntensity;float sweep=smoothstep(0.015,0.0,abs((uv.x+uv.y*0.32)-(0.18+0.18*sin(uTime*0.16))))*0.18*uHighlightIntensity;float inner=smoothstep(0.72,0.0,length(centered))*0.025;color+=vec3(0.70,0.90,1.0)*fresnel*0.22;color+=vec3(1.0,1.0,0.96)*(spec*0.55+sweep*0.55+inner);float alpha=roundedRectAlpha(uv,uBorderRadius);float opacity=clamp(uOpacity+fresnel*0.08+spec*0.04,0.0,0.86);gl_FragColor=vec4(color,opacity*alpha);}
 `;
 
 const DEFAULTS = {
@@ -50,6 +50,7 @@ const DEFAULTS = {
   chromaticAberration: 0.08,
   highlightIntensity: 0.42,
   borderGlow: 0.52,
+  canvasOpacity: 0.28,
   borderRadius: null,
   shadowStrength: 0.35,
   animationSpeed: 0.42,
@@ -61,15 +62,18 @@ const DEFAULTS = {
 };
 
 const PRESETS = {
-  nav: { opacity: 0.34, blur: 16, refraction: 0.12, distortion: 0.07, borderGlow: 0.48, highlightIntensity: 0.28, shadowStrength: 0.22 },
-  panel: { opacity: 0.44, blur: 20, refraction: 0.18, distortion: 0.12, borderGlow: 0.54, highlightIntensity: 0.42, shadowStrength: 0.35 },
-  hero: { opacity: 0.50, blur: 22, refraction: 0.22, distortion: 0.14, borderGlow: 0.62, highlightIntensity: 0.52, shadowStrength: 0.42 },
-  dock: { opacity: 0.46, blur: 18, refraction: 0.16, distortion: 0.10, borderGlow: 0.58, highlightIntensity: 0.38, shadowStrength: 0.38 },
-  subtle: { opacity: 0.26, blur: 12, refraction: 0.08, distortion: 0.04, borderGlow: 0.30, highlightIntensity: 0.20, shadowStrength: 0.18 },
+  nav: { opacity: 0.30, blur: 14, refraction: 0.06, distortion: 0.03, borderGlow: 0.28, highlightIntensity: 0.16, shadowStrength: 0.18, canvasOpacity: 0 },
+  panel: { opacity: 0.38, blur: 16, refraction: 0.08, distortion: 0.04, borderGlow: 0.30, highlightIntensity: 0.18, shadowStrength: 0.26, canvasOpacity: 0.18 },
+  "text-panel": { opacity: 0.72, blur: 12, refraction: 0.02, distortion: 0.01, borderGlow: 0.20, highlightIntensity: 0.10, shadowStrength: 0.24, canvasOpacity: 0 },
+  media: { opacity: 0.34, blur: 14, refraction: 0.08, distortion: 0.035, borderGlow: 0.34, highlightIntensity: 0.22, shadowStrength: 0.28, canvasOpacity: 0.42 },
+  hero: { opacity: 0.42, blur: 16, refraction: 0.10, distortion: 0.045, borderGlow: 0.34, highlightIntensity: 0.24, shadowStrength: 0.32, canvasOpacity: 0.34 },
+  dock: { opacity: 0.38, blur: 16, refraction: 0.05, distortion: 0.025, borderGlow: 0.30, highlightIntensity: 0.16, shadowStrength: 0.28, canvasOpacity: 0 },
+  subtle: { opacity: 0.24, blur: 10, refraction: 0.04, distortion: 0.02, borderGlow: 0.18, highlightIntensity: 0.12, shadowStrength: 0.14, canvasOpacity: 0.12 },
 };
 
 const shaderCache = new Map();
 const MAX_WEBGL_INSTANCES = 6;
+const MIN_WEBGL_SURFACE_SIZE = 24;
 let activeWebglInstances = 0;
 const prefersReducedMotion = () => window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
@@ -151,25 +155,37 @@ function getBorderRadiusPx(element, configured) {
   return Number.parseFloat(computed) || 0;
 }
 
+function hasRenderableSurface(element) {
+  const rect = element.getBoundingClientRect();
+  const style = getComputedStyle(element);
+  return (
+    rect.width >= MIN_WEBGL_SURFACE_SIZE &&
+    rect.height >= MIN_WEBGL_SURFACE_SIZE &&
+    style.display !== "none" &&
+    style.visibility !== "hidden" &&
+    Number.parseFloat(style.opacity || "1") > 0.01
+  );
+}
+
 function createGradientTexture(size = 384) {
   const canvas = document.createElement("canvas");
   canvas.width = size;
   canvas.height = size;
   const ctx = canvas.getContext("2d");
   const bg = ctx.createLinearGradient(0, 0, size, size);
-  bg.addColorStop(0, "#f7fbff");
-  bg.addColorStop(0.38, "#89d7ff");
-  bg.addColorStop(0.72, "#1b374c");
+  bg.addColorStop(0, "#16364a");
+  bg.addColorStop(0.42, "#0f2a3c");
+  bg.addColorStop(0.76, "#102333");
   bg.addColorStop(1, "#071421");
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, size, size);
-  ctx.globalAlpha = 0.42;
-  for (let i = 0; i < 12; i += 1) {
+  ctx.globalAlpha = 0.16;
+  for (let i = 0; i < 8; i += 1) {
     const x = Math.sin(i * 1.77) * size * 0.38 + size * 0.5;
     const y = Math.cos(i * 1.31) * size * 0.38 + size * 0.5;
     const r = size * (0.12 + (i % 3) * 0.04);
     const glow = ctx.createRadialGradient(x, y, 0, x, y, r);
-    glow.addColorStop(0, i % 2 ? "#35d765" : "#ffffff");
+    glow.addColorStop(0, i % 2 ? "#35d765" : "#d8f1ff");
     glow.addColorStop(1, "rgba(255,255,255,0)");
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, size, size);
@@ -231,6 +247,7 @@ export class LiquidGlass {
     this.startTime = performance.now();
     this.resizeObserver = null;
     this.intersectionObserver = null;
+    this.activationObserver = null;
     this.uniforms = {};
     this.buffers = {};
     this.webglActive = false;
@@ -249,7 +266,12 @@ export class LiquidGlass {
       this.textureSource = await resolveTextureSource(this.options.texture);
       if (!this.textureSource) return;
       if (this.destroyed) return;
+      if (!hasRenderableSurface(this.element)) {
+        this.deferUntilRenderable();
+        return;
+      }
       if (activeWebglInstances >= MAX_WEBGL_INSTANCES) return;
+      this.disconnectActivationObserver();
       this.setupCanvas();
       await this.setupWebGL();
       activeWebglInstances += 1;
@@ -280,6 +302,7 @@ export class LiquidGlass {
     this.element.style.setProperty("--lg-radius", `${radius}px`);
     this.element.style.setProperty("--lg-shadow-strength", this.options.shadowStrength);
     this.element.style.setProperty("--lg-border-glow", this.options.borderGlow);
+    this.element.style.setProperty("--lg-canvas-opacity", this.options.canvasOpacity);
   }
 
   setupCanvas() {
@@ -363,6 +386,22 @@ export class LiquidGlass {
       this.element.addEventListener("pointermove", this.onPointerMove, { passive: true });
       window.addEventListener("scroll", this.onScroll, { passive: true });
     }
+  }
+
+  deferUntilRenderable() {
+    if (this.activationObserver || this.destroyed || typeof ResizeObserver === "undefined") return;
+    this.activationObserver = new ResizeObserver(() => {
+      if (this.destroyed || this.webglActive || !hasRenderableSurface(this.element)) return;
+      this.disconnectActivationObserver();
+      this.init();
+    });
+    this.activationObserver.observe(this.element);
+  }
+
+  disconnectActivationObserver() {
+    if (!this.activationObserver) return;
+    this.activationObserver.disconnect();
+    this.activationObserver = null;
   }
 
   uploadTexture() {
@@ -461,6 +500,7 @@ export class LiquidGlass {
 
   destroyWebGLOnly() {
     this.stopLoop();
+    this.disconnectActivationObserver();
     if (this.resizeObserver) this.resizeObserver.disconnect();
     if (this.intersectionObserver) this.intersectionObserver.disconnect();
     this.element.removeEventListener("pointermove", this.onPointerMove);
@@ -494,6 +534,7 @@ export class LiquidGlass {
         ["blur", "liquidGlassBlur"],
         ["refraction", "liquidGlassRefraction"],
         ["distortion", "liquidGlassDistortion"],
+        ["canvasOpacity", "liquidGlassCanvasOpacity"],
       ].forEach(([optionName, dataName]) => {
         if (element.dataset[dataName] !== undefined && element.dataset[dataName] !== "") {
           options[optionName] = numberOption(element.dataset[dataName], defaults[optionName]);
