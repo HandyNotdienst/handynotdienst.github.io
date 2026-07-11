@@ -2884,14 +2884,15 @@ html[data-theme="light"] .shipping-picture--light{
   font-size: clamp(38px, 6vw, 72px);
   line-height: .98;
   letter-spacing: 0;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  hyphens:auto;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+  text-wrap: balance;
 }
 .shipping-hero p{
   max-width: 62ch;
-  overflow-wrap:anywhere;
-  word-break:break-word;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 .shipping-hero__actions{
   display:flex;
