@@ -5139,6 +5139,20 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     let clickCount = 0;
     let toastEl;
 
+    function getLastSeen() {
+      try {
+        return localStorage.getItem(storageKey);
+      } catch (error) {
+        return "";
+      }
+    }
+
+    function setLastSeen(value) {
+      try {
+        localStorage.setItem(storageKey, value);
+      } catch (error) {}
+    }
+
     function ensureToast() {
       if (toastEl) return toastEl;
       toastEl = document.createElement("div");
@@ -5163,12 +5177,12 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       if (clickCount < 10) return;
       clickCount = 0;
 
-      const lastSeen = localStorage.getItem(storageKey);
+      const lastSeen = getLastSeen();
       if (lastSeen === today()) return;
 
       const message = messages[Math.floor(Math.random() * messages.length)];
       showToast(message);
-      localStorage.setItem(storageKey, today());
+      setLastSeen(today());
     });
   }
 
