@@ -1,4 +1,4 @@
-const CACHE = "hn-v45";
+const CACHE = "hn-v46";
 const ASSETS = [
   "./",
   "./index.html",
@@ -12,6 +12,7 @@ const ASSETS = [
   "./style.css",
   "./src/liquidGlass.css",
   "./src/liquidGlass.js",
+  "./src/liquidGlassDemo.js",
   "./src/shaders/vertex.glsl",
   "./src/shaders/fragment.glsl",
   "./print.css",
