@@ -62,6 +62,7 @@
   const GLOBAL_I18N = {
     de: {
       language_picker_label: "Sprache wählen",
+      language_picker_close: "Sprachauswahl schließen",
       language_search_placeholder: "Sprache suchen",
       language_no_results: "Keine Sprache gefunden",
       live_badge_open: "Heute: 30-90 Min möglich",
@@ -262,6 +263,7 @@
     },
     uk: {
       language_picker_label: "Вибрати мову",
+      language_picker_close: "Закрити вибір мови",
       language_search_placeholder: "Пошук мови",
       language_no_results: "Мову не знайдено",
       live_badge_open: "Сьогодні: можливо за 30-90 хв",
@@ -464,6 +466,7 @@
   const EXTRA_I18N = {
     en: {
       language_picker_label: "Choose language",
+      language_picker_close: "Close language picker",
       language_search_placeholder: "Search language",
       language_no_results: "No language found",
       live_badge_open: "Today: 30-90 min possible",
@@ -666,6 +669,7 @@
   const SIMPLE_LANGUAGE_OVERRIDES = {
     ru: {
       language_picker_label: "Выбрать язык",
+      language_picker_close: "Закрыть выбор языка",
       language_search_placeholder: "Поиск языка",
       language_no_results: "Язык не найден",
       live_badge_open: "Сегодня: возможно 30-90 мин",
@@ -766,6 +770,7 @@
     },
     pl: {
       language_picker_label: "Wybierz język",
+      language_picker_close: "Zamknij wybór języka",
       language_search_placeholder: "Szukaj języka",
       language_no_results: "Nie znaleziono języka",
       live_badge_open: "Dzisiaj: możliwe 30-90 min",
@@ -846,6 +851,7 @@
     },
     it: {
       language_picker_label: "Scegli lingua",
+      language_picker_close: "Chiudi scelta lingua",
       language_search_placeholder: "Cerca lingua",
       language_no_results: "Lingua non trovata",
       live_badge_open: "Oggi: possibile 30-90 min",
@@ -917,6 +923,7 @@
     },
     ar: {
       language_picker_label: "اختيار اللغة",
+      language_picker_close: "إغلاق اختيار اللغة",
       language_search_placeholder: "ابحث عن لغة",
       language_no_results: "لم يتم العثور على لغة",
       live_badge_open: "اليوم: ممكن خلال 30-90 دقيقة",
@@ -988,6 +995,7 @@
     },
     ku: {
       language_picker_label: "Ziman hilbijêre",
+      language_picker_close: "Hilbijartina zimanê bigire",
       language_search_placeholder: "Li zimanê bigere",
       language_no_results: "Ziman nehat dîtin",
       live_badge_open: "Îro: 30-90 deqîqe gengaz e",
@@ -1055,6 +1063,7 @@
     },
     fr: {
       language_picker_label: "Choisir la langue",
+      language_picker_close: "Fermer le choix de langue",
       language_search_placeholder: "Rechercher une langue",
       language_no_results: "Aucune langue trouvée",
       live_badge_open: "Aujourd'hui : 30-90 min possible",
@@ -1126,6 +1135,7 @@
     },
     sl: {
       language_picker_label: "Izberi jezik",
+      language_picker_close: "Zapri izbiro jezika",
       language_search_placeholder: "Poišči jezik",
       language_no_results: "Jezik ni najden",
       live_badge_open: "Danes: možno 30-90 min",
@@ -2194,7 +2204,7 @@
   };
 
   const SAMSUNG_MODAL_I18N = {
-    de: { samsung_series_hint: "Waehle zuerst die Galaxy-Serie. Danach fuehren wir dich Schritt fuer Schritt weiter.", samsung_back: "Zurueck", samsung_next: "Weiter", samsung_close: "Schliessen" },
+    de: { samsung_series_hint: "Wähle zuerst die Galaxy-Serie. Danach führen wir dich Schritt für Schritt weiter.", samsung_back: "Zurück", samsung_next: "Weiter", samsung_close: "Schließen" },
     uk: { samsung_series_hint: "Спочатку оберіть серію Galaxy. Далі ми проведемо вас крок за кроком.", samsung_back: "Назад", samsung_next: "Далі", samsung_close: "Закрити" },
     en: { samsung_series_hint: "Choose the Galaxy series first. Then we guide you step by step.", samsung_back: "Back", samsung_next: "Next", samsung_close: "Close" },
     ru: { samsung_series_hint: "Сначала выберите серию Galaxy. Затем мы проведем вас шаг за шагом.", samsung_back: "Назад", samsung_next: "Далее", samsung_close: "Закрыть" },
@@ -2399,7 +2409,7 @@
       price_mode_shipping_note: "Для ремонту поштою спочатку надішлю інструкції. Без твоєї згоди ремонт не починається.",
       price_mode_shipping_cta: "Запитати Versand у WhatsApp",
       shipping_kicker: "Відправка по Німеччині",
-      shipping_h1: "Надішли телефон. Спочатку перевірка. Потім рішення.",
+      shipping_h1: "Надішли телефон. Спершу перевірка, потім рішення.",
       shipping_hero_cta: "Почати через WhatsApp",
       shipping_logistics_pack: "М'яко запакувати",
       shipping_logistics_send: "Надіслати з трекінгом",
@@ -5129,6 +5139,20 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     let clickCount = 0;
     let toastEl;
 
+    function getLastSeen() {
+      try {
+        return localStorage.getItem(storageKey);
+      } catch (error) {
+        return "";
+      }
+    }
+
+    function setLastSeen(value) {
+      try {
+        localStorage.setItem(storageKey, value);
+      } catch (error) {}
+    }
+
     function ensureToast() {
       if (toastEl) return toastEl;
       toastEl = document.createElement("div");
@@ -5153,12 +5177,12 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       if (clickCount < 10) return;
       clickCount = 0;
 
-      const lastSeen = localStorage.getItem(storageKey);
+      const lastSeen = getLastSeen();
       if (lastSeen === today()) return;
 
       const message = messages[Math.floor(Math.random() * messages.length)];
       showToast(message);
-      localStorage.setItem(storageKey, today());
+      setLastSeen(today());
     });
   }
 
@@ -5222,6 +5246,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       picker.querySelector("[data-lang-current-name]")?.replaceChildren(document.createTextNode(meta.nativeName));
       picker.querySelector("[data-lang-search]")?.setAttribute("placeholder", resolveI18n(lang, "language_search_placeholder"));
       picker.querySelector("[data-lang-trigger]")?.setAttribute("aria-label", `${resolveI18n(lang, "language_picker_label")}: ${meta.nativeName}`);
+      picker.querySelector("[data-lang-close]")?.setAttribute("aria-label", resolveI18n(lang, "language_picker_close"));
       picker.querySelector("[data-lang-title]")?.replaceChildren(document.createTextNode(resolveI18n(lang, "language_picker_label")));
       picker.querySelector("[data-lang-empty]")?.replaceChildren(document.createTextNode(resolveI18n(lang, "language_no_results")));
       picker.querySelectorAll("[data-lang-option]").forEach((option) => {
@@ -5262,7 +5287,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       <div class="lang__panel" id="${panelId}" data-lang-panel>
         <div class="lang__sheet-head">
           <strong data-lang-title>${resolveI18n(getLang(), "language_picker_label")}</strong>
-          <button class="lang__close" type="button" data-lang-close aria-label="Close">×</button>
+          <button class="lang__close" type="button" data-lang-close aria-label="${resolveI18n(getLang(), "language_picker_close")}">×</button>
         </div>
         <label class="sr-only" for="${panelId}-search">${resolveI18n(getLang(), "language_search_placeholder")}</label>
         <input class="lang__search" id="${panelId}-search" type="search" autocomplete="off" data-lang-search placeholder="${resolveI18n(getLang(), "language_search_placeholder")}">

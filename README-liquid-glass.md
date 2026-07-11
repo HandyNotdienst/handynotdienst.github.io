@@ -10,7 +10,7 @@ WebGL layer adds controlled refraction where a texture is available.
 - `src/liquidGlass.css` - shared material CSS and fallback styling.
 - `src/shaders/vertex.glsl` - fullscreen quad vertex shader.
 - `src/shaders/fragment.glsl` - refraction, blur, fresnel, chromatic shift and highlights.
-- `liquid-glass-demo.html` - standalone demo; production `index.html` remains unchanged.
+- `liquid-glass-demo.html` - standalone demo; production pages use the effect only on selected decorative surfaces.
 
 ## Architecture
 
@@ -57,6 +57,7 @@ const glass = new LiquidGlass({
   chromaticAberration: 0.08,
   highlightIntensity: 0.42,
   borderGlow: 0.52,
+  canvasOpacity: 0.28,
   borderRadius: 28,
   shadowStrength: 0.35,
   animationSpeed: 0.42,
@@ -80,9 +81,17 @@ Markup:
 ```html
 <div
   class="card"
-  data-liquid-glass="panel"
+  data-liquid-glass="media"
   data-liquid-glass-texture="assets/phones/iphone-12-pro-max.png"
-  data-liquid-glass-refraction="0.14">
+  data-liquid-glass-refraction="0.06">
+  ...
+</div>
+```
+
+For short content cards, the quiet readable material is available:
+
+```html
+<div class="card" data-liquid-glass="text-panel">
   ...
 </div>
 ```
@@ -90,8 +99,10 @@ Markup:
 ## Presets
 
 - `nav` - subtle header/docked navigation material.
-- `panel` - general premium cards.
-- `hero` - stronger refraction for high-value CTA/product surfaces.
+- `text-panel` - readable CSS-first material for short text cards; avoid it on long copy or price lists.
+- `panel` - general premium cards with restrained values.
+- `media` - controlled WebGL refraction for image/product previews.
+- `hero` - stronger refraction for demo/high-value media surfaces.
 - `dock` - bottom navigation/dock material.
 - `subtle` - low-intensity fallback-style glass.
 
@@ -105,7 +116,11 @@ Real refraction needs something stable to sample. Use one of:
 
 If no texture is provided, the element uses the CSS fallback material. This is
 intentional for headers, mobile navigation and small cards where a WebGL context
-would not add enough value.
+would not add enough value. Avoid using generated textures behind long text.
+Production guidance after visual QA: reserve real refraction for navigation,
+docks, media previews and small decorative surfaces. Text-heavy cards, trust
+copy and price configurators should use ordinary premium panels instead, so the
+material never competes with reading or decision making.
 
 ## Performance
 
@@ -114,6 +129,8 @@ Implemented safeguards:
 - Lazy ES module import from `app.js` only when a marked surface approaches viewport.
 - IntersectionObserver renders only visible WebGL surfaces.
 - ResizeObserver updates geometry without polling.
+- Hidden or tiny responsive surfaces stay on the CSS material until they become
+  renderable, instead of opening a WebGL context at `1x1`.
 - Device pixel ratio cap: desktop up to `1.6`, mobile/balanced up to `1.15`.
 - Maximum of six active WebGL surfaces per page; the rest use CSS fallback.
 - `prefers-reduced-motion: reduce` disables WebGL animation and uses static fallback.
