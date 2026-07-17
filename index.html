@@ -17,7 +17,8 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" as="image" href="assets/hero/owner-repair-960.jpg" imagesrcset="assets/hero/owner-repair-420.jpg 420w, assets/hero/owner-repair-640.jpg 640w, assets/hero/owner-repair-960.jpg 960w, assets/hero/owner-repair-1280.jpg 1280w" imagesizes="(max-width: 700px) calc(100vw - 48px), 620px" />
+  <link rel="preload" as="image" href="assets/hero/owner-hero-dark-960.jpg" imagesrcset="assets/hero/owner-hero-dark-420.jpg 420w, assets/hero/owner-hero-dark-640.jpg 640w, assets/hero/owner-hero-dark-960.jpg 960w, assets/hero/owner-hero-dark-1280.jpg 1280w" imagesizes="(max-width: 700px) calc(100vw - 48px), 620px" media="(prefers-color-scheme: dark)" />
+  <link rel="preload" as="image" href="assets/hero/owner-hero-light-960.jpg" imagesrcset="assets/hero/owner-hero-light-420.jpg 420w, assets/hero/owner-hero-light-640.jpg 640w, assets/hero/owner-hero-light-960.jpg 960w, assets/hero/owner-hero-light-1280.jpg 1280w" imagesizes="(max-width: 700px) calc(100vw - 48px), 620px" media="(prefers-color-scheme: light)" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="src/liquidGlass.css" />
   <link rel="stylesheet" href="print.css" media="print" />
@@ -116,16 +117,14 @@
         </div>
 
         <div class="concept-hero__product concept-hero__product--owner">
-          <picture>
-            <source type="image/jpeg" srcset="assets/hero/owner-repair-420.jpg 420w, assets/hero/owner-repair-640.jpg 640w, assets/hero/owner-repair-960.jpg 960w, assets/hero/owner-repair-1280.jpg 1280w" sizes="(max-width: 700px) calc(100vw - 48px), 620px">
-            <img src="assets/hero/owner-repair-960.jpg" alt="Handy Notdienst Singen Reparaturservice mit Vorher-Nachher Smartphone und Werkzeug" width="960" height="546" decoding="async" fetchpriority="high">
+          <picture class="hero-owner-picture hero-owner-picture--dark">
+            <source type="image/jpeg" srcset="assets/hero/owner-hero-dark-420.jpg 420w, assets/hero/owner-hero-dark-640.jpg 640w, assets/hero/owner-hero-dark-960.jpg 960w, assets/hero/owner-hero-dark-1280.jpg 1280w" sizes="(max-width: 700px) calc(100vw - 48px), 620px">
+            <img src="assets/hero/owner-hero-dark-960.jpg" alt="Handy Notdienst Singen Reparaturservice mit Smartphone, Beratung und regionalem Vor-Ort-Service" width="1672" height="941" decoding="async" fetchpriority="high">
           </picture>
-          <div class="rating-card rating-card--trust" aria-label="Vertrauenshinweise" data-liquid-glass="media" data-liquid-glass-texture="assets/hero/owner-repair-960.jpg" data-liquid-glass-refraction="0.06" data-liquid-glass-distortion="0.025">
-            <span class="rating-card__mark asset-icon--proof-price" aria-hidden="true"></span>
-            <strong data-i18n="hero_trust_title">Klar vor dem Auftrag</strong>
-            <small data-i18n="hero_trust_text">Preis, Dauer und Teilequalität werden vorab bestätigt.</small>
-            <small data-i18n="hero_rating_area">Singen und Umgebung</small>
-          </div>
+          <picture class="hero-owner-picture hero-owner-picture--light">
+            <source type="image/jpeg" srcset="assets/hero/owner-hero-light-420.jpg 420w, assets/hero/owner-hero-light-640.jpg 640w, assets/hero/owner-hero-light-960.jpg 960w, assets/hero/owner-hero-light-1280.jpg 1280w" sizes="(max-width: 700px) calc(100vw - 48px), 620px">
+            <img src="assets/hero/owner-hero-light-960.jpg" alt="Handy Notdienst Singen Reparaturservice mit Smartphone, Beratung und regionalem Vor-Ort-Service" width="1672" height="941" decoding="async">
+          </picture>
         </div>
       </div>
 
