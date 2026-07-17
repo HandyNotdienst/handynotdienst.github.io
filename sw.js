@@ -1,4 +1,4 @@
-const CACHE = "hn-v54";
+const CACHE = "hn-v55";
 const ASSETS = [
   "./",
   "./index.html",
@@ -23,6 +23,10 @@ const ASSETS = [
   "./manifest.webmanifest",
   "./assets/logo.png",
   "./assets/logo-120.png",
+  "./assets/logo-dark.png",
+  "./assets/logo-dark-120.png",
+  "./assets/logo-light.png",
+  "./assets/logo-light-120.png",
   "./assets/logo-intro.png",
   "./assets/logo-intro.webp",
   "./assets/og-image.png",
