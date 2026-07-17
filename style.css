@@ -921,9 +921,12 @@ html[data-theme="light"] .lang__check{
 }
 .concept-hero__product--owner picture{
   width: 100%;
-  aspect-ratio: 1662 / 946;
+  aspect-ratio: 1672 / 941;
   height: auto;
   display:block;
+}
+.concept-hero__product--owner .hero-owner-picture--light{
+  display:none;
 }
 .concept-hero__product--owner img{
   width: 100%;
@@ -1168,7 +1171,7 @@ html[data-theme="light"] .lang__check{
     padding: 0;
   }
   .concept-hero__product--owner picture{
-    aspect-ratio: 1662 / 946;
+    aspect-ratio: 1672 / 941;
     height: auto;
   }
   .rating-card{
@@ -1258,7 +1261,7 @@ html[data-theme="light"] .lang__check{
     padding: 0;
   }
   .concept-hero__product--owner picture{
-    aspect-ratio: 1662 / 946;
+    aspect-ratio: 1672 / 941;
     height: auto;
   }
   .rating-card{
@@ -5006,6 +5009,12 @@ html[data-theme="light"] .concept-hero__product--owner{
     linear-gradient(180deg, rgba(255,255,255,.96), rgba(225,238,246,.88));
   border-color: rgba(7,21,33,.12);
   box-shadow: 0 22px 62px rgba(39,74,96,.18), inset 0 1px 0 rgba(255,255,255,.82);
+}
+html[data-theme="light"] .concept-hero__product--owner .hero-owner-picture--dark{
+  display:none;
+}
+html[data-theme="light"] .concept-hero__product--owner .hero-owner-picture--light{
+  display:block;
 }
 html[data-theme="light"] .rating-card,
 html[data-theme="light"] .concept-action-dock,
