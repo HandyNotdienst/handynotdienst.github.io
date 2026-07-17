@@ -5051,7 +5051,7 @@ html[data-theme="light"] .concept-hero{
 }
 html[data-theme="light"] .concept-hero::before{
   background:
-    linear-gradient(90deg, rgba(248,253,255,.98) 0%, rgba(248,253,255,.90) 34%, rgba(248,253,255,.46) 60%, rgba(248,253,255,.08) 82%),
+    linear-gradient(90deg, rgba(248,253,255,.98) 0%, rgba(248,253,255,.94) 30%, rgba(248,253,255,.76) 46%, rgba(248,253,255,.18) 58%, rgba(248,253,255,.03) 70%),
     radial-gradient(560px 340px at 22% 52%, rgba(53,215,101,.09), transparent 72%);
 }
 html[data-theme="light"] .concept-badge{
@@ -5086,7 +5086,7 @@ html[data-theme="light"] .concept-hero__product--owner .hero-owner-picture--ligh
 @media (max-width: 820px){
   html[data-theme="light"] .concept-hero::before{
     background:
-      linear-gradient(90deg, rgba(248,253,255,.99) 0%, rgba(248,253,255,.94) 48%, rgba(248,253,255,.56) 76%, rgba(248,253,255,.22) 100%),
+      linear-gradient(90deg, rgba(248,253,255,.99) 0%, rgba(248,253,255,.94) 56%, rgba(248,253,255,.38) 78%, rgba(248,253,255,.10) 100%),
       linear-gradient(180deg, rgba(248,253,255,.08), rgba(248,253,255,.82) 92%),
       radial-gradient(420px 300px at 20% 22%, rgba(53,215,101,.08), transparent 72%);
   }
