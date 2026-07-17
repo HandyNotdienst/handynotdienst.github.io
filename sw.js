@@ -1,4 +1,4 @@
-const CACHE = "hn-v56";
+const CACHE = "hn-v57";
 const ASSETS = [
   "./",
   "./index.html",
@@ -47,6 +47,16 @@ const ASSETS = [
   "./assets/hero/owner-hero-light-640.jpg",
   "./assets/hero/owner-hero-light-960.jpg",
   "./assets/hero/owner-hero-light-1280.jpg",
+  "./assets/hero/owner-hero-bg-dark-420.jpg",
+  "./assets/hero/owner-hero-bg-dark-640.jpg",
+  "./assets/hero/owner-hero-bg-dark-960.jpg",
+  "./assets/hero/owner-hero-bg-dark-1280.jpg",
+  "./assets/hero/owner-hero-bg-dark-1672.jpg",
+  "./assets/hero/owner-hero-bg-light-420.jpg",
+  "./assets/hero/owner-hero-bg-light-640.jpg",
+  "./assets/hero/owner-hero-bg-light-960.jpg",
+  "./assets/hero/owner-hero-bg-light-1280.jpg",
+  "./assets/hero/owner-hero-bg-light-1672.jpg",
   "./assets/shipping/shipping-germany-dark.png",
   "./assets/shipping/shipping-germany-dark-420.webp",
   "./assets/shipping/shipping-germany-dark-760.webp",
