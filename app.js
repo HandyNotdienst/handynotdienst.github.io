@@ -3426,11 +3426,12 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
 
   const PRICE_DATA = {
     apple: [
-      { model: "iPhone Air", series: "iphone", family: "iPhone Air", image: "assets/phones/iphone-air.png", repairs: [{ key: "repair_original_battery", price: "149€", stock: "on_request" }] },
-      { model: "iPhone 17 Pro Max", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17-pro-max.png", repairs: iphone17SeriesRepairs({ displayPremium: "299€", displayOem: "459€", backglassBudget: "149€", backglassOem: "159€", housingOem: "449€", housingBudget: "249€", midframeBudget: "249€" }, "169€") },
-      { model: "iPhone 17 Pro", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17-pro.png", repairs: iphone17SeriesRepairs({ displayPremium: "299€", displayOem: "399€", backglassBudget: "149€", backglassOem: "159€", housingOem: "369€", housingBudget: "229€" }, "149€") },
-      { model: "iPhone 17", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17.png", repairs: iphone17SeriesRepairs({ displayPremium: "239€", displayOem: "389€", backglassBudget: "129€", backglassOem: "159€", housingOem: "249€", housingBudget: "199€" }, "139€") },
-      { model: "iPhone 16e / 17e", series: "iphone", family: "iPhone 16e / 17e", image: "assets/phones/iphone-16.png", repairs: [{ key: "repair_original_battery", price: "119€", stock: "on_request" }] },
+      { model: "iPhone Air", series: "iphone", family: "iPhone Air", image: "assets/phones/iphone-air.png", responsiveWidths: [420, 800], repairs: [{ key: "repair_original_battery", price: "149€", stock: "on_request" }] },
+      { model: "iPhone 17 Pro Max", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17-pro-max.png", responsiveWidths: [420, 800], repairs: iphone17SeriesRepairs({ displayPremium: "299€", displayOem: "459€", backglassBudget: "149€", backglassOem: "159€", housingOem: "449€", housingBudget: "249€", midframeBudget: "249€" }, "169€") },
+      { model: "iPhone 17 Pro", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17-pro.png", responsiveWidths: [420, 800], repairs: iphone17SeriesRepairs({ displayPremium: "299€", displayOem: "399€", backglassBudget: "149€", backglassOem: "159€", housingOem: "369€", housingBudget: "229€" }, "149€") },
+      { model: "iPhone 17", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17.png", responsiveWidths: [420, 800], repairs: iphone17SeriesRepairs({ displayPremium: "239€", displayOem: "389€", backglassBudget: "129€", backglassOem: "159€", housingOem: "249€", housingBudget: "199€" }, "139€") },
+      { model: "iPhone 16e", series: "iphone", family: "iPhone 16e / 17e", image: "assets/phones/iphone-16e.png", responsiveWidths: [420], repairs: [{ key: "repair_original_battery", price: "119€", stock: "on_request" }] },
+      { model: "iPhone 17e", series: "iphone", family: "iPhone 16e / 17e", image: "assets/phones/iphone-17e.png", responsiveWidths: [420], repairs: [{ key: "repair_original_battery", price: "119€", stock: "on_request" }] },
       { model: "iPhone 16 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "399€" }, { key: "repair_battery", price: "139€" }, { key: "repair_original_battery", price: "139€", stock: "on_request" }, { key: "repair_backglass", price: "189€" }] },
       { model: "iPhone 16 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "359€" }, { key: "repair_battery", price: "129€" }, { key: "repair_backglass", price: "179€" }] },
       { model: "iPhone 16 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "269€" }, { key: "repair_battery", price: "109€" }, { key: "repair_original_battery", price: "119€", stock: "on_request" }, { key: "repair_backglass", price: "169€" }] },
@@ -3645,10 +3646,12 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
 
   function getPriceImageSources(entry, brand) {
     if (brand !== "apple") return {};
-    if (entry.customImage) return {};
     const slug = slugifyPriceModel(entry.model);
+    const widths = Array.isArray(entry.responsiveWidths) && entry.responsiveWidths.length
+      ? entry.responsiveWidths
+      : [420, 800];
     return {
-      webp: `assets/phones/optimized/${slug}-420.webp 420w, assets/phones/optimized/${slug}-800.webp 800w`,
+      webp: widths.map((width) => `assets/phones/optimized/${slug}-${width}.webp ${width}w`).join(", "),
       sizes: "(max-width: 560px) 92vw, (max-width: 820px) 430px, 390px",
     };
   }
@@ -4537,10 +4540,17 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     const sources = getPriceImageSources(entry, brand);
     const setImage = () => {
       if (webpSource) {
-        webpSource.srcset = sources.webp || "";
-        webpSource.sizes = sources.sizes || "";
+        if (sources.webp) {
+          webpSource.srcset = sources.webp;
+          webpSource.sizes = sources.sizes;
+        } else {
+          webpSource.removeAttribute("srcset");
+          webpSource.removeAttribute("sizes");
+        }
       }
       if (image) {
+        image.removeAttribute("srcset");
+        image.removeAttribute("sizes");
         image.src = entry.image;
         image.alt = `${entry.model} Reparatur bei Handy Notdienst Singen`;
       }
