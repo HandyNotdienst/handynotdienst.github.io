@@ -1,4 +1,4 @@
-const CACHE = "hn-v60";
+const CACHE = "hn-v61";
 const ASSETS = [
   "./",
   "./index.html",
@@ -35,6 +35,18 @@ const ASSETS = [
   "./assets/phones/iphone-17-pro.png",
   "./assets/phones/iphone-17-pro-max.png",
   "./assets/phones/iphone-air.png",
+  "./assets/phones/iphone-16e.png",
+  "./assets/phones/iphone-17e.png",
+  "./assets/phones/optimized/iphone-air-420.webp",
+  "./assets/phones/optimized/iphone-air-800.webp",
+  "./assets/phones/optimized/iphone-17-420.webp",
+  "./assets/phones/optimized/iphone-17-800.webp",
+  "./assets/phones/optimized/iphone-17-pro-420.webp",
+  "./assets/phones/optimized/iphone-17-pro-800.webp",
+  "./assets/phones/optimized/iphone-17-pro-max-420.webp",
+  "./assets/phones/optimized/iphone-17-pro-max-800.webp",
+  "./assets/phones/optimized/iphone-16e-420.webp",
+  "./assets/phones/optimized/iphone-17e-420.webp",
   "./assets/hero/owner-repair-420.jpg",
   "./assets/hero/owner-repair-640.jpg",
   "./assets/hero/owner-repair-960.jpg",
