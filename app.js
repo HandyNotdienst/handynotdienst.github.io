@@ -2443,6 +2443,7 @@
     fr: { nav_shipping: "Envoi", footer_shipping_terms: "Conditions d'envoi", mb_shipping_flow: "Étapes", price_mode_local: "À Singen", price_mode_shipping: "Par envoi", price_mode_shipping_cta: "Demander l'envoi", shipping_logistics_pack: "Emballer protégé", shipping_logistics_send: "Envoyer avec suivi", shipping_logistics_return: "Retour suivi", shipping_logistics_station: "Packstation sur accord", faq_section_shipping: "Réparation par envoi" },
     sl: { nav_shipping: "Pošiljanje", footer_shipping_terms: "Pogoji pošiljanja", mb_shipping_flow: "Potek", price_mode_local: "V Singen", price_mode_shipping: "Po pošti", price_mode_shipping_cta: "Vprašaj za pošiljanje", shipping_logistics_pack: "Varno zapakiraj", shipping_logistics_send: "Pošlji s sledenjem", shipping_logistics_return: "Povratno pošiljanje", shipping_logistics_station: "Packstation po dogovoru", faq_section_shipping: "Popravilo po pošti" },
   };
+  const SHIPPING_PAGE_I18N = window.HN_SHIPPING_I18N || {};
 
   const HOME_PRICE_CTA_I18N = {
     de: {
@@ -2539,6 +2540,9 @@
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
   Object.entries(SHIPPING_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
+  Object.entries(SHIPPING_PAGE_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
   Object.entries(HOME_PRICE_CTA_I18N).forEach(([lang, values]) => {
@@ -5551,6 +5555,22 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   function initShippingService() {
     const page = document.querySelector("[data-shipping-page]");
     if (!page) return;
+
+    const updateShippingWhatsAppLinks = (lang = getLang()) => {
+      const message = resolveI18n(lang, "shipping_wa_message");
+      if (!message) return;
+      const href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      page.querySelectorAll("[data-shipping-whatsapp]").forEach((link) => {
+        link.href = href;
+      });
+    };
+
+    const shippingEvents = new AbortController();
+    updateShippingWhatsAppLinks();
+    window.addEventListener("hn:language-change", (event) => {
+      updateShippingWhatsAppLinks(event.detail?.lang || getLang());
+    }, { signal: shippingEvents.signal });
+    window.addEventListener("pagehide", () => shippingEvents.abort(), { once: true });
 
     trackEvent("shipping_page_view", { path: window.location.pathname });
 

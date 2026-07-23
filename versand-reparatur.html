@@ -51,7 +51,7 @@
         </span>
       </a>
       <div class="header__right">
-        <nav class="topnav" aria-label="Navigation">
+        <nav class="topnav" aria-label="Navigation" data-i18n-aria-label="shipping_aria_nav">
           <a href="index.html" data-i18n="nav_home">Start</a>
           <a href="prices.html" data-i18n="nav_prices">Preise</a>
           <a href="versand-reparatur.html" data-i18n="nav_shipping">Versand</a>
@@ -79,29 +79,29 @@
           <h1 data-i18n="shipping_h1">Handy einschicken. Erst prüfen. Dann entscheiden.</h1>
           <p data-i18n="shipping_lead">Du kannst dein Smartphone aus ganz Deutschland einsenden. Die Reparatur startet erst, wenn Diagnose, Reparaturoption und finaler Preis von dir freigegeben sind.</p>
           <div class="shipping-hero__actions">
-            <a class="btn btn--wa" href="https://wa.me/4915222416438?text=Hallo!%20Ich%20m%C3%B6chte%20eine%20Reparatur%20per%20Versand%20anfragen.%0A%0AGer%C3%A4t%3A%0ASchaden%3A%0AOrt%3A%0AIch%20m%C3%B6chte%20die%20Versandhinweise%20erhalten.%0A%0ABitte%20sende%20mir%20die%20n%C3%A4chsten%20Schritte." target="_blank" rel="noopener noreferrer" data-shipping-cta="hero" data-i18n="shipping_hero_cta">Versand per WhatsApp starten</a>
+            <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-shipping-cta="hero" data-shipping-whatsapp data-i18n="shipping_hero_cta">Versand per WhatsApp starten</a>
             <a class="btn btn--ghost" href="#shipping-flow" data-i18n="shipping_hero_secondary">Ablauf ansehen</a>
           </div>
-          <ul class="shipping-trust-list" aria-label="Versand Vorteile">
+          <ul class="shipping-trust-list" aria-label="Versand Vorteile" data-i18n-aria-label="shipping_aria_trust">
             <li><span class="asset-icon asset-icon--data-security" aria-hidden="true"></span><span data-i18n="shipping_trust_no_auto">Keine Reparatur ohne Freigabe</span></li>
             <li><span class="asset-icon asset-icon--proof-price" aria-hidden="true"></span><span data-i18n="shipping_trust_final_price">Finaler Preis vor Start</span></li>
             <li><span class="asset-icon asset-icon--proof-fast" aria-hidden="true"></span><span data-i18n="shipping_trust_tracking">Rückversand mit Sendungsnummer</span></li>
           </ul>
-          <ul class="shipping-logistics-strip" aria-label="Versand-Schritte">
+          <ul class="shipping-logistics-strip" aria-label="Versand-Schritte" data-i18n-aria-label="shipping_aria_logistics">
             <li><span class="shipping-logistics-strip__icon shipping-logistics-strip__icon--parcel" aria-hidden="true"></span><span data-i18n="shipping_logistics_pack">Gepolstert verpacken</span></li>
             <li><span class="shipping-logistics-strip__icon shipping-logistics-strip__icon--courier" aria-hidden="true"></span><span data-i18n="shipping_logistics_send">Verfolgbar senden</span></li>
             <li><span class="shipping-logistics-strip__icon shipping-logistics-strip__icon--delivery" aria-hidden="true"></span><span data-i18n="shipping_logistics_return">Rückversand</span></li>
             <li><span class="shipping-logistics-strip__icon shipping-logistics-strip__icon--locker" aria-hidden="true"></span><span data-i18n="shipping_logistics_station">Packstation nach Absprache</span></li>
           </ul>
         </div>
-        <div class="shipping-hero__visual" aria-label="Versandreparatur Vorschau">
+        <div class="shipping-hero__visual" aria-label="Versandreparatur Vorschau" data-i18n-aria-label="shipping_aria_hero_visual">
           <picture class="shipping-picture shipping-picture--hero shipping-picture--dark">
             <source type="image/webp" srcset="assets/shipping/delivery-hero-dark-420.webp 420w, assets/shipping/delivery-hero-dark-760.webp 760w, assets/shipping/delivery-hero-dark-960.webp 960w" sizes="(max-width: 820px) 86vw, 560px">
-            <img src="assets/shipping/delivery-hero-dark.jpg" alt="Handy Notdienst Versand-Reparatur mit Smartphone und Paket" width="960" height="1280" decoding="async" fetchpriority="high">
+            <img src="assets/shipping/delivery-hero-dark.jpg" alt="Handy Notdienst Versand-Reparatur mit Smartphone und Paket" data-i18n-alt="shipping_hero_image_alt" width="960" height="1280" decoding="async" fetchpriority="high">
           </picture>
           <picture class="shipping-picture shipping-picture--hero shipping-picture--light">
             <source type="image/webp" srcset="assets/shipping/delivery-hero-light-420.webp 420w, assets/shipping/delivery-hero-light-760.webp 760w, assets/shipping/delivery-hero-light-960.webp 960w" sizes="(max-width: 820px) 86vw, 560px">
-            <img src="assets/shipping/delivery-hero-light.jpg" alt="Handy Notdienst Versand-Reparatur mit Smartphone und Paket" width="768" height="1280" decoding="async" fetchpriority="high">
+            <img src="assets/shipping/delivery-hero-light.jpg" alt="Handy Notdienst Versand-Reparatur mit Smartphone und Paket" data-i18n-alt="shipping_hero_image_alt" width="768" height="1280" decoding="async" fetchpriority="high">
           </picture>
         </div>
       </div>
@@ -275,7 +275,7 @@
         <div class="card shipping-final__card">
           <h2 data-i18n="shipping_final_title">Bereit für die Versand-Reparatur?</h2>
           <p class="muted" data-i18n="shipping_final_text">Schreib kurz Modell, Schaden und Ort. Du bekommst danach die Versandhinweise und kannst in Ruhe entscheiden.</p>
-          <a class="btn btn--wa" href="https://wa.me/4915222416438?text=Hallo!%20Ich%20m%C3%B6chte%20eine%20Reparatur%20per%20Versand%20anfragen.%0A%0AGer%C3%A4t%3A%0ASchaden%3A%0AOrt%3A%0AIch%20m%C3%B6chte%20die%20Versandhinweise%20erhalten.%0A%0ABitte%20sende%20mir%20die%20n%C3%A4chsten%20Schritte." target="_blank" rel="noopener noreferrer" data-shipping-cta="final" data-i18n="shipping_final_cta">Versandhinweise per WhatsApp erhalten</a>
+          <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-shipping-cta="final" data-shipping-whatsapp data-i18n="shipping_final_cta">Versandhinweise per WhatsApp erhalten</a>
         </div>
       </div>
     </section>
@@ -292,12 +292,13 @@
     </div>
   </footer>
 
-  <nav class="mobilebar mobilebar--shipping" aria-label="Mobile quick actions" data-liquid-glass="dock">
+  <nav class="mobilebar mobilebar--shipping" aria-label="Mobile quick actions" data-i18n-aria-label="shipping_aria_mobilebar" data-liquid-glass="dock">
     <a class="mobilebar__btn mobilebar__btn--prices" href="prices.html"><span data-i18n="mb_prices">Preise</span></a>
-    <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438?text=Hallo!%20Ich%20m%C3%B6chte%20eine%20Reparatur%20per%20Versand%20anfragen.%0A%0AGer%C3%A4t%3A%0ASchaden%3A%0AOrt%3A%0AIch%20m%C3%B6chte%20die%20Versandhinweise%20erhalten.%0A%0ABitte%20sende%20mir%20die%20n%C3%A4chsten%20Schritte." target="_blank" rel="noopener noreferrer" data-shipping-cta="mobilebar"><span>WhatsApp</span></a>
+    <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-shipping-cta="mobilebar" data-shipping-whatsapp><span>WhatsApp</span></a>
     <a class="mobilebar__btn mobilebar__btn--flow" href="#shipping-flow"><span data-i18n="mb_shipping_flow">Ablauf</span></a>
   </nav>
 
+  <script src="assets/i18n/shipping.js" defer></script>
   <script src="app.js" defer></script>
   <script type="application/ld+json">
   {
