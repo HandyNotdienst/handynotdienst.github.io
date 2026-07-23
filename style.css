@@ -47,6 +47,13 @@
   --control-secondary-border:rgba(169,221,255,.24);
   --control-shipping-border:rgba(244,184,96,.26);
   --control-wa-shadow:0 18px 42px rgba(53,215,101,.24), inset 0 1px 0 rgba(255,255,255,.32);
+
+  /* Type roles */
+  --font-caption:.75rem;
+  --font-small:.8125rem;
+  --font-body:.9375rem;
+  --font-button:.875rem;
+  --font-card-title:1rem;
 }
 
 html[data-theme="light"]{
@@ -631,6 +638,8 @@ html[data-theme="light"] .lang__check{
 .asset-icon--whatsapp{--icon: url("assets/logos/whatsapp.png")}
 .asset-icon--telegram{--icon: url("assets/logos/telegram.png")}
 .asset-icon--email{--icon: url("assets/logos/email.png")}
+.asset-icon--instagram{--icon: url("assets/logos/instagram.png")}
+.asset-icon--tiktok{--icon: url("assets/logos/tiktok.png")}
 .asset-icon--call{--icon: url("assets/logos/call.svg")}
 .asset-icon--prices{--icon: url("assets/logos/prices.png")}
 .asset-icon--proof-fast{--icon: url("assets/logos/proof-fast.png")}
@@ -652,6 +661,8 @@ html[data-theme="light"] .lang__check{
   border-radius: var(--control-radius);
   background: var(--control-bg);
   color: var(--text);
+  font-size:var(--font-button);
+  line-height:1.2;
   font-weight: 780;
   letter-spacing: 0;
   border: 1px solid var(--control-border);
@@ -693,6 +704,18 @@ html[data-theme="light"] .lang__check{
   border-color: rgba(255,255,255,.38);
   box-shadow: 0 20px 48px rgba(53,215,101,.30), inset 0 1px 0 rgba(255,255,255,.42);
 }
+.btn--wa-secondary{
+  color:var(--text);
+  border-color:rgba(53,215,101,.34);
+  background:linear-gradient(180deg, rgba(53,215,101,.14), rgba(53,215,101,.07));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.btn--wa-secondary:hover{
+  color:var(--text);
+  border-color:rgba(53,215,101,.54);
+  background:linear-gradient(180deg, rgba(53,215,101,.20), rgba(53,215,101,.10));
+  box-shadow:0 10px 24px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.10);
+}
 .btn--tg{
   background: linear-gradient(180deg, rgba(42,171,238,.20), rgba(42,171,238,.10));
   color: var(--text);
@@ -708,6 +731,7 @@ html[data-theme="light"] .lang__check{
 .btn--mail::before,
 .btn--call::before,
 .btn--prices::before,
+.btn--wa-secondary::before,
 .btn--quiz::before{
   content:"";
   width: 1.25em;
@@ -718,6 +742,9 @@ html[data-theme="light"] .lang__check{
 .btn--wa::before{
   --btn-icon: url("assets/logos/whatsapp.png");
   filter: brightness(0) saturate(100%);
+}
+.btn--wa-secondary::before{
+  --btn-icon:url("assets/logos/whatsapp.png");
 }
 .btn--tg::before,
 .btn--mail::before{
@@ -732,7 +759,7 @@ html[data-theme="light"] .lang__check{
 .btn--prices::before{--btn-icon: url("assets/logos/prices.png")}
 .btn--shipping::before,
 .btn[href="versand-reparatur.html"]::before{
-  --btn-icon: url("assets/shipping/delivery-car.png");
+  --btn-icon: url("assets/shipping/shipping-button-dark.png");
 }
 .btn--quiz::before{--btn-icon: url("assets/logos/part-options.png")}
 .btn--prices,
@@ -1133,40 +1160,18 @@ html[data-theme="light"] .lang__check{
   margin: 12px 0 0;
   color: rgba(238,243,247,.72);
 }
-.home-price-cta__panel{
+.home-price-cta__action{
   display:grid;
-  gap: 14px;
-  min-width: 0;
-  padding: 18px;
-  border-radius: 22px;
-  background: rgba(255,255,255,.055);
-  border: 1px solid rgba(255,255,255,.11);
-}
-.home-price-cta__checks{
-  display:grid;
-  gap: 10px;
-  list-style:none;
-  margin:0;
-  padding:0;
-}
-.home-price-cta__checks li{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  min-width: 0;
-  color: rgba(238,243,247,.86);
-  font-size: 13.5px;
-  font-weight: 850;
-}
-.home-price-cta__checks .asset-icon{
-  width: 22px;
-  height: 22px;
+  align-content:center;
+  justify-items:stretch;
+  gap:10px;
+  min-width:0;
 }
 .home-price-cta__button{
   width:100%;
   min-height: 56px;
   border-radius: 18px;
-  font-size: 16px;
+  font-size:var(--font-body);
   background: var(--control-secondary-bg);
   border-color: var(--control-secondary-border);
   color: var(--text);
@@ -1176,10 +1181,11 @@ html[data-theme="light"] .lang__check{
   width: 24px;
   height: 24px;
 }
-.home-price-cta__panel small{
+.home-price-cta__action small{
   color: rgba(238,243,247,.62);
-  font-size: 12px;
+  font-size: var(--font-caption);
   line-height: 1.45;
+  text-align:center;
 }
 .concept-action-dock{
   position: relative;
@@ -1408,9 +1414,6 @@ html[data-theme="light"] .lang__check{
   }
   .rating-card{
     display:none;
-  }
-  .home-price-cta__panel{
-    padding: 16px;
   }
   .concept-proof{
     grid-template-columns: 1fr;
@@ -2459,11 +2462,24 @@ html[data-theme="light"] .lang__check{
 /* Contact */
 .contact{
   display:grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns:minmax(0, 760px);
+  justify-content:center;
   gap: 14px;
   align-items: start;
 }
-.contact__list{display:grid; gap: 10px; margin: 14px 0}
+.contact__left{
+  width:100%;
+  min-width:0;
+  font-style:normal;
+}
+.contact__list{
+  display:grid;
+  gap:10px;
+  margin:14px 0;
+  padding:0;
+  list-style:none;
+}
+.contact__list li{min-width:0}
 .contact__row{
   display:flex; gap: 10px; align-items:flex-start;
   padding: 12px 12px;
@@ -2471,6 +2487,12 @@ html[data-theme="light"] .lang__check{
   border: 1px solid rgba(255,255,255,.075);
   background: rgba(255,255,255,.024);
   transition: background .18s ease, border-color .18s ease, transform .18s ease;
+  font-size:var(--font-body);
+  line-height:1.45;
+}
+.contact__row > span:last-child{
+  min-width:0;
+  overflow-wrap:anywhere;
 }
 a.contact__row:hover{
   transform: translateY(-1px);
@@ -2510,7 +2532,7 @@ a.contact__row:focus-visible{
   min-height: var(--control-height-sm);
   padding-inline: 14px;
   border-radius: var(--control-radius-sm);
-  font-size: 13px;
+  font-size:var(--font-button);
 }
 
 .map{
@@ -2963,7 +2985,7 @@ a.contact__row:focus-visible{
   min-height: var(--control-height-sm);
   padding: 0 13px;
   border-radius: var(--control-radius-sm);
-  font-size: 13px;
+  font-size:var(--font-button);
   font-weight: 780;
   box-shadow: none;
 }
@@ -3711,7 +3733,7 @@ html[data-theme="light"] .shipping-hero__visual .shipping-picture--hero.shipping
   filter: brightness(0) saturate(100%);
 }
 .mobilebar__btn--prices::before{--mobilebar-icon: url("assets/logos/prices.png")}
-.mobilebar__btn--shipping::before{--mobilebar-icon: url("assets/shipping/delivery-car.png")}
+.mobilebar__btn--shipping::before{--mobilebar-icon: url("assets/shipping/shipping-button-dark.png")}
 .mobilebar__btn--flow::before{--mobilebar-icon: url("assets/logos/proof-fast.png")}
 .mobilebar__btn--prices,
 .mobilebar__btn--shipping{
@@ -5224,7 +5246,6 @@ html[data-theme="light"] .concept-badge{
   border-color: rgba(22,163,74,.22);
 }
 html[data-theme="light"] .concept-proof__item,
-html[data-theme="light"] .home-price-cta__panel,
 html[data-theme="light"] .concept-action-dock a{
   background: var(--control-bg);
   border-color: var(--control-border);
@@ -5232,7 +5253,7 @@ html[data-theme="light"] .concept-action-dock a{
 html[data-theme="light"] .concept-proof__item small,
 html[data-theme="light"] .concept-safe,
 html[data-theme="light"] .home-price-cta p,
-html[data-theme="light"] .home-price-cta__panel small,
+html[data-theme="light"] .home-price-cta__action small,
 html[data-theme="light"] .concept-action-dock small{
   color: rgba(16,35,49,.66);
 }
@@ -5265,8 +5286,7 @@ html[data-theme="light"] .home-price-cta{
   border-color: rgba(7,21,33,.12);
   box-shadow: 0 24px 66px rgba(39,74,96,.16), inset 0 1px 0 rgba(255,255,255,.78);
 }
-html[data-theme="light"] .rating-card small,
-html[data-theme="light"] .home-price-cta__checks li{
+html[data-theme="light"] .rating-card small{
   color: rgba(16,35,49,.74);
 }
 html[data-theme="light"] .price-selector-head,
@@ -6457,11 +6477,6 @@ body{
   box-shadow:0 28px 72px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.08);
 }
 
-.home-price-cta__panel{
-  background:rgba(255,255,255,.045);
-  border-color:rgba(188,226,246,.12);
-}
-
 .ba-card{
   border-color:rgba(188,226,246,.18);
   box-shadow:0 22px 58px rgba(0,0,0,.24);
@@ -6972,6 +6987,22 @@ html[data-theme="light"] .btn.btn--ghost{
     inset 0 1px 0 rgba(255,255,255,.95),
     inset 0 -2px 0 rgba(8,34,51,.10),
     0 7px 16px rgba(36,74,94,.12);
+}
+
+html[data-theme="light"] .btn--wa-secondary{
+  color:#102434;
+  border-color:rgba(22,163,74,.30);
+  background:linear-gradient(180deg, rgba(53,215,101,.13), rgba(53,215,101,.07));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.86);
+}
+
+html[data-theme="light"] .btn--shipping::before,
+html[data-theme="light"] .btn[href="versand-reparatur.html"]::before{
+  --btn-icon:url("assets/shipping/shipping-button-light.png");
+}
+
+html[data-theme="light"] .mobilebar__btn--shipping::before{
+  --mobilebar-icon:url("assets/shipping/shipping-button-light.png");
 }
 
 html[data-theme="light"] .concept-proof{

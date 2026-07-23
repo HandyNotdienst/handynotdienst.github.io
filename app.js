@@ -2444,6 +2444,79 @@
     sl: { nav_shipping: "Pošiljanje", footer_shipping_terms: "Pogoji pošiljanja", mb_shipping_flow: "Potek", price_mode_local: "V Singen", price_mode_shipping: "Po pošti", price_mode_shipping_cta: "Vprašaj za pošiljanje", shipping_logistics_pack: "Varno zapakiraj", shipping_logistics_send: "Pošlji s sledenjem", shipping_logistics_return: "Povratno pošiljanje", shipping_logistics_station: "Packstation po dogovoru", faq_section_shipping: "Popravilo po pošti" },
   };
 
+  const HOME_PRICE_CTA_I18N = {
+    de: {
+      home_price_cta_eyebrow: "Reparaturpreis prüfen",
+      home_price_cta_title: "Preis für dein Modell finden.",
+      home_price_cta_text: "iPhone oder Samsung wählen und Preise inklusive Einbau direkt ansehen.",
+      home_price_cta_button: "Reparaturpreise öffnen",
+      home_price_cta_note: "Preise inkl. Einbau",
+    },
+    uk: {
+      home_price_cta_eyebrow: "Перевірити ціну ремонту",
+      home_price_cta_title: "Знайдіть ціну для своєї моделі.",
+      home_price_cta_text: "Оберіть iPhone або Samsung і перегляньте ціни з установкою.",
+      home_price_cta_button: "Відкрити ціни ремонту",
+      home_price_cta_note: "Ціни з установкою",
+    },
+    en: {
+      home_price_cta_eyebrow: "Check repair price",
+      home_price_cta_title: "Find the price for your model.",
+      home_price_cta_text: "Choose iPhone or Samsung and view prices including installation.",
+      home_price_cta_button: "Open repair prices",
+      home_price_cta_note: "Prices incl. installation",
+    },
+    ru: {
+      home_price_cta_eyebrow: "Проверить стоимость ремонта",
+      home_price_cta_title: "Найдите цену для своей модели.",
+      home_price_cta_text: "Выберите iPhone или Samsung и сразу посмотрите цены с установкой.",
+      home_price_cta_button: "Открыть цены на ремонт",
+      home_price_cta_note: "Цены с установкой",
+    },
+    pl: {
+      home_price_cta_eyebrow: "Sprawdź cenę naprawy",
+      home_price_cta_title: "Znajdź cenę dla swojego modelu.",
+      home_price_cta_text: "Wybierz iPhone'a lub Samsunga i od razu zobacz ceny z montażem.",
+      home_price_cta_button: "Otwórz cennik napraw",
+      home_price_cta_note: "Ceny z montażem",
+    },
+    it: {
+      home_price_cta_eyebrow: "Verifica il prezzo della riparazione",
+      home_price_cta_title: "Trova il prezzo per il tuo modello.",
+      home_price_cta_text: "Scegli iPhone o Samsung e visualizza subito i prezzi con montaggio incluso.",
+      home_price_cta_button: "Apri i prezzi delle riparazioni",
+      home_price_cta_note: "Prezzi con montaggio incluso",
+    },
+    ar: {
+      home_price_cta_eyebrow: "تحقق من سعر الإصلاح",
+      home_price_cta_title: "اعثر على السعر المناسب لطراز جهازك.",
+      home_price_cta_text: "اختر iPhone أو Samsung وشاهد الأسعار شاملة التركيب مباشرة.",
+      home_price_cta_button: "عرض أسعار الإصلاح",
+      home_price_cta_note: "الأسعار شاملة التركيب",
+    },
+    ku: {
+      home_price_cta_eyebrow: "Bihayê tamîrê kontrol bike",
+      home_price_cta_title: "Bihayê ji bo modela xwe bibîne.",
+      home_price_cta_text: "iPhone an Samsung hilbijêre û bihayên bi montajê re rasterast bibîne.",
+      home_price_cta_button: "Bihayên tamîrê veke",
+      home_price_cta_note: "Biha bi montajê re",
+    },
+    fr: {
+      home_price_cta_eyebrow: "Vérifier le prix de la réparation",
+      home_price_cta_title: "Trouvez le prix pour votre modèle.",
+      home_price_cta_text: "Choisissez iPhone ou Samsung et consultez directement les prix, pose comprise.",
+      home_price_cta_button: "Voir les tarifs de réparation",
+      home_price_cta_note: "Prix pose comprise",
+    },
+    sl: {
+      home_price_cta_eyebrow: "Preveri ceno popravila",
+      home_price_cta_title: "Poišči ceno za svoj model.",
+      home_price_cta_text: "Izberi iPhone ali Samsung in si takoj oglej cene z vgradnjo.",
+      home_price_cta_button: "Odpri cene popravil",
+      home_price_cta_note: "Cene z vgradnjo",
+    },
+  };
+
   Object.entries(EXTRA_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...GLOBAL_I18N.de, ...values };
   });
@@ -2466,6 +2539,9 @@
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
   Object.entries(SHIPPING_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
+  Object.entries(HOME_PRICE_CTA_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
   const PRICE_OPTION_I18N_DE = {
