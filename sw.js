@@ -1,4 +1,4 @@
-const CACHE = "hn-v62";
+const CACHE = "hn-v63";
 const ASSETS = [
   "./",
   "./index.html",
@@ -106,6 +106,8 @@ const ASSETS = [
   "./assets/shipping/parcel.png",
   "./assets/shipping/courier.png",
   "./assets/shipping/delivery-car.png",
+  "./assets/shipping/shipping-button-dark.png",
+  "./assets/shipping/shipping-button-light.png",
   "./assets/shipping/parcel-locker.png",
   "./assets/optimized/before-phone-640.webp",
   "./assets/optimized/before-phone-1100.webp",
@@ -115,6 +117,7 @@ const ASSETS = [
   "./assets/logos/apple-logo.png",
   "./assets/logos/data-security.png",
   "./assets/logos/email.png",
+  "./assets/logos/instagram.png",
   "./assets/logos/part-options.png",
   "./assets/logos/prices.png",
   "./assets/logos/proof-fast.png",
@@ -122,6 +125,7 @@ const ASSETS = [
   "./assets/logos/proof-warranty.png",
   "./assets/logos/samsung-galaxy-logo.png",
   "./assets/logos/telegram.png",
+  "./assets/logos/tiktok.png",
   "./assets/logos/warranty-details.png",
   "./assets/logos/whatsapp.png",
   "./assets/samsung/device/laptop.png",

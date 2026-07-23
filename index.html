@@ -133,18 +133,13 @@
 
       <div class="container home-price-cta">
         <div class="home-price-cta__copy">
-          <span class="home-price-cta__eyebrow" data-i18n="home_price_cta_eyebrow">Preise ohne Umwege</span>
-          <h2 data-i18n="home_price_cta_title">Gerät auswählen, Preis prüfen, direkt anfragen.</h2>
-          <p data-i18n="home_price_cta_text">Die komplette Preisliste ist übersichtlich nach iPhone und Samsung getrennt. So bleibt die Startseite ruhig und du findest schneller den passenden Reparaturpreis.</p>
+          <span class="home-price-cta__eyebrow" data-i18n="home_price_cta_eyebrow">Reparaturpreis prüfen</span>
+          <h2 data-i18n="home_price_cta_title">Preis für dein Modell finden.</h2>
+          <p data-i18n="home_price_cta_text">iPhone oder Samsung wählen und Preise inklusive Einbau direkt ansehen.</p>
         </div>
-        <div class="home-price-cta__panel">
-          <ul class="home-price-cta__checks" aria-label="Preisvorteile">
-            <li><span class="asset-icon asset-icon--prices" aria-hidden="true"></span><span data-i18n="home_price_cta_point_1">iPhone & Samsung getrennt</span></li>
-            <li><span class="asset-icon asset-icon--part-options" aria-hidden="true"></span><span data-i18n="home_price_cta_point_2">Display, Akku, Rückglas und mehr</span></li>
-            <li><span class="asset-icon asset-icon--whatsapp" aria-hidden="true"></span><span data-i18n="home_price_cta_point_3">Nach Auswahl sofort per WhatsApp anfragen</span></li>
-          </ul>
-          <a class="btn btn--prices home-price-cta__button" href="prices.html" data-i18n="home_price_cta_button">Preise ansehen</a>
-          <small data-i18n="home_price_cta_note">Auf der Preis-Seite ist iPhone 12 als schneller Einstieg vorausgewählt.</small>
+        <div class="home-price-cta__action">
+          <a class="btn btn--prices home-price-cta__button" href="prices.html" data-i18n="home_price_cta_button">Reparaturpreise öffnen</a>
+          <small data-i18n="home_price_cta_note">Preise inkl. Einbau</small>
         </div>
       </div>
 
@@ -190,7 +185,7 @@
             </div>
             <h3 data-i18n="service_choice_pickup_title">Abholung in Singen</h3>
             <p class="muted" data-i18n="service_choice_pickup_text">Wenn es zeitlich passt, kann ich Abholung oder Rückgabe innerhalb Singen vereinbaren.</p>
-            <a class="btn btn--ghost btn--wa" href="https://wa.me/4915222416438?text=Hallo!%20Ich%20m%C3%B6chte%20Abholung%20in%20Singen%20anfragen." target="_blank" rel="noopener noreferrer" data-shipping-cta="home-pickup" data-i18n="pick_btn">Abholung anfragen</a>
+            <a class="btn btn--wa-secondary" href="https://wa.me/4915222416438?text=Hallo!%20Ich%20m%C3%B6chte%20Abholung%20in%20Singen%20anfragen." target="_blank" rel="noopener noreferrer" data-shipping-cta="home-pickup" data-i18n="pick_btn">Abholung anfragen</a>
           </article>
           <article class="card service-choice__card service-choice__card--shipping">
             <div class="shipping-card-visual service-choice__visual" aria-hidden="true">
@@ -349,32 +344,25 @@
     <!-- Contact -->
     <section class="section section--product reveal" id="contact">
       <div class="container contact">
-        <div class="card contact__left">
+        <address class="card contact__left">
           <h2 data-i18n="contact_title">Kontakt</h2>
           <p class="muted" data-i18n="contact_text">Schreib oder ruf an – aktuell arbeite ich mobil und nach Absprache in Singen.</p>
 
-          <div class="contact__list">
-            <a class="contact__row" href="tel:+4915222416438"><span class="contact__icon asset-icon--call" aria-hidden="true"></span><span><strong data-i18n="contact_call">Anrufen</strong> — 01522 2416438</span></a>
-            <a class="contact__row" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer"><span class="contact__icon contact__icon--whatsapp asset-icon--whatsapp" aria-hidden="true"></span><span><strong>WhatsApp</strong> — <span data-i18n="contact_wa">schreiben</span></span></a>
-            <a class="contact__row" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener noreferrer"><span class="contact__icon asset-icon--telegram" aria-hidden="true"></span><span><strong>Telegram</strong> — @HandyNotdienst</span></a>
-            <a class="contact__row" href="mailto:handy.notdienst.reparatur@gmail.com"><span class="contact__icon asset-icon--email" aria-hidden="true"></span><span><strong>Email</strong> — handy.notdienst.reparatur@gmail.com</span></a>
-            <div class="contact__row"><span class="contact__icon asset-icon--proof-fast" aria-hidden="true"></span><span><strong data-i18n="mobile_service_title">Mobiler Service in Singen</strong><br/><span class="muted" data-i18n="address_hint">Kein offenes Ladenlokal – Übergabe, Abholung oder Vor-Ort-Termin nach Absprache.</span></span></div>
-            <div class="contact__row"><span class="contact__icon asset-icon--warranty-details" aria-hidden="true"></span><span><strong data-i18n="hours">Termine</strong>: <span class="muted" data-i18n="hours_hint">meist kurzfristig nach WhatsApp-Check möglich</span></span></div>
-          </div>
+          <ul class="contact__list">
+            <li><a class="contact__row" href="tel:+4915222416438"><span class="contact__icon asset-icon--call" aria-hidden="true"></span><span><strong data-i18n="contact_call">Anrufen</strong> — 01522 2416438</span></a></li>
+            <li><a class="contact__row" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer"><span class="contact__icon contact__icon--whatsapp asset-icon--whatsapp" aria-hidden="true"></span><span><strong>WhatsApp</strong> — <span data-i18n="contact_wa">schreiben</span></span></a></li>
+            <li><a class="contact__row" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener noreferrer"><span class="contact__icon asset-icon--telegram" aria-hidden="true"></span><span><strong>Telegram</strong> — @HandyNotdienst</span></a></li>
+            <li><a class="contact__row" href="mailto:handy.notdienst.reparatur@gmail.com"><span class="contact__icon asset-icon--email" aria-hidden="true"></span><span><strong>Email</strong> — handy.notdienst.reparatur@gmail.com</span></a></li>
+            <li><a class="contact__row" href="https://www.instagram.com/handy.notdienst" target="_blank" rel="noopener noreferrer"><span class="contact__icon asset-icon--instagram" aria-hidden="true"></span><span><strong>Instagram</strong> — @handy.notdienst</span></a></li>
+            <li><a class="contact__row" href="https://www.tiktok.com/@handy.notdienst" target="_blank" rel="noopener noreferrer"><span class="contact__icon asset-icon--tiktok" aria-hidden="true"></span><span><strong>TikTok</strong> — @handy.notdienst</span></a></li>
+          </ul>
 
           <div class="contact__actions">
             <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer">WhatsApp</a>
             <a class="btn btn--tg" href="https://t.me/HandyNotdienst" target="_blank" rel="noopener noreferrer">Telegram</a>
             <a class="btn btn--mail" href="mailto:handy.notdienst.reparatur@gmail.com">Email</a>
           </div>
-        </div>
-
-        <div class="card contact__right">
-          <h3 data-i18n="map_title">Übergabe, Abholung oder Versand</h3>
-          <p class="muted" data-i18n="map_text">Aktuell ohne offenes Ladenlokal: lokal flexibel in Singen oder per Versand aus Deutschland.</p>
-          <div class="map service-area"><span><strong data-i18n="map_placeholder">Singen & deutschlandweiter Versand</strong><small data-i18n="service_area_text">Innerhalb Singen sind Übergabe, Abholung oder mobiler Termin nach Absprache möglich. Außerhalb Singen läuft die Reparatur per verfolgbarer Sendung.</small></span></div>
-          <p class="hint" data-i18n="map_hint">Bitte zuerst per WhatsApp Modell, Schaden und gewünschten Weg schreiben: Singen, Abholung oder Versand.</p>
-        </div>
+        </address>
       </div>
     </section>
 
