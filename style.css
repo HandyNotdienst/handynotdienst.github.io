@@ -3878,100 +3878,6 @@ html[data-theme="light"] .shipping-hero__visual .shipping-picture--hero.shipping
 .legalpage h1{margin:0 0 8px}
 .sep{border:0; border-top: 1px solid var(--line); margin: 16px 0;}
 
-/* ===== MOBILE STICKY BAR ===== */
-.mobilebar{
-  display:none;
-  position: fixed;
-  left: 50%;
-  right: auto;
-  bottom: 12px;
-  z-index: 70;
-  width: min(360px, calc(100vw - 16px));
-  transform: translateX(-50%);
-  gap: 8px;
-  grid-template-columns: 1fr 1.16fr 1fr;
-}
-.mobilebar__btn{
-  display:flex;
-  box-sizing:border-box;
-  position:relative;
-  isolation:isolate;
-  min-width:0;
-  max-width:100%;
-  overflow:hidden;
-  align-items:center;
-  justify-content:center;
-  gap: 6px;
-  padding: 12px 6px;
-  border-radius: var(--control-radius);
-  border: 1px solid var(--control-border);
-  background: var(--control-bg);
-  backdrop-filter: blur(10px);
-  color: var(--text);
-  font-weight: 800;
-  box-shadow: 0 12px 30px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.055);
-  transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
-}
-.mobilebar__btn:hover{
-  transform: translateY(-1px);
-  border-color: var(--control-border-hover);
-  background: var(--control-bg-hover);
-}
-.mobilebar__btn:focus-visible{
-  outline: 0;
-  box-shadow: var(--control-focus), 0 12px 30px rgba(0,0,0,.24);
-}
-.mobilebar__btn::before{
-  content:"";
-  width: 21px;
-  height: 21px;
-  flex: 0 0 auto;
-  background: var(--mobilebar-icon) center / contain no-repeat;
-}
-.mobilebar__btn--call::before{--mobilebar-icon: url("assets/logos/call.svg")}
-.mobilebar__btn--wa::before{
-  --mobilebar-icon: url("assets/logos/whatsapp.png");
-  filter: brightness(0) saturate(100%);
-}
-.mobilebar__btn--prices::before{--mobilebar-icon: url("assets/logos/prices.png")}
-.mobilebar__btn--shipping::before{--mobilebar-icon: url("assets/shipping/shipping-button-dark.png")}
-.mobilebar__btn--flow::before{--mobilebar-icon: url("assets/logos/proof-fast.png")}
-.mobilebar__btn--prices,
-.mobilebar__btn--shipping{
-  color: var(--text);
-  border-color: var(--control-secondary-border);
-  background: var(--control-secondary-bg);
-  box-shadow: 0 12px 30px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.055);
-}
-.mobilebar__btn--prices::before,
-.mobilebar__btn--prices span,
-.mobilebar__btn--shipping::before,
-.mobilebar__btn--shipping span{
-  position:relative;
-  z-index:1;
-}
-.mobilebar__btn span{
-  min-width:0;
-  font-size: 11px;
-  color: var(--muted);
-  font-weight: 760;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.mobilebar__btn--wa{
-  background: linear-gradient(135deg, var(--whatsapp), var(--whatsapp-2));
-  color:#06101f;
-  border-color: rgba(255,255,255,.28);
-  box-shadow: var(--control-wa-shadow);
-}
-.mobilebar__btn--wa span{color:#06101f; opacity:.85;}
-.mobilebar__btn--prices span,
-.mobilebar__btn--shipping span{
-  color: var(--text);
-  opacity:.82;
-}
-
 .noscript-fallback,
 .cookie-consent{
   position: fixed;
@@ -4093,31 +3999,23 @@ body.intro-pending .cookie-consent{
 }
 @media (max-width: 560px){
   .topnav{display:none;}
-  .mobilebar{display:grid;}
-  .mobilebar__btn{font-size:0;}
-  .mobilebar__btn::before{
-    width: 24px;
-    height: 24px;
+  .float-wa{
+    right:12px;
+    bottom:calc(12px + env(safe-area-inset-bottom));
+    width:50px;
+    height:50px;
+    border-radius:16px;
   }
-  .float-wa{display:none;}
-  body{padding-bottom: 90px;} /* щоб контент не ховався під mobilebar */
-}
-@media (max-width: 380px){
-  .mobilebar{
-    width: min(300px, calc(100vw - 16px));
-  }
-  .mobilebar__btn{
-    padding-inline: 8px;
-  }
-  .mobilebar__btn span{
-    display:none;
+  .float-wa::before{
+    width:26px;
+    height:26px;
   }
 }
 
 @media (max-width: 560px){
   .noscript-fallback,
   .cookie-consent{
-    bottom: calc(4.375rem + env(safe-area-inset-bottom));
+    bottom: calc(.625rem + env(safe-area-inset-bottom));
     width: calc(100% - 1.25rem);
     border-radius: 1rem;
   }
@@ -4775,7 +4673,9 @@ body.intro-pending .cookie-consent{
   transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
 }
 .price-selector-device-frame{
-  width: min(100%, 390px);
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
   aspect-ratio: 1.2;
   display: flex;
   align-items: center;
@@ -5245,7 +5145,8 @@ body.intro-pending .cookie-consent{
     text-align: center;
   }
   .price-selector-device-frame{
-    width: min(100%, 430px);
+    width: 100%;
+    max-width: none;
     aspect-ratio: 1.25;
     margin: 0 auto;
     border-radius: 20px;
@@ -5778,32 +5679,6 @@ html[data-theme="light"] .quiz-modal__overlay{
 html[data-theme="light"] .quiz-progress-bar{
   background: rgba(7,21,33,.10);
 }
-html[data-theme="light"] .mobilebar__btn{
-  color: var(--text);
-  background: var(--control-bg);
-  border-color: var(--control-border);
-  box-shadow: 0 12px 30px rgba(39,74,96,.13), inset 0 1px 0 rgba(255,255,255,.75);
-}
-html[data-theme="light"] .mobilebar__btn span{
-  color: rgba(16,35,49,.70);
-}
-html[data-theme="light"] .mobilebar__btn--wa{
-  color:#06101f;
-}
-html[data-theme="light"] .mobilebar__btn--wa span{
-  color:#06101f;
-}
-html[data-theme="light"] .mobilebar__btn--prices,
-html[data-theme="light"] .mobilebar__btn--shipping{
-  color: var(--text);
-  background: var(--control-secondary-bg);
-  border-color: var(--control-secondary-border);
-}
-html[data-theme="light"] .mobilebar__btn--prices span,
-html[data-theme="light"] .mobilebar__btn--shipping span{
-  color: rgba(16,35,49,.76);
-}
-
 @media (max-width: 768px){
   .theme-toggle{
     width:42px;
@@ -6752,7 +6627,9 @@ body{
 }
 
 .price-selector-device-frame{
-  max-width:min(74%, 420px);
+  width:100%;
+  max-width:none;
+  box-sizing:border-box;
   margin-inline:auto;
   border-radius:24px;
   background:
@@ -7081,7 +6958,8 @@ html[data-theme="light"] .shipping-final__card{
   }
 
   .price-selector-device-frame{
-    max-width:min(82%, 340px);
+    width:100%;
+    max-width:none;
   }
 }
 
@@ -7240,10 +7118,6 @@ html[data-theme="light"] .btn[href="versand-reparatur.html"]::before{
   --btn-icon:url("assets/shipping/shipping-button-light.png");
 }
 
-html[data-theme="light"] .mobilebar__btn--shipping::before{
-  --mobilebar-icon:url("assets/shipping/shipping-button-light.png");
-}
-
 html[data-theme="light"] .concept-proof{
   border-color:rgba(8,34,51,.13);
   background:rgba(255,255,255,.54);
@@ -7287,6 +7161,55 @@ html[data-theme="light"] .concept-proof__item + .concept-proof__item{
   .btn:active{
     transform:none;
   }
+}
+
+/* Homepage section rhythm: two calm, theme-aware bands without decorative noise. */
+.home-page{
+  --home-band-deep-start:#0b2332;
+  --home-band-deep-end:#081923;
+  --home-band-clean-start:#eef5f8;
+  --home-band-clean-end:#dfeaf0;
+  --home-band-deep-border:rgba(188,226,246,.12);
+  --home-band-clean-border:rgba(8,34,51,.11);
+}
+
+.home-page > .section--product{
+  background:linear-gradient(180deg, var(--home-band-deep-start), var(--home-band-deep-end));
+  border-color:var(--home-band-deep-border);
+  box-shadow:none;
+}
+
+.home-page > .section--clean{
+  background:linear-gradient(180deg, var(--home-band-clean-start), var(--home-band-clean-end));
+  border-color:var(--home-band-clean-border);
+  box-shadow:none;
+}
+
+.home-page .service-choice__card,
+.home-page #warranty .warranty__item{
+  background:linear-gradient(180deg, rgba(19,47,65,.88), rgba(12,31,45,.96));
+  border-color:rgba(188,226,246,.14);
+  box-shadow:0 18px 44px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+.home-page #warranty{
+  border-top-color:rgba(244,184,96,.24);
+}
+
+html[data-theme="light"] .home-page{
+  --home-band-deep-start:#e6f0f5;
+  --home-band-deep-end:#f1f7fa;
+  --home-band-clean-start:#fbfdfe;
+  --home-band-clean-end:#edf5f8;
+  --home-band-deep-border:rgba(8,34,51,.11);
+  --home-band-clean-border:rgba(8,34,51,.09);
+}
+
+html[data-theme="light"] .home-page .service-choice__card,
+html[data-theme="light"] .home-page #warranty .warranty__item{
+  background:linear-gradient(180deg, rgba(255,255,255,.94), rgba(237,246,250,.90));
+  border-color:rgba(8,34,51,.12);
+  box-shadow:0 18px 40px rgba(36,74,94,.11), inset 0 1px 0 rgba(255,255,255,.84);
 }
 
 #price-configurator{
@@ -7340,11 +7263,6 @@ html[data-theme="light"] .price-mode-status{
   color:#13552c;
   border-color:rgba(22,163,74,.28);
   background:rgba(34,197,94,.09);
-}
-
-.price-selector-card.is-shipping-mode .price-selector-device-frame{
-  width:min(100%, 460px);
-  max-width:min(96%, 460px);
 }
 
 .shipping-price-handoff{
@@ -7584,10 +7502,6 @@ html[data-theme="light"] .back-to-top{
     white-space:normal;
   }
 
-  .price-selector-card.is-shipping-mode .price-selector-device-frame{
-    width:min(100%, 370px);
-    max-width:min(90%, 370px);
-  }
 }
 
 @media (max-width:560px){
