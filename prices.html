@@ -95,12 +95,12 @@
           <div class="price-selector-card__content">
             <div class="price-selector-card__topline">
               <span class="price-selector-eyebrow" data-i18n="price_selector_card_eyebrow">Preise sofort prüfen</span>
-              <span class="price-selector-trust" data-i18n="price_selector_trust_note">Daten bleiben erhalten</span>
+              <span class="price-selector-trust" data-i18n="price_selector_trust_note">Daten normalerweise erhalten</span>
             </div>
 
             <h2 class="price-selector-card__title" data-i18n="price_selector_card_title">Gerät auswählen</h2>
 
-            <div class="price-brand-switch" role="group" aria-label="Marke auswählen" data-price-brand-switch>
+            <div class="price-brand-switch" role="group" aria-label="Marke auswählen" data-i18n-aria-label="price_aria_brand" data-price-brand-switch>
               <button class="price-brand-switch__btn is-active" type="button" data-price-brand="apple">
                 <span class="price-brand-switch__logo"><img src="assets/logos/apple-logo.png" alt="" width="32" height="32" aria-hidden="true" /></span>
                 <strong>iPhone</strong>
@@ -111,7 +111,7 @@
               </button>
             </div>
 
-            <div class="price-selector-controls" aria-label="Reparaturpreis auswählen" data-price-apple-panel>
+            <div class="price-selector-controls" aria-label="Reparaturpreis auswählen" data-i18n-aria-label="price_aria_selector" data-price-apple-panel>
               <div class="price-selector-field">
                 <label class="price-selector-label" for="priceFamilySelect" data-i18n="price_selector_family_label">Gerätetyp</label>
                 <select class="price-selector-select" id="priceFamilySelect" data-price-family></select>
@@ -140,8 +140,8 @@
 
           <div class="price-selector-results" data-price-apple-panel>
             <div class="price-selector-results__head">
-              <h3 data-i18n="price_selector_services_title">Verfügbare Reparaturen</h3>
-              <span data-i18n="price_selector_estimate_label">Preise inkl. Einbau</span>
+              <h3 data-i18n="price_selector_services_title">Reparaturoptionen</h3>
+              <span data-i18n="price_selector_estimate_label">Listenpreise inkl. Einbau</span>
             </div>
             <div class="price-service-list" data-price-services></div>
             <p class="price-shipping-hint" data-price-shipping-hint hidden data-i18n="price_mode_shipping_note">Bei Versand bekommst du zuerst Versandhinweise. Keine Reparatur ohne Freigabe.</p>
@@ -233,7 +233,7 @@
                   <span data-i18n="samsung_summary_price_label">Reparaturpreis</span>
                   <strong data-samsung-summary-price>Einfach fragen</strong>
                 </div>
-                <p data-samsung-summary-note data-i18n="samsung_summary_note">Preise sind Richtwerte. Verfügbarkeit und Endpreis bestätigen wir per WhatsApp.</p>
+                <p data-samsung-summary-note data-i18n="samsung_summary_note">Richtpreise inkl. Einbau. Verfügbarkeit und Endpreis bestätigen wir vor dem Auftrag per WhatsApp.</p>
                 <a class="btn btn--wa samsung-summary__cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-samsung-cta data-i18n="samsung_summary_cta">Jetzt per WhatsApp anfragen</a>
               </div>
             </aside>
@@ -247,8 +247,8 @@
           </div>
         </div>
 
-        <p class="price-selector-note" data-i18n="price_selector_note">Die endgültigen Kosten und Garantie hängen vom Zustand des Geräts und der gewählten Ersatzteilqualität ab. Original/Premium und günstige Varianten klären wir vorab.</p>
-        <div class="price-future-strip" aria-label="Weitere Apple Geräte">
+        <p class="price-selector-note" data-i18n="price_selector_note">Listenpreise inkl. Einbau. Zusätzliche Schäden und die gewählte Teilequalität können den Endpreis verändern; bestätigt wird vor dem Auftrag.</p>
+        <div class="price-future-strip" aria-label="Weitere Apple Geräte" data-i18n-aria-label="price_aria_other_apple">
           <span class="price-future-strip__item">
             <span class="price-future-strip__icon" aria-hidden="true"><img src="assets/iphone-icons/iphone-device.svg" alt="" width="40" height="40" loading="lazy" decoding="async" aria-hidden="true"></span>
             <span data-i18n="price_future_iphone">iPhone Reparaturen</span>
@@ -285,6 +285,7 @@
 
   <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><span class="sr-only">WhatsApp</span></a>
   <script src="assets/i18n/prices.js" defer></script>
+  <script src="assets/i18n/content-audit.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
