@@ -233,32 +233,50 @@
 
     <section class="section section--product reveal" id="before-after">
       <div class="container">
-        <div class="section__head">
-          <h2 data-i18n="ba_title">VORHER / NACHHER</h2>
+        <div class="section__head ba-head">
+          <span class="ba-eyebrow" data-i18n="ba_eyebrow">Beispiel: Displayreparatur</span>
+          <h2 data-i18n="ba_title">Vom Displayschaden zum geprüften Gerät</h2>
+          <p class="muted" data-i18n="ba_intro">So sieht der Weg von einem stark beschädigten Display zu einem getesteten, wieder nutzbaren Gerät aus.</p>
         </div>
 
-        <div class="ba-showcase">
-          <figure class="ba-card">
+        <div class="ba-switch" role="group" aria-label="Vergleichsansicht wählen" data-i18n-aria-label="ba_switch_label" data-ba-switch hidden>
+          <button class="ba-switch__button is-active" type="button" data-ba-view="before" aria-pressed="true" aria-controls="baBefore" data-i18n="ba_before_label">Vorher</button>
+          <button class="ba-switch__button" type="button" data-ba-view="after" aria-pressed="false" aria-controls="baAfter" data-i18n="ba_after_label">Nachher</button>
+        </div>
+
+        <div class="ba-proof" data-before-after>
+          <figure class="ba-proof__figure is-active" id="baBefore" data-ba-panel="before">
             <div class="ba-media">
               <picture>
-                <source type="image/webp" srcset="assets/optimized/before-phone-640.webp 640w, assets/optimized/before-phone-1100.webp 1100w" sizes="(max-width: 900px) 92vw, 548px">
-                <img src="assets/before-phone.png" alt="Defektes Smartphone vor der Reparatur" data-i18n-alt="ba_before_alt" width="1536" height="1024" loading="lazy" decoding="async" />
+                <source type="image/webp" srcset="assets/optimized/before-phone-640.webp 640w, assets/optimized/before-phone-1100.webp 1100w" sizes="(max-width: 700px) calc(100vw - 48px), 500px">
+                <img src="assets/optimized/before-phone-fallback.jpg" alt="Beispielbild: Smartphone mit stark beschädigtem Display" data-i18n-alt="ba_before_alt" width="1536" height="1024" loading="lazy" decoding="async" />
               </picture>
               <span class="ba-label" data-i18n="ba_before_label">Vorher</span>
             </div>
-            <figcaption class="ba-caption" data-i18n="ba_compare">Gesprungenes Display vor der Reparatur.</figcaption>
+            <figcaption class="ba-caption" data-i18n="ba_compare">Display stark beschädigt</figcaption>
           </figure>
 
-          <figure class="ba-card">
+          <div class="ba-process" aria-hidden="true">
+            <span class="ba-process__line"></span>
+            <span class="ba-process__icon"></span>
+            <span class="ba-process__text" data-i18n="ba_process">Reparatur + Funktionstest</span>
+          </div>
+
+          <figure class="ba-proof__figure" id="baAfter" data-ba-panel="after">
             <div class="ba-media">
               <picture>
-                <source type="image/webp" srcset="assets/optimized/after-phone-640.webp 640w, assets/optimized/after-phone-1100.webp 1100w" sizes="(max-width: 900px) 92vw, 548px">
-                <img src="assets/after-phone.png" alt="Repariertes Smartphone nach der Reparatur" data-i18n-alt="ba_after_alt" width="1536" height="1024" loading="lazy" decoding="async" />
+                <source type="image/webp" srcset="assets/optimized/after-phone-640.webp 640w, assets/optimized/after-phone-1100.webp 1100w" sizes="(max-width: 700px) calc(100vw - 48px), 500px">
+                <img src="assets/optimized/after-phone-fallback.jpg" alt="Beispielbild: Smartphone nach einer Displayreparatur" data-i18n-alt="ba_after_alt" width="1536" height="1024" loading="lazy" decoding="async" />
               </picture>
               <span class="ba-label" data-i18n="ba_after_label">Nachher</span>
             </div>
-            <figcaption class="ba-caption" data-i18n="ba_after_caption">Display ersetzt, Funktionen getestet und bereit für den Alltag.</figcaption>
+            <figcaption class="ba-caption" data-i18n="ba_after_caption">Display ersetzt, Bild und Touch geprüft</figcaption>
           </figure>
+        </div>
+
+        <div class="ba-proof__footer">
+          <p class="ba-proof__note" data-i18n="ba_example_note">Beispielbilder. Ergebnis und Optik können je nach Modell, Schaden und Teileoption abweichen.</p>
+          <a class="btn btn--prices ba-proof__cta" href="prices.html#price-configurator" data-i18n="ba_cta">Displaypreis prüfen</a>
         </div>
       </div>
     </section>

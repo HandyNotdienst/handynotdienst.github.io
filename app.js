@@ -105,13 +105,19 @@
       contact_call: "Anrufen",
       dock_wa_text: "Schnell & unverbindlich",
       dock_quiz_text: "Problem kurz eingrenzen",
-      ba_title: "VORHER / NACHHER",
-      ba_before_alt: "Defektes Smartphone vor der Reparatur",
+      ba_eyebrow: "Beispiel: Displayreparatur",
+      ba_title: "Vom Displayschaden zum geprüften Gerät",
+      ba_intro: "So sieht der Weg von einem stark beschädigten Display zu einem getesteten, wieder nutzbaren Gerät aus.",
+      ba_switch_label: "Vergleichsansicht wählen",
+      ba_before_alt: "Beispielbild: Smartphone mit stark beschädigtem Display",
       ba_before_label: "Vorher",
-      ba_compare: "Akku leer nach 2 Std -> Ganzer Tag Nutzung",
-      ba_after_alt: "Repariertes Smartphone nach der Reparatur",
+      ba_compare: "Display stark beschädigt",
+      ba_after_alt: "Beispielbild: Smartphone nach einer Displayreparatur",
       ba_after_label: "Nachher",
-      ba_after_caption: "Repariert, getestet & bereit für den Alltag.",
+      ba_after_caption: "Display ersetzt, Bild und Touch geprüft",
+      ba_process: "Reparatur + Funktionstest",
+      ba_example_note: "Beispielbilder. Ergebnis und Optik können je nach Modell, Schaden und Teileoption abweichen.",
+      ba_cta: "Displaypreis prüfen",
       how_title: "So läuft es ab",
       how_text: "3 Schritte - einfach & transparent.",
       how_1_t: "Diagnose",
@@ -306,13 +312,19 @@
       contact_call: "Подзвонити",
       dock_wa_text: "Швидко та без зобовʼязань",
       dock_quiz_text: "Коротко визначити проблему",
-      ba_title: "ДО / ПІСЛЯ",
-      ba_before_alt: "Пошкоджений смартфон до ремонту",
+      ba_eyebrow: "Приклад: ремонт дисплея",
+      ba_title: "Від пошкодженого дисплея до перевіреного пристрою",
+      ba_intro: "Так виглядає шлях від сильно пошкодженого дисплея до протестованого, знову придатного до використання пристрою.",
+      ba_switch_label: "Оберіть вигляд порівняння",
+      ba_before_alt: "Приклад: смартфон із сильно пошкодженим дисплеєм",
       ba_before_label: "До",
-      ba_compare: "Акумулятор сідав за 2 год -> користування весь день",
-      ba_after_alt: "Відремонтований смартфон після ремонту",
+      ba_compare: "Дисплей сильно пошкоджений",
+      ba_after_alt: "Приклад: смартфон після ремонту дисплея",
       ba_after_label: "Після",
-      ba_after_caption: "Відремонтовано, протестовано і готово до щоденного використання.",
+      ba_after_caption: "Дисплей замінено, зображення і сенсор перевірено",
+      ba_process: "Ремонт + перевірка функцій",
+      ba_example_note: "Зображення наведені як приклад. Результат і вигляд можуть відрізнятися залежно від моделі, пошкодження та обраної деталі.",
+      ba_cta: "Перевірити ціну дисплея",
       how_title: "Як це працює",
       how_text: "3 кроки - просто і прозоро.",
       how_1_t: "Діагностика",
@@ -509,13 +521,19 @@
       contact_call: "Call",
       dock_wa_text: "Fast & non-binding",
       dock_quiz_text: "Narrow down the issue",
-      ba_title: "BEFORE / AFTER",
-      ba_before_alt: "Broken smartphone before repair",
+      ba_eyebrow: "Example: display repair",
+      ba_title: "From display damage to a tested device",
+      ba_intro: "This shows the path from a badly damaged display to a tested device that is ready to use again.",
+      ba_switch_label: "Choose comparison view",
+      ba_before_alt: "Example: smartphone with a badly damaged display",
       ba_before_label: "Before",
-      ba_compare: "Battery empty after 2h -> full day use",
-      ba_after_alt: "Repaired smartphone after repair",
+      ba_compare: "Display badly damaged",
+      ba_after_alt: "Example: smartphone after a display repair",
       ba_after_label: "After",
-      ba_after_caption: "Repaired, tested & ready for everyday use.",
+      ba_after_caption: "Display replaced, image and touch tested",
+      ba_process: "Repair + function test",
+      ba_example_note: "Example images. Results and appearance may vary depending on the model, damage and selected part option.",
+      ba_cta: "Check display price",
       how_title: "How it works",
       how_text: "3 steps - simple & transparent.",
       how_1_t: "Diagnosis",
@@ -1206,13 +1224,19 @@
 
   const HOME_SECTION_I18N = {
     ru: {
-      ba_title: "ДО / ПОСЛЕ",
-      ba_before_alt: "Неисправный смартфон до ремонта",
+      ba_eyebrow: "Пример: ремонт дисплея",
+      ba_title: "От поврежденного дисплея до проверенного устройства",
+      ba_intro: "Так выглядит путь от сильно поврежденного дисплея до проверенного устройства, снова готового к использованию.",
+      ba_switch_label: "Выберите вид сравнения",
+      ba_before_alt: "Пример: смартфон с сильно поврежденным дисплеем",
       ba_before_label: "До",
-      ba_compare: "Аккумулятор садился за 2 часа -> полный день использования",
-      ba_after_alt: "Отремонтированный смартфон после ремонта",
+      ba_compare: "Дисплей сильно поврежден",
+      ba_after_alt: "Пример: смартфон после ремонта дисплея",
       ba_after_label: "После",
-      ba_after_caption: "Отремонтировано, протестировано и готово к ежедневному использованию.",
+      ba_after_caption: "Дисплей заменен, изображение и сенсор проверены",
+      ba_process: "Ремонт + проверка функций",
+      ba_example_note: "Изображения приведены для примера. Результат и внешний вид могут отличаться в зависимости от модели, повреждения и выбранной детали.",
+      ba_cta: "Проверить цену дисплея",
       how_title: "Как это работает",
       how_text: "3 шага - просто и прозрачно.",
       how_1_t: "Диагностика",
@@ -1250,13 +1274,19 @@
       map_hint: "Сначала напишите в WhatsApp модель, поломку и желаемый способ: Singen, забор или Versand.",
     },
     pl: {
-      ba_title: "PRZED / PO",
-      ba_before_alt: "Uszkodzony smartfon przed naprawą",
+      ba_eyebrow: "Przykład: naprawa wyświetlacza",
+      ba_title: "Od uszkodzonego wyświetlacza do sprawdzonego urządzenia",
+      ba_intro: "Tak wygląda droga od mocno uszkodzonego wyświetlacza do przetestowanego urządzenia, które znów nadaje się do użytku.",
+      ba_switch_label: "Wybierz widok porównania",
+      ba_before_alt: "Przykład: smartfon z mocno uszkodzonym wyświetlaczem",
       ba_before_label: "Przed",
-      ba_compare: "Bateria rozładowana po 2 godz. -> cały dzień używania",
-      ba_after_alt: "Naprawiony smartfon po naprawie",
+      ba_compare: "Wyświetlacz mocno uszkodzony",
+      ba_after_alt: "Przykład: smartfon po naprawie wyświetlacza",
       ba_after_label: "Po",
-      ba_after_caption: "Naprawiony, przetestowany i gotowy do codziennego używania.",
+      ba_after_caption: "Wyświetlacz wymieniony, obraz i dotyk sprawdzone",
+      ba_process: "Naprawa + test funkcji",
+      ba_example_note: "Zdjęcia przykładowe. Rezultat i wygląd mogą się różnić zależnie od modelu, uszkodzenia i wybranej części.",
+      ba_cta: "Sprawdź cenę wyświetlacza",
       how_title: "Jak to działa",
       how_text: "3 kroki - prosto i przejrzyście.",
       how_1_t: "Diagnoza",
@@ -1294,13 +1324,19 @@
       map_hint: "Najpierw napisz przez WhatsApp model, usterkę i wybraną opcję: Singen, odbiór albo wysyłka.",
     },
     it: {
-      ba_title: "PRIMA / DOPO",
-      ba_before_alt: "Smartphone danneggiato prima della riparazione",
+      ba_eyebrow: "Esempio: riparazione display",
+      ba_title: "Dal display danneggiato al dispositivo verificato",
+      ba_intro: "Ecco il percorso da un display molto danneggiato a un dispositivo testato e di nuovo utilizzabile.",
+      ba_switch_label: "Scegli la vista di confronto",
+      ba_before_alt: "Esempio: smartphone con display molto danneggiato",
       ba_before_label: "Prima",
-      ba_compare: "Batteria scarica dopo 2 ore -> uso per tutta la giornata",
-      ba_after_alt: "Smartphone riparato dopo la riparazione",
+      ba_compare: "Display molto danneggiato",
+      ba_after_alt: "Esempio: smartphone dopo la riparazione del display",
       ba_after_label: "Dopo",
-      ba_after_caption: "Riparato, testato e pronto per l'uso quotidiano.",
+      ba_after_caption: "Display sostituito, immagine e touch verificati",
+      ba_process: "Riparazione + test funzionale",
+      ba_example_note: "Immagini di esempio. Risultato e aspetto possono variare in base al modello, al danno e al ricambio scelto.",
+      ba_cta: "Verifica il prezzo del display",
       how_title: "Come funziona",
       how_text: "3 passaggi - semplice e trasparente.",
       how_1_t: "Diagnosi",
@@ -1338,13 +1374,19 @@
       map_hint: "Invia prima via WhatsApp modello, danno e opzione desiderata: Singen, ritiro o spedizione.",
     },
     ar: {
-      ba_title: "قبل / بعد",
-      ba_before_alt: "هاتف ذكي تالف قبل الإصلاح",
+      ba_eyebrow: "مثال: إصلاح الشاشة",
+      ba_title: "من شاشة متضررة إلى جهاز تم اختباره",
+      ba_intro: "هكذا ينتقل الجهاز من شاشة متضررة بشدة إلى جهاز تم اختباره وأصبح صالحا للاستخدام مجددا.",
+      ba_switch_label: "اختر عرض المقارنة",
+      ba_before_alt: "مثال: هاتف ذكي بشاشة متضررة بشدة",
       ba_before_label: "قبل",
-      ba_compare: "البطارية تنفد بعد ساعتين -> استخدام طوال اليوم",
-      ba_after_alt: "هاتف ذكي بعد الإصلاح",
+      ba_compare: "الشاشة متضررة بشدة",
+      ba_after_alt: "مثال: هاتف ذكي بعد إصلاح الشاشة",
       ba_after_label: "بعد",
-      ba_after_caption: "تم الإصلاح والاختبار وجاهز للاستخدام اليومي.",
+      ba_after_caption: "تم استبدال الشاشة وفحص الصورة واللمس",
+      ba_process: "إصلاح + اختبار الوظائف",
+      ba_example_note: "صور توضيحية. قد تختلف النتيجة والمظهر حسب الطراز والضرر وخيار القطعة المختار.",
+      ba_cta: "تحقق من سعر الشاشة",
       how_title: "كيف تتم العملية",
       how_text: "3 خطوات - بسيطة وشفافة.",
       how_1_t: "التشخيص",
@@ -1382,13 +1424,19 @@
       map_hint: "يرجى أولا إرسال الموديل والعطل والطريقة المطلوبة عبر WhatsApp: Singen أو الاستلام أو الشحن.",
     },
     ku: {
-      ba_title: "BERÎ / PIŞTÎ",
-      ba_before_alt: "Smartphone ya xerab berî tamîrê",
+      ba_eyebrow: "Mînak: tamîra ekranê",
+      ba_title: "Ji ekrana zirardîtî heta amûra testkirî",
+      ba_intro: "Ev rêya ji ekrana pir zirardîtî heta amûra testkirî û dîsa bikaranbar nîşan dide.",
+      ba_switch_label: "Dîtina berawirdkirinê hilbijêre",
+      ba_before_alt: "Mînak: smartphone bi ekrana pir zirardîtî",
       ba_before_label: "Berî",
-      ba_compare: "Batarya piştî 2 demjimêran vala dibû -> bikaranîna hemû rojê",
-      ba_after_alt: "Smartphone ya tamîrkirî piştî tamîrê",
+      ba_compare: "Ekran pir zirar dîtiye",
+      ba_after_alt: "Mînak: smartphone piştî tamîra ekranê",
       ba_after_label: "Piştî",
-      ba_after_caption: "Tamîrkirî, testkirî û ji bo rojane amade.",
+      ba_after_caption: "Ekran hate guhartin, wêne û destdan hatin testkirin",
+      ba_process: "Tamîr + testa fonksiyonan",
+      ba_example_note: "Wêneyên mînak in. Encam û xuyang dikarin li gorî model, zirar û parçeya hilbijartî biguherin.",
+      ba_cta: "Bihayê ekranê kontrol bike",
       how_title: "Ev çawa dixebite",
       how_text: "3 gav - hêsan û zelal.",
       how_1_t: "Teşxîs",
@@ -1426,13 +1474,19 @@
       map_hint: "Ji kerema xwe pêşî model, zirar û rêya xwestî bi WhatsApp binivîse: Singen, wergirtin an şandin.",
     },
     fr: {
-      ba_title: "AVANT / APRÈS",
-      ba_before_alt: "Smartphone défectueux avant la réparation",
+      ba_eyebrow: "Exemple : réparation d'écran",
+      ba_title: "De l'écran endommagé à l'appareil contrôlé",
+      ba_intro: "Voici le passage d'un écran fortement endommagé à un appareil testé et de nouveau utilisable.",
+      ba_switch_label: "Choisir la vue de comparaison",
+      ba_before_alt: "Exemple : smartphone avec un écran fortement endommagé",
       ba_before_label: "Avant",
-      ba_compare: "Batterie vide après 2 h -> utilisation toute la journée",
-      ba_after_alt: "Smartphone réparé après la réparation",
+      ba_compare: "Écran fortement endommagé",
+      ba_after_alt: "Exemple : smartphone après une réparation d'écran",
       ba_after_label: "Après",
-      ba_after_caption: "Réparé, testé et prêt pour le quotidien.",
+      ba_after_caption: "Écran remplacé, image et tactile contrôlés",
+      ba_process: "Réparation + test fonctionnel",
+      ba_example_note: "Images d'exemple. Le résultat et l'aspect peuvent varier selon le modèle, les dommages et la pièce choisie.",
+      ba_cta: "Vérifier le prix de l'écran",
       how_title: "Comment ça marche",
       how_text: "3 étapes - simple et transparent.",
       how_1_t: "Diagnostic",
@@ -1470,13 +1524,19 @@
       map_hint: "Envoie d'abord via WhatsApp le modèle, le problème et l'option souhaitée : Singen, collecte ou envoi.",
     },
     sl: {
-      ba_title: "PREJ / POTEM",
-      ba_before_alt: "Pokvarjen pametni telefon pred popravilom",
+      ba_eyebrow: "Primer: popravilo zaslona",
+      ba_title: "Od poškodovanega zaslona do preverjene naprave",
+      ba_intro: "Tako poteka prehod od močno poškodovanega zaslona do preizkušene naprave, ki je znova pripravljena za uporabo.",
+      ba_switch_label: "Izberite primerjalni prikaz",
+      ba_before_alt: "Primer: pametni telefon z močno poškodovanim zaslonom",
       ba_before_label: "Prej",
-      ba_compare: "Baterija prazna po 2 urah -> uporaba ves dan",
-      ba_after_alt: "Popravljen pametni telefon po popravilu",
+      ba_compare: "Zaslon je močno poškodovan",
+      ba_after_alt: "Primer: pametni telefon po popravilu zaslona",
       ba_after_label: "Potem",
-      ba_after_caption: "Popravljeno, testirano in pripravljeno za vsakdan.",
+      ba_after_caption: "Zaslon zamenjan, slika in dotik preverjena",
+      ba_process: "Popravilo + preizkus delovanja",
+      ba_example_note: "Primeri slik. Rezultat in videz se lahko razlikujeta glede na model, poškodbo in izbrani nadomestni del.",
+      ba_cta: "Preveri ceno zaslona",
       how_title: "Kako poteka",
       how_text: "3 koraki - preprosto in pregledno.",
       how_1_t: "Diagnoza",
@@ -5686,6 +5746,65 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     items.forEach((item) => observer.observe(item));
   }
 
+  function initBeforeAfterComparison() {
+    const proof = document.querySelector("[data-before-after]");
+    const switcher = document.querySelector("[data-ba-switch]");
+    if (!proof || !switcher) return;
+
+    const buttons = Array.from(switcher.querySelectorAll("[data-ba-view]"));
+    const panels = Array.from(proof.querySelectorAll("[data-ba-panel]"));
+    if (buttons.length !== 2 || panels.length !== 2) return;
+
+    const mobileQuery = window.matchMedia("(max-width: 700px)");
+    const events = new AbortController();
+    let currentView = "before";
+
+    const setView = (view, shouldTrack = false) => {
+      if (!panels.some((panel) => panel.dataset.baPanel === view)) return;
+      const changed = currentView !== view;
+      currentView = view;
+
+      buttons.forEach((button) => {
+        const active = button.dataset.baView === view;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      panels.forEach((panel) => {
+        const active = panel.dataset.baPanel === view;
+        panel.classList.toggle("is-active", active);
+        if (mobileQuery.matches) panel.setAttribute("aria-hidden", String(!active));
+        else panel.removeAttribute("aria-hidden");
+      });
+
+      if (shouldTrack && changed) {
+        trackEvent("before_after_toggle", { view });
+      }
+    };
+
+    const syncLayout = () => {
+      const isMobile = mobileQuery.matches;
+      switcher.hidden = !isMobile;
+      proof.classList.toggle("is-enhanced", isMobile);
+      if (isMobile) setView(currentView);
+      else panels.forEach((panel) => panel.removeAttribute("aria-hidden"));
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setView(button.dataset.baView, true);
+      }, { signal: events.signal });
+    });
+
+    if (typeof mobileQuery.addEventListener === "function") {
+      mobileQuery.addEventListener("change", syncLayout, { signal: events.signal });
+    } else {
+      mobileQuery.addListener(syncLayout);
+      window.addEventListener("pagehide", () => mobileQuery.removeListener(syncLayout), { once: true });
+    }
+    window.addEventListener("pagehide", () => events.abort(), { once: true });
+    syncLayout();
+  }
+
   function initFaqAccordion() {
     const items = document.querySelectorAll(".faq details");
     if (!items.length) return;
@@ -5917,6 +6036,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   initCookieConsent();
   initMobileBackToTop();
   initReveal();
+  initBeforeAfterComparison();
   initFaqAccordion();
   initAnalyticsTracking();
   initShippingPriceHandoff();

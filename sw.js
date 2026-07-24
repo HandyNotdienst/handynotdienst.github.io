@@ -1,4 +1,4 @@
-const CACHE = "hn-v66";
+const CACHE = "hn-v67";
 const ASSETS = [
   "./",
   "./index.html",
@@ -112,8 +112,10 @@ const ASSETS = [
   "./assets/shipping/parcel-locker.png",
   "./assets/optimized/before-phone-640.webp",
   "./assets/optimized/before-phone-1100.webp",
+  "./assets/optimized/before-phone-fallback.jpg",
   "./assets/optimized/after-phone-640.webp",
   "./assets/optimized/after-phone-1100.webp",
+  "./assets/optimized/after-phone-fallback.jpg",
   "./assets/logos/call.svg",
   "./assets/logos/apple-logo.png",
   "./assets/logos/data-security.png",
