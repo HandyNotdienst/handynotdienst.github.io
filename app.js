@@ -3312,7 +3312,6 @@
   function getClickLocation(el) {
     if (!el?.closest) return "content";
     if (el.closest("header")) return "header";
-    if (el.closest(".mobilebar")) return "mobilebar";
     if (el.closest(".float-wa")) return "floating_cta";
     if (el.closest(".shipping-page")) return "shipping";
     if (el.closest("#contact")) return "contact";
@@ -5909,7 +5908,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
 
     links.forEach((link) => {
       link.addEventListener("click", (event) => {
-        const source = link.closest(".mobilebar") ? "shipping_mobilebar" : "shipping_flow";
+        const source = "shipping_flow";
         try {
           sessionStorage.setItem(SHIPPING_PRICE_HANDOFF_KEY, source);
         } catch (error) {}
