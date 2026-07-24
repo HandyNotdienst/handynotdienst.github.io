@@ -17,6 +17,7 @@
   const themeMedia = window.matchMedia("(prefers-color-scheme: light)");
   const THEME_STORAGE_KEY = "hn_theme";
   const COOKIE_CONSENT_KEY = window.HN_COOKIE_CONSENT_KEY || "hn_cookie_consent";
+  const SHIPPING_PRICE_HANDOFF_KEY = "hn_shipping_price_handoff_v1";
   const THEME_COLORS = {
     dark: "#1b374c",
     light: "#eef5f8",
@@ -2445,6 +2446,69 @@
   };
   const SHIPPING_PAGE_I18N = window.HN_SHIPPING_I18N || {};
 
+  const SHIPPING_HANDOFF_I18N = {
+    de: {
+      back_to_top: "Nach oben",
+      shipping_prices_cta: "Versandpreise ansehen",
+      shipping_prices_cta_text: "Preise inkl. Einbau prüfen und Versand direkt auswählen.",
+      price_mode_shipping_selected: "Per Versand ausgewählt",
+    },
+    uk: {
+      back_to_top: "Вгору",
+      shipping_prices_cta: "Переглянути ціни для доставки",
+      shipping_prices_cta_text: "Перевірте ціни з установкою: доставку буде вибрано автоматично.",
+      price_mode_shipping_selected: "Обрано ремонт з доставкою",
+    },
+    en: {
+      back_to_top: "Back to top",
+      shipping_prices_cta: "View mail-in repair prices",
+      shipping_prices_cta_text: "Check prices incl. installation with mail-in repair preselected.",
+      price_mode_shipping_selected: "Mail-in repair selected",
+    },
+    ru: {
+      back_to_top: "Наверх",
+      shipping_prices_cta: "Посмотреть цены для ремонта с доставкой",
+      shipping_prices_cta_text: "Проверьте цены с установкой: доставка будет выбрана автоматически.",
+      price_mode_shipping_selected: "Выбран ремонт с доставкой",
+    },
+    pl: {
+      back_to_top: "Do góry",
+      shipping_prices_cta: "Zobacz ceny napraw wysyłkowych",
+      shipping_prices_cta_text: "Sprawdź ceny z montażem z automatycznie wybraną wysyłką.",
+      price_mode_shipping_selected: "Wybrano naprawę wysyłkową",
+    },
+    it: {
+      back_to_top: "Torna su",
+      shipping_prices_cta: "Vedi i prezzi per la riparazione via spedizione",
+      shipping_prices_cta_text: "Controlla i prezzi con montaggio e spedizione già selezionata.",
+      price_mode_shipping_selected: "Riparazione via spedizione selezionata",
+    },
+    ar: {
+      back_to_top: "العودة إلى الأعلى",
+      shipping_prices_cta: "عرض أسعار الإصلاح عبر الشحن",
+      shipping_prices_cta_text: "تحقق من الأسعار شاملة التركيب مع تحديد الشحن تلقائيًا.",
+      price_mode_shipping_selected: "تم اختيار الإصلاح عبر الشحن",
+    },
+    ku: {
+      back_to_top: "Vegere serî",
+      shipping_prices_cta: "Bihayên tamîrê bi şandinê bibîne",
+      shipping_prices_cta_text: "Biha bi montajê kontrol bike; şandin bixweber tê hilbijartin.",
+      price_mode_shipping_selected: "Tamîra bi şandinê hat hilbijartin",
+    },
+    fr: {
+      back_to_top: "Retour en haut",
+      shipping_prices_cta: "Voir les tarifs de réparation par envoi",
+      shipping_prices_cta_text: "Consultez les prix avec pose, l'envoi étant présélectionné.",
+      price_mode_shipping_selected: "Réparation par envoi sélectionnée",
+    },
+    sl: {
+      back_to_top: "Nazaj na vrh",
+      shipping_prices_cta: "Oglej si cene popravil po pošti",
+      shipping_prices_cta_text: "Preveri cene z vgradnjo in vnaprej izbranim pošiljanjem.",
+      price_mode_shipping_selected: "Izbrano popravilo po pošti",
+    },
+  };
+
   const HOME_PRICE_CTA_I18N = {
     de: {
       home_price_cta_eyebrow: "Reparaturpreis prüfen",
@@ -2543,6 +2607,9 @@
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
   Object.entries(SHIPPING_PAGE_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
+  Object.entries(SHIPPING_HANDOFF_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
   Object.entries(HOME_PRICE_CTA_I18N).forEach(([lang, values]) => {
@@ -3991,6 +4058,61 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     return buildWhatsAppHref(text);
   }
 
+  function getRequestedPriceDeliveryMode() {
+    try {
+      return new URL(window.location.href).searchParams.get("delivery") === "shipping"
+        ? "shipping"
+        : "local";
+    } catch (error) {
+      return "local";
+    }
+  }
+
+  function syncPriceDeliveryModeUrl(mode) {
+    if (!window.history?.replaceState) return;
+    try {
+      const url = new URL(window.location.href);
+      if (mode === "shipping") {
+        url.searchParams.set("delivery", "shipping");
+      } else {
+        url.searchParams.delete("delivery");
+      }
+      window.history.replaceState(window.history.state, "", `${url.pathname}${url.search}${url.hash}`);
+    } catch (error) {}
+  }
+
+  function runShippingPriceArrival() {
+    if (selectedPriceDeliveryMode !== "shipping") return;
+
+    let requestedByUrl = false;
+    let source = "direct";
+    try {
+      requestedByUrl = new URL(window.location.href).searchParams.get("delivery") === "shipping";
+      const stored = sessionStorage.getItem(SHIPPING_PRICE_HANDOFF_KEY);
+      if (stored) {
+        source = stored;
+        sessionStorage.removeItem(SHIPPING_PRICE_HANDOFF_KEY);
+      }
+    } catch (error) {}
+    if (!requestedByUrl) return;
+
+    const shell = document.querySelector("#price-configurator");
+    const status = document.querySelector("[data-price-shipping-status]");
+    if (!shell || !status) return;
+
+    trackEvent("shipping_price_handoff_arrive", { source });
+    if (prefersReducedMotion) return;
+
+    window.requestAnimationFrame(() => {
+      shell.classList.add("is-shipping-arrival");
+      status.classList.add("is-arriving");
+      window.setTimeout(() => {
+        shell.classList.remove("is-shipping-arrival");
+        status.classList.remove("is-arriving");
+      }, 760);
+    });
+  }
+
   function updatePriceShippingUi() {
     const lang = getLang();
     const isShipping = selectedPriceDeliveryMode === "shipping";
@@ -4004,6 +4126,14 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     if (note) {
       const key = isShipping ? "price_mode_shipping_note" : "price_mode_local_note";
       note.textContent = resolveI18n(lang, key) || "";
+    }
+    const status = document.querySelector("[data-price-shipping-status]");
+    if (status) {
+      status.hidden = !isShipping;
+      const label = status.querySelector("strong");
+      if (label) {
+        label.textContent = resolveI18n(lang, "price_mode_shipping_selected") || "Per Versand ausgewählt";
+      }
     }
     const hint = document.querySelector("[data-price-shipping-hint]");
     if (hint) hint.hidden = !isShipping;
@@ -5005,6 +5135,8 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     const shippingButtons = document.querySelectorAll("[data-price-shipping-mode]");
     if (!familySelect || !modelSelect) return;
 
+    selectedPriceDeliveryMode = getRequestedPriceDeliveryMode();
+
     brandButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const brand = button.dataset.priceBrand || "apple";
@@ -5041,6 +5173,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
         const mode = button.dataset.priceShippingMode === "shipping" ? "shipping" : "local";
         if (selectedPriceDeliveryMode === mode) return;
         selectedPriceDeliveryMode = mode;
+        syncPriceDeliveryModeUrl(mode);
         updatePriceShippingUi();
         updatePriceCta(getCurrentPriceEntry());
         updateSamsungSummary();
@@ -5104,6 +5237,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
 
     renderPrices();
     updatePriceShippingUi();
+    runShippingPriceArrival();
   }
 
   function initBundles() {
@@ -5224,6 +5358,93 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     const header = document.querySelector(".header");
     if (!header) return;
     window.addEventListener("scroll", () => header.classList.toggle("is-scrolled", window.scrollY > 20));
+  }
+
+  function initMobileBackToTop() {
+    const main = document.querySelector("#main-content");
+    if (!main || document.querySelector("[data-back-to-top]")) return;
+
+    const mobileMedia = window.matchMedia("(max-width: 560px)");
+    const events = new AbortController();
+    const sentinel = document.createElement("span");
+    const button = document.createElement("button");
+    let pastFirstScreen = false;
+
+    sentinel.className = "back-to-top-sentinel";
+    sentinel.setAttribute("aria-hidden", "true");
+    button.className = "back-to-top";
+    button.type = "button";
+    button.dataset.backToTop = "";
+    button.setAttribute("aria-hidden", "true");
+    button.tabIndex = -1;
+    button.innerHTML = `
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="m6.5 14.5 5.5-5 5.5 5"></path>
+      </svg>
+    `;
+
+    const updateLabel = (lang = getLang()) => {
+      const label = resolveI18n(lang, "back_to_top") || "Nach oben";
+      button.setAttribute("aria-label", label);
+      button.title = label;
+    };
+    const isSuppressed = () => document.body.classList.contains("samsung-modal-open")
+      || document.body.classList.contains("language-sheet-open")
+      || document.body.classList.contains("intro-pending")
+      || Boolean(document.querySelector("[data-cookie-consent]"));
+    const updateVisibility = () => {
+      const visible = mobileMedia.matches && pastFirstScreen && !isSuppressed();
+      button.classList.toggle("is-visible", visible);
+      button.setAttribute("aria-hidden", String(!visible));
+      button.tabIndex = visible ? 0 : -1;
+    };
+
+    document.body.append(sentinel, button);
+    updateLabel();
+    updateVisibility();
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        pastFirstScreen = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        updateVisibility();
+      });
+      observer.observe(sentinel);
+      window.addEventListener("pagehide", () => observer.disconnect(), { once: true });
+    } else {
+      const updateFromScroll = () => {
+        pastFirstScreen = window.scrollY > window.innerHeight;
+        updateVisibility();
+      };
+      window.addEventListener("scroll", updateFromScroll, { passive: true, signal: events.signal });
+      updateFromScroll();
+    }
+
+    const mutationObserver = new MutationObserver(updateVisibility);
+    mutationObserver.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"],
+      childList: true,
+    });
+
+    button.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
+      trackEvent("back_to_top_click", { path: window.location.pathname });
+    }, { signal: events.signal });
+    window.addEventListener("hn:language-change", (event) => {
+      updateLabel(event.detail?.lang || getLang());
+    }, { signal: events.signal });
+    const onMediaChange = () => updateVisibility();
+    if (typeof mobileMedia.addEventListener === "function") {
+      mobileMedia.addEventListener("change", onMediaChange, { signal: events.signal });
+    } else {
+      mobileMedia.addListener(onMediaChange);
+      window.addEventListener("pagehide", () => mobileMedia.removeListener(onMediaChange), { once: true });
+    }
+    window.addEventListener("pagehide", () => {
+      events.abort();
+      mutationObserver.disconnect();
+    }, { once: true });
   }
 
   function initEasterEgg() {
@@ -5560,6 +5781,58 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     observer.observe(quizSection);
   }
 
+  function initShippingPriceHandoff() {
+    const links = document.querySelectorAll("[data-shipping-price-handoff]");
+    if (!links.length) return;
+
+    const events = new AbortController();
+    let isNavigating = false;
+
+    links.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const source = link.closest(".mobilebar") ? "shipping_mobilebar" : "shipping_flow";
+        try {
+          sessionStorage.setItem(SHIPPING_PRICE_HANDOFF_KEY, source);
+        } catch (error) {}
+        trackEvent("shipping_price_handoff_start", { source });
+
+        const isPlainClick = event.button === 0
+          && !event.metaKey
+          && !event.ctrlKey
+          && !event.shiftKey
+          && !event.altKey
+          && (!link.target || link.target === "_self");
+        if (!isPlainClick || prefersReducedMotion || isNavigating) return;
+
+        let destination;
+        try {
+          destination = new URL(link.href, window.location.href);
+        } catch (error) {
+          return;
+        }
+        if (destination.origin !== window.location.origin) return;
+
+        event.preventDefault();
+        isNavigating = true;
+        const overlay = document.createElement("div");
+        overlay.className = "shipping-price-transition";
+        overlay.setAttribute("aria-hidden", "true");
+        overlay.innerHTML = `
+          <span class="shipping-price-transition__veil"></span>
+          <span class="shipping-price-transition__sweep"></span>
+          <span class="shipping-price-transition__mark">€</span>
+        `;
+        document.body.appendChild(overlay);
+        window.requestAnimationFrame(() => overlay.classList.add("is-active"));
+        window.setTimeout(() => {
+          window.location.assign(destination.href);
+        }, 230);
+      }, { signal: events.signal });
+    });
+
+    window.addEventListener("pagehide", () => events.abort(), { once: true });
+  }
+
   function initShippingService() {
     const page = document.querySelector("[data-shipping-page]");
     if (!page) return;
@@ -5642,9 +5915,11 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   initThemeSystem();
   initLangButtons();
   initCookieConsent();
+  initMobileBackToTop();
   initReveal();
   initFaqAccordion();
   initAnalyticsTracking();
+  initShippingPriceHandoff();
   initShippingService();
   initPickupButton();
   initBundles();

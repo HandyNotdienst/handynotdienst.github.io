@@ -35,6 +35,14 @@ html[data-theme="light"] {
   -webkit-backdrop-filter: saturate(1.22) blur(var(--lg-blur));
 }
 
+.header.liquid-glass {
+  position: sticky;
+}
+
+.mobilebar.liquid-glass {
+  position: fixed;
+}
+
 .liquid-glass:not(.header) {
   overflow: hidden;
 }

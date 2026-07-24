@@ -107,7 +107,7 @@
       </div>
     </section>
 
-    <section class="section section--clean shipping-flow reveal" id="shipping-flow" aria-labelledby="shippingFlowTitle">
+    <section class="section section--clean shipping-flow" id="shipping-flow" aria-labelledby="shippingFlowTitle">
       <div class="container">
         <div class="section__head">
           <h2 id="shippingFlowTitle" data-i18n="shipping_flow_title">So läuft Versand-Reparatur ab</h2>
@@ -159,6 +159,13 @@
             <p class="muted" data-i18n="shipping_step_4_text">Nach Freigabe wird repariert und getestet. Den Rückversand bezahle ich; du erhältst immer eine Sendungsnummer.</p>
           </li>
         </ol>
+        <div class="shipping-price-handoff">
+          <div>
+            <strong data-i18n="shipping_prices_cta">Versandpreise ansehen</strong>
+            <small data-i18n="shipping_prices_cta_text">Preise inkl. Einbau prüfen und Versand direkt auswählen.</small>
+          </div>
+          <a class="btn btn--prices shipping-price-handoff__cta" href="prices.html?delivery=shipping#price-configurator" data-shipping-price-handoff data-i18n="shipping_prices_cta">Versandpreise ansehen</a>
+        </div>
       </div>
     </section>
 
@@ -237,7 +244,7 @@
   </footer>
 
   <nav class="mobilebar mobilebar--shipping" aria-label="Mobile quick actions" data-i18n-aria-label="shipping_aria_mobilebar" data-liquid-glass="dock">
-    <a class="mobilebar__btn mobilebar__btn--prices" href="prices.html"><span data-i18n="mb_prices">Preise</span></a>
+    <a class="mobilebar__btn mobilebar__btn--prices" href="prices.html?delivery=shipping#price-configurator" data-shipping-price-handoff><span data-i18n="mb_prices">Preise</span></a>
     <a class="mobilebar__btn mobilebar__btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-shipping-cta="mobilebar" data-shipping-whatsapp><span>WhatsApp</span></a>
     <a class="mobilebar__btn mobilebar__btn--flow" href="#shipping-flow"><span data-i18n="mb_shipping_flow">Ablauf</span></a>
   </nav>
