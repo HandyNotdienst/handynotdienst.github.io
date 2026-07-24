@@ -52,8 +52,8 @@ window.HN_I18N = {
         nav_prices:"Preise",
         nav_contact:"Kontakt",
         no_appt:"Ohne Termin",
-        ba_title:"VORHER / NACHHER",
-        ba_compare:"🔋 Akku leer nach 2 Std ❌ → 🔋 Ganzer Tag Nutzung ✅",
+        ba_title:"Vom Displayschaden zum geprüften Gerät",
+        ba_compare:"Display stark beschädigt",
 
         how_title:"So läuft es ab",
         how_text:"3 Schritte – einfach & transparent.",
@@ -179,8 +179,8 @@ window.HN_I18N = {
         nav_prices:"Ціни",
         nav_contact:"Контакти",
         no_appt:"Без запису",
-        ba_title:"ДО / ПІСЛЯ",
-        ba_compare:"🔋 Акумулятор сідає за 2 год ❌ → 🔋 Цілий день роботи ✅",
+        ba_title:"Від пошкодженого дисплея до перевіреного пристрою",
+        ba_compare:"Дисплей сильно пошкоджений",
 
         how_title:"Як це працює",
         how_text:"3 кроки — просто та прозоро.",
@@ -306,8 +306,8 @@ window.HN_I18N = {
         nav_prices:"Prices",
         nav_contact:"Contact",
         no_appt:"No appointment",
-        ba_title:"BEFORE / AFTER",
-        ba_compare:"🔋 Battery empty after 2 hours ❌ → 🔋 All-day usage ✅",
+        ba_title:"From display damage to a tested device",
+        ba_compare:"Display badly damaged",
 
         how_title:"How it works",
         how_text:"3 steps — simple & transparent.",
