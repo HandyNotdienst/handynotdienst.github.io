@@ -74,7 +74,7 @@
   </header>
   <main id="main-content" tabindex="-1">
     <section class="section prices-section js-prices-section price-selector-section" aria-labelledby="priceSelectorTitle">
-      <div class="container price-selector-shell">
+      <div class="container price-selector-shell" id="price-configurator">
         <div class="price-selector-head">
           <h1 class="page-title price-selector-title" id="priceSelectorTitle" data-i18n="price_selector_title">Was kostet die Reparatur?</h1>
           <p class="price-selector-subtitle" data-i18n="price_selector_subtitle">Wähle dein Gerät und sieh die Preise inkl. Einbau für gängige Reparaturen.</p>
@@ -88,6 +88,10 @@
             <button class="price-mode-switch__btn is-active" type="button" data-price-shipping-mode="local" aria-pressed="true" data-i18n="price_mode_local">In Singen</button>
             <button class="price-mode-switch__btn" type="button" data-price-shipping-mode="shipping" aria-pressed="false" data-i18n="price_mode_shipping">Per Versand</button>
           </div>
+          <p class="price-mode-status" data-price-shipping-status role="status" aria-live="polite" hidden>
+            <span aria-hidden="true"></span>
+            <strong data-i18n="price_mode_shipping_selected">Per Versand ausgewählt</strong>
+          </p>
           <p class="price-mode-note" data-price-shipping-note data-i18n="price_mode_local_note">Lokale Übergabe, Abholung oder mobiler Termin nach WhatsApp-Check.</p>
         </div>
 
