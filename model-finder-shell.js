@@ -1,6 +1,7 @@
 (() => {
   const iframe = document.getElementById("iphoneModelFinder");
   if (!iframe) return;
+  const targetOrigin = window.location.origin === "null" ? "*" : window.location.origin;
 
   function currentQuizLang() {
     const stored = localStorage.getItem("hn_lang") || document.documentElement.lang || "de";
@@ -24,13 +25,16 @@
   }
 
   function notifyFinderTheme() {
-    iframe.contentWindow?.postMessage({ type: "hn-theme-change", theme: currentFinderTheme() }, "*");
+    iframe.contentWindow?.postMessage({ type: "hn-theme-change", theme: currentFinderTheme() }, targetOrigin);
   }
 
   window.addEventListener("message", (event) => {
+    if (targetOrigin !== "*" && event.origin !== targetOrigin) return;
     if (event.source !== iframe.contentWindow) return;
     if (!event.data || event.data.type !== "iphone-model-quiz-height") return;
-    iframe.style.height = `${Math.max(760, Number(event.data.height || 0))}px`;
+    const requestedHeight = Number(event.data.height || 0);
+    if (!Number.isFinite(requestedHeight)) return;
+    iframe.style.height = `${Math.max(760, Math.min(requestedHeight, 10000))}px`;
   });
 
   window.addEventListener("hn:language-change", () => window.setTimeout(syncFinderParams, 0));
