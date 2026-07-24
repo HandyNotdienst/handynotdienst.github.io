@@ -3118,6 +3118,10 @@
   Object.entries(LEGAL_DRAFT_I18N).forEach(([lang, values]) => {
     GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
   });
+  const CONTENT_AUDIT_I18N = window.HN_CONTENT_AUDIT_I18N || {};
+  Object.entries(CONTENT_AUDIT_I18N).forEach(([lang, values]) => {
+    GLOBAL_I18N[lang] = { ...(GLOBAL_I18N[lang] || GLOBAL_I18N.de), ...values };
+  });
 
   const hasI18n = Object.keys(i18n).length > 0 || Object.keys(GLOBAL_I18N).length > 0;
   let currentLang = null;
@@ -3201,9 +3205,11 @@
 
   function resolveI18n(lang, key) {
     const code = normalizeLang(lang) || defaultLang;
-    return i18n[code]?.[key]
+    return CONTENT_AUDIT_I18N[code]?.[key]
+      ?? i18n[code]?.[key]
       ?? (code === "uk" ? i18n.ua?.[key] : undefined)
       ?? GLOBAL_I18N[code]?.[key]
+      ?? CONTENT_AUDIT_I18N[defaultLang]?.[key]
       ?? i18n[defaultLang]?.[key]
       ?? (defaultLang === "uk" ? i18n.ua?.[key] : undefined)
       ?? GLOBAL_I18N[defaultLang]?.[key]
@@ -3948,16 +3954,17 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
         ? `${resolveI18n(lang, "wa_label_note") || "Hinweis"}: ${repair.note}`
         : null;
       const text = [
-        "Hallo! Ich möchte eine Reparatur per Versand anfragen.",
+        resolveI18n(lang, "shipping_wa_intro") || "Hallo! Ich möchte eine Reparatur per Versand anfragen.",
         "",
-        `Modell: ${entry.model}`,
-        `Reparatur: ${repairLabel}`,
+        `${resolveI18n(lang, "wa_label_device") || "Modell"}: ${entry.model}`,
+        `${resolveI18n(lang, "wa_label_repair") || "Reparatur"}: ${repairLabel}`,
         qualityLine,
-        `Preis laut Liste: ${price}`,
+        `${resolveI18n(lang, "shipping_wa_list_price") || "Preis laut Liste"}: ${price}`,
         noteLine,
-        "Ort: Deutschland",
+        `${resolveI18n(lang, "wa_label_city") || "Ort"}: ${resolveI18n(lang, "shipping_wa_country") || "Deutschland"}`,
+        `${resolveI18n(lang, "nav_shipping") || "Versand"}: ${resolveI18n(lang, "shipping_wa_cost_line") || "Hinversand zahlt der Kunde; Rückversand zahlt Handy Notdienst und erfolgt immer mit Sendungsverfolgung."}`,
         "",
-        "Bitte sende mir die Versandhinweise.",
+        resolveI18n(lang, "shipping_wa_instructions") || "Bitte sende mir die Versandhinweise.",
       ].filter((line) => line !== null).join("\n");
       return buildWhatsAppHref(text);
     }
@@ -4115,14 +4122,15 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     const lang = getLang();
     const state = getSamsungSummaryState();
     if (selectedPriceDeliveryMode === "shipping") {
-      const text = `Hallo! Ich möchte eine Reparatur per Versand anfragen.
+      const text = `${resolveI18n(lang, "shipping_wa_intro") || "Hallo! Ich möchte eine Reparatur per Versand anfragen."}
 
-Modell: ${state.model}
-Reparatur: ${state.repair}
-Preis laut Liste: ${state.price}
-Ort: Deutschland
+${resolveI18n(lang, "wa_label_device") || "Modell"}: ${state.model}
+${resolveI18n(lang, "wa_label_repair") || "Reparatur"}: ${state.repair}
+${resolveI18n(lang, "shipping_wa_list_price") || "Preis laut Liste"}: ${state.price}
+${resolveI18n(lang, "wa_label_city") || "Ort"}: ${resolveI18n(lang, "shipping_wa_country") || "Deutschland"}
+${resolveI18n(lang, "nav_shipping") || "Versand"}: ${resolveI18n(lang, "shipping_wa_cost_line") || "Hinversand zahlt der Kunde; Rückversand zahlt Handy Notdienst und erfolgt immer mit Sendungsverfolgung."}
 
-Bitte sende mir die Versandhinweise.`;
+${resolveI18n(lang, "shipping_wa_instructions") || "Bitte sende mir die Versandhinweise."}`;
       return buildWhatsAppHref(text);
     }
     const text = `${resolveI18n(lang, "wa_message_intro") || "Hallo!"}
@@ -5557,8 +5565,17 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     if (!page) return;
 
     const updateShippingWhatsAppLinks = (lang = getLang()) => {
-      const message = resolveI18n(lang, "shipping_wa_message");
-      if (!message) return;
+      const message = [
+        resolveI18n(lang, "shipping_wa_intro"),
+        "",
+        `${resolveI18n(lang, "wa_label_device") || "Modell"}:`,
+        `${resolveI18n(lang, "shipping_wa_damage") || "Schaden"}:`,
+        `${resolveI18n(lang, "wa_label_city") || "Ort"}:`,
+        "",
+        `${resolveI18n(lang, "nav_shipping") || "Versand"}: ${resolveI18n(lang, "shipping_wa_cost_line")}`,
+        "",
+        resolveI18n(lang, "shipping_wa_instructions"),
+      ].join("\n");
       const href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
       page.querySelectorAll("[data-shipping-whatsapp]").forEach((link) => {
         link.href = href;
