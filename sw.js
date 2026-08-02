@@ -1,4 +1,4 @@
-const CACHE = "hn-v71";
+const CACHE = "hn-v72";
 const ASSETS = [
   "./",
   "./index.html",
@@ -135,6 +135,16 @@ const ASSETS = [
   "./assets/logos/tiktok.png",
   "./assets/logos/warranty-details.png",
   "./assets/logos/whatsapp.png",
+  "./assets/flags/de.svg",
+  "./assets/flags/uk.svg",
+  "./assets/flags/gb.svg",
+  "./assets/flags/ru.svg",
+  "./assets/flags/pl.svg",
+  "./assets/flags/it.svg",
+  "./assets/flags/ar.svg",
+  "./assets/flags/ku.svg",
+  "./assets/flags/fr.svg",
+  "./assets/flags/sl.svg",
   "./assets/i18n/shipping.js",
   "./assets/samsung/device/laptop.png",
   "./assets/samsung/device/phone.png",

@@ -24,16 +24,16 @@
   };
 
   const LANGUAGES = [
-    { code: "de", short: "DE", name: "Deutsch", nativeName: "Deutsch", search: "de deutsch german allemand niemiecki tedesco" },
-    { code: "uk", short: "UA", name: "Ukrainisch", nativeName: "Українська", search: "uk ua ukrainisch ukrainian українська українська мова" },
-    { code: "en", short: "EN", name: "Englisch", nativeName: "English", search: "en english englisch anglais angielski inglese" },
-    { code: "ru", short: "RU", name: "Russisch", nativeName: "Русский", search: "ru russian russisch русский rosyjski russo" },
-    { code: "pl", short: "PL", name: "Polnisch", nativeName: "Polski", search: "pl polish polnisch polski polonais polacco" },
-    { code: "it", short: "IT", name: "Italienisch", nativeName: "Italiano", search: "it italian italienisch italiano włoski italien" },
-    { code: "ar", short: "AR", name: "Arabisch", nativeName: "العربية", search: "ar arabic arabisch العربية arabe arabski" },
-    { code: "ku", short: "KU", name: "Kurdisch", nativeName: "Kurdî", search: "ku kurdish kurdisch kurdî kurmanji kurdki" },
-    { code: "fr", short: "FR", name: "Französisch", nativeName: "Français", search: "fr french französisch français francuski francese" },
-    { code: "sl", short: "SL", name: "Slowenisch", nativeName: "Slovenščina", search: "sl slovene slowenisch slovenščina slovenski" },
+    { code: "de", short: "DE", flag: "de", name: "Deutsch", nativeName: "Deutsch", search: "de deutsch german allemand niemiecki tedesco" },
+    { code: "uk", short: "UA", flag: "uk", name: "Ukrainisch", nativeName: "Українська", search: "uk ua ukrainisch ukrainian українська українська мова" },
+    { code: "en", short: "EN", flag: "gb", name: "Englisch", nativeName: "English", search: "en english englisch anglais angielski inglese" },
+    { code: "ru", short: "RU", flag: "ru", name: "Russisch", nativeName: "Русский", search: "ru russian russisch русский rosyjski russo" },
+    { code: "pl", short: "PL", flag: "pl", name: "Polnisch", nativeName: "Polski", search: "pl polish polnisch polski polonais polacco" },
+    { code: "it", short: "IT", flag: "it", name: "Italienisch", nativeName: "Italiano", search: "it italian italienisch italiano włoski italien" },
+    { code: "ar", short: "AR", flag: "ar", name: "Arabisch", nativeName: "العربية", search: "ar arabic arabisch العربية arabe arabski" },
+    { code: "ku", short: "KU", flag: "ku", name: "Kurdisch", nativeName: "Kurdî", search: "ku kurdish kurdisch kurdî kurmanji kurdki" },
+    { code: "fr", short: "FR", flag: "fr", name: "Französisch", nativeName: "Français", search: "fr french französisch français francuski francese" },
+    { code: "sl", short: "SL", flag: "sl", name: "Slowenisch", nativeName: "Slovenščina", search: "sl slovene slowenisch slovenščina slovenski" },
   ];
   const LANGUAGE_CODES = new Set(LANGUAGES.map((language) => language.code));
 
@@ -5657,7 +5657,12 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     const current = getLanguageMeta(getLang());
     picker.innerHTML = `
       <button class="lang__trigger" type="button" data-lang-trigger aria-haspopup="listbox" aria-expanded="false" aria-controls="${panelId}">
-        <span class="lang__globe" aria-hidden="true"></span>
+        <span class="lang__globe" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3.5 12h17M12 3c2.3 2.45 3.45 5.45 3.45 9S14.3 18.55 12 21M12 3C9.7 5.45 8.55 8.45 8.55 12S9.7 18.55 12 21"></path>
+          </svg>
+        </span>
         <span class="lang__current" data-lang-current>${current.short}</span>
         <span class="lang__current-name" data-lang-current-name>${current.nativeName}</span>
         <span class="lang__chevron" aria-hidden="true"></span>
@@ -5672,6 +5677,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
         <div class="lang__list" role="listbox" aria-label="${resolveI18n(getLang(), "language_picker_label")}">
           ${LANGUAGES.map((language) => `
             <button class="lang__option" type="button" role="option" data-lang-option="${language.code}" data-search="${`${language.code} ${language.short} ${language.name} ${language.nativeName} ${language.search}`.toLowerCase()}">
+              <img class="lang__flag" src="assets/flags/${language.flag}.svg" alt="" width="28" height="20" aria-hidden="true">
               <span class="lang__option-code">${language.short}</span>
               <span class="lang__option-text"><strong>${language.nativeName}</strong><small>${language.name}</small></span>
               <span class="lang__check" aria-hidden="true"></span>
