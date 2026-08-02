@@ -4,6 +4,9 @@
     city: "Singen",
     defaultLang: "de",
     serviceWorkerPath: "./sw.js",
+    mobileRepairOrigin: { lat: 47.7596, lon: 8.8403 },
+    mobileRepairGeocoderUrl: "https://nominatim.openstreetmap.org/search",
+    mobileRepairRouteUrl: "https://router.project-osrm.org/route/v1/driving",
     ...(window.HN_CONFIG || {}),
   };
   const i18n = window.HN_I18N || {};
@@ -3557,6 +3560,12 @@
       const val = resolveI18n(code, key);
       if (val) el.setAttribute("aria-label", val);
     });
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+      const key = el.getAttribute("data-i18n-placeholder");
+      const val = resolveI18n(code, key);
+      if (val) el.setAttribute("placeholder", val);
+    });
   }
 
   function updateQuickWA(lang) {
@@ -5321,6 +5330,406 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     });
   }
 
+  function initMobileRepairDistance() {
+    const modal = document.querySelector("[data-mobile-repair-modal]");
+    const triggers = document.querySelectorAll("[data-mobile-repair-open]");
+    if (!(modal instanceof HTMLDialogElement) || !triggers.length) return;
+
+    const form = modal.querySelector("[data-mobile-repair-form]");
+    const input = modal.querySelector("[data-mobile-repair-input]");
+    const submit = modal.querySelector("[data-mobile-repair-submit]");
+    const suggestions = modal.querySelector("[data-mobile-repair-suggestions]");
+    const quickList = modal.querySelector("[data-mobile-repair-quick]");
+    const status = modal.querySelector("[data-mobile-repair-status]");
+    const result = modal.querySelector("[data-mobile-repair-result]");
+    const resultTitle = modal.querySelector("[data-mobile-repair-result-title]");
+    const resultLocation = modal.querySelector("[data-mobile-repair-result-location]");
+    const resultDistance = modal.querySelector("[data-mobile-repair-result-distance]");
+    const resultFee = modal.querySelector("[data-mobile-repair-result-fee]");
+    const resultNote = modal.querySelector("[data-mobile-repair-result-note]");
+    const resultIcon = modal.querySelector("[data-mobile-repair-result-icon]");
+    const book = modal.querySelector("[data-mobile-repair-book]");
+    const shipping = modal.querySelector("[data-mobile-repair-shipping]");
+    const reset = modal.querySelector("[data-mobile-repair-reset]");
+    if (!form || !input || !submit || !suggestions || !quickList || !status || !result) return;
+
+    const locations = [
+      "Singen (Hohentwiel)", "Konstanz", "Radolfzell am Bodensee", "Stockach", "Engen",
+      "Tuttlingen", "Schaffhausen", "Überlingen", "Villingen-Schwenningen", "Rottweil",
+    ];
+    const geocodeCache = new Map();
+    const routeCache = new Map();
+    const events = new AbortController();
+    let activeRequest = null;
+    let requestSequence = 0;
+    let geocodeLastRequestAt = 0;
+    let activeSuggestion = -1;
+    let returnFocus = null;
+    let closeTimer = 0;
+
+    const normalizeQuery = (value) => String(value || "").trim().replace(/\s+/g, " ");
+    const parseLocationQuery = (value) => {
+      const query = normalizeQuery(value);
+      const postcodeOnly = query.match(/^\d{4,5}$/);
+      if (postcodeOnly) return { query, params: { postalcode: postcodeOnly[0] } };
+      const postcodeAndCity = query.match(/^(\d{4,5})\s+([\p{L} .()'’-]{2,})$/u);
+      if (postcodeAndCity) return { query, params: { postalcode: postcodeAndCity[1], city: postcodeAndCity[2] } };
+      if (/^[\p{L} .()'’-]{2,}$/u.test(query)) return { query, params: { city: query } };
+      return null;
+    };
+    const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
+    const formatDistance = (value, lang) => {
+      try {
+        return Number(value).toLocaleString(lang, { maximumFractionDigits: 1 });
+      } catch {
+        return Number(value).toLocaleString("de-DE", { maximumFractionDigits: 1 });
+      }
+    };
+    const getFocusable = () => Array.from(modal.querySelectorAll("button:not([disabled]), a[href], input:not([disabled]), [tabindex]:not([tabindex='-1'])"))
+      .filter((element) => !element.hidden && element.getClientRects().length > 0);
+
+    function setStatus(message = "", type = "") {
+      status.className = `mobile-repair-status${type ? ` is-${type}` : ""}`;
+      status.replaceChildren();
+      if (!message) return;
+      if (type === "loading") {
+        const spinner = document.createElement("span");
+        spinner.className = "mobile-repair-spinner";
+        spinner.setAttribute("aria-hidden", "true");
+        status.append(spinner);
+      }
+      const copy = document.createElement("span");
+      copy.textContent = message;
+      status.append(copy);
+    }
+
+    function hideSuggestions() {
+      suggestions.hidden = true;
+      suggestions.replaceChildren();
+      input.setAttribute("aria-expanded", "false");
+      input.removeAttribute("aria-activedescendant");
+      activeSuggestion = -1;
+    }
+
+    function chooseSuggestion(label, runImmediately = false) {
+      input.value = label;
+      hideSuggestions();
+      if (runImmediately) checkLocation(label);
+      else submit.focus();
+    }
+
+    function renderSuggestions() {
+      const query = normalizeQuery(input.value).toLowerCase();
+      if (!query) {
+        hideSuggestions();
+        return;
+      }
+      const matches = locations.filter((location) => location.toLowerCase().includes(query)).slice(0, 6);
+      if (!matches.length) {
+        hideSuggestions();
+        return;
+      }
+      suggestions.replaceChildren(...matches.map((label, index) => {
+        const option = document.createElement("button");
+        option.type = "button";
+        option.className = "mobile-repair-suggestion";
+        option.id = `mobileRepairSuggestion${index}`;
+        option.setAttribute("role", "option");
+        option.setAttribute("aria-selected", "false");
+        option.dataset.location = label;
+        const marker = document.createElement("span");
+        marker.setAttribute("aria-hidden", "true");
+        const name = document.createElement("strong");
+        name.textContent = label;
+        option.append(marker, name);
+        return option;
+      }));
+      suggestions.hidden = false;
+      input.setAttribute("aria-expanded", "true");
+      activeSuggestion = -1;
+    }
+
+    function updateActiveSuggestion(nextIndex) {
+      const options = Array.from(suggestions.querySelectorAll("[role='option']"));
+      if (!options.length) return;
+      activeSuggestion = (nextIndex + options.length) % options.length;
+      options.forEach((option, index) => option.setAttribute("aria-selected", String(index === activeSuggestion)));
+      input.setAttribute("aria-activedescendant", options[activeSuggestion].id);
+      options[activeSuggestion].scrollIntoView({ block: "nearest" });
+    }
+
+    function renderQuickLocations() {
+      quickList.replaceChildren(...locations.map((label) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "mobile-repair-quick__chip";
+        button.dataset.mobileRepairQuickLocation = label;
+        button.textContent = label.replace(" (Hohentwiel)", "");
+        return button;
+      }));
+    }
+
+    function getLocationLabel(place, fallback) {
+      const address = place?.address && typeof place.address === "object" ? place.address : {};
+      const locality = address.city || address.town || address.village || address.municipality || address.county;
+      const postcode = address.postcode;
+      return [postcode, locality].filter(Boolean).join(" ") || String(place?.display_name || fallback).split(",").slice(0, 2).join(", ");
+    }
+
+    async function geocodeLocation(query, signal) {
+      const cacheKey = query.toLocaleLowerCase("de");
+      if (geocodeCache.has(cacheKey)) return geocodeCache.get(cacheKey);
+      const parsedQuery = parseLocationQuery(query);
+      if (!parsedQuery) return null;
+      const elapsed = Date.now() - geocodeLastRequestAt;
+      if (elapsed < 1100) await wait(1100 - elapsed);
+      if (signal.aborted) throw new DOMException("Aborted", "AbortError");
+      geocodeLastRequestAt = Date.now();
+
+      const endpoint = new URL(config.mobileRepairGeocoderUrl);
+      endpoint.search = new URLSearchParams({
+        ...parsedQuery.params,
+        format: "jsonv2",
+        addressdetails: "1",
+        limit: "5",
+        countrycodes: "de,ch",
+        "accept-language": getLang(),
+      }).toString();
+      const response = await fetch(endpoint, { signal, headers: { Accept: "application/json" }, referrerPolicy: "strict-origin-when-cross-origin" });
+      if (!response.ok) throw new Error(`Geocoder ${response.status}`);
+      const payload = await response.json();
+      if (!Array.isArray(payload)) throw new Error("Invalid geocoder response");
+      const place = payload.find((item) => Number.isFinite(Number(item?.lat)) && Number.isFinite(Number(item?.lon)) && typeof item?.display_name === "string");
+      if (!place) return null;
+      const normalized = { lat: Number(place.lat), lon: Number(place.lon), label: getLocationLabel(place, query) };
+      geocodeCache.set(cacheKey, normalized);
+      return normalized;
+    }
+
+    async function calculateRoadDistance(destination, signal) {
+      const origin = config.mobileRepairOrigin || {};
+      const originLat = Number(origin.lat);
+      const originLon = Number(origin.lon);
+      if (![originLat, originLon, destination.lat, destination.lon].every(Number.isFinite)) throw new Error("Invalid route coordinates");
+      const cacheKey = `${destination.lon.toFixed(5)},${destination.lat.toFixed(5)}`;
+      if (routeCache.has(cacheKey)) return routeCache.get(cacheKey);
+      const base = String(config.mobileRepairRouteUrl || "").replace(/\/$/, "");
+      const endpoint = `${base}/${originLon},${originLat};${destination.lon},${destination.lat}?overview=false&alternatives=false&steps=false`;
+      const response = await fetch(endpoint, { signal, headers: { Accept: "application/json" }, referrerPolicy: "strict-origin-when-cross-origin" });
+      if (!response.ok) throw new Error(`Router ${response.status}`);
+      const payload = await response.json();
+      const meters = Number(payload?.routes?.[0]?.distance);
+      if (payload?.code !== "Ok" || !Number.isFinite(meters) || meters < 0) throw new Error("Invalid route response");
+      const kilometers = meters / 1000;
+      routeCache.set(cacheKey, kilometers);
+      return kilometers;
+    }
+
+    function getServiceZone(distanceKm) {
+      if (distanceKm <= 20) return { key: "free", fee: 0, available: true };
+      if (distanceKm <= 40) return { key: "fee10", fee: 10, available: true };
+      if (distanceKm <= 50) return { key: "fee20", fee: 20, available: true };
+      return { key: "shipping", fee: null, available: false };
+    }
+
+    function renderResult(place, distanceKm) {
+      const lang = getLang();
+      const zone = getServiceZone(distanceKm);
+      const roundedDistance = Math.round(distanceKm * 10) / 10;
+      const feeLabel = zone.fee === 0
+        ? resolveI18n(lang, "mobile_repair_fee_free")
+        : zone.fee === null
+          ? resolveI18n(lang, "mobile_repair_fee_unavailable")
+          : formatI18n(lang, "mobile_repair_fee_amount", { fee: zone.fee });
+
+      result.classList.toggle("is-unavailable", !zone.available);
+      resultIcon.className = `mobile-repair-result__icon is-${zone.available ? "available" : "shipping"}`;
+      resultTitle.textContent = resolveI18n(lang, zone.available ? "mobile_repair_available_title" : "mobile_repair_unavailable_title");
+      resultLocation.textContent = place.label;
+      const distanceLabel = formatDistance(roundedDistance, lang);
+      resultDistance.textContent = formatI18n(lang, "mobile_repair_distance_value", { distance: distanceLabel });
+      resultFee.textContent = feeLabel;
+      resultNote.textContent = resolveI18n(lang, zone.available ? "mobile_repair_available_note" : "mobile_repair_unavailable_note");
+      book.hidden = !zone.available;
+      shipping.hidden = zone.available;
+
+      if (zone.available) {
+        const message = [
+          resolveI18n(lang, "mobile_repair_wa_intro"),
+          "",
+          `${resolveI18n(lang, "mobile_repair_result_location")}: ${place.label}`,
+          `${resolveI18n(lang, "mobile_repair_result_distance")}: ${distanceLabel} km`,
+          `${resolveI18n(lang, "mobile_repair_result_fee")}: ${feeLabel}`,
+          `${resolveI18n(lang, "wa_label_device") || "Modell"}:`,
+          `${resolveI18n(lang, "shipping_wa_damage") || "Schaden"}:`,
+          "",
+          resolveI18n(lang, "mobile_repair_wa_outro"),
+        ].join("\n");
+        book.href = buildWhatsAppHref(message);
+      }
+
+      setStatus();
+      result.hidden = false;
+      window.requestAnimationFrame(() => result.classList.add("is-visible"));
+      trackEvent("mobile_repair_distance_result", { zone: zone.key, available: zone.available });
+    }
+
+    async function checkLocation(rawQuery) {
+      const query = normalizeQuery(rawQuery ?? input.value);
+      hideSuggestions();
+      result.hidden = true;
+      result.classList.remove("is-visible");
+      if (query.length < 2) {
+        setStatus(resolveI18n(getLang(), "mobile_repair_error_not_found"), "error");
+        input.focus();
+        return;
+      }
+
+      activeRequest?.abort();
+      activeRequest = new AbortController();
+      const requestId = ++requestSequence;
+      input.value = query;
+      input.setAttribute("aria-invalid", "false");
+      submit.disabled = true;
+      form.setAttribute("aria-busy", "true");
+      setStatus(resolveI18n(getLang(), "mobile_repair_loading"), "loading");
+      trackEvent("mobile_repair_distance_check", { source: locations.includes(query) ? "quick_location" : "manual" });
+
+      try {
+        const place = await geocodeLocation(query, activeRequest.signal);
+        if (requestId !== requestSequence) return;
+        if (!place) {
+          input.setAttribute("aria-invalid", "true");
+          setStatus(resolveI18n(getLang(), "mobile_repair_error_not_found"), "error");
+          return;
+        }
+        const distanceKm = await calculateRoadDistance(place, activeRequest.signal);
+        if (requestId !== requestSequence) return;
+        renderResult(place, distanceKm);
+      } catch (error) {
+        if (error?.name === "AbortError") return;
+        input.setAttribute("aria-invalid", "true");
+        setStatus(resolveI18n(getLang(), "mobile_repair_error_network"), "error");
+        trackEvent("mobile_repair_distance_error", { stage: String(error?.message || "unknown").startsWith("Geocoder") ? "geocode" : "route" });
+      } finally {
+        if (requestId === requestSequence) {
+          submit.disabled = false;
+          form.setAttribute("aria-busy", "false");
+        }
+      }
+    }
+
+    function resetModal() {
+      activeRequest?.abort();
+      requestSequence += 1;
+      form.reset();
+      input.setAttribute("aria-invalid", "false");
+      submit.disabled = false;
+      form.setAttribute("aria-busy", "false");
+      result.hidden = true;
+      result.classList.remove("is-visible", "is-unavailable");
+      setStatus();
+      hideSuggestions();
+    }
+
+    function openModal() {
+      if (modal.open) return;
+      returnFocus = document.activeElement;
+      resetModal();
+      modal.showModal();
+      document.body.classList.add("mobile-repair-modal-open");
+      window.requestAnimationFrame(() => modal.classList.add("is-open"));
+      window.setTimeout(() => input.focus(), prefersReducedMotion ? 0 : 180);
+      trackEvent("mobile_repair_modal_open", { source: "service_card" });
+    }
+
+    function finishClose() {
+      window.clearTimeout(closeTimer);
+      modal.classList.remove("is-open", "is-closing");
+      if (modal.open) modal.close();
+      document.body.classList.remove("mobile-repair-modal-open");
+      returnFocus?.focus?.();
+      trackEvent("mobile_repair_modal_close", {});
+    }
+
+    function closeModal() {
+      if (!modal.open || modal.classList.contains("is-closing")) return;
+      activeRequest?.abort();
+      if (prefersReducedMotion) {
+        finishClose();
+        return;
+      }
+      modal.classList.add("is-closing");
+      modal.classList.remove("is-open");
+      closeTimer = window.setTimeout(finishClose, 180);
+    }
+
+    renderQuickLocations();
+    triggers.forEach((trigger) => trigger.addEventListener("click", openModal, { signal: events.signal }));
+    modal.querySelectorAll("[data-mobile-repair-close]").forEach((button) => button.addEventListener("click", closeModal, { signal: events.signal }));
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      checkLocation(input.value);
+    }, { signal: events.signal });
+    input.addEventListener("input", renderSuggestions, { signal: events.signal });
+    input.addEventListener("keydown", (event) => {
+      const options = suggestions.querySelectorAll("[role='option']");
+      if (event.key === "ArrowDown" && options.length) {
+        event.preventDefault();
+        updateActiveSuggestion(activeSuggestion + 1);
+      } else if (event.key === "ArrowUp" && options.length) {
+        event.preventDefault();
+        updateActiveSuggestion(activeSuggestion - 1);
+      } else if (event.key === "Enter" && activeSuggestion >= 0) {
+        event.preventDefault();
+        chooseSuggestion(options[activeSuggestion].dataset.location, true);
+      } else if (event.key === "Escape" && !suggestions.hidden) {
+        event.preventDefault();
+        hideSuggestions();
+      }
+    }, { signal: events.signal });
+    suggestions.addEventListener("click", (event) => {
+      const option = event.target.closest("[data-location]");
+      if (option) chooseSuggestion(option.dataset.location, true);
+    }, { signal: events.signal });
+    quickList.addEventListener("click", (event) => {
+      const chip = event.target.closest("[data-mobile-repair-quick-location]");
+      if (chip) chooseSuggestion(chip.dataset.mobileRepairQuickLocation, true);
+    }, { signal: events.signal });
+    reset?.addEventListener("click", () => {
+      resetModal();
+      input.focus();
+    }, { signal: events.signal });
+    book?.addEventListener("click", () => trackEvent("mobile_repair_booking_click", { channel: "whatsapp" }), { signal: events.signal });
+    shipping?.addEventListener("click", () => trackEvent("mobile_repair_shipping_click", { source: "distance_result" }), { signal: events.signal });
+    modal.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      closeModal();
+    }, { signal: events.signal });
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) closeModal();
+    }, { signal: events.signal });
+    modal.addEventListener("keydown", (event) => {
+      if (event.key !== "Tab") return;
+      const focusable = getFocusable();
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }, { signal: events.signal });
+    window.addEventListener("hn:language-change", () => {
+      renderQuickLocations();
+      if (result.hidden) setStatus();
+    }, { signal: events.signal });
+    window.addEventListener("pagehide", () => events.abort(), { once: true });
+  }
+
   function initQuiz() {
     const quizModal = document.getElementById("quizModal");
     if (!quizModal) return;
@@ -6046,6 +6455,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   initAnalyticsTracking();
   initShippingPriceHandoff();
   initShippingService();
+  initMobileRepairDistance();
   initPickupButton();
   initBundles();
   initQuiz();

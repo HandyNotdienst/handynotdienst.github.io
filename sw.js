@@ -1,4 +1,4 @@
-const CACHE = "hn-v72";
+const CACHE = "hn-v73";
 const ASSETS = [
   "./",
   "./index.html",
@@ -22,6 +22,7 @@ const ASSETS = [
   "./app.js",
   "./model-finder-shell.js",
   "./assets/i18n/index.js",
+  "./assets/i18n/mobile-repair.js",
   "./assets/i18n/prices.js",
   "./assets/i18n/iphone-modell-finder.js",
   "./assets/i18n/content-audit.js",

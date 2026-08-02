@@ -176,17 +176,17 @@
             <p class="muted" data-i18n="service_choice_local_text">Kurze Abstimmung per WhatsApp, dann Übergabe oder mobiler Termin in Singen.</p>
             <a class="btn btn--ghost btn--call" href="tel:+4915222416438" data-i18n="contact_call">Anrufen</a>
           </article>
-          <article class="card service-choice__card">
-            <div class="shipping-card-visual service-choice__visual" aria-hidden="true">
+          <button class="card service-choice__card service-choice__card--interactive" type="button" data-mobile-repair-open aria-describedby="mobileRepairCardDescription">
+            <span class="shipping-card-visual service-choice__visual" aria-hidden="true">
               <picture class="shipping-picture shipping-picture--card">
                 <source type="image/webp" srcset="assets/shipping/pickup-singen-dark-420.webp 420w, assets/shipping/pickup-singen-dark-760.webp 760w" sizes="(max-width: 640px) 80vw, 280px">
                 <img src="assets/shipping/pickup-singen-dark.png" alt="" role="presentation" width="1254" height="1254" loading="lazy" decoding="async">
               </picture>
-            </div>
-            <h3 data-i18n="service_choice_pickup_title">Abholung in Singen</h3>
-            <p class="muted" data-i18n="service_choice_pickup_text">Wenn es zeitlich passt, kann ich Abholung oder Rückgabe innerhalb Singen vereinbaren.</p>
-            <a class="btn btn--wa-secondary" href="https://wa.me/4915222416438?text=Hallo!%20Ich%20m%C3%B6chte%20Abholung%20in%20Singen%20anfragen." target="_blank" rel="noopener noreferrer" data-shipping-cta="home-pickup" data-i18n="pick_btn">Abholung anfragen</a>
-          </article>
+            </span>
+            <span class="service-choice__card-title" data-i18n="service_choice_pickup_title">Mobile Reparatur &amp; Abholung</span>
+            <span class="muted service-choice__card-copy" id="mobileRepairCardDescription" data-i18n="service_choice_pickup_text">Bis 50 km rund um Singen: Vor-Ort-Reparatur oder Abholung und Rückgabe nach Absprache.</span>
+            <span class="btn btn--secondary service-choice__card-cta" aria-hidden="true"><span data-i18n="mobile_repair_card_cta">Standort prüfen</span><span class="service-choice__card-arrow">→</span></span>
+          </button>
           <article class="card service-choice__card service-choice__card--shipping">
             <div class="shipping-card-visual service-choice__visual" aria-hidden="true">
               <picture class="shipping-picture shipping-picture--card">
@@ -400,6 +400,65 @@
   <div id="faq" class="section-anchor" aria-hidden="true"></div>
   <div id="quiz" class="section-anchor" aria-hidden="true"></div>
 
+  <dialog class="mobile-repair-modal" data-mobile-repair-modal aria-labelledby="mobileRepairTitle" aria-describedby="mobileRepairDescription">
+    <div class="mobile-repair-modal__surface">
+      <button class="mobile-repair-modal__close" type="button" data-mobile-repair-close data-i18n-aria-label="mobile_repair_close" aria-label="Dialog schließen">
+        <span aria-hidden="true">×</span>
+      </button>
+
+      <header class="mobile-repair-modal__header">
+        <span class="mobile-repair-modal__eyebrow" data-i18n="mobile_repair_eyebrow">Mobiler Service bis 50 km</span>
+        <h2 id="mobileRepairTitle" data-i18n="mobile_repair_title">Prüfe deinen Standort</h2>
+        <p id="mobileRepairDescription" data-i18n="mobile_repair_subtitle">Gib deine Postleitzahl oder deinen Wohnort ein.</p>
+      </header>
+
+      <form class="mobile-repair-form" method="get" action="index.html" data-mobile-repair-form novalidate>
+        <label for="mobileRepairLocation" data-i18n="mobile_repair_input_label">Postleitzahl oder Wohnort</label>
+        <div class="mobile-repair-location-control">
+          <span class="mobile-repair-location-control__icon" aria-hidden="true"></span>
+          <input id="mobileRepairLocation" name="location" type="search" inputmode="search" autocomplete="postal-code" spellcheck="false" minlength="2" required role="combobox" aria-autocomplete="list" aria-controls="mobileRepairSuggestions" aria-describedby="mobileRepairStatus" aria-expanded="false" data-mobile-repair-input data-i18n-placeholder="mobile_repair_input_placeholder" placeholder="PLZ oder Stadt eingeben">
+          <button class="btn btn--secondary" type="submit" data-mobile-repair-submit data-i18n="mobile_repair_check">Standort prüfen</button>
+        </div>
+        <div class="mobile-repair-suggestions" id="mobileRepairSuggestions" role="listbox" data-mobile-repair-suggestions hidden></div>
+
+        <div class="mobile-repair-quick" aria-labelledby="mobileRepairQuickTitle">
+          <span id="mobileRepairQuickTitle" data-i18n="mobile_repair_quick_title">Schnellauswahl</span>
+          <div class="mobile-repair-quick__list" data-mobile-repair-quick></div>
+        </div>
+
+        <p class="mobile-repair-privacy">
+          <span class="mobile-repair-privacy__icon" aria-hidden="true"></span>
+          <span data-i18n="mobile_repair_privacy_note">Bitte nur PLZ oder Ort eingeben. Diese Eingabe wird an OpenStreetMap und die Koordinaten an OSRM übermittelt; Straßen und Hausnummern werden nicht akzeptiert.</span>
+          <a href="datenschutz.html#privacy-location-check" data-i18n="mobile_repair_privacy_link">Datenschutz</a>
+        </p>
+      </form>
+
+      <div class="mobile-repair-status" id="mobileRepairStatus" role="status" aria-live="polite" aria-atomic="true" data-mobile-repair-status></div>
+
+      <section class="mobile-repair-result" data-mobile-repair-result hidden aria-labelledby="mobileRepairResultTitle">
+        <div class="mobile-repair-result__heading">
+          <span class="mobile-repair-result__icon" data-mobile-repair-result-icon aria-hidden="true"></span>
+          <div>
+            <span data-i18n="mobile_repair_result_kicker">Ergebnis</span>
+            <h3 id="mobileRepairResultTitle" data-mobile-repair-result-title>Standortprüfung</h3>
+          </div>
+        </div>
+        <dl class="mobile-repair-result__facts">
+          <div><dt data-i18n="mobile_repair_result_location">Ort</dt><dd data-mobile-repair-result-location></dd></div>
+          <div><dt data-i18n="mobile_repair_result_distance">Fahrstrecke</dt><dd data-mobile-repair-result-distance></dd></div>
+          <div><dt data-i18n="mobile_repair_result_fee">Anfahrt</dt><dd data-mobile-repair-result-fee></dd></div>
+        </dl>
+        <p class="mobile-repair-result__note" data-mobile-repair-result-note></p>
+        <div class="mobile-repair-result__actions">
+          <a class="btn btn--wa" href="#" target="_blank" rel="noopener noreferrer" data-mobile-repair-book data-i18n="mobile_repair_book">Mobile Reparatur buchen</a>
+          <a class="btn btn--secondary btn--shipping" href="versand-reparatur.html" data-mobile-repair-shipping data-i18n="mobile_repair_shipping">Versand auswählen</a>
+          <button class="btn btn--ghost" type="button" data-mobile-repair-reset data-i18n="mobile_repair_check_other">Anderen Ort prüfen</button>
+        </div>
+        <small class="mobile-repair-result__source" data-i18n="mobile_repair_source">Fahrstrecke auf Basis von © OpenStreetMap-Mitwirkenden, berechnet mit OSRM.</small>
+      </section>
+    </div>
+  </dialog>
+
   <!-- Floating WhatsApp -->
   <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><span class="sr-only">WhatsApp</span></a>
 
@@ -454,6 +513,7 @@
     </div>
   </div>
   <script src="assets/i18n/index.js" defer></script>
+  <script src="assets/i18n/mobile-repair.js" defer></script>
   <script src="assets/i18n/content-audit.js" defer></script>
   <script type="application/ld+json">
   {
