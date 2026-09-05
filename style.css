@@ -707,6 +707,17 @@ html[data-theme="light"] .lang__check{
   background: rgba(255,255,255,.055);
   box-shadow: 0 12px 28px rgba(0,0,0,.18);
 }
+.btn--secondary{
+  color:var(--text);
+  border-color:var(--control-secondary-border);
+  background:var(--control-secondary-bg);
+  box-shadow:var(--control-shadow);
+}
+.btn--secondary:hover{
+  border-color:var(--control-border-hover);
+  background:var(--control-bg-hover);
+  box-shadow:var(--control-shadow-hover);
+}
 .btn--wa{
   background: linear-gradient(135deg, var(--whatsapp), var(--whatsapp-2));
   color:#06101f;
@@ -7265,6 +7276,7 @@ html[data-theme="light"] .concept-proof__item + .concept-proof__item{
 }
 
 .home-page .home-band--light .btn--ghost,
+.home-page .home-band--light .btn--secondary,
 .home-page .home-band--light .btn--wa-secondary,
 .home-page .home-band--light .btn--prices{
   color:var(--home-band-light-text);
@@ -7273,6 +7285,12 @@ html[data-theme="light"] .concept-proof__item + .concept-proof__item{
 .home-page .home-band--light .btn--ghost{
   border-color:rgba(8,34,51,.16);
   background:rgba(255,255,255,.62);
+}
+
+.home-page .home-band--light .btn--secondary{
+  border-color:rgba(23,127,194,.24);
+  background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(232,243,248,.92));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.92), 0 5px 12px rgba(36,74,94,.10);
 }
 
 .home-page .home-band--light .btn--wa-secondary{
@@ -7501,6 +7519,18 @@ html[data-theme="light"] .home-page{
 
 .service-choice__card--interactive:hover .service-choice__card-arrow{
   transform:translateX(3px);
+}
+
+.service-choice__card--interactive:hover .service-choice__card-cta,
+.service-choice__card--interactive:focus-visible .service-choice__card-cta{
+  border-color:var(--control-border-hover);
+  background:var(--control-bg-hover);
+}
+
+.home-page .home-band--light .service-choice__card--interactive:hover .service-choice__card-cta,
+.home-page .home-band--light .service-choice__card--interactive:focus-visible .service-choice__card-cta{
+  border-color:rgba(23,127,194,.38);
+  background:#fff;
 }
 
 body.mobile-repair-modal-open{
