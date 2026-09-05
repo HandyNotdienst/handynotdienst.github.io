@@ -1,0 +1,781 @@
+{
+  "schemaVersion": 1,
+  "currency": "EUR",
+  "note": "Official Apple estimate captured from the German Apple repair estimate flow. Final fees depend on inspection and service eligibility.",
+  "references": [
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-air",
+      "repairType": "battery",
+      "priceCents": 13500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-air",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-air",
+      "repairType": "display",
+      "priceCents": 40500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-17-pro-max",
+      "repairType": "battery",
+      "priceCents": 13500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-17-pro-max",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-17-pro-max",
+      "repairType": "display",
+      "priceCents": 48899,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-17-pro",
+      "repairType": "battery",
+      "priceCents": 13500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-17-pro",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-17-pro",
+      "repairType": "display",
+      "priceCents": 40500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-17",
+      "repairType": "battery",
+      "priceCents": 10900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-17",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-17",
+      "repairType": "display",
+      "priceCents": 40500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-17e",
+      "repairType": "battery",
+      "priceCents": 10900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-17e",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-17e",
+      "repairType": "display",
+      "priceCents": 26900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16-pro-max",
+      "repairType": "battery",
+      "priceCents": 13500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16-pro-max",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16-pro-max",
+      "repairType": "display",
+      "priceCents": 48899,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16-pro",
+      "repairType": "battery",
+      "priceCents": 13500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16-pro",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16-pro",
+      "repairType": "display",
+      "priceCents": 40500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16-plus",
+      "repairType": "battery",
+      "priceCents": 10900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16-plus",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16-plus",
+      "repairType": "display",
+      "priceCents": 40500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16",
+      "repairType": "battery",
+      "priceCents": 10900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16",
+      "repairType": "display",
+      "priceCents": 33900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16e",
+      "repairType": "battery",
+      "priceCents": 10900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16e",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-16e",
+      "repairType": "display",
+      "priceCents": 26900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-15-pro-max",
+      "repairType": "battery",
+      "priceCents": 10900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-15-pro-max",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-15-pro-max",
+      "repairType": "display",
+      "priceCents": 48899,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-15-pro",
+      "repairType": "battery",
+      "priceCents": 10900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-15-pro",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-15-pro",
+      "repairType": "display",
+      "priceCents": 40500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-15-plus",
+      "repairType": "battery",
+      "priceCents": 10900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-15-plus",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-15-plus",
+      "repairType": "display",
+      "priceCents": 40500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-15",
+      "repairType": "battery",
+      "priceCents": 10900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-15",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-15",
+      "repairType": "display",
+      "priceCents": 33900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-14-pro-max",
+      "repairType": "battery",
+      "priceCents": 10900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-14-pro-max",
+      "repairType": "backglass",
+      "priceCents": 66899,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-14-pro-max",
+      "repairType": "display",
+      "priceCents": 48899,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-14-pro",
+      "repairType": "battery",
+      "priceCents": 10900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-14-pro",
+      "repairType": "backglass",
+      "priceCents": 59900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-14-pro",
+      "repairType": "display",
+      "priceCents": 40500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-14-plus",
+      "repairType": "battery",
+      "priceCents": 10900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-14-plus",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-14-plus",
+      "repairType": "display",
+      "priceCents": 40500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-14",
+      "repairType": "battery",
+      "priceCents": 10900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-14",
+      "repairType": "backglass",
+      "priceCents": 16900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-14",
+      "repairType": "display",
+      "priceCents": 33900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-13-pro-max",
+      "repairType": "battery",
+      "priceCents": 9900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-13-pro-max",
+      "repairType": "backglass",
+      "priceCents": 59900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-13-pro-max",
+      "repairType": "display",
+      "priceCents": 40500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-13-pro",
+      "repairType": "battery",
+      "priceCents": 9900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-13-pro",
+      "repairType": "backglass",
+      "priceCents": 52900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-13-pro",
+      "repairType": "display",
+      "priceCents": 33900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-13",
+      "repairType": "battery",
+      "priceCents": 9900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-13",
+      "repairType": "backglass",
+      "priceCents": 39900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-13",
+      "repairType": "display",
+      "priceCents": 33900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-13-mini",
+      "repairType": "battery",
+      "priceCents": 9900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-13-mini",
+      "repairType": "backglass",
+      "priceCents": 34900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-13-mini",
+      "repairType": "display",
+      "priceCents": 26900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-12-pro-max",
+      "repairType": "battery",
+      "priceCents": 9900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-12-pro-max",
+      "repairType": "backglass",
+      "priceCents": 59900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-12-pro-max",
+      "repairType": "display",
+      "priceCents": 40500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-12-pro",
+      "repairType": "battery",
+      "priceCents": 9900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-12-pro",
+      "repairType": "backglass",
+      "priceCents": 52900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-12-pro",
+      "repairType": "display",
+      "priceCents": 33900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-12",
+      "repairType": "battery",
+      "priceCents": 9900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-12",
+      "repairType": "backglass",
+      "priceCents": 39900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-12",
+      "repairType": "display",
+      "priceCents": 33900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-12-mini",
+      "repairType": "battery",
+      "priceCents": 9900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-12-mini",
+      "repairType": "backglass",
+      "priceCents": 34900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-12-mini",
+      "repairType": "display",
+      "priceCents": 26900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-11",
+      "repairType": "battery",
+      "priceCents": 9900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-11",
+      "repairType": "display",
+      "priceCents": 23900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-xr",
+      "repairType": "battery",
+      "priceCents": 9900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-xr",
+      "repairType": "display",
+      "priceCents": 23900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-se-2022",
+      "repairType": "battery",
+      "priceCents": 7900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-se-2022",
+      "repairType": "display",
+      "priceCents": 18500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-se-2020",
+      "repairType": "battery",
+      "priceCents": 7900,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/battery-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    },
+    {
+      "manufacturer": "apple",
+      "modelId": "iphone-se-2020",
+      "repairType": "display",
+      "priceCents": 18500,
+      "currency": "EUR",
+      "sourceUrl": "https://support.apple.com/de-de/iphone/repair/screen-replacement?services=service",
+      "verifiedAt": "2026-09-05"
+    }
+  ]
+}

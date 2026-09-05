@@ -1,0 +1,6004 @@
+{
+  "schemaVersion": 1,
+  "currency": "EUR",
+  "manufacturers": [
+    {
+      "id": "apple",
+      "label": "Apple",
+      "deviceType": "iPhone",
+      "models": [
+        {
+          "id": "iphone-air",
+          "label": "iPhone Air",
+          "family": "iPhone Air",
+          "image": "assets/phones/iphone-air.png",
+          "imageSlug": "iphone-air",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 14900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-17-pro-max",
+          "label": "iPhone 17 Pro Max",
+          "family": "iPhone 17",
+          "image": "assets/phones/iphone-17-pro-max.png",
+          "imageSlug": "iphone-17-pro-max",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "premium_aftermarket-1",
+                  "nameKey": "part_option_premium",
+                  "descriptionKey": "repair_note_premium_aftermarket",
+                  "quality": "premium_aftermarket",
+                  "technology": "soft_oled",
+                  "priceCents": 29900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality",
+                    "value"
+                  ],
+                  "facts": {}
+                },
+                {
+                  "id": "oem_pull-2",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "repair_note_oem_display",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 45900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "budget_aftermarket-1",
+                  "nameKey": "part_option_budget",
+                  "descriptionKey": "repair_note_budget_import",
+                  "quality": "budget_aftermarket",
+                  "technology": "unspecified",
+                  "priceCents": 14900,
+                  "stock": "leadtime",
+                  "recommendationTags": [
+                    "budget"
+                  ],
+                  "facts": {}
+                },
+                {
+                  "id": "oem_pull-2",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "repair_note_oem_backglass",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 15900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "back-housing",
+              "labelKey": "repair_back_housing",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "repair_note_oem_housing",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 44900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                },
+                {
+                  "id": "budget_aftermarket-2",
+                  "nameKey": "part_option_budget",
+                  "descriptionKey": "repair_note_budget_import",
+                  "quality": "budget_aftermarket",
+                  "technology": "unspecified",
+                  "priceCents": 24900,
+                  "stock": "leadtime",
+                  "recommendationTags": [
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "midframe-backglass",
+              "labelKey": "repair_midframe_backglass",
+              "partOptions": [
+                {
+                  "id": "budget_aftermarket-1",
+                  "nameKey": "part_option_budget",
+                  "descriptionKey": "repair_note_budget_import",
+                  "quality": "budget_aftermarket",
+                  "technology": "unspecified",
+                  "priceCents": 24900,
+                  "stock": "leadtime",
+                  "recommendationTags": [
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 16900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-17-pro",
+          "label": "iPhone 17 Pro",
+          "family": "iPhone 17",
+          "image": "assets/phones/iphone-17-pro.png",
+          "imageSlug": "iphone-17-pro",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "premium_aftermarket-1",
+                  "nameKey": "part_option_premium",
+                  "descriptionKey": "repair_note_premium_aftermarket",
+                  "quality": "premium_aftermarket",
+                  "technology": "soft_oled",
+                  "priceCents": 29900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality",
+                    "value"
+                  ],
+                  "facts": {}
+                },
+                {
+                  "id": "oem_pull-2",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "repair_note_oem_display",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 39900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "budget_aftermarket-1",
+                  "nameKey": "part_option_budget",
+                  "descriptionKey": "repair_note_budget_import",
+                  "quality": "budget_aftermarket",
+                  "technology": "unspecified",
+                  "priceCents": 14900,
+                  "stock": "leadtime",
+                  "recommendationTags": [
+                    "budget"
+                  ],
+                  "facts": {}
+                },
+                {
+                  "id": "oem_pull-2",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "repair_note_oem_backglass",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 15900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "back-housing",
+              "labelKey": "repair_back_housing",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "repair_note_oem_housing",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 36900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                },
+                {
+                  "id": "budget_aftermarket-2",
+                  "nameKey": "part_option_budget",
+                  "descriptionKey": "repair_note_budget_import",
+                  "quality": "budget_aftermarket",
+                  "technology": "unspecified",
+                  "priceCents": 22900,
+                  "stock": "leadtime",
+                  "recommendationTags": [
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 14900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-17",
+          "label": "iPhone 17",
+          "family": "iPhone 17",
+          "image": "assets/phones/iphone-17.png",
+          "imageSlug": "iphone-17",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "premium_aftermarket-1",
+                  "nameKey": "part_option_premium",
+                  "descriptionKey": "repair_note_premium_aftermarket",
+                  "quality": "premium_aftermarket",
+                  "technology": "soft_oled",
+                  "priceCents": 23900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality",
+                    "value"
+                  ],
+                  "facts": {}
+                },
+                {
+                  "id": "oem_pull-2",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "repair_note_oem_display",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 38900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "budget_aftermarket-1",
+                  "nameKey": "part_option_budget",
+                  "descriptionKey": "repair_note_budget_import",
+                  "quality": "budget_aftermarket",
+                  "technology": "unspecified",
+                  "priceCents": 12900,
+                  "stock": "leadtime",
+                  "recommendationTags": [
+                    "budget"
+                  ],
+                  "facts": {}
+                },
+                {
+                  "id": "oem_pull-2",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "repair_note_oem_backglass",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 15900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "back-housing",
+              "labelKey": "repair_back_housing",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "repair_note_oem_housing",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 24900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                },
+                {
+                  "id": "budget_aftermarket-2",
+                  "nameKey": "part_option_budget",
+                  "descriptionKey": "repair_note_budget_import",
+                  "quality": "budget_aftermarket",
+                  "technology": "unspecified",
+                  "priceCents": 19900,
+                  "stock": "leadtime",
+                  "recommendationTags": [
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 13900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-16e",
+          "label": "iPhone 16e",
+          "family": "iPhone 16e / 17e",
+          "image": "assets/phones/iphone-16e.png",
+          "imageSlug": "iphone-16e",
+          "responsiveWidths": [
+            420
+          ],
+          "repairs": [
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 11900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-17e",
+          "label": "iPhone 17e",
+          "family": "iPhone 16e / 17e",
+          "image": "assets/phones/iphone-17e.png",
+          "imageSlug": "iphone-17e",
+          "responsiveWidths": [
+            420
+          ],
+          "repairs": [
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 11900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-16-pro-max",
+          "label": "iPhone 16 Pro Max",
+          "family": "iPhone 16",
+          "image": "assets/phones/iphone-16-pro-max.png",
+          "imageSlug": "iphone-16-pro-max",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 39900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 13900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 13900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 18900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-16-pro",
+          "label": "iPhone 16 Pro",
+          "family": "iPhone 16",
+          "image": "assets/phones/iphone-16-pro.png",
+          "imageSlug": "iphone-16-pro",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 35900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 12900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 17900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-16-plus",
+          "label": "iPhone 16 Plus",
+          "family": "iPhone 16",
+          "image": "assets/phones/iphone-16-plus.png",
+          "imageSlug": "iphone-16-plus",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 26900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 11900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 16900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-16",
+          "label": "iPhone 16",
+          "family": "iPhone 16",
+          "image": "assets/phones/iphone-16.png",
+          "imageSlug": "iphone-16",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 24900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 14900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-15-pro-max",
+          "label": "iPhone 15 Pro Max",
+          "family": "iPhone 15",
+          "image": "assets/phones/iphone-15-pro-max.png",
+          "imageSlug": "iphone-15-pro-max",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 29900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 11900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 14900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-15-pro",
+          "label": "iPhone 15 Pro",
+          "family": "iPhone 15",
+          "image": "assets/phones/iphone-15-pro.png",
+          "imageSlug": "iphone-15-pro",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 26900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 13900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-15-plus",
+          "label": "iPhone 15 Plus",
+          "family": "iPhone 15",
+          "image": "assets/phones/iphone-15-plus.png",
+          "imageSlug": "iphone-15-plus",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 23900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 11900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-15",
+          "label": "iPhone 15",
+          "family": "iPhone 15",
+          "image": "assets/phones/iphone-15.png",
+          "imageSlug": "iphone-15",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 20900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-14-pro-max",
+          "label": "iPhone 14 Pro Max",
+          "family": "iPhone 14",
+          "image": "assets/phones/iphone-14-pro-max.png",
+          "imageSlug": "iphone-14-pro-max",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 20900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 11900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 13900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-14-pro",
+          "label": "iPhone 14 Pro",
+          "family": "iPhone 14",
+          "image": "assets/phones/iphone-14-pro.png",
+          "imageSlug": "iphone-14-pro",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 19900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 12900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-14-plus",
+          "label": "iPhone 14 Plus",
+          "family": "iPhone 14",
+          "image": "assets/phones/iphone-14-plus.png",
+          "imageSlug": "iphone-14-plus",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 16900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8500,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": null,
+                  "stock": "unavailable",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-14",
+          "label": "iPhone 14",
+          "family": "iPhone 14",
+          "image": "assets/phones/iphone-14.png",
+          "imageSlug": "iphone-14",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 14900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8500,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-13-pro-max",
+          "label": "iPhone 13 Pro Max",
+          "family": "iPhone 13",
+          "image": "assets/phones/iphone-13-pro-max.png",
+          "imageSlug": "iphone-13-pro-max",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 18900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-13-pro",
+          "label": "iPhone 13 Pro",
+          "family": "iPhone 13",
+          "image": "assets/phones/iphone-13-pro.png",
+          "imageSlug": "iphone-13-pro",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 17900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-13",
+          "label": "iPhone 13",
+          "family": "iPhone 13",
+          "image": "assets/phones/iphone-13.png",
+          "imageSlug": "iphone-13",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 14900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-13-mini",
+          "label": "iPhone 13 mini",
+          "family": "iPhone 13",
+          "image": "assets/phones/iphone-13-mini.png",
+          "imageSlug": "iphone-13-mini",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 13900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-12-pro-max",
+          "label": "iPhone 12 Pro Max",
+          "family": "iPhone 12",
+          "image": "assets/phones/iphone-12-pro-max.png",
+          "imageSlug": "iphone-12-pro-max",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 14900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "original-battery",
+              "labelKey": "repair_original_battery",
+              "partOptions": [
+                {
+                  "id": "oem_pull-1",
+                  "nameKey": "part_option_oem_pull",
+                  "descriptionKey": "part_option_oem_pull_description",
+                  "quality": "oem_pull",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "quality"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-12",
+          "label": "iPhone 12",
+          "family": "iPhone 12",
+          "image": "assets/phones/iphone-12-12-pro.png",
+          "imageSlug": "iphone-12-12-pro",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 13900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-12-pro",
+          "label": "iPhone 12 Pro",
+          "family": "iPhone 12",
+          "image": "assets/phones/iphone-12-12-pro.png",
+          "imageSlug": "iphone-12-12-pro",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 13900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-12-mini",
+          "label": "iPhone 12 mini",
+          "family": "iPhone 12",
+          "image": "assets/phones/iphone-12-mini.png",
+          "imageSlug": "iphone-12-mini",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-11-pro-max",
+          "label": "iPhone 11 Pro Max",
+          "family": "iPhone 11",
+          "image": "assets/phones/iphone-11-pro-max.png",
+          "imageSlug": "iphone-11-pro-max",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 11900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-11-pro",
+          "label": "iPhone 11 Pro",
+          "family": "iPhone 11",
+          "image": "assets/phones/iphone-11-pro.png",
+          "imageSlug": "iphone-11-pro",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-11",
+          "label": "iPhone 11",
+          "family": "iPhone 11",
+          "image": "assets/phones/iphone-11.png",
+          "imageSlug": "iphone-11",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-xs-max",
+          "label": "iPhone XS Max",
+          "family": "iPhone XS Max",
+          "image": "assets/phones/iphone-xs-max.png",
+          "imageSlug": "iphone-xs-max",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-x",
+          "label": "iPhone X",
+          "family": "iPhone X / XS / XR",
+          "image": "assets/phones/iphone-x-xs-xr.png",
+          "imageSlug": "iphone-x-xs-xr",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-xs",
+          "label": "iPhone XS",
+          "family": "iPhone X / XS / XR",
+          "image": "assets/phones/iphone-x-xs-xr.png",
+          "imageSlug": "iphone-x-xs-xr",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-xr",
+          "label": "iPhone XR",
+          "family": "iPhone X / XS / XR",
+          "image": "assets/phones/iphone-x-xs-xr.png",
+          "imageSlug": "iphone-x-xs-xr",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-se-2022",
+          "label": "iPhone SE (2022)",
+          "family": "iPhone SE (2022)",
+          "image": "assets/phones/iphone-se-2022.png",
+          "imageSlug": "iphone-se-2022",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 5900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-se-2020",
+          "label": "iPhone SE (2020)",
+          "family": "iPhone SE (2020)",
+          "image": "assets/phones/iphone-se-2020.png",
+          "imageSlug": "iphone-se-2020",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 5900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 5900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-8-plus",
+          "label": "iPhone 8 Plus",
+          "family": "iPhone 8",
+          "image": "assets/phones/iphone-8-plus.png",
+          "imageSlug": "iphone-8-plus",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 5900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 4900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-8",
+          "label": "iPhone 8",
+          "family": "iPhone 8",
+          "image": "assets/phones/iphone-8.png",
+          "imageSlug": "iphone-8",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 5900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 5900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 4900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-7",
+          "label": "iPhone 7",
+          "family": "iPhone 7",
+          "image": "assets/phones/iphone-7-7-plus.png",
+          "imageSlug": "iphone-7-7-plus",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 4900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 4900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-7-plus",
+          "label": "iPhone 7 Plus",
+          "family": "iPhone 7",
+          "image": "assets/phones/iphone-7-7-plus.png",
+          "imageSlug": "iphone-7-7-plus",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 4900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 4900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-6s",
+          "label": "iPhone 6s",
+          "family": "iPhone 6",
+          "image": "assets/phones/iphone-6s-6s-plus.png",
+          "imageSlug": "iphone-6s-6s-plus",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 3900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 3900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-6s-plus",
+          "label": "iPhone 6s Plus",
+          "family": "iPhone 6",
+          "image": "assets/phones/iphone-6s-6s-plus.png",
+          "imageSlug": "iphone-6s-6s-plus",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 3900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 3900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-6",
+          "label": "iPhone 6",
+          "family": "iPhone 6",
+          "image": "assets/phones/iphone-6-6-plus.png",
+          "imageSlug": "iphone-6-6-plus",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 3900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 3900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iphone-6-plus",
+          "label": "iPhone 6 Plus",
+          "family": "iPhone 6",
+          "image": "assets/phones/iphone-6-6-plus.png",
+          "imageSlug": "iphone-6-6-plus",
+          "responsiveWidths": [
+            420,
+            800
+          ],
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 3900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 3900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "samsung",
+      "label": "Samsung",
+      "deviceType": "Galaxy",
+      "models": [
+        {
+          "id": "galaxy-s10e",
+          "label": "Galaxy S10e",
+          "family": "Galaxy S10",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 19900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 5900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s10",
+          "label": "Galaxy S10",
+          "family": "Galaxy S10",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 21900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 5900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s10-plus",
+          "label": "Galaxy S10+",
+          "family": "Galaxy S10",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 22900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 5900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s10-5g",
+          "label": "Galaxy S10 5G",
+          "family": "Galaxy S10",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s20",
+          "label": "Galaxy S20",
+          "family": "Galaxy S20",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 22000,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 5900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s20-plus",
+          "label": "Galaxy S20+",
+          "family": "Galaxy S20",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 25900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 5900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s20-ultra",
+          "label": "Galaxy S20 Ultra",
+          "family": "Galaxy S20",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 29900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s20-fe",
+          "label": "Galaxy S20 FE",
+          "family": "Galaxy S20",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 22900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 5900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s21",
+          "label": "Galaxy S21",
+          "family": "Galaxy S21",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 17900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s21-plus",
+          "label": "Galaxy S21+",
+          "family": "Galaxy S21",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 19900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s21-ultra",
+          "label": "Galaxy S21 Ultra",
+          "family": "Galaxy S21",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 29900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s21-fe",
+          "label": "Galaxy S21 FE",
+          "family": "Galaxy S21",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 22000,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s22",
+          "label": "Galaxy S22",
+          "family": "Galaxy S22",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 23900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s22-plus",
+          "label": "Galaxy S22+",
+          "family": "Galaxy S22",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 26900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s22-ultra",
+          "label": "Galaxy S22 Ultra",
+          "family": "Galaxy S22",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 33900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s23",
+          "label": "Galaxy S23",
+          "family": "Galaxy S23",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 23900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s23-plus",
+          "label": "Galaxy S23+",
+          "family": "Galaxy S23",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 26900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s23-ultra",
+          "label": "Galaxy S23 Ultra",
+          "family": "Galaxy S23",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 34900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s24",
+          "label": "Galaxy S24",
+          "family": "Galaxy S24",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 25900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s24-plus",
+          "label": "Galaxy S24+",
+          "family": "Galaxy S24",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 28900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s24-ultra",
+          "label": "Galaxy S24 Ultra",
+          "family": "Galaxy S24",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 33900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 12000,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s25",
+          "label": "Galaxy S25",
+          "family": "Galaxy S25",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 18900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s25-plus",
+          "label": "Galaxy S25+",
+          "family": "Galaxy S25",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 24900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-4",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-s25-ultra",
+          "label": "Galaxy S25 Ultra",
+          "family": "Galaxy S25",
+          "repairs": [
+            {
+              "id": "display",
+              "labelKey": "repair_display",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 28900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "port",
+              "labelKey": "repair_port",
+              "partOptions": [
+                {
+                  "id": "standard-2",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            },
+            {
+              "id": "backglass",
+              "labelKey": "repair_backglass",
+              "partOptions": [
+                {
+                  "id": "standard-3",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 12000,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-a12",
+          "label": "Galaxy A12",
+          "family": "Galaxy A12",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-a13",
+          "label": "Galaxy A13",
+          "family": "Galaxy A13",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-a14",
+          "label": "Galaxy A14",
+          "family": "Galaxy A14",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-a15",
+          "label": "Galaxy A15",
+          "family": "Galaxy A15",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-a16",
+          "label": "Galaxy A16",
+          "family": "Galaxy A16",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-a23",
+          "label": "Galaxy A23",
+          "family": "Galaxy A23",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-a24",
+          "label": "Galaxy A24",
+          "family": "Galaxy A24",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-a34",
+          "label": "Galaxy A34",
+          "family": "Galaxy A34",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-a50",
+          "label": "Galaxy A50",
+          "family": "Galaxy A50",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-a51",
+          "label": "Galaxy A51",
+          "family": "Galaxy A51",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 6900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-a52",
+          "label": "Galaxy A52",
+          "family": "Galaxy A52",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-a53",
+          "label": "Galaxy A53",
+          "family": "Galaxy A53",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-a54",
+          "label": "Galaxy A54",
+          "family": "Galaxy A54",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 7900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-z-flip3",
+          "label": "Galaxy Z Flip3",
+          "family": "Galaxy Z",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 10900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-z-flip4",
+          "label": "Galaxy Z Flip4",
+          "family": "Galaxy Z",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 11900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-z-flip5",
+          "label": "Galaxy Z Flip5",
+          "family": "Galaxy Z",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 11900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-z-fold2",
+          "label": "Galaxy Z Fold2",
+          "family": "Galaxy Z",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 12900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-z-fold3",
+          "label": "Galaxy Z Fold3",
+          "family": "Galaxy Z",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 12900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-z-fold4",
+          "label": "Galaxy Z Fold4",
+          "family": "Galaxy Z",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 13900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-z-fold5",
+          "label": "Galaxy Z Fold5",
+          "family": "Galaxy Z",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 13900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-note10",
+          "label": "Galaxy Note10",
+          "family": "Galaxy N",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-note10-plus",
+          "label": "Galaxy Note10+",
+          "family": "Galaxy N",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-note20",
+          "label": "Galaxy Note20",
+          "family": "Galaxy N",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 8900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "galaxy-note20-ultra",
+          "label": "Galaxy Note20 Ultra",
+          "family": "Galaxy N",
+          "repairs": [
+            {
+              "id": "battery",
+              "labelKey": "repair_battery",
+              "partOptions": [
+                {
+                  "id": "standard-1",
+                  "nameKey": "part_option_standard",
+                  "descriptionKey": "part_option_standard_description",
+                  "quality": "standard",
+                  "technology": "unspecified",
+                  "priceCents": 9900,
+                  "stock": "on_request",
+                  "recommendationTags": [
+                    "value",
+                    "budget"
+                  ],
+                  "facts": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "serviceOptions": [
+    {
+      "id": "handover",
+      "labelKey": "service_handover",
+      "pricing": {
+        "type": "fixed",
+        "priceCents": 0
+      }
+    },
+    {
+      "id": "mobile",
+      "labelKey": "service_mobile",
+      "pricing": {
+        "type": "distance",
+        "tiers": [
+          {
+            "maxKm": 20,
+            "priceCents": 0
+          },
+          {
+            "maxKm": 40,
+            "priceCents": 1000
+          },
+          {
+            "maxKm": 50,
+            "priceCents": 2000
+          }
+        ]
+      }
+    },
+    {
+      "id": "shipping",
+      "labelKey": "service_shipping",
+      "pricing": {
+        "type": "external",
+        "priceCents": 0
+      }
+    }
+  ]
+}
