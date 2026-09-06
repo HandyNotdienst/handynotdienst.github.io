@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import vm from "node:vm";
 
 const root = path.resolve(import.meta.dirname, "..");
 const catalogPath = path.join(root, "assets", "data", "repair-catalog.json");
@@ -15,6 +16,7 @@ const translationSources = [
 ].join("\n");
 
 const errors = [];
+const supportedLanguages = ["de", "uk", "en", "ru", "pl", "it", "ar", "ku", "fr", "sl"];
 const qualityValues = new Set(["standard", "oem_pull", "premium_aftermarket", "budget_aftermarket"]);
 const technologyValues = new Set(["unspecified", "soft_oled", "hard_oled", "lcd", "original"]);
 const stockValues = new Set(["available", "on_request", "leadtime", "unavailable"]);
@@ -44,6 +46,38 @@ function requireTranslationKey(key, location) {
   }
 }
 
+function requireLocalFile(relativePath, location) {
+  requireText(relativePath, location);
+  if (typeof relativePath !== "string" || !relativePath.trim()) return;
+  const resolved = path.resolve(root, relativePath);
+  if (!resolved.startsWith(`${root}${path.sep}`)) {
+    fail(location, "must stay inside the project root");
+  } else if (!fs.existsSync(resolved)) {
+    fail(location, `file '${relativePath}' does not exist`);
+  }
+}
+
+function validatePremiumTranslations() {
+  const source = fs.readFileSync(path.join(root, "assets", "i18n", "premium-prices.js"), "utf8");
+  const sandbox = { window: { HN_I18N: {} } };
+  vm.runInNewContext(source, sandbox, { filename: "premium-prices.js" });
+  const translations = sandbox.window.HN_I18N;
+  const sourceKeys = Object.keys(translations.de || {});
+
+  for (const language of supportedLanguages) {
+    const values = translations[language];
+    if (!values) {
+      fail(`premium-translations.${language}`, "language is missing");
+      continue;
+    }
+    for (const key of sourceKeys) {
+      requireText(values[key], `premium-translations.${language}.${key}`);
+    }
+  }
+}
+
+validatePremiumTranslations();
+
 if (catalog.schemaVersion !== 1) fail("repair-catalog.schemaVersion", "must equal 1");
 if (catalog.currency !== "EUR") fail("repair-catalog.currency", "must equal EUR");
 if (!Array.isArray(catalog.manufacturers) || !catalog.manufacturers.length) {
@@ -68,6 +102,20 @@ for (const manufacturer of catalog.manufacturers || []) {
     requireText(model.id, `${modelLocation}.id`);
     requireText(model.label, `${modelLocation}.label`);
     requireText(model.family, `${modelLocation}.family`);
+    if (manufacturer.id === "apple") {
+      requireLocalFile(model.image, `${modelLocation}.image`);
+      requireText(model.imageSlug, `${modelLocation}.imageSlug`);
+      const widths = Array.isArray(model.responsiveWidths) && model.responsiveWidths.length
+        ? model.responsiveWidths
+        : [420, 800];
+      widths.forEach((width) => {
+        if (!Number.isInteger(width) || width <= 0) {
+          fail(`${modelLocation}.responsiveWidths`, `invalid width '${width}'`);
+          return;
+        }
+        requireLocalFile(`assets/phones/optimized/${model.imageSlug}-${width}.webp`, `${modelLocation}.responsiveWidths.${width}`);
+      });
+    }
     if (!Array.isArray(model.repairs) || !model.repairs.length) {
       fail(`${modelLocation}.repairs`, "must contain at least one repair");
       continue;
