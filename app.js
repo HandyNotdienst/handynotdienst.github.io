@@ -1,4 +1,4 @@
-(() => {
+(async () => {
   const config = {
     whatsappNumber: "4915222416438",
     city: "Singen",
@@ -3623,85 +3623,76 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     });
   }
 
-  function repairOption(key, price, quality, note, stock = "") {
-    return { key, price, quality, note, stock };
-  }
-
-  function iphone17SeriesRepairs(prices, batteryPrice) {
-    const repairs = [
-      repairOption("repair_display", prices.displayPremium, "quality_premium_aftermarket_xo7", "repair_note_premium_aftermarket"),
-      repairOption("repair_display", prices.displayOem, "quality_oem_pull_grade_a", "repair_note_oem_display", "on_request"),
-      repairOption("repair_backglass", prices.backglassBudget, "quality_budget_import", "repair_note_budget_import", "leadtime"),
-      repairOption("repair_backglass", prices.backglassOem, "quality_oem_pull_grade_a", "repair_note_oem_backglass", "on_request"),
-      repairOption("repair_back_housing", prices.housingOem, "quality_oem_pull_grade_a", "repair_note_oem_housing", "on_request"),
-      repairOption("repair_back_housing", prices.housingBudget, "quality_budget_import", "repair_note_budget_import", "leadtime"),
-    ];
-
-    if (prices.midframeBudget) {
-      repairs.push(repairOption("repair_midframe_backglass", prices.midframeBudget, "quality_budget_import", "repair_note_budget_import", "leadtime"));
-    }
-
-    repairs.push({ key: "repair_original_battery", price: batteryPrice, stock: "on_request" });
-    return repairs;
-  }
-
-  const PRICE_DATA = {
-    apple: [
-      { model: "iPhone Air", series: "iphone", family: "iPhone Air", image: "assets/phones/iphone-air.png", responsiveWidths: [420, 800], repairs: [{ key: "repair_original_battery", price: "149€", stock: "on_request" }] },
-      { model: "iPhone 17 Pro Max", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17-pro-max.png", responsiveWidths: [420, 800], repairs: iphone17SeriesRepairs({ displayPremium: "299€", displayOem: "459€", backglassBudget: "149€", backglassOem: "159€", housingOem: "449€", housingBudget: "249€", midframeBudget: "249€" }, "169€") },
-      { model: "iPhone 17 Pro", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17-pro.png", responsiveWidths: [420, 800], repairs: iphone17SeriesRepairs({ displayPremium: "299€", displayOem: "399€", backglassBudget: "149€", backglassOem: "159€", housingOem: "369€", housingBudget: "229€" }, "149€") },
-      { model: "iPhone 17", series: "iphone", family: "iPhone 17", image: "assets/phones/iphone-17.png", responsiveWidths: [420, 800], repairs: iphone17SeriesRepairs({ displayPremium: "239€", displayOem: "389€", backglassBudget: "129€", backglassOem: "159€", housingOem: "249€", housingBudget: "199€" }, "139€") },
-      { model: "iPhone 16e", series: "iphone", family: "iPhone 16e / 17e", image: "assets/phones/iphone-16e.png", responsiveWidths: [420], repairs: [{ key: "repair_original_battery", price: "119€", stock: "on_request" }] },
-      { model: "iPhone 17e", series: "iphone", family: "iPhone 16e / 17e", image: "assets/phones/iphone-17e.png", responsiveWidths: [420], repairs: [{ key: "repair_original_battery", price: "119€", stock: "on_request" }] },
-      { model: "iPhone 16 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "399€" }, { key: "repair_battery", price: "139€" }, { key: "repair_original_battery", price: "139€", stock: "on_request" }, { key: "repair_backglass", price: "189€" }] },
-      { model: "iPhone 16 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "359€" }, { key: "repair_battery", price: "129€" }, { key: "repair_backglass", price: "179€" }] },
-      { model: "iPhone 16 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "269€" }, { key: "repair_battery", price: "109€" }, { key: "repair_original_battery", price: "119€", stock: "on_request" }, { key: "repair_backglass", price: "169€" }] },
-      { model: "iPhone 16", series: "iphone", repairs: [{ key: "repair_display", price: "249€" }, { key: "repair_battery", price: "99€" }, { key: "repair_original_battery", price: "109€", stock: "on_request" }, { key: "repair_backglass", price: "149€" }] },
-      { model: "iPhone 15 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "299€" }, { key: "repair_battery", price: "109€" }, { key: "repair_original_battery", price: "119€", stock: "on_request" }, { key: "repair_backglass", price: "149€" }] },
-      { model: "iPhone 15 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "269€" }, { key: "repair_battery", price: "99€" }, { key: "repair_original_battery", price: "109€", stock: "on_request" }, { key: "repair_backglass", price: "139€" }] },
-      { model: "iPhone 15 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "239€" }, { key: "repair_battery", price: "89€" }, { key: "repair_original_battery", price: "109€", stock: "on_request" }, { key: "repair_backglass", price: "119€" }] },
-      { model: "iPhone 15", series: "iphone", repairs: [{ key: "repair_display", price: "209€" }, { key: "repair_battery", price: "89€" }, { key: "repair_original_battery", price: "99€", stock: "on_request" }, { key: "repair_backglass", price: "99€" }] },
-      { model: "iPhone 14 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "209€" }, { key: "repair_battery", price: "99€" }, { key: "repair_original_battery", price: "119€", stock: "on_request" }, { key: "repair_backglass", price: "139€" }] },
-      { model: "iPhone 14 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "199€" }, { key: "repair_battery", price: "89€" }, { key: "repair_backglass", price: "129€" }] },
-      { model: "iPhone 14 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "169€" }, { key: "repair_battery", price: "85€" }, { key: "repair_original_battery", price: "zurzeit nicht lieferbar", stock: "unavailable" }, { key: "repair_backglass", price: "99€" }] },
-      { model: "iPhone 14", series: "iphone", repairs: [{ key: "repair_display", price: "149€" }, { key: "repair_battery", price: "85€" }, { key: "repair_original_battery", price: "89€", stock: "on_request" }, { key: "repair_backglass", price: "89€" }] },
-      { model: "iPhone 13 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "189€" }, { key: "repair_battery", price: "79€" }, { key: "repair_original_battery", price: "109€", stock: "on_request" }, { key: "repair_backglass", price: "109€" }] },
-      { model: "iPhone 13 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "179€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "99€" }] },
-      { model: "iPhone 13", series: "iphone", repairs: [{ key: "repair_display", price: "149€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "99€" }] },
-      { model: "iPhone 13 mini", series: "iphone", repairs: [{ key: "repair_display", price: "139€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "89€" }] },
-      { model: "iPhone 12 Pro Max", series: "iphone", image: "assets/phones/iphone-12-pro-max.png", repairs: [{ key: "repair_display", price: "149€" }, { key: "repair_battery", price: "79€" }, { key: "repair_original_battery", price: "99€", stock: "on_request" }, { key: "repair_backglass", price: "99€" }] },
-      { model: "iPhone 12 / 12 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "139€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "89€" }] },
-      { model: "iPhone 12 mini", series: "iphone", repairs: [{ key: "repair_display", price: "109€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "79€" }] },
-      { model: "iPhone 11 Pro Max", series: "iphone", repairs: [{ key: "repair_display", price: "119€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "79€" }] },
-      { model: "iPhone 11 Pro", series: "iphone", repairs: [{ key: "repair_display", price: "109€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "79€" }] },
-      { model: "iPhone 11", series: "iphone", repairs: [{ key: "repair_display", price: "89€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "79€" }] },
-      { model: "iPhone XS Max", series: "iphone", repairs: [{ key: "repair_display", price: "99€" }, { key: "repair_battery", price: "79€" }, { key: "repair_backglass", price: "79€" }] },
-      { model: "iPhone X / XS / XR", series: "iphone", repairs: [{ key: "repair_display", price: "79€" }, { key: "repair_battery", price: "69€" }, { key: "repair_backglass", price: "69€" }] },
-      { model: "iPhone SE (2022)", series: "iphone", repairs: [{ key: "repair_display", price: "79€" }, { key: "repair_battery", price: "69€" }, { key: "repair_backglass", price: "59€" }] },
-      { model: "iPhone SE (2020)", series: "iphone", repairs: [{ key: "repair_display", price: "69€" }, { key: "repair_battery", price: "59€" }, { key: "repair_backglass", price: "59€" }] },
-      { model: "iPhone 8 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "69€" }, { key: "repair_battery", price: "59€" }, { key: "repair_backglass", price: "49€" }] },
-      { model: "iPhone 8", series: "iphone", repairs: [{ key: "repair_display", price: "59€" }, { key: "repair_battery", price: "59€" }, { key: "repair_backglass", price: "49€" }] },
-      { model: "iPhone 7 / 7 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "49€" }, { key: "repair_battery", price: "49€" }] },
-      { model: "iPhone 6s / 6s Plus", series: "iphone", repairs: [{ key: "repair_display", price: "39€" }, { key: "repair_battery", price: "39€" }] },
-      { model: "iPhone 6 / 6 Plus", series: "iphone", repairs: [{ key: "repair_display", price: "39€" }, { key: "repair_battery", price: "39€" }] }
-    ],
-    samsung: [
-      { model: "Galaxy S25 Ultra", series: "s", repairs: [{ key: "repair_display", price: "274€" }, { key: "repair_battery", price: "84€" }, { key: "repair_port", price: "84€" }, { key: "repair_backglass", price: "105€" }] },
-      { model: "Galaxy S24 Ultra", series: "s", repairs: [{ key: "repair_display", price: "324€" }, { key: "repair_battery", price: "84€" }, { key: "repair_port", price: "74€" }, { key: "repair_backglass", price: "105€" }] },
-      { model: "Galaxy S24", series: "s", repairs: [{ key: "repair_display", price: "244€" }, { key: "repair_battery", price: "74€" }, { key: "repair_port", price: "64€" }, { key: "repair_backglass", price: "94€" }] },
-      { model: "Galaxy S24+", series: "s", repairs: [{ key: "repair_display", price: "274€" }, { key: "repair_battery", price: "74€" }, { key: "repair_port", price: "64€" }, { key: "repair_backglass", price: "94€" }] },
-      { model: "Galaxy S23", series: "s", repairs: [{ key: "repair_display", price: "224€" }, { key: "repair_battery", price: "74€" }, { key: "repair_port", price: "64€" }, { key: "repair_backglass", price: "84€" }] },
-      { model: "Galaxy S22", series: "s", repairs: [{ key: "repair_display", price: "224€" }, { key: "repair_battery", price: "74€" }, { key: "repair_port", price: "54€" }, { key: "repair_backglass", price: "74€" }] },
-      { model: "Galaxy S21", series: "s", repairs: [{ key: "repair_display", price: "164€" }, { key: "repair_battery", price: "64€" }, { key: "repair_port", price: "54€" }, { key: "repair_backglass", price: "74€" }] },
-      { model: "Galaxy S20", series: "s", repairs: [{ key: "repair_display", price: "205€" }, { key: "repair_battery", price: "54€" }, { key: "repair_port", price: "44€" }, { key: "repair_backglass", price: "64€" }] },
-      { model: "Galaxy S10", series: "s", repairs: [{ key: "repair_display", price: "204€" }, { key: "repair_battery", price: "54€" }, { key: "repair_port", price: "44€" }, { key: "repair_backglass", price: "64€" }] }
-    ],
-  };
-
   const PRICE_IMAGES = {
     apple: "assets/before-phone.png",
     samsung: "assets/after-phone.png",
   };
+
+  let repairCatalog = null;
+  let manufacturerPriceReferences = [];
+
+  function validateRuntimeCatalog(catalog) {
+    if (!catalog || catalog.schemaVersion !== 1 || !Array.isArray(catalog.manufacturers)) {
+      throw new Error("Unsupported repair catalog");
+    }
+    const apple = catalog.manufacturers.find((manufacturer) => manufacturer.id === "apple");
+    if (!apple?.models?.length) throw new Error("Apple repair catalog is empty");
+    return catalog;
+  }
+
+  function showRepairCatalogError() {
+    const selector = document.querySelector("[data-price-selector]");
+    const status = document.querySelector("[data-price-catalog-status]");
+    if (selector) selector.setAttribute("aria-busy", "false");
+    if (status) {
+      status.hidden = false;
+      status.classList.add("is-error");
+      const title = status.querySelector("strong");
+      const text = status.querySelector("span");
+      if (title) title.textContent = resolveI18n(getLang(), "price_catalog_error_title") || "Preise konnten nicht geladen werden";
+      if (text) text.textContent = resolveI18n(getLang(), "price_catalog_error_text") || "Schreib uns dein Modell und den Schaden direkt per WhatsApp.";
+    }
+  }
+
+  function buildSamsungPriceMap(catalog) {
+    const manufacturer = catalog.manufacturers.find((item) => item.id === "samsung");
+    return Object.fromEntries((manufacturer?.models || []).map((model) => [
+      model.label,
+      Object.fromEntries(model.repairs.flatMap((repair) => {
+        const option = repair.partOptions.find((item) => Number.isInteger(item.priceCents));
+        return option ? [[repair.id, `${option.priceCents / 100}€`]] : [];
+      })),
+    ]));
+  }
+
+  async function loadRepairCatalog() {
+    const selector = document.querySelector("[data-price-selector]");
+    if (selector) selector.setAttribute("aria-busy", "true");
+
+    try {
+      const response = await fetch("assets/data/repair-catalog.json");
+      if (!response.ok) throw new Error(`Repair catalog request failed: ${response.status}`);
+      repairCatalog = validateRuntimeCatalog(await response.json());
+      SAMSUNG_PRICE_MAP = buildSamsungPriceMap(repairCatalog);
+    } catch (error) {
+      console.error("Repair catalog unavailable", error);
+      showRepairCatalogError();
+      return false;
+    }
+
+    try {
+      const response = await fetch("assets/data/manufacturer-reference-prices.json");
+      if (!response.ok) throw new Error(`Reference price request failed: ${response.status}`);
+      const data = await response.json();
+      manufacturerPriceReferences = Array.isArray(data.references) ? data.references : [];
+    } catch (error) {
+      manufacturerPriceReferences = [];
+      console.warn("Manufacturer comparison unavailable", error);
+    }
+
+    if (selector) selector.setAttribute("aria-busy", "false");
+    return true;
+  }
 
   const SAMSUNG_ASSETS = {
     device: {
@@ -3756,56 +3747,7 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
     { key: "laptop", i18n: "samsung_device_laptop", image: SAMSUNG_ASSETS.device.laptop, modelImage: "assets/samsung/models/galaxy-laptop.png" },
   ];
 
-  const SAMSUNG_PRICE_MAP = {
-    "Galaxy S10e": { display: "199€", battery: "79€", port: "59€", backglass: "79€" },
-    "Galaxy S10": { display: "219€", battery: "79€", port: "59€", backglass: "79€" },
-    "Galaxy S10+": { display: "229€", battery: "89€", port: "59€", backglass: "79€" },
-    "Galaxy S10 5G": { battery: "89€" },
-    "Galaxy S20": { display: "220€", battery: "79€", port: "59€", backglass: "79€" },
-    "Galaxy S20+": { display: "259€", battery: "89€", port: "59€", backglass: "79€" },
-    "Galaxy S20 Ultra": { display: "299€", battery: "99€", port: "69€", backglass: "89€" },
-    "Galaxy S20 FE": { display: "229€", battery: "79€", port: "59€", backglass: "79€" },
-    "Galaxy S21": { display: "179€", battery: "79€", port: "69€", backglass: "89€" },
-    "Galaxy S21+": { display: "199€", battery: "89€", port: "69€", backglass: "89€" },
-    "Galaxy S21 Ultra": { display: "299€", battery: "99€", port: "69€", backglass: "89€" },
-    "Galaxy S21 FE": { display: "220€", battery: "89€", port: "69€", backglass: "89€" },
-    "Galaxy S22": { display: "239€", battery: "89€", port: "69€", backglass: "89€" },
-    "Galaxy S22+": { display: "269€", battery: "89€", port: "69€", backglass: "89€" },
-    "Galaxy S22 Ultra": { display: "339€", battery: "99€", port: "79€", backglass: "99€" },
-    "Galaxy S23": { display: "239€", battery: "99€", port: "79€", backglass: "99€" },
-    "Galaxy S23+": { display: "269€", battery: "99€", port: "79€", backglass: "99€" },
-    "Galaxy S23 Ultra": { display: "349€", battery: "109€", port: "89€", backglass: "109€" },
-    "Galaxy S24": { display: "259€", port: "79€", backglass: "109€" },
-    "Galaxy S24+": { display: "289€", battery: "89€", port: "79€", backglass: "109€" },
-    "Galaxy S24 Ultra": { display: "339€", battery: "99€", port: "89€", backglass: "120€" },
-    "Galaxy S25": { display: "189€", battery: "89€", port: "89€", backglass: "99€" },
-    "Galaxy S25+": { display: "249€", battery: "99€", port: "89€", backglass: "109€" },
-    "Galaxy S25 Ultra": { display: "289€", port: "99€", backglass: "120€" },
-    "Galaxy A12": { battery: "69€" },
-    "Galaxy A13": { battery: "69€" },
-    "Galaxy A14": { battery: "79€" },
-    "Galaxy A15": { battery: "69€" },
-    "Galaxy A16": { battery: "79€" },
-    "Galaxy A23": { battery: "79€" },
-    "Galaxy A24": { battery: "79€" },
-    "Galaxy A34": { battery: "79€" },
-    "Galaxy A50": { battery: "69€" },
-    "Galaxy A51": { battery: "69€" },
-    "Galaxy A52": { battery: "79€" },
-    "Galaxy A53": { battery: "79€" },
-    "Galaxy A54": { battery: "79€" },
-    "Galaxy Z Flip3": { battery: "109€" },
-    "Galaxy Z Flip4": { battery: "119€" },
-    "Galaxy Z Flip5": { battery: "119€" },
-    "Galaxy Z Fold2": { battery: "129€" },
-    "Galaxy Z Fold3": { battery: "129€" },
-    "Galaxy Z Fold4": { battery: "139€" },
-    "Galaxy Z Fold5": { battery: "139€" },
-    "Galaxy Note10": { battery: "89€" },
-    "Galaxy Note10+": { battery: "89€" },
-    "Galaxy Note20": { battery: "89€" },
-    "Galaxy Note20 Ultra": { battery: "99€" },
-  };
+  let SAMSUNG_PRICE_MAP = {};
 
   const SAMSUNG_MODEL_IMAGES = {
     "Galaxy S10e": "assets/samsung/models/galaxy-s10-family.jpeg",
@@ -3843,6 +3785,15 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
   let selectedPriceRepair = null;
   let selectedPriceBrand = "apple";
   let selectedPriceDeliveryMode = "local";
+  let selectedPriceModelId = "";
+  let selectedCatalogRepair = null;
+  let selectedPartOption = null;
+  let selectedPricePriority = "value";
+  let selectedPriceService = "handover";
+  let selectedMobileService = null;
+  let lastPartStatusTrigger = null;
+  let priceAnnouncementTimer = 0;
+  const activePriceAnimations = new WeakMap();
   let selectedSamsungSeries = "";
   let selectedSamsungModel = "";
   let selectedSamsungRepair = "";
@@ -3867,7 +3818,7 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
 
   function getPriceImageSources(entry, brand) {
     if (brand !== "apple") return {};
-    const slug = slugifyPriceModel(entry.model);
+    const slug = entry.imageSlug || slugifyPriceModel(entry.model);
     const widths = Array.isArray(entry.responsiveWidths) && entry.responsiveWidths.length
       ? entry.responsiveWidths
       : [420, 800];
@@ -3878,17 +3829,18 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
   }
 
   function getRepairQualityLabel(repair, lang) {
-    const key = repair?.quality || repair?.variant || "";
+    const key = repair?.nameKey || repair?.qualityKey || repair?.quality || repair?.variant || "";
     return key ? (resolveI18n(lang, key) || key) : "";
   }
 
   function getRepairNoteText(repair, lang) {
-    const key = repair?.note || "";
+    const key = repair?.descriptionKey || repair?.note || "";
     return key ? (resolveI18n(lang, key) || key) : "";
   }
 
   function getRepairBaseLabel(repair, lang) {
-    return resolveI18n(lang, repair.key) || repair.key;
+    const key = repair?.labelKey || repair?.key || "";
+    return resolveI18n(lang, key) || key;
   }
 
   function getRepairLabel(repair, lang) {
@@ -3899,6 +3851,10 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
 
   function getRepairQualityType(repair) {
     const quality = repair?.quality || repair?.variant || "";
+    if (quality === "budget_aftermarket") return "budget";
+    if (quality === "oem_pull") return "original";
+    if (quality === "premium_aftermarket") return "premium";
+    if (quality === "standard") return "standard";
     if (quality === "quality_budget_import") return "budget";
     if (quality === "quality_oem_pull_grade_a") return "original";
     if (quality === "quality_premium_aftermarket_xo7") return "premium";
@@ -3978,6 +3934,7 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
   }
 
   function getNumericPrice(price) {
+    if (typeof price === "number") return price / 100;
     const match = String(price || "").match(/\d+/);
     return match ? Number(match[0]) : Number.POSITIVE_INFINITY;
   }
@@ -4027,13 +3984,16 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
   }
 
   function getPriceEntries() {
-    return Object.entries(PRICE_DATA).flatMap(([brand, models]) => (
-      models.map((entry) => ({
-        ...entry,
-        brand,
-        family: entry.family || getPriceFamily(entry.model),
-        customImage: Boolean(entry.image),
-        image: getPriceImage(entry, brand),
+    if (!repairCatalog) return [];
+    return repairCatalog.manufacturers.flatMap((manufacturer) => (
+      manufacturer.models.map((model) => ({
+        ...model,
+        brand: manufacturer.id,
+        manufacturerLabel: manufacturer.label,
+        model: model.label,
+        family: model.family || getPriceFamily(model.label),
+        customImage: Boolean(model.image),
+        image: getPriceImage(model, manufacturer.id),
       }))
     ));
   }
@@ -4071,59 +4031,53 @@ ${resolveI18n(code, "wa_label_city") || "Ort"}: ${city}`;
 
   function getCurrentPriceEntry() {
     const modelSelect = document.querySelector("[data-price-model]");
-    const model = modelSelect?.value;
-    return getPriceEntries().find((entry) => entry.model === model) || getPriceEntries()[0];
+    const modelId = modelSelect?.value || selectedPriceModelId;
+    return getPriceEntries().find((entry) => entry.id === modelId) || getPriceEntries().find((entry) => entry.brand === "apple");
+  }
+
+  function getPriceLocale(lang = getLang()) {
+    return {
+      de: "de-DE", uk: "uk-UA", en: "en-GB", ru: "ru-RU", pl: "pl-PL",
+      it: "it-IT", ar: "ar", ku: "ku", fr: "fr-FR", sl: "sl-SI",
+    }[normalizeLang(lang)] || "de-DE";
+  }
+
+  function formatPriceCents(cents, lang = getLang()) {
+    if (!Number.isInteger(cents)) return resolveI18n(lang, "price_not_confirmed") || "Nicht bestätigt";
+    return new Intl.NumberFormat(getPriceLocale(lang), {
+      style: "currency",
+      currency: repairCatalog?.currency || "EUR",
+      minimumFractionDigits: cents % 100 ? 2 : 0,
+      maximumFractionDigits: 2,
+    }).format(cents / 100);
   }
 
   function buildPriceWaHref(entry, repair) {
     if (!whatsappNumber || !entry) return "#";
 
     const lang = getLang();
-    if (selectedPriceDeliveryMode === "shipping") {
-      const repairLabel = repair?.waLabel || repair?.label || (resolveI18n(lang, "wa_repair_general") || "allgemeine Anfrage");
-      const price = repair?.price || (resolveI18n(lang, "samsung_price_ask") || "Einfach fragen");
-      const qualityLine = repair?.quality
-        ? `${resolveI18n(lang, "wa_label_quality") || "Teilequalität"}: ${repair.quality}`
-        : null;
-      const noteLine = repair?.note
-        ? `${resolveI18n(lang, "wa_label_note") || "Hinweis"}: ${repair.note}`
-        : null;
-      const text = [
-        resolveI18n(lang, "shipping_wa_intro") || "Hallo! Ich möchte eine Reparatur per Versand anfragen.",
-        "",
-        `${resolveI18n(lang, "wa_label_device") || "Modell"}: ${entry.model}`,
-        `${resolveI18n(lang, "wa_label_repair") || "Reparatur"}: ${repairLabel}`,
-        qualityLine,
-        `${resolveI18n(lang, "shipping_wa_list_price") || "Preis laut Liste"}: ${price}`,
-        noteLine,
-        `${resolveI18n(lang, "wa_label_city") || "Ort"}: ${resolveI18n(lang, "shipping_wa_country") || "Deutschland"}`,
-        `${resolveI18n(lang, "nav_shipping") || "Versand"}: ${resolveI18n(lang, "shipping_wa_cost_line") || "Hinversand zahlt der Kunde; Rückversand zahlt Handy Notdienst und erfolgt immer mit Sendungsverfolgung."}`,
-        "",
-        resolveI18n(lang, "shipping_wa_instructions") || "Bitte sende mir die Versandhinweise.",
-      ].filter((line) => line !== null).join("\n");
-      return buildWhatsAppHref(text);
-    }
-
-    const stockLine = repair?.stock
-      ? `\n${resolveI18n(lang, "wa_label_stock") || "Lager"}: ${getStockLabel(repair.stock, lang)}`
-      : "";
-    const qualityLine = repair?.quality
-      ? `\n${resolveI18n(lang, "wa_label_quality") || "Teilequalität"}: ${repair.quality}`
-      : "";
-    const noteLine = repair?.note
-      ? `\n${resolveI18n(lang, "wa_label_note") || "Hinweis"}: ${repair.note}`
-      : "";
-    const repairLabel = repair?.waLabel || repair?.label;
-    const repairLine = repair
-      ? `${resolveI18n(lang, "wa_label_repair") || "Reparatur"}: ${repairLabel}${qualityLine}\n${resolveI18n(lang, "wa_label_price") || "Preis"}: ${repair.price}${noteLine}${stockLine}`
-      : (resolveI18n(lang, "wa_repair_general") || "Reparatur: allgemeine Anfrage");
-
-    const text = `${resolveI18n(lang, "wa_message_intro") || "Hallo!"}
-${resolveI18n(lang, "wa_label_device") || "Modell"}: ${entry.model}
-${repairLine}
-${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
-
-    return buildWhatsAppHref(text);
+    const shipping = selectedPriceDeliveryMode === "shipping";
+    const serviceLabel = repair?.serviceLabel || resolveI18n(lang, shipping ? "service_shipping" : "service_handover");
+    const lines = [
+      shipping
+        ? (resolveI18n(lang, "shipping_wa_intro") || "Hallo! Ich möchte eine Reparatur per Versand anfragen.")
+        : (resolveI18n(lang, "wa_message_intro") || "Hallo!"),
+      "",
+      `${resolveI18n(lang, "wa_label_device") || "Modell"}: ${entry.model}`,
+      `${resolveI18n(lang, "wa_label_repair") || "Reparatur"}: ${repair?.repairLabel || repair?.waLabel || repair?.label || (resolveI18n(lang, "wa_repair_general") || "Allgemeine Anfrage")}`,
+      repair?.quality ? `${resolveI18n(lang, "wa_label_quality") || "Teilequalität"}: ${repair.quality}` : null,
+      repair?.stock ? `${resolveI18n(lang, "wa_label_stock") || "Verfügbarkeit"}: ${getStockLabel(repair.stock, lang)}` : null,
+      repair?.priceCents != null ? `${resolveI18n(lang, "wa_label_price") || "Preis"}: ${formatPriceCents(repair.priceCents, lang)}` : null,
+      `${resolveI18n(lang, "wa_label_service") || "Serviceweg"}: ${serviceLabel}`,
+      repair?.servicePriceCents > 0 ? `${resolveI18n(lang, "wa_label_addons") || "Zusatzkosten"}: ${formatPriceCents(repair.servicePriceCents, lang)}` : null,
+      repair?.totalCents != null ? `${resolveI18n(lang, "wa_label_total") || "Gesamt"}: ${formatPriceCents(repair.totalCents, lang)}` : null,
+      shipping
+        ? `${resolveI18n(lang, "nav_shipping") || "Versand"}: ${resolveI18n(lang, "shipping_wa_cost_line") || "Hinversand zahlt der Kunde; Rückversand zahlt Handy Notdienst und erfolgt immer mit Sendungsverfolgung."}`
+        : `${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`,
+      "",
+      shipping ? (resolveI18n(lang, "shipping_wa_instructions") || "Bitte sende mir die Versandhinweise.") : null,
+    ].filter((line) => line !== null);
+    return buildWhatsAppHref(lines.join("\n"));
   }
 
   function getRequestedPriceDeliveryMode() {
@@ -4205,6 +4159,8 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     }
     const hint = document.querySelector("[data-price-shipping-hint]");
     if (hint) hint.hidden = !isShipping;
+    const costNote = document.querySelector(".price-shipping-cost-note");
+    if (costNote) costNote.hidden = !isShipping;
   }
 
   function updatePriceCta(entry) {
@@ -4736,83 +4692,136 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     updateSamsungWizardUi();
   }
 
-  function updatePriceSummary(entry, repair) {
-    const modelEl = document.querySelector("[data-price-summary-model]");
-    const repairEl = document.querySelector("[data-price-summary-repair]");
-    const priceEl = document.querySelector("[data-price-summary-price]");
-    const stockEl = document.querySelector("[data-price-summary-stock]");
-    if (!entry) return;
-
-    const lang = getLang();
-    const activeRepair = repair || entry.repairs[0];
-    const label = activeRepair?.label || (activeRepair ? getRepairLabel(activeRepair, lang) : "");
-    const price = activeRepair?.price || "";
-    const stock = activeRepair?.stock || "on_request";
-
-    if (modelEl) modelEl.textContent = entry.model;
-    if (repairEl) repairEl.textContent = label || "Display";
-    if (priceEl) priceEl.textContent = price;
-    if (stockEl) stockEl.textContent = getStockLabel(stock, lang);
+  function getRepairReferenceType(repairId) {
+    return repairId === "original-battery" ? "battery" : repairId;
   }
 
-  function getSelectedRepairPayload(repair, lang, displayLabel = "") {
-    return {
-      label: displayLabel || getRepairLabel(repair, lang),
-      waLabel: getRepairBaseLabel(repair, lang),
-      price: repair.price,
-      stock: repair.stock || "on_request",
-      quality: getRepairQualityLabel(repair, lang),
-      note: getRepairNoteText(repair, lang),
-    };
+  function getManufacturerReference(entry, repair) {
+    if (!entry || !repair) return null;
+    return manufacturerPriceReferences.find((reference) => (
+      reference.manufacturer === entry.brand
+      && reference.modelId === entry.id
+      && reference.repairType === getRepairReferenceType(repair.id)
+    )) || null;
   }
 
-  function renderPriceSeriesNotes(list, entry, lang) {
-    if (entry.family !== "iPhone 17") return;
-
-    const noteKeys = [
-      "price_iphone17_included_note",
-      "price_iphone17_budget_note",
-      "price_iphone17_oem_note",
-      "price_iphone17_damage_note",
-    ];
-    const note = document.createElement("aside");
-    note.className = "price-series-note";
-
-    const title = document.createElement("strong");
-    title.textContent = resolveI18n(lang, "price_iphone17_notes_title") || "Hinweise zur iPhone 17 Serie";
-    note.appendChild(title);
-
-    const listEl = document.createElement("ul");
-    noteKeys.forEach((key) => {
-      const item = document.createElement("li");
-      item.textContent = resolveI18n(lang, key) || "";
-      listEl.appendChild(item);
-    });
-    note.appendChild(listEl);
-    list.appendChild(note);
+  function getPartOptionLabel(option, lang = getLang()) {
+    return resolveI18n(lang, option?.nameKey) || option?.nameKey || "";
   }
 
-  function animatePriceValue(el, price) {
-    const match = String(price).match(/(\d+)/);
-    if (!match || prefersReducedMotion) {
-      el.textContent = price;
+  function getPartOptionDescription(option, lang = getLang()) {
+    return resolveI18n(lang, option?.descriptionKey) || option?.descriptionKey || "";
+  }
+
+  function getPartOptionTechnology(option, lang = getLang()) {
+    const key = `price_technology_${String(option?.technology || "unspecified").replace(/-/g, "_")}`;
+    return resolveI18n(lang, key) || resolveI18n(lang, "price_not_confirmed") || "Nicht bestätigt";
+  }
+
+  function getAvailablePartOptions(repair) {
+    const options = repair?.partOptions || [];
+    const available = options.filter((option) => option.stock !== "unavailable" && Number.isInteger(option.priceCents));
+    return available.length ? available : options;
+  }
+
+  function getOptionQualityRank(option) {
+    return { oem_pull: 4, premium_aftermarket: 3, standard: 2, budget_aftermarket: 1 }[option?.quality] || 0;
+  }
+
+  function choosePartOption(repair, priority = selectedPricePriority) {
+    const options = getAvailablePartOptions(repair);
+    if (!options.length) return null;
+    if (priority === "quality") {
+      return [...options].sort((a, b) => getOptionQualityRank(b) - getOptionQualityRank(a) || (a.priceCents || Infinity) - (b.priceCents || Infinity))[0];
+    }
+    if (priority === "budget") {
+      return [...options].sort((a, b) => (a.priceCents || Infinity) - (b.priceCents || Infinity))[0];
+    }
+    return options.find((option) => option.recommendationTags?.includes("value"))
+      || options.find((option) => option.quality === "premium_aftermarket")
+      || [...options].sort((a, b) => (a.priceCents || Infinity) - (b.priceCents || Infinity))[0];
+  }
+
+  function getPriceServiceOption(id = selectedPriceService) {
+    return repairCatalog?.serviceOptions?.find((option) => option.id === id) || null;
+  }
+
+  function getSelectedServicePriceCents() {
+    if (selectedPriceDeliveryMode === "shipping") return 0;
+    if (selectedPriceService === "mobile") return selectedMobileService?.feeCents || 0;
+    return getPriceServiceOption()?.pricing?.priceCents || 0;
+  }
+
+  function getSelectedServiceLabel(lang = getLang()) {
+    const serviceId = selectedPriceDeliveryMode === "shipping" ? "shipping" : selectedPriceService;
+    const service = getPriceServiceOption(serviceId);
+    return resolveI18n(lang, service?.labelKey) || serviceId;
+  }
+
+  function animatePriceCents(element, cents) {
+    if (!element) return;
+    const token = Symbol("price-animation");
+    activePriceAnimations.set(element, token);
+    element.setAttribute("aria-hidden", "true");
+
+    if (!Number.isInteger(cents) || prefersReducedMotion) {
+      element.textContent = formatPriceCents(cents);
       return;
     }
 
-    const end = Number(match[1]);
-    const suffix = String(price).replace(match[1], "");
     const startedAt = performance.now();
-    const duration = 360;
-
-    function tick(now) {
+    const duration = 480;
+    const tick = (now) => {
+      if (activePriceAnimations.get(element) !== token) return;
       const progress = Math.min(1, (now - startedAt) / duration);
       const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = `${Math.round(end * eased)}${suffix}`;
+      element.textContent = formatPriceCents(Math.round(cents * eased));
       if (progress < 1) requestAnimationFrame(tick);
-      else el.textContent = price;
-    }
-
+      else element.textContent = formatPriceCents(cents);
+    };
     requestAnimationFrame(tick);
+  }
+
+  function formatReferenceDate(date, lang = getLang()) {
+    const parsed = new Date(`${date}T00:00:00Z`);
+    if (Number.isNaN(parsed.getTime())) return date || "";
+    return new Intl.DateTimeFormat(getPriceLocale(lang), { day: "2-digit", month: "2-digit", year: "numeric", timeZone: "UTC" }).format(parsed);
+  }
+
+  function buildSelectedPricePayload(entry, repair, option) {
+    if (!entry || !repair || !option) return null;
+    const lang = getLang();
+    const servicePriceCents = getSelectedServicePriceCents();
+    const totalCents = Number.isInteger(option.priceCents) ? option.priceCents + servicePriceCents : null;
+    return {
+      label: resolveI18n(lang, repair.labelKey) || repair.id,
+      repairLabel: resolveI18n(lang, repair.labelKey) || repair.id,
+      waLabel: resolveI18n(lang, repair.labelKey) || repair.id,
+      quality: getPartOptionLabel(option, lang),
+      note: getPartOptionDescription(option, lang),
+      stock: option.stock,
+      priceCents: option.priceCents,
+      price: formatPriceCents(option.priceCents, lang),
+      serviceLabel: getSelectedServiceLabel(lang),
+      servicePriceCents,
+      totalCents,
+    };
+  }
+
+  function announcePriceSummary(entry, repair, option, totalCents) {
+    const status = document.querySelector("[data-price-live-status]");
+    if (!status) return;
+    window.clearTimeout(priceAnnouncementTimer);
+    const announce = () => {
+      status.textContent = formatI18n(getLang(), "price_live_summary", {
+        model: entry.model,
+        repair: resolveI18n(getLang(), repair.labelKey) || repair.id,
+        option: getPartOptionLabel(option),
+        total: formatPriceCents(totalCents),
+      });
+    };
+    if (prefersReducedMotion) announce();
+    else priceAnnouncementTimer = window.setTimeout(announce, 520);
   }
 
   function updatePricePreview(entry) {
@@ -4822,8 +4831,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     const selectedModel = document.querySelector("[data-price-selected-model]");
     if (!entry) return;
 
-    const brand = entry.brand || selectedPriceBrand;
-    const sources = getPriceImageSources(entry, brand);
+    const sources = getPriceImageSources(entry, entry.brand);
     const setImage = () => {
       if (webpSource) {
         if (sources.webp) {
@@ -4835,8 +4843,6 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
         }
       }
       if (image) {
-        image.removeAttribute("srcset");
-        image.removeAttribute("sizes");
         image.src = entry.image;
         image.alt = `${entry.model} Reparatur bei Handy Notdienst Singen`;
       }
@@ -4847,7 +4853,6 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       setImage();
       return;
     }
-
     preview.classList.add("is-switching");
     window.setTimeout(() => {
       setImage();
@@ -4857,325 +4862,373 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     }, 120);
   }
 
+  function updatePriceTotals(entry) {
+    if (!entry || !selectedCatalogRepair || !selectedPartOption) return;
+    const lang = getLang();
+    const servicePriceCents = getSelectedServicePriceCents();
+    const partPriceCents = selectedPartOption.priceCents;
+    const totalCents = Number.isInteger(partPriceCents) ? partPriceCents + servicePriceCents : null;
+    const partAmount = document.querySelector("[data-price-part-amount]");
+    const serviceAmount = document.querySelector("[data-price-service-amount]");
+    const totalAmount = document.querySelector("[data-price-total-amount]");
+    const serviceName = document.querySelector("[data-price-service-name]");
+    animatePriceCents(partAmount, partPriceCents);
+    animatePriceCents(serviceAmount, servicePriceCents);
+    animatePriceCents(totalAmount, totalCents);
+    if (serviceName) serviceName.textContent = getSelectedServiceLabel(lang);
+
+    const reference = getManufacturerReference(entry, selectedCatalogRepair);
+    const referencePanel = document.querySelector("[data-price-manufacturer]");
+    if (referencePanel) {
+      referencePanel.hidden = !reference;
+      if (reference) {
+        const label = referencePanel.querySelector("[data-price-manufacturer-label]");
+        const amount = referencePanel.querySelector("[data-price-manufacturer-amount]");
+        const date = referencePanel.querySelector("[data-price-manufacturer-date]");
+        const difference = referencePanel.querySelector("[data-price-difference]");
+        if (label) label.textContent = formatI18n(lang, "manufacturer_price_label", { manufacturer: entry.manufacturerLabel });
+        animatePriceCents(amount, reference.priceCents);
+        if (date) date.textContent = formatI18n(lang, "manufacturer_price_date", { date: formatReferenceDate(reference.verifiedAt, lang) });
+        if (difference) {
+          difference.className = "price-comparison-result";
+          const delta = Number.isInteger(totalCents) ? reference.priceCents - totalCents : null;
+          if (delta > 0) {
+            const percent = Math.round((delta / reference.priceCents) * 100);
+            difference.textContent = formatI18n(lang, "price_savings", { amount: formatPriceCents(delta, lang), percent });
+            difference.classList.add("is-saving");
+            if (!prefersReducedMotion) window.setTimeout(() => difference.classList.add("is-highlighted"), 500);
+          } else if (delta === 0) {
+            difference.textContent = resolveI18n(lang, "price_difference_equal");
+            difference.classList.add("is-neutral");
+          } else if (delta < 0) {
+            difference.textContent = formatI18n(lang, "price_difference_higher", { amount: formatPriceCents(Math.abs(delta), lang) });
+            difference.classList.add("is-neutral");
+          } else {
+            difference.textContent = resolveI18n(lang, "price_not_confirmed");
+            difference.classList.add("is-neutral");
+          }
+        }
+      }
+    }
+
+    selectedPriceRepair = buildSelectedPricePayload(entry, selectedCatalogRepair, selectedPartOption);
+    setPriceCtaReady(Boolean(selectedPriceRepair));
+    updatePriceCta(entry);
+    announcePriceSummary(entry, selectedCatalogRepair, selectedPartOption, totalCents);
+  }
+
+  function updatePriorityControls() {
+    document.querySelectorAll("[data-price-priority]").forEach((button) => {
+      const active = button.dataset.pricePriority === selectedPricePriority;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  }
+
+  function selectPartOption(entry, repair, option, shouldTrack = false) {
+    selectedCatalogRepair = repair;
+    selectedPartOption = option;
+    document.querySelectorAll("[data-price-option]").forEach((card) => {
+      card.classList.toggle("is-selected", card.dataset.priceOption === option?.id);
+      const input = card.querySelector("input[type='radio']");
+      if (input) input.checked = card.dataset.priceOption === option?.id;
+    });
+    updatePriceTotals(entry);
+    if (shouldTrack && option) {
+      trackEvent("repair_option_select", {
+        brand: entry.brand,
+        model: entry.id,
+        repair: repair.id,
+        option: option.id,
+        quality: option.quality,
+      });
+    }
+  }
+
+  function openPartStatusDialog(entry, repair, option, trigger) {
+    const dialog = document.querySelector("[data-part-status-dialog]");
+    if (!(dialog instanceof HTMLDialogElement)) return;
+    lastPartStatusTrigger = trigger || document.activeElement;
+    const title = dialog.querySelector("[data-part-status-title]");
+    const intro = dialog.querySelector("[data-part-status-intro]");
+    const stock = dialog.querySelector("[data-part-status-stock]");
+    if (title) title.textContent = `${entry.model}: ${getPartOptionLabel(option)}`;
+    if (intro) intro.textContent = formatI18n(getLang(), "price_status_dialog_intro", {
+      repair: resolveI18n(getLang(), repair.labelKey) || repair.id,
+    });
+    if (stock) stock.textContent = `${resolveI18n(getLang(), "price_compare_stock")}: ${getStockLabel(option.stock, getLang())}`;
+    dialog.showModal();
+    dialog.querySelector("[data-part-status-close]")?.focus();
+  }
+
+  function closePartStatusDialog() {
+    const dialog = document.querySelector("[data-part-status-dialog]");
+    if (!(dialog instanceof HTMLDialogElement) || !dialog.open) return;
+    dialog.close();
+    if (lastPartStatusTrigger instanceof HTMLElement) lastPartStatusTrigger.focus();
+  }
+
+  function renderPriceComparisonMatrix(repair) {
+    const container = document.querySelector("[data-price-comparison-matrix]");
+    if (!container) return;
+    const options = repair?.partOptions || [];
+    container.innerHTML = "";
+    container.hidden = options.length < 2;
+    if (options.length < 2) return;
+    const lang = getLang();
+    const table = document.createElement("table");
+    table.className = "price-comparison-table";
+
+    const head = document.createElement("thead");
+    const headRow = document.createElement("tr");
+    const corner = document.createElement("th");
+    corner.scope = "col";
+    corner.textContent = resolveI18n(lang, "price_compare_feature");
+    headRow.appendChild(corner);
+    options.forEach((option) => {
+      const cell = document.createElement("th");
+      cell.scope = "col";
+      cell.textContent = getPartOptionLabel(option, lang);
+      headRow.appendChild(cell);
+    });
+    head.appendChild(headRow);
+    table.appendChild(head);
+
+    const body = document.createElement("tbody");
+    const rows = [
+      ["price_compare_technology", (option) => getPartOptionTechnology(option, lang)],
+      ["price_compare_stock", (option) => getStockLabel(option.stock, lang)],
+      ["price_compare_price", (option) => formatPriceCents(option.priceCents, lang)],
+    ];
+    rows.forEach(([labelKey, getter]) => {
+      const row = document.createElement("tr");
+      const label = document.createElement("th");
+      label.scope = "row";
+      label.textContent = resolveI18n(lang, labelKey);
+      row.appendChild(label);
+      options.forEach((option) => {
+        const cell = document.createElement("td");
+        cell.textContent = getter(option);
+        row.appendChild(cell);
+      });
+      body.appendChild(row);
+    });
+    table.appendChild(body);
+    container.appendChild(table);
+  }
+
+  function renderPartOptions(entry, repair) {
+    const list = document.querySelector("[data-price-quality-options]");
+    const heading = document.querySelector("[data-price-quality-heading]");
+    if (!list || !repair) return;
+    const lang = getLang();
+    const options = repair.partOptions || [];
+    list.innerHTML = "";
+    list.classList.toggle("is-single", options.length === 1);
+    if (heading) heading.textContent = resolveI18n(lang, options.length === 1 ? "price_quality_single_title" : "price_quality_title");
+
+    const recommended = choosePartOption(repair, selectedPricePriority);
+    if (!selectedPartOption || !options.some((option) => option.id === selectedPartOption.id)) {
+      selectedPartOption = recommended || options[0] || null;
+    }
+
+    options.forEach((option, index) => {
+      const card = document.createElement("article");
+      card.className = `price-option-card${option.id === selectedPartOption?.id ? " is-selected" : ""}${option.stock === "unavailable" ? " is-unavailable" : ""}`;
+      card.dataset.priceOption = option.id;
+
+      const label = document.createElement("label");
+      label.className = "price-option-card__choice";
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = "price-part-option";
+      input.value = option.id;
+      input.checked = option.id === selectedPartOption?.id;
+      input.disabled = option.stock === "unavailable";
+      const marker = document.createElement("span");
+      marker.className = "price-option-card__marker";
+      marker.setAttribute("aria-hidden", "true");
+      const copy = document.createElement("span");
+      copy.className = "price-option-card__copy";
+      const topline = document.createElement("span");
+      topline.className = "price-option-card__topline";
+      const name = document.createElement("strong");
+      name.textContent = getPartOptionLabel(option, lang);
+      topline.appendChild(name);
+      if (recommended?.id === option.id && options.length > 1) {
+        const badge = document.createElement("span");
+        badge.className = "price-option-card__badge";
+        badge.textContent = resolveI18n(lang, "price_recommended");
+        topline.appendChild(badge);
+      }
+      const description = document.createElement("small");
+      description.textContent = getPartOptionDescription(option, lang);
+      const meta = document.createElement("span");
+      meta.className = "price-option-card__meta";
+      const stock = document.createElement("span");
+      stock.className = `price-stock price-stock--${option.stock}`;
+      stock.textContent = getStockLabel(option.stock, lang);
+      const price = document.createElement("strong");
+      price.textContent = formatPriceCents(option.priceCents, lang);
+      meta.append(stock, price);
+      copy.append(topline, description, meta);
+      label.append(input, marker, copy);
+
+      const statusButton = document.createElement("button");
+      statusButton.className = "price-option-card__status";
+      statusButton.type = "button";
+      statusButton.textContent = resolveI18n(lang, "price_status_button");
+      statusButton.addEventListener("click", () => openPartStatusDialog(entry, repair, option, statusButton));
+      input.addEventListener("change", () => selectPartOption(entry, repair, option, true));
+      card.append(label, statusButton);
+      card.style.setProperty("--option-index", index);
+      list.appendChild(card);
+    });
+
+    renderPriceComparisonMatrix(repair);
+  }
+
+  function renderPriceServiceOptions(entry) {
+    document.querySelectorAll("[data-price-service]").forEach((button) => {
+      const id = button.dataset.priceService;
+      const shippingOnly = id === "shipping";
+      button.hidden = selectedPriceDeliveryMode === "shipping" ? !shippingOnly : shippingOnly;
+      const active = id === (selectedPriceDeliveryMode === "shipping" ? "shipping" : selectedPriceService);
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    const mobileResult = document.querySelector("[data-price-mobile-result]");
+    if (mobileResult) {
+      mobileResult.hidden = selectedPriceService !== "mobile" || selectedPriceDeliveryMode === "shipping";
+      mobileResult.textContent = selectedMobileService
+        ? formatI18n(getLang(), "service_mobile_selected", {
+          distance: selectedMobileService.distanceKm,
+          fee: formatPriceCents(selectedMobileService.feeCents),
+        })
+        : resolveI18n(getLang(), "service_mobile_pending");
+    }
+    updatePriceTotals(entry);
+  }
+
+  function renderRepairRows(entry) {
+    const list = document.querySelector("[data-price-services]");
+    if (!list || !entry) return;
+    const lang = getLang();
+    list.innerHTML = "";
+    if (!selectedCatalogRepair || !entry.repairs.some((repair) => repair.id === selectedCatalogRepair.id)) {
+      selectedCatalogRepair = entry.repairs[0] || null;
+      selectedPartOption = choosePartOption(selectedCatalogRepair);
+    }
+
+    entry.repairs.forEach((repair, index) => {
+      const selected = repair.id === selectedCatalogRepair?.id;
+      const options = getAvailablePartOptions(repair).filter((option) => Number.isInteger(option.priceCents));
+      const fromPrice = options.length ? Math.min(...options.map((option) => option.priceCents)) : null;
+      const row = document.createElement("button");
+      row.className = `price-service-row${selected ? " is-selected" : ""}`;
+      row.type = "button";
+      row.setAttribute("aria-pressed", String(selected));
+      row.style.setProperty("--row-index", index);
+      row.appendChild(createPriceIconSlot("price-service-row__icon", getPriceRepairIcon(repair.labelKey), 36));
+
+      const copy = document.createElement("span");
+      copy.className = "price-service-row__label";
+      const title = document.createElement("strong");
+      title.className = "price-service-row__title";
+      title.textContent = resolveI18n(lang, repair.labelKey) || repair.id;
+      const detail = document.createElement("small");
+      detail.className = "price-service-row__note";
+      detail.textContent = options.length > 1
+        ? formatI18n(lang, "price_option_count", { count: options.length })
+        : getPartOptionLabel(repair.partOptions[0], lang);
+      copy.append(title, detail);
+
+      const meta = document.createElement("span");
+      meta.className = "price-service-row__meta";
+      const amount = document.createElement("strong");
+      amount.textContent = fromPrice === null || fromPrice === undefined
+        ? (resolveI18n(lang, "price_not_confirmed") || "Nicht bestätigt")
+        : `${options.length > 1 ? (resolveI18n(lang, "price_from") || "ab") + " " : ""}${formatPriceCents(fromPrice, lang)}`;
+      const arrow = document.createElement("span");
+      arrow.className = "price-service-row__arrow";
+      arrow.textContent = "›";
+      arrow.setAttribute("aria-hidden", "true");
+      meta.append(amount, arrow);
+      row.append(copy, meta);
+      row.addEventListener("click", () => {
+        selectedCatalogRepair = repair;
+        selectedPartOption = choosePartOption(repair);
+        renderRepairRows(entry);
+        renderPartOptions(entry, repair);
+        renderPriceServiceOptions(entry);
+        document.querySelector("[data-price-detail]")?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "nearest" });
+        trackEvent("repair_select", { brand: entry.brand, model: entry.id, repair: repair.id });
+      });
+      list.appendChild(row);
+    });
+  }
+
   function renderPriceModelButtons(models, activeEntry) {
     const buttonGroup = document.querySelector("[data-price-model-buttons]");
     const modelSelect = document.querySelector("[data-price-model]");
     if (!buttonGroup || !modelSelect) return;
-
     buttonGroup.innerHTML = "";
-    models.forEach((modelEntry) => {
-      const isActive = modelEntry.model === activeEntry.model;
+    models.forEach((entry) => {
+      const active = entry.id === activeEntry.id;
       const button = document.createElement("button");
-      button.className = `price-model-button${isActive ? " is-active" : ""}`;
+      button.className = `price-model-button${active ? " is-active" : ""}`;
       button.type = "button";
       button.role = "radio";
-      button.setAttribute("aria-checked", String(isActive));
-      button.dataset.priceModelButton = modelEntry.model;
-
-      const name = document.createElement("span");
-      name.textContent = modelEntry.model;
-      button.appendChild(name);
-
+      button.setAttribute("aria-checked", String(active));
+      button.dataset.priceModelButton = entry.id;
+      button.textContent = entry.model;
       button.addEventListener("click", () => {
-        if (modelSelect.value === modelEntry.model) return;
-        modelSelect.value = modelEntry.model;
-        selectedPriceRepair = null;
-        setPriceCtaReady(false);
+        if (selectedPriceModelId === entry.id) return;
+        selectedPriceModelId = entry.id;
+        modelSelect.value = entry.id;
+        selectedCatalogRepair = null;
+        selectedPartOption = null;
         renderPriceSelection();
-        trackEvent("model_select", { brand: selectedPriceBrand, model: modelEntry.model, input: "button" });
+        trackEvent("model_select", { brand: entry.brand, model: entry.id, input: "button" });
       });
-
       buttonGroup.appendChild(button);
     });
-  }
-
-  function applyPriceRepairSelection(entry, repair, lang, displayLabel = "", ready = true, shouldTrack = false) {
-    selectedPriceRepair = getSelectedRepairPayload(repair, lang, displayLabel);
-    setPriceCtaReady(ready);
-    updatePriceSummary(entry, selectedPriceRepair);
-    updatePriceCta(entry);
-
-    if (shouldTrack) {
-      trackEvent("repair_select", {
-        brand: entry.brand,
-        model: entry.model,
-        repair: selectedPriceRepair.waLabel || selectedPriceRepair.label,
-        quality: selectedPriceRepair.quality || "",
-        price: repair.price,
-        stock: repair.stock || "on_request",
-      });
-    }
-  }
-
-  function renderFlatPriceServiceRow(list, entry, repair, index, lang, isSelected = index === 0, extraClass = "") {
-    const label = getRepairLabel(repair, lang);
-    const note = getRepairNoteText(repair, lang);
-    const row = document.createElement("button");
-    row.className = ["price-service-row", extraClass, isSelected ? "is-selected" : ""].filter(Boolean).join(" ");
-    row.type = "button";
-    row.style.setProperty("--row-index", index);
-    row.appendChild(createPriceIconSlot("price-service-row__icon", getPriceRepairIcon(repair), 36));
-
-    const labelEl = document.createElement("span");
-    labelEl.className = "price-service-row__label";
-    const titleEl = document.createElement("span");
-    titleEl.className = "price-service-row__title";
-    titleEl.textContent = label;
-    labelEl.appendChild(titleEl);
-
-    if (repair.key === "repair_original_battery") {
-      const infoText = resolveI18n(lang, "repair_original_battery_info")
-        || "Replacement battery for iPhone with 99–100% battery health. OEM Pull availability varies.";
-      const infoEl = document.createElement("span");
-      infoEl.className = "price-service-info";
-      infoEl.setAttribute("aria-label", infoText);
-      infoEl.setAttribute("title", infoText);
-      infoEl.textContent = "i";
-      titleEl.append(" ", infoEl);
-    }
-
-    if (note) {
-      const noteEl = document.createElement("small");
-      noteEl.className = "price-service-row__note";
-      noteEl.textContent = note;
-      labelEl.appendChild(noteEl);
-    }
-
-    const metaEl = document.createElement("span");
-    metaEl.className = "price-service-row__meta";
-
-    if (repair.stock) {
-      const stockEl = document.createElement("small");
-      stockEl.className = `price-stock price-stock--${repair.stock}`;
-      stockEl.textContent = getStockLabel(repair.stock, lang);
-      metaEl.appendChild(stockEl);
-    }
-
-    const priceEl = document.createElement("strong");
-    animatePriceValue(priceEl, repair.price);
-    metaEl.appendChild(priceEl);
-
-    row.append(labelEl, metaEl);
-    row.setAttribute("aria-label", [label, note, repair.price].filter(Boolean).join(" - "));
-    row.addEventListener("click", () => {
-      list.querySelectorAll(".price-service-row").forEach((item) => item.classList.remove("is-selected"));
-      list.querySelectorAll(".price-repair-group").forEach((item) => item.classList.remove("is-selected"));
-      list.querySelectorAll(".price-quality-chip").forEach((item) => {
-        item.classList.remove("is-selected");
-        item.setAttribute("aria-pressed", "false");
-      });
-      row.classList.add("is-selected");
-      applyPriceRepairSelection(entry, repair, lang, label, true, true);
-    });
-    list.appendChild(row);
-    return row;
-  }
-
-  function renderPriceQualityDetails(list, lang) {
-    const details = document.createElement("details");
-    details.className = "price-quality-details";
-
-    const summary = document.createElement("summary");
-    summary.textContent = resolveI18n(lang, "price_quality_details_title") || "Qualitäten kurz erklärt";
-    details.appendChild(summary);
-
-    const detailList = document.createElement("ul");
-    [
-      "price_quality_details_premium",
-      "price_quality_details_original",
-      "price_quality_details_budget",
-    ].forEach((key) => {
-      const item = document.createElement("li");
-      item.textContent = resolveI18n(lang, key) || "";
-      detailList.appendChild(item);
-    });
-    details.appendChild(detailList);
-    list.appendChild(details);
-  }
-
-  function selectGroupedRepair(list, entry, groupEl, chipEl, hintTextEl, stockSlotEl, repair, lang, ready = true, shouldTrack = false) {
-    const displayLabel = getRepairDisplayLabel(repair, lang);
-    list.querySelectorAll(".price-service-row").forEach((item) => item.classList.remove("is-selected"));
-    list.querySelectorAll(".price-repair-group").forEach((item) => item.classList.remove("is-selected"));
-    list.querySelectorAll(".price-quality-chip").forEach((item) => {
-      item.classList.remove("is-selected");
-      item.setAttribute("aria-pressed", "false");
-    });
-
-    groupEl.classList.add("is-selected");
-    chipEl.classList.add("is-selected");
-    chipEl.setAttribute("aria-pressed", "true");
-    hintTextEl.textContent = getRepairQualityHint(repair, lang);
-    stockSlotEl.innerHTML = "";
-
-    if (repair.stock) {
-      const stockEl = document.createElement("small");
-      stockEl.className = `price-stock price-stock--${repair.stock}`;
-      stockEl.textContent = getStockLabel(repair.stock, lang);
-      stockSlotEl.appendChild(stockEl);
-    }
-
-    applyPriceRepairSelection(entry, repair, lang, displayLabel, ready, shouldTrack);
-  }
-
-  function renderGroupedIphone17Services(list, entry, lang) {
-    const { groups, standalone } = groupRepairOptions(entry.repairs);
-    let defaultSelection = null;
-
-    groups.forEach((group, groupIndex) => {
-      const groupLabel = resolveI18n(lang, group.key) || group.key;
-      const groupEl = document.createElement("section");
-      const titleId = `price-repair-${slugifyPriceModel(entry.model)}-${group.key}`;
-      groupEl.className = "price-repair-group";
-      groupEl.setAttribute("role", "group");
-      groupEl.setAttribute("aria-labelledby", titleId);
-      groupEl.style.setProperty("--row-index", groupIndex);
-
-      const head = document.createElement("div");
-      head.className = "price-repair-group__head";
-
-      const title = document.createElement("strong");
-      title.className = "price-repair-group__title";
-      title.id = titleId;
-      title.textContent = groupLabel;
-
-      const included = document.createElement("small");
-      included.className = "price-repair-group__included";
-      included.textContent = resolveI18n(lang, "price_included_short") || "inkl. Einbau";
-
-      head.appendChild(createPriceIconSlot("price-repair-group__icon", getPriceRepairIcon(group.key), 34));
-      head.append(title, included);
-      groupEl.appendChild(head);
-
-      const chips = document.createElement("div");
-      chips.className = "price-quality-chips";
-      chips.setAttribute("role", "group");
-      chips.setAttribute("aria-label", groupLabel);
-
-      const hint = document.createElement("div");
-      hint.className = "price-quality-hint";
-      const hintText = document.createElement("span");
-      const stockSlot = document.createElement("span");
-      stockSlot.className = "price-quality-stock";
-      hint.append(hintText, stockSlot);
-
-      sortRepairOptionsForDisplay(group.repairs).forEach((repair, repairIndex) => {
-        const chipLabel = getRepairQualityChipLabel(repair, lang);
-        const chip = document.createElement("button");
-        chip.className = "price-quality-chip";
-        chip.type = "button";
-        chip.setAttribute("aria-pressed", "false");
-        chip.setAttribute("aria-label", `${groupLabel} ${chipLabel} ${repair.price}`);
-
-        const chipName = document.createElement("span");
-        chipName.textContent = chipLabel;
-        const chipPrice = document.createElement("strong");
-        chipPrice.textContent = repair.price;
-        chip.append(chipName, chipPrice);
-
-        chip.addEventListener("click", () => {
-          selectGroupedRepair(list, entry, groupEl, chip, hintText, stockSlot, repair, lang, true, true);
-        });
-
-        chips.appendChild(chip);
-        if (!defaultSelection && groupIndex === 0 && repairIndex === 0) {
-          defaultSelection = { groupEl, chip, hintText, stockSlot, repair };
-        }
-      });
-
-      groupEl.append(chips, hint);
-      list.appendChild(groupEl);
-    });
-
-    standalone.forEach((repair, index) => {
-      renderFlatPriceServiceRow(list, entry, repair, groups.length + index, lang, false, "price-service-row--framed");
-    });
-    renderPriceQualityDetails(list, lang);
-
-    if (defaultSelection) {
-      selectGroupedRepair(
-        list,
-        entry,
-        defaultSelection.groupEl,
-        defaultSelection.chip,
-        defaultSelection.hintText,
-        defaultSelection.stockSlot,
-        defaultSelection.repair,
-        lang,
-        false,
-        false,
-      );
-      return;
-    }
-
-    if (standalone[0]) {
-      applyPriceRepairSelection(entry, standalone[0], lang, getRepairLabel(standalone[0], lang), false, false);
-    }
-  }
-
-  function renderPriceServices(entry, lang) {
-    const list = document.querySelector("[data-price-services]");
-    if (!list || !entry) return;
-
-    list.innerHTML = "";
-    selectedPriceRepair = null;
-    setPriceCtaReady(false);
-
-    if (entry.family === "iPhone 17") {
-      renderGroupedIphone17Services(list, entry, lang);
-      return;
-    }
-
-    entry.repairs.forEach((repair, index) => {
-      renderFlatPriceServiceRow(list, entry, repair, index, lang);
-    });
-    renderPriceSeriesNotes(list, entry, lang);
-
-    const defaultRepair = entry.repairs[0];
-    if (defaultRepair) {
-      applyPriceRepairSelection(entry, defaultRepair, lang, getRepairLabel(defaultRepair, lang), false, false);
-    }
   }
 
   function renderPriceSelection() {
     const familySelect = document.querySelector("[data-price-family]");
     const modelSelect = document.querySelector("[data-price-model]");
-    if (!familySelect || !modelSelect) return;
-
-    const lang = getLang();
+    if (!familySelect || !modelSelect || !repairCatalog) return;
     const entries = getPriceEntries().filter((entry) => entry.brand === selectedPriceBrand);
     const models = sortPriceModelsForDisplay(entries.filter((entry) => entry.family === familySelect.value));
-    const entry = models.find((item) => item.model === modelSelect.value) || models[0] || entries[0];
+    const entry = models.find((item) => item.id === selectedPriceModelId) || models[0] || entries[0];
     if (!entry) return;
+    selectedPriceModelId = entry.id;
 
     modelSelect.innerHTML = "";
     models.forEach((modelEntry) => {
       const option = document.createElement("option");
-      option.value = modelEntry.model;
+      option.value = modelEntry.id;
       option.textContent = modelEntry.model;
-      option.selected = modelEntry.model === entry.model;
+      option.selected = modelEntry.id === entry.id;
       modelSelect.appendChild(option);
     });
     renderPriceModelButtons(models, entry);
-
     updatePricePreview(entry);
-
-    renderPriceServices(entry, lang);
-    updatePriceCta(entry);
+    renderRepairRows(entry);
+    renderPartOptions(entry, selectedCatalogRepair);
+    renderPriceServiceOptions(entry);
+    updatePriorityControls();
   }
 
   function renderPrices() {
     const familySelect = document.querySelector("[data-price-family]");
-    const modelSelect = document.querySelector("[data-price-model]");
-    if (!familySelect || !modelSelect) return;
-
+    if (!familySelect || !repairCatalog) return;
     if (selectedPriceBrand === "samsung") selectedPriceBrand = "apple";
     setPriceSelectorMode(selectedPriceBrand);
-
-    const currentFamily = familySelect.value;
     const entries = getPriceEntries().filter((entry) => entry.brand === selectedPriceBrand);
     const families = getPriceFamilies(entries);
-
+    const currentFamily = familySelect.value;
     familySelect.innerHTML = "";
     families.forEach((item) => {
       const option = document.createElement("option");
@@ -5183,29 +5236,35 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       option.textContent = item.family;
       familySelect.appendChild(option);
     });
-
-    const preferredStartFamily = selectedPriceBrand === "apple" ? "iPhone 12" : "Galaxy S24";
-
-    familySelect.value = families.some((item) => item.family === currentFamily)
-      ? currentFamily
-      : (families.find((item) => item.family === preferredStartFamily) || families[0])?.family;
-
+    const selectedEntry = entries.find((entry) => entry.id === selectedPriceModelId);
+    const preferredFamily = selectedEntry?.family || (families.find((item) => item.family === "iPhone 12") || families[0])?.family;
+    familySelect.value = families.some((item) => item.family === currentFamily) ? currentFamily : preferredFamily;
     renderPriceSelection();
+  }
+
+  function initPartStatusDialog() {
+    const dialog = document.querySelector("[data-part-status-dialog]");
+    if (!(dialog instanceof HTMLDialogElement)) return;
+    dialog.querySelectorAll("[data-part-status-close]").forEach((button) => button.addEventListener("click", closePartStatusDialog));
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) closePartStatusDialog();
+    });
+    dialog.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      closePartStatusDialog();
+    });
   }
 
   function initPriceSelector() {
     const familySelect = document.querySelector("[data-price-family]");
     const modelSelect = document.querySelector("[data-price-model]");
-    const cta = document.querySelector("[data-price-cta]");
     const samsungSearch = document.querySelector("[data-samsung-model-search]");
     const samsungCta = document.querySelector("[data-samsung-cta]");
-    const brandButtons = document.querySelectorAll("[data-price-brand]");
-    const shippingButtons = document.querySelectorAll("[data-price-shipping-mode]");
-    if (!familySelect || !modelSelect) return;
-
+    if (!familySelect || !modelSelect || !repairCatalog) return;
     selectedPriceDeliveryMode = getRequestedPriceDeliveryMode();
+    selectedPriceService = selectedPriceDeliveryMode === "shipping" ? "shipping" : "handover";
 
-    brandButtons.forEach((button) => {
+    document.querySelectorAll("[data-price-brand]").forEach((button) => {
       button.addEventListener("click", () => {
         const brand = button.dataset.priceBrand || "apple";
         if (brand === "samsung") {
@@ -5214,65 +5273,97 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
           return;
         }
         selectedPriceBrand = brand;
-        setBrandButtonState(selectedPriceBrand);
-        selectedPriceRepair = null;
-        setPriceCtaReady(false);
-        familySelect.value = "";
-        modelSelect.value = "";
+        setBrandButtonState(brand);
+        selectedPriceModelId = "";
+        selectedCatalogRepair = null;
+        selectedPartOption = null;
         renderPrices();
-        trackEvent("brand_select", { brand: selectedPriceBrand });
+        trackEvent("brand_select", { brand });
       });
     });
 
     familySelect.addEventListener("change", () => {
-      selectedPriceRepair = null;
-      setPriceCtaReady(false);
+      selectedPriceModelId = "";
+      selectedCatalogRepair = null;
+      selectedPartOption = null;
       renderPriceSelection();
       trackEvent("model_family_select", { brand: selectedPriceBrand, family: familySelect.value });
     });
     modelSelect.addEventListener("change", () => {
-      selectedPriceRepair = null;
-      setPriceCtaReady(false);
+      selectedPriceModelId = modelSelect.value;
+      selectedCatalogRepair = null;
+      selectedPartOption = null;
       renderPriceSelection();
-      trackEvent("model_select", { brand: selectedPriceBrand, model: modelSelect.value });
+      trackEvent("model_select", { brand: selectedPriceBrand, model: selectedPriceModelId });
     });
-    shippingButtons.forEach((button) => {
+
+    document.querySelectorAll("[data-price-priority]").forEach((button) => {
+      button.addEventListener("click", () => {
+        selectedPricePriority = button.dataset.pricePriority || "value";
+        selectedPartOption = choosePartOption(selectedCatalogRepair, selectedPricePriority);
+        updatePriorityControls();
+        const entry = getCurrentPriceEntry();
+        renderPartOptions(entry, selectedCatalogRepair);
+        selectPartOption(entry, selectedCatalogRepair, selectedPartOption, true);
+        trackEvent("repair_priority_select", { priority: selectedPricePriority, repair: selectedCatalogRepair?.id || "" });
+      });
+    });
+
+    document.querySelectorAll("[data-price-service]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const service = button.dataset.priceService || "handover";
+        if (service === "shipping") return;
+        selectedPriceService = service;
+        renderPriceServiceOptions(getCurrentPriceEntry());
+        trackEvent("repair_service_select", { service, fee_bucket: service === "mobile" ? (selectedMobileService?.feeCents || 0) : 0 });
+      });
+    });
+
+    document.querySelectorAll("[data-price-shipping-mode]").forEach((button) => {
       button.addEventListener("click", () => {
         const mode = button.dataset.priceShippingMode === "shipping" ? "shipping" : "local";
         if (selectedPriceDeliveryMode === mode) return;
         selectedPriceDeliveryMode = mode;
+        selectedPriceService = mode === "shipping" ? "shipping" : "handover";
         syncPriceDeliveryModeUrl(mode);
         updatePriceShippingUi();
-        updatePriceCta(getCurrentPriceEntry());
+        renderPriceServiceOptions(getCurrentPriceEntry());
         updateSamsungSummary();
         trackEvent("shipping_price_mode_select", { mode });
       });
     });
-    cta?.addEventListener("click", () => {
+
+    document.querySelector("[data-price-cta]")?.addEventListener("click", () => {
       const entry = getCurrentPriceEntry();
       updatePriceCta(entry);
+      if (selectedPriceDeliveryMode === "shipping") {
+        trackEvent("shipping_whatsapp_click", { source: "price_configurator" });
+      }
       trackEvent("price_whatsapp_click", {
         brand: entry?.brand,
-        model: entry?.model,
-        repair: selectedPriceRepair?.label || "general",
-        price: selectedPriceRepair?.price || "",
+        model: entry?.id,
+        repair: selectedCatalogRepair?.id || "general",
+        option: selectedPartOption?.id || "",
+        service: selectedPriceDeliveryMode === "shipping" ? "shipping" : selectedPriceService,
+        total_bucket: selectedPriceRepair?.totalCents || 0,
       });
-      if (selectedPriceDeliveryMode === "shipping") {
-        trackEvent("shipping_whatsapp_click", {
-          source: "prices",
-          brand: entry?.brand,
-          model: entry?.model,
-          repair: selectedPriceRepair?.label || "general",
-        });
-      }
     });
+
+    window.addEventListener("hn:mobile-service-selected", (event) => {
+      const fee = Number(event.detail?.fee);
+      selectedMobileService = {
+        feeCents: Number.isFinite(fee) ? Math.round(fee * 100) : 0,
+        distanceKm: Number(event.detail?.distanceKm || 0).toFixed(1),
+      };
+      selectedPriceService = "mobile";
+      renderPriceServiceOptions(getCurrentPriceEntry());
+    });
+
     samsungSearch?.addEventListener("input", () => {
       selectedSamsungOtherDevice = null;
       renderSamsungConfigurator();
     });
-    document.querySelectorAll("[data-samsung-modal-close]").forEach((button) => {
-      button.addEventListener("click", closeSamsungModal);
-    });
+    document.querySelectorAll("[data-samsung-modal-close]").forEach((button) => button.addEventListener("click", closeSamsungModal));
     document.querySelector("[data-samsung-back]")?.addEventListener("click", goToPreviousSamsungStep);
     document.querySelector("[data-samsung-next]")?.addEventListener("click", goToNextSamsungStep);
     document.addEventListener("keydown", (event) => {
@@ -5287,6 +5378,9 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     samsungCta?.addEventListener("click", () => {
       const state = getSamsungSummaryState();
       samsungCta.href = buildSamsungWaHref();
+      if (selectedPriceDeliveryMode === "shipping") {
+        trackEvent("shipping_whatsapp_click", { source: "samsung_price_configurator" });
+      }
       trackEvent("samsung_price_whatsapp_click", {
         device: state.device,
         series: state.series,
@@ -5294,15 +5388,9 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
         repair: state.repair,
         price: state.price,
       });
-      if (selectedPriceDeliveryMode === "shipping") {
-        trackEvent("shipping_whatsapp_click", {
-          source: "samsung_modal",
-          model: state.model,
-          repair: state.repair,
-        });
-      }
     });
 
+    initPartStatusDialog();
     renderPrices();
     updatePriceShippingUi();
     runShippingPriceArrival();
@@ -5349,6 +5437,7 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
     const resultNote = modal.querySelector("[data-mobile-repair-result-note]");
     const resultIcon = modal.querySelector("[data-mobile-repair-result-icon]");
     const book = modal.querySelector("[data-mobile-repair-book]");
+    const apply = modal.querySelector("[data-mobile-repair-apply]");
     const shipping = modal.querySelector("[data-mobile-repair-shipping]");
     const reset = modal.querySelector("[data-mobile-repair-reset]");
     if (!form || !input || !submit || !suggestions || !quickList || !status || !result) return;
@@ -5550,10 +5639,16 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       resultDistance.textContent = formatI18n(lang, "mobile_repair_distance_value", { distance: distanceLabel });
       resultFee.textContent = feeLabel;
       resultNote.textContent = resolveI18n(lang, zone.available ? "mobile_repair_available_note" : "mobile_repair_unavailable_note");
-      book.hidden = !zone.available;
-      shipping.hidden = zone.available;
+      if (book) book.hidden = !zone.available;
+      if (apply) {
+        apply.hidden = !zone.available;
+        apply.dataset.fee = String(zone.fee || 0);
+        apply.dataset.distanceKm = String(roundedDistance);
+        apply.dataset.zone = zone.key;
+      }
+      if (shipping) shipping.hidden = zone.available;
 
-      if (zone.available) {
+      if (zone.available && book) {
         const message = [
           resolveI18n(lang, "mobile_repair_wa_intro"),
           "",
@@ -5701,6 +5796,17 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
       input.focus();
     }, { signal: events.signal });
     book?.addEventListener("click", () => trackEvent("mobile_repair_booking_click", { channel: "whatsapp" }), { signal: events.signal });
+    apply?.addEventListener("click", () => {
+      window.dispatchEvent(new CustomEvent("hn:mobile-service-selected", {
+        detail: {
+          fee: Number(apply.dataset.fee || 0),
+          distanceKm: Number(apply.dataset.distanceKm || 0),
+          zone: apply.dataset.zone || "",
+        },
+      }));
+      trackEvent("mobile_repair_fee_apply", { zone: apply.dataset.zone || "", fee: Number(apply.dataset.fee || 0) });
+      closeModal();
+    }, { signal: events.signal });
     shipping?.addEventListener("click", () => trackEvent("mobile_repair_shipping_click", { source: "distance_result" }), { signal: events.signal });
     modal.addEventListener("cancel", (event) => {
       event.preventDefault();
@@ -6462,11 +6568,11 @@ ${resolveI18n(lang, "wa_label_city") || "Ort"}: ${city}`;
   initEasterEgg();
   initLiquidGlassLoader();
   initServiceWorker();
-  initPriceSelector();
   initQuizHighlight();
 
   if (document.querySelector(".js-prices-section")) {
-    renderPrices();
+    const catalogReady = await loadRepairCatalog();
+    if (catalogReady) initPriceSelector();
   }
 
   ["model", "issue"].forEach((id) => {

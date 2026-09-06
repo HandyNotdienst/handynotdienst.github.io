@@ -95,7 +95,12 @@
           <p class="price-mode-note" data-price-shipping-note data-i18n="price_mode_local_note">Lokale Übergabe, Abholung oder mobiler Termin nach WhatsApp-Check.</p>
         </div>
 
-        <div class="price-selector-card" data-price-selector>
+        <div class="price-selector-card" data-price-selector aria-busy="true">
+          <div class="price-catalog-status" data-price-catalog-status role="alert" hidden>
+            <strong data-i18n="price_catalog_error_title">Preise konnten nicht geladen werden</strong>
+            <span data-i18n="price_catalog_error_text">Schreib uns dein Modell und den Schaden direkt per WhatsApp.</span>
+            <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-i18n="price_catalog_error_cta">Per WhatsApp anfragen</a>
+          </div>
           <div class="price-selector-card__content">
             <div class="price-selector-card__topline">
               <span class="price-selector-eyebrow" data-i18n="price_selector_card_eyebrow">Preise sofort prüfen</span>
@@ -129,7 +134,7 @@
             </div>
           </div>
 
-          <div class="price-selector-preview" aria-live="polite" data-price-apple-panel>
+          <div class="price-selector-preview" data-price-apple-panel>
             <div class="price-selector-device-frame">
               <picture class="price-selector-picture" data-price-picture>
                 <source type="image/webp" data-price-source-webp>
@@ -140,6 +145,11 @@
               <span class="price-selector-device-kicker" data-i18n="price_selector_selected_label">Ausgewähltes Gerät</span>
               <strong data-price-selected-model>iPhone 12 Pro Max</strong>
             </div>
+            <div class="price-selector-facts" aria-label="Wichtige Hinweise" data-i18n-aria-label="price_preview_facts_label">
+              <span><i class="price-selector-facts__icon price-selector-facts__icon--data" aria-hidden="true"></i><strong data-i18n="price_fact_data">Daten normalerweise erhalten</strong></span>
+              <span><i class="price-selector-facts__icon price-selector-facts__icon--time" aria-hidden="true"></i><strong data-i18n="price_fact_duration">Dauer wird vorab bestätigt</strong></span>
+              <span><i class="price-selector-facts__icon price-selector-facts__icon--terms" aria-hidden="true"></i><strong data-i18n="price_fact_warranty">Garantie vor Auftrag geklärt</strong></span>
+            </div>
           </div>
 
           <div class="price-selector-results" data-price-apple-panel>
@@ -149,9 +159,89 @@
             </div>
             <div class="price-service-list" data-price-services></div>
             <p class="price-shipping-hint" data-price-shipping-hint hidden data-i18n="price_mode_shipping_note">Bei Versand bekommst du zuerst Versandhinweise. Keine Reparatur ohne Freigabe.</p>
-            <p class="price-stock-note" data-i18n="price_stock_note">Ersatzteil-Verfügbarkeit wird beim WhatsApp-Check bestätigt.</p>
-            <a class="btn btn--wa price-selector-cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-price-cta data-i18n="price_selector_cta">Per WhatsApp anfragen</a>
           </div>
+
+          <section class="price-config-detail" data-price-detail data-price-apple-panel aria-labelledby="priceDetailTitle">
+            <header class="price-config-detail__head">
+              <span data-i18n="price_detail_eyebrow">Reparatur konfigurieren</span>
+              <h3 id="priceDetailTitle" data-i18n="price_detail_title">Qualität und Serviceweg wählen</h3>
+              <p data-i18n="price_detail_text">Du siehst nur bestätigte Optionen. Endpreis und Verfügbarkeit werden vor dem Auftrag nochmals geprüft.</p>
+            </header>
+
+            <fieldset class="price-priority-fieldset">
+              <legend data-i18n="price_priority_legend">Was ist dir wichtig?</legend>
+              <div class="price-priority-options">
+                <button class="price-priority-card" type="button" data-price-priority="quality" aria-pressed="false">
+                  <strong data-i18n="price_priority_quality">Beste verfügbare Qualität</strong>
+                  <small data-i18n="price_priority_quality_hint">Bevorzugt Original/OEM Pull, wenn bestätigt.</small>
+                </button>
+                <button class="price-priority-card is-active" type="button" data-price-priority="value" aria-pressed="true">
+                  <strong data-i18n="price_priority_value">Preis und Qualität</strong>
+                  <small data-i18n="price_priority_value_hint">Empfohlene Balance aus Preis und Teileoption.</small>
+                </button>
+                <button class="price-priority-card" type="button" data-price-priority="budget" aria-pressed="false">
+                  <strong data-i18n="price_priority_budget">Niedrigster Preis</strong>
+                  <small data-i18n="price_priority_budget_hint">Wählt die günstigste bestätigte Option.</small>
+                </button>
+              </div>
+            </fieldset>
+
+            <fieldset class="price-quality-fieldset">
+              <legend id="priceQualityHeading" data-price-quality-heading>Teilequalität wählen</legend>
+              <div class="price-option-list" data-price-quality-options aria-labelledby="priceQualityHeading"></div>
+            </fieldset>
+
+            <section class="price-comparison-matrix" data-price-comparison-matrix aria-label="Teileoptionen vergleichen" data-i18n-aria-label="price_compare_title" hidden></section>
+
+            <fieldset class="price-service-fieldset">
+              <legend data-i18n="price_service_title">Wie kommt das Gerät zur Reparatur?</legend>
+              <div class="price-service-options">
+                <button class="price-service-card is-active" type="button" data-price-service="handover" aria-pressed="true">
+                  <span class="price-service-card__icon price-service-card__icon--handover" aria-hidden="true"></span>
+                  <span><strong data-i18n="service_handover">Übergabe in Singen</strong><small data-i18n="service_handover_text">Nach kurzer WhatsApp-Abstimmung, ohne Anfahrtskosten.</small></span>
+                  <b data-i18n="price_included">Inklusive</b>
+                </button>
+                <button class="price-service-card" type="button" data-price-service="mobile" data-mobile-repair-open aria-pressed="false">
+                  <span class="price-service-card__icon price-service-card__icon--mobile" aria-hidden="true"></span>
+                  <span><strong data-i18n="service_mobile">Mobile Reparatur</strong><small data-i18n="service_mobile_text">Standort prüfen; je nach Fahrstrecke 0, 10 oder 20 Euro.</small></span>
+                  <b data-i18n="service_mobile_check">Prüfen</b>
+                </button>
+                <button class="price-service-card" type="button" data-price-service="shipping" aria-pressed="false" hidden>
+                  <span class="price-service-card__icon price-service-card__icon--shipping" aria-hidden="true"></span>
+                  <span><strong data-i18n="service_shipping">Reparatur per Versand</strong><small data-i18n="service_shipping_text">Du zahlst den Hinversand; wir den verfolgten Rückversand.</small></span>
+                  <b data-i18n="price_included">Inklusive</b>
+                </button>
+              </div>
+              <p class="price-mobile-result" data-price-mobile-result hidden></p>
+            </fieldset>
+
+            <div class="price-checkout">
+              <div class="price-breakdown" aria-labelledby="priceBreakdownTitle">
+                <h4 id="priceBreakdownTitle" data-i18n="price_breakdown_title">Dein Preisüberblick</h4>
+                <dl>
+                  <div><dt data-i18n="price_breakdown_repair">Reparatur und Teil</dt><dd data-price-part-amount aria-hidden="true">0 €</dd></div>
+                  <div><dt data-price-service-name>Übergabe in Singen</dt><dd data-price-service-amount aria-hidden="true">0 €</dd></div>
+                  <div class="price-breakdown__total"><dt data-i18n="price_breakdown_total">Gesamt</dt><dd data-price-total-amount aria-hidden="true">0 €</dd></div>
+                </dl>
+                <p class="price-shipping-cost-note" data-i18n="price_shipping_cost_note">Bei Versand sind deine Kosten für den Hinversand nicht im Gesamtpreis enthalten.</p>
+              </div>
+
+              <aside class="price-manufacturer" data-price-manufacturer hidden>
+                <span data-price-manufacturer-label>Apple Vergleichspreis</span>
+                <strong data-price-manufacturer-amount aria-hidden="true">0 €</strong>
+                <small data-price-manufacturer-date>Stand: 05.09.2026</small>
+                <p class="price-comparison-result" data-price-difference></p>
+                <p data-i18n="manufacturer_price_note">Offizielle Herstellerschätzung; der Endpreis hängt von Prüfung und Serviceberechtigung ab.</p>
+              </aside>
+            </div>
+
+            <div class="price-config-detail__actions">
+              <p class="price-stock-note" data-i18n="price_stock_note">Ersatzteil-Verfügbarkeit wird beim WhatsApp-Check bestätigt.</p>
+              <a class="btn btn--wa price-selector-cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-price-cta data-i18n="price_selector_cta">Per WhatsApp anfragen</a>
+              <small data-i18n="price_final_note">Keine Reparatur ohne deine Freigabe. Dauer, Endpreis und Garantiebedingungen bestätigen wir vorher.</small>
+            </div>
+            <p class="sr-only" role="status" aria-live="polite" aria-atomic="true" data-price-live-status></p>
+          </section>
 
           <div class="samsung-configurator samsung-modal" data-samsung-configurator data-samsung-modal role="dialog" aria-modal="true" aria-labelledby="samsungModalTitle" hidden>
             <button class="samsung-modal__backdrop" type="button" aria-label="Schließen" data-i18n-aria-label="samsung_close" data-samsung-modal-close></button>
@@ -281,8 +371,71 @@
     </footer>
   </main>
 
+  <dialog class="part-status-dialog" data-part-status-dialog aria-labelledby="partStatusTitle" aria-describedby="partStatusIntro">
+    <div class="part-status-dialog__surface">
+      <button class="part-status-dialog__close" type="button" data-part-status-close aria-label="Schließen" data-i18n-aria-label="price_status_dialog_close">×</button>
+      <span class="part-status-dialog__eyebrow" data-i18n="price_status_dialog_eyebrow">Teile- und Systemstatus</span>
+      <h2 id="partStatusTitle" data-part-status-title>Status der gewählten Option</h2>
+      <p id="partStatusIntro" data-part-status-intro></p>
+      <p class="part-status-dialog__stock" data-part-status-stock></p>
+      <ul>
+        <li data-i18n="price_status_dialog_message">Eine Apple-Systemmeldung hängt von Modell, Bauteil und abgeschlossener Kalibrierung ab.</li>
+        <li data-i18n="price_status_dialog_features">True Tone und Face ID werden nicht pauschal versprochen; die genaue Funktion wird für den Auftrag geklärt.</li>
+        <li data-i18n="price_status_dialog_calibration">Falls der Reparaturassistent erforderlich ist, muss die Kalibrierung vollständig abgeschlossen werden.</li>
+      </ul>
+      <div class="part-status-dialog__links">
+        <a href="https://support.apple.com/de-de/102658" target="_blank" rel="noopener noreferrer" data-i18n="price_status_dialog_history_link">Apple: Teile- und Serviceprotokoll</a>
+        <a href="https://support.apple.com/de-de/120579" target="_blank" rel="noopener noreferrer" data-i18n="price_status_dialog_assistant_link">Apple: Reparaturassistent</a>
+      </div>
+      <button class="btn btn--secondary" type="button" data-part-status-close data-i18n="price_status_dialog_close">Schließen</button>
+    </div>
+  </dialog>
+
+  <dialog class="mobile-repair-modal" data-mobile-repair-modal aria-labelledby="mobileRepairTitle" aria-describedby="mobileRepairDescription">
+    <div class="mobile-repair-modal__surface">
+      <button class="mobile-repair-modal__close" type="button" data-mobile-repair-close data-i18n-aria-label="mobile_repair_close" aria-label="Dialog schließen"><span aria-hidden="true">×</span></button>
+      <header class="mobile-repair-modal__header">
+        <span class="mobile-repair-modal__eyebrow" data-i18n="mobile_repair_eyebrow">Mobiler Service bis 50 km</span>
+        <h2 id="mobileRepairTitle" data-i18n="mobile_repair_title">Prüfe deinen Standort</h2>
+        <p id="mobileRepairDescription" data-i18n="mobile_repair_subtitle">Gib deine Postleitzahl oder deinen Wohnort ein.</p>
+      </header>
+      <form class="mobile-repair-form" method="get" action="prices.html" data-mobile-repair-form novalidate>
+        <label for="mobileRepairLocation" data-i18n="mobile_repair_input_label">Postleitzahl oder Wohnort</label>
+        <div class="mobile-repair-location-control">
+          <span class="mobile-repair-location-control__icon" aria-hidden="true"></span>
+          <input id="mobileRepairLocation" name="location" type="search" inputmode="search" autocomplete="postal-code" spellcheck="false" minlength="2" required role="combobox" aria-autocomplete="list" aria-controls="mobileRepairSuggestions" aria-describedby="mobileRepairStatus" aria-expanded="false" data-mobile-repair-input data-i18n-placeholder="mobile_repair_input_placeholder" placeholder="PLZ oder Stadt eingeben">
+          <button class="btn btn--secondary" type="submit" data-mobile-repair-submit data-i18n="mobile_repair_check">Standort prüfen</button>
+        </div>
+        <div class="mobile-repair-suggestions" id="mobileRepairSuggestions" role="listbox" data-mobile-repair-suggestions hidden></div>
+        <div class="mobile-repair-quick" aria-labelledby="mobileRepairQuickTitle">
+          <span id="mobileRepairQuickTitle" data-i18n="mobile_repair_quick_title">Schnellauswahl</span>
+          <div class="mobile-repair-quick__list" data-mobile-repair-quick></div>
+        </div>
+        <p class="mobile-repair-privacy"><span class="mobile-repair-privacy__icon" aria-hidden="true"></span><span data-i18n="mobile_repair_privacy_note">Bitte nur PLZ oder Ort eingeben. Diese Eingabe wird an OpenStreetMap und die Koordinaten an OSRM übermittelt.</span> <a href="datenschutz.html#privacy-location-check" data-i18n="mobile_repair_privacy_link">Datenschutz</a></p>
+      </form>
+      <div class="mobile-repair-status" id="mobileRepairStatus" role="status" aria-live="polite" aria-atomic="true" data-mobile-repair-status></div>
+      <section class="mobile-repair-result" data-mobile-repair-result hidden aria-labelledby="mobileRepairResultTitle">
+        <div class="mobile-repair-result__heading"><span class="mobile-repair-result__icon" data-mobile-repair-result-icon aria-hidden="true"></span><div><span data-i18n="mobile_repair_result_kicker">Ergebnis</span><h3 id="mobileRepairResultTitle" data-mobile-repair-result-title>Standortprüfung</h3></div></div>
+        <dl class="mobile-repair-result__facts">
+          <div><dt data-i18n="mobile_repair_result_location">Ort</dt><dd data-mobile-repair-result-location></dd></div>
+          <div><dt data-i18n="mobile_repair_result_distance">Fahrstrecke</dt><dd data-mobile-repair-result-distance></dd></div>
+          <div><dt data-i18n="mobile_repair_result_fee">Anfahrt</dt><dd data-mobile-repair-result-fee></dd></div>
+        </dl>
+        <p class="mobile-repair-result__note" data-mobile-repair-result-note></p>
+        <div class="mobile-repair-result__actions">
+          <button class="btn btn--wa" type="button" data-mobile-repair-apply data-i18n="mobile_repair_apply" hidden>Für den Preis übernehmen</button>
+          <a class="btn btn--secondary btn--shipping" href="versand-reparatur.html" data-mobile-repair-shipping data-i18n="mobile_repair_shipping">Versand auswählen</a>
+          <button class="btn btn--ghost" type="button" data-mobile-repair-reset data-i18n="mobile_repair_check_other">Anderen Ort prüfen</button>
+        </div>
+        <small class="mobile-repair-result__source" data-i18n="mobile_repair_source">Fahrstrecke auf Basis von © OpenStreetMap-Mitwirkenden, berechnet mit OSRM.</small>
+      </section>
+    </div>
+  </dialog>
+
   <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><span class="sr-only">WhatsApp</span></a>
   <script src="assets/i18n/prices.js" defer></script>
+  <script src="assets/i18n/mobile-repair.js" defer></script>
+  <script src="assets/i18n/premium-prices.js" defer></script>
   <script src="assets/i18n/content-audit.js" defer></script>
   <script type="application/ld+json">
   {
