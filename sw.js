@@ -1,8 +1,13 @@
-const CACHE = "hn-v74";
+const PRICING_VERSION = "HN-PRICING-V1-2026-09-25";
+const CACHE = "hn-v75-pricing-v1-20260926";
 const ASSETS = [
   "./",
   "./index.html",
   "./prices.html",
+  "./prices-legacy.html",
+  `./catalog.mjs?v=${PRICING_VERSION}`,
+  `./catalog.css?v=${PRICING_VERSION}`,
+  `./catalog.json?v=${PRICING_VERSION}`,
   "./versand-reparatur.html",
   "./liquid-glass-demo.html",
   "./versandbedingungen.html",
@@ -238,19 +243,32 @@ const ASSETS = [
 ];
 
 self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));
+  e.waitUntil((async () => {
+    const cache = await caches.open(CACHE);
+    await cache.addAll(ASSETS.map(url => new Request(url, {cache: "reload"})));
+    const catalog = await cache.match(`./catalog.json?v=${PRICING_VERSION}`);
+    if ((await catalog.json()).pricingVersion !== PRICING_VERSION) throw new Error("Catalog release mismatch");
+    const page = await cache.match("./prices.html");
+    if (!(await page.text()).includes(`content="${PRICING_VERSION}"`)) throw new Error("Page release mismatch");
+    await self.skipWaiting();
+  })());
 });
 
 self.addEventListener("activate", (e) => {
-  e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.map(k => (k !== CACHE ? caches.delete(k) : null)))
-    )
-  );
+  e.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(k => k.startsWith("hn-") && k !== CACHE).map(k => caches.delete(k)));
+    await self.clients.claim();
+  })());
 });
 
 self.addEventListener("fetch", (e) => {
-  e.respondWith(
-    caches.match(e.request).then((r) => r || fetch(e.request))
-  );
+  const url = new URL(e.request.url);
+  if (e.request.method !== "GET" || url.origin !== self.location.origin) return;
+  e.respondWith((async () => {
+    const cache = await caches.open(CACHE);
+    const isPricesPage = url.pathname === "/prices.html";
+    const cached = await cache.match(e.request, {ignoreSearch: isPricesPage});
+    return cached || fetch(e.request);
+  })());
 });

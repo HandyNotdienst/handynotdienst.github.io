@@ -1,307 +1,71 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <script src="theme.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="pricing-version" content="HN-PRICING-V1-2026-09-25">
   <title>Preise – Handy Notdienst Singen</title>
-  <meta name="description" content="Preise für iPhone und Samsung Reparaturen in Singen. Klick auf Preis → WhatsApp mit Modell + Reparatur + Preis." />
-  <link rel="canonical" href="https://handy-notdienst-singen.de/prices.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Preise – Handy Notdienst Singen" />
-  <meta property="og:description" content="iPhone und Samsung Reparaturpreise schnell prüfen und direkt per WhatsApp anfragen." />
-  <meta property="og:url" content="https://handy-notdienst-singen.de/prices.html" />
-  <meta property="og:image" content="https://handy-notdienst-singen.de/assets/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" as="image" href="assets/phones/iphone-12-pro-max.png" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="src/liquidGlass.css" />
-  <link rel="stylesheet" href="print.css" media="print" />
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <meta name="theme-color" content="#1b374c">
-  <script src="analytics.js" defer></script>
+  <meta name="description" content="Preise für iPhone und Samsung Reparaturen in Singen. Klick auf Preis → WhatsApp mit Modell + Reparatur + Preis.">
+  <link rel="canonical" href="https://handy-notdienst-singen.de/prices.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Preise – Handy Notdienst Singen">
+  <meta property="og:description" content="iPhone und Samsung Reparaturpreise schnell prüfen und direkt per WhatsApp anfragen.">
+  <meta property="og:url" content="https://handy-notdienst-singen.de/prices.html">
+  <meta property="og:image" content="https://handy-notdienst-singen.de/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="/catalog.css?v=HN-PRICING-V1-2026-09-25">
+  <script type="module" src="/catalog.mjs?v=HN-PRICING-V1-2026-09-25"></script>
 </head>
 <body>
-
-  <noscript>
-    <div class="noscript-fallback">
-      <strong>Handy Notdienst Singen</strong>
-      <span>JavaScript ist deaktiviert. Kontakt und Preise bleiben verfuegbar.</span>
-      <a href="tel:+4915222416438">01522 2416438</a>
-      <a href="https://wa.me/4915222416438">WhatsApp</a>
-      <a href="prices.html">Preise</a>
-    </div>
-  </noscript>
-  <a class="skip-link" href="#main-content" data-i18n="skip_to_content">Zum Inhalt springen</a>
-  <header class="header" data-liquid-glass="nav">
-    <div class="container header__inner">
-      <a class="brand" href="index.html">
-        <span class="brand__logo" aria-hidden="true">
-          <img class="brand__logo-img brand__logo-img--dark" src="assets/logo-dark.png" srcset="assets/logo-dark.png 1x, assets/logo-dark-120.png 2x" alt="" width="60" height="60" />
-          <img class="brand__logo-img brand__logo-img--light" src="assets/logo-light.png" srcset="assets/logo-light.png 1x, assets/logo-light-120.png 2x" alt="" width="60" height="60" />
-        </span>
-        <span class="brand__text">
-          <strong>Handy Notdienst</strong>
-          <small data-i18n="tagline">Singen • Schnell & zuverlässig</small>
-        </span>
-      </a>
-
-      <div class="header__right">
-        <nav class="topnav" aria-label="Navigation">
-          <a href="index.html" data-i18n="nav_home">Start</a>
-          <a href="prices.html" data-i18n="nav_prices">Preise</a>
-          <a href="versand-reparatur.html" data-i18n="nav_shipping">Versand</a>
-          <a href="faqs.html">FAQ</a>
-          <a href="index.html#contact" data-i18n="nav_contact">Kontakt</a>
-        </nav>
-
-        <div class="lang" data-language-picker aria-label="Language switch"></div>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Theme wechseln">
-          <span class="theme-toggle__halo" aria-hidden="true"></span>
-          <span class="theme-toggle__icon" aria-hidden="true">
-            <span class="theme-toggle__sun"></span>
-            <span class="theme-toggle__moon"></span>
-          </span>
-        </button>
-
-        <a class="btn btn--wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      </div>
-    </div>
+  <a class="skip" href="#catalog">Zum Reparaturkatalog</a>
+  <header class="site-header wrap">
+    <a class="brand" href="/index.html"><img src="/assets/logo.png" alt="" width="48" height="48"><span>Handy Notdienst<small>Singen · nach Vereinbarung</small></span></a>
+    <label class="theme-control"><input type="checkbox" id="dark-mode"> Dunkel</label>
   </header>
-  <main id="main-content" tabindex="-1">
-    <section class="section prices-section js-prices-section price-selector-section" aria-labelledby="priceSelectorTitle">
-      <div class="container price-selector-shell" id="price-configurator">
-        <div class="price-selector-head">
-          <h1 class="page-title price-selector-title" id="priceSelectorTitle" data-i18n="price_selector_title">Was kostet die Reparatur?</h1>
-          <p class="price-selector-subtitle" data-i18n="price_selector_subtitle">Wähle dein Gerät und sieh die Preise inkl. Einbau für gängige Reparaturen.</p>
-          <div class="price-helper-actions">
-            <a class="btn btn--ghost price-model-finder-link" href="iphone-modell-finder.html" data-model-finder-link>
-              <img src="assets/model-finder/optimized/model-finder-icon.webp" alt="" width="180" height="180" loading="lazy" decoding="async" aria-hidden="true" />
-              <span data-i18n="price_model_finder_btn">iPhone Modell finden</span>
-            </a>
-          </div>
-          <div class="price-mode-switch" role="group" aria-label="Reparaturart wählen" data-price-shipping-toggle>
-            <button class="price-mode-switch__btn is-active" type="button" data-price-shipping-mode="local" aria-pressed="true" data-i18n="price_mode_local">In Singen</button>
-            <button class="price-mode-switch__btn" type="button" data-price-shipping-mode="shipping" aria-pressed="false" data-i18n="price_mode_shipping">Per Versand</button>
-          </div>
-          <p class="price-mode-status" data-price-shipping-status role="status" aria-live="polite" hidden>
-            <span aria-hidden="true"></span>
-            <strong data-i18n="price_mode_shipping_selected">Per Versand ausgewählt</strong>
-          </p>
-          <p class="price-mode-note" data-price-shipping-note data-i18n="price_mode_local_note">Lokale Übergabe, Abholung oder mobiler Termin nach WhatsApp-Check.</p>
-        </div>
-
-        <div class="price-selector-card" data-price-selector>
-          <div class="price-selector-card__content">
-            <div class="price-selector-card__topline">
-              <span class="price-selector-eyebrow" data-i18n="price_selector_card_eyebrow">Preise sofort prüfen</span>
-              <span class="price-selector-trust" data-i18n="price_selector_trust_note">Daten normalerweise erhalten</span>
-            </div>
-
-            <h2 class="price-selector-card__title" data-i18n="price_selector_card_title">Gerät auswählen</h2>
-
-            <div class="price-brand-switch" role="group" aria-label="Marke auswählen" data-i18n-aria-label="price_aria_brand" data-price-brand-switch>
-              <button class="price-brand-switch__btn is-active" type="button" data-price-brand="apple">
-                <span class="price-brand-switch__logo"><img src="assets/logos/apple-logo.png" alt="" width="32" height="32" aria-hidden="true" /></span>
-                <strong>iPhone</strong>
-              </button>
-              <button class="price-brand-switch__btn" type="button" data-price-brand="samsung">
-                <span class="price-brand-switch__logo"><img src="assets/logos/samsung-galaxy-logo.png" alt="" width="86" height="40" aria-hidden="true" /></span>
-                <strong>Galaxy</strong>
-              </button>
-            </div>
-
-            <div class="price-selector-controls" aria-label="Reparaturpreis auswählen" data-i18n-aria-label="price_aria_selector" data-price-apple-panel>
-              <div class="price-selector-field">
-                <label class="price-selector-label" for="priceFamilySelect" data-i18n="price_selector_family_label">Gerätetyp</label>
-                <select class="price-selector-select" id="priceFamilySelect" data-price-family></select>
-              </div>
-
-              <div class="price-selector-field price-selector-field--models">
-                <label class="price-selector-label" id="priceModelButtonsLabel" for="priceModelSelect" data-i18n="price_selector_model_label">Modell</label>
-                <select class="price-selector-select price-selector-select--state" id="priceModelSelect" data-price-model aria-hidden="true" tabindex="-1"></select>
-                <div class="price-model-buttons" role="radiogroup" aria-labelledby="priceModelButtonsLabel" data-price-model-buttons></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="price-selector-preview" aria-live="polite" data-price-apple-panel>
-            <div class="price-selector-device-frame">
-              <picture class="price-selector-picture" data-price-picture>
-                <source type="image/webp" data-price-source-webp>
-                <img class="price-selector-device-img" src="assets/phones/iphone-12-pro-max.png" alt="iPhone 12 Pro Max Reparatur bei Handy Notdienst Singen" width="800" height="800" decoding="async" fetchpriority="high" data-price-image>
-              </picture>
-            </div>
-            <div class="price-selector-device-copy">
-              <span class="price-selector-device-kicker" data-i18n="price_selector_selected_label">Ausgewähltes Gerät</span>
-              <strong data-price-selected-model>iPhone 12 Pro Max</strong>
-            </div>
-          </div>
-
-          <div class="price-selector-results" data-price-apple-panel>
-            <div class="price-selector-results__head">
-              <h3 data-i18n="price_selector_services_title">Reparaturoptionen</h3>
-              <span data-i18n="price_selector_estimate_label">Listenpreise inkl. Einbau</span>
-            </div>
-            <div class="price-service-list" data-price-services></div>
-            <p class="price-shipping-hint" data-price-shipping-hint hidden data-i18n="price_mode_shipping_note">Bei Versand bekommst du zuerst Versandhinweise. Keine Reparatur ohne Freigabe.</p>
-            <p class="price-stock-note" data-i18n="price_stock_note">Ersatzteil-Verfügbarkeit wird beim WhatsApp-Check bestätigt.</p>
-            <a class="btn btn--wa price-selector-cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-price-cta data-i18n="price_selector_cta">Per WhatsApp anfragen</a>
-          </div>
-
-          <div class="samsung-configurator samsung-modal" data-samsung-configurator data-samsung-modal role="dialog" aria-modal="true" aria-labelledby="samsungModalTitle" hidden>
-            <button class="samsung-modal__backdrop" type="button" aria-label="Schließen" data-i18n-aria-label="samsung_close" data-samsung-modal-close></button>
-            <div class="samsung-modal__dialog" tabindex="-1" data-samsung-dialog>
-              <header class="samsung-modal__header">
-                <div>
-                  <span class="samsung-modal__eyebrow">Samsung Galaxy</span>
-                  <h2 id="samsungModalTitle" data-i18n="samsung_config_title">Reparatur konfigurieren</h2>
-                </div>
-                <button class="samsung-modal__close" type="button" aria-label="Schließen" data-i18n-aria-label="samsung_close" data-samsung-modal-close>
-                  <span aria-hidden="true">x</span>
-                </button>
-              </header>
-
-              <div class="samsung-modal__progress" data-samsung-progress aria-hidden="true"></div>
-
-              <div class="samsung-configurator__main">
-              <section class="samsung-step samsung-step--series" aria-labelledby="samsungSeriesTitle" data-samsung-step-panel="series">
-                <span class="samsung-step__eyebrow" data-i18n="samsung_step_series">Schritt 1</span>
-                <h3 id="samsungSeriesTitle" data-i18n="samsung_series_title">Serie wählen</h3>
-                <p data-i18n="samsung_series_hint">Wähle zuerst die Galaxy-Serie. Handy ist bereits vorausgewählt.</p>
-                <div class="samsung-card-grid samsung-card-grid--series" data-samsung-series></div>
-                <div class="samsung-other-inline">
-                  <div>
-                    <h4 data-i18n="samsung_other_title">Andere Geraete</h4>
-                    <p data-i18n="samsung_other_hint">Fuer Tablet, Watch und Laptop bitte Problem kurz beschreiben, damit wir den Preis ermitteln koennen.</p>
-                  </div>
-                  <div class="samsung-card-grid samsung-card-grid--devices" data-samsung-other-devices></div>
-                </div>
-              </section>
-
-              <section class="samsung-step samsung-step--models" aria-labelledby="samsungModelsTitle" data-samsung-step-panel="models" hidden>
-                <span class="samsung-step__eyebrow" data-i18n="samsung_step_model">Schritt 2</span>
-                <h3 id="samsungModelsTitle" data-i18n="samsung_model_title">Modell wählen</h3>
-                <label class="samsung-search">
-                  <span class="sr-only" data-i18n="samsung_model_search_label">Modell suchen</span>
-                  <input type="search" data-samsung-model-search placeholder="Modell suchen" autocomplete="off">
-                </label>
-                <div class="samsung-model-grid" data-samsung-models></div>
-              </section>
-
-              <section class="samsung-step samsung-step--repairs" aria-labelledby="samsungRepairTitle" data-samsung-step-panel="repairs" hidden>
-                <span class="samsung-step__eyebrow" data-i18n="samsung_step_repair">Schritt 3</span>
-                <h3 id="samsungRepairTitle" data-i18n="samsung_repair_title">Schadensart wählen</h3>
-                <p data-i18n="samsung_repair_hint">Wenn du unsicher bist, wähle Diagnose oder Unbekannt.</p>
-                <div class="samsung-card-grid samsung-card-grid--repairs" data-samsung-repairs></div>
-              </section>
-
-              <section class="samsung-step samsung-step--other" aria-labelledby="samsungOtherTitle" hidden>
-                <h3 id="samsungOtherTitle" data-i18n="samsung_other_title">Andere Geräte</h3>
-                <p data-i18n="samsung_other_hint">Für Tablet, Watch und Laptop bitte Problem kurz beschreiben, damit wir den Preis ermitteln können.</p>
-                <div class="samsung-card-grid samsung-card-grid--devices" data-samsung-other-devices></div>
-              </section>
-            </div>
-
-            <section class="samsung-step samsung-step--summary" aria-labelledby="samsungSummaryTitle" data-samsung-step-panel="summary" hidden>
-            <aside class="samsung-summary" aria-live="polite">
-              <div class="samsung-summary__visual">
-                <img src="assets/samsung/series/galaxy-s.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" role="presentation" aria-hidden="true" data-samsung-summary-image>
-              </div>
-              <div class="samsung-summary__content">
-                <span class="samsung-summary__eyebrow" data-i18n="samsung_summary_title">Reparaturübersicht</span>
-                <h3 id="samsungSummaryTitle" data-i18n="samsung_summary_title">Reparaturuebersicht</h3>
-                <dl class="samsung-summary__list">
-                  <div>
-                    <dt data-i18n="samsung_summary_device">Gerät</dt>
-                    <dd data-samsung-summary-device>Handy</dd>
-                  </div>
-                  <div>
-                    <dt data-i18n="samsung_summary_series">Serie</dt>
-                    <dd data-samsung-summary-series>Galaxy S</dd>
-                  </div>
-                  <div>
-                    <dt data-i18n="samsung_summary_model">Modell</dt>
-                    <dd data-samsung-summary-model>Galaxy S24</dd>
-                  </div>
-                  <div>
-                    <dt data-i18n="samsung_summary_damage">Schaden</dt>
-                    <dd data-samsung-summary-repair>Display</dd>
-                  </div>
-                </dl>
-                <div class="samsung-summary__price-block">
-                  <span data-i18n="samsung_summary_price_label">Reparaturpreis</span>
-                  <strong data-samsung-summary-price>Einfach fragen</strong>
-                </div>
-                <p data-samsung-summary-note data-i18n="samsung_summary_note">Richtpreise inkl. Einbau. Verfügbarkeit und Endpreis bestätigen wir vor dem Auftrag per WhatsApp.</p>
-                <a class="btn btn--wa samsung-summary__cta" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" data-samsung-cta data-i18n="samsung_summary_cta">Jetzt per WhatsApp anfragen</a>
-              </div>
-            </aside>
-            </section>
-              <footer class="samsung-modal__footer">
-                <button class="btn btn--ghost samsung-modal__nav" type="button" data-samsung-back data-i18n="samsung_back">Zurueck</button>
-                <button class="btn btn--ghost samsung-modal__nav" type="button" data-samsung-modal-close data-i18n="samsung_close">Schliessen</button>
-                <button class="btn btn--wa samsung-modal__nav samsung-modal__next" type="button" data-samsung-next data-i18n="samsung_next">Weiter</button>
-              </footer>
-            </div>
-          </div>
-        </div>
-
-        <p class="price-selector-note" data-i18n="price_selector_note">Listenpreise inkl. Einbau. Zusätzliche Schäden und die gewählte Teilequalität können den Endpreis verändern; bestätigt wird vor dem Auftrag.</p>
-        <div class="price-future-strip" aria-label="Weitere Apple Geräte" data-i18n-aria-label="price_aria_other_apple">
-          <span class="price-future-strip__item">
-            <span class="price-future-strip__icon" aria-hidden="true"><img src="assets/iphone-icons/iphone-device.svg" alt="" width="40" height="40" loading="lazy" decoding="async" aria-hidden="true"></span>
-            <span data-i18n="price_future_iphone">iPhone Reparaturen</span>
-          </span>
-          <span class="price-future-strip__item">
-            <span class="price-future-strip__icon" aria-hidden="true"><img src="assets/iphone-icons/apple-watch.svg" alt="" width="40" height="40" loading="lazy" decoding="async" aria-hidden="true"></span>
-            <span data-i18n="price_future_watch">Apple Watch auf Anfrage</span>
-          </span>
-          <span class="price-future-strip__item">
-            <span class="price-future-strip__icon" aria-hidden="true"><img src="assets/iphone-icons/macbook.svg" alt="" width="40" height="40" loading="lazy" decoding="async" aria-hidden="true"></span>
-            <span data-i18n="price_future_macbook">MacBook auf Anfrage</span>
-          </span>
-        </div>
+  <main id="catalog">
+    <section class="intro wrap" aria-labelledby="page-title">
+      <div><p class="eyebrow">REPARATUR STATT NEUKAUF</p><h1 id="page-title">Reparaturpreise</h1><p class="subtitle">Passende Teile. Klare Auswahl. Preis inklusive Einbau.</p></div>
+      <a class="text-link" href="/prices-legacy.html">Bisheriger Preisfinder</a>
+    </section>
+    <section class="selector-band" aria-label="Gerät auswählen">
+      <div class="wrap selectors">
+        <label>Marke<select id="brand" disabled></select></label>
+        <label>Modell suchen<input type="search" id="model-search" placeholder="z. B. iPhone 16 Pro" autocomplete="off" disabled></label>
+        <label class="model-select">Modell<select id="model" disabled></select></label>
       </div>
     </section>
-
-    <footer class="footer">
-      <div class="container footer__inner">
-        <div><strong>Handy Notdienst</strong><div class="muted">Singen</div></div>
-        <div class="footer__links">
-          <a href="impressum.html" data-i18n="footer_impressum">Impressum</a>
-          <a href="datenschutz.html" data-i18n="footer_privacy">Datenschutz</a>
-          <a href="versandbedingungen.html" data-i18n="footer_shipping_terms">Versandbedingungen</a>
-        </div>
-      </div>
-    </footer>
+    <div class="wrap">
+      <p id="status" role="status" class="status"><span class="spinner" aria-hidden="true"></span> Katalog wird geladen</p>
+      <section id="device" class="device" hidden aria-labelledby="device-title">
+        <img id="device-image" alt="" width="116" height="136" hidden>
+        <div><p id="device-brand" class="eyebrow"></p><h2 id="device-title"></h2><p class="availability">Teileverfügbarkeit je Variante · Bestätigung vor Auftrag</p></div>
+      </section>
+      <nav id="categories" class="categories" aria-label="Reparaturkategorie"></nav>
+      <div id="repairs"></div>
+      <p id="error" class="error" hidden>Der Katalog konnte nicht geladen werden. <button id="retry" type="button">Erneut versuchen</button></p>
+    </div>
+    <section class="service-band"><div class="wrap service-notes">
+      <div><h2>Erst abstimmen, dann reparieren.</h2><p>Keine Reparatur ohne deine Freigabe. Teilevariante, Verfügbarkeit und Endpreis bestätigen wir vor dem Auftrag.</p></div>
+      <div><h3>Übergabe oder Versand</h3><p>Lokale Übergabe nach Vereinbarung. Anfahrt separat. Beim Versand zahlst du den Hinversand; den getrackten Rückversand übernehmen wir.</p></div>
+    </div></section>
   </main>
-
-  <a class="float-wa" href="https://wa.me/4915222416438" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><span class="sr-only">WhatsApp</span></a>
-  <script src="assets/i18n/prices.js" defer></script>
-  <script src="assets/i18n/content-audit.js" defer></script>
+  <footer class="wrap footer"><span>Handy Notdienst · Singen</span><nav aria-label="Weitere Seiten"><a href="/prices-legacy.html">Bisheriger Preisfinder</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/versandbedingungen.html">Versandbedingungen</a></nav></footer>
+  <dialog id="request-dialog" aria-labelledby="request-title">
+    <form method="dialog"><button class="close" aria-label="Dialog schließen" title="Schließen">×</button></form>
+    <p class="eyebrow">DEINE REPARATURANFRAGE</p><h2 id="request-title"></h2>
+    <p id="request-option"></p><p id="request-price" class="request-price"></p><p id="request-price-basis"></p><p id="request-availability"></p>
+    <fieldset><legend>Übergabe</legend><label><input type="radio" name="delivery" value="local" checked> In Singen</label><label><input type="radio" name="delivery" value="shipping"> Per Versand</label></fieldset>
+    <p id="delivery-note"></p><p>Verfügbarkeit und genaue Ausführung werden vor Auftrag bestätigt.</p>
+    <a id="request-link" class="action" target="_blank" rel="noopener noreferrer">Per WhatsApp anfragen</a>
+  </dialog>
+  <noscript><p class="wrap">Bitte JavaScript für den Reparaturkatalog aktivieren. <a href="https://wa.me/4915222416438">Reparatur per WhatsApp anfragen</a></p></noscript>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": "https://handy-notdienst-singen.de/prices.html#repair-service",
-    "name": "iPhone und Samsung Reparaturpreise",
-    "serviceType": "Smartphone repair",
-    "provider": {
-      "@type": "LocalBusiness",
-      "@id": "https://handy-notdienst-singen.de/#business",
-      "name": "Handy Notdienst Singen",
-      "telephone": "+4915222416438",
-      "url": "https://handy-notdienst-singen.de/"
-    },
-    "areaServed": "Singen",
-    "url": "https://handy-notdienst-singen.de/prices.html"
-  }
+  {"@context":"https://schema.org","@type":"Service","@id":"https://handy-notdienst-singen.de/prices.html#repair-service","name":"iPhone und Samsung Reparaturpreise","serviceType":"Smartphone repair","provider":{"@type":"LocalBusiness","@id":"https://handy-notdienst-singen.de/#business","name":"Handy Notdienst Singen","telephone":"+4915222416438","url":"https://handy-notdienst-singen.de/"},"areaServed":"Singen","url":"https://handy-notdienst-singen.de/prices.html"}
   </script>
-  <script src="app.js" defer></script>
 </body>
 </html>
