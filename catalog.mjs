@@ -40,19 +40,72 @@ if (typeof document !== 'undefined') {
   let catalog, selectedModel, selectedCategory = 'display', activeRequest;
   const query = new URLSearchParams(location.search);
   const brand = $('#brand'), models = $('#model'), search = $('#model-search');
-  $('#dark-mode').addEventListener('change', e => {document.documentElement.dataset.theme=e.target.checked?'dark':'light';});
-  if(query.get('theme')==='dark') {$('#dark-mode').checked=true;document.documentElement.dataset.theme='dark';}
+  const themeButton = $('#theme-toggle');
+  const systemTheme = matchMedia('(prefers-color-scheme: dark)');
+  let explicitTheme = ['dark','light'].includes(query.get('theme'));
+  try { explicitTheme ||= ['dark','light'].includes(localStorage.getItem('hn_theme')); } catch {}
+  function syncTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    const label = theme === 'dark' ? 'Zum hellen Theme wechseln' : 'Zum dunklen Theme wechseln';
+    themeButton.setAttribute('aria-label', label);
+    themeButton.title = label;
+  }
+  syncTheme(document.documentElement.dataset.theme || (systemTheme.matches ? 'dark' : 'light'));
+  themeButton.addEventListener('click', () => {
+    const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    explicitTheme = true;
+    syncTheme(theme);
+    try { localStorage.setItem('hn_theme', theme); } catch {}
+    const next = new URLSearchParams(location.search);
+    if (next.has('theme')) next.set('theme', theme);
+    history.replaceState(null, '', `${location.pathname}${next.size ? '?' + next : ''}${location.hash}`);
+  });
+  systemTheme.addEventListener('change', event => { if (!explicitTheme) syncTheme(event.matches ? 'dark' : 'light'); });
+  window.addEventListener('storage', event => {
+    if (event.key !== 'hn_theme' || new URLSearchParams(location.search).has('theme')) return;
+    explicitTheme = ['dark','light'].includes(event.newValue);
+    syncTheme(explicitTheme ? event.newValue : systemTheme.matches ? 'dark' : 'light');
+  });
+  const menuButton = $('#menu-toggle'), siteNav = $('#site-nav');
+  const compactHeader = matchMedia('(max-width: 760px)');
+  function setMenu(open, restoreFocus = false) {
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    menuButton.title = open ? 'Menü schließen' : 'Menü öffnen';
+    siteNav.classList.toggle('is-open', open);
+    if (restoreFocus) menuButton.focus();
+  }
+  menuButton.addEventListener('click', () => {
+    const open = menuButton.getAttribute('aria-expanded') !== 'true';
+    setMenu(open);
+    if (open) siteNav.querySelector('a').focus();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') { setMenu(false, true); event.preventDefault(); }
+  });
+  document.addEventListener('click', event => {
+    if (!event.target.closest('.header-inner')) setMenu(false);
+  });
+  siteNav.addEventListener('click', event => { if (event.target.closest('a')) setMenu(false); });
+  compactHeader.addEventListener('change', () => {
+    const navFocused = siteNav.contains(document.activeElement);
+    setMenu(false, compactHeader.matches && navFocused);
+    revealSelectedCategory($('#categories'));
+  });
+  window.addEventListener('resize', () => revealSelectedCategory($('#categories')));
   function announce(text) {$('#status').textContent=text;}
-  function setQuery() {const q=new URLSearchParams({model:selectedModel.id,repair:selectedCategory});if($('#dark-mode').checked)q.set('theme','dark');history.replaceState(null,'',`?${q}`);}
+  function setQuery() {const q=new URLSearchParams({model:selectedModel.id,repair:selectedCategory});if(new URLSearchParams(location.search).has('theme'))q.set('theme',document.documentElement.dataset.theme);history.replaceState(null,'',`?${q}`);}
   function optionCard(option, category) {
     option=customerOption(option);
     const card=el('article','option-card');card.dataset.optionId=option.id;card.dataset.status=option.priceStatus;card.dataset.availability=option.availabilityStatus||'UNKNOWN';
-    card.append(el('span','tier',option.tier),el('h4','',option.label),el('p','description',option.description));
-    if(option.label.startsWith('Originalteil – OEM Pull Grade A'))card.append(el('p','used-part','Gebrauchtes Teil, nicht fabrikneu.'));
+    card.append(el('span','tier',option.tier),el('h4','',option.label));
     if(option.recommended)card.append(el('span','recommended','Empfehlung'));
     card.append(el('div',`amount${option.price===null?' inquiry':''}`,displayPrice(option)));
     if(option.price!==null)card.append(el('p','included',option.priceBasis));
     card.append(el('p','part-availability',option.availability));
+    card.append(el('p','description',option.description));
+    if(option.label.startsWith('Originalteil – OEM Pull Grade A'))card.append(el('p','used-part','Gebrauchtes Teil, nicht fabrikneu.'));
     const action=el('button','action',option.price===null?'Preis anfragen':'Reparatur anfragen');action.type='button';
     action.setAttribute('aria-label',`${category.name}: ${option.label}, ${displayPrice(option)}, anfragen`);
     action.addEventListener('click',()=>openRequest(category,option));card.append(action);
