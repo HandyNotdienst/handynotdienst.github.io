@@ -1,6 +1,6 @@
 const PRICING_VERSION = "HN-PRICING-V1-2026-09-25";
-const UI_VERSION = "HN-CATALOG-UI-V2-2026-09-30";
-const CACHE = "hn-v76-catalog-ui-v2-20260930";
+const UI_VERSION = "HN-CATALOG-UI-V3-2026-09-30";
+const CACHE = "hn-v77-catalog-ui-v3-20260930";
 const ASSETS = [
   "./",
   "./index.html",
@@ -9,6 +9,7 @@ const ASSETS = [
   `./catalog.mjs?v=${UI_VERSION}`,
   `./catalog.css?v=${UI_VERSION}`,
   `./catalog.json?v=${PRICING_VERSION}`,
+  "./assets/i18n/catalog.js",
   "./assets/catalog-icons/menu.svg",
   "./assets/catalog-icons/x.svg",
   "./assets/catalog-icons/sun.svg",
