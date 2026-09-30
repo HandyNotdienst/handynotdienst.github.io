@@ -1,13 +1,19 @@
 const PRICING_VERSION = "HN-PRICING-V1-2026-09-25";
-const CACHE = "hn-v75-pricing-v1-20260926";
+const UI_VERSION = "HN-CATALOG-UI-V2-2026-09-30";
+const CACHE = "hn-v76-catalog-ui-v2-20260930";
 const ASSETS = [
   "./",
   "./index.html",
   "./prices.html",
   "./prices-legacy.html",
-  `./catalog.mjs?v=${PRICING_VERSION}`,
-  `./catalog.css?v=${PRICING_VERSION}`,
+  `./catalog.mjs?v=${UI_VERSION}`,
+  `./catalog.css?v=${UI_VERSION}`,
   `./catalog.json?v=${PRICING_VERSION}`,
+  "./assets/catalog-icons/menu.svg",
+  "./assets/catalog-icons/x.svg",
+  "./assets/catalog-icons/sun.svg",
+  "./assets/catalog-icons/moon.svg",
+  "./theme.js",
   "./versand-reparatur.html",
   "./liquid-glass-demo.html",
   "./versandbedingungen.html",
@@ -249,7 +255,8 @@ self.addEventListener("install", (e) => {
     const catalog = await cache.match(`./catalog.json?v=${PRICING_VERSION}`);
     if ((await catalog.json()).pricingVersion !== PRICING_VERSION) throw new Error("Catalog release mismatch");
     const page = await cache.match("./prices.html");
-    if (!(await page.text()).includes(`content="${PRICING_VERSION}"`)) throw new Error("Page release mismatch");
+    const pageText = await page.text();
+    if (!pageText.includes(`content="${PRICING_VERSION}"`) || !pageText.includes(`content="${UI_VERSION}"`)) throw new Error("Page release mismatch");
     await self.skipWaiting();
   })());
 });
