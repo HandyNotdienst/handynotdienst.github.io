@@ -1,6 +1,6 @@
 const PRICING_VERSION = "HN-PRICING-V1-2026-09-25";
-const UI_VERSION = "HN-CATALOG-UI-V3-2026-09-30";
-const CACHE = "hn-v77-catalog-ui-v3-20260930";
+const UI_VERSION = "HN-GUIDED-PRICES-V1-2026-10-01";
+const CACHE = "hn-v78-guided-prices-20261001-r3";
 const ASSETS = [
   "./",
   "./index.html",
@@ -9,8 +9,13 @@ const ASSETS = [
   `./catalog.mjs?v=${UI_VERSION}`,
   `./catalog.css?v=${UI_VERSION}`,
   `./catalog.json?v=${PRICING_VERSION}`,
-  "./assets/i18n/catalog.js",
+  `./assets/i18n/catalog.js?v=${UI_VERSION}`,
+  `./assets/i18n/guided.js?v=${UI_VERSION}`,
+  `./catalog-data.mjs?v=${UI_VERSION}`,
+  `./catalog-state.mjs?v=${UI_VERSION}`,
+  `./catalog-guided.mjs?v=${UI_VERSION}`,
   "./assets/catalog-icons/menu.svg",
+  "./assets/catalog-icons/pencil.svg",
   "./assets/catalog-icons/x.svg",
   "./assets/catalog-icons/sun.svg",
   "./assets/catalog-icons/moon.svg",
@@ -272,6 +277,7 @@ self.addEventListener("activate", (e) => {
 
 self.addEventListener("fetch", (e) => {
   const url = new URL(e.request.url);
+  if (["localhost", "127.0.0.1", "[::1]"].includes(url.hostname)) return;
   if (e.request.method !== "GET" || url.origin !== self.location.origin) return;
   e.respondWith((async () => {
     const cache = await caches.open(CACHE);
