@@ -35,7 +35,7 @@
   let initialized = false;
   const listeners = new Set();
   const normalize = value => { const raw = String(value || '').toLowerCase().replace('_', '-'); const code = aliases[raw] || raw.split('-')[0]; return locales[code] ? code : ''; };
-  const detect = () => { let stored = ''; try { stored = localStorage.getItem('hn_lang') || ''; } catch {} const requested = typeof location !== 'undefined' ? new URLSearchParams(location.search).get('lang') : ''; return normalize(stored) || normalize(requested) || (navigator.languages || [navigator.language]).map(normalize).find(Boolean) || 'de'; };
+  const detect = () => { let stored = ''; try { stored = localStorage.getItem('hn_lang') || ''; } catch {} const requested = typeof location !== 'undefined' ? new URLSearchParams(location.search).get('lang') : ''; return normalize(requested) || normalize(stored) || (navigator.languages || [navigator.language]).map(normalize).find(Boolean) || 'de'; };
   const t = (key, vars = {}) => { const value = locales[current]?.[key] || locales.de[key] || key; return value.replace(/\{(\w+)\}/g, (_, name) => vars[name] ?? ''); };
   const translateText = text => String(text || '').replaceAll('Auf Bestellung', t('availabilityAvailable')).replaceAll('Vorbestellung – Lieferzeit bitte anfragen', t('availabilityPreorder')).replaceAll('Derzeit nicht verfügbar', t('availabilityUnavailable')).replaceAll('Verfügbarkeit wird vor Auftrag bestätigt', t('availabilityUnknown')).replaceAll('Gebrauchtes Teil, nicht fabrikneu.', t('usedPart'));
   const translateCategory = category => t(categoryKeys[category.id] || '', {}) === (categoryKeys[category.id] || '') ? translateText(category.name) : t(categoryKeys[category.id]);
@@ -52,6 +52,7 @@
   }
   function setLanguage(value, source = 'manual') { const next = normalize(value) || 'de'; current = next; try { localStorage.setItem('hn_lang', next); } catch {} applyStatic(); listeners.forEach(listener => listener(next, source)); window.dispatchEvent(new CustomEvent('hn:language-change', { detail: { lang: next, source } })); }
   function init() { if (initialized) { applyStatic(); return; } initialized = true; current = detect(); const picker = document.querySelector('#language-picker'); if (picker) { picker.replaceChildren(...languages.map(item => { const option = document.createElement('option'); option.value = item.code; option.textContent = `${item.code.toUpperCase()} · ${item.label}`; return option; })); picker.addEventListener('change', () => setLanguage(picker.value)); } applyStatic(); }
-  window.HN_CATALOG_I18N = { languages, t, getLang: () => current || 'de', setLanguage, init, onChange: listener => { listeners.add(listener); return () => listeners.delete(listener); }, translateText, translateCategory, localizeOption, formatPrice, statusKeys };
+  function addTranslations(dictionary) { for (const [lang, messages] of Object.entries(dictionary)) { if (locales[lang]) Object.assign(locales[lang], messages); } if (initialized) applyStatic(); }
+  window.HN_CATALOG_I18N = { languages, t, getLang: () => current || 'de', setLanguage, init, addTranslations, onChange: listener => { listeners.add(listener); return () => listeners.delete(listener); }, translateText, translateCategory, localizeOption, formatPrice, statusKeys };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
 })();
