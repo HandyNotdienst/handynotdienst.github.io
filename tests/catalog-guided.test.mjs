@@ -14,8 +14,8 @@ const option = repair.options.find(o => o.price === 199);
 const link = `?model=${model.id}&repair=${repair.id}&option=${option.id}`;
 const allOptions = catalog.models.flatMap(m => m.categories.flatMap(c => c.options));
 
-test('catalog is byte-for-byte unchanged from the accepted baseline', () => {
-  assert.equal(createHash('sha256').update(raw).digest('hex'), '2eb72a9e8771584e6af23f98c5cfe2bf6ecea9c2f045d628eb37493fb42d307e');
+test('catalog matches the accepted Git baseline independently of checkout line endings', () => {
+  assert.equal(createHash('sha256').update(raw.replace(/\r\n/g, '\n')).digest('hex'), '1326acb85c45666b9c44c76ffa3f6c94596ea323af1cae1df25685779feeb21a');
   assert.equal(catalog.pricingVersion, PRICING_VERSION);
   assert.equal(catalog.models.length, 305);
   assert.equal(new Set(catalog.models.map(m => m.brand)).size, 9);
