@@ -6,10 +6,10 @@
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="pricing-version" content="HN-PRICING-V1-2026-09-25">
-  <meta name="catalog-ui-version" content="HN-GUIDED-PRICES-V1-2026-10-01">
+  <meta name="catalog-ui-version" content="HN-GUIDED-PRICES-V2-2026-10-01">
   <script src="/theme.js"></script>
-  <script defer src="/assets/i18n/catalog.js?v=HN-GUIDED-PRICES-V1-2026-10-01"></script>
-  <script defer src="/assets/i18n/guided.js?v=HN-GUIDED-PRICES-V1-2026-10-01"></script>
+  <script defer src="/assets/i18n/catalog.js?v=HN-GUIDED-PRICES-V2-2026-10-01"></script>
+  <script defer src="/assets/i18n/guided.js?v=HN-GUIDED-PRICES-V2-2026-10-01"></script>
   <script>
     (() => {
       const theme = new URLSearchParams(location.search).get('theme');
@@ -31,8 +31,8 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/assets/logo.png" type="image/png">
-  <link rel="stylesheet" href="/catalog.css?v=HN-GUIDED-PRICES-V1-2026-10-01">
-  <script type="module" src="/catalog.mjs?v=HN-GUIDED-PRICES-V1-2026-10-01"></script>
+  <link rel="stylesheet" href="/catalog.css?v=HN-GUIDED-PRICES-V2-2026-10-01">
+  <script type="module" src="/catalog.mjs?v=HN-GUIDED-PRICES-V2-2026-10-01"></script>
 </head>
 <body>
   <a class="skip" href="#catalog" data-i18n="skip">Zum Reparaturkatalog</a>
@@ -79,11 +79,17 @@
           <aside id="device-context" class="device-context" aria-label="Dein Gerät" data-i18n-aria-label="yourDevice" hidden></aside>
           <div class="step-content">
             <section data-panel="1" aria-labelledby="page-title">
-              <div class="device-controls">
-                <label for="brand"><span data-i18n="brand">Marke</span><select id="brand" disabled><option value="" data-i18n="allBrands">Alle Marken</option></select></label>
-                <label for="model-search"><span data-i18n="searchDevice">Gerät suchen</span><input id="model-search" type="search" autocomplete="off" placeholder="z. B. iPhone 16 Pro" data-i18n-placeholder="modelPlaceholder" aria-describedby="search-hint" disabled></label>
+              <div class="brand-picker" aria-labelledby="brand-picker-title">
+                <div class="section-heading"><h2 id="brand-picker-title" data-i18n="chooseBrand">Hersteller wählen</h2><button type="button" id="brand-reset" class="text-button" data-action="brand-reset" hidden data-i18n="allBrands">Alle Marken</button></div>
+                <div id="brand-tiles" class="brand-tiles" role="group" aria-labelledby="brand-picker-title" aria-describedby="brand-picker-hint"></div>
+                <p id="brand-picker-hint" class="muted" data-i18n="brandPickerHint">Wähle zuerst eine Marke oder suche direkt nach einem Modell.</p>
               </div>
-              <div class="search-help"><p id="search-hint" class="muted" data-i18n="searchHint">Suche nach Marke oder genauer Modellbezeichnung.</p><a class="text-link" href="/iphone-modell-finder.html" data-i18n="modelHelp">Modell nicht sicher?</a></div>
+              <div class="device-controls">
+                <div class="search-heading"><label for="model-search" data-i18n="searchDevice">Gerät suchen</label><a class="text-link" href="/iphone-modell-finder.html" data-i18n="modelHelp">Modell nicht sicher?</a></div>
+                <input id="model-search" type="search" autocomplete="off" placeholder="z. B. iPhone 16 Pro" data-i18n-placeholder="modelPlaceholder" aria-describedby="search-hint" disabled>
+              </div>
+              <p id="search-hint" class="sr-only" data-i18n="searchHint">Suche nach Marke oder genauer Modellbezeichnung.</p>
+              <h2 class="sr-only" data-i18n="searchDevice">Gerät suchen</h2>
               <p id="model-count" class="muted"></p><ul id="model-results" class="model-results"></ul>
               <p id="no-model" class="empty-state" data-i18n="noModel" hidden>Kein passendes Modell gefunden.</p>
             </section>

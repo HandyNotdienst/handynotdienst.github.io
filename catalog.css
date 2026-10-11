@@ -98,7 +98,7 @@ button:disabled { cursor: default; opacity: .55; }
 .page-intro h1:focus { outline: none; }
 .page-intro p { color: var(--muted); font-size: 1.125rem; margin: 0; }
 .wizard-grid { display: grid; grid-template-columns: 285px minmax(0,1fr); gap: 0 32px; align-items: start; }
-.wizard-grid.without-device { grid-template-columns: minmax(0,1fr); max-width: 960px; }
+.wizard-grid.without-device { grid-template-columns: minmax(0,1fr); }
 .device-context { padding: 24px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); }
 .device-photo { display: block; width: 100%; max-width: 210px; height: 230px; object-fit: contain; margin: 0 auto 20px; }
 .context-info h2 { font-size: 1.25rem; line-height: 1.3; margin: 5px 0; overflow-wrap: anywhere; }
@@ -116,14 +116,49 @@ button:disabled { cursor: default; opacity: .55; }
 .text-button, .text-link { color: var(--blue); font-size: .9375rem; font-weight: 650; display: inline-flex; align-items: center; min-height: 44px; padding: 8px 0; border: 0; background: transparent; text-decoration: none; text-align: start; }
 .text-button:hover, .text-link:hover { text-decoration: underline; }
 .step-content, .step-content section { min-width: 0; }
-.device-controls { display: grid; grid-template-columns: minmax(150px,.5fr) minmax(0,1fr); gap: 20px; }
+.device-controls { display: grid; grid-template-columns: minmax(0,1fr); gap: 4px; border-top: 1px solid var(--line); padding-top: 12px; }
+.search-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 12px; }
+.search-heading .text-link { font-size: .8125rem; }
 .device-controls label { display: grid; gap: 8px; font-size: .875rem; font-weight: 650; }
 .device-controls input, .device-controls select { border: 1px solid var(--input-line); padding: 12px 14px; border-radius: 8px; background: var(--surface); color: var(--ink); min-height: 50px; min-width: 0; width: 100%; font-size: 1rem; }
 input::placeholder { color: var(--muted); opacity: 1; }
+.brand-picker { margin-bottom: 22px; }
+.section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+.section-heading h2 { margin: 0; font-size: 1.0625rem; line-height: 1.3; }
+.section-heading .text-button { min-height: 36px; padding-block: 4px; font-size: .8125rem; }
+.brand-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.brand-tile { min-width: 0; min-height: 122px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 12px 10px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); text-align: center; }
+.brand-tile:hover, .brand-tile[aria-pressed="true"] { background: var(--blue-soft); border-color: var(--blue); }
+.brand-tile[aria-pressed="true"] { box-shadow: inset 0 0 0 1px var(--blue); }
+.brand-logo-slot { width: min(100%, 220px); height: 64px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 4px; }
+.brand-tile-logo { display: block; width: 100%; height: 100%; object-fit: contain; }
+.brand-tile[data-value="Poco"] .brand-tile-logo, .brand-tile[data-value="Honor"] .brand-tile-logo, .brand-tile[data-value="Sony"] .brand-tile-logo { transform: scale(1.5); }
+.logo-needs-light .brand-tile-logo { background: #f4f6f8; padding: 6px 10px; border-radius: 4px; }
+.logo-needs-dark .brand-logo-slot { background: #1b2228; }
+.logo-needs-dark .brand-tile-logo { padding: 4px; }
+[data-theme="dark"] .logo-monochrome .brand-tile-logo { filter: invert(1); }
+.model-result-icon[src$="/sony.png"], .model-group-icon[src$="/sony.png"],
+.model-result-icon[src$="/huawei.png"], .model-group-icon[src$="/huawei.png"],
+.model-result-icon[src$="/redmi.png"], .model-group-icon[src$="/redmi.png"] { background: #f4f6f8; border-radius: 3px; padding: 3px; }
+.model-result-icon[src$="/google-pixel.png"], .model-group-icon[src$="/google-pixel.png"],
+.model-result-icon[src$="/poco.png"], .model-group-icon[src$="/poco.png"] { background: #1b2228; border-radius: 3px; padding: 3px; }
+[data-theme="dark"] .model-result-icon[src$="/iphone-device.svg"], [data-theme="dark"] .model-group-icon[src$="/iphone-device.svg"],
+[data-theme="dark"] .model-result-icon[src$="/apple-watch.svg"], [data-theme="dark"] .model-group-icon[src$="/apple-watch.svg"] { filter: invert(1); }
+.brand-tile-name { font-size: .875rem; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; }
+.brand-picker > .muted { font-size: .8125rem; margin: 10px 0 0; }
 .search-help { display: flex; align-items: baseline; gap: 20px; justify-content: space-between; margin-top: 8px; }
 .search-help p, #model-count { font-size: .875rem; margin-block: 10px; }
 .model-results { list-style: none; margin: 0; padding: 0; max-height: 390px; overflow-y: auto; scrollbar-gutter: stable; border-block: 1px solid var(--line); }
-.model-result { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; width: 100%; min-height: 58px; text-align: start; background: transparent; color: var(--ink); border: 0; border-bottom: 1px solid var(--line); padding: 13px 16px; font-weight: 650; }
+.model-group { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
+.model-group:last-child { border-bottom: 0; }
+.model-group-title { display: flex; align-items: center; gap: 10px; min-height: 48px; margin: 0; padding: 8px 16px; color: var(--muted); background: var(--tint); font-size: .8125rem; font-weight: 750; letter-spacing: .01em; }
+.model-group-icon { display: block; width: 30px; height: 38px; object-fit: contain; flex: none; }
+.model-group-list { list-style: none; margin: 0; padding: 0; }
+.model-result { display: grid; grid-template-columns: 40px minmax(0,1fr) auto; align-items: center; gap: 12px; width: 100%; min-height: 66px; text-align: start; background: transparent; color: var(--ink); border: 0; border-bottom: 1px solid var(--line); padding: 7px 16px; font-weight: 650; }
+.model-group-list li:last-child .model-result { border-bottom: 0; }
+.model-result-icon { display: block; width: 40px; height: 52px; object-fit: contain; }
+.model-result .selected-label { grid-column: 2 / -1; margin-top: -6px; }
+.model-name { min-width: 0; overflow-wrap: anywhere; }
 .model-brand { font-size: .8125rem; margin-inline-start: auto; font-weight: 400; }
 .model-result:hover, .repair-choice:hover { background: var(--blue-soft); }
 .model-result:focus-visible { outline-offset: -3px; }
@@ -262,6 +297,16 @@ summary:hover { color: var(--blue); }
   .context-repair p { display: none; }
   .context-repair strong { font-size: .8125rem; }
   .context-repair .text-button { font-size: .8125rem; }
+  .brand-picker { margin-bottom: 18px; }
+  .brand-tiles { gap: 8px; }
+  .brand-tile { min-height: 96px; padding: 8px 6px; gap: 5px; }
+  .brand-logo-slot { height: 42px; }
+  .brand-tile[data-value="Poco"] .brand-tile-logo, .brand-tile[data-value="Honor"] .brand-tile-logo, .brand-tile[data-value="Sony"] .brand-tile-logo { transform: scale(1.15); }
+  .brand-tile-name { font-size: .75rem; }
+  .section-heading h2 { font-size: 1rem; }
+  .model-group-title { min-height: 44px; padding-inline: 12px; }
+  .model-result { grid-template-columns: 34px minmax(0,1fr) auto; min-height: 60px; gap: 10px; padding-inline: 12px; }
+  .model-result-icon { width: 34px; height: 46px; }
   .variant-choice { grid-template-columns: 20px minmax(0,1fr) minmax(80px,auto); gap: 10px; padding: 16px 14px 0; }
   .variant input { width: 20px; height: 20px; }
   .variant-title { font-size: 1.0625rem; }
@@ -281,7 +326,7 @@ summary:hover { color: var(--blue); }
   .selection-total { grid-column: 2; grid-row: 1 / 3; flex-direction: column; gap: 0; align-items: end; text-align: end; max-width: 120px; }
   #selection-price { font-size: 1.5rem; }
   .selection-actions p { font-size: .75rem; }
-  .device-controls { grid-template-columns: 1fr; gap: 14px; }
+  .device-controls { grid-template-columns: 1fr; gap: 4px; }
   .search-help { display: block; }
   .model-results { max-height: 350px; }
   .repair-options { grid-template-columns: 1fr; }
@@ -301,6 +346,10 @@ summary:hover { color: var(--blue); }
   .brand-logo { width: 28px; }
   .header-actions .icon-button { width: 40px; padding: 9px; }
   .language-picker { width: 52px; max-width: 52px; }
+  .brand-tiles { gap: 6px; }
+  .brand-tile { min-height: 88px; padding-inline: 4px; }
+  .brand-logo-slot { height: 36px; }
+  .brand-tile-name { font-size: .6875rem; }
 }
 @media(max-width: 340px) {
   .variant-choice { grid-template-columns: 18px minmax(0,1fr); }

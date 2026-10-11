@@ -18,6 +18,24 @@
     if (values.length !== keys.length) throw new Error(`Guided translations mismatch: ${lang}`);
     return [lang, Object.fromEntries(keys.map((key, index) => [key, values[index]]))];
   }));
+  const pickerKeys = ['chooseBrand', 'brandPickerHint', 'brandSelected'];
+  const pickerTranslations = {
+    de: { chooseBrand: 'Hersteller wählen', brandPickerHint: 'Wähle zuerst eine Marke oder suche direkt nach einem Modell.', brandSelected: '{brand} ausgewählt · {count} Modelle gefunden' },
+    uk: { chooseBrand: 'Обери виробника', brandPickerHint: 'Спочатку обери марку або одразу шукай модель.', brandSelected: '{brand} обрано · знайдено моделей: {count}' },
+    en: { chooseBrand: 'Choose a manufacturer', brandPickerHint: 'Choose a brand first or search for a model directly.', brandSelected: '{brand} selected · {count} models found' },
+    ru: { chooseBrand: 'Выберите производителя', brandPickerHint: 'Сначала выберите марку или сразу найдите модель.', brandSelected: '{brand} выбрана · найдено моделей: {count}' },
+    pl: { chooseBrand: 'Wybierz producenta', brandPickerHint: 'Najpierw wybierz markę lub od razu wyszukaj model.', brandSelected: 'Wybrano {brand} · znaleziono modeli: {count}' },
+    it: { chooseBrand: 'Scegli produttore', brandPickerHint: 'Scegli prima una marca o cerca direttamente un modello.', brandSelected: '{brand} selezionato · modelli trovati: {count}' },
+    ar: { chooseBrand: 'اختر الشركة المصنّعة', brandPickerHint: 'اختر العلامة أولاً أو ابحث مباشرة عن الطراز.', brandSelected: 'تم اختيار {brand} · الطرازات الموجودة: {count}' },
+    ku: { chooseBrand: 'Hilbijartina hilberîner', brandPickerHint: 'Pêşî markayê hilbijêre an rasterast modelê bigere.', brandSelected: '{brand} hate hilbijartin · {count} model hatin dîtin' },
+    fr: { chooseBrand: 'Choisir le fabricant', brandPickerHint: 'Choisis d’abord une marque ou cherche directement un modèle.', brandSelected: '{brand} sélectionné · {count} modèles trouvés' },
+    sl: { chooseBrand: 'Izberi proizvajalca', brandPickerHint: 'Najprej izberi znamko ali neposredno poišči model.', brandSelected: 'Izbrano: {brand} · najdenih modelov: {count}' }
+  };
+  keys.push(...pickerKeys);
+  for (const [lang, translations] of Object.entries(pickerTranslations)) Object.assign(dictionary[lang], translations);
+  const otherModels = { de:'Weitere Modelle', uk:'Інші моделі', en:'Other models', ru:'Другие модели', pl:'Inne modele', it:'Altri modelli', ar:'طرازات أخرى', ku:'Modelên din', fr:'Autres modèles', sl:'Drugi modeli' };
+  keys.push('otherModels');
+  for (const [lang, label] of Object.entries(otherModels)) dictionary[lang].otherModels = label;
   const base = window.HN_CATALOG_I18N;
   base.addTranslations(dictionary);
   base.guidedKeys = keys;
