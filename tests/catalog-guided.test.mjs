@@ -1,10 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import vm from 'node:vm';
 import { visibleOptions, customerOption, displayPrice, requestText } from '../catalog-data.mjs';
-import { initialState, transition, stateFromUrl, stateUrl, repairCategories, featuredOptions, filterModels, PRICING_VERSION, UI_VERSION } from '../catalog-state.mjs';
+import { BRAND_DEFINITIONS, modelFamily, modelIcon, familyIcon, sortModels, initialState, transition, stateFromUrl, stateUrl, repairCategories, featuredOptions, filterModels, PRICING_VERSION, UI_VERSION } from '../catalog-state.mjs';
 
 const read = path => readFileSync(new URL(path, import.meta.url), 'utf8');
 const raw = read('../catalog.json'), catalog = JSON.parse(raw);
@@ -63,6 +63,59 @@ test('search handles brand, words, whitespace, no matches and never mutates sele
   assert.equal(filterModels(catalog, '', 'nonexistent model 99999').length, 0);
   assert.equal(filterModels(catalog, '', '').length, 305);
   assert.equal(JSON.stringify(catalog), snapshot);
+});
+test('brand order and families reflect the agreed navigation, with no lost models', () => {
+  assert.deepEqual(BRAND_DEFINITIONS.map(b => b.label), ['Apple','Samsung','Google Pixel','Xiaomi','Redmi','Poco','Honor','Huawei','Sony']);
+  const ordered = filterModels(catalog, '', '');
+  assert.deepEqual([...new Set(ordered.map(m => m.brand))], BRAND_DEFINITIONS.map(b => b.id));
+  assert.equal(new Set(ordered.map(m => m.id)).size, 305);
+  const families = brand => [...new Set(filterModels(catalog,brand,'').map(modelFamily))];
+  assert.deepEqual(families('Apple'), ['iPhone','iPad','Apple Watch']);
+  assert.deepEqual(families('Samsung'), ['Galaxy S','Galaxy A','Galaxy Note','Galaxy M','Galaxy J']);
+  assert.deepEqual(families('Xiaomi'), ['Mi','Xiaomi']);
+  assert.deepEqual(families('Honor'), ['Honor']);
+  const samsung = ['J4','M20','Z Fold7','Note10','A16','S25'].map(name => ({brand:'Samsung',name:`Samsung Galaxy ${name}`}));
+  assert.deepEqual(sortModels(samsung).map(modelFamily), ['Galaxy S','Galaxy A','Galaxy Note','Galaxy Z','Galaxy M','Galaxy J']);
+});
+test('Apple chronology handles suffixes, SE releases, tablet sizes/chips and Watch generations', () => {
+  const names = filterModels(catalog,'Apple','').map(m => m.name);
+  const before = (a,b) => assert(names.indexOf(a) >= 0 && names.indexOf(a) < names.indexOf(b), `${a} before ${b}`);
+  for (const [a,b] of [['iPhone 4','iPhone 4s'],['iPhone 5','iPhone 5c'],['iPhone 6 Plus','iPhone 6s'],['iPhone 6s','iPhone SE (1st generation)'],['iPhone SE (1st generation)','iPhone 7'],['iPhone X','iPhone XS'],['iPhone XS','iPhone XR'],['iPhone 11','iPhone SE (2nd generation)'],['iPhone SE (2nd generation)','iPhone 12'],['iPhone 13 Pro Max','iPhone SE (3rd generation)'],['iPhone SE (3rd generation)','iPhone 14'],['iPhone 16','iPhone 16e'],['iPhone Air','iPhone 17e'],['iPad 2','iPad (3rd generation)'],['iPad Pro (12.9-inch)','iPad Pro (9.7-inch)'],['iPad Air 2','iPad Air (3rd generation)'],['iPad Pro 12.9-inch (6th generation)','iPad Pro 11-inch (M4)'],['iPad mini (A17 Pro)','iPad (A16)'],['iPad Air 11-inch (M3)','iPad Air 11‑inch (M4)'],['Apple Watch Series 5 44 mm','Apple Watch SE 40 mm'],['Apple Watch SE 44 mm','Apple Watch Series 7 41 mm']]) before(a,b);
+  assert.deepEqual(names.filter(n => /^iPhone 16(?: |$)/.test(n)), ['iPhone 16','iPhone 16 Plus','iPhone 16 Pro','iPhone 16 Pro Max']);
+});
+test('Samsung chronology separates yearly A/M cohorts from tiers and keeps same-generation variants stable', () => {
+  const names = filterModels(catalog,'Samsung','').map(m => m.name);
+  const before = (a,b) => assert(names.indexOf(`Samsung Galaxy ${a}`) < names.indexOf(`Samsung Galaxy ${b}`), `${a} before ${b}`);
+  for (const [a,b] of [['S9','S10'],['S10','S20'],['S20','S21'],['S25','S26'],['S24','S24+'],['S24+','S24 Ultra'],['A6','A10'],['A70','A01'],['A51','A02'],['A52','A13'],['A53','A14'],['A54','A15'],['A15','A16'],['Note10','Note20'],['M51','M52 5G'],['M52 5G','M23']]) before(a,b);
+  const rows = [{id:'first',brand:'Samsung',name:'Samsung Galaxy S24'}, {id:'second',brand:'Samsung',name:'Samsung Galaxy S24'}];
+  assert.deepEqual(sortModels(rows).map(m => m.id), ['first','second']);
+});
+test('brand URLs restore filters, reject invalid values, and defer to a selected model', () => {
+  const filtered = stateFromUrl(catalog,'?brand=Samsung&step=4&lang=uk&theme=dark');
+  assert.deepEqual(filtered, {...initialState(),brand:'Samsung'});
+  assert.equal(stateFromUrl(catalog,'?brand=invalid').brand,null);
+  assert.equal(stateFromUrl(catalog,`?brand=Samsung&model=${model.id}`).brand,'Apple');
+  const url = new URL(stateUrl(filtered,'https://example.test/prices.html?lang=uk&theme=dark#price-configurator'),'https://example.test');
+  assert.equal(url.searchParams.get('brand'),'Samsung');
+  assert.deepEqual(stateFromUrl(catalog,url.search),filtered);
+  const chosen = transition(catalog,filtered,{type:'model',id:model.id});
+  assert.equal(chosen.brand,'Apple'); assert.equal(chosen.step,2);
+  assert(!stateUrl(chosen,url.href).includes('brand='));
+  const full = stateFromUrl(catalog,link);
+  assert.equal(transition(catalog,full,{type:'brand',brand:'Apple'}).option,option.id);
+  assert.deepEqual(transition(catalog,full,{type:'brand',brand:'Samsung'}),{...initialState(),brand:'Samsung'});
+  assert.deepEqual(transition(catalog,full,{type:'brand',brand:null}),initialState());
+});
+test('icons use exact photos, family assets or manufacturer logos; every chosen asset exists', () => {
+  assert.equal(modelIcon({brand:'Apple',name:'iPhone 4'}),'/assets/iphone-icons/iphone-device.svg');
+  assert.equal(modelIcon({brand:'Apple',name:'Apple Watch SE 40 mm'}),'/assets/iphone-icons/apple-watch.svg');
+  assert.equal(modelIcon({brand:'Apple',name:'iPad 2'}),'/assets/logos/manufacturers/apple.png');
+  assert.equal(modelIcon({brand:'Samsung',name:'Samsung Galaxy S24',image:'assets/samsung/models/galaxy-s24.jpeg'}),'/assets/samsung/models/galaxy-s24.jpeg');
+  assert.equal(modelIcon({brand:'Samsung',name:'Samsung Galaxy S23+'}),'/assets/samsung/models/galaxy-s23-family.jpeg');
+  assert.equal(modelIcon({brand:'Samsung',name:'Samsung Galaxy J4'}),'/assets/logos/manufacturers/samsung.png');
+  assert.equal(modelIcon({brand:'Google',name:'Google Pixel 3'}),'/assets/logos/manufacturers/google-pixel.png');
+  for (const m of catalog.models) for (const path of [modelIcon(m),familyIcon(m)]) assert(path && existsSync(new URL(`..${path}`,import.meta.url)), `${m.name}: ${path}`);
+  for (const b of BRAND_DEFINITIONS) assert(existsSync(new URL(`..${b.logo}`,import.meta.url)));
 });
 test('every model, repair and visible option can be restored without omissions', () => {
   let visited = 0;
@@ -135,4 +188,6 @@ test('UI version and new modules are included in service worker; pricing version
   assert(html.includes(UI_VERSION)); assert(sw.includes(UI_VERSION));
   for (const file of ['catalog-data.mjs','catalog-state.mjs','catalog-guided.mjs','assets/i18n/guided.js']) assert(sw.includes(file));
   assert(html.includes(PRICING_VERSION)); assert(sw.includes(PRICING_VERSION));
+  for (const b of BRAND_DEFINITIONS) assert(sw.includes(`.${b.logo}`));
+  for (const m of catalog.models) for (const path of [modelIcon(m),familyIcon(m)]) assert(sw.includes(`.${path}`), `uncached picker asset: ${path}`);
 });
