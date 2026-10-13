@@ -36,6 +36,47 @@
   const otherModels = { de:'Weitere Modelle', uk:'Інші моделі', en:'Other models', ru:'Другие модели', pl:'Inne modele', it:'Altri modelli', ar:'طرازات أخرى', ku:'Modelên din', fr:'Autres modèles', sl:'Drugi modeli' };
   keys.push('otherModels');
   for (const [lang, label] of Object.entries(otherModels)) dictionary[lang].otherModels = label;
+  const treeKeys = ['changeBrand','directSearch','browseDevices','chooseFamily','chooseGeneration','chooseRange','chooseSize','chooseExactModel','multipleModels','generationNumber','pickerBreadcrumb','moreRepairs','searchEmpty','stepRepair','stepRequest','nextRequest'];
+  const treeRows = {
+    de: 'Marke ändern|Direkt suchen|Nach Kategorien wählen|Welche Serie?|Welche Generation?|Generationen eingrenzen|Welche Größe?|Welches Modell genau?|Mehrere Modelle|{number}. Generation|Geräteauswahl|Weitere Reparaturen|Gib eine Modellbezeichnung ein, um passende Geräte zu finden.|Reparaturart|Reparatur|Weiter zur Reparatur',
+    uk: 'Змінити марку|Знайти за назвою|Обрати за категоріями|Яка лінійка?|Яке покоління?|Обери діапазон поколінь|Який розмір?|Яка саме модель?|Кілька моделей|{number}-е покоління|Вибір пристрою|Інші ремонти|Введи назву моделі, щоб знайти відповідні пристрої.|Вид ремонту|Ремонт|Перейти до ремонту',
+    en: 'Change brand|Search directly|Browse categories|Which series?|Which generation?|Narrow down generations|Which size?|Which exact model?|Multiple models|Generation {number}|Device selection|Other repairs|Enter a model name to find matching devices.|Repair type|Repair|Continue to repair',
+    ru: 'Изменить марку|Найти по названию|Выбрать по категориям|Какая линейка?|Какое поколение?|Выберите диапазон поколений|Какой размер?|Какая именно модель?|Несколько моделей|{number}-е поколение|Выбор устройства|Другие ремонты|Введите название модели, чтобы найти подходящие устройства.|Вид ремонта|Ремонт|Перейти к ремонту',
+    pl: 'Zmień markę|Szukaj bezpośrednio|Przeglądaj kategorie|Która seria?|Która generacja?|Wybierz zakres generacji|Jaki rozmiar?|Który dokładnie model?|Wiele modeli|Generacja {number}|Wybór urządzenia|Inne naprawy|Wpisz nazwę modelu, aby znaleźć pasujące urządzenia.|Rodzaj naprawy|Naprawa|Przejdź do naprawy',
+    it: 'Cambia marca|Cerca direttamente|Sfoglia le categorie|Quale serie?|Quale generazione?|Scegli un gruppo di generazioni|Quale dimensione?|Quale modello esatto?|Più modelli|Generazione {number}|Scelta del dispositivo|Altre riparazioni|Inserisci il nome del modello per trovare i dispositivi corrispondenti.|Tipo di riparazione|Riparazione|Continua alla riparazione',
+    ar: 'تغيير العلامة|بحث مباشر|اختيار حسب الفئات|أي سلسلة؟|أي جيل؟|حدد نطاق الأجيال|أي مقاس؟|ما الطراز بالتحديد؟|عدة طرازات|الجيل {number}|اختيار الجهاز|إصلاحات أخرى|أدخل اسم الطراز للعثور على الأجهزة المطابقة.|نوع الإصلاح|الإصلاح|المتابعة إلى الإصلاح',
+    ku: 'Markayê biguherîne|Rasterast bigere|Li gorî kategoriyan hilbijêre|Kîjan rêze?|Kîjan nifş?|Koma nifşan hilbijêre|Kîjan mezinahî?|Bi rastî kîjan model?|Gelek model|Nifşa {number}|Hilbijartina amûrê|Tamîrên din|Navê modelê binivîse da ku amûrên guncaw bibînî.|Cureyê tamîrê|Tamîr|Biçe tamîrê',
+    fr: 'Changer de marque|Rechercher directement|Parcourir les catégories|Quelle série ?|Quelle génération ?|Choisis un groupe de générations|Quelle taille ?|Quel modèle exact ?|Plusieurs modèles|Génération {number}|Choix de l’appareil|Autres réparations|Saisis un nom de modèle pour trouver les appareils correspondants.|Type de réparation|Réparation|Continuer vers la réparation',
+    sl: 'Spremeni znamko|Neposredno iskanje|Izberi po kategorijah|Katera serija?|Katera generacija?|Izberi skupino generacij|Katera velikost?|Kateri točno model?|Več modelov|{number}. generacija|Izbira naprave|Druga popravila|Vnesi ime modela za iskanje ustreznih naprav.|Vrsta popravila|Popravilo|Nadaljuj na popravilo'
+  };
+  for (const [lang, row] of Object.entries(treeRows)) {
+    const values = row.split('|');
+    if (values.length !== treeKeys.length) throw new Error(`Tree translations mismatch: ${lang}`);
+    treeKeys.forEach((key, index) => { dictionary[lang][key] = values[index]; });
+  }
+  keys.push(...treeKeys.filter(key => !keys.includes(key)));
+  const generationKeys = ['generationHint','versionsNext','baseModel'];
+  const generationRows = {
+    de: 'Wähle zuerst die Generation. Dein genaues Modell wählst du im nächsten Schritt.|Danach: {models}|Basismodell',
+    uk: 'Спочатку обери покоління. Точну версію моделі обереш на наступному кроці.|Далі: {models}|Базова модель',
+    en: 'Choose the generation first. You will select your exact model in the next step.|Next: {models}|Base model',
+    ru: 'Сначала выбери поколение. Точную версию модели выберешь на следующем шаге.|Далее: {models}|Базовая модель',
+    pl: 'Najpierw wybierz generację. Dokładną wersję modelu wybierzesz w następnym kroku.|Dalej: {models}|Model podstawowy',
+    it: 'Scegli prima la generazione. Selezionerai il modello esatto nel prossimo passaggio.|Poi: {models}|Modello base',
+    ar: 'اختر الجيل أولاً. ستختار طرازك بالتحديد في الخطوة التالية.|بعد ذلك: {models}|الطراز الأساسي',
+    ku: 'Pêşî nifşê hilbijêre. Di gava pêş de tu modela xwe ya tam hilbijêrî.|Pişt re: {models}|Modela bingehîn',
+    fr: 'Choisis d’abord la génération. Tu choisiras ton modèle exact à l’étape suivante.|Ensuite : {models}|Modèle de base',
+    sl: 'Najprej izberi generacijo. Točen model boš izbral v naslednjem koraku.|Nato: {models}|Osnovni model'
+  };
+  for (const [lang, row] of Object.entries(generationRows)) {
+    const values = row.split('|');
+    if (values.length !== generationKeys.length) throw new Error(`Generation translations mismatch: ${lang}`);
+    generationKeys.forEach((key, index) => { dictionary[lang][key] = values[index]; });
+  }
+  keys.push(...generationKeys);
+  const editChoice = { de:'Auswahl ändern', uk:'Змінити вибір', en:'Change selection', ru:'Изменить выбор', pl:'Zmień wybór', it:'Cambia scelta', ar:'تغيير الاختيار', ku:'Hilbijartinê biguherîne', fr:'Modifier le choix', sl:'Spremeni izbiro' };
+  keys.push('editChoice');
+  for (const [lang, value] of Object.entries(editChoice)) dictionary[lang].editChoice = value;
   const base = window.HN_CATALOG_I18N;
   base.addTranslations(dictionary);
   base.guidedKeys = keys;

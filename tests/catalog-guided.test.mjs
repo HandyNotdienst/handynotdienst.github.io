@@ -107,13 +107,13 @@ test('brand URLs restore filters, reject invalid values, and defer to a selected
   assert.deepEqual(transition(catalog,full,{type:'brand',brand:null}),initialState());
 });
 test('icons use exact photos, family assets or manufacturer logos; every chosen asset exists', () => {
-  assert.equal(modelIcon({brand:'Apple',name:'iPhone 4'}),'/assets/iphone-icons/iphone-device.svg');
-  assert.equal(modelIcon({brand:'Apple',name:'Apple Watch SE 40 mm'}),'/assets/iphone-icons/apple-watch.svg');
-  assert.equal(modelIcon({brand:'Apple',name:'iPad 2'}),'/assets/logos/manufacturers/apple.png');
+  assert.equal(modelIcon({brand:'Apple',name:'iPhone 4'}),'/assets/iphone-icons/iphone-family.svg');
+  assert.equal(modelIcon({brand:'Apple',name:'Apple Watch SE 40 mm'}),'/assets/iphone-icons/watch-family.svg');
+  assert.equal(modelIcon({brand:'Apple',name:'iPad 2'}),'/assets/iphone-icons/ipad-device.svg');
   assert.equal(modelIcon({brand:'Samsung',name:'Samsung Galaxy S24',image:'assets/samsung/models/galaxy-s24.jpeg'}),'/assets/samsung/models/galaxy-s24.jpeg');
   assert.equal(modelIcon({brand:'Samsung',name:'Samsung Galaxy S23+'}),'/assets/samsung/models/galaxy-s23-family.jpeg');
-  assert.equal(modelIcon({brand:'Samsung',name:'Samsung Galaxy J4'}),'/assets/logos/manufacturers/samsung.png');
-  assert.equal(modelIcon({brand:'Google',name:'Google Pixel 3'}),'/assets/logos/manufacturers/google-pixel.png');
+  assert.equal(modelIcon({brand:'Samsung',name:'Samsung Galaxy J4'}),'/assets/samsung/series/galaxy-j.png');
+  assert.equal(modelIcon({brand:'Google',name:'Google Pixel 3'}),'/assets/logos/manufacturers/google-pixel.svg');
   for (const m of catalog.models) for (const path of [modelIcon(m),familyIcon(m)]) assert(path && existsSync(new URL(`..${path}`,import.meta.url)), `${m.name}: ${path}`);
   for (const b of BRAND_DEFINITIONS) assert(existsSync(new URL(`..${b.logo}`,import.meta.url)));
 });
@@ -186,7 +186,7 @@ test('unknown price is never zero; status and selected part survive WhatsApp ser
 test('UI version and new modules are included in service worker; pricing version unchanged', () => {
   const html = read('../prices.html'), sw = read('../sw.js');
   assert(html.includes(UI_VERSION)); assert(sw.includes(UI_VERSION));
-  for (const file of ['catalog-data.mjs','catalog-state.mjs','catalog-guided.mjs','assets/i18n/guided.js']) assert(sw.includes(file));
+  for (const file of ['catalog-data.mjs','catalog-state.mjs','catalog-tree.mjs','catalog-guided.mjs','assets/i18n/guided.js','assets/samsung/icons/repair.png']) assert(sw.includes(file));
   assert(html.includes(PRICING_VERSION)); assert(sw.includes(PRICING_VERSION));
   for (const b of BRAND_DEFINITIONS) assert(sw.includes(`.${b.logo}`));
   for (const m of catalog.models) for (const path of [modelIcon(m),familyIcon(m)]) assert(sw.includes(`.${path}`), `uncached picker asset: ${path}`);

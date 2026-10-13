@@ -1,17 +1,18 @@
-import { visibleOptions } from './catalog-data.mjs?v=HN-GUIDED-PRICES-V2-2026-10-01';
+import { visibleOptions } from './catalog-data.mjs?v=HN-GUIDED-PRICES-V3-2026-10-13-R6';
+import { normalizePath, modelPath } from './catalog-tree.mjs?v=HN-GUIDED-PRICES-V3-2026-10-13-R6';
 
 export const PRICING_VERSION = 'HN-PRICING-V1-2026-09-25';
-export const UI_VERSION = 'HN-GUIDED-PRICES-V2-2026-10-01';
+export const UI_VERSION = 'HN-GUIDED-PRICES-V3-2026-10-13-R6';
 export const BRAND_DEFINITIONS = [
-  { id: 'Apple', label: 'Apple', logo: '/assets/logos/manufacturers/apple.png' },
-  { id: 'Samsung', label: 'Samsung', logo: '/assets/logos/manufacturers/samsung.png' },
-  { id: 'Google', label: 'Google Pixel', logo: '/assets/logos/manufacturers/google-pixel.png' },
-  { id: 'Xiaomi', label: 'Xiaomi', logo: '/assets/logos/manufacturers/xiaomi.png' },
+  { id: 'Apple', label: 'Apple', logo: '/assets/logos/manufacturers/apple.svg' },
+  { id: 'Samsung', label: 'Samsung', logo: '/assets/logos/manufacturers/samsung.svg' },
+  { id: 'Google', label: 'Google Pixel', logo: '/assets/logos/manufacturers/google-pixel.svg' },
+  { id: 'Xiaomi', label: 'Xiaomi', logo: '/assets/logos/manufacturers/xiaomi.svg' },
   { id: 'Redmi', label: 'Redmi', logo: '/assets/logos/manufacturers/redmi.png' },
   { id: 'Poco', label: 'Poco', logo: '/assets/logos/manufacturers/poco.png' },
-  { id: 'Honor', label: 'Honor', logo: '/assets/logos/manufacturers/honor.png' },
-  { id: 'Huawei', label: 'Huawei', logo: '/assets/logos/manufacturers/huawei.png' },
-  { id: 'Sony', label: 'Sony', logo: '/assets/logos/manufacturers/sony.png' }
+  { id: 'Honor', label: 'Honor', logo: '/assets/logos/manufacturers/honor.svg' },
+  { id: 'Huawei', label: 'Huawei', logo: '/assets/logos/manufacturers/huawei.svg' },
+  { id: 'Sony', label: 'Sony', logo: '/assets/logos/manufacturers/sony.svg' }
 ];
 const BRAND_RANK = new Map(BRAND_DEFINITIONS.map((brand, index) => [brand.id, index]));
 const FAMILY_ORDER = {
@@ -62,10 +63,10 @@ const SAMSUNG_SERIES_ICONS = {
   'Galaxy Note': '/assets/samsung/series/galaxy-note.png',
   'Galaxy Z': '/assets/samsung/series/galaxy-z-fold.png',
   'Galaxy M': '/assets/samsung/series/galaxy-m.png',
-  'Galaxy J': null,
+  'Galaxy J': '/assets/samsung/series/galaxy-j.png',
   'Galaxy XCover': '/assets/samsung/series/galaxy-xcover.png'
 };
-export const initialState = () => ({ step: 1, brand: null, model: null, repair: null, option: null, delivery: 'local' });
+export const initialState = () => ({ step: 1, brand: null, path: [], q: null, model: null, repair: null, option: null, delivery: 'local' });
 
 export function modelFamily(model) {
   const name = model.name || '';
@@ -138,8 +139,9 @@ export function modelIcon(model) {
   if (/^iPhone (17(?: Pro(?: Max)?)?|Air)$/.test(model.name)) return `/assets/phones/optimized/${model.id}-420.webp`;
   if (model.image) return `/${model.image.replace(/^\//, '')}`;
   if (model.brand === 'Apple' && APPLE_ICON_ALIASES[model.id]) return APPLE_ICON_ALIASES[model.id];
-  if (model.brand === 'Apple' && /^iPhone/i.test(model.name)) return '/assets/iphone-icons/iphone-device.svg';
-  if (model.brand === 'Apple' && /^Apple Watch/i.test(model.name)) return '/assets/iphone-icons/apple-watch.svg';
+  if (model.brand === 'Apple' && /^iPhone/i.test(model.name)) return '/assets/iphone-icons/iphone-family.svg';
+  if (model.brand === 'Apple' && /^Apple Watch/i.test(model.name)) return '/assets/iphone-icons/watch-family.svg';
+  if (model.brand === 'Apple' && /^iPad/i.test(model.name)) return '/assets/iphone-icons/ipad-device.svg';
   if (model.brand === 'Samsung' && /^Samsung Galaxy A16(?: 5G)?$/.test(model.name)) return '/assets/samsung/models/galaxy-a16.png';
   const family = modelFamily(model);
   const samsungGeneration = model.name.match(/Galaxy S(10|20|21|22|23|24|25)(?=\D|$)/)?.[1];
@@ -150,8 +152,9 @@ export function modelIcon(model) {
 }
 export function familyIcon(model) {
   const family = modelFamily(model);
-  if (family === 'iPhone') return '/assets/iphone-icons/iphone-device.svg';
-  if (family === 'Apple Watch') return '/assets/iphone-icons/apple-watch.svg';
+  if (family === 'iPhone') return '/assets/iphone-icons/iphone-family.svg';
+  if (family === 'iPad') return '/assets/iphone-icons/ipad-device.svg';
+  if (family === 'Apple Watch') return '/assets/iphone-icons/watch-family.svg';
   return SAMSUNG_SERIES_ICONS[family] || BRAND_DEFINITIONS.find(brand => brand.id === model.brand)?.logo || null;
 }
 export function repairCategories(model) {
@@ -170,19 +173,26 @@ export function normalizeState(catalog, value) {
   const maxStep = selected.option ? 4 : selected.repair ? 3 : selected.model ? 2 : 1;
   const modelBrand = selected.model?.brand || null;
   const validBrand = BRAND_RANK.has(value.brand) ? value.brand : null;
+  const brand = modelBrand || validBrand;
+  const branch = normalizePath(catalog, brand, Array.isArray(value.path) ? value.path : []);
+  const selectedPath = selected.model ? modelPath(catalog, selected.model.id) : null;
+  const validPrefix = Array.isArray(value.path) && value.path.every((id, index) => id === branch[index]) && branch.every((id, index) => id === selectedPath?.[index]);
+  const path = selectedPath && !validPrefix ? selectedPath : branch;
   return { step: Math.min(maxStep, Math.max(1, Number.isInteger(Number(value.step)) ? Number(value.step) : maxStep)),
-    brand: modelBrand || validBrand,
+    brand, path, q: typeof value.q === 'string' ? value.q.slice(0, 200) : null,
     model: selected.model?.id || null, repair: selected.repair?.id || null, option: selected.option?.id || null,
     delivery: value.delivery === 'shipping' ? 'shipping' : 'local' };
 }
 export function stateFromUrl(catalog, input) {
   const q = input instanceof URLSearchParams ? input : new URLSearchParams(input);
-  return normalizeState(catalog, { brand: q.get('brand'), model: q.get('model'), repair: q.get('repair'), option: q.get('option'), delivery: q.get('delivery'), step: q.has('step') ? q.get('step') : undefined });
+  return normalizeState(catalog, { brand: q.get('brand'), path: q.has('path') ? (q.get('path') || '').split('/').filter(Boolean) : undefined, q: q.get('q'), model: q.get('model'), repair: q.get('repair'), option: q.get('option'), delivery: q.get('delivery'), step: q.has('step') ? q.get('step') : undefined });
 }
 export function stateUrl(state, input) {
   const url = new URL(input);
   for (const key of ['brand', 'model', 'repair', 'option']) state[key] ? url.searchParams.set(key, state[key]) : url.searchParams.delete(key);
   if (state.model) url.searchParams.delete('brand');
+  state.path?.length || state.model && state.step === 1 ? url.searchParams.set('path', state.path.join('/')) : url.searchParams.delete('path');
+  typeof state.q === 'string' ? url.searchParams.set('q', state.q) : url.searchParams.delete('q');
   url.searchParams.set('step', String(state.step));
   url.searchParams.set('delivery', state.delivery);
   return url.pathname + url.search + url.hash;
@@ -191,9 +201,19 @@ export function transition(catalog, state, action) {
   let next = { ...state };
   if (action.type === 'brand') {
     const brand = BRAND_RANK.has(action.brand) ? action.brand : null;
-    next = !brand ? { ...next, brand: null, model: null, repair: null, option: null, step: 1 } : brand !== state.brand ? { ...next, brand, model: null, repair: null, option: null, step: 1 } : { ...next, brand };
+    next = !brand || brand !== state.brand ? { ...next, brand, path: [], model: null, repair: null, option: null, step: 1 } : { ...next, brand };
   }
-  if (action.type === 'model') next = { ...next, model: action.id, step: 2, ...(action.id !== state.model ? { repair: null, option: null } : {}) };
+  if (action.type === 'browse') {
+    const path = normalizePath(catalog, state.brand, action.path);
+    const selectedPath = state.model ? modelPath(catalog, state.model) : [];
+    const compatible = path.every((id, index) => selectedPath[index] === id);
+    next = { ...next, path, step: 1, q: null, ...(!compatible ? { model: null, repair: null, option: null } : {}) };
+    const normalized = normalizeState(catalog, next);
+    // Browsing back keeps completed answers without forcing the last leaf open.
+    return { ...normalized, path };
+  }
+  if (action.type === 'search') next.q = action.query;
+  if (action.type === 'model') next = { ...next, model: action.id, path: undefined, q: null, step: 2, ...(action.id !== state.model ? { repair: null, option: null } : {}) };
   if (action.type === 'repair') next = { ...next, repair: action.id, step: 3, ...(action.id !== state.repair ? { option: null } : {}) };
   if (action.type === 'option') next.option = action.id;
   if (action.type === 'step') next.step = action.step;
