@@ -1,5 +1,6 @@
-import { visibleOptions, customerOption, displayPrice, requestText } from './catalog-data.mjs?v=HN-GUIDED-PRICES-V2-2026-10-01';
-import { BRAND_DEFINITIONS, PRICING_VERSION, filterModels, modelFamily, familyIcon, modelIcon, repairCategories, resolveSelection, stateFromUrl, stateUrl, transition, featuredOptions } from './catalog-state.mjs?v=HN-GUIDED-PRICES-V2-2026-10-01';
+import { visibleOptions, customerOption, displayPrice, requestText } from './catalog-data.mjs?v=HN-GUIDED-PRICES-V3-2026-10-13-R6';
+import { BRAND_DEFINITIONS, PRICING_VERSION, filterModels, modelFamily, familyIcon, modelIcon, repairCategories, resolveSelection, stateFromUrl, stateUrl, transition, featuredOptions } from './catalog-state.mjs?v=HN-GUIDED-PRICES-V3-2026-10-13-R6';
+import { branchTrail, repairIcon, generationPreview } from './catalog-tree.mjs?v=HN-GUIDED-PRICES-V3-2026-10-13-R6';
 
 export function startCatalog() {
   const $ = selector => document.querySelector(selector);
@@ -13,7 +14,7 @@ export function startCatalog() {
   i18n.init();
   const t = (key, vars) => i18n.t(key, vars);
   const announce = message => { $('#status').textContent = message; };
-  let catalog, state, expanded = false, loading = false;
+  let catalog, state, expanded = false, loading = false, generationDraft = '';
   const steps = ['stepDevice', 'stepRepair', 'stepVariant', 'stepRequest'];
   const search = $('#model-search');
   const brandLabel = id => BRAND_DEFINITIONS.find(brand => brand.id === id)?.label || id;
@@ -44,9 +45,9 @@ export function startCatalog() {
     $('#step-caption').textContent = t('stepStatus', { step: state.step, name: t(steps[state.step - 1]) });
   }
   function renderContext({ model, repair }) {
-    const context = $('#device-context'); context.replaceChildren(); context.hidden = !model;
-    $('.wizard-grid').classList.toggle('without-device', !model);
-    if (!model) return;
+    const context = $('#device-context'); context.replaceChildren(); context.hidden = !model || state.step === 1;
+    $('.wizard-grid').classList.toggle('without-device', !model || state.step === 1);
+    if (!model || state.step === 1) return;
     const top = make('div', 'context-device');
     if (model.image) {
       const img = make('img', 'device-photo'); img.src = '/' + model.image; img.alt = model.name; img.width = 210; img.height = 230;
@@ -70,9 +71,8 @@ export function startCatalog() {
     const selected = state.brand;
     for (const definition of BRAND_DEFINITIONS) {
       const tile = button('', 'brand', definition.id, 'brand-tile');
-      if (['Redmi','Huawei'].includes(definition.id)) tile.classList.add('logo-needs-light');
+      if (['Redmi','Huawei','Sony'].includes(definition.id)) tile.classList.add('logo-needs-light');
       if (['Google','Poco'].includes(definition.id)) tile.classList.add('logo-needs-dark');
-      if (definition.id === 'Sony') tile.classList.add('logo-monochrome');
       tile.setAttribute('aria-pressed', String(selected === definition.id));
       tile.setAttribute('aria-label', `${definition.label}: ${selected === definition.id ? t('selected') : t('chooseBrand')}`);
       const logo = make('img', 'brand-tile-logo'); logo.src = definition.logo; logo.alt = ''; logo.setAttribute('aria-hidden', 'true'); logo.width = 180; logo.height = 80;
@@ -80,11 +80,95 @@ export function startCatalog() {
       tile.append(slot, make('span', 'brand-tile-name', definition.label)); container.append(tile);
     }
     $('#brand-reset').hidden = !state.brand;
+    $('.brand-picker').hidden = Boolean(state.brand);
+    const compact = $('#brand-context'); compact.replaceChildren(); compact.hidden = !state.brand;
+    if (state.brand) {
+      const definition = BRAND_DEFINITIONS.find(brand => brand.id === state.brand);
+      const logo = make('img'); logo.src = definition.logo; logo.alt = ''; logo.setAttribute('aria-hidden', 'true'); logo.width = 88; logo.height = 40;
+      const slot = make('span', 'compact-logo'); slot.append(logo);
+      compact.append(slot, make('strong', '', definition.label), button(t('changeBrand'), 'brand-reset'));
+    }
+  }
+
+  function nodeLabel(node) {
+    if (node.range) return node.range.map(nodeLabel).join(' – ');
+    return node.key ? t(node.key, node.vars) : node.label;
+  }
+  function renderTree() {
+    const tree = $('#device-tree'), crumbs = $('#picker-breadcrumbs'); tree.replaceChildren(); crumbs.replaceChildren();
+    tree.hidden = !state.brand || state.q !== null;
+    crumbs.hidden = !state.brand || state.q !== null;
+    $('#tree-back').hidden = true;
+    $('#direct-search').hidden = state.q === null;
+    $('#search-toggle').textContent = t(state.q === null ? 'directSearch' : 'browseDevices');
+    $('#search-toggle').setAttribute('aria-expanded', String(state.q !== null));
+    search.value = state.q || '';
+    if (tree.hidden) return;
+    const trail = branchTrail(catalog, state.brand, state.path);
+    trail.forEach((node, index) => {
+      const item = make('li');
+      const crumb = button(nodeLabel(node), 'browse', trail.slice(1, index + 1).map(n => n.id).join('/'));
+      if (index === trail.length - 1) crumb.setAttribute('aria-current', 'location');
+      item.append(crumb); crumbs.append(item);
+    });
+    const levels = trail.map((node, index) => ({ node, index })).filter(({ node }) => node.children.length > 1 || node.children[0]?.modelId);
+    for (const { node, index } of levels) {
+      const column = make('section', 'tree-column');
+      const level = node.children[0]?.level;
+      const titleKey = { family:'chooseFamily', subfamily:'chooseFamily', generation:'chooseGeneration', range:'chooseRange', size:'chooseSize', model:'chooseExactModel' }[level];
+      const heading = make('h2', '', t(titleKey)); heading.id = `tree-heading-${index}`; column.setAttribute('aria-labelledby', heading.id);
+      if (index !== levels.at(-1).index) {
+        column.classList.add('is-answered');
+        const edit = button('', 'browse', trail.slice(1, index + 1).map(n => n.id).join('/'), 'tree-answer');
+        edit.append(make('strong', '', nodeLabel(trail[index + 1])), make('span', 'text-link', t('editChoice')));
+        column.append(heading, edit); tree.append(column); continue;
+      }
+      if (level === 'generation') {
+        const hint = make('p', 'generation-hint muted', t('generationHint')); hint.id = `generation-hint-${index}`;
+        const select = make('select', 'generation-select'); select.name = 'device-generation';
+        select.id = `generation-select-${index}`; select.setAttribute('aria-describedby', hint.id);
+        const label = make('label', '', t('chooseGeneration')); label.htmlFor = select.id; heading.replaceChildren(label);
+        const placeholder = make('option', '', t('chooseGeneration')); placeholder.value = ''; placeholder.disabled = true; select.append(placeholder);
+        for (const child of node.children) {
+          const entry = make('option', '', nodeLabel(child));
+          entry.value = [...trail.slice(1, index + 1).map(n => n.id), child.id].join('/');
+          const versions = generationPreview(catalog, child, t('baseModel'));
+          entry.dataset.preview = versions.length ? t('versionsNext', { models: versions.join(' · ') }) : '';
+          select.append(entry);
+        }
+        select.value = [...select.options].some(entry => entry.value === generationDraft) ? generationDraft : '';
+        const preview = make('p', 'generation-selection muted', select.selectedOptions[0]?.dataset.preview || ''); preview.id = 'generation-selection'; preview.setAttribute('aria-live', 'polite');
+        const next = button(t('continue'), 'browse', select.value, 'primary-button'); next.id = 'generation-next'; next.disabled = !select.value;
+        const controls = make('div', 'generation-controls'); controls.append(select, next);
+        column.append(heading, hint, controls, preview); tree.append(column); continue;
+      }
+      const firstModel = level === 'model' ? catalog.models.find(m => m.id === node.children[0].modelId) : null;
+      const firstIcon = firstModel ? modelIcon(firstModel) : null;
+      const familyPhoto = firstIcon?.includes('-family.jpeg') && node.children.every(child => modelIcon(catalog.models.find(m => m.id === child.modelId)) === firstIcon);
+      if (familyPhoto) column.classList.add('has-family-photo');
+      const options = make('div', `tree-choices ${level === 'size' ? 'compact-choices' : ''}`);
+      for (const child of node.children) {
+        const path = [...trail.slice(1, index + 1).map(n => n.id), child.id];
+        const choice = button('', child.modelId ? 'model' : 'browse', child.modelId || path.join('/'), 'tree-choice');
+        const selected = child.modelId ? state.model === child.modelId : trail[index + 1]?.id === child.id;
+        choice.setAttribute('aria-pressed', String(selected));
+        const model = child.modelId && catalog.models.find(m => m.id === child.modelId);
+        const iconSrc = model ? modelIcon(model) : child.icon;
+        if (iconSrc && !familyPhoto) { const slot = make('span', 'tree-icon-slot'); const icon = make('img', 'tree-icon'); icon.src = iconSrc; icon.alt = ''; icon.setAttribute('aria-hidden', 'true'); icon.width = 42; icon.height = 50; slot.append(icon); choice.append(slot); }
+        const copy = make('span', 'tree-choice-copy'); copy.append(make('span', '', nodeLabel(child)));
+        choice.append(copy); options.append(choice);
+      }
+      column.append(heading);
+      if (familyPhoto) { const photo = make('img', 'tree-family-photo'); photo.src = firstIcon; photo.alt = ''; photo.width = 340; photo.height = 150; column.append(photo); }
+      column.append(options); tree.append(column);
+    }
+    const back = $('#tree-back'); back.hidden = levels.length < 2;
+    back.dataset.value = levels.length > 1 ? trail.slice(1, levels.at(-2).index + 1).map(n => n.id).join('/') : '';
   }
 
   function renderModels() {
     if (!catalog) return;
-    const matches = filterModels(catalog, state.brand, search.value), results = $('#model-results'); results.replaceChildren();
+    const matches = state.q?.trim() ? filterModels(catalog, state.brand, state.q) : [], results = $('#model-results'); results.replaceChildren();
     let groupKey = '';
     let groupList;
     for (const model of matches) {
@@ -107,15 +191,19 @@ export function startCatalog() {
       if (model.id === state.model) { choose.classList.add('is-selected'); choose.append(make('span', 'selected-label', t('selected'))); }
       item.append(choose); groupList.append(item);
     }
-    $('#no-model').hidden = Boolean(matches.length); $('#model-count').textContent = t('results', { count: matches.length });
+    $('#no-model').hidden = !state.q?.trim() || Boolean(matches.length); $('#model-count').textContent = state.q?.trim() ? t('results', { count: matches.length }) : t('searchEmpty');
   }
   function renderRepairs(model) {
     const list = $('#repair-options'); list.replaceChildren();
     const categories = repairCategories(model); $('#no-repairs').hidden = Boolean(categories.length);
+    let secondary = false;
     for (const category of categories) {
+      if (!['display','battery','charging'].includes(category.id) && !secondary) { list.append(make('h2', 'more-repairs', t('moreRepairs'))); secondary = true; }
       const choice = button('', 'repair', category.id, 'repair-choice');
       const count = visibleOptions(category).length;
-      choice.append(make('span', '', i18n.translateCategory(category)), make('span', 'muted', `${count} ${t(count === 1 ? 'option' : 'options')}`));
+      const slot = make('span', 'repair-icon-slot'), icon = make('img'); icon.src = repairIcon(model, category); icon.alt = ''; icon.setAttribute('aria-hidden', 'true'); icon.width = 56; icon.height = 56; slot.append(icon);
+      const copy = make('span', 'repair-copy'); copy.append(make('strong', '', i18n.translateCategory(category)), make('span', 'muted', `${count} ${t(count === 1 ? 'option' : 'options')}`));
+      choice.append(slot, copy); choice.setAttribute('aria-pressed', String(category.id === state.repair));
       if (category.id === state.repair) choice.classList.add('is-selected'); list.append(choice);
     }
   }
@@ -189,7 +277,7 @@ export function startCatalog() {
     const titleKey = state.step === 3 && selection.repair?.id === 'display' ? 'chooseDisplay' : ['chooseDevice','chooseRepair','chooseVariant','checkRequest'][state.step - 1];
     $('#page-title').textContent = t(titleKey);
     $('#page-subtitle').textContent = state.step === 1 ? t('guideIntro') : [selection.model?.name, state.step > 2 ? i18n.translateCategory(selection.repair) : ''].filter(Boolean).join(' · ');
-    renderBrandTiles(); renderModels(); renderRepairs(selection.model); renderVariants(selection.repair); renderRequest(selection); $('#wizard').hidden = false;
+    renderBrandTiles(); renderTree(); renderModels(); renderRepairs(selection.model); renderVariants(selection.repair); renderRequest(selection); $('#wizard').hidden = false;
     announce(t('stepStatus', { step: state.step, name: t(steps[state.step - 1]) }));
     if (focus) { $('#page-title').focus({ preventScroll: true }); $('#price-configurator').scrollIntoView({ block: 'start' }); }
   }
@@ -202,23 +290,36 @@ export function startCatalog() {
       target.textContent = expanded ? t('showLess') : t('showAll', { count: options.length }); target.setAttribute('aria-expanded', String(expanded)); return;
     }
     if (action === 'brand' || action === 'brand-reset') {
-      commit({ type: 'brand', brand: action === 'brand-reset' ? null : value }, { focus: false });
-      $('#model-results').scrollTop = 0;
-      const focusTarget = action === 'brand-reset' ? search : Array.from(document.querySelectorAll('.brand-tile')).find(tile => tile.dataset.value === value);
-      focusTarget?.focus();
-      announce(state.brand ? t('brandSelected', { brand: brandLabel(state.brand), count: filterModels(catalog, state.brand, search.value).length }) : $('#model-count').textContent);
+      commit({ type: 'brand', brand: action === 'brand-reset' ? null : value }, { focus: true });
       return;
     }
+    if (action === 'browse') {
+      generationDraft = '';
+      commit({ type: 'browse', path: (value || '').split('/').filter(Boolean) });
+      const heading = $('#device-tree').lastElementChild?.querySelector('h2');
+      if (heading) {
+        heading.tabIndex = -1; heading.focus({ preventScroll: true });
+        heading.closest('.tree-column').scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+        announce(heading.textContent);
+      }
+    }
+    if (action === 'search-toggle') { commit({ type: 'search', query: state.q === null ? '' : null }); if (state.q !== null) search.focus(); else $('#page-title').focus(); }
     if (action === 'model' || action === 'repair') { expanded = false; commit({ type: action, id: value }, { focus: true }); }
     if (action === 'step') commit({ type: 'step', step: Number(value) }, { focus: true });
   });
   $('#wizard').addEventListener('change', event => {
+    if (event.target.name === 'device-generation') {
+      generationDraft = event.target.value;
+      $('#generation-next').disabled = !generationDraft; $('#generation-next').dataset.value = generationDraft;
+      $('#generation-selection').textContent = event.target.selectedOptions[0]?.dataset.preview || '';
+    }
     if (event.target.name === 'part-option') commit({ type: 'option', id: event.target.value }, { full: false });
     if (event.target.name === 'delivery') { state = transition(catalog, state, { type: 'delivery', delivery: event.target.value }); writeHistory(); updateRequestLink(); }
   });
-  search.addEventListener('input', () => { renderModels(); announce($('#model-count').textContent); });
+  search.addEventListener('input', () => { state = transition(catalog, state, { type: 'search', query: search.value }); writeHistory('replace'); renderModels(); announce($('#model-count').textContent); });
   window.addEventListener('popstate', () => {
     if (!catalog) return;
+    generationDraft = '';
     state = stateFromUrl(catalog, location.search); expanded = false;
     const lang = new URLSearchParams(location.search).get('lang');
     if (lang && lang !== i18n.getLang()) i18n.setLanguage(lang, 'history');

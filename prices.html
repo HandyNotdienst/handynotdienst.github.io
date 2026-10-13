@@ -6,10 +6,10 @@
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="pricing-version" content="HN-PRICING-V1-2026-09-25">
-  <meta name="catalog-ui-version" content="HN-GUIDED-PRICES-V2-2026-10-01">
+  <meta name="catalog-ui-version" content="HN-GUIDED-PRICES-V3-2026-10-13-R6">
   <script src="/theme.js"></script>
-  <script defer src="/assets/i18n/catalog.js?v=HN-GUIDED-PRICES-V2-2026-10-01"></script>
-  <script defer src="/assets/i18n/guided.js?v=HN-GUIDED-PRICES-V2-2026-10-01"></script>
+  <script defer src="/assets/i18n/catalog.js?v=HN-GUIDED-PRICES-V3-2026-10-13-R6"></script>
+  <script defer src="/assets/i18n/guided.js?v=HN-GUIDED-PRICES-V3-2026-10-13-R6"></script>
   <script>
     (() => {
       const theme = new URLSearchParams(location.search).get('theme');
@@ -31,8 +31,8 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/assets/logo.png" type="image/png">
-  <link rel="stylesheet" href="/catalog.css?v=HN-GUIDED-PRICES-V2-2026-10-01">
-  <script type="module" src="/catalog.mjs?v=HN-GUIDED-PRICES-V2-2026-10-01"></script>
+  <link rel="stylesheet" href="/catalog.css?v=HN-GUIDED-PRICES-V3-2026-10-13-R6">
+  <script type="module" src="/catalog.mjs?v=HN-GUIDED-PRICES-V3-2026-10-13-R6"></script>
 </head>
 <body>
   <a class="skip" href="#catalog" data-i18n="skip">Zum Reparaturkatalog</a>
@@ -65,12 +65,12 @@
     </div>
     <div class="wrap" id="wizard" hidden>
       <div id="price-configurator">
-        <nav class="progress" aria-label="Reparatur" data-i18n-aria-label="stepRepair">
+        <nav class="progress" aria-label="Reparatur" data-i18n-aria-label="stepRequest">
           <ol>
             <li><button type="button" data-step="1"><span class="step-number" aria-hidden="true">1</span><span class="step-name">Gerät</span></button></li>
-            <li><button type="button" data-step="2" disabled><span class="step-number" aria-hidden="true">2</span><span class="step-name">Reparatur</span></button></li>
+            <li><button type="button" data-step="2" disabled><span class="step-number" aria-hidden="true">2</span><span class="step-name">Reparaturart</span></button></li>
             <li><button type="button" data-step="3" disabled><span class="step-number" aria-hidden="true">3</span><span class="step-name">Variante</span></button></li>
-            <li><button type="button" data-step="4" disabled><span class="step-number" aria-hidden="true">4</span><span class="step-name">Anfrage</span></button></li>
+            <li><button type="button" data-step="4" disabled><span class="step-number" aria-hidden="true">4</span><span class="step-name">Reparatur</span></button></li>
           </ol>
         </nav>
         <p class="step-caption" id="step-caption"></p>
@@ -79,19 +79,26 @@
           <aside id="device-context" class="device-context" aria-label="Dein Gerät" data-i18n-aria-label="yourDevice" hidden></aside>
           <div class="step-content">
             <section data-panel="1" aria-labelledby="page-title">
-              <div class="brand-picker" aria-labelledby="brand-picker-title">
-                <div class="section-heading"><h2 id="brand-picker-title" data-i18n="chooseBrand">Hersteller wählen</h2><button type="button" id="brand-reset" class="text-button" data-action="brand-reset" hidden data-i18n="allBrands">Alle Marken</button></div>
-                <div id="brand-tiles" class="brand-tiles" role="group" aria-labelledby="brand-picker-title" aria-describedby="brand-picker-hint"></div>
-                <p id="brand-picker-hint" class="muted" data-i18n="brandPickerHint">Wähle zuerst eine Marke oder suche direkt nach einem Modell.</p>
-              </div>
+              <div class="picker-tools"><button id="search-toggle" type="button" class="secondary-button" aria-controls="direct-search" aria-expanded="false" data-action="search-toggle" data-i18n="directSearch">Direkt suchen</button><a class="text-link" href="/iphone-modell-finder.html" data-i18n="modelHelp">Modell nicht sicher?</a></div>
+              <div id="brand-context" class="brand-context" hidden></div>
+              <div id="direct-search" hidden>
               <div class="device-controls">
-                <div class="search-heading"><label for="model-search" data-i18n="searchDevice">Gerät suchen</label><a class="text-link" href="/iphone-modell-finder.html" data-i18n="modelHelp">Modell nicht sicher?</a></div>
-                <input id="model-search" type="search" autocomplete="off" placeholder="z. B. iPhone 16 Pro" data-i18n-placeholder="modelPlaceholder" aria-describedby="search-hint" disabled>
+                <div class="search-heading"><label for="model-search" data-i18n="searchDevice">Gerät suchen</label></div>
+                <input id="model-search" type="search" autocomplete="off" maxlength="200" placeholder="z. B. iPhone 16 Pro" data-i18n-placeholder="modelPlaceholder" aria-describedby="search-hint" disabled>
               </div>
               <p id="search-hint" class="sr-only" data-i18n="searchHint">Suche nach Marke oder genauer Modellbezeichnung.</p>
               <h2 class="sr-only" data-i18n="searchDevice">Gerät suchen</h2>
               <p id="model-count" class="muted"></p><ul id="model-results" class="model-results"></ul>
               <p id="no-model" class="empty-state" data-i18n="noModel" hidden>Kein passendes Modell gefunden.</p>
+              </div>
+              <div class="brand-picker" aria-labelledby="brand-picker-title">
+                <div class="section-heading"><h2 id="brand-picker-title" data-i18n="chooseBrand">Hersteller wählen</h2><button type="button" id="brand-reset" class="text-button" data-action="brand-reset" hidden data-i18n="allBrands">Alle Marken</button></div>
+                <div id="brand-tiles" class="brand-tiles" role="group" aria-labelledby="brand-picker-title" aria-describedby="brand-picker-hint"></div>
+                <p id="brand-picker-hint" class="muted" data-i18n="brandPickerHint">Wähle zuerst eine Marke oder suche direkt nach einem Modell.</p>
+              </div>
+              <nav aria-label="Geräteauswahl" data-i18n-aria-label="pickerBreadcrumb"><ol id="picker-breadcrumbs" class="picker-breadcrumbs" hidden></ol></nav>
+              <div id="device-tree" class="device-tree" hidden></div>
+              <button id="tree-back" type="button" class="text-button tree-back" data-action="browse" hidden data-i18n="back">Zurück</button>
             </section>
             <section data-panel="2" aria-labelledby="page-title" hidden>
               <div id="repair-options" class="repair-options"></div><p id="no-repairs" class="empty-state" data-i18n="noRepairs" hidden></p>
@@ -105,7 +112,7 @@
               <p id="variant-prompt" class="muted" data-i18n="chooseFirst">Wähle eine Variante aus.</p>
               <div class="selection-bar" hidden>
                 <div class="selection-summary"><span class="muted" data-i18n="yourSelection">Deine Auswahl</span><strong id="selection-name"></strong><span class="selection-total"><strong id="selection-price"></strong><span id="selection-included" class="included" data-i18n="included" hidden>Preis inkl. Einbau</span></span></div>
-                <div class="selection-actions"><button type="button" id="variant-next" class="primary-button" data-action="step" data-value="4" data-i18n="nextRequest" disabled>Weiter zur Anfrage</button><p data-i18n="requestHint">Übergabe oder Versand im nächsten Schritt.</p></div>
+                <div class="selection-actions"><button type="button" id="variant-next" class="primary-button" data-action="step" data-value="4" data-i18n="nextRequest" disabled>Weiter zur Reparatur</button><p data-i18n="requestHint">Übergabe oder Versand im nächsten Schritt.</p></div>
               </div>
               <button type="button" class="text-button back" data-action="step" data-value="2" data-i18n="back">Zurück</button>
             </section>

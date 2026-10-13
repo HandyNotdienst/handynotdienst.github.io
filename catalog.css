@@ -136,14 +136,14 @@ input::placeholder { color: var(--muted); opacity: 1; }
 .logo-needs-light .brand-tile-logo { background: #f4f6f8; padding: 6px 10px; border-radius: 4px; }
 .logo-needs-dark .brand-logo-slot { background: #1b2228; }
 .logo-needs-dark .brand-tile-logo { padding: 4px; }
-[data-theme="dark"] .logo-monochrome .brand-tile-logo { filter: invert(1); }
-.model-result-icon[src$="/sony.png"], .model-group-icon[src$="/sony.png"],
-.model-result-icon[src$="/huawei.png"], .model-group-icon[src$="/huawei.png"],
+.model-result-icon[src$="/sony.svg"], .model-group-icon[src$="/sony.svg"],
+.model-result-icon[src$="/huawei.svg"], .model-group-icon[src$="/huawei.svg"],
 .model-result-icon[src$="/redmi.png"], .model-group-icon[src$="/redmi.png"] { background: #f4f6f8; border-radius: 3px; padding: 3px; }
-.model-result-icon[src$="/google-pixel.png"], .model-group-icon[src$="/google-pixel.png"],
+.model-result-icon[src$="/google-pixel.svg"], .model-group-icon[src$="/google-pixel.svg"],
 .model-result-icon[src$="/poco.png"], .model-group-icon[src$="/poco.png"] { background: #1b2228; border-radius: 3px; padding: 3px; }
-[data-theme="dark"] .model-result-icon[src$="/iphone-device.svg"], [data-theme="dark"] .model-group-icon[src$="/iphone-device.svg"],
-[data-theme="dark"] .model-result-icon[src$="/apple-watch.svg"], [data-theme="dark"] .model-group-icon[src$="/apple-watch.svg"] { filter: invert(1); }
+[data-theme="dark"] .model-result-icon[src$="/iphone-family.svg"], [data-theme="dark"] .model-group-icon[src$="/iphone-family.svg"],
+[data-theme="dark"] .model-result-icon[src$="/ipad-device.svg"], [data-theme="dark"] .model-group-icon[src$="/ipad-device.svg"],
+[data-theme="dark"] .model-result-icon[src$="/watch-family.svg"], [data-theme="dark"] .model-group-icon[src$="/watch-family.svg"] { filter: invert(1); }
 .brand-tile-name { font-size: .875rem; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; }
 .brand-picker > .muted { font-size: .8125rem; margin: 10px 0 0; }
 .search-help { display: flex; align-items: baseline; gap: 20px; justify-content: space-between; margin-top: 8px; }
@@ -359,6 +359,84 @@ summary:hover { color: var(--blue); }
   .selection-total { align-items: start; text-align: start; max-width: none; }
 }
 @media(prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
+.brand-context { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-block: 8px 12px; }
+.brand-context strong { font-size: 1.125rem; }
+.compact-logo { display: flex; align-items: center; justify-content: center; background: #f4f6f8; border-radius: 6px; padding: 4px 8px; }
+.compact-logo img { object-fit: contain; width: 88px; height: 40px; }
+.compact-logo:has(img[src$="/google-pixel.svg"]), .compact-logo:has(img[src$="/poco.png"]) { background: #1b2228; }
+.picker-breadcrumbs { display: flex; flex-wrap: wrap; gap: 4px 16px; list-style: none; margin: 0 0 16px; padding: 0; }
+.picker-breadcrumbs button { font-size: .8125rem; min-height: 36px; }
+.picker-breadcrumbs [aria-current] { color: var(--ink); text-decoration: none; font-weight: 700; }
+.device-tree { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.tree-column { min-width: 0; scroll-margin-top: 24px; }
+.tree-answer { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; border: 0; padding: 0; min-height: 44px; color: var(--ink); background: none; text-align: start; }
+.tree-answer .text-link { font-size: .875rem; }
+.is-answered h2 { color: var(--muted); font-weight: 500; }
+.tree-column h2 { font-size: 1.125rem; margin: 0 0 18px; }
+.tree-choices { display: grid; gap: 10px; }
+.tree-choice { display: flex; gap: 14px; align-items: center; min-width: 0; min-height: 66px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font-weight: 650; text-align: start; overflow-wrap: anywhere; }
+.tree-choice:hover { background: var(--blue-soft); border-color: var(--blue); }
+.tree-choice[aria-pressed="true"] { background: var(--blue-soft); border-color: var(--blue); box-shadow: inset 0 0 0 1px var(--blue); }
+.tree-icon { width: 42px; height: 50px; object-fit: contain; flex: none; }
+.tree-icon-slot { width: 44px; height: 52px; flex: none; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 4px; }
+.tree-icon-slot:has(img[src*="/samsung/series/"]) { background: #20262a; }
+.tree-icon[src*="/samsung/series/"] { transform: scale(1.65); }
+.tree-icon[src$="/galaxy-j.png"] { transform: none; }
+.tree-icon[src*="/manufacturers/"] { background: #f4f6f8; border-radius: 4px; padding: 3px; }
+.tree-icon[src$="/google-pixel.svg"], .tree-icon[src$="/poco.png"] { background: #1b2228; }
+[data-theme="dark"] .tree-icon[src$="/iphone-family.svg"], [data-theme="dark"] .tree-icon[src$="/ipad-device.svg"], [data-theme="dark"] .tree-icon[src$="/watch-family.svg"] { filter: invert(1); }
+.tree-family-photo { display: block; width: 100%; height: 140px; object-fit: contain; background: #fff; border-radius: 6px; margin-bottom: 12px; }
+.has-family-photo .tree-choice { min-height: 48px; padding-block: 10px; }
+.compact-choices { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.compact-choices .tree-choice { justify-content: center; text-align: center; min-height: 90px; padding: 12px 6px; font-size: .9375rem; }
+.tree-choice-copy { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.generation-hint { font-size: .875rem; margin: -8px 0 18px; }
+.generation-controls { display: flex; align-items: stretch; gap: 12px; max-width: 680px; }
+.generation-controls .primary-button { width: auto; flex: none; min-width: 120px; }
+.generation-select { flex: 1; min-width: 0; width: 100%; min-height: 52px; border: 1px solid var(--input-line); border-radius: 8px; padding: 12px; background: var(--surface); color: var(--ink); font-size: 1rem; }
+.generation-selection { font-size: .875rem; margin: 12px 0 0; }
+.generation-selection:empty { display: none; }
+.picker-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; border-bottom: 1px solid var(--line); margin-block: 0 24px; padding-bottom: 16px; }
+.picker-tools .secondary-button { width: auto; min-height: 44px; }
+#direct-search { margin-bottom: 24px; }
+.tree-back { display: none; margin-top: 14px; }
+.repair-choice { flex-direction: row; align-items: center; justify-content: start; gap: 16px; }
+.repair-icon-slot { display: flex; align-items: center; justify-content: center; width: 66px; height: 72px; border-radius: 6px; background: #20262a; flex: none; }
+.repair-icon-slot img { width: 56px; height: 56px; object-fit: contain; transform: scale(1.3); }
+.repair-icon-slot img[src$=".svg"] { filter: invert(1); transform: none; }
+.repair-copy { display: flex; flex-direction: column; gap: 5px; }
+.more-repairs { grid-column: 1 / -1; font-size: .9375rem; font-weight: 500; color: var(--muted); border-top: 1px solid var(--line); margin: 12px 0 0; padding-top: 20px; }
+@media(min-width: 1100px) {
+  .tree-column { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 24px; }
+  .tree-column.is-answered { padding-block: 16px; }
+  .tree-column.is-answered h2 { margin-bottom: 4px; font-size: .875rem; }
+  .tree-choices { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .compact-choices { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .tree-family-photo { max-width: 420px; height: 180px; }
+}
+@media(max-width: 1099px) {
+  .device-tree { grid-template-columns: minmax(0, 1fr); }
+  .tree-column:not(:last-child) { display: none; }
+  .tree-column + .tree-column { border: 0; padding: 0; }
+  .tree-back { display: inline-flex; }
+  .compact-choices .tree-choice { min-height: 76px; }
+}
+@media(max-width: 900px) {
+  .progress ol { display: grid; gap: 8px; }
+  .progress li { min-width: 0; gap: 0; align-items: start; }
+  .progress li::after { display: none; }
+  .progress button { flex-direction: column; gap: 5px; width: 100%; text-align: center; }
+  .progress .step-name { display: block; font-size: .6875rem; line-height: 1.2; overflow-wrap: anywhere; }
+  .step-caption { margin-top: 8px; }
+}
+@media(max-width: 600px) {
+  .generation-controls { flex-direction: column; }
+  .brand-context { gap: 10px; }
+  .brand-context .text-button { margin-inline-start: auto; }
+  .compact-logo img { width: 62px; height: 30px; }
+  .picker-breadcrumbs { gap: 0 12px; }
+  .repair-choice { padding: 12px; gap: 12px; }
+}
 @media print {
   .site-header, .progress, .back, .action, .footer, .service-band, .text-button { display: none; }
   body { color: black; background: white; }

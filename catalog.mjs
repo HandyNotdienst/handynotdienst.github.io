@@ -1,3 +1,3 @@
-export * from './catalog-data.mjs?v=HN-GUIDED-PRICES-V2-2026-10-01';
-import { startCatalog } from './catalog-guided.mjs?v=HN-GUIDED-PRICES-V2-2026-10-01';
+export * from './catalog-data.mjs?v=HN-GUIDED-PRICES-V3-2026-10-13-R6';
+import { startCatalog } from './catalog-guided.mjs?v=HN-GUIDED-PRICES-V3-2026-10-13-R6';
 if (typeof document !== 'undefined') startCatalog();
